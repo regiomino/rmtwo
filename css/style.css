@@ -1,0 +1,76 @@
+body {
+  padding-top: 100px !important;
+  padding-bottom: 20px;
+	background: #F5F5F5 url('../images/stage.jpg') center 50px no-repeat;
+	background-size: 100% auto;
+}
+
+#logo{
+	width:230px;
+	height:50px;
+	margin-top: 7px;
+	margin-left: 0px;
+	display:inline-block;
+	background:url(../images/logo.svg) no-repeat top left;
+	background-size:contain
+}
+
+.jumbotron {
+	background: transparent;
+}
+
+.jumbotron .row .col-md-12 .inner {
+	background-color: transparent;
+	text-align: center;
+	text-shadow:
+		0 1px 0 #676767,
+		0 -1px 0 #676767,
+		1px 0 0 #676767,
+		-1px 0 0 #676767;
+}
+
+.jumbotron .row .col-md-12 .inner {
+	font-size: 3em;
+	color: #fff;
+	font-weight: bold;
+	padding-bottom: 40px;
+}
+
+.jumbotron .row .col-md-6 .inner {
+	background-color: #fff;
+	padding: 30px 42px;
+	border-radius: 5px;
+	text-align: center;
+	min-height: 230px;
+}
+
+.jumbotron .row .inner button{
+	width: 100%;
+}
+
+.jumbotron .row .inner h2 {
+	font-size: 1.4em;
+}
+
+.jumbotron .row .inner p {
+	font-size: 1em;
+}
+
+.main-content .inner {
+	padding: 5px 15px;
+	background-color: #fff;
+	border-radius: 5px;
+}
+
+.navbar-brand,
+.navbar-nav li a {
+    line-height: 70px;
+    height: 70px;
+    padding-top: 0;
+}
+
+.front .page-title {
+	font-size: 2.2em;
+	text-align: center;
+	font-weight: normal;
+}
