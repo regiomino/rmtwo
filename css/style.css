@@ -7,8 +7,8 @@ body {
 
 #logo{
 	width:230px;
-	height:50px;
-	margin-top: 7px;
+	height:40px;
+	margin-top: 2px;
 	margin-left: 0px;
 	display:inline-block;
 	background:url(../images/logo.svg) no-repeat top left;
@@ -19,7 +19,12 @@ body {
 	background: transparent;
 }
 
-.jumbotron .row .col-md-12 .inner {
+.jumbotron .container {
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.jumbotron .col-md-12 {
 	background-color: transparent;
 	text-align: center;
 	text-shadow:
@@ -29,44 +34,35 @@ body {
 		-1px 0 0 #676767;
 }
 
-.jumbotron .row .col-md-12 .inner {
+.jumbotron .col-md-12 {
 	font-size: 3em;
 	color: #fff;
 	font-weight: bold;
 	padding-bottom: 40px;
 }
 
-.jumbotron .row .col-md-6 .inner {
-	background-color: #fff;
-	padding: 30px 42px;
-	border-radius: 5px;
-	text-align: center;
-	min-height: 230px;
-}
-
-.jumbotron .row .inner button{
+.jumbotron button{
 	width: 100%;
 }
 
-.jumbotron .row .inner h2 {
+.jumbotron h2 {
 	font-size: 1.4em;
 }
 
-.jumbotron .row .inner p {
+.jumbotron p {
 	font-size: 1em;
 }
 
-.main-content .inner {
-	padding: 5px 15px;
-	background-color: #fff;
-	border-radius: 5px;
+.zipcodeselect,
+.directoryselect{
+    padding: 30px 42px;
+    text-align: center;
+    min-height: 230px;
 }
 
-.navbar-brand,
-.navbar-nav li a {
-    line-height: 70px;
-    height: 70px;
-    padding-top: 0;
+.main-content {
+	background-color: #fff;
+	border-radius: 5px;
 }
 
 .front .page-title {

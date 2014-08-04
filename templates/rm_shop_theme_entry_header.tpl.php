@@ -10,26 +10,18 @@ echo render($form2['form_id']);
 echo render($form2['form_build_id']);
 echo render($form2['form_token']);
 ?>
-<div class="row">
-	<div class="col-md-12">
-		<div class="inner">
-			<?php echo t('Two ways to get started'); ?>
-		</div>
-	</div>
+
+<div class="col-md-6 zipcodeselect">
+
+        <h2><?php echo t('Enter city or zipcode...'); ?></h2>
+        <?php echo render($form1['rm_shop_zipcode']['zipcode']); ?>
+        <?php echo render($form1['rm_shop_zipcode']['submit']); ?>
+
 </div>
-<div class="row">
-	<div class="col-md-6">
-		<div class="inner">
-			<h2><?php echo t('Enter city or zipcode...'); ?></h2>
-			<?php echo render($form1['rm_shop_zipcode']['zipcode']); ?>
-			<?php echo render($form1['rm_shop_zipcode']['submit']); ?>
-		</div>
-	</div>
-	<div class="col-md-6">
-		<div class="inner">
-			<h2><?php echo t('... or select seller from directory'); ?></h2>
-			<?php echo render($form2['rm_shop_directory']['name']); ?>
-			<?php echo render($form2['rm_shop_directory']['submit']); ?>
-		</div>
-	</div>
+<div class="col-md-6 directoryselect">
+
+        <h2><?php echo t('... or select seller from directory'); ?></h2>
+        <?php echo render($form2['rm_shop_directory']['name']); ?>
+        <?php echo render($form2['rm_shop_directory']['submit']); ?>
+
 </div>
