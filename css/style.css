@@ -10,6 +10,7 @@ form .form-item {
 }
 
 body.page-lieferanten,
+body.page-admin,
 body.node-type-seller-profile{
     background: #fff;
     background-image: none;
@@ -127,6 +128,7 @@ body.node-type-seller-profile{
 }
 
 body.page-lieferanten .navbar-fixed-top,
+body.page-admin .navbar-fixed-top,
 body.node-type-seller-profile .navbar-fixed-top {
     border: 1px solid transparent;
     background-color: #eee;

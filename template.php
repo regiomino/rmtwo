@@ -155,6 +155,15 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
         break;
+        case 'rm_sales_profilequeue_form':
+        case 'rm_sales_profileset_form':
+        case 'rm_sales_profilecare_form':
+            $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
+            $form['#suffix'] = '</div>';
+            $form['suggestions']['#attributes']['class'][] = 'table';
+            $form['submit']['#attributes']['class'][] = 'btn';
+            $form['submit']['#attributes']['class'][] = 'btn-success';
+            break;
     }
 
 }
@@ -170,7 +179,7 @@ function rmtwo_password_confirm_process($element) {
 }
 
 function rmtwo_preprocess_page(&$variables) {
-    if(($variables['page']['#type'] == 'page' && (arg(0) == 'lieferanten')) || (array_key_exists('node', $variables) && $variables['node']->type == 'seller_profile')) {
+    if(($variables['page']['#type'] == 'page' && (arg(0) == 'lieferanten')) || (array_key_exists('node', $variables) && $variables['node']->type == 'seller_profile') || arg(0) == 'admin') {
         $variables['theme_hook_suggestions'][] = 'page__lieferanten';
     }
     $variables['page']['content']['regiominouserlogin'] = render(drupal_get_form('user_login_block'));
@@ -241,4 +250,152 @@ function rmtwo_form_element($variables) {
     $output .= "</div>\n";
 
     return $output;
+}
+
+function rmtwo_menu_local_tasks(&$variables) {
+    $output = '';
+
+    if (!empty($variables['primary'])) {
+        $variables['primary']['#prefix'] = '<h2 class="element-invisible">' . t('Primary tabs') . '</h2>';
+        $variables['primary']['#prefix'] .= '<div class="primary btn-group btn-group-justified">';
+        $variables['primary']['#suffix'] = '</div>';
+        $output .= drupal_render($variables['primary']);
+    }
+    if (!empty($variables['secondary'])) {
+        $variables['secondary']['#prefix'] = '<h2 class="element-invisible">' . t('Secondary tabs') . '</h2>';
+        $variables['secondary']['#prefix'] .= '<div class="secondary btn-group btn-group-justified">';
+        $variables['secondary']['#suffix'] = '</div>';
+        $output .= drupal_render($variables['secondary']);
+    }
+
+    return $output;
+}
+
+function rmtwo_menu_local_task($variables) {
+    $link = $variables['element']['#link'];
+    $link_text = $link['title'];
+
+    if (!empty($variables['element']['#active'])) {
+        // Add text to indicate active tab for non-visual users.
+        $active = '<span class="element-invisible">' . t('(active tab)') . '</span>';
+        // If the link does not contain HTML already, check_plain() it now.
+        // After we set 'html'=TRUE the link will not be sanitized by l().
+        if (empty($link['localized_options']['html'])) {
+            $link['title'] = check_plain($link['title']);
+        }
+        $link['localized_options']['html'] = TRUE;
+        $link['localized_options']['attributes']['class'] = array('active');
+        $link_text = t('!local-task-title!active', array('!local-task-title' => $link['title'], '!active' => $active));
+    }
+    $link['localized_options']['attributes']['class'] = array('btn', 'btn-default');
+    return l($link_text, $link['href'], $link['localized_options']) . "\n";
+}
+
+function rmtwo_pager($variables) {
+    $tags = $variables['tags'];
+    $element = $variables['element'];
+    $parameters = $variables['parameters'];
+    $quantity = $variables['quantity'];
+    global $pager_page_array, $pager_total;
+
+    // Calculate various markers within this pager piece:
+    // Middle is used to "center" pages around the current page.
+    $pager_middle = ceil($quantity / 2);
+    // current is the page we are currently paged to
+    $pager_current = $pager_page_array[$element] + 1;
+    // first is the first page listed by this pager piece (re quantity)
+    $pager_first = $pager_current - $pager_middle + 1;
+    // last is the last page listed by this pager piece (re quantity)
+    $pager_last = $pager_current + $quantity - $pager_middle;
+    // max is the maximum page number
+    $pager_max = $pager_total[$element];
+    // End of marker calculations.
+
+    // Prepare for generation loop.
+    $i = $pager_first;
+    if ($pager_last > $pager_max) {
+        // Adjust "center" if at end of query.
+        $i = $i + ($pager_max - $pager_last);
+        $pager_last = $pager_max;
+    }
+    if ($i <= 0) {
+        // Adjust "center" if at start of query.
+        $pager_last = $pager_last + (1 - $i);
+        $i = 1;
+    }
+    // End of generation loop preparation.
+
+    $li_first = theme('pager_first', array('text' => (isset($tags[0]) ? $tags[0] : t('« first')), 'element' => $element, 'parameters' => $parameters));
+    $li_previous = theme('pager_previous', array('text' => (isset($tags[1]) ? $tags[1] : t('‹ previous')), 'element' => $element, 'interval' => 1, 'parameters' => $parameters));
+    $li_next = theme('pager_next', array('text' => (isset($tags[3]) ? $tags[3] : t('next ›')), 'element' => $element, 'interval' => 1, 'parameters' => $parameters));
+    $li_last = theme('pager_last', array('text' => (isset($tags[4]) ? $tags[4] : t('last »')), 'element' => $element, 'parameters' => $parameters));
+
+    if ($pager_total[$element] > 1) {
+        if ($li_first) {
+            $items[] = array(
+                'class' => array('pager-first'),
+                'data' => $li_first,
+            );
+        }
+        if ($li_previous) {
+            $items[] = array(
+                'class' => array('pager-previous'),
+                'data' => $li_previous,
+            );
+        }
+
+        // When there is more than one page, create the pager list.
+        if ($i != $pager_max) {
+            if ($i > 1) {
+                $items[] = array(
+                    'class' => array('pager-ellipsis'),
+                    'data' => '…',
+                );
+            }
+            // Now generate the actual pager piece.
+            for (; $i <= $pager_last && $i <= $pager_max; $i++) {
+                if ($i < $pager_current) {
+                    $items[] = array(
+                        'class' => array('pager-item'),
+                        'data' => theme('pager_previous', array('text' => $i, 'element' => $element, 'interval' => ($pager_current - $i), 'parameters' => $parameters)),
+                    );
+                }
+                if ($i == $pager_current) {
+                    $items[] = array(
+                        'class' => array('pager-current', 'disabled'),
+                        'data' => theme('pager_link', array('text' => $i, 'page_new' => $i, 'element' => $element, 'parameters' => $parameters)),
+                    );
+                }
+                if ($i > $pager_current) {
+                    $items[] = array(
+                        'class' => array('pager-item'),
+                        'data' => theme('pager_next', array('text' => $i, 'element' => $element, 'interval' => ($i - $pager_current), 'parameters' => $parameters)),
+                    );
+                }
+            }
+            if ($i < $pager_max) {
+                $items[] = array(
+                    'class' => array('pager-ellipsis'),
+                    'data' => '…',
+                );
+            }
+        }
+        // End generation.
+        if ($li_next) {
+            $items[] = array(
+                'class' => array('pager-next'),
+                'data' => $li_next,
+            );
+        }
+        if ($li_last) {
+            $items[] = array(
+                'class' => array('pager-last'),
+                'data' => $li_last,
+            );
+        }
+        return '<h2 class="element-invisible">' . t('Pages') . '</h2>' . theme('item_list', array(
+            'items' => $items,
+            'attributes' => array('class' => array('pagination')),
+        ));
+    }
 }
