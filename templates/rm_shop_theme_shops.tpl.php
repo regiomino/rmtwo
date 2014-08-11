@@ -47,7 +47,7 @@
 
     <?php global $user; if($user->uid <= 0): ?>
         <div class="alert alert-info" role="alert">Bitte <?php print l('loggen Sie sich ein', 'user/register', array('query' => drupal_get_destination())); ?>, um die mit Ihnen vereinbarten Liefer- und Zahlungsbedingungen nutzen zu können</div>
-    <?php endif; ?>
+    <?php endif;?>
     <?php foreach($vars['shops'] as $shop): ?>
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -56,32 +56,34 @@
             <div class="panel-body">
                 <a href="<?php print url('node/' . $shop->nid); ?>"><img src="<?php print image_style_url('thumbnail', $shop->field_image[LANGUAGE_NONE][0]['uri']); ?>" class="img-rounded seller-img"></a>
                 <?php if(!empty($shop->agreements)) {
-                    foreach($shop->agreements as $type => $agreement) {
-                        switch($type) {
-                            case 'shipping_agreement':
-                                print "<span class='label label-warning label-details' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>Lieferung ab 10,00 €</span> ";
-                                break;
-                            case 'pickup_agreement':
-                                print "<span class='label label-warning label-details' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>Selbstabholung ab 0,00 €</span> ";
-                                break;
-                            case 'dispatch_agreement':
-                                print '<span class="label label-warning label-details" data-toggle="popover" data-content="' . t('Have your order shipped to you') . '">Versand</span> ';
-                                break;
-                            case 'payment_agreement':
-                                foreach($agreement->field_payment_types[LANGUAGE_NONE] as $payment_type) {
-                                    switch($payment_type['value']) {
-                                        case 'prepaid':
-                                            print '<span class="label label-success label-details" data-toggle="popover" data-content="' . t('Pay online during checkout via one of our payment providers') . '">Vorkasse</span> ';
-                                            break;
-                                        case 'cash':
-                                            print '<span class="label label-success label-details" data-toggle="popover" data-content="' . t('Pay cash when your order is delivered') . '">Barzahlung</span> ';
-                                            break;
-                                        case 'invoice':
-                                            print '<span class="label label-success label-details" data-toggle="popover" data-content="' . t('The vendor will send you an invoice after your order is complete') . '">Rechnung</span> ';
-                                            break;
+                    foreach($shop->agreements as $type => $user_reference) {
+                        foreach($user_reference as $target_id => $agreement) {
+                            switch($type) {
+                                case 'shipping_agreement':
+                                    print "<span class='label label-warning label-details' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>Lieferung ab 10,00 €</span> ";
+                                    break;
+                                case 'pickup_agreement':
+                                    print "<span class='label label-warning label-details' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>Selbstabholung ab 0,00 €</span> ";
+                                    break;
+                                case 'dispatch_agreement':
+                                    print '<span class="label label-warning label-details" data-toggle="popover" data-content="' . t('Have your order shipped to you') . '">Versand</span> ';
+                                    break;
+                                case 'payment_agreement':
+                                    foreach($agreement->field_payment_types[LANGUAGE_NONE] as $payment_type) {
+                                        switch($payment_type['value']) {
+                                            case 'prepaid':
+                                                print '<span class="label label-success label-details" data-toggle="popover" data-content="' . t('Pay online during checkout via one of our payment providers') . '">Vorkasse</span> ';
+                                                break;
+                                            case 'cash':
+                                                print '<span class="label label-success label-details" data-toggle="popover" data-content="' . t('Pay cash when your order is delivered') . '">Barzahlung</span> ';
+                                                break;
+                                            case 'invoice':
+                                                print '<span class="label label-success label-details" data-toggle="popover" data-content="' . t('The vendor will send you an invoice after your order is complete') . '">Rechnung</span> ';
+                                                break;
+                                        }
                                     }
-                                }
-                                break;
+                                    break;
+                            }
                         }
                     }
                 }
