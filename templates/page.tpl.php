@@ -20,6 +20,8 @@
             <?php
             global $user;
             if($user->uid > 0) {
+                $account = user_load($user->uid);
+                if(in_array('salesguy', $account->roles)) echo l(t('<span class="@class"></span> @linktitle', array('@class' => 'glyphicon glyphicon-user', '@linktitle' => t('Sales'))), 'admin/sales', array('query' => drupal_get_destination(), 'html' => TRUE, 'attributes' => array('class' => array('btn', 'btn-info')))) . ' ';
                 echo l(t('<span class="@class"></span> @linktitle', array('@class' => 'glyphicon glyphicon-user', '@linktitle' => t('Log out'))), 'user/logout', array('query' => drupal_get_destination(), 'html' => TRUE, 'attributes' => array('class' => array('btn', 'btn-warning'))));
             }
             else {
