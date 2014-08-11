@@ -8,7 +8,7 @@
     <title><?php print $head_title; ?></title>
     <?php print $styles; ?>
     <?php print $scripts; ?>
-    
+
     <!--[if lt IE 9]>
         <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -17,7 +17,7 @@
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
 
 		<script>
-		
+
 			/* // Set to the same value as the web property used on the site
 			var gaProperty = 'UA-40144139-1';
 
@@ -44,28 +44,25 @@
 
 		</script>
 
-    <div id="skip-link">
-      <a href="#main-content" class="element-invisible element-focusable"><?php print t('Skip to main content'); ?></a>
-    </div>
     <?php print $page_top; ?>
     <?php print $page; ?>
     <?php print $page_bottom; ?>
     <script>
         /* (function ($) {
-            
+
              $(".rmnav").rmNav();
 
         })(jQuery);
-				(function () { 
-						var _tsid = 'X9FF4FD2592B5BFA727E6480148224623'; 
-						_tsConfig = { 
+				(function () {
+						var _tsid = 'X9FF4FD2592B5BFA727E6480148224623';
+						_tsConfig = {
 								'yOffset': '0', //offset from page bottom
 								'variant': 'reviews' //text, default, small, reviews
 						};
 						var _ts = document.createElement('script');
-						_ts.type = 'text/javascript'; 
-						_ts.charset = 'utf-8'; 
-						_ts.src = '//widgets.trustedshops.com/js/' + _tsid + '.js'; 
+						_ts.type = 'text/javascript';
+						_ts.charset = 'utf-8';
+						_ts.src = '//widgets.trustedshops.com/js/' + _tsid + '.js';
 						var __ts = document.getElementsByTagName('script')[0];
 						__ts.parentNode.insertBefore(_ts, __ts);
 				})();*/

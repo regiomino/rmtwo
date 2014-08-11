@@ -10,7 +10,11 @@
     <?php if('user/register' == current_path()): ?>
         <div class="col-md-4">
             <h3><?php print t('Please sign in...'); ?></h3>
-            <?php print render(drupal_get_form('user_login_block')); ?>
+            <?php
+            /*$block = module_invoke('rm_user', 'block_view', 'regiomino_user_login');
+            print render($block['content']);*/
+            print $variables['elements']['regiominouserlogin'];
+            ?>
         </div>
     <?php endif; ?>
     <?php print $content; ?>

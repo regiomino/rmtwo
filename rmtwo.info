@@ -4,7 +4,6 @@ package = Regiomino
 version = 1.0
 core = 7.x
 stylesheets[screen][] = css/bootstrap.min.css
-; stylesheets[screen][] = css/bootstrap-theme.min.css
 stylesheets[screen][] = css/style.css
 
 regions[user_first] = User First
@@ -26,4 +25,5 @@ regions[footer_legal] = Footer Legal
 regions[geolocentry] = Geolocation Entry
 
 scripts[] = js/bootstrap.min.js
+scripts[] = js/main.js
 
