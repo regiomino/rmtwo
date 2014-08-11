@@ -3,7 +3,7 @@ description = The new Regiomino theme
 package = Regiomino
 version = 1.0
 core = 7.x
-stylesheets[screen][] = css/bootstrap.min.css
+stylesheets[screen][] = dist/css/bootstrap.min.css
 stylesheets[screen][] = css/style.css
 
 regions[user_first] = User First
@@ -24,6 +24,6 @@ regions[footer_bar] = Footer Bar
 regions[footer_legal] = Footer Legal
 regions[geolocentry] = Geolocation Entry
 
-scripts[] = js/bootstrap.min.js
+scripts[] = dist/js/bootstrap.min.js
 scripts[] = js/main.js
 
