@@ -37,7 +37,7 @@ module.exports = function (grunt) {
 
     // Task configuration.
     clean: {
-      dist: ['dist', 'docs/dist']
+      dist: ['css', 'docs/dist']
     },
 
     jshint: {
@@ -105,7 +105,7 @@ module.exports = function (grunt) {
           'js/tab.js',
           'js/affix.js'
         ],
-        dest: 'dist/js/<%= pkg.name %>.js'
+        dest: 'js/<%= pkg.name %>.js'
       }
     },
 
@@ -115,7 +115,7 @@ module.exports = function (grunt) {
       },
       bootstrap: {
         src: '<%= concat.bootstrap.dest %>',
-        dest: 'dist/js/<%= pkg.name %>.min.js'
+        dest: 'js/<%= pkg.name %>.min.js'
       },
       customize: {
         src: [
@@ -152,14 +152,14 @@ module.exports = function (grunt) {
           strictMath: true,
           sourceMap: true,
           outputSourceFiles: true,
-          sourceMapURL: '<%= pkg.name %>.css.map',
-          sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
+          sourceMapURL: 'css/style.css.map',
+          sourceMapFilename: 'css/style.css.map'
         },
         files: {
-          'dist/css/<%= pkg.name %>.css': 'less/all.less'
+          'css/style.css': 'less/all.less'
         }
       },
-      compileTheme: {
+      /*compileTheme: {
         options: {
           strictMath: true,
           sourceMap: true,
@@ -170,7 +170,7 @@ module.exports = function (grunt) {
         files: {
           'dist/css/<%= pkg.name %>-theme.css': 'less/bootstrap/theme.less'
         }
-      }
+      }*/
     },
 
     autoprefixer: {
@@ -190,32 +190,17 @@ module.exports = function (grunt) {
         options: {
           map: true
         },
-        src: 'dist/css/<%= pkg.name %>.css'
-      },
-      theme: {
-        options: {
-          map: true
-        },
-        src: 'dist/css/<%= pkg.name %>-theme.css'
-      },
-      docs: {
-        src: 'docs/assets/css/_src/docs.css'
-      },
-      examples: {
-        expand: true,
-        cwd: 'docs/examples/',
-        src: ['**/*.css'],
-        dest: 'docs/examples/'
+        src: 'css/style.css'
       }
     },
 
     csslint: {
       options: {
-        csslintrc: 'less/.csslintrc'
+        csslintrc: 'less/bootstrap/.csslintrc'
       },
       src: [
-        'dist/css/bootstrap.css',
-        'dist/css/bootstrap-theme.css'
+        'css/style.css'/*,
+        'dist/css/bootstrap-theme.css'*/
       ],
       examples: [
         'docs/examples/**/*.css'
@@ -237,8 +222,8 @@ module.exports = function (grunt) {
       },
       core: {
         files: {
-          'dist/css/<%= pkg.name %>.min.css': 'dist/css/<%= pkg.name %>.css',
-          'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css'
+          'css/style.min.css': 'css/style.css'//,
+         // 'dist/css/<%= pkg.name %>-theme.min.css': 'dist/css/<%= pkg.name %>-theme.css'
         }
       },
       docs: {
@@ -435,7 +420,7 @@ module.exports = function (grunt) {
   grunt.registerTask('dist-js', ['concat', 'uglify']);
 
   // CSS distribution task.
-  grunt.registerTask('less-compile', ['less:compileCore', 'less:compileTheme']);
+  grunt.registerTask('less-compile', ['less:compileCore'] /*, 'less:compileTheme']*/);
   grunt.registerTask('dist-css', ['less-compile', 'autoprefixer', 'usebanner', 'csscomb', 'cssmin']);
 
   // Docs distribution task.
