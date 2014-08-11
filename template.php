@@ -287,7 +287,7 @@ function rmtwo_menu_local_task($variables) {
         $link['localized_options']['attributes']['class'] = array('active');
         $link_text = t('!local-task-title!active', array('!local-task-title' => $link['title'], '!active' => $active));
     }
-    $link['localized_options']['attributes']['class'] = array('btn', 'btn-default');
+    $link['localized_options']['attributes']['class'] = array('btn', 'btn-lg', 'btn-default');
     return l($link_text, $link['href'], $link['localized_options']) . "\n";
 }
 
