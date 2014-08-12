@@ -3,6 +3,24 @@
  */
 jQuery(document).ready(function ($) {
 
+    
+    $('#salesguys select').change(function() {
+        var nidstring = $(this).attr('id');
+        var res = nidstring.split("_");
+        
+        data = new Object;
+        data['nid'] = res[1];
+        data['uid'] = $(this).val();
+
+        callback_url = Drupal.settings.basePath + 'admin/sales/assignprofile/' + data['nid'] + '/' + data['uid'];
+            
+        $.ajax({
+            url: callback_url,
+            type: 'POST',
+            data: data
+        });
+    });
+    
     //messages are placed inside a bootstrap modal #messageModal. this triggers it, when it's there.
     $('#messageModal').modal('show');
 

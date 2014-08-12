@@ -24,6 +24,6 @@ regions[footer_bar] = Footer Bar
 regions[footer_legal] = Footer Legal
 regions[geolocentry] = Geolocation Entry
 
-scripts[] = js/bootstrap.min.js
-scripts[] = js/main.js
+scripts[] = js/regiomino.min.js
+ 
 
