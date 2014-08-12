@@ -37,7 +37,7 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             );
             $form['actions']['submit']['#attributes']['class'][] = 'btn';
             $form['actions']['submit']['#attributes']['class'][] = 'btn-success';
-        break;
+            break;
         case 'user_pass':
             //General declaration
             $form['#attributes']['class'][] = 'form-vertical';
@@ -47,7 +47,7 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['name']['#attributes']['required'] = NULL;
             $form['actions']['submit']['#attributes']['class'][] = 'btn';
             $form['actions']['submit']['#attributes']['class'][] = 'btn-success';
-        break;
+            break;
         case 'user_login_block':
             $form['name']['#attributes']['placeholder'] = t('Your E-Mail');
             $form['name']['#attributes']['class'][] = 'form-control';
@@ -58,7 +58,7 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['actions']['submit']['#attributes']['class'][] = 'btn';
             $form['actions']['submit']['#attributes']['class'][] = 'btn-success';
             $form['links']['#markup'] = '<div class="item-list"><ul><li class="first"><a href="/user/password" title="' . t('Request new password via e-mail.') . '">' . t('Request new password') . '</a></li></ul></div>';
-        break;
+            break;
         case 'rm_sales_suggest_form':
             //General declaration
             $form['#attributes']['class'][] = 'form-vertical';
@@ -94,7 +94,7 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             //Submit
             $form['suggest']['submit']['#attributes']['class'][] = 'btn';
             $form['suggest']['submit']['#attributes']['class'][] = 'btn-success';
-        break;
+            break;
         case 'rm_shop_regionselect':
 
 //            $form['street']['#attributes']['placeholder'] = 'Habichtweg 6';
@@ -138,9 +138,7 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
                 }
             }
 
-//            $form['zipcode']['#field_prefix'] = '<div class="input-group input-group-lg">';
-//            $form['zipcode']['#field_suffix'] = '<span class="input-group-btn"><button class="btn btn-success" type="submit">' . t('Find vendor') . '</button></span></div>';
-        break;
+            break;
         case 'rm_shop_contact_form':
             $form['#attributes']['class'][] = 'form-vertical';
             $form['email']['#attributes']['required'] = NULL;
@@ -154,13 +152,53 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['body']['#attributes']['class'][] = 'form-control';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
-        break;
+            break;
         case 'rm_sales_profilequeue_form':
         case 'rm_sales_profileset_form':
         case 'rm_sales_profilecare_form':
             $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
             $form['#suffix'] = '</div>';
             $form['suggestions']['#attributes']['class'][] = 'table';
+            $form['submit']['#attributes']['class'][] = 'btn';
+            $form['submit']['#attributes']['class'][] = 'btn-success';
+            break;
+        case 'rm_sales_editprofile': 
+            $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
+            $form['#suffix'] = '</div>';
+            $form['#attributes']['class'][] = 'form-vertical';
+            $form['company']['field_company_name'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
+            $form['company']['field_publicphone'][LANGUAGE_NONE][0]['#process'] = array(
+                'cck_phone_phone_number_process',
+                'rmtwo_phone_number_process',
+                'cck_phone_field_widget_process',
+            );
+            $form['company']['field_publicfax'][LANGUAGE_NONE][0]['#process'] = array(
+                'cck_phone_phone_number_process',
+                'rmtwo_phone_number_process',
+                'cck_phone_field_widget_process',
+            );
+            $form['company']['field_email'][LANGUAGE_NONE][0]['email']['#attributes']['class'][] = 'form-control';
+            $form['company']['field_bankaccountholder'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
+            $form['company']['field_iban'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
+            $form['company']['field_bic'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
+            $form['company']['field_taxnumber'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';            
+            $form['company']['field_address'][LANGUAGE_NONE][0]['street_block']['thoroughfare']['#attributes']['class'][] = 'form-control';
+            $form['company']['field_address'][LANGUAGE_NONE][0]['street_block']['premise']['#attributes']['class'][] = 'form-control';
+            $form['company']['field_address'][LANGUAGE_NONE][0]['locality_block']['postal_code']['#attributes']['class'][] = 'form-control';
+            $form['company']['field_address'][LANGUAGE_NONE][0]['locality_block']['locality']['#attributes']['class'][] = 'form-control';
+            $form['company']['field_address'][LANGUAGE_NONE][0]['country']['#attributes']['class'][] = 'form-control';
+            $form['company']['field_billingaddress'][LANGUAGE_NONE][0]['street_block']['thoroughfare']['#attributes']['class'][] = 'form-control';
+            $form['company']['field_billingaddress'][LANGUAGE_NONE][0]['street_block']['premise']['#attributes']['class'][] = 'form-control';
+            $form['company']['field_billingaddress'][LANGUAGE_NONE][0]['locality_block']['postal_code']['#attributes']['class'][] = 'form-control';
+            $form['company']['field_billingaddress'][LANGUAGE_NONE][0]['locality_block']['locality']['#attributes']['class'][] = 'form-control';
+            $form['company']['field_billingaddress'][LANGUAGE_NONE][0]['country']['#attributes']['class'][] = 'form-control';
+            
+            
+            $form['profile']['title']['#attributes']['class'][] = 'form-control';
+            $form['profile']['field_image']['#prefix'] = '<div class="form-group">';
+            $form['profile']['field_image']['#suffix'] = '</div>';
+            
+            //Submit
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
@@ -175,6 +213,11 @@ function rmtwo_password_confirm_process($element) {
     $element['pass2']['#attributes']['class'][] = 'form-control';
     $element['pass2']['#attributes']['placeholder'] = t('Repeat password');
     $element['pass2']['#attributes']['required'] = NULL;
+    return $element;
+}
+
+function rmtwo_phone_number_process($element) {
+    $element['number']['#attributes']['class'][] = 'form-control';
     return $element;
 }
 
