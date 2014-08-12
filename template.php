@@ -229,7 +229,73 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
-        case 'rm_sales_editprofile': 
+        case 'rm_sales_useraccounts_form':
+            $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
+            $form['#suffix'] = '</div>';
+            $form['useraccounts']['#attributes']['class'][] = 'table';
+            $form['submit']['#attributes']['class'][] = 'btn';
+            $form['submit']['#attributes']['class'][] = 'btn-success';
+            break;
+        case 'rm_sales_note_add':
+            $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
+            $form['#suffix'] = '</div>';
+            $form['title']['#attributes']['class'][] = 'form-control';
+            $form['submit']['#attributes']['class'][] = 'btn';
+            $form['submit']['#attributes']['class'][] = 'btn-success';
+            break;
+        case 'rm_sales_deletenode':
+            $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
+            $form['#suffix'] = '</div>';
+            $form['submit']['#attributes']['class'][] = 'btn';
+            $form['submit']['#attributes']['class'][] = 'btn-danger';
+            break;
+        case 'rm_sales_agreement_edit':
+            $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
+            $form['#suffix'] = '</div>';
+            $form['#attributes']['class'][] = 'form-vertical';
+            if(!empty($form['rm_edit_agreement']['field_minimum_order_value'])) $form['rm_edit_agreement']['field_minimum_order_value'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
+            if(!empty($form['rm_edit_agreement']['field_minimum_order_value'])) unset($form['rm_edit_agreement']['field_minimum_order_value'][LANGUAGE_NONE][0]['value']['#field_suffix']);
+            if(!empty($form['rm_edit_agreement']['field_user_reference'])) $form['rm_edit_agreement']['field_user_reference'][LANGUAGE_NONE]['#attributes']['class'][] = 'form-control';
+            if(!empty($form['rm_edit_agreement']['field_surcharge'])) $form['rm_edit_agreement']['field_surcharge'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
+            if(!empty($form['rm_edit_agreement']['field_surcharge'])) unset($form['rm_edit_agreement']['field_surcharge'][LANGUAGE_NONE][0]['value']['#field_suffix']);
+            if(!empty($form['rm_edit_agreement']['field_commission'])) $form['rm_edit_agreement']['field_commission'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
+            if(!empty($form['rm_edit_agreement']['field_commission'])) unset($form['rm_edit_agreement']['field_commission'][LANGUAGE_NONE][0]['value']['#field_suffix']);
+            if(!empty($form['rm_edit_agreement']['field_days_until_ready'])) $form['rm_edit_agreement']['field_days_until_ready'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
+            if(!empty($form['rm_edit_agreement']['field_days_until_ready'])) unset($form['rm_edit_agreement']['field_days_until_ready'][LANGUAGE_NONE][0]['value']['#field_suffix']);
+            if(!empty($form['rm_edit_agreement']['field_dispatch_provider'])) $form['rm_edit_agreement']['field_dispatch_provider'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
+            if(!empty($form['rm_edit_agreement']['field_regular_times'])) $form['rm_edit_agreement']['field_regular_times'][LANGUAGE_NONE]['#attributes']['class'][] = 'table';
+            if(!empty($form['rm_edit_agreement']['field_shipping_zipcodes'])) {
+                foreach($form['rm_edit_agreement']['field_shipping_zipcodes'][LANGUAGE_NONE] as $index => $rest) {
+                    if(is_numeric($index)) $form['rm_edit_agreement']['field_shipping_zipcodes'][LANGUAGE_NONE][$index]['value']['#attributes']['class'][] = 'form-control';
+                }
+            }
+            $form['submit']['#attributes']['class'][] = 'btn';
+            $form['submit']['#attributes']['class'][] = 'btn-success';
+            break;
+        case 'rm_sales_agreement_add':
+            $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
+            $form['#suffix'] = '</div>';
+            $form['#attributes']['class'][] = 'form-vertical';
+            if(!empty($form['rm_add_agreement']['field_minimum_order_value'])) $form['rm_add_agreement']['field_minimum_order_value'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
+            if(!empty($form['rm_add_agreement']['field_minimum_order_value'])) unset($form['rm_add_agreement']['field_minimum_order_value'][LANGUAGE_NONE][0]['value']['#field_suffix']);
+            if(!empty($form['rm_add_agreement']['field_user_reference'])) $form['rm_add_agreement']['field_user_reference'][LANGUAGE_NONE]['#attributes']['class'][] = 'form-control';
+            if(!empty($form['rm_add_agreement']['field_surcharge'])) $form['rm_add_agreement']['field_surcharge'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
+            if(!empty($form['rm_add_agreement']['field_surcharge'])) unset($form['rm_add_agreement']['field_surcharge'][LANGUAGE_NONE][0]['value']['#field_suffix']);
+            if(!empty($form['rm_add_agreement']['field_commission'])) $form['rm_add_agreement']['field_commission'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
+            if(!empty($form['rm_add_agreement']['field_commission'])) unset($form['rm_add_agreement']['field_commission'][LANGUAGE_NONE][0]['value']['#field_suffix']);
+            if(!empty($form['rm_add_agreement']['field_days_until_ready'])) $form['rm_add_agreement']['field_days_until_ready'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
+            if(!empty($form['rm_add_agreement']['field_days_until_ready'])) unset($form['rm_add_agreement']['field_days_until_ready'][LANGUAGE_NONE][0]['value']['#field_suffix']);
+            if(!empty($form['rm_add_agreement']['field_dispatch_provider'])) $form['rm_add_agreement']['field_dispatch_provider'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
+            if(!empty($form['rm_add_agreement']['field_regular_times'])) $form['rm_add_agreement']['field_regular_times'][LANGUAGE_NONE]['#attributes']['class'][] = 'table';
+            if(!empty($form['rm_add_agreement']['field_shipping_zipcodes'])) {
+                foreach($form['rm_add_agreement']['field_shipping_zipcodes'][LANGUAGE_NONE] as $index => $rest) {
+                    if(is_numeric($index)) $form['rm_add_agreement']['field_shipping_zipcodes'][LANGUAGE_NONE][$index]['value']['#attributes']['class'][] = 'form-control';
+                }
+            }
+            $form['submit']['#attributes']['class'][] = 'btn';
+            $form['submit']['#attributes']['class'][] = 'btn-success';
+            break;
+        case 'rm_sales_editprofile':
             $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
             $form['#suffix'] = '</div>';
             $form['#attributes']['class'][] = 'form-vertical';
@@ -486,4 +552,101 @@ function rmtwo_pager($variables) {
             'attributes' => array('class' => array('pagination')),
         ));
     }
+}
+
+function rmtwo_field_multiple_value_form($variables) {
+  $element = $variables['element'];
+  $output = '';
+
+  if ($element['#cardinality'] > 1 || $element['#cardinality'] == FIELD_CARDINALITY_UNLIMITED) {
+    $table_id = drupal_html_id($element['#field_name'] . '_values');
+    $order_class = $element['#field_name'] . '-delta-order';
+    $required = !empty($element['#required']) ? theme('form_required_marker', $variables) : '';
+
+    $header = array(
+      array(
+        'data' => '<label>' . t('!title !required', array('!title' => $element['#title'], '!required' => $required)) . "</label>",
+        'colspan' => 2,
+        'class' => array('field-label'),
+      ),
+      t('Order'),
+    );
+    $rows = array();
+
+    // Sort items according to '_weight' (needed when the form comes back after
+    // preview or failed validation)
+    $items = array();
+    foreach (element_children($element) as $key) {
+      if ($key === 'add_more') {
+        $add_more_button = &$element[$key];
+      }
+      else {
+        $items[] = &$element[$key];
+      }
+    }
+    usort($items, '_field_sort_items_value_helper');
+
+    // Add the items as table rows.
+    foreach ($items as $key => $item) {
+      $item['_weight']['#attributes']['class'] = array($order_class);
+      $delta_element = drupal_render($item['_weight']);
+      $cells = array(
+        array(
+          'data' => '',
+          'class' => array('field-multiple-drag'),
+        ),
+        drupal_render($item),
+        array(
+          'data' => $delta_element,
+          'class' => array('delta-order'),
+        ),
+      );
+      $rows[] = array(
+        'data' => $cells,
+        'class' => array('draggable'),
+      );
+    }
+
+    $output = '<div class="form-item">';
+    $output .= theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('id' => $table_id, 'class' => array('field-multiple-table', 'table'))));
+    $output .= $element['#description'] ? '<div class="description">' . $element['#description'] . '</div>' : '';
+    $output .= '<div class="clearfix">' . drupal_render($add_more_button) . '</div>';
+    $output .= '</div>';
+
+    drupal_add_tabledrag($table_id, 'order', 'sibling', $order_class);
+  }
+  else {
+    foreach (element_children($element) as $key) {
+      $output .= drupal_render($element[$key]);
+    }
+  }
+
+  return $output;
+}
+
+function theme_office_hours_week($variables) {
+  $element = $variables['element'];
+  $output = '';
+  $table_id = drupal_html_id($element['#field_name'] . '_values');
+  $required = !empty($element['#required']) ? theme('form_required_marker', $variables) : '';
+
+  $header = array(
+    array(
+      'data' => '<label>' . t('!title: !required', array('!title' => $element['#title'], '!required' => $required)) . "</label>",
+      'class' => array('field-label'),
+    ),
+  );
+  $rows = array();
+  foreach (element_children($element) as $key) {
+    $rows[] = array(
+      drupal_render($element[$key])
+    );
+  }
+
+  $output = '<div class="form-item">';
+  $output .= theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('id' => $table_id, 'class' => array('field-multiple-table', 'table'))));
+  $output .= $element['#description'] ? '<div class="description">' . $element['#description'] . '</div>' : '';
+  $output .= '</div>';
+
+  return $output;
 }
