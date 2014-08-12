@@ -1,5 +1,72 @@
 <?php
 
+function rmtwo_html_head_alter(&$head_elements) {
+    
+  // Force the latest IE rendering engine and Google Chrome Frame.
+    $head_elements['chrome_frame'] = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array('http-equiv' => 'X-UA-Compatible', 'content' => 'IE=edge,chrome=1')
+    );
+    
+    /*
+    * Viewport Tag
+    */
+    
+    $head_elements['viewport'] = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array('name' => 'viewport', 'content' => 'width=device-width, initial-scale=1')
+    );
+   
+    /*
+    * Apple Icons (Normal + Retina)
+    */
+    
+    $head_elements['apple_icons_1'] = array(
+        '#type' => 'html_tag',
+        '#tag' => 'link',
+        '#attributes' => array('rel' => 'apple-touch-icon', 'href' => ''.base_path().path_to_theme().'/images/apple-touch-icon.png')
+    );
+    
+     $head_elements['apple_icons_2'] = array(
+        '#type' => 'html_tag',
+        '#tag' => 'link',
+        '#attributes' => array('rel' => 'apple-touch-icon', 'sizes' => '72x72', 'href' => ''.base_path().path_to_theme().'/images/apple-touch-icon-72x72.png')
+    );
+     
+    $head_elements['apple_icons_3'] = array(
+        '#type' => 'html_tag',
+        '#tag' => 'link',
+        '#attributes' => array('rel' => 'apple-touch-icon', 'sizes' => '76x76', 'href' => ''.base_path().path_to_theme().'/images/apple-touch-icon-76x76.png')
+    );
+    
+    $head_elements['apple_icons_4'] = array(
+        '#type' => 'html_tag',
+        '#tag' => 'link',
+        '#attributes' => array('rel' => 'apple-touch-icon', 'sizes' => '114x114', 'href' => ''.base_path().path_to_theme().'/images/apple-touch-icon-114x114.png')
+    );
+    
+    $head_elements['apple_icons_5'] = array(
+        '#type' => 'html_tag',
+        '#tag' => 'link',
+        '#attributes' => array('rel' => 'apple-touch-icon', 'sizes' => '120x120', 'href' => ''.base_path().path_to_theme().'/images/apple-touch-icon-120x120.png')
+    );
+    
+    $head_elements['apple_icons_6'] = array(
+        '#type' => 'html_tag',
+        '#tag' => 'link',
+        '#attributes' => array('rel' => 'apple-touch-icon', 'sizes' => '144x144', 'href' => ''.base_path().path_to_theme().'/images/apple-touch-icon-144x144.png')
+    );
+    
+    $head_elements['apple_icons_7'] = array(
+        '#type' => 'html_tag',
+        '#tag' => 'link',
+        '#attributes' => array('rel' => 'apple-touch-icon', 'sizes' => '152x152', 'href' => ''.base_path().path_to_theme().'/images/apple-touch-icon-152x152.png')
+    );
+}
+
+
 function rmtwo_theme() {
     $items = array();
     $items['user_register_form'] = array(
