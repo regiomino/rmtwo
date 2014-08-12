@@ -37,7 +37,7 @@
       </div>
     </div>
 
-	
+	<?php print render($page['highlighted']); ?>
 
     <div class="container">
         <div class="row">
@@ -69,7 +69,50 @@
                                 </ul>
                         <?php endif; ?>
                         
-                        <?php print render($page['content']); ?>
+                        
+                        <div class="row">
+                            <div class="benefits"> 
+                                <div class="col-md-4">
+                                  <img src="<?php echo base_path() . path_to_theme();?>/images/efficient.jpg" alt="Effiziente Beschaffung regionaler Produkte" class="img-circle">  
+                                  <h4> Effiziente Beschaffung regionaler Produkte</h4> 
+                                    <ul>
+                                       <li><span class="glyphicon glyphicon-ok"></span><strong>Zeit- und Kostenersparnis: </strong> Vereinfachen Sie Ihre Beschaffung: App öffnen, Produkte und
+                                            Mengen auswählen, Bestellung abschicken. </li>
+                                       <li><span class="glyphicon glyphicon-ok"></span><strong> Günstige Preise:</strong> Sparen sie auf Dauer, denn Sie kaufen beim Produzenten direkt ein. </li>
+                                       <li><span class="glyphicon glyphicon-ok"></span><strong> Hohe Produktqualität: </strong> Volle Transparenz über die Herkunft der Produkte.</li>
+                                       <li><span class="glyphicon glyphicon-ok"></span><strong> Besseres Marketing:</strong> Zeigen Sie regional interessierten Kunden, wo Sie einkaufen. </li>
+                                       <li><span class="glyphicon glyphicon-ok"></span><strong> Vorbestellungen:</strong> Lassen Sie Ihre Kunden vorbestellen und verringern Sie so Ihren Bestand</li>
+                                    </ul>
+                                </div>
+                               
+                                <div class="col-md-4">
+                                    <img src="<?php echo base_path() . path_to_theme();?>/images/direct.jpg" alt="Effektive Direktvermarktung Ihrer Produkte" class="img-circle"> 
+                                    <h4> Effektive Direktvermarktung Ihrer Produkte</h4> 
+                                    <ul>
+                                        <li><span class="glyphicon glyphicon-ok"></span><strong>Höhere Erträge:  </strong>  Wir übernehmen Ihre Vermarktung ohne Grundgebühren. Unschlagbar! </li>
+                                        <li><span class="glyphicon glyphicon-ok"></span><strong>Gewinnen Sie neue Kundengruppen:  </strong>  Sichern Sie sich den Zugang zu modernen
+                                        Verbrauchern. </li>
+                                        <li><span class="glyphicon glyphicon-ok"></span><strong>Zukunftssicherheit: </strong>   Neue Absatzkanäle - weniger Abhängigkeit von großen
+                                        Handelskonzernen. </li>
+                                        <li><span class="glyphicon glyphicon-ok"></span><strong>Zeit- und damit Kostenersparnis: </strong>   Vereinfachen Sie Ihre Direktvermarktung - Bestellung,
+                                        Abrechnung, Bezahlung und Buchhaltung. </li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="col-md-4">
+                                    <img src="<?php echo base_path() . path_to_theme();?>/images/eco.jpg" alt="Wir stärken unsere Wirtschaftskraft nachhaltig" class="img-circle"> 
+                                    <h4> Wir stärken unsere Wirtschaftskraft nachhaltig</h4> 
+                                    <ul>
+                                       <li><span class="glyphicon glyphicon-ok"></span><strong>Zeit- und Kostenersparnis: </strong> Vereinfachen Sie Ihre Beschaffung: App öffnen, Produkte und
+                                            Mengen auswählen, Bestellung abschicken. </li>
+                                       <li><span class="glyphicon glyphicon-ok"></span><strong>Günstige Preise:</strong> Sparen sie auf Dauer, denn Sie kaufen beim Produzenten direkt ein. </li>
+                                       <li><span class="glyphicon glyphicon-ok"></span><strong> Hohe Produktqualität:</strong> Volle Transparenz über die Herkunft der Produkte.</li>
+                                       <li><span class="glyphicon glyphicon-ok"></span><strong>Besseres Marketing:</strong> Zeigen Sie regional interessierten Kunden, wo Sie einkaufen. </li>
+                                       <li><span class="glyphicon glyphicon-ok"></span><strong>Vorbestellungen:</strong> Lassen Sie Ihre Kunden vorbestellen und verringern Sie so Ihren Bestand</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
