@@ -4072,7 +4072,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #f8f8f8;
+  background-color: rgba(255, 255, 255, 0.97);
   border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
@@ -6221,12 +6221,6 @@ body.node-type-seller-profile {
  * Top navigation
  * Hide default border to remove 1px line.
  */
-body.page-lieferanten .navbar-fixed-top,
-body.page-admin .navbar-fixed-top,
-body.node-type-seller-profile .navbar-fixed-top {
-  border: 1px solid transparent;
-  background-color: #eee;
-}
 /*
  * Sidebar
  */
