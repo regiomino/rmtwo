@@ -57,32 +57,45 @@
                 <a href="<?php print url('node/' . $shop->nid); ?>"><img src="<?php print image_style_url('thumbnail', $shop->field_image[LANGUAGE_NONE][0]['uri']); ?>" class="img-rounded seller-img"></a>
                 <?php if(!empty($shop->agreements)) {
                     foreach($shop->agreements as $type => $user_reference) {
-                        foreach($user_reference as $target_id => $agreement) {
+                        foreach($user_reference as $target_id => $agreements) {
+                            //if theres two variantes for the same agreement, then choose the one with less minimum order value
+                            if(count($agreements) > 1) {
+                                usort($agreements, "rm_shop_sort_agreements_by_mov");
+                            }
+                            $agreement = $agreements[0];
                             switch($type) {
                                 case 'shipping_agreement':
-                                    print "<span class='label label-warning label-details' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>Lieferung ab 10,00 €</span> ";
+                                    print "<span class='label label-warning label-details' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>" . t('Shipping from @mov', array('@mov' => number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €')) . "</span> ";
                                     break;
                                 case 'pickup_agreement':
-                                    print "<span class='label label-warning label-details' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>Selbstabholung ab 0,00 €</span> ";
+                                    print "<span class='label label-warning label-details' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>" . t('Pickup from @mov', array('@mov' => number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €')) . "</span> ";
                                     break;
                                 case 'dispatch_agreement':
-                                    print '<span class="label label-warning label-details" data-toggle="popover" data-content="' . t('Have your order shipped to you') . '">Versand</span> ';
+                                    print '<span class="label label-warning label-details" data-toggle="popover" data-content="' . t('Have your order delivered to you by @provider', array('@provider' => $agreement->field_dispatch_provider[LANGUAGE_NONE][0]['value'])) . '">' . t('Dispatch from @mov', array('@mov' => number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €')) . '</span> ';
                                     break;
-                                case 'payment_agreement':
-                                    foreach($agreement->field_payment_types[LANGUAGE_NONE] as $payment_type) {
-                                        switch($payment_type['value']) {
-                                            case 'prepaid':
-                                                print '<span class="label label-success label-details" data-toggle="popover" data-content="' . t('Pay online during checkout via one of our payment providers') . '">Vorkasse</span> ';
-                                                break;
-                                            case 'cash':
-                                                print '<span class="label label-success label-details" data-toggle="popover" data-content="' . t('Pay cash when your order is delivered') . '">Barzahlung</span> ';
-                                                break;
-                                            case 'invoice':
-                                                print '<span class="label label-success label-details" data-toggle="popover" data-content="' . t('The vendor will send you an invoice after your order is complete') . '">Rechnung</span> ';
-                                                break;
+                            }
+                        }
+                    }
+                    foreach($shop->agreements as $type => $user_reference) {
+                        foreach($user_reference as $target_id => $index) {
+                            foreach($index as $indexid => $agreement) {
+                                switch($type) {
+                                    case 'payment_agreement':
+                                        foreach($agreement->field_payment_types[LANGUAGE_NONE] as $payment_type) {
+                                            switch($payment_type['value']) {
+                                                case 'prepaid':
+                                                    print '<span class="label label-success label-details" data-toggle="popover" data-content="' . t('Pay online during checkout via one of our payment providers') . '">Vorkasse</span> ';
+                                                    break;
+                                                case 'cash':
+                                                    print '<span class="label label-success label-details" data-toggle="popover" data-content="' . t('Pay cash when your order is delivered') . '">Barzahlung</span> ';
+                                                    break;
+                                                case 'invoice':
+                                                    print '<span class="label label-success label-details" data-toggle="popover" data-content="' . t('The vendor will send you an invoice after your order is complete') . '">Rechnung</span> ';
+                                                    break;
+                                            }
                                         }
-                                    }
-                                    break;
+                                        break;
+                                }
                             }
                         }
                     }
@@ -122,4 +135,5 @@
             </div>
         </div>
     <?php endforeach; ?>
+    <?php print $vars['pager']; ?>
 </div>
