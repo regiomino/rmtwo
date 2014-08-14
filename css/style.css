@@ -6365,45 +6365,48 @@ body.node-type-seller-profile {
   background-size: cover;
   padding: 40px 0px;
 }
-.stage-background .welcome {
-  color: #fff;
-}
-.zipcodeselect,
-.directoryselect {
+.stage-background .zipcodeselect,
+.stage-background .directoryselect {
   text-align: center;
   padding: 42px 25px;
   background-color: rgba(250, 250, 250, 0.9);
   border-radius: 5px;
 }
-.zipcodeselect h3,
-.directoryselect h3 {
+.stage-background .zipcodeselect h3,
+.stage-background .directoryselect h3 {
   margin-top: 0px;
 }
-.zipcodeselect .toggle-link,
-.directoryselect .toggle-link {
+.stage-background .zipcodeselect .toggle-link,
+.stage-background .directoryselect .toggle-link {
   margin-bottom: 10px;
   display: inline-block;
 }
-.zipcodeselect .proceed-info,
-.directoryselect .proceed-info {
+.stage-background .zipcodeselect .proceed-info,
+.stage-background .directoryselect .proceed-info {
   margin: 24px 0px 0px 10px;
 }
-.zipcodeselect .list-inline > li,
-.directoryselect .list-inline > li {
+.stage-background .zipcodeselect .list-inline > li,
+.stage-background .directoryselect .list-inline > li {
   padding-left: 15px;
   padding-right: 15px;
 }
-.zipcodeselect #edit-submit,
-.directoryselect #edit-submit {
+.stage-background .zipcodeselect #edit-submit,
+.stage-background .directoryselect #edit-submit {
   width: 100%;
 }
-.zipcodeselect .modal-body,
-.directoryselect .modal-body {
-  text-align: left;
-}
-.zipcodeselect label,
-.directoryselect label {
+.stage-background .zipcodeselect label,
+.stage-background .directoryselect label {
   white-space: nowrap;
+}
+.stage-background .zipcodeselect .modal-footer a,
+.stage-background .directoryselect .modal-footer a {
+  margin-right: 10px;
+}
+.stage-background .welcome {
+  color: #fff;
+}
+.stage-background .welcome a.more-info {
+  color: #fff;
 }
 .partner-wrapper {
   background-color: #F5F5F5;

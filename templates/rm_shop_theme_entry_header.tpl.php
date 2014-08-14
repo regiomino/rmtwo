@@ -15,7 +15,7 @@
                 <div class="modal fade" id="steps-explanation" tabindex="-1" role="dialog" aria-labelledby="So funktionoert´s" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
-                      <div class="modal-body">
+                      <div class="modal-body text-left">
                             <div class="media">
                                 <img class="pull-left" src="<?php global $base_path; print $base_path . drupal_get_path('theme', 'rmtwo'); ?>/images/steps_shop.png" alt="<?php print t('Select your favorite products'); ?>" />
                                   
@@ -44,8 +44,19 @@
                             </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Alles klar!</button>
-                      </div>
+                            <div class="row">
+                                <div class="col-xs-8">
+                                    <p class="text-left"> <small> Haben Sie Fragen? Rufen Sie uns an oder schreiben Sie uns!</small> <br>
+                                        <a class="pull-left"  href="tel:+49091319291117"> <span class="glyphicon glyphicon-earphone"></span> 09131-9291117</a>
+                                        <a class="pull-left" href="mailto:support@regiomino.de"> <span class="glyphicon glyphicon-send"></span> support@regiomino.de</a>
+                                        
+                                    </p>
+                                </div>
+                                <div class="col-xs-4"> 
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Alles klar!</button>
+                                </div>
+                           </div>
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -57,7 +68,10 @@
             <h1> <strong> Einfach regionale Produkte einkaufen</strong></h1>
         
             <p class="lead">Der günstigste Weg regionale Produkte zu
-verkaufen oder zu beschaffen!</p>
+            verkaufen oder zu beschaffen!
+            </p>
+              <a href="#" class="more-info text-uppercase"> <small><strong>  <span class="glyphicon glyphicon-circle-arrow-right"> </span> Erfahren Sie mehr </strong></small> </a>  </span>
+           
         </div>
     </div>
 </div>
