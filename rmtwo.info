@@ -24,6 +24,7 @@ regions[footer_bar] = Footer Bar
 regions[footer_legal] = Footer Legal
 regions[geolocentry] = Geolocation Entry
 
+scripts[] = js/utilities/modernizr.custom.js
 scripts[] = js/regiomino.min.js
  
 
