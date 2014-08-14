@@ -357,6 +357,12 @@ function rmtwo_phone_number_process($element) {
 function rmtwo_preprocess_page(&$variables) {
     if(($variables['page']['#type'] == 'page' && (arg(0) == 'lieferanten')) || (array_key_exists('node', $variables) && $variables['node']->type == 'seller_profile') || arg(0) == 'admin') {
         $variables['theme_hook_suggestions'][] = 'page__lieferanten';
+        //Preprocessing for seller profiles
+        if(array_key_exists('node', $variables)) {
+            if($variables['node']->type == 'seller_profile') {
+                $variables['node']->offers = rm_shop_get_structured_seller_offers($variables['node']->uid);
+            }
+        }
     }
     $variables['page']['content']['regiominouserlogin'] = render(drupal_get_form('user_login_block'));
     $variables['suggestform'] = render(drupal_get_form('rm_sales_suggest_form'));

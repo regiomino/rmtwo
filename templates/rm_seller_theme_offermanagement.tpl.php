@@ -3,7 +3,10 @@
 
     <div class="panel panel-success">
       <!-- Default panel contents -->
-      <div class="panel-heading"><span class="badge bg-danger pull-right"><a href="#">Komplettes Angebot löschen</a></span><br /><input id="offer_description-title-4523" type="text" class="offer_description form-control" value="" placeholder="Übergordneter Produkttitel, z.B. 'Kaltgepresstes Rapsöl'" /></div>
+      <div class="panel-heading"><span class="badge bg-danger pull-right"><a href="#">Komplettes Angebot löschen</a></span><span class="badge bg-danger pull-right"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+          Bearbeiten
+        </a></span><br /><input id="offer_description-title-4523" type="text" class="offer_description form-control" value="" placeholder="Produkttitel, z.B. 'Kaltgepresstes Rapsöl'" /></div>
+      <div id="collapseOne" class="panel-collapse collapse">
       <div class="panel-body">
         <div class="col-sm-6 col-md-6">
             <label>Herkunft</label>
@@ -40,15 +43,13 @@
                 Siegel 7
             </div>
         </div>
-        
       </div>
-
       <!-- Table -->
       <table class="table">
         <thead>
           <tr>
             <th>Angebotsnr.</th>
-            <th>Variante</th>
+            <th>Bezeichnung Variante</th>
             <th>Beschreibung</th>
             <th>Bilder</th>
             <th>Produkteinheit</th>
@@ -57,14 +58,48 @@
         </thead>
         <tbody>
           <tr>
-            <td><div class="col-md-12"><input type="text" class="form-control" placeholder="WB-1-772" /></div></td>
-            <td><div class="col-md-12"><input type="text" class="form-control" placeholder="750ml" /></div></td>
-            <td><div class="col-md-12"><input type="text" class="form-control" placeholder="aus der eigenen Mühle, in 750ml Flaschen" /></div></td>
-            <td><div class="col-md-12"><input type="file" class="form-control" /></div></td>
-            <td><div class="col-md-6"><input type="text" class="form-control" placeholder="50" /></div><div class="col-md-6"><input type="text" class="form-control" placeholder="ml" /></div></td>
-            <td><div class="col-md-4"><input type="text" class="form-control" placeholder="6" /></div><div class="col-md-4"><input type="text" class="form-control" placeholder="3,00€" /></div><div class="col-md-4"><input type="text" class="form-control" placeholder="0,00€" /></div></td>
+            <td class="vert-align"><input type="text" class="form-control" placeholder="WB-1-772" /></td>
+            <td><input type="text" class="form-control" placeholder="750ml" /></td>
+            <td><textarea class="form-control" placeholder="aus der eigenen Mühle, in 750ml Flaschen"></textarea></td>
+            <td><a href="#" class="btn btn-sm btn-primary">Bilder hinzufügen</a></td>
+            <td>
+                <div class="input-group"  style="width: 150px;">
+                    <input type="text" class="form-control" placeholder="">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Einheit <span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-right">
+                            <li><a href="#">St.</a></li>
+                            <li><a href="#">Bd.</a></li>
+                            <li><a href="#">Paar</a></li>
+                            <li><a href="#">ml</a></li>
+                            <li><a href="#">l</a></li>
+                            <li><a href="#">g</a></li>
+                            <li><a href="#">mg</a></li>
+                        </ul>
+                    </div><!-- /btn-group -->
+                </div><!-- /input-group -->
+            </td>
+            <td>
+                <div class="list-group">
+                  <a href="#" class="list-group-item">
+                    <span class="glyphicon glyphicon-pencil"></span> Gebinde 1: 6 Einheiten für 3,00 € (zzgl 1,50 € Pfand)
+                  </a>
+                  <a href="#" class="list-group-item active">
+                    <span class="glyphicon glyphicon-plus"></span> Gebinde hinzufügen
+                  </a>
+                </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="6">
+                <a href="#" class="btn btn-primary">Angebotsvariante hinzufügen</a>
+            </td>
           </tr>
         </tbody>
       </table>
+      
+      </div>
     </div>
+    
+    <a href="#" class="btn btn-lg btn-primary">Weiteres Angebot hinzufügen</a>
 </div>
