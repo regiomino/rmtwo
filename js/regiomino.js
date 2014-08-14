@@ -2016,6 +2016,8 @@ jQuery(document).ready(function ($) {
         });
     });
     
+    $('#partner-logos a').tooltip()
+    
     //messages are placed inside a bootstrap modal #messageModal. this triggers it, when it's there.
     $('#messageModal').modal('show');
 
@@ -2039,23 +2041,22 @@ jQuery(document).ready(function ($) {
         }
     });
 
-/*    $('#directoryModal').on('shown.bs.modal', function () {
-        google.maps.event.trigger(map, "resize");
-        var latlngbounds = new google.maps.LatLngBounds();
-        for (var i = 0; i < latlng.length; i++) {
-            latlngbounds.extend(latlng[i]);
-        }
-        map.setCenter(latlngbounds.getCenter());
-        map.fitBounds(latlngbounds);
-    });
+    $('#salesguys select').change(function() {
+        var nidstring = $(this).attr('id');
+        var res = nidstring.split("_");
+        
+        data = new Object;
+		data['nid'] = res[1];
+		data['uid'] = $(this).val();
 
-    $('#filterDirectory').keyup(function () {
-        var rex = new RegExp($(this).val(), 'i');
-        $('.searchable tr').hide();
-        $('.searchable tr').filter(function () {
-            return rex.test($(this).text());
-        }).show();
-    });*/
+		callback_url = Drupal.settings.basePath + 'admin/sales/assignprofile/' + data['nid'] + '/' + data['uid'];
+            
+		$.ajax({
+			url: callback_url,
+			type: 'POST',
+			data: data,
+		});
+    });
 
     $('#filterShops').keyup(function () {
         var rex = new RegExp($(this).val(), 'i');

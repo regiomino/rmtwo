@@ -1,7 +1,10 @@
 <?php if ($content): ?>
-	 <div class="stage-background"> </div>
-        <div class="container">
+	 <div class="stage-background">
+            
+            <div class="container">
                 <?php print $content; ?>
-        </div>
+            </div>
+         </div>
+        
 	 
 <?php endif; ?>

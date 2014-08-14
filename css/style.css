@@ -884,8 +884,8 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #333333;
-  background-color: #f5f5f5;
+  color: #555555;
+  background-color: #ffffff;
 }
 input,
 button,
@@ -931,7 +931,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857143;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -2079,7 +2079,7 @@ th {
   border-top: 2px solid #dddddd;
 }
 .table .table {
-  background-color: #f5f5f5;
+  background-color: #ffffff;
 }
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
@@ -2619,7 +2619,7 @@ select[multiple].input-lg {
   display: block;
   margin-top: 5px;
   margin-bottom: 10px;
-  color: #737373;
+  color: #959595;
 }
 @media (min-width: 768px) {
   .form-inline .form-group {
@@ -3622,7 +3622,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: #555555;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   border: 1px solid #dddddd;
   border-bottom-color: transparent;
   cursor: default;
@@ -3668,7 +3668,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs.nav-justified > .active > a,
   .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom-color: #f5f5f5;
+    border-bottom-color: #ffffff;
   }
 }
 .nav-pills > li {
@@ -3736,7 +3736,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs-justified > .active > a,
   .nav-tabs-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus {
-    border-bottom-color: #f5f5f5;
+    border-bottom-color: #ffffff;
   }
 }
 .tab-content > .tab-pane {
@@ -4567,7 +4567,7 @@ a.list-group-item.active > .badge,
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.42857143;
-  background-color: #f5f5f5;
+  background-color: #ffffff;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -4586,7 +4586,7 @@ a.thumbnail.active {
 }
 .thumbnail .caption {
   padding: 9px;
-  color: #333333;
+  color: #555555;
 }
 .alert {
   padding: 15px;
@@ -6181,10 +6181,6 @@ body.node-type-seller-profile {
 }
 .main-content {
   background-color: #fff;
-  border-radius: 5px;
-  position: relative;
-  z-index: 1;
-  padding: 0 25px 70px;
 }
 #block-rm-shop-regiomino-entry-header .directoryselect button {
   margin-top: 0.2em;
@@ -6311,10 +6307,54 @@ body.node-type-seller-profile .navbar-fixed-top {
 .seller-btn {
   float: right;
 }
-#logo {
-  width: 230px;
+.grey-wrapper {
+  background-color: #f5f5f5;
+}
+.white-wrapper {
+  background-color: #fff;
+}
+.sprite {
+  background: url('../images/sprite.png') no-repeat;
+}
+.sprite.ideen {
+  background-position: -5px -5px;
+  width: 89px;
+  height: 89px;
+}
+.sprite.genussregion {
+  background-position: -101px -55px;
+  width: 157px;
+  height: 35px;
+}
+.sprite.metropolregion {
+  background-position: -100px -6px;
+  width: 184px;
   height: 40px;
-  margin-top: 9px;
+}
+.sprite.regionalbuffet {
+  background-position: -289px -4px;
+  width: 49px;
+  height: 74px;
+}
+.sprite.vegetarierbund {
+  background-position: -346px -6px;
+  width: 111px;
+  height: 60px;
+}
+.sprite.regionalbewegung {
+  background-position: -462px -6px;
+  width: 49px;
+  height: 70px;
+}
+.sprite.region-bamberg {
+  background-position: -519px -6px;
+  width: 59px;
+  height: 70px;
+}
+#logo {
+  width: 139px;
+  height: 53px;
+  margin-top: -14px;
   margin-left: 0px;
   display: inline-block;
   background: url(../images/logo.svg) no-repeat top left;
@@ -6323,12 +6363,10 @@ body.node-type-seller-profile .navbar-fixed-top {
 .stage-background {
   background: #f5f5f5 url('../images/stage.jpg') center center no-repeat;
   background-size: cover;
-  min-height: 480px;
-  position: absolute;
-  width: 100%;
-  left: 0;
-  z-index: 0;
-  top: 65px;
+  padding: 40px 0px;
+}
+.stage-background .welcome {
+  color: #fff;
 }
 .zipcodeselect,
 .directoryselect {
@@ -6336,7 +6374,6 @@ body.node-type-seller-profile .navbar-fixed-top {
   padding: 42px 25px;
   background-color: rgba(250, 250, 250, 0.9);
   border-radius: 5px;
-  margin: 40px 0px;
 }
 .zipcodeselect h3,
 .directoryselect h3 {
@@ -6356,8 +6393,55 @@ body.node-type-seller-profile .navbar-fixed-top {
   padding-left: 15px;
   padding-right: 15px;
 }
+.zipcodeselect #edit-submit,
+.directoryselect #edit-submit {
+  width: 100%;
+}
+.zipcodeselect .modal-body,
+.directoryselect .modal-body {
+  text-align: left;
+}
+.zipcodeselect label,
+.directoryselect label {
+  white-space: nowrap;
+}
+.partner-wrapper {
+  background-color: #F5F5F5;
+  margin-bottom: 30px;
+}
+.partner-logos {
+  text-align: center;
+  line-height: 114px;
+  /* height: 85px; */
+}
+.partner-logos .partner {
+  display: inline-block;
+  text-align: center;
+  margin: 0 32px;
+}
+.partner-logos .partner a {
+  display: inline-block;
+  vertical-align: middle;
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  /* Firefox 3.5+ */
+  filter: gray;
+  /* IE6-9 */
+  -webkit-filter: grayscale(100%);
+  /* Chrome 19+ & Safari 6+ */
+}
+.partner-logos .partner a:hover,
+.partner-logos .partner a:active {
+  filter: none;
+  -webkit-filter: grayscale(0%);
+}
+.footer {
+  padding: 20px 0;
+}
 .front .page-title {
   text-align: center;
+}
+.front .page-header {
+  margin: 40px 0 33px;
 }
 .front .benefits {
   text-align: center;
@@ -6368,14 +6452,19 @@ body.node-type-seller-profile .navbar-fixed-top {
 }
 .front .benefits ul li {
   position: relative;
+  padding: 0px 15px;
+  margin-bottom: 10px;
 }
 .front .benefits ul li .glyphicon {
   position: absolute;
-  left: -27px;
+  left: -15px;
   top: 3px;
   color: #95bc0d;
 }
 .front .benefits h4 {
   margin-bottom: 20px;
+}
+.front .benefits img {
+  margin-bottom: 15px;
 }
 /*# sourceMappingURL=css/style.css.map */

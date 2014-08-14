@@ -21,6 +21,8 @@ jQuery(document).ready(function ($) {
         });
     });
     
+    $('#partner-logos a').tooltip();
+    
     //messages are placed inside a bootstrap modal #messageModal. this triggers it, when it's there.
     $('#messageModal').modal('show');
 

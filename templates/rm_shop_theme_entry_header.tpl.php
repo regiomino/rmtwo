@@ -1,41 +1,69 @@
 
 <div class="row entry">
     <div class="col-md-5">
-        <div class="zipcodeselect"> 
-            <h3>1. <?php echo t('Enter your address...'); ?></h3>
+        <div class="zipcodeselect  ">
+            
+            <h3> Schritt 1:<strong> <?php echo t('Enter your address...'); ?></strong></h3>
     
             <?php echo render($vars['regionselect']); ?>
             
             <div class="proceed-info"> 
-                <a class="toggle-link" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                    Wie geht es danach weiter?
+                <a class="toggle-link" data-toggle="modal" data-target="#steps-explanation"  href="#collapseOne">
+                   <strong>Wie geht es danach weiter? </strong> 
                 </a>
-            
-                <div id="collapseOne" class="panel-collapse collapse">
-                    <div class="row"> 
-                        <ul class="list-inline">
-                            <li>
-                                <img id="steps_shop" data-toggle="popover" data-content="<?php print t('Each vendor offers special regional products that you can now order to create tasteful meals that your customers will love.'); ?>" src="<?php global $base_path; print $base_path . drupal_get_path('theme', 'rmtwo'); ?>/images/steps_shop.png" alt="<?php print t('Select your favorite products'); ?>" title="<?php print t('Select your favorite products'); ?>" />
-                                <h5>2.<br />Lieblingsprodukte<br />aussuchen</h5>
-                            </li>
-                            <li>
-                                <img id="steps_payment" data-toggle="popover" data-content="<?php print t('Instead of having to pay cash or work your way through hundreds of bills each month you can now pay online. Receipts and tax reports are send right to your inbox.'); ?>" src="<?php global $base_path; print $base_path . drupal_get_path('theme', 'rmtwo'); ?>/images/steps_payment.png" alt="<?php print t('Choose payment method'); ?>" title="<?php print t('Choose payment method'); ?>" />
-                                <h5>3.<br />Zahlungsart<br />auswählen</h5>
-                            </li>
-                            <li>
-                                <img id="steps_delivery" data-toggle="popover" data-content="<?php print t('Once your order is complete, at an agreed upon time the vendor will deliver the products right to your door or prepare them for you to pick up.'); ?>" src="<?php global $base_path; print $base_path . drupal_get_path('theme', 'rmtwo'); ?>/images/steps_delivery.png" alt="<?php print t('Have your order delivered'); ?>" title="<?php print t('Have your order delivered'); ?>" />
-                                <h5>4.<br />Abholen oder ge-<br />liefert bekommen</h5>
-                            </li>
-                        </ul>
+                <!-- Modal -->
+                <div class="modal fade" id="steps-explanation" tabindex="-1" role="dialog" aria-labelledby="So funktionoert´s" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                            <div class="media">
+                                <img class="pull-left" src="<?php global $base_path; print $base_path . drupal_get_path('theme', 'rmtwo'); ?>/images/steps_shop.png" alt="<?php print t('Select your favorite products'); ?>" />
+                                  
+                                <div class="media-body">
+                                  <h4 class="media-heading">Schritt 2: <strong> Lieblingsprodukte aussuchen</strong></h4>
+                                  <p><?php print t('Each vendor offers special regional products that you can now order to create tasteful meals that your customers will love.'); ?></p>
+                                </div>
+                            </div>
+                            
+                            <div class="media">
+                                <img class="pull-left" src="<?php global $base_path; print $base_path . drupal_get_path('theme', 'rmtwo'); ?>/images/steps_payment.png" alt="<?php print t('Choose payment method'); ?>" />
+                                  
+                                <div class="media-body">
+                                  <h4 class="media-heading">Schritt 3: <strong> Zahlungsart auswählen</strong></h4>
+                                  <p><?php print t('Instead of having to pay cash or work your way through hundreds of bills each month you can now pay online. Receipts and tax reports are send right to your inbox.'); ?></p>
+                                </div>
+                            </div>
+                            
+                            <div class="media">
+                                <img class="pull-left" src="<?php global $base_path; print $base_path . drupal_get_path('theme', 'rmtwo'); ?>/images/steps_delivery.png" alt="<?php print t('Have your order delivered'); ?>" />
+                                  
+                                <div class="media-body">
+                                  <h4 class="media-heading">Schritt 4: <strong> Abholen oder geliefert bekommen</strong></h4>
+                                  <p><?php print t('Once your order is complete, at an agreed upon time the vendor will deliver the products right to your door or prepare them for you to pick up.'); ?></p>
+                                </div>
+                            </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Alles klar!</button>
+                      </div>
                     </div>
+                  </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="col-md-7  col-lg-5">
+        <div class="welcome"> 
+            <h1> <strong> Einfach regionale Produkte einkaufen</strong></h1>
+        
+            <p class="lead">Der günstigste Weg regionale Produkte zu
+verkaufen oder zu beschaffen!</p>
         </div>
     </div>
 </div>
 
 
 
-</div>
+ 
  
 
