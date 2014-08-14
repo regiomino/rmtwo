@@ -630,33 +630,6 @@ function rmtwo_field_multiple_value_form($variables) {
   return $output;
 }
 
-function rmtwo_office_hours_week($variables) {
-  $element = $variables['element'];
-  $output = '';
-  $table_id = drupal_html_id($element['#field_name'] . '_values');
-  $required = !empty($element['#required']) ? theme('form_required_marker', $variables) : '';
-
-  $header = array(
-    array(
-      'data' => '<label>' . t('!title: !required', array('!title' => $element['#title'], '!required' => $required)) . "</label>",
-      'class' => array('field-label'),
-    ),
-  );
-  $rows = array();
-  foreach (element_children($element) as $key) {
-    $rows[] = array(
-      drupal_render($element[$key])
-    );
-  }
-
-  $output = '<div class="form-item">';
-  $output .= theme('table', array('header' => $header, 'rows' => $rows, 'attributes' => array('id' => $table_id, 'class' => array('field-multiple-table', 'table'))));
-  $output .= $element['#description'] ? '<div class="description">' . $element['#description'] . '</div>' : '';
-  $output .= '</div>';
-
-  return $output;
-}
-
 function rmtwo_file_widget_multiple($variables) {
   $element = $variables['element'];
 
