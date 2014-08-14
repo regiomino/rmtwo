@@ -173,21 +173,21 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
 //            $form['city']['#attributes']['placeholder'] = 'Möhrendorf';
             $form['city']['#attributes']['required'] = NULL;
 
-            $form['street']['#attributes']['class'][] = 'form-control input-lg';
+            $form['street']['#attributes']['class'][] = 'form-control';
             $form['street']['#prefix'] = '<div class="row"><div class="col-md-12">';
             $form['street']['#suffix'] = '</div></div>';
 
-            $form['zipcode']['#attributes']['class'][] = 'form-control input-lg';
+            $form['zipcode']['#attributes']['class'][] = 'form-control';
             $form['zipcode']['#prefix'] = '<div class="row"><div class="col-md-4">';
             $form['zipcode']['#suffix'] = '</div>';
 
-            $form['city']['#attributes']['class'][] = 'form-control input-lg';
+            $form['city']['#attributes']['class'][] = 'form-control';
             $form['city']['#prefix'] = '<div class="col-md-8">';
             $form['city']['#suffix'] = '</div></div>';
 
             $form['submit']['#attributes']['class'][] = 'btn';
-            $form['submit']['#attributes']['class'][] = 'btn-lg';
             $form['submit']['#attributes']['class'][] = 'btn-success';
+            $form['submit']['#attributes']['class'][] = 'form-control';
             $form['submit']['#prefix'] = '<div class="row"><div class="col-md-12">';
             $form['submit']['#suffix'] = '</div></div>';
 
@@ -630,7 +630,7 @@ function rmtwo_field_multiple_value_form($variables) {
   return $output;
 }
 
-function theme_office_hours_week($variables) {
+function rmtwo_office_hours_week($variables) {
   $element = $variables['element'];
   $output = '';
   $table_id = drupal_html_id($element['#field_name'] . '_values');

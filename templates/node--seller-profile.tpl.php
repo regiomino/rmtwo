@@ -7,7 +7,7 @@
 ?>
 
 <div class="col-sm-3 col-md-2 sidebar">
-
+test
 </div>
 <div class="col-sm-9 col-md-10 main">
     <?php
