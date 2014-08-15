@@ -7,12 +7,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-
+            <div class="navbar-brand"> 
             <?php if ($logo): ?>
 
-                <?php echo l('', '', array('attributes' => array('class' => 'navbar-brand', 'title' => t('Home'), 'rel' => t('Home'), 'id' => 'logo'))); ?>
+                <?php echo l('', '', array('attributes' => array('title' => t('Home'), 'rel' => t('Home'), 'id' => 'logo'))); ?>
             <?php endif; ?>
-
+            </div>
         </div>
         <div class="navbar-collapse collapse">
 
@@ -37,6 +37,27 @@
         <?php print render($page['content']); ?>
     </div>
 </div>
+
+<div class="container-fluid">
+        <div class="footer"> 
+            <div class="row"> 
+                <div class="col-md-12">
+                    <ul class="list-inline text-left">
+                        <?php $footerlinks = rm_user_get_footer_links(); ?>
+                        <?php foreach($footerlinks as $footerlink): ?>
+                            <li><?php print l($footerlink[0], $footerlink[1], $footerlink[2]); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+    
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-12"><p class="text-left">&copy; Regiomino 2014</p></div>
+            </div>
+        </div>   
+    </div> 
+ 
 <?php if ($messages): ?>
     <div class="modal fade" id="messageModal">
         <div class="modal-dialog">

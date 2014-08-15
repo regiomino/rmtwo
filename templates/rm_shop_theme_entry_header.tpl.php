@@ -31,19 +31,19 @@
             </p>
             <ul class="countdown list-inline">
                   <li>
-                     <p class="h3"><strong> <span class="days">00</span></strong></p>
+                     <p class="h2"><strong> <span class="days">00</span></strong></p>
                     <p><em class="text">Tage</em></p>
                   </li>
                   <li>
-                    <p class="h3"><strong><span class="hours">00</span></strong></p>
+                    <p class="h2"><strong><span class="hours">00</span></strong></p>
                     <p><em class="text">Stunden</em></p>
                   </li>
                   <li>
-                    <p class="h3"><strong> <span class="minutes">00</span></strong></p>
+                    <p class="h2"><strong> <span class="minutes">00</span></strong></p>
                     <p><em class="text">Minuten</em></p>
                   </li>
                   <li>
-                    <p class="h3"><strong><span class="seconds">00</span></strong></p>
+                    <p class="h2"><strong><span class="seconds">00</span></strong></p>
                     <p><em class="text">Sekunden</em></p>
                   </li>
                 </ul>

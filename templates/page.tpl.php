@@ -1,17 +1,17 @@
     <div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-
-					<?php if ($logo): ?>
-
-							<?php echo l('', '', array('attributes' => array('class' => 'navbar-brand', 'title' => t('Home'), 'rel' => t('Home'), 'id' => 'logo'))); ?>
-					<?php endif; ?>
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand"> 
+            <?php if ($logo): ?>
+                            <?php echo l('', '', array('attributes' => array('title' => t('Home'), 'rel' => t('Home'), 'id' => 'logo'))); ?>
+            <?php endif; ?>
+            </div>
 
         </div>
         <div class="navbar-collapse collapse">
@@ -76,34 +76,24 @@
 
     </div> <!-- /container -->
 
-    <div class="jumbotron footer-header">
-
-        <div class="container">
-
-            <div class="col-md-12">
-                <ul class="list-inline">
-                    <?php $footerlinks = rm_user_get_footer_links(); ?>
-                    <?php foreach($footerlinks as $footerlink): ?>
-                        <li><?php print l($footerlink[0], $footerlink[1], $footerlink[2]); ?></li>
-                    <?php endforeach; ?>
-                </ul>
-
+    <div class="container">
+        <div class="footer"> 
+            <div class="row"> 
+                <div class="col-md-12">
+                    <ul class="list-inline text-center">
+                        <?php $footerlinks = rm_user_get_footer_links(); ?>
+                        <?php foreach($footerlinks as $footerlink): ?>
+                            <li><?php print l($footerlink[0], $footerlink[1], $footerlink[2]); ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+    
+                </div>
             </div>
-
-        </div>
-
-    </div>
-
-    <div class="jumbotron footer-content">
-
-        <div class="container">
-
-            <div class="col-md-5"><p>&copy; Regiomino 2014</p></div>
-            <div class="col-md-4"><p>&copy; Regiomino 2014</p></div>
-            <div class="col-md-3"><p>&copy; Regiomino 2014</p></div>
-
-        </div>
-
+            
+            <div class="row">
+                <div class="col-md-12"><p class="text-center">&copy; Regiomino 2014</p></div>
+            </div>
+        </div>   
     </div>
 
     <?php if ($messages): ?>
