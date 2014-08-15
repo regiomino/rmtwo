@@ -6345,6 +6345,26 @@ body.node-type-seller-profile {
   width: 59px;
   height: 70px;
 }
+.sprite.sofort {
+  background-position: -4px -120px;
+  width: 45px;
+  height: 11px;
+}
+.sprite.paypal {
+  background-position: -58px -120px;
+  width: 37px;
+  height: 11px;
+}
+.sprite.lastschrift {
+  background-position: -110px -117px;
+  width: 51px;
+  height: 16px;
+}
+.sprite.rechnung {
+  background-position: -176px -119px;
+  width: 54px;
+  height: 11px;
+}
 #logo {
   width: 139px;
   height: 53px;
@@ -6368,7 +6388,7 @@ body.node-type-seller-profile {
 .stage-background .zipcodeselect,
 .stage-background .directoryselect {
   text-align: center;
-  padding: 42px 25px;
+  padding: 42px 25px 30px;
   background-color: rgba(250, 250, 250, 0.9);
   border-radius: 5px;
 }
@@ -6378,17 +6398,12 @@ body.node-type-seller-profile {
 }
 .stage-background .zipcodeselect .toggle-link,
 .stage-background .directoryselect .toggle-link {
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   display: inline-block;
 }
 .stage-background .zipcodeselect .proceed-info,
 .stage-background .directoryselect .proceed-info {
   margin: 24px 0px 0px 10px;
-}
-.stage-background .zipcodeselect .list-inline > li,
-.stage-background .directoryselect .list-inline > li {
-  padding-left: 15px;
-  padding-right: 15px;
 }
 .stage-background .zipcodeselect #edit-submit,
 .stage-background .directoryselect #edit-submit {
@@ -6398,15 +6413,14 @@ body.node-type-seller-profile {
 .stage-background .directoryselect label {
   white-space: nowrap;
 }
-.stage-background .zipcodeselect .modal-footer a,
-.stage-background .directoryselect .modal-footer a {
-  margin-right: 10px;
-}
 .stage-background .welcome {
   color: #fff;
 }
 .stage-background .welcome a.more-info {
   color: #fff;
+}
+#steps-explanation a {
+  margin-right: 10px;
 }
 .partner-wrapper {
   background-color: #F5F5F5;
@@ -6436,6 +6450,9 @@ body.node-type-seller-profile {
 .partner-logos .partner a:active {
   filter: none;
   -webkit-filter: grayscale(0%);
+}
+.payment-icons span {
+  display: inline-block;
 }
 .footer {
   padding: 20px 0;
