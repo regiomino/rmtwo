@@ -17,17 +17,7 @@
         <div class="navbar-collapse collapse">
 
         <div class="navbar-form navbar-right" role="form">
-            <?php
-            global $user;
-            if($user->uid > 0) {
-                $account = user_load($user->uid);
-                if(in_array('salesguy', $account->roles)) echo l(t('<span class="@class"></span> @linktitle', array('@class' => 'glyphicon glyphicon-briefcase', '@linktitle' => t('Sales'))), 'admin/sales', array('query' => drupal_get_destination(), 'html' => TRUE, 'attributes' => array('class' => array('btn', 'btn-info')))) . ' ';
-                echo l(t('<span class="@class"></span> @linktitle', array('@class' => 'glyphicon glyphicon-user', '@linktitle' => t('Log out'))), 'user/logout', array('query' => drupal_get_destination(), 'html' => TRUE, 'attributes' => array('class' => array('btn', 'btn-warning'))));
-            }
-            else {
-                echo l(t('<span class="@class"></span> @linktitle', array('@class' => 'glyphicon glyphicon-user', '@linktitle' => t('Log in'))), 'user/register', array('query' => drupal_get_destination(), 'html' => TRUE, 'attributes' => array('class' => array('btn', 'btn-success'))));
-            }
-            ?>
+            <?php print rm_user_get_navbar(); ?>
             <button class="btn btn-danger" data-toggle="modal" data-target="#suggestModal">
                 <span class="glyphicon glyphicon-plus"></span> <?php print t('Suggest vendor or gastronomy'); ?>
             </button>
@@ -41,7 +31,11 @@
 
     <div class="container">
         <div class="row">
-            
+                <?php if($tabs): ?>
+                    <div class="col-md-12">
+                        <?php print render($tabs); ?>
+                    </div>
+                <?php endif; ?>
                 <div class="col-md-12">
                     <div class="main-content clearfix"> 
                         <?php print render($title_prefix); ?>
