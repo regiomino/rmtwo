@@ -65,7 +65,7 @@
             </div>
         </div>
     <?php endif; ?>
-    <div class="col-md-7  col-lg-5">
+    <div class="col-md-7  ">
         <div class="welcome"> 
             <h1> <strong> Einfach regionale Produkte einkaufen</strong></h1>
         
