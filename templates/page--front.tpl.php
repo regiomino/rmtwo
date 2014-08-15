@@ -155,15 +155,10 @@
             <div class="row"> 
                 <div class="col-md-12">
                     <ul class="list-inline text-center">
-                        <li><?php print l(t('Imprint'), 'node/1'); ?></li>
-                        <li><?php print l(t('About us'), 'node/3'); ?></li>
-                        <li><?php print l(t('Help & Contact'), 'kontakt'); ?></li>
-                        <li><?php print l(t('Press'), 'node/1'); ?></li>
-                        <li><?php print l(t('Sitemap'), 'node/1'); ?></li>
-                        <li><?php print l(t('News'), 'https://www.facebook.com/regiomino', array('external' => TRUE)); ?></li>
-                        <li><?php print l(t('Jobs'), 'jobs'); ?></li>
-                        <li><?php print l(t('Privacy'), 'node/2'); ?></li>
-                        <li><?php print l(t('Terms & Conditions'), 'node/4'); ?></li>
+                        <?php $footerlinks = rm_user_get_footer_links(); ?>
+                        <?php foreach($footerlinks as $footerlink): ?>
+                            <li><?php print l($footerlink[0], $footerlink[1], $footerlink[2]); ?></li>
+                        <?php endforeach; ?>
                     </ul>
     
                 </div>

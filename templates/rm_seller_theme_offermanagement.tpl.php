@@ -118,7 +118,12 @@ foreach($node->offers as $offer) {
             <td class="vert-align"><input type="text" class="form-control" placeholder="WB-1-772" value="<?php print $variation->field_sku[LANGUAGE_NONE][0]['value']; ?>" /></td>
             <td><input type="text" class="form-control" placeholder="750ml" value="<?php print $variation->title; ?>" /></td>
             <td><textarea class="form-control" placeholder="aus der eigenen Mühle, in 750ml Flaschen"><?php print strip_tags($variation->body[LANGUAGE_NONE][0]['value']); ?></textarea></td>
-            <td><a href="#" class="btn btn-sm btn-primary">Bilder hinzufügen</a></td>
+            <td>
+                <?php if(isset($variation->field_image[LANGUAGE_NONE])): foreach($variation->field_image[LANGUAGE_NONE] as $productimage): ?>
+                    <img src="<?php print image_style_url('thumbnail', $productimage['uri']); ?>" />
+                <?php endforeach; endif; ?>
+                <br /><a href="#" class="btn btn-sm btn-primary">Bilder verwalten</a>
+            </td>
             <td>
                 <div class="input-group"  style="width: 150px;">
                     <input type="text" class="form-control" placeholder="Menge" value="<?php print $variation->field_productunit[LANGUAGE_NONE][0]['first']; ?>" />
