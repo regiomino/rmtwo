@@ -26,5 +26,6 @@ regions[geolocentry] = Geolocation Entry
 
 scripts[] = js/utilities/modernizr.custom.js
 scripts[] = js/regiomino.min.js
+scripts[] = martin.js
  
 
