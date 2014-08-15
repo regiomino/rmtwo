@@ -4,11 +4,11 @@
 jQuery(document).ready(function ($) {
 
     /**
-     * In Bootstrap können Select Boxen nicht an Input Boxen attached werden
+     * In Bootstrap kÃ¶nnen Select Boxen nicht an Input Boxen attached werden
      * Deshalb attache ich im Angebotsformular statt einer Select Box ein
      * Dropdown Menu. Die Auswahl des Dropdowns wird dann sowohl als Default-
      * Title des Dropdowns gesetzt, als auch in ein verstecktes Input Feld geschrieben
-     * um beim Form-Submit übergeben zu werden.
+     * um beim Form-Submit Ã¼bergeben zu werden.
      * Siehe auch hier: http://stackoverflow.com/questions/19905166/bootstrap-3-select-input-form-inline
      */
      

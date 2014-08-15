@@ -358,7 +358,7 @@ function rmtwo_phone_number_process($element) {
 }
 
 function rmtwo_preprocess_page(&$variables) {
-    if(($variables['page']['#type'] == 'page' && (arg(0) == 'lieferanten')) || (array_key_exists('node', $variables) && $variables['node']->type == 'seller_profile') || arg(0) == 'admin') {
+    if(($variables['page']['#type'] == 'page' && (arg(0) == 'lieferanten')) || (array_key_exists('node', $variables) && $variables['node']->type == 'seller_profile') || arg(0) == 'manage') {
         $variables['theme_hook_suggestions'][] = 'page__lieferanten';
         //Preprocessing for seller profiles
         if(array_key_exists('node', $variables)) {
