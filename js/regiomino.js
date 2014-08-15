@@ -238,221 +238,6 @@
 +function ($) {
   'use strict';
 
-  // CAROUSEL CLASS DEFINITION
-  // =========================
-
-  var Carousel = function (element, options) {
-    this.$element    = $(element).on('keydown.bs.carousel', $.proxy(this.keydown, this))
-    this.$indicators = this.$element.find('.carousel-indicators')
-    this.options     = options
-    this.paused      =
-    this.sliding     =
-    this.interval    =
-    this.$active     =
-    this.$items      = null
-
-    this.options.pause == 'hover' && this.$element
-      .on('mouseenter.bs.carousel', $.proxy(this.pause, this))
-      .on('mouseleave.bs.carousel', $.proxy(this.cycle, this))
-  }
-
-  Carousel.VERSION  = '3.2.0'
-
-  Carousel.DEFAULTS = {
-    interval: 5000,
-    pause: 'hover',
-    wrap: true
-  }
-
-  Carousel.prototype.keydown = function (e) {
-    switch (e.which) {
-      case 37: this.prev(); break
-      case 39: this.next(); break
-      default: return
-    }
-
-    e.preventDefault()
-  }
-
-  Carousel.prototype.cycle = function (e) {
-    e || (this.paused = false)
-
-    this.interval && clearInterval(this.interval)
-
-    this.options.interval
-      && !this.paused
-      && (this.interval = setInterval($.proxy(this.next, this), this.options.interval))
-
-    return this
-  }
-
-  Carousel.prototype.getItemIndex = function (item) {
-    this.$items = item.parent().children('.item')
-    return this.$items.index(item || this.$active)
-  }
-
-  Carousel.prototype.to = function (pos) {
-    var that        = this
-    var activeIndex = this.getItemIndex(this.$active = this.$element.find('.item.active'))
-
-    if (pos > (this.$items.length - 1) || pos < 0) return
-
-    if (this.sliding)       return this.$element.one('slid.bs.carousel', function () { that.to(pos) }) // yes, "slid"
-    if (activeIndex == pos) return this.pause().cycle()
-
-    return this.slide(pos > activeIndex ? 'next' : 'prev', $(this.$items[pos]))
-  }
-
-  Carousel.prototype.pause = function (e) {
-    e || (this.paused = true)
-
-    if (this.$element.find('.next, .prev').length && $.support.transition) {
-      this.$element.trigger($.support.transition.end)
-      this.cycle(true)
-    }
-
-    this.interval = clearInterval(this.interval)
-
-    return this
-  }
-
-  Carousel.prototype.next = function () {
-    if (this.sliding) return
-    return this.slide('next')
-  }
-
-  Carousel.prototype.prev = function () {
-    if (this.sliding) return
-    return this.slide('prev')
-  }
-
-  Carousel.prototype.slide = function (type, next) {
-    var $active   = this.$element.find('.item.active')
-    var $next     = next || $active[type]()
-    var isCycling = this.interval
-    var direction = type == 'next' ? 'left' : 'right'
-    var fallback  = type == 'next' ? 'first' : 'last'
-    var that      = this
-
-    if (!$next.length) {
-      if (!this.options.wrap) return
-      $next = this.$element.find('.item')[fallback]()
-    }
-
-    if ($next.hasClass('active')) return (this.sliding = false)
-
-    var relatedTarget = $next[0]
-    var slideEvent = $.Event('slide.bs.carousel', {
-      relatedTarget: relatedTarget,
-      direction: direction
-    })
-    this.$element.trigger(slideEvent)
-    if (slideEvent.isDefaultPrevented()) return
-
-    this.sliding = true
-
-    isCycling && this.pause()
-
-    if (this.$indicators.length) {
-      this.$indicators.find('.active').removeClass('active')
-      var $nextIndicator = $(this.$indicators.children()[this.getItemIndex($next)])
-      $nextIndicator && $nextIndicator.addClass('active')
-    }
-
-    var slidEvent = $.Event('slid.bs.carousel', { relatedTarget: relatedTarget, direction: direction }) // yes, "slid"
-    if ($.support.transition && this.$element.hasClass('slide')) {
-      $next.addClass(type)
-      $next[0].offsetWidth // force reflow
-      $active.addClass(direction)
-      $next.addClass(direction)
-      $active
-        .one('bsTransitionEnd', function () {
-          $next.removeClass([type, direction].join(' ')).addClass('active')
-          $active.removeClass(['active', direction].join(' '))
-          that.sliding = false
-          setTimeout(function () {
-            that.$element.trigger(slidEvent)
-          }, 0)
-        })
-        .emulateTransitionEnd($active.css('transition-duration').slice(0, -1) * 1000)
-    } else {
-      $active.removeClass('active')
-      $next.addClass('active')
-      this.sliding = false
-      this.$element.trigger(slidEvent)
-    }
-
-    isCycling && this.cycle()
-
-    return this
-  }
-
-
-  // CAROUSEL PLUGIN DEFINITION
-  // ==========================
-
-  function Plugin(option) {
-    return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.carousel')
-      var options = $.extend({}, Carousel.DEFAULTS, $this.data(), typeof option == 'object' && option)
-      var action  = typeof option == 'string' ? option : options.slide
-
-      if (!data) $this.data('bs.carousel', (data = new Carousel(this, options)))
-      if (typeof option == 'number') data.to(option)
-      else if (action) data[action]()
-      else if (options.interval) data.pause().cycle()
-    })
-  }
-
-  var old = $.fn.carousel
-
-  $.fn.carousel             = Plugin
-  $.fn.carousel.Constructor = Carousel
-
-
-  // CAROUSEL NO CONFLICT
-  // ====================
-
-  $.fn.carousel.noConflict = function () {
-    $.fn.carousel = old
-    return this
-  }
-
-
-  // CAROUSEL DATA-API
-  // =================
-
-  $(document).on('click.bs.carousel.data-api', '[data-slide], [data-slide-to]', function (e) {
-    var href
-    var $this   = $(this)
-    var $target = $($this.attr('data-target') || (href = $this.attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) // strip for ie7
-    if (!$target.hasClass('carousel')) return
-    var options = $.extend({}, $target.data(), $this.data())
-    var slideIndex = $this.attr('data-slide-to')
-    if (slideIndex) options.interval = false
-
-    Plugin.call($target, options)
-
-    if (slideIndex) {
-      $target.data('bs.carousel').to(slideIndex)
-    }
-
-    e.preventDefault()
-  })
-
-  $(window).on('load', function () {
-    $('[data-ride="carousel"]').each(function () {
-      var $carousel = $(this)
-      Plugin.call($carousel, $carousel.data())
-    })
-  })
-
-}(jQuery);
-
-+function ($) {
-  'use strict';
-
   // COLLAPSE PUBLIC CLASS DEFINITION
   // ================================
 
@@ -1583,168 +1368,6 @@
 +function ($) {
   'use strict';
 
-  // SCROLLSPY CLASS DEFINITION
-  // ==========================
-
-  function ScrollSpy(element, options) {
-    var process  = $.proxy(this.process, this)
-
-    this.$body          = $('body')
-    this.$scrollElement = $(element).is('body') ? $(window) : $(element)
-    this.options        = $.extend({}, ScrollSpy.DEFAULTS, options)
-    this.selector       = (this.options.target || '') + ' .nav li > a'
-    this.offsets        = []
-    this.targets        = []
-    this.activeTarget   = null
-    this.scrollHeight   = 0
-
-    this.$scrollElement.on('scroll.bs.scrollspy', process)
-    this.refresh()
-    this.process()
-  }
-
-  ScrollSpy.VERSION  = '3.2.0'
-
-  ScrollSpy.DEFAULTS = {
-    offset: 10
-  }
-
-  ScrollSpy.prototype.getScrollHeight = function () {
-    return this.$scrollElement[0].scrollHeight || Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
-  }
-
-  ScrollSpy.prototype.refresh = function () {
-    var offsetMethod = 'offset'
-    var offsetBase   = 0
-
-    if (!$.isWindow(this.$scrollElement[0])) {
-      offsetMethod = 'position'
-      offsetBase   = this.$scrollElement.scrollTop()
-    }
-
-    this.offsets = []
-    this.targets = []
-    this.scrollHeight = this.getScrollHeight()
-
-    var self     = this
-
-    this.$body
-      .find(this.selector)
-      .map(function () {
-        var $el   = $(this)
-        var href  = $el.data('target') || $el.attr('href')
-        var $href = /^#./.test(href) && $(href)
-
-        return ($href
-          && $href.length
-          && $href.is(':visible')
-          && [[$href[offsetMethod]().top + offsetBase, href]]) || null
-      })
-      .sort(function (a, b) { return a[0] - b[0] })
-      .each(function () {
-        self.offsets.push(this[0])
-        self.targets.push(this[1])
-      })
-  }
-
-  ScrollSpy.prototype.process = function () {
-    var scrollTop    = this.$scrollElement.scrollTop() + this.options.offset
-    var scrollHeight = this.getScrollHeight()
-    var maxScroll    = this.options.offset + scrollHeight - this.$scrollElement.height()
-    var offsets      = this.offsets
-    var targets      = this.targets
-    var activeTarget = this.activeTarget
-    var i
-
-    if (this.scrollHeight != scrollHeight) {
-      this.refresh()
-    }
-
-    if (scrollTop >= maxScroll) {
-      return activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
-    }
-
-    if (activeTarget && scrollTop <= offsets[0]) {
-      return activeTarget != (i = targets[0]) && this.activate(i)
-    }
-
-    for (i = offsets.length; i--;) {
-      activeTarget != targets[i]
-        && scrollTop >= offsets[i]
-        && (!offsets[i + 1] || scrollTop <= offsets[i + 1])
-        && this.activate(targets[i])
-    }
-  }
-
-  ScrollSpy.prototype.activate = function (target) {
-    this.activeTarget = target
-
-    $(this.selector)
-      .parentsUntil(this.options.target, '.active')
-      .removeClass('active')
-
-    var selector = this.selector +
-        '[data-target="' + target + '"],' +
-        this.selector + '[href="' + target + '"]'
-
-    var active = $(selector)
-      .parents('li')
-      .addClass('active')
-
-    if (active.parent('.dropdown-menu').length) {
-      active = active
-        .closest('li.dropdown')
-        .addClass('active')
-    }
-
-    active.trigger('activate.bs.scrollspy')
-  }
-
-
-  // SCROLLSPY PLUGIN DEFINITION
-  // ===========================
-
-  function Plugin(option) {
-    return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.scrollspy')
-      var options = typeof option == 'object' && option
-
-      if (!data) $this.data('bs.scrollspy', (data = new ScrollSpy(this, options)))
-      if (typeof option == 'string') data[option]()
-    })
-  }
-
-  var old = $.fn.scrollspy
-
-  $.fn.scrollspy             = Plugin
-  $.fn.scrollspy.Constructor = ScrollSpy
-
-
-  // SCROLLSPY NO CONFLICT
-  // =====================
-
-  $.fn.scrollspy.noConflict = function () {
-    $.fn.scrollspy = old
-    return this
-  }
-
-
-  // SCROLLSPY DATA-API
-  // ==================
-
-  $(window).on('load.bs.scrollspy.data-api', function () {
-    $('[data-spy="scroll"]').each(function () {
-      var $spy = $(this)
-      Plugin.call($spy, $spy.data())
-    })
-  })
-
-}(jQuery);
-
-+function ($) {
-  'use strict';
-
   // TAB CLASS DEFINITION
   // ====================
 
@@ -1862,140 +1485,279 @@
 
 }(jQuery);
 
-+function ($) {
-  'use strict';
+;(function($,document,window,undefined) {
+	//once upon a time...
+	$.fn.jCounter = function(options,callback) {
+		var consoleLog = false;	//shows debug messages via console.log() if true
+		var customRangeDownCount; //if true, it will tell countdown_proc() it's a down count and not an up count.
+		var endCounter = false; //stops jCounter if true
+		var eventDate; //time target (holds a number of seconds)
+		var pausedTime; //stores the time (in seconds) when pausing
+		var thisEl = this; //custom 'this' selector
+		var thisLength = this.length; //number of multiple elements per selector
+		var singularLabels = new Array('DAY','HOUR','MINUTE','SECOND');	//singular labels - use for localization
+		var pluralLabels = new Array('DAYS','HOURS','MINUTES','SECONDS'); //plural labels - use for localization
+		var remoteDateURL = "http://www.devingredients.com/files/dateandtime.php"; //URL to external dateandtime.php file
+		var localDateURL = "dateandtime.php"; //path to local dateandtime.php file
+		this.options = options; //stores jCounter's options parameter to verify against specified methods
 
-  // AFFIX CLASS DEFINITION
-  // ======================
+		//default settings
+		var settings = {
+			customDuration: null,
+			customRange: null,
+			date: null,
+			dateSource: 'remote',
+			fallback: null,
+			format: 'dd:hh:mm:ss',
+			timezone: 'Europe/London',
+			twoDigits: 'on'
+		};
 
-  var Affix = function (element, options) {
-    this.options = $.extend({}, Affix.DEFAULTS, options)
+		//merge the settings with the options values
+		if (typeof options === 'object') {
+			$.extend(settings,options);
+			thisEl.data("userOptions", settings); //push the settings to applied elements (they're used by methods)
+		}
+		//METHODS
+		var jC_methods = {
+			//initialize
+			init : function() {
+				thisEl.each(function(i,el) {
+					startCounter(el);
+				});
+			},
+			//pause method: $.jCounter('pause')
+			pause : function() {
+				if(consoleLog) { console.log("(jC) Activity: Counter paused."); }
+				endCounter = true;
+				return thisEl.each(function(i,el) {
+					clearInterval($(el).data("jC_interval"));
+				});
+			},
+			//stop method: $.jCounter('stop')
+			stop : function() {
+				if(consoleLog) { console.log("(jC) Activity: Counter stopped."); }
+				endCounter = true;
+				return thisEl.each(function(i,el) {
+					clearInterval($(el).data("jC_interval"));
+					$(el).removeData("jC_pausedTime");
+					resetHTMLCounter(el);
+				});
+			},
+			//reset method: $.jCounter('reset')
+			reset : function() {
+				if(consoleLog) { console.log("(jC) Activity: Counter reset."); }
+				return thisEl.each(function(i,el) {
+					clearInterval($(el).data("jC_interval"));
+					resetHTMLCounter(el);
+					startCounter(el);
+				});
+			},
+			//start method: $.jCounter('start')
+			start : function() {
+				return thisEl.each(function(i,el) {
+					pausedTime = $(el).data("jC_pausedTime");
+					endCounter = false;
+					clearInterval($(el).data("jC_interval"));
+					startCounter(el);
+				});
+			}
+		}
+		
+		//checks whether this jCounter instance runs by a customDuration setting
+		if(thisEl.data("userOptions").customDuration) {
+			if(!isNaN(thisEl.data("userOptions").customDuration)) {
+				var customDuration = true;
+			} else {
+				var customDuration = false;
+				if(consoleLog) { console.log("(jC) Error: The customDuration value is not a number! NOTE: 'customDuration' accepts a number of seconds."); }
+			}
+		}
+		
+		//checks whether this jCounter instance runs by a customRange setting
+		if(thisEl.data("userOptions").customRange) {	
+			var customRangeValues = thisEl.data("userOptions").customRange.split(":");
+			var rangeVal0 = parseInt(customRangeValues[0]);
+			var rangeVal1 = parseInt(customRangeValues[1]);
+			if(!isNaN(rangeVal0) && !isNaN(rangeVal1)) {
+				var customRange = true;
+				if(rangeVal0 > rangeVal1) {
+					var customRangeDownCount = true;
+				} else {
+					var customRangeDownCount = false;
+				}
+			} else {
+				var customRange = false;
+				if(consoleLog) { console.log("(jC) Error: The customRange value is not a valid range! Example: customRange: '0:30' or '30:0'"); }
+			}
+		}
 
-    this.$target = $(this.options.target)
-      .on('scroll.bs.affix.data-api', $.proxy(this.checkPosition, this))
-      .on('click.bs.affix.data-api',  $.proxy(this.checkPositionWithEventLoop, this))
+		//FUNCTIONS
+		
+		//jCounter initializer
+		function startCounter(el) {
+			if(customDuration) {
+				if (pausedTime) {
+					if (!isNaN(pausedTime)) {
+						eventDate = Math.round(pausedTime);
+					}
+				} else {
+					eventDate = Math.round($(el).data("userOptions").customDuration);
+				}
+				currentTime = 0;
+				countdown_proc(currentTime,el);
+				$(el).data("jC_interval", setInterval(function(){
+					if(endCounter == false) {
+						currentTime = parseInt(currentTime) + 1;
+						countdown_proc(currentTime,el)
+					}				
+				},1000));
+			} else if(customRange) {
+				eventDate = Math.round(customRangeValues[1]);
+				if (pausedTime) {
+					if (!isNaN(pausedTime)) {
+						var currentTime = eventDate - pausedTime;
+					}
+				} else {
+					var currentTime = Math.round(customRangeValues[0]);
+				}
+				countdown_proc(currentTime,el);
+				$(el).data("jC_interval", setInterval(function(){
+					if(endCounter == false) {
+						if(customRangeDownCount) {
+							currentTime = parseInt(currentTime) - 1;
+						} else {
+							currentTime = parseInt(currentTime) + 1;
+						}
+						countdown_proc(currentTime,el);
+					}				
+				},1000));
+			} else {
+				eventDate = Date.parse($(el).data("userOptions").date) / 1000;
+				if(thisEl.data("userOptions").dateSource == 'remote') {
+					dateSource = remoteDateURL + '?timezone=' + thisEl.data("userOptions").timezone + '&callback=?';
+				} else if(thisEl.data("userOptions").dateSource == 'local') {
+					dateSource = localDateURL + '?timezone=' + thisEl.data("userOptions").timezone;
+				} else {
+					if(consoleLog) { console.log("(jC) Error: dateSource property can be set to 'local' or 'remote', 'remote' is default"); }
+				}
+			
+				$.getJSON(dateSource,function(data){
+					var currentDate = Date.parse(data.currentDate) / 1000;
+					countdown_proc(currentDate,el);
+					if (eventDate > currentDate) {
+						$(el).data("jC_interval", setInterval(function(){
+							if(endCounter == false) {
+								currentDate = parseInt(currentDate) + 1;
+								countdown_proc(currentDate,el)
+							}				
+						},1000));
+					} else {
+						resetHTMLCounter(el)
+					}
+				}); 
+			}
+			
+		}
 
-    this.$element     = $(element)
-    this.affixed      =
-    this.unpin        =
-    this.pinnedOffset = null
+		//main jCounter processor
+		function countdown_proc(duration,el) {
+			//check if the counter needs to count down or up
+			if(customRangeDownCount) {
+				if(eventDate >= duration) {
+					clearInterval($(el).data("jC_interval"));
+					if(thisEl.data("userOptions").fallback) {
+						thisEl.data("userOptions").fallback.call(this);
+					}
+					
+				}
+			} else {
+				if(eventDate <= duration) {
+					clearInterval($(el).data("jC_interval"));
+					if(thisEl.data("userOptions").fallback) {
+						thisEl.data("userOptions").fallback.call(this);
+					}
+					
+				}
+			}
+			
+			//if customRange is used, update the seconds variable
+			var seconds = (customRange) ? duration : eventDate - duration;
 
-    this.checkPosition()
-  }
+			var thisInstanceFormat = thisEl.data("userOptions").format;
+			
+			//calculate seconds into days,hours,minutes,seconds
+			//if dd (days) is specified in the format setting (i.e. format: 'dd:hh:mm:ss')
+			if(thisInstanceFormat.indexOf('dd') != -1)  {
+				var days = Math.floor(seconds / (60 * 60 * 24)); //calculate the number of days
+				seconds -= days * 60 * 60 * 24; //update the seconds variable with no. of days removed
+			}
+			//if hh (hours) is specified
+			if(thisInstanceFormat.indexOf('hh') != -1)  {
+				var hours = Math.floor(seconds / (60 * 60));
+				seconds -= hours * 60 * 60; //update the seconds variable with no. of hours removed
+			}
+			//if mm (minutes) is specified
+			if(thisInstanceFormat.indexOf('mm') != -1)  {
+				var minutes = Math.floor(seconds / 60);
+				seconds -= minutes * 60; //update the seconds variable with no. of minutes removed
+			}
+			//if ss (seconds) is specified
+			if(thisInstanceFormat.indexOf('ss') == -1)  {
+				seconds -= seconds; //if ss is unspecified in format, update the seconds variable to 0;
+			}
 
-  Affix.VERSION  = '3.2.0'
+			//conditional Ss
+			//updates the plural and singular labels accordingly
+			if (days == 1) { $(el).find(".textDays").text(singularLabels[0]); } else { $(el).find(".textDays").text(pluralLabels[0]); }
+			if (hours == 1) { $(el).find(".textHours").text(singularLabels[1]); } else { $(el).find(".textHours").text(pluralLabels[1]); }
+			if (minutes == 1) { $(el).find(".textMinutes").text(singularLabels[2]); } else { $(el).find(".textMinutes").text(pluralLabels[2]); }
+			if (seconds == 1) { $(el).find(".textSeconds").text(singularLabels[3]); } else { $(el).find(".textSeconds").text(pluralLabels[3]); }
+			
+			//twoDigits ON setting
+			//if the twoDigits setting is set to ON, jCounter will always diplay a minimum number of 2 digits
+			if(thisEl.data("userOptions").twoDigits == 'on') {
+				days = (String(days).length >= 2) ? days : "0" + days;
+				hours = (String(hours).length >= 2) ? hours : "0" + hours;
+				minutes = (String(minutes).length >= 2) ? minutes : "0" + minutes;
+				seconds = (String(seconds).length >= 2) ? seconds : "0" + seconds;
+			}
 
-  Affix.RESET    = 'affix affix-top affix-bottom'
+			//updates the jCounter's html values
+			if(!isNaN(eventDate)) {
+				$(el).find(".days").text(days);
+				$(el).find(".hours").text(hours);
+				$(el).find(".minutes").text(minutes);
+				$(el).find(".seconds").text(seconds);
+			} else { 
+				if(consoleLog) { console.log("(jC) Error: Invalid date! Here's an example: 01 January 1970 12:00:00"); }
+				clearInterval($(el).data("jC_interval"));
+			}
+			//stores the remaining time when pausing jCounter
+			$(el).data("jC_pausedTime", eventDate-duration);
+		}
+		
+		//updates jCounter's HTML values to 0 or 00, based on the twoDigits setting
+		function resetHTMLCounter(el) {
+			if(thisEl.data("userOptions").twoDigits == 'on') {
+				$(el).find(".days,.hours,.minutes,.seconds").text('00');
+			} else if(thisEl.data("userOptions").twoDigits == 'off') {
+				$(el).find(".days,.hours,.minutes,.seconds").text('0');
+			}
+		}
+		
+		//method calling logic
+		if ( jC_methods[this.options] ) {
+			return jC_methods[ this.options ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+		} else if ( typeof this.options === 'object' || ! this.options ) {
+			return jC_methods.init.apply( this, arguments );
+		} else {
+			console.log('(jC) Error: Method >>> ' +  this.options + ' <<< does not exist.' );
+		} 
 
-  Affix.DEFAULTS = {
-    offset: 0,
-    target: window
-  }
-
-  Affix.prototype.getPinnedOffset = function () {
-    if (this.pinnedOffset) return this.pinnedOffset
-    this.$element.removeClass(Affix.RESET).addClass('affix')
-    var scrollTop = this.$target.scrollTop()
-    var position  = this.$element.offset()
-    return (this.pinnedOffset = position.top - scrollTop)
-  }
-
-  Affix.prototype.checkPositionWithEventLoop = function () {
-    setTimeout($.proxy(this.checkPosition, this), 1)
-  }
-
-  Affix.prototype.checkPosition = function () {
-    if (!this.$element.is(':visible')) return
-
-    var scrollHeight = $(document).height()
-    var scrollTop    = this.$target.scrollTop()
-    var position     = this.$element.offset()
-    var offset       = this.options.offset
-    var offsetTop    = offset.top
-    var offsetBottom = offset.bottom
-
-    if (typeof offset != 'object')         offsetBottom = offsetTop = offset
-    if (typeof offsetTop == 'function')    offsetTop    = offset.top(this.$element)
-    if (typeof offsetBottom == 'function') offsetBottom = offset.bottom(this.$element)
-
-    var affix = this.unpin   != null && (scrollTop + this.unpin <= position.top) ? false :
-                offsetBottom != null && (position.top + this.$element.height() >= scrollHeight - offsetBottom) ? 'bottom' :
-                offsetTop    != null && (scrollTop <= offsetTop) ? 'top' : false
-
-    if (this.affixed === affix) return
-    if (this.unpin != null) this.$element.css('top', '')
-
-    var affixType = 'affix' + (affix ? '-' + affix : '')
-    var e         = $.Event(affixType + '.bs.affix')
-
-    this.$element.trigger(e)
-
-    if (e.isDefaultPrevented()) return
-
-    this.affixed = affix
-    this.unpin = affix == 'bottom' ? this.getPinnedOffset() : null
-
-    this.$element
-      .removeClass(Affix.RESET)
-      .addClass(affixType)
-      .trigger($.Event(affixType.replace('affix', 'affixed')))
-
-    if (affix == 'bottom') {
-      this.$element.offset({
-        top: scrollHeight - this.$element.height() - offsetBottom
-      })
-    }
-  }
-
-
-  // AFFIX PLUGIN DEFINITION
-  // =======================
-
-  function Plugin(option) {
-    return this.each(function () {
-      var $this   = $(this)
-      var data    = $this.data('bs.affix')
-      var options = typeof option == 'object' && option
-
-      if (!data) $this.data('bs.affix', (data = new Affix(this, options)))
-      if (typeof option == 'string') data[option]()
-    })
-  }
-
-  var old = $.fn.affix
-
-  $.fn.affix             = Plugin
-  $.fn.affix.Constructor = Affix
-
-
-  // AFFIX NO CONFLICT
-  // =================
-
-  $.fn.affix.noConflict = function () {
-    $.fn.affix = old
-    return this
-  }
-
-
-  // AFFIX DATA-API
-  // ==============
-
-  $(window).on('load', function () {
-    $('[data-spy="affix"]').each(function () {
-      var $spy = $(this)
-      var data = $spy.data()
-
-      data.offset = data.offset || {}
-
-      if (data.offsetBottom) data.offset.bottom = data.offsetBottom
-      if (data.offsetTop)    data.offset.top    = data.offsetTop
-
-      Plugin.call($spy, data)
-    })
-  })
-
-}(jQuery);
-
+	}
+	//the end;
+}) (jQuery,document,window);
 jQuery(document).ready(function ($) {
 
     
@@ -2016,7 +1778,7 @@ jQuery(document).ready(function ($) {
         });
     });
     
-    $('#partner-logos a').tooltip()
+    $('#partner-logos a').tooltip();
     
     //messages are placed inside a bootstrap modal #messageModal. this triggers it, when it's there.
     $('#messageModal').modal('show');
@@ -2065,4 +1827,14 @@ jQuery(document).ready(function ($) {
             return rex.test($(this).text());
         }).show();
     });
+    
+    // Counter
+    $("ul.countdown").jCounter({
+		date: "25 august 2014 12:00",
+		timezone: "Europe/Berlin",
+		format: "dd:hh:mm:ss",
+		twoDigits: 'on',
+	  
+	});
+    
 });

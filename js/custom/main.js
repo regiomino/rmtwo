@@ -70,4 +70,14 @@ jQuery(document).ready(function ($) {
             return rex.test($(this).text());
         }).show();
     });
+    
+    // Counter
+    $("ul.countdown").jCounter({
+		date: "25 august 2014 12:00",
+		timezone: "Europe/Berlin",
+		format: "dd:hh:mm:ss",
+		twoDigits: 'on',
+	  
+	});
+    
 });
