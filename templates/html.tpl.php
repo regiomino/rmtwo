@@ -18,7 +18,7 @@
 
 		<script>
 
-			/* // Set to the same value as the web property used on the site
+			// Set to the same value as the web property used on the site
 			var gaProperty = 'UA-40144139-1';
 
 			// Disable tracking if the opt-out cookie exists.
@@ -40,7 +40,7 @@
 			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 			ga('create', 'UA-40144139-1', 'auto');
-			ga('send', 'pageview'); */
+			ga('send', 'pageview');
 
 		</script>
 
@@ -48,7 +48,7 @@
     <?php print $page; ?>
     <?php print $page_bottom; ?>
     <script>
-        /* (function ($) {
+        (function ($) {
 
              $(".rmnav").rmNav();
 
@@ -65,7 +65,7 @@
 						_ts.src = '//widgets.trustedshops.com/js/' + _tsid + '.js';
 						var __ts = document.getElementsByTagName('script')[0];
 						__ts.parentNode.insertBefore(_ts, __ts);
-				})();*/
+				})();
     </script>
 
 </body>
