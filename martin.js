@@ -18,4 +18,22 @@ jQuery(document).ready(function ($) {
         $(this).parent().parent().find('.hidden_unit_unit').val(selected);
         $(this).parent().parent().find('.dropdown-toggle').html(selected + ' <span class="caret"></span>');
     });
+    
+    
+    $('.priorities select').change(function() {
+        var nidstring = $(this).attr('id');
+        var res = nidstring.split("_");
+        alert("test");
+        data = new Object;
+        data['nid'] = res[1];
+        data['prio'] = $(this).val();
+
+        callback_url = Drupal.settings.basePath + 'manage/sales/changepriority/' + data['nid'] + '/' + data['prio'];
+            
+        $.ajax({
+            url: callback_url,
+            type: 'POST',
+            data: data
+        });
+    });
 });
