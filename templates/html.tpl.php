@@ -62,7 +62,26 @@
 						var __ts = document.getElementsByTagName('script')[0];
 						__ts.parentNode.insertBefore(_ts, __ts);
 				})();
+                                
+                                <?php if (drupal_is_front_page()) { ?>
+                                
+                                  // Counter
+                             (function ($) {     
+                            $("ul.countdown").jCounter({
+                                        date: "25 august 2014 12:00:00",
+                                        timezone: "Europe/Berlin",
+                                        format: "dd:hh:mm:ss",
+                                        twoDigits: 'on',
+                                        dateSource: 'remote',
+                                        serverDateSource : 'https://www.regiomino.de/dateandtime.php'
+                                  
+                                });
+                            
+                             })(jQuery);
+                                <?php } ?>
     </script>
+    
+    
 
 </body>
 </html>
