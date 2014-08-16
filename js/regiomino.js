@@ -1816,7 +1816,7 @@ jQuery(document).ready(function ($) {
 		timezone: "Europe/Berlin",
 		format: "dd:hh:mm:ss",
 		twoDigits: 'on',
-                dateSource: 'local'
+                dateSource: 'remote'
 	  
 	});
     
