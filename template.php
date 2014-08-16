@@ -143,9 +143,8 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['suggest']['necessary']['locality']['#attributes']['class'][] = 'form-control';
             $form['suggest']['necessary']['locality']['#attributes']['required'] = NULL;
             //Thoroughfare
-            $form['suggest']['necessary']['thoroughfare']['#attributes']['placeholder'] = t('Street');
-            $form['suggest']['necessary']['thoroughfare']['#attributes']['class'][] = 'form-control';
-            $form['suggest']['necessary']['thoroughfare']['#attributes']['required'] = NULL;
+            $form['suggest']['nicetohave']['thoroughfare']['#attributes']['placeholder'] = t('Street');
+            $form['suggest']['nicetohave']['thoroughfare']['#attributes']['class'][] = 'form-control';
             //Postal code
             $form['suggest']['nicetohave']['postal_code']['#attributes']['placeholder'] = t('Postal code');
             $form['suggest']['nicetohave']['postal_code']['#attributes']['class'][] = 'form-control';
@@ -153,7 +152,7 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['suggest']['nicetohave']['phone']['#attributes']['placeholder'] = t('Phone');
             $form['suggest']['nicetohave']['phone']['#attributes']['class'][] = 'form-control';
             //Suggester
-            $form['suggest']['nicetohave']['suggester']['#attributes']['placeholder'] = t('Your E-Mail');
+            $form['suggest']['nicetohave']['suggester']['#attributes']['placeholder'] = t('E-Mail of suggester');
             $form['suggest']['nicetohave']['suggester']['#attributes']['class'][] = 'form-control';
             //Owner
             $form['suggest']['nicetohave']['owner']['#prefix'] = '<div class="checkbox-inline">';
