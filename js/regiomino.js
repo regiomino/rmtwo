@@ -1816,7 +1816,6 @@ jQuery(document).ready(function ($) {
 		timezone: "Europe/Berlin",
 		format: "dd:hh:mm:ss",
 		twoDigits: 'on',
-                customDuration: 60,
                 dateSource: 'local'
 	  
 	});
