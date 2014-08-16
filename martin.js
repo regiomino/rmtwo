@@ -23,7 +23,6 @@ jQuery(document).ready(function ($) {
     $('.priorities select').change(function() {
         var nidstring = $(this).attr('id');
         var res = nidstring.split("_");
-        alert("test");
         data = new Object;
         data['nid'] = res[1];
         data['prio'] = $(this).val();
@@ -35,5 +34,28 @@ jQuery(document).ready(function ($) {
             type: 'POST',
             data: data
         });
+    });
+    
+    $('.comments textarea').on('blur', function() {
+        var nidstring = $(this).attr('id');
+        var res = nidstring.split("_");
+        data = new Object;
+        data['nid'] = res[1];
+        data['text'] = $(this).val();
+
+        callback_url = Drupal.settings.basePath + 'manage/sales/updatecomment/' + data['nid'];
+            
+        $.ajax({
+            url: callback_url,
+            type: 'POST',
+            data: data
+        });
+    });
+    
+    $('.crit_desc').on('blur', function () {
+
+        var value = $(this).val();
+        alert(value);
+
     });
 });
