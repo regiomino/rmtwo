@@ -48,11 +48,7 @@
     <?php print $page; ?>
     <?php print $page_bottom; ?>
     <script>
-        (function ($) {
-
-             $(".rmnav").rmNav();
-
-        })(jQuery);
+       
 				(function () {
 						var _tsid = 'X9FF4FD2592B5BFA727E6480148224623';
 						_tsConfig = {
