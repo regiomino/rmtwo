@@ -100,7 +100,9 @@
         <div class="modal fade" id="messageModal">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-body">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <br />
                         <div id="messages">
                             <div class="section clearfix">
                                 <?php print $messages; ?>
@@ -115,10 +117,10 @@
     <div class="modal fade" id="suggestModal">
         <div class="modal-dialog">
             <div class="modal-content">
-                <!--<div class="modal-header">
+                <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h2 class="modal-title" id="suggestModalLabel"><?php /*print t('Suggest vendor or gastronomy'); */?></h2>
-                </div>-->
+                        <h4 class="modal-title" id="suggestModalLabel"><?php print t('Suggest vendor or gastronomy'); ?></h4>
+                </div>
                 <div class="modal-body">
                     <?php print $suggestform; ?>
                 </div>
