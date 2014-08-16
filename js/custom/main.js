@@ -2,24 +2,6 @@
  * Created by Martin on 04.08.14.
  */
 jQuery(document).ready(function ($) {
-
-    
-    $('#salesguys select').change(function() {
-        var nidstring = $(this).attr('id');
-        var res = nidstring.split("_");
-        
-        data = new Object;
-        data['nid'] = res[1];
-        data['uid'] = $(this).val();
-
-        callback_url = Drupal.settings.basePath + 'admin/sales/assignprofile/' + data['nid'] + '/' + data['uid'];
-            
-        $.ajax({
-            url: callback_url,
-            type: 'POST',
-            data: data
-        });
-    });
     
     $('#partner-logos a').tooltip();
     
@@ -46,7 +28,7 @@ jQuery(document).ready(function ($) {
         }
     });
 
-    $('#salesguys select').change(function() {
+    $('.salesguys select').change(function() {
         var nidstring = $(this).attr('id');
         var res = nidstring.split("_");
         
@@ -54,7 +36,7 @@ jQuery(document).ready(function ($) {
 		data['nid'] = res[1];
 		data['uid'] = $(this).val();
 
-		callback_url = Drupal.settings.basePath + 'admin/sales/assignprofile/' + data['nid'] + '/' + data['uid'];
+		callback_url = Drupal.settings.basePath + 'manage/sales/assignprofile/' + data['nid'] + '/' + data['uid'];
             
 		$.ajax({
 			url: callback_url,
