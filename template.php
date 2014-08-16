@@ -366,8 +366,12 @@ function rmtwo_preprocess_page(&$variables) {
             }
         }
     }
-    $variables['page']['content']['regiominouserlogin'] = render(drupal_get_form('user_login_block'));
+    if('user/register' == current_path()) $variables['page']['content']['regiominouserlogin'] = render(drupal_get_form('user_login_block'));
     $variables['suggestform'] = render(drupal_get_form('rm_sales_suggest_form'));
+    
+    if(drupal_is_front_page()) {
+        drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/utilities/jquery.jCounter-0.1.2.js');
+    }
 }
 
 function rmtwo_form_element($variables) {
