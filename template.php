@@ -158,8 +158,9 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['suggest']['nicetohave']['owner']['#prefix'] = '<div class="checkbox-inline">';
             $form['suggest']['nicetohave']['owner']['#suffix'] = '</div>';
             //Submit
-            $form['suggest']['submit']['#attributes']['class'][] = 'btn';
-            $form['suggest']['submit']['#attributes']['class'][] = 'btn-success';
+            $form['submit']['#attributes']['class'][] = 'btn';
+            $form['submit']['#attributes']['class'][] = 'btn-success';
+            $form['submit']['#weight'] = 100;
             break;
         case 'rm_shop_regionselect':
 
@@ -221,6 +222,8 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['body']['#attributes']['class'][] = 'form-control';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
+            $form['submit']['#attributes']['class'][] = 'btn-success';
+            $form['submit']['#weight'] = 100;
             break;
         case 'rm_sales_profilequeue_form':
         case 'rm_sales_profileset_form':
