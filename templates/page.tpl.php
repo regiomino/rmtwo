@@ -31,7 +31,7 @@
 
     <div class="container">
         <div class="row">
-                <?php if($tabs): ?>
+                <?php if(user_is_logged_in() && $tabs): ?>
                     <div class="col-md-12">
                         <?php print render($tabs); ?>
                     </div>

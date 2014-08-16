@@ -86,7 +86,7 @@
                 
                              <?php print render($title_suffix); ?>  
                 
-                            <?php if ($tabs): ?>
+                            <?php if (user_is_logged_in() && $tabs): ?>
                                  <!-- <div class="tabs">
                                             <?php print render($tabs); ?>
                                     </div>-->

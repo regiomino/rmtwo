@@ -29,7 +29,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <?php if($tabs): ?>
+        <?php if(user_is_logged_in() && $tabs): ?>
             <div class="col-md-12 main">
                 <?php print render($tabs); ?>
             </div>
