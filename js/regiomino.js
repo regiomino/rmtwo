@@ -1497,7 +1497,7 @@
 		var thisLength = this.length; //number of multiple elements per selector
 		var singularLabels = new Array('DAY','HOUR','MINUTE','SECOND');	//singular labels - use for localization
 		var pluralLabels = new Array('DAYS','HOURS','MINUTES','SECONDS'); //plural labels - use for localization
-		var remoteDateURL = "http://www.devingredients.com/files/dateandtime.php"; //URL to external dateandtime.php file
+		var remoteDateURL = "https://www.regiomino.de/dateandtime.php"; //URL to external dateandtime.php file
 		var localDateURL = "dateandtime.php"; //path to local dateandtime.php file
 		this.options = options; //stores jCounter's options parameter to verify against specified methods
 
