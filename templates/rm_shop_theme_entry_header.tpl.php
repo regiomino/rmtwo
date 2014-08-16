@@ -1,7 +1,6 @@
 
 <div class="row entry">
-    <?php if (rm_sales_user_is_salesguy ()): ?>
-        <div class="col-md-5">
+       <!-- <div class="col-md-5">
             <div class="zipcodeselect  ">
                 <h3> Schritt 1:<strong> <?php echo t('Enter your address...'); ?></strong></h3>
         
@@ -20,8 +19,7 @@
                     </ul>
                 </div>
             </div>
-        </div>
-    <?php endif; ?>
+        </div>-->
     <div class="col-md-7  ">
         <div class="welcome"> 
             <h1> <strong> Einfach regionale Produkte einkaufen</strong></h1>
@@ -47,7 +45,7 @@
                     <p><em class="text">Sekunden</em></p>
                   </li>
                 </ul>
-              <a href="#" class="more-info text-uppercase"> <small><strong>  <span class="glyphicon glyphicon-circle-arrow-right"> </span> Erfahren Sie mehr </strong></small> </a>  </span>
+              <!--<a href="#" class="more-info text-uppercase"> <small><strong>  <span class="glyphicon glyphicon-circle-arrow-right"> </span> Erfahren Sie mehr </strong></small> </a>  </span>-->
            
         </div>
     </div>
