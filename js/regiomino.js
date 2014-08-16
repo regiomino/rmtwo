@@ -1816,7 +1816,8 @@ jQuery(document).ready(function ($) {
 		timezone: "Europe/Berlin",
 		format: "dd:hh:mm:ss",
 		twoDigits: 'on',
-                serverDateSource : 'https://www.regiomino.de/dateandtime.php'
+                customDuration: 60,
+                dateSource: 'local'
 	  
 	});
     
