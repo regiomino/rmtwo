@@ -84,13 +84,7 @@
                                  </div>-->
                             <?php endif; ?>
                 
-                             <?php print render($title_suffix); ?>  
-                
-                            <?php if (user_is_logged_in() && $tabs): ?>
-                                 <!-- <div class="tabs">
-                                            <?php print render($tabs); ?>
-                                    </div>-->
-                            <?php endif; ?>
+                             <?php print render($title_suffix); ?>
                 
                             <?php print render($page['help']); ?>
                 
