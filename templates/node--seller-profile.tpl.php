@@ -3,15 +3,8 @@
 /**
  *  Alle spannenden Sachen in $node
  */
-
-?>
-
-<div class="col-sm-3 col-md-2 sidebar">
-test
-</div>
-<div class="col-sm-9 col-md-10 main">
-    <?php
-    //Titel
+ 
+    /* //Titel
     print $node->title;
      
     //Kategorien für den Verkäufer (nicht für die Produkte!)
@@ -63,6 +56,76 @@ test
                 print number_format($tradingunits->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €';
             }
         }
-    }
-    ?>
+    } */
+
+?>
+
+<div class="col-sm-3 col-md-2 sidebar">
+Warenkorb
+</div>
+<div class="col-sm-9 col-md-10 main">
+    <h2><?php print $node->title; ?></h2>
+    
+    <ul class="list-unstyled">
+        <li><span class="glyphicon glyphicon-cutlery" ></span>
+            <?php
+            $all_tids = array();
+            foreach($node->field_sellercategories[LANGUAGE_NONE] as $index => $tid) {
+                $all_tids[] = (int)$tid['tid'];
+            }
+
+            $allterms = taxonomy_term_load_multiple($all_tids);
+            foreach($allterms as $term) {
+                print $term->name . ' ';
+            }
+            ?>
+        </li>
+        <li><span class="glyphicon glyphicon-road"></span> <?php print $node->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?>, <?php print $node->field_address[LANGUAGE_NONE][0]['postal_code'] ?> <?php print $node->field_address[LANGUAGE_NONE][0]['locality']; ?></li>
+    </ul>
+    
+    
+    
+    <div class="media">
+        <a class="pull-left" href="#">
+            <img class="media-object" src="<?php print image_style_url('thumbnail', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>">
+        </a>
+        <div class="media-body">
+            <?php print $node->body[LANGUAGE_NONE][0]['value']; ?>
+        </div>
+    </div>
+    
+    <?php $elements = 0; $tabsperrow = 3; ?>
+    <?php foreach($node->offers as $offer): ?>
+    
+        <?php if(!($elements % $tabsperrow)): ?>
+            <div class="row">
+        <?php endif; ?>
+        <?php $elements++; ?>
+        <?php $closed = FALSE; ?>
+        
+        <div class="col-sm-<?php print 12/$tabsperrow; ?> col-md-<?php print 12/$tabsperrow; ?>">
+            <div class="list-group">
+                <!--Title-->
+                <li class="list-group-item product-title">
+                    <strong><?php print $offer->title; ?></strong>
+                </li>
+                <!--Body-->
+                <li class="list-group-item product-body">
+                    Dapibus ac facilisis in
+                </li>
+                <!--Cart-->
+                <a href="#" class="list-group-item active btn product-cart">
+                    <strong>In den Warenkorb</strong>
+                </a>
+            </div>
+        </div>
+        
+        <?php if(!($elements % $tabsperrow)): ?>
+            </div>
+        <?php endif; ?>
+        <?php $closed = TRUE; ?>
+    <?php endforeach; ?>
+    
+    <?php if(!$closed): ?></div><?php endif; ?>
+    
 </div>
