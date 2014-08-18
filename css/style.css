@@ -6201,6 +6201,9 @@ body.node-type-seller-profile {
   background: #fff;
   margin-bottom: 0px;
 }
+.mollom-image-captcha-instructions {
+  display: none;
+}
 #rm-sales-suggest-form legend {
   margin-bottom: 0px;
 }
