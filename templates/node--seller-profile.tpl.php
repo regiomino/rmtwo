@@ -61,7 +61,10 @@
 ?>
 
 <div class="col-sm-3 col-md-2 sidebar">
-Warenkorb
+<?php
+$block = module_invoke('rm_cart', 'block_view', 'rm_cart_block');
+print render($block['content']);
+?>
 </div>
 <div class="col-sm-9 col-md-10 main">
     <h2><?php print $node->title; ?></h2>
@@ -114,9 +117,7 @@ Warenkorb
                     Dapibus ac facilisis in
                 </li>
                 <!--Cart-->
-                <a href="#" class="list-group-item active btn product-cart">
-                    <strong>In den Warenkorb</strong>
-                </a>
+                <?php print l(t('Add to cart'), 'addtocart/1076/1074/1071/3', array('attributes' => array('class' => array('list-group-item', 'active', 'btn', 'product-cart')), 'query' => drupal_get_destination())); ?>
             </div>
         </div>
         
