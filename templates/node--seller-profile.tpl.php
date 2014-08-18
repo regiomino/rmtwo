@@ -115,14 +115,23 @@ print render($block['content']);
         <div class="col-sm- col-md-4 col-lg-2">
             <div class="list-group">
                 <!--Title-->
-                <li class="list-group-item product-title">
-                    <strong><?php print $offer->title; ?></strong>
-                </li>
+                <div class="dropdown">
+                    <li class="list-group-item product-title" id="dropdownMenu1" data-toggle="dropdown">
+                        <strong><?php print $offer->offer_variations[0]->title; ?></strong> <?php if(!$onlyone): ?><span class="caret"></span> <span class="small">(andere Variante?)</span><?php endif; ?><div class="pull-right">6 x 7,5kg für 15,50 €</div>
+                    </li>
+                    <?php if(!$onlyone): ?>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                        <?php foreach($offer->offer_variations as $variations): ?>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?php print $variations->title; ?></a></li>
+                        <?php endforeach; ?>
+                        </ul>
+                    <?php endif; ?>
+                </div>
                 <!--Body-->
                 <li class="list-group-item product-body">
                     <div class="row">
                         <div class="col-sm-12 col-md-12 center">
-                            <p class="text-center">6 x 7,5kg für 15,50 €</p>
+                            <p class="text-center"></p>
                         </div>
                     </div>
                     <div class="row">
