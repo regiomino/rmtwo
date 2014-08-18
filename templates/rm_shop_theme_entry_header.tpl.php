@@ -1,6 +1,6 @@
 
 <div class="row entry">
-       <!-- <div class="col-md-5">
+       <!--<div class="col-md-5">
             <div class="zipcodeselect  ">
                 <h3> Schritt 1:<strong> <?php echo t('Enter your address...'); ?></strong></h3>
         
@@ -19,7 +19,7 @@
                     </ul>
                 </div>
             </div>
-        </div>-->
+        </div> -->
     <div class="col-md-7  ">
         <div class="welcome"> 
             <h1> <strong> Einfach regionale Produkte einkaufen</strong></h1>

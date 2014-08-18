@@ -128,40 +128,65 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             break;
         case 'rm_sales_suggest_form':
             //General declaration
-            $form['#attributes']['class'][] = 'form-vertical';
+            $form['#attributes']['class'][] = '';
+            
             //Type
             $form['suggest']['necessary']['type']['#attributes']['required'] = NULL;
             $form['suggest']['necessary']['type']['#title_display'] = 'none';
-            $form['suggest']['necessary']['type']['#field_prefix'] = '<div class="radio-inline">';
-            $form['suggest']['necessary']['type']['#field_suffix'] = '</div>';
+            $form['suggest']['necessary']['type']['#field_prefix'] = '<div class="row"><div class="col-sm-12"><div class="form-group"><div class="radio-inline">';
+            $form['suggest']['necessary']['type']['#field_suffix'] = '</div></div></div></div>';
+           
             //Title
             $form['suggest']['necessary']['title']['#attributes']['placeholder'] = t('Name of the vendor or gastronomy');
+           // $form['suggest']['necessary']['title']['#title_display'] = 'none';
             $form['suggest']['necessary']['title']['#attributes']['class'][] = 'form-control';
             $form['suggest']['necessary']['title']['#attributes']['required'] = NULL;
+            $form['suggest']['necessary']['title']['#prefix'] = '<div class="row"> <div class="col-sm-7"> <div class="form-group">';
+            $form['suggest']['necessary']['title']['#suffix'] = '</div> </div>';
             //Locality
             $form['suggest']['necessary']['locality']['#attributes']['placeholder'] = t('City');
+           // $form['suggest']['necessary']['locality']['#title_display'] = 'none';
             $form['suggest']['necessary']['locality']['#attributes']['class'][] = 'form-control';
             $form['suggest']['necessary']['locality']['#attributes']['required'] = NULL;
+            $form['suggest']['necessary']['locality']['#prefix'] = '<div class="col-sm-5"> <div class="form-group">';
+            $form['suggest']['necessary']['locality']['#suffix'] = '</div></div></div>';
+            
             //Thoroughfare
             $form['suggest']['nicetohave']['thoroughfare']['#attributes']['placeholder'] = t('Street');
+            // $form['suggest']['nicetohave']['thoroughfare']['#title_display'] = 'none';
             $form['suggest']['nicetohave']['thoroughfare']['#attributes']['class'][] = 'form-control';
+            $form['suggest']['nicetohave']['thoroughfare']['#prefix'] = '<div class="row"><div class="col-sm-6"><div class="form-group">';
+            $form['suggest']['nicetohave']['thoroughfare']['#suffix'] = '</div></div>';
+            
             //Postal code
             $form['suggest']['nicetohave']['postal_code']['#attributes']['placeholder'] = t('Postal code');
+            // $form['suggest']['nicetohave']['postal_code']['#title_display'] = 'none';
             $form['suggest']['nicetohave']['postal_code']['#attributes']['class'][] = 'form-control';
+            $form['suggest']['nicetohave']['postal_code']['#prefix'] =  '<div class="col-sm-6"><div class="form-group">';
+            $form['suggest']['nicetohave']['postal_code']['#suffix'] = '</div></div></div>';
+            
             //Phone
             $form['suggest']['nicetohave']['phone']['#attributes']['placeholder'] = t('Phone');
+            // $form['suggest']['nicetohave']['phone']['#title_display'] = 'none';
             $form['suggest']['nicetohave']['phone']['#attributes']['class'][] = 'form-control';
+            $form['suggest']['nicetohave']['phone']['#prefix'] = '<div class="row"><div class="col-sm-6"> <div class="form-group">';
+            $form['suggest']['nicetohave']['phone']['#suffix'] = '</div></div>';
             //Suggester
             $form['suggest']['nicetohave']['suggester']['#attributes']['placeholder'] = t('E-Mail of suggester');
+             // $form['suggest']['nicetohave']['suggester']['#title_display'] = 'none';
             $form['suggest']['nicetohave']['suggester']['#attributes']['class'][] = 'form-control';
+            $form['suggest']['nicetohave']['suggester']['#prefix'] = '<div class="col-sm-6"> <div class="form-group">';
+            $form['suggest']['nicetohave']['suggester']['#suffix'] = '</div></div></div>';
+            
             //Owner
-            $form['suggest']['nicetohave']['owner']['#prefix'] = '<div class="checkbox-inline">';
-            $form['suggest']['nicetohave']['owner']['#suffix'] = '</div>';
+            $form['suggest']['nicetohave']['owner']['#prefix'] = '<div class="row"><div class="col-sm-12"><div class="checkbox-inline">';
+            $form['suggest']['nicetohave']['owner']['#suffix'] = '</div></div></div>';
             //Submit
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             $form['submit']['#weight'] = 100;
             break;
+        
         case 'rm_shop_regionselect':
 
 //            $form['street']['#attributes']['placeholder'] = 'Habichtweg 6';
@@ -175,18 +200,18 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
 
             $form['street']['#attributes']['class'][] = 'form-control';
             $form['street']['#attributes']['class'][] = 'input-lg';
-            $form['street']['#prefix'] = '<div class="row"><div class="col-md-12">';
-            $form['street']['#suffix'] = '</div></div>';
+            $form['street']['#prefix'] = '<div class="row"><div class="col-md-12"><div class="form-group">';
+            $form['street']['#suffix'] = '</div></div></div>';
 
             $form['zipcode']['#attributes']['class'][] = 'form-control';
             $form['zipcode']['#attributes']['class'][] = 'input-lg';
-            $form['zipcode']['#prefix'] = '<div class="row"><div class="col-md-4">';
-            $form['zipcode']['#suffix'] = '</div>';
+            $form['zipcode']['#prefix'] = '<div class="row"><div class="col-md-4"><div class="form-group">';
+            $form['zipcode']['#suffix'] = '</div></div>';
 
             $form['city']['#attributes']['class'][] = 'form-control';
             $form['city']['#attributes']['class'][] = 'input-lg';
-            $form['city']['#prefix'] = '<div class="col-md-8">';
-            $form['city']['#suffix'] = '</div></div>';
+            $form['city']['#prefix'] = '<div class="col-md-8"><div class="form-group">';
+            $form['city']['#suffix'] = '</div></div></div>';
 
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
@@ -392,7 +417,7 @@ function rmtwo_form_element($variables) {
         $attributes['id'] = $element['#id'];
     }
     // Add element's #type and #name as class to aid with JS/CSS selectors.
-    $attributes['class'] = array('form-item');
+   // $attributes['class'] = array('form-item');
     if (!empty($element['#type'])) {
         $attributes['class'][] = 'form-type-' . strtr($element['#type'], '_', '-');
     }

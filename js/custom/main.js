@@ -3,6 +3,12 @@
  */
 jQuery(document).ready(function ($) {
     
+    
+    if ( !Modernizr.input.placeholder) {
+        $('body').addClass('no-placeholder');
+    }
+    
+    
     $('#partner-logos a').tooltip();
     
     //messages are placed inside a bootstrap modal #messageModal. this triggers it, when it's there.
