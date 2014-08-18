@@ -99,7 +99,9 @@ print render($block['content']);
     
     <?php $elements = 0; $tabsperrow = 3; ?>
     <?php foreach($node->offers as $offer): ?>
-    
+        <?php $onlyone = FALSE; ?>
+        <?php if(count($offer->offer_variations) == 1) $onlyone = TRUE; ?>
+        
         <?php if(!($elements % $tabsperrow)): ?>
             <div class="row">
         <?php endif; ?>
@@ -114,10 +116,30 @@ print render($block['content']);
                 </li>
                 <!--Body-->
                 <li class="list-group-item product-body">
-                    Dapibus ac facilisis in
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 center">
+                            <p class="text-center">6 x 7,5kg für 15,50 €</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            Produktionsort:<br />
+                            <?php print drupal_render(addressfield_generate($offer->field_origin[LANGUAGE_NONE][0], array('organisation' => 'organisation', 'address' => 'address'), array('mode' => 'render'))); ?>
+                        </div>
+                        <div class="col-sm-6 col-md-6">
+                            Siegel
+                        </div>
+                    </div>
                 </li>
                 <!--Cart-->
-                <?php print l(t('Add to cart'), 'addtocart/1076/1074/1071/3', array('attributes' => array('class' => array('list-group-item', 'active', 'btn', 'product-cart')), 'query' => drupal_get_destination())); ?>
+                <?php if($onlyone): ?> 
+                    <?php print l(t('Add to cart'), 'addtocart/1076/1074/1071/3', array('attributes' => array('class' => array('list-group-item', 'btn', 'btn-default', 'product-cart')), 'query' => drupal_get_destination())); ?>
+                <?php else: ?>
+                    <!--Multivarianten-Button-->
+                    <button type="button" class="list-group-item btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+                        Popover on bottom
+                    </button>
+                <?php endif; ?>
             </div>
         </div>
         

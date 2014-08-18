@@ -19,8 +19,7 @@
             <?php foreach($vars['jobs'] as $nid => $job): ?>
                 <tr>
                     <td><?php print l($job->title, 'node/' . $nid); ?></td>
-                    <td><?php print drupal_render(addressfield_generate($job->field_jobaddress[LANGUAGE_NONE][0], array('address' => 'address'), array('mode' => 'render')));
-                    $output = drupal_render($address_render_array); ?></td>
+                    <td><?php print drupal_render(addressfield_generate($job->field_jobaddress[LANGUAGE_NONE][0], array('address' => 'address'), array('mode' => 'render'))); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
