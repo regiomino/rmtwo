@@ -135,10 +135,13 @@ print render($block['content']);
                 <?php if($onlyone): ?> 
                     <?php print l(t('Add to cart'), 'addtocart/1076/1074/1071/3', array('attributes' => array('class' => array('list-group-item', 'btn', 'btn-default', 'product-cart')), 'query' => drupal_get_destination())); ?>
                 <?php else: ?>
-                    <!--Multivarianten-Button-->
-                    <button type="button" class="list-group-item btn btn-default" data-container="body" data-toggle="popover" data-placement="bottom" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
-                        Popover on bottom
-                    </button>
+                    <?php 
+                        $popovercontent = '';
+                        foreach($offer->offer_variations as $variations) {
+                            $popovercontent .= '<div class="row"><div class="col-sm-8 col-md-8">' . $variations->title . '</div><div class="col-sm-4 col-md-4"><p class="text-center">' . l('<span class="glyphicon glyphicon-shopping-cart"></span>', 'addtocart/1076/1074/1071/3', array('html' => TRUE, 'attributes' => array('class' => array('btn', 'btn-primary', 'product-cart')), 'query' => drupal_get_destination())) . '</p></div></div>';
+                        }
+                    ?>
+                    <?php print l(t('Add to cart'), '#', array('external' => TRUE, 'attributes' => array('class' => array('list-group-item', 'btn', 'btn-default', 'product-cart-variations'), 'data-container' => 'body', 'data-toggle' => 'popover', 'data-placement' => 'bottom', 'data-content' => $popovercontent))); ?>
                 <?php endif; ?>
             </div>
         </div>
