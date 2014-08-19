@@ -97,21 +97,24 @@ print render($block['content']);
         </div>
     </div>
     
+ 
     <br />
     
     <?php $elements = 0; $tabsperrow = 3; ?>
+ 
     <?php foreach($node->offers as $offer): ?>
         <?php $onlyone = FALSE; ?>
         <?php if(count($offer->offer_variations) == 1) $onlyone = TRUE; ?>
         
-        <?php if(!($elements % $tabsperrow)): ?>
+      <!--  <?php if(!($elements % $tabsperrow)): ?>
             <div class="row">
-        <?php endif; ?>
+        <?php endif; ?>-->
         <?php $elements++; ?>
         <?php $closed = FALSE; ?>
-        
+ 
         <div class="col-sm-<?php print 12/$tabsperrow; ?> col-md-<?php print 12/$tabsperrow; ?>">
             <div class="list-group product-list-group">
+ 
                 <!--Title-->
                 <li class="list-group-item product-title">
                     <div class="row">
@@ -178,12 +181,12 @@ print render($block['content']);
             </div>
         </div>
         
-        <?php if(!($elements % $tabsperrow)): ?>
+       <!-- <?php if(!($elements % $tabsperrow)): ?>
             </div>
-        <?php endif; ?>
+        <?php endif; ?>-->
         <?php $closed = TRUE; ?>
     <?php endforeach; ?>
-    
+    </div>
     <?php if(!$closed): ?></div><?php endif; ?>
     
 </div>
