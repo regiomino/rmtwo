@@ -111,47 +111,49 @@ print render($block['content']);
         <div class="col-sm-<?php print 12/$tabsperrow; ?> col-md-<?php print 12/$tabsperrow; ?>">
             <div class="list-group">
                 <!--Title-->
-                <div class="dropdown">
-                    <li class="list-group-item product-title" id="dropdownMenu1" data-toggle="dropdown">
-                        <strong><?php print $offer->offer_variations[0]->title; ?></strong> <?php if(!$onlyone): ?><span class="caret"></span> <span class="small">(andere Variante?)</span><?php endif; ?><div class="pull-right">6 x 7,5kg für 15,50 €</div>
-                    </li>
-                    <?php if(!$onlyone): ?>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                        <?php foreach($offer->offer_variations as $variations): ?>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?php print $variations->title; ?></a></li>
-                        <?php endforeach; ?>
-                        </ul>
-                    <?php endif; ?>
-                </div>
+                <li class="list-group-item product-title">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <span class="label label-success label-price pull-right">6 x 7,5kg für 15,50 €</span>
+                            <div class="dropdown">
+                                <a href="#" id="dropdownMenu<?php print $offer->nid; ?>" class="dropdown-toggle" data-toggle="dropdown"><strong><?php print $offer->offer_variations[0]->title; ?></strong> <?php if(!$onlyone): ?><span class="caret"></span><?php endif; ?></a>
+                                <?php if(!$onlyone): ?>
+                                    <ul class="dropdown-menu dropdown-variation" role="menu" aria-labelledby="dropdownMenu<?php print $offer->nid; ?>">
+                                    <?php foreach($offer->offer_variations as $variations): ?>
+                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?php print $variations->title; ?></a></li>
+                                    <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                    
+                
+                <?php $counter = 0; $hidden = ''; foreach($offer->offer_variations as $variation): ?>
+                <?php if($counter) $hidden = ' hidden'; ?>
                 <!--Body-->
-                <li class="list-group-item product-body">
+                <li class="list-group-item product-body product-body-<?php print $variation->nid; ?><?php print $hidden; ?>">
                     <div class="row">
                         <div class="col-sm-12 col-md-12 center">
                             <p class="text-center"></p>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-6 col-md-6">
+                        <div class="col-sm-6 col-md-6 small">
                             Produktionsort:<br />
                             <?php print drupal_render(addressfield_generate($offer->field_origin[LANGUAGE_NONE][0], array('organisation' => 'organisation', 'address' => 'address'), array('mode' => 'render'))); ?>
                         </div>
-                        <div class="col-sm-6 col-md-6">
+                        <div class="col-sm-6 col-md-6 small">
                             Siegel
                         </div>
                     </div>
                 </li>
                 <!--Cart-->
-                <?php if($onlyone): ?> 
-                    <?php print l(t('Add to cart'), 'addtocart/1076/1074/1071/3', array('attributes' => array('class' => array('list-group-item', 'btn', 'btn-default', 'product-cart')), 'query' => drupal_get_destination())); ?>
-                <?php else: ?>
-                    <?php 
-                        $popovercontent = '';
-                        foreach($offer->offer_variations as $variations) {
-                            $popovercontent .= '<div class="row"><div class="col-sm-8 col-md-8">' . $variations->title . '</div><div class="col-sm-4 col-md-4"><p class="text-center">' . l('<span class="glyphicon glyphicon-shopping-cart"></span>', 'addtocart/1076/1074/1071/3', array('html' => TRUE, 'attributes' => array('class' => array('btn', 'btn-primary', 'product-cart')), 'query' => drupal_get_destination())) . '</p></div></div>';
-                        }
-                    ?>
-                    <?php print l(t('Add to cart'), '#', array('external' => TRUE, 'attributes' => array('class' => array('list-group-item', 'btn', 'btn-default', 'product-cart-variations'), 'data-container' => 'body', 'data-toggle' => 'popover', 'data-placement' => 'bottom', 'data-content' => $popovercontent))); ?>
-                <?php endif; ?>
+                <?php print l('<span class="glyphicon glyphicon-plus"></span> ' . t('Add to cart'), 'addtocart/' . $offer->nid . '/' . $variation->nid . '/' . $variation->trading_units[0]->nid . '/1', array('html' => TRUE, 'attributes' => array('class' => array('list-group-item', 'btn', 'btn-default', 'product-cart', $hidden)), 'query' => drupal_get_destination())); ?>
+                
+                <?php $counter++; endforeach; ?>
+
             </div>
         </div>
         
