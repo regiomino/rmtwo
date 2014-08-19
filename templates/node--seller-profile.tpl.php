@@ -60,7 +60,7 @@
 
 ?>
 
-<div class="col-sm-3 col-md-2 sidebar">
+<div class="col-sm-3 col-md-2 sidebar cart-display">
 <?php
 $block = module_invoke('rm_cart', 'block_view', 'rm_cart_block');
 print render($block['content']);
