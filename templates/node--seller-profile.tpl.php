@@ -129,7 +129,6 @@ print render($block['content']);
                 <li class="list-group-item product-title">
                     <div class="row">
                         <div class="col-sm-12 col-md-12">
-                        <span class="label label-success label-price pull-right">6 x 7,5kg für 15,50 €</span>
                             <div class="dropdown">
                                 <a href="#" id="dropdownMenu<?php print $offer->nid; ?>" class="dropdown-toggle" data-toggle="dropdown"><strong><?php print $offer->offer_variations[0]->title; ?></strong> <?php if(!$onlyone): ?><span class="caret"></span><?php endif; ?></a>
                                 <?php if(!$onlyone): ?>
@@ -143,7 +142,6 @@ print render($block['content']);
                         </div>
                     </div>
                 </li>
-                    
                 
                 <?php $counter = 0; $hidden = ''; foreach($offer->offer_variations as $variation): ?>
                 <?php if($counter) $hidden = ' hidden'; ?>
@@ -166,7 +164,17 @@ print render($block['content']);
                         <!--Cart-->
                     </div>
                     <div class="row">
-                        <div class="col-sm-8 col-md-8 pull-right"><div class="input-group"><select class="form-control"><option>6 x 7,5kg (15,50 €)</option><option>12 x 7,5kg (15,50 €)</option><option>18 x 7,5kg (15,50 €)</option><option>24 x 7,5kg (15,50 €)</option><option>30 x 7,5kg (15,50 €)</option></select><span class="input-group-btn"><?php print l('<span class="glyphicon glyphicon-plus"></span> ' . t('Add to cart'), 'addtocart/' . $offer->nid . '/' . $variation->nid . '/' . $variation->trading_units[0]->nid . '/1', array('html' => TRUE, 'attributes' => array('class' => array('btn', 'btn-success', 'product-cart', 'product-cart-' . $variation->nid, $hidden)), 'query' => drupal_get_destination())); ?></span></div></div>
+                        <div class="col-sm-8 col-md-8 pull-right"><div class="input-group"><select class="form-control">
+                        <?php foreach($variation->trading_units as $tradingunit): ?>
+                            <option>
+                                <?php print $tradingunit->field_tu_amount[LANGUAGE_NONE][0]['value']; ?>
+                                    &times;
+                                <?php print $variation->field_productunit[LANGUAGE_NONE][0]['first']; ?>
+                                <?php print t($variation->field_productunit[LANGUAGE_NONE][0]['second']); ?>
+                                (<?php print number_format($tradingunit->field_tu_price[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?> € zzgl. <?php print floatval($tradingunit->field_tu_vat[LANGUAGE_NONE][0]['value']); ?>% Mwst. und <?php print number_format($tradingunit->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?> € Pfand)
+                            </option>
+                        <?php endforeach; ?>
+                        </select><span class="input-group-btn"><?php print l('<span class="glyphicon glyphicon-plus"></span> ' . t('Add to cart'), 'addtocart/' . $offer->nid . '/' . $variation->nid . '/' . $variation->trading_units[0]->nid . '/1', array('html' => TRUE, 'attributes' => array('class' => array('btn', 'btn-success', 'product-cart', 'product-cart-' . $variation->nid, $hidden)), 'query' => drupal_get_destination())); ?></span></div></div>
                     </div>
                 </li>
                 
