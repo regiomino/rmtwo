@@ -97,6 +97,8 @@ print render($block['content']);
         </div>
     </div>
     
+    <br />
+    
     <?php $elements = 0; $tabsperrow = 3; ?>
     <?php foreach($node->offers as $offer): ?>
         <?php $onlyone = FALSE; ?>
@@ -109,7 +111,7 @@ print render($block['content']);
         <?php $closed = FALSE; ?>
         
         <div class="col-sm-<?php print 12/$tabsperrow; ?> col-md-<?php print 12/$tabsperrow; ?>">
-            <div class="list-group">
+            <div class="list-group product-list-group">
                 <!--Title-->
                 <li class="list-group-item product-title">
                     <div class="row">
@@ -119,8 +121,8 @@ print render($block['content']);
                                 <a href="#" id="dropdownMenu<?php print $offer->nid; ?>" class="dropdown-toggle" data-toggle="dropdown"><strong><?php print $offer->offer_variations[0]->title; ?></strong> <?php if(!$onlyone): ?><span class="caret"></span><?php endif; ?></a>
                                 <?php if(!$onlyone): ?>
                                     <ul class="dropdown-menu dropdown-variation" role="menu" aria-labelledby="dropdownMenu<?php print $offer->nid; ?>">
-                                    <?php foreach($offer->offer_variations as $variations): ?>
-                                        <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><?php print $variations->title; ?></a></li>
+                                    <?php foreach($offer->offer_variations as $variation): ?>
+                                        <li role="presentation" data-variation-nid="<?php print $variation->nid; ?>"><a role="menuitem" tabindex="-1" href="#"><?php print $variation->title; ?></a></li>
                                     <?php endforeach; ?>
                                     </ul>
                                 <?php endif; ?>
@@ -139,18 +141,19 @@ print render($block['content']);
                             <p class="text-center"></p>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6 col-md-6 small">
+                    <div class="row" style="min-height: 100px;">
+                        <?php $columnsize = 6; if(!empty($variation->field_image[LANGUAGE_NONE][0]['uri'])): $columnsize = 4; ?><div class="col-sm-<?php print $columnsize; ?> col-md-<?php print $columnsize; ?> small"><img src="<?php print image_style_url('thumbnail', $variation->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $variation->title; ?>" /></div><?php endif; ?>
+                        <div class="col-sm-<?php print $columnsize; ?> col-md-<?php print $columnsize; ?> small">
                             Produktionsort:<br />
                             <?php print drupal_render(addressfield_generate($offer->field_origin[LANGUAGE_NONE][0], array('organisation' => 'organisation', 'address' => 'address'), array('mode' => 'render'))); ?>
                         </div>
-                        <div class="col-sm-6 col-md-6 small">
+                        <div class="col-sm-<?php print $columnsize; ?> col-md-<?php print $columnsize; ?> small">
                             Siegel
                         </div>
                     </div>
                 </li>
                 <!--Cart-->
-                <?php print l('<span class="glyphicon glyphicon-plus"></span> ' . t('Add to cart'), 'addtocart/' . $offer->nid . '/' . $variation->nid . '/' . $variation->trading_units[0]->nid . '/1', array('html' => TRUE, 'attributes' => array('class' => array('list-group-item', 'btn', 'btn-default', 'product-cart', $hidden)), 'query' => drupal_get_destination())); ?>
+                <?php print l('<span class="glyphicon glyphicon-plus"></span> ' . t('Add to cart'), 'addtocart/' . $offer->nid . '/' . $variation->nid . '/' . $variation->trading_units[0]->nid . '/1', array('html' => TRUE, 'attributes' => array('class' => array('list-group-item', 'btn', 'btn-default', 'product-cart', 'product-cart-' . $variation->nid, $hidden)), 'query' => drupal_get_destination())); ?>
                 
                 <?php $counter++; endforeach; ?>
 
