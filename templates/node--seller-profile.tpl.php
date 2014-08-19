@@ -163,10 +163,13 @@ print render($block['content']);
                         <div class="col-sm-<?php print $columnsize; ?> col-md-<?php print $columnsize; ?> small">
                             Siegel
                         </div>
+                        <!--Cart-->
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-7 col-md-7 pull-right"><div class="input-group"><select class="form-control"><option>6 x 7,5kg</option><option>12 x 7,5kg</option><option>18 x 7,5kg</option><option>24 x 7,5kg</option><option>30 x 7,5kg</option></select><span class="input-group-btn"><?php print l('<span class="glyphicon glyphicon-plus"></span> ' . t('Add to cart'), 'addtocart/' . $offer->nid . '/' . $variation->nid . '/' . $variation->trading_units[0]->nid . '/1', array('html' => TRUE, 'attributes' => array('class' => array('btn', 'btn-success', 'product-cart', 'product-cart-' . $variation->nid, $hidden)), 'query' => drupal_get_destination())); ?></span></div></div>
                     </div>
                 </li>
-                <!--Cart-->
-                <?php print l('<span class="glyphicon glyphicon-plus"></span> ' . t('Add to cart'), 'addtocart/' . $offer->nid . '/' . $variation->nid . '/' . $variation->trading_units[0]->nid . '/1', array('html' => TRUE, 'attributes' => array('class' => array('list-group-item', 'btn', 'btn-default', 'product-cart', 'product-cart-' . $variation->nid, $hidden)), 'query' => drupal_get_destination())); ?>
+                
                 
                 <?php $counter++; endforeach; ?>
 
