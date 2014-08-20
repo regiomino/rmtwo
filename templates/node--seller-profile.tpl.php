@@ -154,16 +154,16 @@ print render($block['content']);
                         <!--Cart-->
                     </div>
                     <div class="row">
-                        <div class="col-sm-8 col-md-8 pull-right"><div class="input-group"><select class="form-control quantity-select">
-                        <?php foreach($variation->trading_units as $tradingunit): ?>
-                            <option value="<?php print $tradingunit->field_tu_amount[LANGUAGE_NONE][0]['value']; ?>">
-                                <?php print $tradingunit->field_tu_amount[LANGUAGE_NONE][0]['value']; ?>
+                        <div class="col-sm-8 col-md-8 pull-right"><div class="input-group"><select class="form-control quantity-select">                            
+                        <?php $options = rm_cart_get_quantity_options($variation->nid); ?>
+                        
+                        <?php if(!empty($options)): foreach($options as $option): ?>
+                            <option value="<?php print $option;?>">
+                                <?php print $option;?>
                                     &times;
-                                <?php print $variation->field_productunit[LANGUAGE_NONE][0]['first']; ?>
-                                <?php print t($variation->field_productunit[LANGUAGE_NONE][0]['second']); ?>
-                                (<?php print number_format($tradingunit->field_tu_price[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?> € zzgl. <?php print floatval($tradingunit->field_tu_vat[LANGUAGE_NONE][0]['value']); ?>% Mwst. und <?php print number_format($tradingunit->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?> € Pfand)
+                                <?php print $variation->field_productunit[LANGUAGE_NONE][0]['first']; ?><?php print t($variation->field_productunit[LANGUAGE_NONE][0]['second']); ?>
                             </option>
-                        <?php endforeach; ?>
+                        <?php endforeach; endif; ?>
                         </select><span class="input-group-btn"><?php print l('<span class="glyphicon glyphicon-plus"></span> ' . t('Add to cart'), 'addtocart/' . $offer->nid . '/' . $variation->nid . '/' . $variation->trading_units[0]->nid . '/1', array('html' => TRUE, 'attributes' => array('class' => array('btn', 'btn-success', 'product-cart', 'product-cart-' . $variation->nid, $hidden)), 'query' => drupal_get_destination())); ?></span></div></div>
                     </div>
                 </li>
