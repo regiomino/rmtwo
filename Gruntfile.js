@@ -79,9 +79,10 @@ module.exports = function (grunt) {
                 'js/bootstrap/popover.js',
               //  'js/bootstrap/scrollspy.js',
                 'js/bootstrap/tab.js',
-               // 'js/bootstrap/affix.js',
+                'js/bootstrap/affix.js',
                 
                 'js/custom/jquery.jCounter-0.1.2.js',
+                'js/custom/jquery.jtruncate.min.js',
                 'js/custom/main.js'
             ],
             dest: 'js/regiomino.js'
