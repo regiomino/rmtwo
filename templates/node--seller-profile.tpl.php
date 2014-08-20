@@ -1,4 +1,62 @@
+ <?php
+
+/**
+ *  Alle spannenden Sachen in $node
+ */
  
+    /* //Titel
+    print $node->title;
+     
+    //Kategorien für den Verkäufer (nicht für die Produkte!)
+    foreach($node->field_sellercategories[LANGUAGE_NONE] as $category) {
+        print $category['taxonomy_term']->name;
+    }
+     
+    //URLs für Verkäuferbilder
+    foreach($node->field_image[LANGUAGE_NONE] as $sellerimage) {
+        print image_style_url('image_style', $sellerimage['uri']);
+    }
+
+    //Beschreibung
+    print $node->body[LANGUAGE_NONE][0]['value'];
+
+    //Produkte
+    foreach($node->offers as $offer) {
+        //Übergeordneter Titel
+        print $offer->title;
+        //Produktherkunft Firma
+        print $offer->field_origin[LANGUAGE_NONE][0]['organisation_name'];
+        //Produktherkunft PLZ
+        print $offer->field_origin[LANGUAGE_NONE][0]['postal_code'];
+        //Produktherkunft Ort
+        print $offer->field_origin[LANGUAGE_NONE][0]['locality'];
+        //Produktherkunft Land
+        print $offer->field_origin[LANGUAGE_NONE][0]['country'];
+        
+        foreach($offer->offer_variations as $variation) {
+            //Titel der Produktvariante
+            print $variation->title;
+            //Produkteinheit (Menge)
+            print $variation->field_productunit[LANGUAGE_NONE][0]['first'];
+            //Produkteinheit (Einheit)
+            print $variation->field_productunit[LANGUAGE_NONE][0]['second'];
+            //URLs für Produktbilder
+            foreach($variation->field_image[LANGUAGE_NONE] as $productimage) {
+                print image_style_url('image_style', $productimage['uri']);
+            }
+            //Produktbeschreibung
+            print $variation->body[LANGUAGE_NONE][0]['value'];
+            
+            foreach($variation->trading_units as $tradingunits) {
+                //Gebindemenge
+                print $tradingunits->field_tu_amount[LANGUAGE_NONE][0]['value'];
+                //Gebinde-Nettopreis
+                print number_format($tradingunits->field_tu_price[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €';
+                //Gebinde-Pfand
+                print number_format($tradingunits->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €';
+            }
+        }
+    } */
 <div class="wrapper-m">
     <div class="wrapper-m-inner">
         <div class="seller-infos"> 
@@ -12,6 +70,7 @@
                             $all_tids[] = (int)$tid['tid'];
                         }
             
+ 
                         $allterms = taxonomy_term_load_multiple($all_tids);
                         foreach($allterms as $term) {
                             print $term->name . ' ';
@@ -21,6 +80,7 @@
                 <li>
                     <span class="glyphicon glyphicon-road"></span>
                     <?php print $node->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?>, <?php print $node->field_address[LANGUAGE_NONE][0]['postal_code'] ?> <?php print $node->field_address[LANGUAGE_NONE][0]['locality']; ?></li>
+                </li>
             </ul>
             <div class="seller-description"> 
                 <div class="media">
@@ -47,36 +107,40 @@
                 </div>
             </div>
         </div>
-        
-            <ul class="product-grid clearfix"> 
+        <ul class="product-grid clearfix"> 
             <?php foreach($node->offers as $offer): ?>
-                <li>
-                    <div class="product-item">
-                        <h4> Roggen Shit</h4>
-                        
-                            <div class="btn-group btn-group-xs" data-toggle="buttons">
-                                 
-                                <label class="btn btn-default">
-                                  <input type="radio" name="options" id="option2"> <span class="h4 price"><strong>5,10 €</strong></span> <em>6 x 1 kg </em>
-                                </label>
-                                 <label class="btn btn-default">
-                                  <input type="radio" name="options" id="option2"> <span class="h4 price"><strong>5,10 €</strong></span> <em>6 x 1 kg </em>
-                                </label>
-                                  <label class="btn btn-default">
-                                  <input type="radio" name="options" id="option2"> <span class="h4 price"><strong>5,10 €</strong></span> <em>6 x 1 kg </em>
-                                </label>
-                                 
-</div>
-                        
-                        
+                <li class="list-group">
+                    <div class="list-group-item"> 
+                        <div class="dropdown">
+                            <a href="#" id="dropdownMenu<?php print $offer->nid; ?>" class="dropdown-toggle" data-toggle="dropdown"><strong><?php print $offer->offer_variations[0]->title; ?></strong> <?php if(!$onlyone): ?><span class="caret"></span><?php endif; ?></a>
+                            <?php if(!$onlyone): ?>
+                                <ul class="dropdown-menu dropdown-variation" role="menu" aria-labelledby="dropdownMenu<?php print $offer->nid; ?>">
+                                <?php foreach($offer->offer_variations as $variation): ?>
+                                    <li role="presentation" data-variation-nid="<?php print $variation->nid; ?>"><a role="menuitem" tabindex="-1" href="#"><?php print $variation->title; ?></a></li>
+                                <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+                        </div>
                     </div>
+                    
+                    <div class="list-group-item">
+                        <select class="form-control quantity-select">                            
+                        <?php $options = rm_cart_get_quantity_options($variation->nid); ?>
+                        
+                        <?php if(!empty($options)): foreach($options as $option): ?>
+                            <option value="<?php print $option;?>">
+                                <?php print $option;?>
+                                    &times;
+                                <?php print $variation->field_productunit[LANGUAGE_NONE][0]['first']; ?><?php print t($variation->field_productunit[LANGUAGE_NONE][0]['second']); ?>
+                            </option>
+                        <?php endforeach; endif; ?>
+                        </select>
+                        <span class="input-group-btn"><?php print l('<span class="glyphicon glyphicon-plus"></span> ' . t('Add to cart'), 'addtocart/' . $offer->nid . '/' . $variation->nid . '/' . $variation->trading_units[0]->nid . '/1', array('html' => TRUE, 'attributes' => array('class' => array('btn', 'btn-success', 'product-cart', 'product-cart-' . $variation->nid, $hidden)), 'query' => drupal_get_destination())); ?></span>
+                    </div>
+      
                 </li>
              <?php endforeach; ?>
-            </ul>
-        
-      
-            
-                 
+        </ul>
     </div>
 </div>
 
