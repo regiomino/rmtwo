@@ -7,7 +7,7 @@
         </tr>
     </thead>
     <tbody style="font-size: smaller;">
-        <?php foreach($vars['cart'] as $cart_item): ?>
+        <?php if(!empty($vars['cart'])): foreach($vars['cart'] as $cart_item): ?>
         <tr>
             <td>
                 <div class="input-group">
@@ -28,7 +28,7 @@
                 <?php print number_format(node_load($cart_item->field_trading_unit[LANGUAGE_NONE][0]['target_id'])->field_tu_price[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€
             </td>
         </tr>
-        <?php endforeach; ?>
+        <?php endforeach; endif; ?>
         <tr>
             <td></td>
             <td><em>zzgl. MwSt.</em></td>
