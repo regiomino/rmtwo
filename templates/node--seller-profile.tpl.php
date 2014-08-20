@@ -56,7 +56,7 @@
                 print number_format($tradingunits->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €';
             }
         }
-    } */
+    } */ ?>
 <div class="wrapper-m">
     <div class="wrapper-m-inner">
         <div class="seller-infos"> 
@@ -70,7 +70,6 @@
                             $all_tids[] = (int)$tid['tid'];
                         }
             
- 
                         $allterms = taxonomy_term_load_multiple($all_tids);
                         foreach($allterms as $term) {
                             print $term->name . ' ';
@@ -89,7 +88,7 @@
                     </a>
                     <div class="media-body">
                        <?php
-                        $length = 350;
+                        $length = 390;
                         $body = strip_tags($node->body[LANGUAGE_NONE][0]['value']);
                         if(mb_strlen($body) > $length) {
                             print '<div class="description" id="long-desc" style="display:none; height:auto"><p>'.$body.'</p>';
