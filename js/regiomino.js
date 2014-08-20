@@ -1485,19 +1485,171 @@
 
 }(jQuery);
 
++function ($) {
+  'use strict';
+
+  // AFFIX CLASS DEFINITION
+  // ======================
+
+  var Affix = function (element, options) {
+    this.options = $.extend({}, Affix.DEFAULTS, options)
+
+    this.$target = $(this.options.target)
+      .on('scroll.bs.affix.data-api', $.proxy(this.checkPosition, this))
+      .on('click.bs.affix.data-api',  $.proxy(this.checkPositionWithEventLoop, this))
+
+    this.$element     = $(element)
+    this.affixed      =
+    this.unpin        =
+    this.pinnedOffset = null
+
+    this.checkPosition()
+  }
+
+  Affix.VERSION  = '3.2.0'
+
+  Affix.RESET    = 'affix affix-top affix-bottom'
+
+  Affix.DEFAULTS = {
+    offset: 0,
+    target: window
+  }
+
+  Affix.prototype.getPinnedOffset = function () {
+    if (this.pinnedOffset) return this.pinnedOffset
+    this.$element.removeClass(Affix.RESET).addClass('affix')
+    var scrollTop = this.$target.scrollTop()
+    var position  = this.$element.offset()
+    return (this.pinnedOffset = position.top - scrollTop)
+  }
+
+  Affix.prototype.checkPositionWithEventLoop = function () {
+    setTimeout($.proxy(this.checkPosition, this), 1)
+  }
+
+  Affix.prototype.checkPosition = function () {
+    if (!this.$element.is(':visible')) return
+
+    var scrollHeight = $(document).height()
+    var scrollTop    = this.$target.scrollTop()
+    var position     = this.$element.offset()
+    var offset       = this.options.offset
+    var offsetTop    = offset.top
+    var offsetBottom = offset.bottom
+
+    if (typeof offset != 'object')         offsetBottom = offsetTop = offset
+    if (typeof offsetTop == 'function')    offsetTop    = offset.top(this.$element)
+    if (typeof offsetBottom == 'function') offsetBottom = offset.bottom(this.$element)
+
+    var affix = this.unpin   != null && (scrollTop + this.unpin <= position.top) ? false :
+                offsetBottom != null && (position.top + this.$element.height() >= scrollHeight - offsetBottom) ? 'bottom' :
+                offsetTop    != null && (scrollTop <= offsetTop) ? 'top' : false
+
+    if (this.affixed === affix) return
+    if (this.unpin != null) this.$element.css('top', '')
+
+    var affixType = 'affix' + (affix ? '-' + affix : '')
+    var e         = $.Event(affixType + '.bs.affix')
+
+    this.$element.trigger(e)
+
+    if (e.isDefaultPrevented()) return
+
+    this.affixed = affix
+    this.unpin = affix == 'bottom' ? this.getPinnedOffset() : null
+
+    this.$element
+      .removeClass(Affix.RESET)
+      .addClass(affixType)
+      .trigger($.Event(affixType.replace('affix', 'affixed')))
+
+    if (affix == 'bottom') {
+      this.$element.offset({
+        top: scrollHeight - this.$element.height() - offsetBottom
+      })
+    }
+  }
+
+
+  // AFFIX PLUGIN DEFINITION
+  // =======================
+
+  function Plugin(option) {
+    return this.each(function () {
+      var $this   = $(this)
+      var data    = $this.data('bs.affix')
+      var options = typeof option == 'object' && option
+
+      if (!data) $this.data('bs.affix', (data = new Affix(this, options)))
+      if (typeof option == 'string') data[option]()
+    })
+  }
+
+  var old = $.fn.affix
+
+  $.fn.affix             = Plugin
+  $.fn.affix.Constructor = Affix
+
+
+  // AFFIX NO CONFLICT
+  // =================
+
+  $.fn.affix.noConflict = function () {
+    $.fn.affix = old
+    return this
+  }
+
+
+  // AFFIX DATA-API
+  // ==============
+
+  $(window).on('load', function () {
+    $('[data-spy="affix"]').each(function () {
+      var $spy = $(this)
+      var data = $spy.data()
+
+      data.offset = data.offset || {}
+
+      if (data.offsetBottom) data.offset.bottom = data.offsetBottom
+      if (data.offsetTop)    data.offset.top    = data.offsetTop
+
+      Plugin.call($spy, data)
+    })
+  })
+
+}(jQuery);
+
+(function($){$.fn.jTruncate=function(h){var i={length:300,minTrail:20,moreText:"more",lessText:"less",ellipsisText:"...",moreAni:"",lessAni:""};var h=$.extend(i,h);return this.each(function(){obj=$(this);var a=obj.html();if(a.length>h.length+h.minTrail){var b=a.indexOf(' ',h.length);if(b!=-1){var b=a.indexOf(' ',h.length);var c=a.substring(0,b);var d=a.substring(b,a.length-1);obj.html(c+'<span class="truncate_ellipsis">'+h.ellipsisText+'</span>'+'<span class="truncate_more">'+d+'</span>');obj.find('.truncate_more').css("display","none");obj.append('<div class="clearboth">'+'<a href="#" class="truncate_more_link">'+h.moreText+'</a>'+'</div>');var e=$('.truncate_more_link',obj);var f=$('.truncate_more',obj);var g=$('.truncate_ellipsis',obj);e.click(function(){if(e.text()==h.moreText){f.show(h.moreAni);e.text(h.lessText);g.css("display","none")}else{f.hide(h.lessAni);e.text(h.moreText);g.css("display","inline")}return false})}}})}})(jQuery);
+ 
 jQuery(document).ready(function ($) {
-    
     
     if ( !Modernizr.input.placeholder) {
         $('body').addClass('no-placeholder');
     }
+    
+    $('.grid-l').affix({
+         'offset' : 40
+    });
+     
+     
+    $('#read-more').on('click', function(e){
+        e.preventDefault();
+        $('#short-desc').hide();
+        $('#long-desc').show();
+    });
+    
+     $('#read-less').on('click', function(e){
+        e.preventDefault();
+        $('#long-desc').hide();
+        $('#short-desc').show();
+    });
+
     
     
     $('#partner-logos a').tooltip();
     
     //messages are placed inside a bootstrap modal #messageModal. this triggers it, when it's there.
     $('#messageModal').modal('show');
-
 
     //makes sure external links are opened in new window
     $('a').each(function() {
