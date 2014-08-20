@@ -163,13 +163,6 @@ print render($block['content']);
                                 <?php print t($variation->field_productunit[LANGUAGE_NONE][0]['second']); ?>
                                 (<?php print number_format($tradingunit->field_tu_price[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?> € zzgl. <?php print floatval($tradingunit->field_tu_vat[LANGUAGE_NONE][0]['value']); ?>% Mwst. und <?php print number_format($tradingunit->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?> € Pfand)
                             </option>
-                            <option value="<?php print 2*$tradingunit->field_tu_amount[LANGUAGE_NONE][0]['value']; ?>">
-                                <?php print $tradingunit->field_tu_amount[LANGUAGE_NONE][0]['value']; ?>
-                                    &times;
-                                <?php print $variation->field_productunit[LANGUAGE_NONE][0]['first']; ?>
-                                <?php print t($variation->field_productunit[LANGUAGE_NONE][0]['second']); ?>
-                                (<?php print number_format($tradingunit->field_tu_price[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?> € zzgl. <?php print floatval($tradingunit->field_tu_vat[LANGUAGE_NONE][0]['value']); ?>% Mwst. und <?php print number_format($tradingunit->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?> € Pfand)
-                            </option>
                         <?php endforeach; ?>
                         </select><span class="input-group-btn"><?php print l('<span class="glyphicon glyphicon-plus"></span> ' . t('Add to cart'), 'addtocart/' . $offer->nid . '/' . $variation->nid . '/' . $variation->trading_units[0]->nid . '/1', array('html' => TRUE, 'attributes' => array('class' => array('btn', 'btn-success', 'product-cart', 'product-cart-' . $variation->nid, $hidden)), 'query' => drupal_get_destination())); ?></span></div></div>
                     </div>
