@@ -365,6 +365,11 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
+        case 'rm_seller_offer_form':
+            $form['offers']['submit']['#attributes']['class'][] = 'btn';
+            $form['offers']['submit']['#attributes']['class'][] = 'btn-success';
+            $form['offers']['submit']['#attributes']['class'][] = 'btn-lg';
+            break;
     }
 
 }
@@ -403,71 +408,7 @@ function rmtwo_preprocess_page(&$variables) {
     }
 }
 
-function rmtwo_form_element($variables) {
-    $element = &$variables['element'];
 
-    // This function is invoked as theme wrapper, but the rendered form element
-    // may not necessarily have been processed by form_builder().
-    $element += array(
-        '#title_display' => 'before',
-    );
-
-    // Add element #id for #type 'item'.
-    if (isset($element['#markup']) && !empty($element['#id'])) {
-        $attributes['id'] = $element['#id'];
-    }
-    // Add element's #type and #name as class to aid with JS/CSS selectors.
-   // $attributes['class'] = array('form-item');
-    if (!empty($element['#type'])) {
-        $attributes['class'][] = 'form-type-' . strtr($element['#type'], '_', '-');
-    }
-    if (!empty($element['#name'])) {
-        $attributes['class'][] = 'form-item-' . strtr($element['#name'], array(' ' => '-', '_' => '-', '[' => '-', ']' => ''));
-    }
-    // Add a class for disabled elements to facilitate cross-browser styling.
-    if (!empty($element['#attributes']['disabled'])) {
-        $attributes['class'][] = 'form-disabled';
-    }
-    $output = '<div' . drupal_attributes($attributes) . '>' . "\n";
-
-    // If #title is not set, we don't display any label or required marker.
-    if (!isset($element['#title'])) {
-        $element['#title_display'] = 'none';
-    }
-//    $prefix = isset($element['#field_prefix']) ? '<span class="field-prefix">' . $element['#field_prefix'] . '</span> ' : '';
-//    $suffix = isset($element['#field_suffix']) ? ' <span class="field-suffix">' . $element['#field_suffix'] . '</span>' : '';
-
-    $prefix = isset($element['#field_prefix']) ? $element['#field_prefix'] : '';
-    $suffix = isset($element['#field_suffix']) ? $element['#field_suffix'] : '';
-
-
-        switch ($element['#title_display']) {
-            case 'before':
-            case 'invisible':
-                $output .= ' ' . theme('form_element_label', $variables);
-                $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
-                break;
-
-            case 'after':
-                $output .= ' ' . $prefix . $element['#children'] . $suffix;
-                $output .= ' ' . theme('form_element_label', $variables) . "\n";
-                break;
-
-            case 'none':
-            case 'attribute':
-                // Output no label and no required marker, only the children.
-                $output .= ' ' . $prefix . $element['#children'] . $suffix . "\n";
-                break;
-        }
-
-    if (!empty($element['#description'])) {
-        $output .= '<div class="description">' . $element['#description'] . "</div>\n";
-    }
-
-    $output .= "</div>\n";
-
-    return $output;
-}
 
 function rmtwo_menu_local_tasks(&$variables) {
     $output = '';
