@@ -1628,7 +1628,7 @@ jQuery(document).ready(function ($) {
     }
     
     $('.grid-l').affix({
-         'offset' : 40
+         'offset' : 42
     });
      
      

@@ -2,12 +2,110 @@
 
 <div id="cart" class="cart-wrapper">
    <div class="cart-header">
-        <h1> Warenkorb</h1>
+        <h3><span class="glyphicon glyphicon-shopping-cart"> </span> Warenkorb</h3>
    </div>
     <div class="cart-content">
+        <div class="cart-item">
+            <div class="row">
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class=" btn  btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+                        </span>
+                        <input type="number" class="form-control">
+                        <span class="input-group-btn">
+                            <button class=" btn  btn-default"><span class="glyphicon glyphicon-minus"></span></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-7">
+                    <p class="product-title"> <small> Fleischwurst für Currywurst extra lecker, schmeckt nicht wirklich lecker.
+                    </small>
+                    </p>
+                    <p class="price text-right">
+                        <strong><small>20,34 € </small> </strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cart-item">
+            <div class="row">
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class=" btn  btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+                        </span>
+                        <input type="number" class="form-control">
+                        <span class="input-group-btn">
+                            <button class=" btn  btn-default"><span class="glyphicon glyphicon-minus"></span></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-7">
+                    <p class="product-title"> <small> Truthahn, gefüllt mir Würstchen
+                    </small>
+                    </p>
+                    <p class="price text-right">
+                        <strong><small>2000,34 € </small> </strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cart-item">
+            <div class="row">
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class=" btn  btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+                        </span>
+                        <input type="number" class="form-control">
+                        <span class="input-group-btn">
+                            <button class=" btn  btn-default"><span class="glyphicon glyphicon-minus"></span></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-7">
+                    <p class="product-title"> <small> Truthahn, gefüllt mir Würstchen
+                    </small>
+                    </p>
+                    <p class="price text-right">
+                        <strong><small>2000,34 € </small> </strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cart-item">
+            <div class="row">
+                <div class="col-xs-5">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button class=" btn  btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+                        </span>
+                        <input type="number" class="form-control">
+                        <span class="input-group-btn">
+                            <button class=" btn  btn-default"><span class="glyphicon glyphicon-minus"></span></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-xs-7">
+                    <p class="product-title"> <small> Truthahn, gefüllt mir Würstchen
+                    </small>
+                    </p>
+                    <p class="price text-right">
+                        <strong><small>2000,34 € </small> </strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!--
           <ul class="list-unstyled"> 
         <?php if(!empty($vars['cart'])): foreach($vars['cart'] as $cart_item): ?>
-         <li> 
+            <li>
+            
                 <div class="input-group">
                     <select>
                         <?php
@@ -28,12 +126,13 @@
             
         </li>
         <?php endforeach; endif; ?>
-    </ul>
+    </ul>-->
     </div>
      <div class="cart-summary">
-       <p> Gesamt<?php print number_format(rm_cart_get_cart_total(), 2, ",", "."); ?>€</p>
-       <p><?php print number_format(rm_cart_get_cart_vat(), 2, ",", "."); ?>€</p>
-        <?php print l(t('Purchase now'), 'checkout', array('external' => TRUE, 'attributes' => array('class' => array('btn', 'btn-primary', 'btn-lg', 'pull-right')))); ?>
+        <p class="pre-sum text-muted">Zwischensumme  <span class="pull-right"><?php print number_format(rm_cart_get_cart_total(), 2, ",", "."); ?>€ </span></p>
+       <p class="sum"><strong>Gesamtbetrag</strong> <span class="pull-right"><strong> <?php print number_format(rm_cart_get_cart_total(), 2, ",", "."); ?>€</strong> </p>
+        
+        <?php print l(t('Purchase now'), 'checkout', array('external' => TRUE, 'attributes' => array('class' => array('btn', 'btn-primary', 'btn-lg', 'center-block')))); ?>
      </div>
 </div>
  
