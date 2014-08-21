@@ -60,7 +60,7 @@
 <div class="wrapper-m">
     <div class="wrapper-m-inner">
         <div class="seller-infos"> 
-            <h1 class="h2"><?php print $node->title; ?></h1>
+            <h1 class="h2"><strong> <?php print $node->title; ?></strong></h1>
             <ul class="list-inline">
                 <li>
                     <span class="glyphicon glyphicon-cutlery" ></span>
@@ -106,37 +106,64 @@
                 </div>
             </div>
         </div>
+   
         <ul class="product-grid clearfix"> 
             <?php foreach($node->offers as $offer): ?>
-                <li class="list-group">
-                    <div class="list-group-item"> 
-                        <div class="dropdown">
-                            <a href="#" id="dropdownMenu<?php print $offer->nid; ?>" class="dropdown-toggle" data-toggle="dropdown"><strong><?php print $offer->offer_variations[0]->title; ?></strong> <?php if(!$onlyone): ?><span class="caret"></span><?php endif; ?></a>
-                            <?php if(!$onlyone): ?>
-                                <ul class="dropdown-menu dropdown-variation" role="menu" aria-labelledby="dropdownMenu<?php print $offer->nid; ?>">
-                                <?php foreach($offer->offer_variations as $variation): ?>
-                                    <li role="presentation" data-variation-nid="<?php print $variation->nid; ?>"><a role="menuitem" tabindex="-1" href="#"><?php print $variation->title; ?></a></li>
-                                <?php endforeach; ?>
-                                </ul>
-                            <?php endif; ?>
+                <?php $onlyone = FALSE; ?>
+                <?php if(count($offer->offer_variations) == 1) $onlyone = TRUE; ?>
+                <li>
+                    <div class="product-item"> 
+                        <!--<div class="image-wrapper">
+                            <div class="image">
+                               <img class="img-responsive" src="<?php echo base_path() . path_to_theme();?>/images/testpic.jpg">
+            
+                            </div>
+                            
+                        </div>-->
+                         
+                        <div class="product-title"> 
+                            <a href="#">
+                                <span class=" title">
+                                     <strong> <?php print $offer->offer_variations[0]->title; ?> extra lecker </strong>  
+                                </span>
+                                <!--<span class="details text-muted">
+                                    <span class="glyphicon glyphicon-eye-open"></span> <small> Details</small>
+                                </span>-->
+                            </a>
                         </div>
-                    </div>
-                    
-                    <div class="list-group-item">
-                        <select class="form-control quantity-select">                            
-                        <?php $options = rm_cart_get_quantity_options($variation->nid); ?>
                         
-                        <?php if(!empty($options)): foreach($options as $option): ?>
-                            <option value="<?php print $option;?>">
-                                <?php print $option;?>
-                                    &times;
-                                <?php print $variation->field_productunit[LANGUAGE_NONE][0]['first']; ?><?php print t($variation->field_productunit[LANGUAGE_NONE][0]['second']); ?>
-                            </option>
-                        <?php endforeach; endif; ?>
-                        </select>
-                        <span class="input-group-btn"><?php print l('<span class="glyphicon glyphicon-plus"></span> ' . t('Add to cart'), 'addtocart/' . $offer->nid . '/' . $variation->nid . '/' . $variation->trading_units[0]->nid . '/1', array('html' => TRUE, 'attributes' => array('class' => array('btn', 'btn-success', 'product-cart', 'product-cart-' . $variation->nid, $hidden)), 'query' => drupal_get_destination())); ?></span>
+                        <div class="product-data">
+                            
+                            <div class="price-unit">
+                                <div class="items btn-group" data-toggle="buttons">
+                                    
+                                       <label class="item btn active">
+                                            <input type="radio" name="options" id="option1" checked>
+                                            <span  class="price"><strong>12,56 € </strong></span>
+                                            <span  class="unit text-mute"><strong>Stk.</strong> <br>(1 x 20kg) </span>
+                                        </label>
+                                    
+                                        <label class="item btn">
+                                            <input type="radio" name="options" id="option1" >
+                                            <span  class="price"><strong>67,56 € </strong></span>
+                                            <span  class="unit text-mute"><strong>Kasten. </strong> <br>(6 x 20gr) </span>
+                                        </label>
+                                </div>
+                            <p class="info" class="text-muted"> <small><span class="glyphicon glyphicon-info-sign"></span> zzgl. 16% Mwst. und 2€ Pfand</small></p>    
+                                
+                            </div>
+                        </div>
+                           
+                        
+                       
+                        <div class="add-to-cart-area">
+                            <div class="text-center   button-display  ">
+                                <span class="glyphicon glyphicon-shopping-cart"></span> in den Warenkorb
+                            </div>
+                        </div>
+                           
+                  
                     </div>
-      
                 </li>
              <?php endforeach; ?>
         </ul>
