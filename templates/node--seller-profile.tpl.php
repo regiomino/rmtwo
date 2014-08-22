@@ -164,7 +164,7 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                             
                            
                             <div class="add-to-cart-area">
-                                <div class="text-center   button-display  ">
+                                <div class="text-center button-display">
                                     <span class="glyphicon glyphicon-shopping-cart"></span> in den Warenkorb
                                 </div>
                             </div>
