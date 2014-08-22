@@ -38,6 +38,9 @@ echo render($form['form_token']);
       </div>
       <div id="collapse<?php print $offer->nid; ?>" class="panel-collapse collapse">
       <div class="panel-body">
+        <div class="col-sm-12 col-md-12">
+            <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_description_title']); ?>
+        </div>
         <div class="col-sm-6 col-md-6">
             <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_origin']); ?>
         </div>
@@ -57,6 +60,7 @@ echo render($form['form_token']);
             <th>Bestand</th>
             <th>GTIN (ehem. EAN)</th>
             <th>Gebinde</th>
+            <th>Aktionen</th>
           </tr>
         </thead>
         <tbody>
@@ -66,7 +70,7 @@ echo render($form['form_token']);
                 <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_sku']); ?>
             </td>
             <td>
-                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_title']); ?>
+                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_variation_title']); ?>
             </td>
                 
             <td>
@@ -93,7 +97,7 @@ echo render($form['form_token']);
                             <th>MwSt.</th>
                             <th>Pfand</th>
                             <th>Gebindeart</th>
-                            <th>Löschen</th>
+                            <th>Aktionen</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -115,7 +119,7 @@ echo render($form['form_token']);
                                 <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_packaging']); ?>
                             </td>
                             <td>
-                                <?php print l(t('Delete'), 'manage/seller/deleteoffer/' . $tradingunit->nid, array('query' => drupal_get_destination())); ?>
+                                <?php if(count($variation->trading_units) > 1) print l(t('Delete trading unit'), 'manage/seller/deleteoffer/' . $tradingunit->nid, array('query' => drupal_get_destination())); ?>
                             </td>
                         </tr>
                         <?php endforeach; ?>
@@ -127,6 +131,9 @@ echo render($form['form_token']);
                         </tr>
                     </tbody>
                 </table>
+            </td>
+            <td>
+                <?php if(count($offer->offer_variations) > 1) print l(t('Delete variation'), 'manage/seller/deleteoffer/' . $variation->nid, array('query' => drupal_get_destination())); ?>
             </td>
           </tr>
           <?php endforeach; ?>

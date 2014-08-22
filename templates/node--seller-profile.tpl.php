@@ -57,6 +57,11 @@
             }
         }
     } */ ?>
+<?php
+$tupackaging = list_allowed_values(field_info_field('field_tu_packaging'));
+$packaging_field = field_info_field('field_tu_packaging');
+$packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading_unit');
+?>
 <div class="wrapper-m">
     <div class="wrapper-m-inner">
         <div class="seller-infos"> 
@@ -109,63 +114,66 @@
    
         <ul class="product-grid clearfix"> 
             <?php foreach($node->offers as $offer): ?>
-                <?php $onlyone = FALSE; ?>
-                <?php if(count($offer->offer_variations) == 1) $onlyone = TRUE; ?>
-                <li>
-                    <div class="product-item"> 
-                        <!--<div class="image-wrapper">
-                            <div class="image">
-                               <img class="img-responsive" src="<?php echo base_path() . path_to_theme();?>/images/testpic.jpg">
-            
-                            </div>
-                            
-                        </div>-->
-                         
-                        <div class="product-title"> 
-                            <a href="#">
-                                <span class=" title">
-                                     <strong> <?php print $offer->offer_variations[0]->title; ?> extra lecker </strong>  
-                                </span>
-                                <!--<span class="details text-muted">
-                                    <span class="glyphicon glyphicon-eye-open"></span> <small> Details</small>
-                                </span>-->
-                            </a>
-                        </div>
-                        
-                        <div class="product-data">
-                            
-                            <div class="price-unit">
-                                <div class="items btn-group" data-toggle="buttons">
-                                    
-                                       <label class="item btn active">
-                                            <input type="radio" name="options" id="option1" checked>
-                                            <span  class="price"><strong>12,56 € </strong></span>
-                                            <span  class="unit text-mute"><strong>Stk.</strong> <br>(1 x 20kg) </span>
-                                        </label>
-                                    
-                                        <label class="item btn">
-                                            <input type="radio" name="options" id="option1" >
-                                            <span  class="price"><strong>67,56 € </strong></span>
-                                            <span  class="unit text-mute"><strong>Kasten. </strong> <br>(6 x 20gr) </span>
-                                        </label>
+                <?php foreach($offer->offer_variations as $variation): ?>
+                    <li>
+                        <div class="product-item"> 
+                            <!--<div class="image-wrapper">
+                                <div class="image">
+                                   <img class="img-responsive" src="<?php echo base_path() . path_to_theme();?>/images/testpic.jpg">
+                
                                 </div>
-                            <p class="info" class="text-muted"> <small><span class="glyphicon glyphicon-info-sign"></span> zzgl. 16% Mwst. und 2€ Pfand</small></p>    
                                 
+                            </div>-->
+                             
+                            <div class="product-title"> 
+                                <a href="#">
+                                    <span class=" title">
+                                         <strong><?php print $variation->title; ?></strong>  
+                                    </span>
+                                    <!--<span class="details text-muted">
+                                        <span class="glyphicon glyphicon-eye-open"></span> <small> Details</small>
+                                    </span>-->
+                                </a>
                             </div>
-                        </div>
-                           
-                        
-                       
-                        <div class="add-to-cart-area">
-                            <div class="text-center   button-display  ">
-                                <span class="glyphicon glyphicon-shopping-cart"></span> in den Warenkorb
+                            
+                            <div class="product-data">
+                                <div class="price-unit">
+                                    <div class="items btn-group" data-toggle="buttons">
+                                        <?php $first = TRUE; foreach($variation->trading_units as $tradingunit): ?>
+                                            <?php
+                                                if(isset($tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']) && !empty($tupackaging[$tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']])) {
+                                                    $packaging = $tupackaging[$tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']];
+                                                }
+                                                else {
+                                                    $default = field_get_default_value('node', $tradingunit, $packaging_field, $packaging_instance, $tradingunit->language);
+                                                    $packaging = $tupackaging[$default[0]['value']];
+                                                }
+                                            ?>
+                                            <label class="item btn <?php if($first): ?>active<?php endif; $first=FALSE; ?>">
+                                                <input type="radio" name="options" id="option<?php print $tradingunit->nid; ?>" checked>
+                                                <span  class="price"><strong><?php print number_format($tradingunit->field_tu_price[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€</strong></span>
+                                                <span  class="unit text-mute"><strong><?php print $packaging; ?></strong> <br>(<?php print $tradingunit->field_tu_amount[LANGUAGE_NONE][0]['value']; ?> x <?php print $variation->field_productunit[LANGUAGE_NONE][0]['first']; ?><?php print t($variation->field_productunit[LANGUAGE_NONE][0]['second']); ?>) <br><small><span class="glyphicon glyphicon-info-sign"></span> zzgl. <?php print $tradingunit->field_tu_vat[LANGUAGE_NONE][0]['value']; ?>% MwSt.<?php if(!empty($tradingunit->field_tu_deposit[LANGUAGE_NONE][0]['value'])): ?><br><span class="glyphicon glyphicon-info-sign"></span> zzgl. <?php print number_format($tradingunit->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€ Pfand<?php endif; ?></small></span>
+                                            </label>
+                                        <?php endforeach; ?>
+                                    </div>
+                                    
+                                    
+                                </div>
                             </div>
-                        </div>
+                               
+                            
                            
-                  
-                    </div>
-                </li>
-             <?php endforeach; ?>
+                            <div class="add-to-cart-area">
+                                <div class="text-center   button-display  ">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span> in den Warenkorb
+                                </div>
+                            </div>
+                               
+                      
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            <?php endforeach; ?>
         </ul>
     </div>
 </div>
