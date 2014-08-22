@@ -126,7 +126,7 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                             </div>-->
                              
                             <div class="product-title"> 
-                                <a href="#">
+                                <a href="#" data-toggle="modal" data-target="#variationModal<?php print $variation->nid; ?>">
                                     <span class=" title">
                                          <strong><?php print $variation->title; ?></strong>  
                                     </span>
@@ -184,3 +184,32 @@ $block = module_invoke('rm_cart', 'block_view', 'rm_cart_block');
     print render($block['content']);
 ?>
 </div>
+
+<?php foreach($node->offers as $offer): ?>
+    <?php foreach($offer->offer_variations as $variation): ?>
+        <div class="modal fade" id="variationModal<?php print $variation->nid;?>">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="variationModalLabel"><?php print $variation->title; ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                        <?php if(!empty($variation->field_image[LANGUAGE_NONE][0]['uri'])): ?>
+                            <img src="<?php print image_style_url('thumbnail', $variation->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $variation->title; ?>" class="img-thumbnail pull-left">
+                        <?php endif; ?>
+                        <?php print $variation->body[LANGUAGE_NONE][0]['value']; ?>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+                        <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> in den Warenkorb</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    <?php endforeach; ?>
+<?php endforeach; ?>
+
+
