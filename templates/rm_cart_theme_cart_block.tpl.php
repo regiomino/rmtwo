@@ -35,11 +35,11 @@
                 <div class="col-xs-5">
                     <div class="input-group stepper ">
                         <span class="input-group-btn">
-                            <button class="btn btn-default stepper-control" data-operation = "-1" ><span class="glyphicon glyphicon-minus"></span></button>
+                            <button class="btn btn-default stepper-control stepper-minus" data-operation = "-1" ><span class="glyphicon glyphicon-minus"></span></button>
                         </span>
                         <input  type="number" value="<?php print $variation->field_productunit[LANGUAGE_NONE][0]['first'] ?>" class="form-control stepper-qty">
                         <span class="input-group-btn">
-                            <button class="btn btn-default stepper-control" data-operation = "1" ><span class="glyphicon glyphicon-plus"></span></button>
+                            <button class="btn btn-default stepper-control stepper-plus" data-operation = "1" ><span class="glyphicon glyphicon-plus"></span></button>
                         </span>
                     </div>
                     <a href="<?php print $cart_item->nid ?>" class="delete-item text-muted"><small> <span class="glyphicon glyphicon-trash"></span> Löschen</small> </a>
