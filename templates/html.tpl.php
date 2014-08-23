@@ -68,7 +68,7 @@
                                   // Counter
                              (function ($) {     
                             $("ul.countdown").jCounter({
-                                        date: "25 august 2014 12:00:00",
+                                        date: "28 august 2014 13:00:00",
                                         timezone: "Europe/Berlin",
                                         format: "dd:hh:mm:ss",
                                         twoDigits: 'on',
