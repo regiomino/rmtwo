@@ -37,7 +37,7 @@
                         <span class="input-group-btn">
                             <button class="btn btn-default stepper-control stepper-minus" data-operation = "-1" ><span class="glyphicon glyphicon-minus"></span></button>
                         </span>
-                        <input  type="number" value="<?php print $variation->field_productunit[LANGUAGE_NONE][0]['first'] ?>" class="form-control stepper-qty">
+                        <input  type="number" value="<?php print $cart_item->field_quantity[LANGUAGE_NONE][0]['value'] ?>" class="form-control stepper-qty">
                         <span class="input-group-btn">
                             <button class="btn btn-default stepper-control stepper-plus" data-operation = "1" ><span class="glyphicon glyphicon-plus"></span></button>
                         </span>
