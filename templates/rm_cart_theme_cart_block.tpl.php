@@ -12,6 +12,7 @@
 
         <?php if(!empty($vars['cart'])): foreach($vars['cart'] as $cart_item): ?>
         <?php
+       
             $tupackaging = list_allowed_values(field_info_field('field_tu_packaging'));
             $packaging_field = field_info_field('field_tu_packaging');
             $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading_unit');
@@ -27,23 +28,25 @@
                 $default = field_get_default_value('node', $tradingunit, $packaging_field, $packaging_instance, $tradingunit->language);
                 $packaging = $tupackaging[$default[0]['value']];
             }
+            
         ?>
-        <div class="cart-item">
+        <div class="cart-item" data-offerid="<?php print $cart_item->nid; ?>" data-variation="<?php print $variation->vid; ?>" data-tradingunit="<?php print $cart_item->field_trading_unit_reference[LANGUAGE_NONE][0]['target_id'];   ?>" >
             <div class="row">
                 <div class="col-xs-5">
-                    <div class="input-group">
+                    <div class="input-group stepper ">
                         <span class="input-group-btn">
-                            <button class=" btn  btn-default"><span class="glyphicon glyphicon-plus"></span></button>
+                            <button class="btn btn-default stepper-control" data-operation = "-1" ><span class="glyphicon glyphicon-minus"></span></button>
                         </span>
-                        <input type="number" class="form-control">
+                        <input  type="number" value="<?php print $variation->field_productunit[LANGUAGE_NONE][0]['first'] ?>" class="form-control stepper-qty">
                         <span class="input-group-btn">
-                            <button class=" btn  btn-default"><span class="glyphicon glyphicon-minus"></span></button>
+                            <button class="btn btn-default stepper-control" data-operation = "1" ><span class="glyphicon glyphicon-plus"></span></button>
                         </span>
                     </div>
+                    <a href="<?php print $cart_item->nid ?>" class="delete-item text-muted"><small> <span class="glyphicon glyphicon-trash"></span> Löschen</small> </a>
                 </div>
                 <div class="col-xs-7">
-                    <p class="product-title"> <small> <?php print $variation->title; ?><br><small><?php print $packaging; ?> (<?php print $unit_description; ?>)</small>
-                    </small>
+                    <p class="product-title">  <?php print $variation->title; ?><br><span class="tradingunit text-muted"><small><?php print $packaging; ?> (<?php print $unit_description; ?>)</small></span>
+                    
                     </p>
                     <p class="price text-right">
                         <strong><small><?php print $item_total; ?>€ </small> </strong>

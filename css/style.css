@@ -6464,8 +6464,18 @@ label {
   -webkit-appearance: none;
   margin: 0;
 }
+.cart-wrapper .cart-item .input-group:hover,
+.cart-wrapper .cart-item .input-group:focus {
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+}
 .cart-wrapper .cart-item input[type=number] {
   -moz-appearance: textfield;
+}
+.cart-wrapper .cart-item .input-group-btn button:focus,
+.cart-wrapper .cart-item .input-group-btn button:active,
+.cart-wrapper .cart-item .input-group-btn button:hover {
+  outline: 0px !important;
+  -webkit-appearance: none;
 }
 .cart-wrapper .cart-item .form-control {
   padding: 6px 5px;
@@ -6481,10 +6491,27 @@ label {
 }
 .cart-wrapper .cart-item p.product-title {
   border-bottom: 1px solid #ddd;
+  color: #95bc0d;
   padding-bottom: 5px;
+  line-height: 17px;
+}
+.cart-wrapper .cart-item p.product-title .tradingunit {
+  display: block;
+}
+.cart-wrapper .cart-item p.product-title .tradingunit small {
+  font-size: 82%;
 }
 .cart-wrapper .cart-item p.price {
   padding-top: 5px ;
+}
+.cart-wrapper .cart-item .input-group {
+  margin-bottom: 5px;
+}
+.cart-wrapper .cart-item .delete-item .glyphicon {
+  top: 2px;
+}
+.cart-wrapper .cart-item .delete-item small {
+  font-size: 82%;
 }
 .cart-wrapper .pre-sum {
   padding: 10px 0 7px;

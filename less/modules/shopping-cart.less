@@ -29,8 +29,22 @@
           margin: 0; 
         }
         
+        .input-group:hover,
+        .input-group:focus {
+            box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+        }
+        
         input[type=number] {
             -moz-appearance:textfield;
+        }
+        .input-group-btn {
+            button:focus,
+button:active,
+button:hover
+{
+    outline:0px !important;
+    -webkit-appearance:none;
+}
         }
         
         .form-control {
@@ -39,7 +53,7 @@
         
         .row {
             margin-left: -5px;
-margin-right: -5px;
+            margin-right: -5px;
         }
         
         .col-xs-5,
@@ -49,17 +63,36 @@ margin-right: -5px;
             padding-right: 5px;
         }
         
-        
-        
         p.product-title {
             border-bottom: 1px solid #ddd;
-             
+            color: @brand-primary;
             padding-bottom: 5px;
+            line-height: 17px;
             
+            .tradingunit {
+                display: block;
+                
+                small {
+                    font-size: 82%;
+                }
+            }
         }
         
         p.price {
             padding-top: 5px ;
+        }
+        
+        .input-group {
+            margin-bottom: 5px;
+        }
+        
+        .delete-item {
+            .glyphicon {
+                top: 2px;
+            }
+            small {
+                    font-size: 82%;
+                }
         }
     }
     

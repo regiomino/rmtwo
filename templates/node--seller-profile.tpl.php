@@ -117,29 +117,29 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                 <?php foreach($offer->offer_variations as $variation): ?>
                     <li>
                         <div class="product-item"> 
-                            <!--<div class="image-wrapper">
+                            <div class="image-wrapper">
                                 <div class="image">
-                                   <img class="img-responsive" src="<?php echo base_path() . path_to_theme();?>/images/testpic.jpg">
-                
+                                   <img class="img-responsive" src="<?php print image_style_url('thumbnail', $variation->field_image[LANGUAGE_NONE][0]['uri']); ?>">
+                                    
                                 </div>
                                 
-                            </div>-->
+                            </div>
                              
                             <div class="product-title"> 
                                 <a href="#" data-toggle="modal" data-target="#variationModal<?php print $variation->nid; ?>">
                                     <span class=" title">
                                          <strong><?php print $variation->title; ?></strong>  
                                     </span>
-                                    <!--<span class="details text-muted">
+                                    <span class="details text-muted">
                                         <span class="glyphicon glyphicon-eye-open"></span> <small> Details</small>
-                                    </span>-->
+                                    </span> 
                                 </a>
                             </div>
                             
                             <div class="product-data">
                                 <div class="price-unit">
                                     <div class="items btn-group" data-toggle="buttons">
-                                        <?php $first = TRUE; foreach($variation->trading_units as $tradingunit): ?>
+                                        <?php $first = TRUE; foreach($variation->trading_units as $delta => $tradingunit): ?>
                                             <?php
                                                 if(isset($tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']) && !empty($tupackaging[$tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']])) {
                                                     $packaging = $tupackaging[$tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']];
@@ -149,8 +149,8 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                                                     $packaging = $tupackaging[$default[0]['value']];
                                                 }
                                             ?>
-                                            <label class="item btn <?php if($first): ?>active<?php endif; $first=FALSE; ?>">
-                                                <input type="radio" name="options" id="option<?php print $tradingunit->nid; ?>" checked>
+                                            <label class="item btn <?php if($first): ?>active<?php endif; ?>">
+                                                <input type="radio" name="options" data-tradingunit="<?php print $tradingunit->nid; ?>" id="option<?php print $tradingunit->nid; ?>" <?php if($first): ?> checked <?php endif; $first=FALSE;  ?>>
                                                 <span  class="price"><strong><?php print number_format($tradingunit->field_tu_price[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€</strong></span>
                                                 <span  class="unit text-mute"><strong><?php print $packaging; ?></strong> <br>(<?php print $tradingunit->field_tu_amount[LANGUAGE_NONE][0]['value']; ?> &times; <?php print $variation->field_productunit[LANGUAGE_NONE][0]['first']; ?><?php print t($variation->field_productunit[LANGUAGE_NONE][0]['second']); ?>) <br><small><span class="glyphicon glyphicon-info-sign"></span> zzgl. <?php print $tradingunit->field_tu_vat[LANGUAGE_NONE][0]['value']; ?>% MwSt.<?php if(!empty($tradingunit->field_tu_deposit[LANGUAGE_NONE][0]['value'])): ?><br><span class="glyphicon glyphicon-info-sign"></span> zzgl. <?php print number_format($tradingunit->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€ Pfand<?php endif; ?></small></span>
                                             </label>
@@ -163,8 +163,8 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                                
                             
                            
-                            <div class="add-to-cart-area">
-                                <div class="text-center button-display">
+                            <div class="add-to-cart-area" >
+                                <div class="text-center button-display add2Cart" data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>">
                                     <span class="glyphicon glyphicon-shopping-cart"></span> in den Warenkorb
                                 </div>
                             </div>
