@@ -16,6 +16,7 @@
             $tupackaging = list_allowed_values(field_info_field('field_tu_packaging'));
             $packaging_field = field_info_field('field_tu_packaging');
             $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading_unit');
+            $offer = node_load($cart_item->field_offer_desc_reference[LANGUAGE_NONE][0]['target_id']);
             $variation = node_load($cart_item->field_offer_variation_reference[LANGUAGE_NONE][0]['target_id']);
             $tradingunit = node_load($cart_item->field_trading_unit_reference[LANGUAGE_NONE][0]['target_id']);
             $options = rm_cart_get_quantity_options($cart_item->field_offer_variation_reference[LANGUAGE_NONE][0]['target_id']);
@@ -30,7 +31,7 @@
             }
             
         ?>
-        <div class="cart-item" data-offerid="<?php print $cart_item->nid; ?>" data-variation="<?php print $variation->vid; ?>" data-tradingunit="<?php print $cart_item->field_trading_unit_reference[LANGUAGE_NONE][0]['target_id'];   ?>" >
+        <div class="cart-item" data-offerid="<?php print $offer->nid; ?>" data-variation="<?php print $variation->vid; ?>" data-tradingunit="<?php print $cart_item->field_trading_unit_reference[LANGUAGE_NONE][0]['target_id'];   ?>" >
             <div class="row">
                 <div class="col-xs-5">
                     <div class="input-group stepper ">
