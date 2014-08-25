@@ -22,13 +22,12 @@
     .cart-item {
         padding: 10px 0 5px;
         border-bottom: 1px solid #ddd;
-        
+        position: relative;
         input[type=number]::-webkit-inner-spin-button, 
         input[type=number]::-webkit-outer-spin-button { 
           -webkit-appearance: none; 
           margin: 0; 
         }
-        
         .input-group:hover,
         .input-group:focus {
             box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
@@ -39,12 +38,18 @@
         }
         .input-group-btn {
             button:focus,
-button:active,
-button:hover
-{
-    outline:0px !important;
-    -webkit-appearance:none;
-}
+            
+        button:active,
+        button:hover
+        {
+            outline:0px !important;
+            -webkit-appearance:none;
+        }
+        }
+        
+        .loader {
+            right: 0px;
+top: 15px;
         }
         
         .form-control {
