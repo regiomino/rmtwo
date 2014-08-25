@@ -2,6 +2,9 @@
     $tupackaging = list_allowed_values(field_info_field('field_tu_packaging'));
     $packaging_field = field_info_field('field_tu_packaging');
     $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading_unit');
+    $sellerprofile_id = arg(1);
+    $minimum_order_values = array();
+    if(isset($_SESSION['regionselect']['zip'])) $minimum_order_values = rm_cart_get_minimum_order_values(node_load($sellerprofile_id)->uid, $_SESSION['regionselect']['zip']);
 ?>
 
 <div id="cart" class="cart-wrapper">
@@ -12,10 +15,6 @@
 
         <?php if(!empty($vars['cart'])): foreach($vars['cart'] as $cart_item): ?>
         <?php
-       
-            $tupackaging = list_allowed_values(field_info_field('field_tu_packaging'));
-            $packaging_field = field_info_field('field_tu_packaging');
-            $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading_unit');
             $offer = node_load($cart_item->field_offer_desc_reference[LANGUAGE_NONE][0]['target_id']);
             $variation = node_load($cart_item->field_offer_variation_reference[LANGUAGE_NONE][0]['target_id']);
             $tradingunit = node_load($cart_item->field_trading_unit_reference[LANGUAGE_NONE][0]['target_id']);
@@ -65,6 +64,17 @@
        <p class="sum"><strong>Gesamtbetrag</strong> <span class="pull-right"><strong> <?php print number_format(rm_cart_get_cart_total() + rm_cart_get_cart_vat(), 2, ",", "."); ?>€</strong> </p>
         
         <?php print l(t('Purchase now'), 'checkout', array('external' => TRUE, 'attributes' => array('class' => array('btn', 'btn-primary', 'btn-lg', 'center-block')))); ?>
+     </div>
+     <div class="minimum-order-values">
+            <p>Mindestbestellwerte</p>
+         <table class="table">
+         <?php foreach($minimum_order_values as $type => $value): ?>
+            <tr>
+                <td><?php print node_type_get_name($type); ?></td>
+                <td><?php print number_format($value, 2, ",", "."); ?>€</td>
+            </tr>
+         <?php endforeach; ?>
+         </table>
      </div>
 </div>
  
