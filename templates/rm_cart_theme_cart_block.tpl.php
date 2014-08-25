@@ -69,7 +69,7 @@
             <p>Mindestbestellwerte</p>
          <table class="table">
          <?php foreach($minimum_order_values as $type => $value): ?>
-            <tr>
+            <tr class="<?php $cart_total = rm_cart_get_cart_total(); print ($cart_total >= $value) ? 'mov_reached' : 'mov_not_reached'; ?>">
                 <td><?php print node_type_get_name($type); ?></td>
                 <td><?php print number_format($value, 2, ",", "."); ?>€</td>
             </tr>
