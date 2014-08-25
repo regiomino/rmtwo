@@ -28,6 +28,7 @@
                 $default = field_get_default_value('node', $tradingunit, $packaging_field, $packaging_instance, $tradingunit->language);
                 $packaging = $tupackaging[$default[0]['value']];
             }
+            $max_items = false;
             
         ?>
         <div class="cart-item" data-offerid="<?php print $offer->nid; ?>" data-variation="<?php print $variation->vid; ?>" data-tradingunit="<?php print $cart_item->field_trading_unit_reference[LANGUAGE_NONE][0]['target_id'];   ?>" >
@@ -37,9 +38,13 @@
                         <span class="input-group-btn">
                             <button class="btn btn-default stepper-control stepper-minus" data-operation = "-1" ><span class="glyphicon glyphicon-minus"></span></button>
                         </span>
+                        <?php if ($cart_item->field_quantity[LANGUAGE_NONE][0]['value'] ==  $cart_item_max) :
+                            $max_items = true;
+                            endif;
+                        ?>
                         <input  type="number" value="<?php print $cart_item->field_quantity[LANGUAGE_NONE][0]['value'] ?>" class="form-control stepper-qty" max="<?php print $cart_item_max; ?>">
                         <span class="input-group-btn">
-                            <button class="btn btn-default stepper-control stepper-plus" data-operation = "1" ><span class="glyphicon glyphicon-plus"></span></button>
+                            <button <?php if ($max_items): print 'disabled="true"'; endif; ?> class="btn btn-default stepper-control stepper-plus" data-operation = "1" ><span class="glyphicon glyphicon-plus"></span></button>
                         </span>
                     </div>
                     <a href="<?php print $cart_item->nid ?>" class="delete-item text-muted"><small> <span class="glyphicon glyphicon-trash"></span> Löschen</small> </a>
@@ -53,6 +58,7 @@
                     </p>
                 </div>
             </div>
+            <!--<div class="loader"></div>-->
         </div>
         <?php endforeach; endif; ?>
         
