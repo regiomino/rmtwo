@@ -19,6 +19,7 @@
             $offer = node_load($cart_item->field_offer_desc_reference[LANGUAGE_NONE][0]['target_id']);
             $variation = node_load($cart_item->field_offer_variation_reference[LANGUAGE_NONE][0]['target_id']);
             $tradingunit = node_load($cart_item->field_trading_unit_reference[LANGUAGE_NONE][0]['target_id']);
+            $cart_item_max = rm_cart_item_get_max_amount($cart_item->nid);
             $item_total = number_format(rm_cart_get_item_total($cart_item->nid), 2, ",", ".");
             $unit_description = $tradingunit->field_tu_amount[LANGUAGE_NONE][0]['value'] . ' &times; ' . $variation->field_productunit[LANGUAGE_NONE][0]['first'] . t($variation->field_productunit[LANGUAGE_NONE][0]['second']);
             if(isset($tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']) && !empty($tupackaging[$tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']])) {
@@ -37,7 +38,7 @@
                         <span class="input-group-btn">
                             <button class="btn btn-default stepper-control stepper-minus" data-operation = "-1" ><span class="glyphicon glyphicon-minus"></span></button>
                         </span>
-                        <input  type="number" value="<?php print $cart_item->field_quantity[LANGUAGE_NONE][0]['value'] ?>" class="form-control stepper-qty">
+                        <input  type="number" value="<?php print $cart_item->field_quantity[LANGUAGE_NONE][0]['value'] ?>" class="form-control stepper-qty" max="<?php print $cart_item_max; ?>">
                         <span class="input-group-btn">
                             <button class="btn btn-default stepper-control stepper-plus" data-operation = "1" ><span class="glyphicon glyphicon-plus"></span></button>
                         </span>
