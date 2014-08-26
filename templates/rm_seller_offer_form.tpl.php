@@ -1,7 +1,8 @@
 <?php
-$form = drupal_get_form('rm_seller_offer_form');
+$form = $variables['form'];
+//$form = drupal_get_form('rm_seller_offer_form');
 $uid = $user->uid;
-if(rm_user_is_admin()) $uid = 44;
+if(rm_user_is_admin()) $uid = 50;
 $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
 
 ?>
@@ -38,10 +39,15 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
       <div id="collapse<?php print $offer->nid; ?>" class="panel-collapse collapse">
       <div class="panel-body">
         <div class="col-sm-12 col-md-12">
+            <strong>Titel</strong>
             <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_description_title-' . $offer->nid]); ?>
         </div>
         <div class="col-sm-6 col-md-6">
-            <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_origin-' . $offer->nid]); ?>
+            <strong>Herkunft</strong>
+            <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_origin_company-' . $offer->nid]); ?>
+            <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_origin_zip-' . $offer->nid]); ?>
+            <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_origin_locality-' . $offer->nid]); ?>
+            <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_origin_country-' . $offer->nid]); ?>
         </div>
         <div class="col-sm-6 col-md-6">
             <?php //print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_label_reference-' . $offer->nid]); ?>
