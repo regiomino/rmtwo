@@ -84,17 +84,19 @@
        <p class="pre-sum last text-muted"><small>zzgl. MwSt.  <span class="pull-right"><?php print number_format(rm_cart_get_cart_vat(), 2, ",", "."); ?>€ </span></small></p>
       <p class="sum"><strong>Gesamtbetrag</strong> <span class="pull-right"><strong> <?php print number_format(rm_cart_get_cart_total() + rm_cart_get_cart_vat(), 2, ",", "."); ?>€</strong> </p>
       <div class="minimum-order-values">
-          <div class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-ok"></span> Selbstabholung ab 0,00 €</div>
-          <div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-remove"></span> Lieferung ab 13,50 € <strong class="pull-right"> noch 2€</strong></div>
-           <div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-remove"></span> Versand ab 13,50 € <strong class="pull-right"> noch 3,46€</strong></div>
+        <?php foreach($minimum_order_values as $type => $value): ?>
+          <div class="alert <?php $cart_total = rm_cart_get_cart_total(); print ($cart_total >= $value) ? 'alert-success' : 'alert-danger'; ?>" role="alert"><span class="glyphicon glyphicon glyphicon-<?php $cart_total = rm_cart_get_cart_total(); print ($cart_total >= $value) ? 'ok' : 'remove'; ?>"></span> <?php print node_type_get_name($type); ?> ab <?php print number_format($value, 2, ",", "."); ?> € <strong class="pull-right"> <?php if($value - $cart_total> 0): ?>noch <?php print number_format($value - $cart_total, 2, ",", "."); ?>€<?php endif; ?></strong></div>
+          <?php endforeach; ?> 
       
         <!--<?php foreach($minimum_order_values as $type => $value): ?>
-           <tr class="<?php $cart_total = rm_cart_get_cart_total(); print ($cart_total >= $value) ? 'mov_reached' : 'mov_not_reached'; ?>">
+           <tr class="<?php $cart_total = rm_cart_get_cart_total(); print ($cart_total >= $value) ? 'alert-success' : 'alert-danger'; ?>">
                <td><?php print node_type_get_name($type); ?></td>
                <td><?php print number_format($value, 2, ",", "."); ?>€</td>
            </tr>
         <?php endforeach; ?>-->
-       
+      
+
+
     </div>
       
        <?php if(!$emptycart):  

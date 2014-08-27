@@ -6,8 +6,10 @@
         position: fixed;
     }
     
-    .affix-bottom {
-        
+    .modal-body {
+        .media-object {
+            margin-right: 15px;
+        }
     }
 }
 
@@ -85,17 +87,17 @@
         }
         
         .product-item {
-            transition: box-shadow 200ms ease-in;
             border: 1px solid #DDD;
             border-radius: 4px;
-            padding-bottom:46px;
             position: relative;
             
             &:hover {
-                box-shadow: 0 0 0 3px @brand-primary;
+                 
+                box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
             }
             
             .product-image {
+                overflow: hidden;
                 img {
                     width: 100%;
                     height: auto;
@@ -141,6 +143,14 @@
                         width: 100%;
                         position: relative;
                         padding: 7px 5px 6px;
+                    }
+                    
+                    .tradingunit-single {
+                        width: 100%;
+                        position: relative;
+                        padding: 7px 5px 6px;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
                     }
                     
                     .price {
@@ -196,7 +206,7 @@
                         padding: 0px;
                         
                        li a {
-                            padding: 8px 11px;
+                            padding: 8px 9px;
                             border-bottom: 1px solid #DDD;
                        }
                        
@@ -211,25 +221,18 @@
 
         .add-to-cart-area {
             
-            cursor:pointer;
-            border-radius: 4px;
-            background: #FFF;
-            overflow: hidden;
-            width: 100%;
-            height: 44px;
-            line-height: 43px;
-            margin: 0;
-            padding: 0;
-            vertical-align: middle;
-            border-top: 1px solid #DDD;
-            position: absolute!important;
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-             
-            
+            button.btn {
+                border: none;
+                border-top: 1px solid #ddd;
+                width: 100%;
+                border-radius: 0;
+                padding: 13px 16px;
+                font-size: 14px;
+            }
+
         }
     }
+    
+    
     
 }
