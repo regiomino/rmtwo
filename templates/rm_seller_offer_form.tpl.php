@@ -1,13 +1,13 @@
+<?php
+$form = $variables['form'];
+//$form = drupal_get_form('rm_seller_offer_form');
+$uid = $user->uid;
+if(rm_user_is_admin()) $uid = 50;
+$vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
+
+?>
 
 <div class="col-sm-12 col-md-12 main">
-
-<?php
-$form = $vars['form'];
-echo render($form['form_id']);
-echo render($form['form_build_id']);
-echo render($form['form_token']);
-//print render($form);
-?>
 
 <?php foreach($vars['offers'] as $offer): ?>
     <?php
@@ -39,13 +39,18 @@ echo render($form['form_token']);
       <div id="collapse<?php print $offer->nid; ?>" class="panel-collapse collapse">
       <div class="panel-body">
         <div class="col-sm-12 col-md-12">
-            <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_description_title']); ?>
+            <strong>Titel</strong>
+            <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_description_title-' . $offer->nid]); ?>
         </div>
         <div class="col-sm-6 col-md-6">
-            <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_origin']); ?>
+            <strong>Herkunft</strong>
+            <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_origin_company-' . $offer->nid]); ?>
+            <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_origin_zip-' . $offer->nid]); ?>
+            <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_origin_locality-' . $offer->nid]); ?>
+            <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_origin_country-' . $offer->nid]); ?>
         </div>
         <div class="col-sm-6 col-md-6">
-            <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_label_reference']); ?>
+            <?php //print render($form['offers']['offer_' . $offer->nid]['these_fields']['field_label_reference-' . $offer->nid]); ?>
         </div>
       </div>
       <!-- Table -->
@@ -55,7 +60,7 @@ echo render($form['form_token']);
             <th>Angebotsnr.</th>
             <th>Bezeichnung Variante</th>
             <th>Beschreibung</th>
-            <th>Bilder</th>
+            <!--<th>Bilder</th>-->
             <th>Produkteinheit</th>
             <th>Bestand</th>
             <th>GTIN (ehem. EAN)</th>
@@ -67,29 +72,30 @@ echo render($form['form_token']);
         <?php foreach($offer->offer_variations as $variation): ?>
           <tr id="variation<?php print $variation->nid; ?>">
             <td class="vert-align">
-                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_sku']); ?>
+                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_sku-' . $variation->nid]); ?>
             </td>
             <td>
-                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_variation_title']); ?>
+                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_variation_title-' . $variation->nid]); ?>
             </td>
                 
             <td>
-                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['body']); ?>
+                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['body-' . $variation->nid]); ?>
+            </td>
+           <!--<td>
+                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_image-' . $variation->nid]); ?>
+            </td>-->
+            <td>
+                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_productunit_amount-' . $variation->nid]); ?>
+                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_productunit_unit-' . $variation->nid]); ?>
             </td>
             <td>
-                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_image']); ?>
+                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_stock-' . $variation->nid]); ?>
             </td>
             <td>
-                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_productunit']); ?>
+                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_gtin-' . $variation->nid]); ?>
             </td>
             <td>
-                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_stock']); ?>
-            </td>
-            <td>
-                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_gtin']); ?>
-            </td>
-            <td>
-                <table>
+                <table class="table">
                     <thead>
                         <tr>
                             <th>Anzahl</th>
@@ -104,19 +110,19 @@ echo render($form['form_token']);
                         <?php foreach($variation->trading_units as $tradingunit): ?>
                         <tr>
                             <td>
-                                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_amount']); ?>
+                                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_amount-' . $tradingunit->nid]); ?>
                             </td>
                             <td>
-                                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_price']); ?>
+                                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_price-' . $tradingunit->nid]); ?>
                             </td>
                             <td>
-                                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_vat']); ?>
+                                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_vat-' . $tradingunit->nid]); ?>
                             </td>
                             <td>
-                                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_deposit']); ?>
+                                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_deposit-' . $tradingunit->nid]); ?>
                             </td>
                             <td>
-                                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_packaging']); ?>
+                                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_packaging-' . $tradingunit->nid]); ?>
                             </td>
                             <td>
                                 <?php if(count($variation->trading_units) > 1) print l(t('Delete trading unit'), 'manage/seller/deleteoffer/' . $tradingunit->nid, array('query' => drupal_get_destination())); ?>
@@ -152,3 +158,7 @@ echo render($form['form_token']);
     
     <?php print render($form['offers']['submit']); ?>
 </div>
+
+<?php
+print drupal_render_children($form);
+?>
