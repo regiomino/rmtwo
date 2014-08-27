@@ -72,7 +72,7 @@ function rmtwo_theme() {
     $items['user_register_form'] = array(
         'render element' => 'form',
         'path' => drupal_get_path('theme', 'rmtwo') . '/templates',
-        'template' => 'user-register-form',
+        'template' => 'user_register_form',
     );
     return $items;
 }
@@ -80,6 +80,7 @@ function rmtwo_theme() {
 function rmtwo_form_alter(&$form, &$form_state, $form_id) {
     switch($form_id) {
         case 'user_register_form':
+        case 'user_profile_form':
             $form['account']['mail']['#attributes']['placeholder'] = t('Your E-Mail');
             $form['account']['mail']['#attributes']['class'][] = 'form-control';
             $form['account']['mail']['#attributes']['required'] = NULL;
@@ -377,10 +378,8 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
 function rmtwo_password_confirm_process($element) {
     $element['pass1']['#attributes']['class'][] = 'form-control';
     $element['pass1']['#attributes']['placeholder'] = t('Your password');
-    $element['pass1']['#attributes']['required'] = NULL;
     $element['pass2']['#attributes']['class'][] = 'form-control';
     $element['pass2']['#attributes']['placeholder'] = t('Repeat password');
-    $element['pass2']['#attributes']['required'] = NULL;
     return $element;
 }
 
@@ -390,7 +389,16 @@ function rmtwo_phone_number_process($element) {
 }
 
 function rmtwo_preprocess_page(&$variables) {
-    if(($variables['page']['#type'] == 'page' && (arg(0) == 'lieferanten')) || (array_key_exists('node', $variables) && $variables['node']->type == 'seller_profile') || arg(0) == 'manage') {
+    if(
+        //Alle Seiten mit lieferanten als arg(0)
+        ($variables['page']['#type'] == 'page' && (arg(0) == 'lieferanten')) ||
+        //Alle Verkäuferprofil-Seiten/Shops
+        (array_key_exists('node', $variables) && $variables['node']->type == 'seller_profile') ||
+        //Alle Verwaltungsseiten für Verkäufer und Gastronomen
+        arg(0) == 'manage' ||
+        //User edit page
+        (arg(0) == 'user' && arg(2) == 'edit')
+    ) {
         $variables['theme_hook_suggestions'][] = 'page__lieferanten';
         //Preprocessing for seller profiles
         if(array_key_exists('node', $variables)) {

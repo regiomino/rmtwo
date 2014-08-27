@@ -33,9 +33,8 @@
                 <div class="panel-footer">
                     <div class="row"><div class="col-sm-12 col-md-12">
                     <?php print l(t('Go to offer management'),
-                                    'manage/seller/offers',
+                                    'manage/seller/' . $user->uid . '/offers',
                                     array(
-                                        'query' => drupal_get_destination(),
                                         'attributes' => array(
                                             'class' => array('btn', 'btn-sm', 'btn-success', 'pull-right'),
                                         ),
@@ -72,9 +71,8 @@
                 <div class="panel-footer">
                     <div class="row"><div class="col-sm-12 col-md-12">
                     <?php print l(t('Go to profile management'),
-                                    'manage/seller/profile',
+                                    'manage/seller/' . $user->uid . '/profile',
                                     array(
-                                        'query' => drupal_get_destination(),
                                         'attributes' => array(
                                             'class' => array('btn', 'btn-sm', 'btn-success', 'pull-right'),
                                         ),
@@ -96,7 +94,9 @@
                     <h3 class="panel-title"><strong><?php print t('Your user account: @account', array('@account' => format_username($user))); ?></strong></h3>
                 </div>
                 <div class="panel-body">
-                    <?php if($accountcompleteness < 1): ?>
+                    <?php if($accountcompleteness < 0.5): ?>
+                        <div class="alert alert-danger" role="alert"><?php print t('Your account is @perc% complete. Fill in the missing fields now.', array('@perc' => $accountcompleteness * 100)); ?></div>
+                    <?php elseif($accountcompleteness < 1): ?>
                         <div class="alert alert-warning" role="alert"><?php print t('Your account is @perc% complete. Fill in the missing fields now.', array('@perc' => $accountcompleteness * 100)); ?></div>
                     <?php else: ?>
                         <div class="alert alert-success" role="alert"><?php print t('Congratulations. Your account is @perc% complete.', array('@perc' => $accountcompleteness * 100)); ?></div>
@@ -108,7 +108,7 @@
                 <div class="panel-footer">
                     <div class="row"><div class="col-sm-12 col-md-12">
                     <?php print l(t('Go to account management'),
-                                    'manage/seller/account',
+                                    'manage/seller/' . $user->uid . '/account',
                                     array(
                                         'query' => drupal_get_destination(),
                                         'attributes' => array(
