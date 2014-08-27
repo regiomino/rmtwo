@@ -6,6 +6,7 @@
         <!-- Offer management -->
         <?php
             $offers = rm_shop_get_structured_seller_offers($user->uid, array(0,1));
+            
             $offercount = count($offers);
             $inactive = 0;
         ?>
@@ -33,9 +34,8 @@
                 <div class="panel-footer">
                     <div class="row"><div class="col-sm-12 col-md-12">
                     <?php print l(t('Go to offer management'),
-                                    'manage/seller/offers',
+                                    'manage/seller/' . $user->uid . '/offers',
                                     array(
-                                        'query' => drupal_get_destination(),
                                         'attributes' => array(
                                             'class' => array('btn', 'btn-sm', 'btn-success', 'pull-right'),
                                         ),
@@ -51,7 +51,7 @@
             $profile = rm_api_get_nodes_by_properties(array('seller_profile'), 1, -1, -1, -1, -1, $user->uid);
             $profilekeys = array_keys($profile);
             $profile = $profile[$profilekeys[0]];
-            $profilecompleteness = rm_user_get_profile_completeness($profile->nid);
+            $profilecompleteness = rm_user_get_profile_completeness($profile->nid, 'seller_profile');
         ?>
 
         <div class="col-sm-4">
@@ -72,7 +72,7 @@
                 <div class="panel-footer">
                     <div class="row"><div class="col-sm-12 col-md-12">
                     <?php print l(t('Go to profile management'),
-                                    'manage/seller/profile',
+                                    'manage/seller/' . $user->uid . '/profile',
                                     array(
                                         'query' => drupal_get_destination(),
                                         'attributes' => array(
@@ -96,7 +96,9 @@
                     <h3 class="panel-title"><strong><?php print t('Your user account: @account', array('@account' => format_username($user))); ?></strong></h3>
                 </div>
                 <div class="panel-body">
-                    <?php if($accountcompleteness < 1): ?>
+                    <?php if($accountcompleteness < 0.5): ?>
+                        <div class="alert alert-danger" role="alert"><?php print t('Your account is @perc% complete. Fill in the missing fields now.', array('@perc' => $accountcompleteness * 100)); ?></div>
+                    <?php elseif($accountcompleteness < 1): ?>
                         <div class="alert alert-warning" role="alert"><?php print t('Your account is @perc% complete. Fill in the missing fields now.', array('@perc' => $accountcompleteness * 100)); ?></div>
                     <?php else: ?>
                         <div class="alert alert-success" role="alert"><?php print t('Congratulations. Your account is @perc% complete.', array('@perc' => $accountcompleteness * 100)); ?></div>
@@ -108,7 +110,7 @@
                 <div class="panel-footer">
                     <div class="row"><div class="col-sm-12 col-md-12">
                     <?php print l(t('Go to account management'),
-                                    'manage/seller/account',
+                                    'manage/seller/' . $user->uid . '/account',
                                     array(
                                         'query' => drupal_get_destination(),
                                         'attributes' => array(
