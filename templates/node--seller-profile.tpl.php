@@ -115,61 +115,64 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
         <ul class="product-grid clearfix"> 
             <?php foreach($node->offers as $offer): ?>
                 <?php foreach($offer->offer_variations as $variation): ?>
-                    <li>
+                    <li class="grid-item">
                         <div class="product-item"> 
-                            <div class="image-wrapper">
-                                <div class="image">
-                                   <img class="img-responsive" src="<?php print image_style_url('thumbnail', $variation->field_image[LANGUAGE_NONE][0]['uri']); ?>">
-                                    
-                                </div>
-                                
+                            <div class="product-image">
+                                <a href="#" data-toggle="modal" data-target="#variationModal<?php print $variation->nid; ?>">
+                                   <img class="img-responsive" src="<?php print image_style_url('product_grid', $variation->field_image[LANGUAGE_NONE][0]['uri']); ?>">
+                                </a> 
                             </div>
                              
-                            <div class="product-title"> 
-                                <a href="#" data-toggle="modal" data-target="#variationModal<?php print $variation->nid; ?>">
-                                    <span class=" title">
-                                         <strong><?php print $variation->title; ?></strong>  
-                                    </span>
-                                    <span class="details text-muted">
-                                        <span class="glyphicon glyphicon-eye-open"></span> <small> Details</small>
-                                    </span> 
-                                </a>
-                            </div>
-                            
-                            <div class="product-data">
-                                <div class="price-unit">
-                                    <div class="items btn-group" data-toggle="buttons">
-                                        <?php $first = TRUE; foreach($variation->trading_units as $delta => $tradingunit): ?>
-                                            <?php
-                                                if(isset($tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']) && !empty($tupackaging[$tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']])) {
-                                                    $packaging = $tupackaging[$tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']];
-                                                }
-                                                else {
-                                                    $default = field_get_default_value('node', $tradingunit, $packaging_field, $packaging_instance, $tradingunit->language);
-                                                    $packaging = $tupackaging[$default[0]['value']];
-                                                }
-                                            ?>
-                                            <label class="item btn <?php if($first): ?>active<?php endif; ?>">
-                                                <input type="radio" name="options" data-tradingunit="<?php print $tradingunit->nid; ?>" id="option<?php print $tradingunit->nid; ?>" <?php if($first): ?> checked <?php endif; $first=FALSE;  ?>>
-                                                <span  class="price"><strong><?php print number_format($tradingunit->field_tu_price[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€</strong></span>
-                                                <span  class="unit text-mute"><strong><?php print $packaging; ?></strong> <br>(<?php print $tradingunit->field_tu_amount[LANGUAGE_NONE][0]['value']; ?> &times; <?php print $variation->field_productunit[LANGUAGE_NONE][0]['first']; ?><?php print t($variation->field_productunit[LANGUAGE_NONE][0]['second']); ?>) <br><small><span class="glyphicon glyphicon-info-sign"></span> zzgl. <?php print $tradingunit->field_tu_vat[LANGUAGE_NONE][0]['value']; ?>% MwSt.<?php if(!empty($tradingunit->field_tu_deposit[LANGUAGE_NONE][0]['value'])): ?><br><span class="glyphicon glyphicon-info-sign"></span> zzgl. <?php print number_format($tradingunit->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€ Pfand<?php endif; ?></small></span>
-                                            </label>
-                                        <?php endforeach; ?>
+                            <div class="product-infos">  
+                                <div class="product-title"> 
+                                    <a href="#" data-toggle="modal" data-target="#variationModal<?php print $variation->nid; ?>">
+                                        <span class="title">
+                                             <strong><?php print $variation->title; ?></strong>  
+                                        </span>
+                                        <span class="details text-muted">
+                                            <span class="glyphicon glyphicon-eye-open"></span> <small> Details</small>
+                                        </span> 
+                                    </a>
+                                </div>
+                                
+                                <div class="product-price">
+                                    <div class="btn-group btn-input clearfix">
+                                        <button type="button" class="btn btn-default dropdown-toggle  " data-toggle="dropdown">
+                                            <div class="label-area" data-bind="label"> 
+                                                <div class="price">
+                                                    <div class="price-unit"> 
+                                                        <strong> 14,50€</strong><br>
+                                                        <sub> <strong>Kasten </strong></sub><br>
+                                                        <small class="sucker">   6x10 Stk.</small> <br>
+                                                        
+                                                    </div>
+                                                    <div class="price-info">
+                                                    
+                                                           <span class="glyphicon glyphicon-info-sign"></span> zzgl. 19% Mwst.   <br>
+                                                            <span class="glyphicon glyphicon-info-sign"></span> zzgl. 2,50€ Pfand
+                                                        
+                                                    </div>
+                                                     
+                                                </div>
+                                                
+                                               <!-- <span class="caret"></span> -->
+                                            </div>
+                                           
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                          <li><a href="#">Item 1</a></li>
+                                          <li><a href="#">Another item</a></li>
+                                          <li><a href="#">This is a longer item that will not fit properly</a></li>
+                                        </ul>
                                     </div>
-                                    
-                                    
                                 </div>
                             </div>
                                
-                            
-                           
-                            <div class="add-to-cart-area" >
+                            <div class="add-to-cart-area">
                                 <div class="text-center button-display add2Cart" data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>">
                                     <span class="glyphicon glyphicon-shopping-cart"></span> in den Warenkorb
                                 </div>
                             </div>
-                               
-                      
                         </div>
                     </li>
                 <?php endforeach; ?>

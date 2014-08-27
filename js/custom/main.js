@@ -4,11 +4,7 @@ jQuery(document).ready(function ($) {
     if ( !Modernizr.input.placeholder) {
         $('body').addClass('no-placeholder');
     }
-    
-    $('.grid-l').affix({
-         'offset' : 42
-    });
-     
+
      
     $('#read-more').on('click', function(e){
         e.preventDefault();

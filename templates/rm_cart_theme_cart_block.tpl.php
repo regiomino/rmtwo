@@ -5,13 +5,19 @@
     $sellerprofile_id = arg(1);
     $minimum_order_values = array();
     if(isset($_SESSION['regionselect']['zip'])) $minimum_order_values = rm_cart_get_minimum_order_values(node_load($sellerprofile_id)->uid, $_SESSION['regionselect']['zip']);
+    if(empty($vars['cart'])):
+        $emptycart = true;
+    else :
+        $emptycart = false;
+    endif;
+    
 ?>
 
 <div id="cart" class="cart-wrapper">
-   <div class="cart-header">
+   <div class="cart-header" id="cart-header">
         <h3><span class="glyphicon glyphicon-shopping-cart"> </span> Warenkorb</h3>
    </div>
-    <div class="cart-content">
+    <div class="cart-content" id="cart-content">
 
         <?php if(!empty($vars['cart'])): foreach($vars['cart'] as $cart_item): ?>
         <?php
@@ -58,29 +64,49 @@
                     </p>
                 </div>
             </div>
-            <!--<div class="loader"></div>-->
+        
         </div>
-        <?php endforeach; endif; ?>
+        <?php endforeach;
+        
+        else: ?>
+        
+        <div class="empty-cart ">
+            <div class="center-block animation-target empty-cart-icon"> <span class="glyphicon glyphicon-shopping-cart"></span> </div>
+            <p class="text-center">Ihr Warenkorb ist leer. </p>
+        </div>
+        
+        <?php endif; ?>
         
         
     </div>
-     <div class="cart-summary">
-        <p class="pre-sum text-muted">Summe  <span class="pull-right"><?php print number_format(rm_cart_get_cart_total(), 2, ",", "."); ?>€ </span></p>
-        <p class="pre-sum text-muted">zzgl. MwSt.  <span class="pull-right"><?php print number_format(rm_cart_get_cart_vat(), 2, ",", "."); ?>€ </span></p>
-       <p class="sum"><strong>Gesamtbetrag</strong> <span class="pull-right"><strong> <?php print number_format(rm_cart_get_cart_total() + rm_cart_get_cart_vat(), 2, ",", "."); ?>€</strong> </p>
+    <div class="cart-summary <?php if($emptycart): print "empty"; endif; ?>" id="cart-summary">
+       <p class="pre-sum text-muted"><small>Summe  <span class="pull-right"><?php print number_format(rm_cart_get_cart_total(), 2, ",", "."); ?>€ </span></small></p>
+       <p class="pre-sum last text-muted"><small>zzgl. MwSt.  <span class="pull-right"><?php print number_format(rm_cart_get_cart_vat(), 2, ",", "."); ?>€ </span></small></p>
+      <p class="sum"><strong>Gesamtbetrag</strong> <span class="pull-right"><strong> <?php print number_format(rm_cart_get_cart_total() + rm_cart_get_cart_vat(), 2, ",", "."); ?>€</strong> </p>
+      <div class="minimum-order-values">
+          <div class="alert alert-success" role="alert"><span class="glyphicon glyphicon glyphicon-ok"></span> Selbstabholung ab 0,00 €</div>
+          <div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-remove"></span> Lieferung ab 13,50 € <strong class="pull-right"> noch 2€</strong></div>
+           <div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-remove"></span> Versand ab 13,50 € <strong class="pull-right"> noch 3,46€</strong></div>
+      
+        <!--<?php foreach($minimum_order_values as $type => $value): ?>
+           <tr class="<?php $cart_total = rm_cart_get_cart_total(); print ($cart_total >= $value) ? 'mov_reached' : 'mov_not_reached'; ?>">
+               <td><?php print node_type_get_name($type); ?></td>
+               <td><?php print number_format($value, 2, ",", "."); ?>€</td>
+           </tr>
+        <?php endforeach; ?>-->
+       
+    </div>
+      
+       <?php if(!$emptycart):  
+             print l(t('Purchase now'), 'checkout', array('external' => TRUE, 'attributes' => array('class' => array('btn','btn-primary', 'btn-lg', 'center-block'))));  
         
-        <?php print l(t('Purchase now'), 'checkout', array('external' => TRUE, 'attributes' => array('class' => array('btn', 'btn-primary', 'btn-lg', 'center-block')))); ?>
-     </div>
-     <div class="minimum-order-values">
-            <p>Mindestbestellwerte</p>
-         <table class="table">
-         <?php foreach($minimum_order_values as $type => $value): ?>
-            <tr class="<?php $cart_total = rm_cart_get_cart_total(); print ($cart_total >= $value) ? 'mov_reached' : 'mov_not_reached'; ?>">
-                <td><?php print node_type_get_name($type); ?></td>
-                <td><?php print number_format($value, 2, ",", "."); ?>€</td>
-            </tr>
-         <?php endforeach; ?>
-         </table>
-     </div>
+        else:
+            print l(t('Purchase now'), 'checkout', array('external' => TRUE, 'attributes' => array('class' => array('btn','btn-primary', 'btn-lg', 'center-block'), 'disabled' => array('true'))));  
+        endif; ?>
+        
+         
+        
+    </div>
+   
 </div>
  
