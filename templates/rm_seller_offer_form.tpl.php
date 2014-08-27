@@ -95,7 +95,7 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
             </td>
             <td>
                 <?php if(!empty($variation->field_image[LANGUAGE_NONE])): foreach($variation->field_image[LANGUAGE_NONE] as $image_delta => $image): $destination = drupal_get_destination(); ?>
-                    <p><img src="<?php print image_style_url('icon', $image['uri']); ?>" alt="<?php print $variation->title; ?>"> <a href="/deleteimage/<?php print $variation->nid; ?>/<?php print $image_delta; ?>#<?php print $offer->nid; ?>"><?php print t('delete'); ?></a></p>                    
+                    <p><img src="<?php print image_style_url('icon', $image['uri']); ?>" alt="<?php print $variation->title; ?>"> <a href="/deleteimage/<?php print $variation->nid; ?>/<?php print $image_delta; ?>"><?php print t('delete'); ?></a></p>                    
                 <?php endforeach; endif; ?>
                 <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_image-' . $variation->nid]); ?>
             </td>
