@@ -64,54 +64,58 @@
         float: left;
         width: 100%;
         
-        @media screen and (min-width: 768px){
+        @media screen and (min-width: 797px){
             width: 50%;
         }
         
-        @media screen and (min-width: 937px){
+        @media screen and (min-width: 1017px){
             width: 33%;
         }
         
-        @media screen and (min-width: 1200px){
+        @media screen and (min-width: 1205px){
             width: 25%;
         }
         
-        @media screen and (min-width: 1386px){
+        @media screen and (min-width: 1436px){
             width: 20%;
         }
         
+         @media screen and (min-width: 1882px){
+            width: 16%;
+        }
         
         .product-item {
-            
+            transition: box-shadow 200ms ease-in;
             border: 1px solid #DDD;
             border-radius: 4px;
             padding-bottom:46px;
             position: relative;
-            transition: all .1s linear;
             
             &:hover {
-                box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+                box-shadow: 0 0 0 3px @brand-primary;
             }
             
             .product-image {
-                
+                img {
+                    width: 100%;
+                    height: auto;
+                }
             }
             
             .product-infos {
-                padding: 10px;
-                height: 104px;
+                
+                height: 129px;
             
                 .product-title {
                     border-bottom: 1px solid #DDD;
+                  
                     
-                    
-                    .title {
-                        display: inline-block;
+                    a.title {
+                        line-height: 16px;
+                        display: block;
+                        padding: 8px 10px 6px;
                     }
-                    .h4 {
-                        margin: 0;
-                    }
-                    
+                     
                     .details {
                         position: absolute;
                         right: 10px;
@@ -127,7 +131,7 @@
                 }
                 
                 .product-price {
-                    padding-top:10px;
+                    padding: 10px 10px 10px 10px;
                     
                     .btn-input {
                         display: block;
@@ -136,53 +140,71 @@
                     .btn {
                         width: 100%;
                         position: relative;
-                        padding: 6px 5px 5px;
+                        padding: 7px 5px 6px;
                     }
-                      
                     
                     .price {
-                        
                         color: #333;
                         text-align: left;
+                    }
+                    .price-unit,
+                    .price-info {
+                        height: 46px;
                     }
                     
                     .price-unit {
                         font-size: 20px;
                         float: left;
-                        padding-right: 3px;
-                        
-                        height: auto;
-                        line-height: 14px;
+                        padding-right: 5px;
+                        line-height: 17px;
                         border-right: 1px solid #ddd;
-                        small {
-                              color: #8F8F8F;
-                              font-size: 9px;
+                        
+                        span {
+                            display: block;
                         }
                         
-                    }
-                    
-                     sub {
-                        font-size: 12px;
-                        bottom: 0px;
-                        
-                        
+                        .unit-name {
+                            font-size: 12px;
+                        }
+                        .unit-amount {
+                            font-size: 10px;
+                            line-height: 11px;
+                        }
                     }
                     
                     .price-info {
-                        color: #A8A8A8;
+                         
                         font-size: 9px;
                         float: left;
-                        display: block;
-                        padding-left: 3px;
+                        padding-left: 5px;
+                        position: relative;
+                        
+                        .indicator {
+                            background-color: @brand-primary;
+                            padding: 2px 4px;
+                            color: #fff;
+                            position: absolute;
+                            bottom: 0;
+                            left: 5px;
+                            border-radius: .25em;
+                        }
                        
                     }
-                      
-                     .btn-input .btn.form-control .caret {
-                        margin-top: -1px;
-                        position: absolute;
-                        right: 10px;
-                        top: 50%;
-                     }
+                    
+                    .dropdown-menu {
+                        width: 100%;
+                        padding: 0px;
+                        
+                       li a {
+                            padding: 8px 11px;
+                            border-bottom: 1px solid #DDD;
+                       }
+                       
+                       .indicator {
+                        display: none;
+                       }
+                         
+                    }
                 }
             }
         }
@@ -194,8 +216,8 @@
             background: #FFF;
             overflow: hidden;
             width: 100%;
-            height: 46px;
-            line-height: 46px;
+            height: 44px;
+            line-height: 43px;
             margin: 0;
             padding: 0;
             vertical-align: middle;

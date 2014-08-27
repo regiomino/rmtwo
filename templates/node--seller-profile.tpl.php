@@ -119,16 +119,14 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                         <div class="product-item"> 
                             <div class="product-image">
                                 <a href="#" data-toggle="modal" data-target="#variationModal<?php print $variation->nid; ?>">
-                                   <img class="img-responsive" src="<?php print image_style_url('product_grid', $variation->field_image[LANGUAGE_NONE][0]['uri']); ?>">
+                                   <img src="<?php print image_style_url('product_grid', $variation->field_image[LANGUAGE_NONE][0]['uri']); ?>">
                                 </a> 
                             </div>
                              
                             <div class="product-infos">  
                                 <div class="product-title"> 
-                                    <a href="#" data-toggle="modal" data-target="#variationModal<?php print $variation->nid; ?>">
-                                        <span class="title">
+                                    <a href="#" class="title data-toggle="modal" data-target="#variationModal<?php print $variation->nid; ?>">
                                              <strong><?php print $variation->title; ?></strong>  
-                                        </span>
                                         <span class="details text-muted">
                                             <span class="glyphicon glyphicon-eye-open"></span> <small> Details</small>
                                         </span> 
@@ -137,35 +135,59 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                                 
                                 <div class="product-price">
                                     <div class="btn-group btn-input clearfix">
-                                        <button type="button" class="btn btn-default dropdown-toggle  " data-toggle="dropdown">
+                                        <button type="button" class="btn btn-default dropdown-toggle multiple" data-toggle="dropdown">
                                             <div class="label-area" data-bind="label"> 
                                                 <div class="price">
                                                     <div class="price-unit"> 
                                                         <strong> 14,50€</strong><br>
-                                                        <sub> <strong>Kasten </strong></sub><br>
-                                                        <small class="sucker">   6x10 Stk.</small> <br>
-                                                        
+                                                        <span class="unit-name"><strong>Kasten</strong> </span>
+                                                        <span class="unit-amount text-muted">6x10 Flaschen </span>
                                                     </div>
-                                                    <div class="price-info">
-                                                    
-                                                           <span class="glyphicon glyphicon-info-sign"></span> zzgl. 19% Mwst.   <br>
-                                                            <span class="glyphicon glyphicon-info-sign"></span> zzgl. 2,50€ Pfand
-                                                        
+                                                    <div class="price-info text-muted">
+                                                        <span class="glyphicon glyphicon-info-sign"></span> zzgl. 19% Mwst.   <br>
+                                                        <span class="glyphicon glyphicon-info-sign"></span> zzgl. 2,50€ Pfand<br>
+                                                        <span class="indicator"><span class="glyphicon glyphicon-chevron-down"></span><strong> weitere Gebinde</strong></span>
                                                     </div>
-                                                     
                                                 </div>
-                                                
-                                               <!-- <span class="caret"></span> -->
                                             </div>
-                                           
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
-                                          <li><a href="#">Item 1</a></li>
-                                          <li><a href="#">Another item</a></li>
-                                          <li><a href="#">This is a longer item that will not fit properly</a></li>
+                                          <li >
+                                            <a href="#" class="clearfix"> 
+                                                <div class="price">
+                                                    <div class="price-unit"> 
+                                                        <strong> 2,50€</strong><br>
+                                                        <span class="unit-name"><strong>Gebinde</strong> </span>
+                                                        <span class="unit-amount text-muted">4x2 Flaschen </span>
+                                                    </div>
+                                                    <div class="price-info text-muted">
+                                                        <span class="glyphicon glyphicon-info-sign"></span> zzgl. 19% Mwst.   <br>
+                                                        <span class="glyphicon glyphicon-info-sign"></span> zzgl. 2,50€ Pfand<br>
+                                                        <span class="indicator"><span class="glyphicon glyphicon-chevron-down"></span><strong> weitere Gebinde</strong></span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            
+                                             <a href="#" class="clearfix"> 
+                                                <div class="price">
+                                                    <div class="price-unit"> 
+                                                        <strong> 2,50€</strong><br>
+                                                        <span class="unit-name"><strong>Gebinde</strong> </span>
+                                                        <span class="unit-amount text-muted">4x2 Flaschen </span>
+                                                    </div>
+                                                    <div class="price-info text-muted">
+                                                        <span class="glyphicon glyphicon-info-sign"></span> zzgl. 19% Mwst.   <br>
+                                                        <span class="glyphicon glyphicon-info-sign"></span> zzgl. 2,50€ Pfand<br>
+                                                        <span class="indicator"><span class="glyphicon glyphicon-chevron-down"></span><strong> weitere Gebinde</strong></span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                          
                                         </ul>
                                     </div>
                                 </div>
+                             
                             </div>
                                
                             <div class="add-to-cart-area">
