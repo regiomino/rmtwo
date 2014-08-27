@@ -1,5 +1,6 @@
 <div class="col-sm-12 col-md-12 main">
-    <br />
+    <br>
+    <h1 class="page-header">Willkommen in Ihrem Dashboard</h1>
     <div class="row">
     
         <!-- Offer management -->

@@ -8,6 +8,8 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
 ?>
 
 <div class="col-sm-12 col-md-12 main">
+<br>
+<h1 class="page-header">Angebotsverwaltung</h1>
 
 <?php foreach($vars['offers'] as $offer): ?>
     <?php
@@ -60,10 +62,10 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
             <th>Angebotsnr.</th>
             <th>Bezeichnung Variante</th>
             <th>Beschreibung</th>
-            <!--<th>Bilder</th>-->
             <th>Produkteinheit</th>
             <th>Bestand</th>
             <th>GTIN (ehem. EAN)</th>
+            <th>Bilder</th>
             <th>Gebinde</th>
             <th>Aktionen</th>
           </tr>
@@ -81,9 +83,6 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
             <td>
                 <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['body-' . $variation->nid]); ?>
             </td>
-           <!--<td>
-                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_image-' . $variation->nid]); ?>
-            </td>-->
             <td>
                 <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_productunit_amount-' . $variation->nid]); ?>
                 <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_productunit_unit-' . $variation->nid]); ?>
@@ -93,6 +92,12 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
             </td>
             <td>
                 <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_gtin-' . $variation->nid]); ?>
+            </td>
+            <td>
+                <?php if(!empty($variation->field_image[LANGUAGE_NONE])): foreach($variation->field_image[LANGUAGE_NONE] as $image_delta => $image): $destination = drupal_get_destination(); ?>
+                    <p><img src="<?php print image_style_url('icon', $image['uri']); ?>" alt="<?php print $variation->title; ?>"> <a href="/deleteimage/<?php print $variation->nid; ?>/<?php print $image_delta; ?>#<?php print $offer->nid; ?>"><?php print t('delete'); ?></a></p>                    
+                <?php endforeach; endif; ?>
+                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_image-' . $variation->nid]); ?>
             </td>
             <td>
                 <table class="table">
