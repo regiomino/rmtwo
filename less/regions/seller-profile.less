@@ -1,14 +1,8 @@
 .node-type-seller-profile {
     
-   
-    
-    .affix-top {
-        
-    }
-    
     .affix {
-       top: 65px;
-       right: 0px;
+        top: 65px;
+        right: 0px;
         position: fixed;
     }
     
@@ -25,6 +19,7 @@
     min-height: 1px;
     padding: 0 15px;
     border-left: 1px solid #DDD;
+    box-shadow: -6px 0 8px -6px rgba(0, 0, 0, 0.2);
 }
 
 .wrapper-m {
@@ -33,7 +28,6 @@
     margin-right: -340px;
     position: relative;
     z-index: 5;
-     
 }
 
 .wrapper-m-inner {
@@ -45,6 +39,7 @@
     margin-bottom: 20px;
     padding-bottom: 20px;
     border-bottom: 1px solid #ddd;
+    
     .seller-description {
         
         .description {
@@ -60,7 +55,7 @@
     padding: 0;
     list-style: none;
     
-    li {
+    li.grid-item {
         position: relative;
         min-height: 1px;
         padding-left: 5px;
@@ -87,102 +82,111 @@
         
         
         .product-item {
-            height: 230px;
-            overflow: hidden;
+            
             border: 1px solid #DDD;
             border-radius: 4px;
             padding-bottom:46px;
             position: relative;
             transition: all .1s linear;
+            
             &:hover {
                 box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
             }
             
-            
-            /* .image-wrapper {
-                border-radius: 4px 4px 0 0;
-            
-            }*/
-            
-            .product-title {
-                border-bottom: 1px solid #DDD;
+            .product-image {
                 
-                a {
-                    padding: 10px;
-                    display: block;
-                    font-size: 14px;
-                    vertical-align: middle;
-                    position: relative;
-                }
-                
-                .title {
-                   //width: 73%;
-                    display: inline-block;
-                }
-                .h4 {
-                    margin: 0;
-                }
-                
-                .details {
-                    position: absolute;
-                    right: 10px;
-                    bottom: 0px;
-                    font-size: 11px;
-                    display: inline-block;
-                    padding-top: 3px;
-                    
-                    .glyphicon {
-                        top: 2px;
-                    }
-                }
             }
             
-            .product-data {
+            .product-infos {
                 padding: 10px;
-                
-                .price-unit {
-                   
-                   .items {
-                        margin-bottom: 10px;
-                   }
-                   .item {
-                        border:  1px solid #ddd;
-                        border-radius: 4px;
-                        padding: 8px;
-                        margin-right: 5px;
-                        text-align: left;
-                        position: relative;
-                        line-height: 14px;
-                        
-                        &.active {
-                        background-color: #F7F7F7;
-                        }
-                   }
-                   
-                    .price {
-                        display: block;
-                        font-size: 16px;
+                height: 104px;
+            
+                .product-title {
+                    border-bottom: 1px solid #DDD;
+                    
+                    
+                    .title {
+                        display: inline-block;
+                    }
+                    .h4 {
+                        margin: 0;
                     }
                     
-                    .unit {
-                        display: block;
+                    .details {
+                        position: absolute;
+                        right: 10px;
+                        bottom: 0px;
                         font-size: 11px;
-                    }
-                    .text-mute {
-                        color: #A2A2A2;
+                        display: inline-block;
+                        padding-top: 3px;
                         
-                        strong {
-                            color:#555555;
+                        .glyphicon {
+                            top: 2px;
                         }
                     }
                 }
                 
+                .product-price {
+                    padding-top:10px;
+                    
+                    .btn-input {
+                        display: block;
+                        
+                    }
+                    .btn {
+                        width: 100%;
+                        position: relative;
+                        padding: 6px 5px 5px;
+                    }
+                      
+                    
+                    .price {
+                        
+                        color: #333;
+                        text-align: left;
+                    }
+                    
+                    .price-unit {
+                        font-size: 20px;
+                        float: left;
+                        padding-right: 3px;
+                        
+                        height: auto;
+                        line-height: 14px;
+                        border-right: 1px solid #ddd;
+                        small {
+                              color: #8F8F8F;
+                              font-size: 9px;
+                        }
+                        
+                    }
+                    
+                     sub {
+                        font-size: 12px;
+                        bottom: 0px;
+                        
+                        
+                    }
+                    
+                    .price-info {
+                        color: #A8A8A8;
+                        font-size: 9px;
+                        float: left;
+                        display: block;
+                        padding-left: 3px;
+                       
+                    }
+                      
+                     .btn-input .btn.form-control .caret {
+                        margin-top: -1px;
+                        position: absolute;
+                        right: 10px;
+                        top: 50%;
+                     }
+                }
             }
         }
-        
-      
-         
-        
+
         .add-to-cart-area {
             
             cursor:pointer;
