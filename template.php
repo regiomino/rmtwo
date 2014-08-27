@@ -326,6 +326,7 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
+        case 'rm_user_editprofile':
         case 'rm_sales_editprofile':
             $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
             $form['#suffix'] = '</div>';

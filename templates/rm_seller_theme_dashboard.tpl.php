@@ -6,6 +6,7 @@
         <!-- Offer management -->
         <?php
             $offers = rm_shop_get_structured_seller_offers($user->uid, array(0,1));
+            
             $offercount = count($offers);
             $inactive = 0;
         ?>
@@ -50,7 +51,7 @@
             $profile = rm_api_get_nodes_by_properties(array('seller_profile'), 1, -1, -1, -1, -1, $user->uid);
             $profilekeys = array_keys($profile);
             $profile = $profile[$profilekeys[0]];
-            $profilecompleteness = rm_user_get_profile_completeness($profile->nid);
+            $profilecompleteness = rm_user_get_profile_completeness($profile->nid, 'seller_profile');
         ?>
 
         <div class="col-sm-4">
@@ -73,6 +74,7 @@
                     <?php print l(t('Go to profile management'),
                                     'manage/seller/' . $user->uid . '/profile',
                                     array(
+                                        'query' => drupal_get_destination(),
                                         'attributes' => array(
                                             'class' => array('btn', 'btn-sm', 'btn-success', 'pull-right'),
                                         ),
