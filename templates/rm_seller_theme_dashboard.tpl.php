@@ -24,11 +24,13 @@
                     <!--</ul>-->
                     <?php if($inactive > 0): ?>
                         <div class="alert alert-warning" role="alert"><?php print t('You have @active active offers out of @total. Activate the other offers now.', array('@active' => $offercount - $inactive, '@total' => $offercount)); ?></div>
+                    <?php elseif(!$offercount): ?>
+                        <div class="alert alert-danger" role="alert"><?php print t('You have no active offers. Create some now.'); ?></div>
                     <?php else: ?>
                         <div class="alert alert-success" role="alert"><?php print t('Congratulations. All of your offers are active.'); ?></div>
                     <?php endif; ?>
                     <div class="progress">
-                        <div class="progress-bar progress-bar-<?php print ($inactive > 0) ? 'warning' : 'success' ?>" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php print 100 * ($offercount - $inactive) / $offercount; ?>%;"><?php print t('@active out of @total', array('@active' => $offercount - $inactive, '@total' => $offercount)); ?></div>
+                        <div class="progress-bar progress-bar-<?php print ($inactive > 0) ? 'warning' : 'success' ?>" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php print ($offercount > 0) ? 100 * ($offercount - $inactive) / $offercount : 0; ?>%;"><?php print t('@active out of @total', array('@active' => $offercount - $inactive, '@total' => $offercount)); ?></div>
                     </div>
                 </div>
                 <div class="panel-footer">
