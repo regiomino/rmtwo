@@ -6440,25 +6440,28 @@ label {
   filter: none;
   -webkit-filter: grayscale(0%);
 }
-#suggestModal .form-type-textfield label {
+#suggestModal .modal-content .form-type-textfield label {
   display: none;
 }
-.no-placeholder #suggestModal .form-type-textfield label {
+.no-placeholder #suggestModal .modal-content .form-type-textfield label {
   display: inline-block;
 }
-#suggestModal .form-control {
+#suggestModal .modal-content legend {
+  display: block;
+}
+#suggestModal .modal-content .form-control {
   margin-bottom: 0px;
 }
-#suggestModal .form-group {
+#suggestModal .modal-content .form-group {
   margin-bottom: 0px;
 }
-#suggestModal legend {
+#suggestModal .modal-content legend {
   border-bottom: none;
   margin-bottom: 10px;
   font-size: 14px;
   font-weight: bold;
 }
-#suggestModal .form-wrapper {
+#suggestModal .modal-content .form-wrapper {
   margin-bottom: 20px;
 }
 .payment-icons span {
