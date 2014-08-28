@@ -1,6 +1,6 @@
 
 <div class="row entry">
-       <!--<div class="col-md-5">
+       <div class="col-md-5">
             <div class="zipcodeselect  ">
                 <h3> Schritt 1:<strong> <?php echo t('Enter your address...'); ?></strong></h3>
         
@@ -19,7 +19,7 @@
                     </ul>
                 </div>
             </div>
-        </div> -->
+        </div>
     <div class="col-md-7  ">
         <div class="welcome"> 
             <h1> <strong> Einfach regionale Produkte einkaufen</strong></h1>
@@ -27,7 +27,7 @@
             <p class="lead">Der günstigste Weg regionale Produkte zu
             verkaufen oder zu beschaffen!
             </p>
-            <ul class="countdown list-inline">
+            <!--<ul class="countdown list-inline">
                   <li>
                      <p class="h2"><strong> <span class="days">00</span></strong></p>
                     <p><em class="text">Tage</em></p>
@@ -44,7 +44,7 @@
                     <p class="h2"><strong><span class="seconds">00</span></strong></p>
                     <p><em class="text">Sekunden</em></p>
                   </li>
-                </ul>
+                </ul>-->
               <!--<a href="#" class="more-info text-uppercase"> <small><strong>  <span class="glyphicon glyphicon-circle-arrow-right"> </span> Erfahren Sie mehr </strong></small> </a>  </span>-->
            
         </div>
