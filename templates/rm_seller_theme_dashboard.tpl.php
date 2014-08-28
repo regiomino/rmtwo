@@ -124,4 +124,101 @@
         
         
     </div>
+    
+    <div class="row">
+    
+        <!-- Payment agreements -->
+        <?php
+            $agreements = rm_api_get_nodes_by_properties(array('payment_agreement'), 1, -1, -1, -1, -1, $user->uid);
+        ?>
+        <div class="col-sm-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong><?php print t('Your payment agreements'); ?></strong></h3>
+                </div>
+                <div class="panel-body">
+                <?php if(count($agreements)): ?>
+                    <div class="alert alert-success" role="alert"><?php print format_plural(count($agreements), 'Great! You have entered one payment agreement.', 'Great you have entered @count payment agreements'); ?></div>
+                <?php else: ?>
+                    <div class="alert alert-danger" role="alert"><?php print t('You have not set any payment agreements. Your products cannot be purchased unless you do so.'); ?></div>
+                <?php endif; ?>
+                </div>
+                <div class="panel-footer">
+                    <div class="row"><div class="col-sm-12 col-md-12">
+                    <?php print l(t('Go to payment agreements'),
+                                    'manage/seller/' . $user->uid . '/paymentagreements',
+                                    array(
+                                        'attributes' => array(
+                                            'class' => array('btn', 'btn-sm', 'btn-success', 'pull-right'),
+                                        ),
+                                    )); ?>
+                    </div></div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- Shipping agreements -->
+        <?php
+            $agreements = rm_api_get_nodes_by_properties(array('shipping_agreement'), 1, -1, -1, -1, -1, $user->uid);
+        ?>
+        <div class="col-sm-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong><?php print t('Your shipping agreements'); ?></strong></h3>
+                </div>
+                <div class="panel-body">
+                <?php if(count($agreements)): ?>
+                    <div class="alert alert-success" role="alert"><?php print format_plural(count($agreements), 'Great! You have entered one shipping agreement.', 'Great you have entered @count shipping agreements'); ?></div>
+                <?php else: ?>
+                    <div class="alert alert-danger" role="alert"><?php print t('You have not set any shipping agreements. Your products cannot be shipped unless you do so.'); ?></div>
+                <?php endif; ?>
+                </div>
+                <div class="panel-footer">
+                    <div class="row"><div class="col-sm-12 col-md-12">
+                    <?php print l(t('Go to shipping agreements'),
+                                    'manage/seller/' . $user->uid . '/shippingagreements',
+                                    array(
+                                        'attributes' => array(
+                                            'class' => array('btn', 'btn-sm', 'btn-success', 'pull-right'),
+                                        ),
+                                    )); ?>
+                    </div></div>
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- Pickup agreements -->
+        <?php
+            $agreements = rm_api_get_nodes_by_properties(array('pickup_agreement'), 1, -1, -1, -1, -1, $user->uid);
+        ?>
+        <div class="col-sm-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><strong><?php print t('Your pickup agreements'); ?></strong></h3>
+                </div>
+                <div class="panel-body">
+                <?php if(count($agreements)): ?>
+                    <div class="alert alert-success" role="alert"><?php print format_plural(count($agreements), 'Great! You have entered one pickup agreement.', 'Great you have entered @count pickup agreements'); ?></div>
+                <?php else: ?>
+                    <div class="alert alert-danger" role="alert"><?php print t('You have not set any pickup agreements. Your products cannot be picked up unless you do so.'); ?></div>
+                <?php endif; ?>
+                </div>
+                <div class="panel-footer">
+                    <div class="row"><div class="col-sm-12 col-md-12">
+                    <?php print l(t('Go to pickup agreements'),
+                                    'manage/seller/' . $user->uid . '/pickupagreements',
+                                    array(
+                                        'attributes' => array(
+                                            'class' => array('btn', 'btn-sm', 'btn-success', 'pull-right'),
+                                        ),
+                                    )); ?>
+                    </div></div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
 </div>
