@@ -146,9 +146,7 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                                     $onlyone = ($tradingunits > 1)?false:true;
                                  ?>
                                  
-                                <?php if($onlyone): ?>
-                                
-                                <?php
+                                 <?php
                                     if(isset($variation->trading_units[0]->field_tu_packaging[LANGUAGE_NONE][0]['value']) && !empty($tupackaging[$variation->trading_units[0]->field_tu_packaging[LANGUAGE_NONE][0]['value']])) {
                                             $packaging = $tupackaging[$variation->trading_units[0]->field_tu_packaging[LANGUAGE_NONE][0]['value']];
                                     }
@@ -157,6 +155,10 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                                             $packaging = $tupackaging[$default[0]['value']];
                                     }
                                 ?>
+                                 
+                                <?php if($onlyone): ?>
+                                
+                                
                                  
                                     <div class="tradingunit-single clearfix">
                                         <div class="label-area">
