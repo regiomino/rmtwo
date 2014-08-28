@@ -8448,4 +8448,14 @@ label {
   right: 0;
   padding: 0;
 }
+.page-user-register h3 {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+.page-user-register legend {
+  display: none;
+}
+.page-user-register .form-group {
+  margin-bottom: 0px;
+}
 /*# sourceMappingURL=css/style.css.map */
