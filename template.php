@@ -261,27 +261,28 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
         case 'rm_sales_useraccounts_form':
-            $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
+            $form['#prefix'] = '<div class="col-sm-12 col-md-12">';
             $form['#suffix'] = '</div>';
             $form['useraccounts']['#attributes']['class'][] = 'table';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
         case 'rm_sales_note_add':
-            $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
+            $form['#prefix'] = '<div class="col-sm-12 col-md-12">';
             $form['#suffix'] = '</div>';
             $form['title']['#attributes']['class'][] = 'form-control';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
         case 'rm_sales_deletenode':
-            $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
+        case 'rm_seller_agreement_delete':
+            $form['#prefix'] = '<div class="col-sm-12 col-md-12"><h1 class="page-header">' . t('Delete') . '</h1>';
             $form['#suffix'] = '</div>';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-danger';
             break;
-        case 'rm_sales_agreement_edit':
-            $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
+        case 'rm_seller_agreement_edit':
+            $form['#prefix'] = '<div class="col-sm-12 col-md-12"><h1 class="page-header">' . t('Edit agreement') . '</h1>';
             $form['#suffix'] = '</div>';
             $form['#attributes']['class'][] = 'form-vertical';
             if(!empty($form['rm_edit_agreement']['field_minimum_order_value'])) $form['rm_edit_agreement']['field_minimum_order_value'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
@@ -303,8 +304,8 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
-        case 'rm_sales_agreement_add':
-            $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
+        case 'rm_seller_agreement_add':
+            $form['#prefix'] = '<div class="col-sm-12 col-md-12"><h1 class="page-header">' . t('Add agreement') . '</h1>';
             $form['#suffix'] = '</div>';
             $form['#attributes']['class'][] = 'form-vertical';
             if(!empty($form['rm_add_agreement']['field_minimum_order_value'])) $form['rm_add_agreement']['field_minimum_order_value'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
