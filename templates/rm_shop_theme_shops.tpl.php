@@ -8,35 +8,12 @@
 ?>
 
 
-<div class="col-sm-3 col-md-2 sidebar">
-    <div class="input-group"> <span class="input-group-addon"><?php print t('Filter'); ?></span>
+
+<div class="col-sm-7 col-md-6 col-lg-5 main">
+<div class="input-group"> <span class="input-group-addon"><?php print t('Filter'); ?></span>
         <input id="filterShops" type="text" class="form-control" placeholder="<?php print t('Filter available vendors'); ?>">
 
     </div>
-    <br />
-    <div id="directoryGoogleMap" style="height: 300px"></div>
-<!--    <br />
-    <ul class="nav nav-sidebar">
-        <li class="active"><a href="#">Overview</a></li>
-        <li><a href="#">Reports</a></li>
-        <li><a href="#">Analytics</a></li>
-        <li><a href="#">Export</a></li>
-    </ul>
-    <ul class="nav nav-sidebar">
-        <li><a href="">Nav item</a></li>
-        <li><a href="">Nav item again</a></li>
-        <li><a href="">One more nav</a></li>
-        <li><a href="">Another nav item</a></li>
-        <li><a href="">More navigation</a></li>
-    </ul>
-    <ul class="nav nav-sidebar">
-        <li><a href="">Nav item again</a></li>
-        <li><a href="">One more nav</a></li>
-        <li><a href="">Another nav item</a></li>
-    </ul>-->
-</div>
-<div class="col-sm-9 col-md-10 main">
-
     <?php if (!empty($vars['title'])): ?>
         <div class="page-header">
             <h1 class="page-title">
@@ -136,4 +113,27 @@
         </div>
     <?php endforeach; ?>
     <?php print $vars['pager']; ?>
+</div>
+
+<div class="col-sm-5 col-md-6  col-lg-7 sidebar ">
+    <div id="directoryGoogleMap" style="width: 100%; height: 100%"></div>
+<!--    <br />
+    <ul class="nav nav-sidebar">
+        <li class="active"><a href="#">Overview</a></li>
+        <li><a href="#">Reports</a></li>
+        <li><a href="#">Analytics</a></li>
+        <li><a href="#">Export</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li><a href="">Nav item</a></li>
+        <li><a href="">Nav item again</a></li>
+        <li><a href="">One more nav</a></li>
+        <li><a href="">Another nav item</a></li>
+        <li><a href="">More navigation</a></li>
+    </ul>
+    <ul class="nav nav-sidebar">
+        <li><a href="">Nav item again</a></li>
+        <li><a href="">One more nav</a></li>
+        <li><a href="">Another nav item</a></li>
+    </ul>-->
 </div>

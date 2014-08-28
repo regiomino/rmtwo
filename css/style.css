@@ -6449,6 +6449,9 @@ label {
 #suggestModal .form-control {
   margin-bottom: 0px;
 }
+#suggestModal .form-group {
+  margin-bottom: 0px;
+}
 #suggestModal legend {
   border-bottom: none;
   margin-bottom: 10px;
@@ -8433,5 +8436,16 @@ label {
   border-radius: 0;
   padding: 13px 16px;
   font-size: 14px;
+}
+.page-lieferanten .main {
+  padding-top: 22px;
+  box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.3);
+  z-index: 1;
+}
+.page-lieferanten .sidebar {
+  position: fixed;
+  top: 65px;
+  right: 0;
+  padding: 0;
 }
 /*# sourceMappingURL=css/style.css.map */

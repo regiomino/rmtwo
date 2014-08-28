@@ -39,24 +39,20 @@
 </div>
 
 <div class="container-fluid">
-        <div class="footer"> 
-            <div class="row"> 
-                <div class="col-md-12">
-                    <ul class="list-inline text-left">
-                        <?php $footerlinks = rm_user_get_footer_links(); ?>
-                        <?php foreach($footerlinks as $footerlink): ?>
-                            <li><?php print l($footerlink[0], $footerlink[1], $footerlink[2]); ?></li>
-                        <?php endforeach; ?>
-                    </ul>
-    
-                </div>
+    <div class="row"> 
+        <div class="col-sm-7 col-md-6 col-lg-5">
+            <div class="footer"> 
+                <ul class="list-inline text-left">
+                    <?php $footerlinks = rm_user_get_footer_links(); ?>
+                    <?php foreach($footerlinks as $footerlink): ?>
+                        <li><?php print l($footerlink[0], $footerlink[1], $footerlink[2]); ?></li>
+                    <?php endforeach; ?>
+                </ul>
+                <p class="text-left">&copy; Regiomino 2014</p>
             </div>
-            
-            <div class="row">
-                <div class="col-md-12"><p class="text-left">&copy; Regiomino 2014</p></div>
-            </div>
-        </div>   
-    </div> 
+        </div>
+    </div>   
+</div> 
  
 <?php if ($messages): ?>
     <div class="modal fade" id="messageModal">
