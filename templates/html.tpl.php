@@ -65,19 +65,18 @@
                                 
                                 <?php if (drupal_is_front_page()) { ?>
                                 
-                                  // Counter
+                                  /*Counter
                              (function ($) {     
                             $("ul.countdown").jCounter({
-                                        date: "28 august 2014 13:00:00",
-                                        timezone: "Europe/Berlin",
-                                        format: "dd:hh:mm:ss",
-                                        twoDigits: 'on',
-                                        dateSource: 'remote',
-                                        serverDateSource : 'https://www.regiomino.de/dateandtime.php'
-                                  
-                                });
+                                date: "28 august 2014 13:00:00",
+                                timezone: "Europe/Berlin",
+                                format: "dd:hh:mm:ss",
+                                twoDigits: 'on',
+                                dateSource: 'remote',
+                                serverDateSource : 'https://www.regiomino.de/dateandtime.php'
+                            });
                             
-                             })(jQuery);
+                             })(jQuery);*/
                                 <?php } ?>
     </script>
     
