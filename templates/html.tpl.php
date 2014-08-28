@@ -82,7 +82,7 @@
     
     <script type="text/javascript">
 var fby = fby || [];
-fby.push(['showTab', {id: '7820', position: 'left', color: '#95BC0D'}]);
+fby.push(['showTab', {id: '7820', position: 'left', color: '#D9534F'}]);
 (function () {
     var f = document.createElement('script'); f.type = 'text/javascript'; f.async = true;
     f.src = '//cdn.feedbackify.com/f.js';
