@@ -66,7 +66,7 @@ module.exports = function (grunt) {
           stripBanners: true
         },
       
-        regiominoJS: {
+        regiominoJSFront: {
             src: [
                 'js/bootstrap/transition.js',
                 'js/bootstrap/alert.js',
@@ -83,22 +83,60 @@ module.exports = function (grunt) {
                 //'js/custom/jquery.jCounter-0.1.2.js',
                
                 'js/custom/main.js'
+                
             ],
             dest: 'js/regiomino.js'
+        },
+        
+        regiominoJSBack: {
+            src: [
+                
+                //Bootstrap
+                'js/bootstrap/transition.js',
+                'js/bootstrap/alert.js',
+                'js/bootstrap/button.js',
+                'js/bootstrap/carousel.js',
+                'js/bootstrap/collapse.js',
+                'js/bootstrap/dropdown.js',
+                'js/bootstrap/modal.js',
+                'js/bootstrap/tooltip.js',
+                'js/bootstrap/popover.js',
+                'js/bootstrap/scrollspy.js',
+                'js/bootstrap/tab.js',
+                'js/bootstrap/affix.js',
+                
+                //Plugins
+                
+                'js/backend/plugins/dataTables/*.js',
+                'js/backend/plugins/flot/*.js',
+                'js/backend/plugins/metisMenu/*.js',
+                'js/backend/plugins/morris/*.js',
+                
+                //Admin js
+                
+                 'js/backend/sb-admin-2.js',
+                
+            ],
+            dest: 'js/regiomino-back.js'
         }
+        
     },
 
     uglify: {
       options: {
         preserveComments: 'some'
       },
-      js: {
-        src: '<%= concat.regiominoJS.dest %>',
+      jsfront: {
+        src: '<%= concat.regiominoJSFront.dest %>',
         dest: 'js/regiomino.min.js'
+      },
+      
+      jsback: {
+        src: '<%= concat.regiominoJSBack.dest %>',
+        dest: 'js/regiomino-back.min.js'
       }
     },
 
-   
 
     autoprefixer: {
         options: {
@@ -137,7 +175,7 @@ module.exports = function (grunt) {
         },
         
         js: {
-            files: ['js/bootstrap/*.js', 'js/custom/*.js'],
+            files: ['js/backend/*.js', 'js/bootstrap/*.js','js/frontend/**/*.js'],
             tasks : ['concat','uglify']
         }
     },
