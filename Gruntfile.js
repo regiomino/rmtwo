@@ -37,14 +37,13 @@ module.exports = function (grunt) {
         compileCss: {
             options: {
               strictMath: true,
-              sourceMap: true,
-              outputSourceFiles: true,
-              sourceMapURL: 'css/style.css.map',
-              sourceMapFilename: 'css/style.css.map'
+              sourceMap: false,
+              outputSourceFiles: false
             },
             
             files: {
-              'css/style.css': 'less/all.less'
+              'css/style.css': 'less/all_front.less',
+              'css/style-back.css': 'less/all_back.less'
             }
         }
     },
@@ -56,7 +55,8 @@ module.exports = function (grunt) {
         },
         core: {
             files: {
-              'css/style.min.css': 'css/style.css' 
+              'css/style.min.css': 'css/style.css',
+              'css/style-back.min.css': 'css/style-back.css' 
             }
         }
     },
