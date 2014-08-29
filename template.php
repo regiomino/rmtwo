@@ -409,6 +409,7 @@ function rmtwo_preprocess_page(&$variables) {
     ) {
         $variables['theme_hook_suggestions'][] = 'page__lieferanten';
         drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style.min.css');
+        drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/regiomino.min.js');
         //Preprocessing for seller profiles
         if(array_key_exists('node', $variables)) {
             if($variables['node']->type == 'seller_profile') {
@@ -428,15 +429,18 @@ function rmtwo_preprocess_page(&$variables) {
     }    
     else if(arg(0) == 'manage') {
         drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style-back.css');
+        drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/regiomino-back.min.js');
         $variables['theme_hook_suggestions'][] = 'page__manage';
     }
     else {
         if(drupal_is_front_page()) {
             drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style.min.css');
             drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/utilities/jquery.jCounter-0.1.2.js');
+            drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/regiomino.min.js');
         }
         else {
             drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style.min.css');
+            drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/regiomino.min.js');
             if('user/register' == current_path()) $variables['page']['content']['regiominouserlogin'] = render(drupal_get_form('user_login_block'));
         }
     }
