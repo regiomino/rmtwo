@@ -404,11 +404,11 @@ function rmtwo_preprocess_page(&$variables) {
         ($variables['page']['#type'] == 'page' && (arg(0) == 'lieferanten')) ||
         //Alle Verkäuferprofil-Seiten/Shops
         (array_key_exists('node', $variables) && $variables['node']->type == 'seller_profile') ||
-       
         //User edit page
         (arg(0) == 'user' && arg(2) == 'edit')
     ) {
         $variables['theme_hook_suggestions'][] = 'page__lieferanten';
+        drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style.min.css');
         //Preprocessing for seller profiles
         if(array_key_exists('node', $variables)) {
             if($variables['node']->type == 'seller_profile') {
@@ -425,18 +425,21 @@ function rmtwo_preprocess_page(&$variables) {
                 drupal_add_js(drupal_get_path('module', 'rm_cart') . '/js/rm_cart.js');
             }
         }
+    }    
+    else if(arg(0) == 'manage') {
+        drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style-back.css');
+        $variables['theme_hook_suggestions'][] = 'page__manage';
     }
-    
-    if(arg(0) == 'manage') {
-    $variables['theme_hook_suggestions'][] = 'page__manage';
-    drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style-back.css');
-    }
-    
-    if('user/register' == current_path()) $variables['page']['content']['regiominouserlogin'] = render(drupal_get_form('user_login_block'));
-    $variables['suggestform'] = render(drupal_get_form('rm_sales_suggest_form'));
-    
-    if(drupal_is_front_page()) {
-        drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/utilities/jquery.jCounter-0.1.2.js');
+    else {
+        if(drupal_is_front_page()) {
+            drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style.min.css');
+            drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/utilities/jquery.jCounter-0.1.2.js');
+        }
+        else {
+            drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style.min.css');
+            if('user/register' == current_path()) $variables['page']['content']['regiominouserlogin'] = render(drupal_get_form('user_login_block'));
+            $variables['suggestform'] = render(drupal_get_form('rm_sales_suggest_form'));
+        }
     }
 }
 
