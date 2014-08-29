@@ -8,6 +8,5 @@ regions[highlighted] = Highlighted
 regions[content] = Content
 
 scripts[] = js/utilities/modernizr.custom.js
-scripts[] = js/regiomino.min.js
  
 
