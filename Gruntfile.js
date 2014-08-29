@@ -114,7 +114,7 @@ module.exports = function (grunt) {
                 
                 //Admin js
                 
-                 'js/backend/sb-admin-2.js',
+                 'js/backend/sb-admin-2.js'
                 
             ],
             dest: 'js/regiomino-back.js'

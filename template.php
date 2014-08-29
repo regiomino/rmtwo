@@ -428,7 +428,7 @@ function rmtwo_preprocess_page(&$variables) {
         }
     }    
     else if(arg(0) == 'manage') {
-        drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style-back.css');
+        drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style-back.min.css');
         drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/regiomino-back.min.js');
         $variables['theme_hook_suggestions'][] = 'page__manage';
     }
