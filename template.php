@@ -438,9 +438,9 @@ function rmtwo_preprocess_page(&$variables) {
         else {
             drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style.min.css');
             if('user/register' == current_path()) $variables['page']['content']['regiominouserlogin'] = render(drupal_get_form('user_login_block'));
-            $variables['suggestform'] = render(drupal_get_form('rm_sales_suggest_form'));
         }
     }
+    $variables['suggestform'] = render(drupal_get_form('rm_sales_suggest_form'));
 }
 
 
