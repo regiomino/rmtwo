@@ -254,7 +254,7 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
         case 'rm_sales_profilequeue_form':
         case 'rm_sales_profileset_form':
         case 'rm_sales_profilecare_form':
-            $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
+            $form['#prefix'] = '<div class="col-sm-12 col-md-12">';
             $form['#suffix'] = '</div>';
             $form['suggestions']['#attributes']['class'][] = 'table';
             $form['submit']['#attributes']['class'][] = 'btn';
@@ -273,6 +273,14 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['title']['#attributes']['class'][] = 'form-control';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
+            break;
+        case 'rm_sales_offertable_add':
+            $form['#prefix'] = '<div class="col-sm-12 col-md-12">';
+            $form['#suffix'] = '</div>';
+            $form['rm_add_offertable']['body'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
+            $form['submit']['#attributes']['class'][] = 'btn';
+            $form['submit']['#attributes']['class'][] = 'btn-success';
+            break;
             break;
         case 'rm_sales_deletenode':
         case 'rm_seller_agreement_delete':
