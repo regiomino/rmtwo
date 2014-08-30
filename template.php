@@ -254,29 +254,21 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
         case 'rm_sales_profilequeue_form':
         case 'rm_sales_profileset_form':
         case 'rm_sales_profilecare_form':
-            $form['#prefix'] = '<div class="col-sm-12 col-md-12">';
-            $form['#suffix'] = '</div>';
             $form['suggestions']['#attributes']['class'][] = 'table';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
         case 'rm_sales_useraccounts_form':
-            $form['#prefix'] = '<div class="col-sm-12 col-md-12">';
-            $form['#suffix'] = '</div>';
             $form['useraccounts']['#attributes']['class'][] = 'table';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
         case 'rm_sales_note_add':
-            $form['#prefix'] = '<div class="col-sm-12 col-md-12">';
-            $form['#suffix'] = '</div>';
             $form['title']['#attributes']['class'][] = 'form-control';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
         case 'rm_sales_offertable_add':
-            $form['#prefix'] = '<div class="col-sm-12 col-md-12">';
-            $form['#suffix'] = '</div>';
             $form['rm_add_offertable']['body'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
@@ -284,14 +276,12 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             break;
         case 'rm_sales_deletenode':
         case 'rm_seller_agreement_delete':
-            $form['#prefix'] = '<div class="col-sm-12 col-md-12"><h1 class="page-header">' . t('Delete') . '</h1>';
-            $form['#suffix'] = '</div>';
+            $form['#prefix'] = '<h1 class="page-header">' . t('Delete') . '</h1>';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-danger';
             break;
         case 'rm_seller_agreement_edit':
-            $form['#prefix'] = '<div class="col-sm-12 col-md-12"><h1 class="page-header">' . t('Edit agreement') . '</h1>';
-            $form['#suffix'] = '</div>';
+            $form['#prefix'] = '<h1 class="page-header">' . t('Edit agreement') . '</h1>';
             $form['#attributes']['class'][] = 'form-vertical';
             if(!empty($form['rm_edit_agreement']['field_minimum_order_value'])) $form['rm_edit_agreement']['field_minimum_order_value'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
             if(!empty($form['rm_edit_agreement']['field_minimum_order_value'])) unset($form['rm_edit_agreement']['field_minimum_order_value'][LANGUAGE_NONE][0]['value']['#field_suffix']);
@@ -313,8 +303,7 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
         case 'rm_seller_agreement_add':
-            $form['#prefix'] = '<div class="col-sm-12 col-md-12"><h1 class="page-header">' . t('Add agreement') . '</h1>';
-            $form['#suffix'] = '</div>';
+            $form['#prefix'] = '<h1 class="page-header">' . t('Add agreement') . '</h1>';
             $form['#attributes']['class'][] = 'form-vertical';
             if(!empty($form['rm_add_agreement']['field_minimum_order_value'])) $form['rm_add_agreement']['field_minimum_order_value'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
             if(!empty($form['rm_add_agreement']['field_minimum_order_value'])) unset($form['rm_add_agreement']['field_minimum_order_value'][LANGUAGE_NONE][0]['value']['#field_suffix']);
@@ -337,8 +326,6 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             break;
         case 'rm_user_editprofile':
         case 'rm_sales_editprofile':
-            $form['#prefix'] = '<div class="col-sm-12 col-md-12 main">';
-            $form['#suffix'] = '</div>';
             $form['#attributes']['class'][] = 'form-vertical';
             $form['company']['field_company_name'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
             $form['company']['field_publicphone'][LANGUAGE_NONE][0]['#process'] = array(
@@ -428,9 +415,10 @@ function rmtwo_preprocess_page(&$variables) {
         }
     }    
     else if(arg(0) == 'manage') {
-        drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style-back.min.css');
-        drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/regiomino-back.min.js');
         $variables['theme_hook_suggestions'][] = 'page__manage';
+        drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style-back.min.css');
+        drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/martin.css');
+        drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/regiomino-back.min.js');
     }
     else {
         if(drupal_is_front_page()) {
@@ -453,7 +441,9 @@ function rmtwo_menu_local_tasks(&$variables) {
     $output = '';
 
     if (!empty($variables['primary'])) {
-        $variables['primary']['#prefix'] = '<ul class="nav nav-tabs" role="tablist">';
+        $variables['primary']['#prefix'] = '<ul class="nav';
+        $variables['primary']['#prefix'] .= (arg(0) == 'manage') ? '' : ' nav-tabs';
+        $variables['primary']['#prefix'] .= '" role="tablist">';
         $variables['primary']['#suffix'] = '</ul>';
         $output .= drupal_render($variables['primary']);
     }
