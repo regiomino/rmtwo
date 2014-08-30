@@ -1,4 +1,4 @@
-<div class="col-sm-12 col-md-12">
+<div class="row">
 
     <h1 class="page-header"><?php print t('Your shipping agreements'); ?></h1>
     

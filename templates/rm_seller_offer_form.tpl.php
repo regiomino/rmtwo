@@ -6,9 +6,8 @@ if(rm_user_is_admin()) $uid = 50;
 $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
 
 ?>
+<div class="row">
 
-<div class="col-sm-12 col-md-12 main">
-<br>
 <h1 class="page-header">Angebotsverwaltung</h1>
 
 <?php foreach($vars['offers'] as $offer): ?>

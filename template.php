@@ -264,6 +264,8 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
         case 'rm_sales_note_add':
+            $form['#prefix'] = '<div class="row">';
+            $form['#suffix'] = '</div>';
             $form['title']['#attributes']['class'][] = 'form-control';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
@@ -326,6 +328,8 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             break;
         case 'rm_user_editprofile':
         case 'rm_sales_editprofile':
+            $form['#prefix'] = '<div class="row"><h1 class="page-header">Ihr Teilnehmer-Profil</h1>';
+            $form['#suffix'] = '</div>';
             $form['#attributes']['class'][] = 'form-vertical';
             $form['company']['field_company_name'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
             $form['company']['field_publicphone'][LANGUAGE_NONE][0]['#process'] = array(
