@@ -1,0 +1,5 @@
+@media (min-width: 768px) {
+    .sidebar {
+        margin-top: 65px !important;
+    }
+}
