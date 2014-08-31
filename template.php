@@ -66,7 +66,6 @@ function rmtwo_html_head_alter(&$head_elements) {
     );
 }
 
-
 function rmtwo_theme() {
     $items = array();
     $items['user_register_form'] = array(
@@ -422,7 +421,7 @@ function rmtwo_preprocess_page(&$variables) {
         $variables['theme_hook_suggestions'][] = 'page__manage';
         drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style-back.min.css');
         drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/martin.css');
-        drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/regiomino-back.min.js');
+        drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/regiomino-back.js');
     }
     else {
         if(drupal_is_front_page()) {
@@ -438,8 +437,6 @@ function rmtwo_preprocess_page(&$variables) {
     }
     $variables['suggestform'] = render(drupal_get_form('rm_sales_suggest_form'));
 }
-
-
 
 function rmtwo_menu_local_tasks(&$variables) {
     $output = '';
