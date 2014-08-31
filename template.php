@@ -254,6 +254,7 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
         case 'rm_sales_profileset_form':
         case 'rm_sales_profilecare_form':
             $form['suggestions']['#attributes']['class'][] = 'table';
+            $form['suggestions']['#attributes']['class'][] = 'salesDataTable';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;

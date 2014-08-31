@@ -16266,7 +16266,8 @@ if ($.fn.DataTable.TableTools) {
 (function($) {
 
     $('#side-menu').metisMenu();
-
+    $('.salesDataTable').dataTable();
+    
  
 
 //Loads the correct sidebar on window load,
