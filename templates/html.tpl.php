@@ -47,37 +47,19 @@
     <?php print $page_top; ?>
     <?php print $page; ?>
     <?php print $page_bottom; ?>
+    <?php print rm_shop_trusted_shops_badge(); ?>
+    
     <script>
-       
-				(function () {
-						var _tsid = 'X9FF4FD2592B5BFA727E6480148224623';
-						_tsConfig = {
-								'yOffset': '0', //offset from page bottom
-								'variant': 'reviews' //text, default, small, reviews
-						};
-						var _ts = document.createElement('script');
-						_ts.type = 'text/javascript';
-						_ts.charset = 'utf-8';
-						_ts.src = '//widgets.trustedshops.com/js/' + _tsid + '.js';
-						var __ts = document.getElementsByTagName('script')[0];
-						__ts.parentNode.insertBefore(_ts, __ts);
-				})();
-                                
-                                <?php if (drupal_is_front_page()) { ?>
-                                
-                                  /*Counter
-                             (function ($) {     
-                            $("ul.countdown").jCounter({
-                                date: "28 august 2014 13:00:00",
-                                timezone: "Europe/Berlin",
-                                format: "dd:hh:mm:ss",
-                                twoDigits: 'on',
-                                dateSource: 'remote',
-                                serverDateSource : 'https://www.regiomino.de/dateandtime.php'
-                            });
-                            
-                             })(jQuery);*/
-                                <?php } ?>
+    /* (function ($) {     
+        $("ul.countdown").jCounter({
+            date: "28 august 2014 13:00:00",
+            timezone: "Europe/Berlin",
+            format: "dd:hh:mm:ss",
+            twoDigits: 'on',
+            dateSource: 'remote',
+            serverDateSource : 'https://www.regiomino.de/dateandtime.php'
+        });
+    })(jQuery); */
     </script>
     
     <script type="text/javascript">
