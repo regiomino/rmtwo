@@ -254,6 +254,7 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
         case 'rm_sales_profileset_form':
         case 'rm_sales_profilecare_form':
             $form['suggestions']['#attributes']['class'][] = 'table';
+            $form['suggestions']['#attributes']['id'] = 'dataSalesTable';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
@@ -421,7 +422,7 @@ function rmtwo_preprocess_page(&$variables) {
         $variables['theme_hook_suggestions'][] = 'page__manage';
         drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style-back.min.css');
         drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/martin.css');
-        drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/regiomino-back.js');
+        drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/regiomino-back.min.js');
     }
     else {
         if(drupal_is_front_page()) {
