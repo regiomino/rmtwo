@@ -107,14 +107,28 @@ module.exports = function (grunt) {
                 
                 //Plugins
                 
-                'js/backend/plugins/dataTables/*.js',
-                'js/backend/plugins/flot/*.js',
-                'js/backend/plugins/metisMenu/*.js',
-                'js/backend/plugins/morris/*.js',
+                //Metis Menu
+                'js/backend/plugins/metisMenu/metisMenu.min.js',
                 
+                //Data Tables
+                'js/backend/plugins/dataTables/jquery.dataTables.js',
+                'js/backend/plugins/dataTables/dataTables.bootstrap.js',
+             
+               /* //Flot
+                'js/backend/plugins/flot/excanvas.min.js',
+                'js/backend/plugins/flot/jquery.flot.js',
+                'js/backend/plugins/flot/jquery.flot.pie.js',
+                'js/backend/plugins/flot/jquery.flot.resize.js',
+                'js/backend/plugins/flot/jquery.flot.tooltip.min.js',
+                'js/backend/plugins/flot/flot-data.js',
+                
+                //Morris
+               // 'js/backend/plugins/morris/raphael.min.js',
+                'js/backend/plugins/morris/morris.min.js',
+                'js/backend/plugins/morris/morris-data.js', 
+                */
                 //Admin js
-                
-                 'js/backend/sb-admin-2.js'
+                'js/backend/sb-admin-2.js' 
                 
             ],
             dest: 'js/regiomino-back.js'
@@ -175,7 +189,7 @@ module.exports = function (grunt) {
         },
         
         js: {
-            files: ['js/backend/*.js', 'js/bootstrap/*.js','js/frontend/**/*.js'],
+            files: ['js/backend/**/*.js', 'js/bootstrap/*.js','js/frontend/**/*.js'],
             tasks : ['concat','uglify']
         }
     },
