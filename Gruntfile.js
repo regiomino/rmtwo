@@ -82,7 +82,7 @@ module.exports = function (grunt) {
                 'js/bootstrap/affix.js',
                 //'js/custom/jquery.jCounter-0.1.2.js',
                
-                'js/custom/main.js'
+                'js/frontend/custom/main.js'
                 
             ],
             dest: 'js/regiomino.js'
