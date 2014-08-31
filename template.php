@@ -253,8 +253,6 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
         case 'rm_sales_profilequeue_form':
         case 'rm_sales_profileset_form':
         case 'rm_sales_profilecare_form':
-            $form['suggestions']['#attributes']['class'][] = 'table';
-            $form['suggestions']['#attributes']['class'][] = 'salesDataTable';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
@@ -734,4 +732,45 @@ function rmtwo_file_widget_multiple($variables) {
   $output = empty($rows) ? '' : theme('table', array('header' => $headers, 'rows' => $rows, 'attributes' => array('id' => $table_id, 'class' => array('table'))));
   $output .= drupal_render_children($element);
   return $output;
+}
+
+function rmtwo_tableselect($variables) {
+  $element = $variables['element'];
+  $rows = array();
+  $header = $element['#header'];
+  if (!empty($element['#options'])) {
+    // Generate a table row for each selectable item in #options.
+    foreach (element_children($element) as $key) {
+      $row = array();
+
+      $row['data'] = array();
+      if (isset($element['#options'][$key]['#attributes'])) {
+        $row += $element['#options'][$key]['#attributes'];
+      }
+      // Render the checkbox / radio element.
+      $row['data'][] = drupal_render($element[$key]);
+
+      // As theme_table only maps header and row columns by order, create the
+      // correct order by iterating over the header fields.
+      foreach ($element['#header'] as $fieldname => $title) {
+        $row['data'][] = $element['#options'][$key][$fieldname];
+      }
+      $rows[] = $row;
+    }
+    // Add an empty header or a "Select all" checkbox to provide room for the
+    // checkboxes/radios in the first table column.
+    if ($element['#js_select']) {
+      // Add a "Select all" checkbox.
+      drupal_add_js('misc/tableselect.js');
+      array_unshift($header, array('class' => array('select-all')));
+    }
+    else {
+      // Add an empty header when radio buttons are displayed or a "Select all"
+      // checkbox is not desired.
+      array_unshift($header, '');
+    }
+  }
+  $element['#attributes']['class'][] = 'table';
+  $element['#attributes']['class'][] = 'salesDataTable';
+  return theme('table', array('header' => $header, 'rows' => $rows, 'empty' => $element['#empty'], 'attributes' => $element['#attributes']));
 }
