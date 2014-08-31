@@ -1,4 +1,4 @@
-(function($) {
+jQuery(document).ready(function ($) {
 
     $('#side-menu').metisMenu();
     $('.salesDataTable').dataTable();
@@ -27,4 +27,4 @@
         }
     });
    
-})(jQuery);
+});

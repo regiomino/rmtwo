@@ -16263,7 +16263,7 @@ if ($.fn.DataTable.TableTools) {
 
 })(jQuery);
 
-(function($) {
+jQuery(document).ready(function ($) {
 
     $('#side-menu').metisMenu();
     $('.salesDataTable').dataTable();
@@ -16292,4 +16292,4 @@ if ($.fn.DataTable.TableTools) {
         }
     });
    
-})(jQuery);
+});
