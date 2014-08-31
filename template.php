@@ -426,7 +426,7 @@ function rmtwo_preprocess_page(&$variables) {
     else {
         if(drupal_is_front_page()) {
             drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style.min.css');
-            drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/utilities/jquery.jCounter-0.1.2.js');
+            //drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/utilities/jquery.jCounter-0.1.2.js');
             drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/regiomino.min.js');
         }
         else {
