@@ -254,7 +254,6 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
         case 'rm_sales_profileset_form':
         case 'rm_sales_profilecare_form':
             $form['suggestions']['#attributes']['class'][] = 'table';
-            $form['suggestions']['#attributes']['id'] = 'dataSalesTable';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
@@ -271,6 +270,8 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
         case 'rm_sales_offertable_add':
+            $form['#prefix'] = '<div class="row"><h1 class="page-header">' . t('Add offer table') . '</h1>';
+            $form['#suffix'] = '</div>';
             $form['rm_add_offertable']['body'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
@@ -278,7 +279,8 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             break;
         case 'rm_sales_deletenode':
         case 'rm_seller_agreement_delete':
-            $form['#prefix'] = '<h1 class="page-header">' . t('Delete') . '</h1>';
+            $form['#prefix'] = '<div class="row"><h1 class="page-header">' . t('Delete') . '</h1>';
+            $form['#suffix'] = '</div>';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-danger';
             break;
