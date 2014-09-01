@@ -81,8 +81,9 @@
     </div>
     <div class="cart-summary <?php if($emptycart): print "empty"; endif; ?>" id="cart-summary">
        <p class="pre-sum text-muted"><small>Summe  <span class="pull-right"><?php print number_format(rm_cart_get_cart_total($suid), 2, ",", "."); ?>€ </span></small></p>
-       <p class="pre-sum last text-muted"><small>zzgl. MwSt.  <span class="pull-right"><?php print number_format(rm_cart_get_cart_vat($suid), 2, ",", "."); ?>€ </span></small></p>
-      <p class="sum"><strong>Gesamtbetrag</strong> <span class="pull-right"><strong> <?php print number_format(rm_cart_get_cart_total($suid) + rm_cart_get_cart_vat($suid), 2, ",", "."); ?>€</strong> </p>
+       <p class="pre-sum text-muted"><small>zzgl. MwSt.  <span class="pull-right"><?php print number_format(rm_cart_get_cart_vat($suid), 2, ",", "."); ?>€ </span></small></p>
+       <p class="pre-sum last text-muted"><small>Pfand  <span class="pull-right"><?php print number_format(rm_cart_get_cart_deposit($suid), 2, ",", "."); ?>€ </span></small></p>
+      <p class="sum"><strong>Gesamtbetrag</strong> <span class="pull-right"><strong> <?php print number_format(rm_cart_get_cart_total($suid) + rm_cart_get_cart_vat($suid) + rm_cart_get_cart_deposit($suid), 2, ",", "."); ?>€</strong> </p>
       <div class="minimum-order-values">
         <?php foreach($minimum_order_values as $type => $value): ?>
           <div class="alert <?php $cart_total = rm_cart_get_cart_total($suid); print ($cart_total >= $value) ? 'alert-success' : 'alert-danger'; ?>" role="alert"><span class="glyphicon glyphicon glyphicon-<?php $cart_total = rm_cart_get_cart_total($suid); print ($cart_total >= $value) ? 'ok' : 'remove'; ?>"></span> <?php print node_type_get_name($type); ?> ab <?php print number_format($value, 2, ",", "."); ?> € <strong class="pull-right"> <?php if($value - $cart_total> 0): ?>noch <?php print number_format($value - $cart_total, 2, ",", "."); ?>€<?php endif; ?></strong></div>
