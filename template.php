@@ -396,6 +396,8 @@ function rmtwo_preprocess_page(&$variables) {
         ($variables['page']['#type'] == 'page' && (arg(0) == 'lieferanten')) ||
         //Alle Verkäuferprofil-Seiten/Shops
         (array_key_exists('node', $variables) && $variables['node']->type == 'seller_profile') ||
+        //Kaufprozess
+        (arg(0) == 'checkout') ||
         //User edit page
         (arg(0) == 'user' && arg(2) == 'edit')
     ) {
