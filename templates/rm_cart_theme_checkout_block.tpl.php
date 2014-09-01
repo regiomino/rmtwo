@@ -10,7 +10,7 @@
     else :
         $emptycart = false;
     endif;
-    
+    $oneclick = $vars['oneclick'];
 ?>
 
 <div id="cart" class="cart-wrapper">
