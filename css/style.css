@@ -8241,8 +8241,8 @@ label {
 .front .benefits img {
   margin-bottom: 15px;
 }
-.node-type-seller-profile #feedbackify .fby-tab-r {
-  display: none;
+.node-type-seller-profile #feedbackify #fbya #fbyb .fby-tab-r {
+  right: 103px!important;
 }
 .node-type-seller-profile .affix {
   top: 65px;
