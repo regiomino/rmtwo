@@ -405,6 +405,7 @@ function rmtwo_preprocess_page(&$variables) {
         //Preprocessing for seller profiles
         if(array_key_exists('node', $variables)) {
             if($variables['node']->type == 'seller_profile') {
+                $_SESSION['chosen_seller'] = $variables['node']->uid;
                 global $user;
                 $commercial_profiles = array();
                 if($user->uid > 0) {

@@ -3,8 +3,9 @@
     $packaging_field = field_info_field('field_tu_packaging');
     $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading_unit');
     $sellerprofile_id = arg(1);
+    $seller_profile = node_load($sellerprofile_id);
     $minimum_order_values = array();
-    if(isset($_SESSION['regionselect']['zip'])) $minimum_order_values = rm_cart_get_minimum_order_values(node_load($sellerprofile_id)->uid, $_SESSION['regionselect']['zip']);
+    if(isset($_SESSION['regionselect']['zip'])) $minimum_order_values = rm_cart_get_minimum_order_values($seller_profile->uid, $_SESSION['regionselect']['zip']);
     if(empty($vars['cart'])):
         $emptycart = true;
     else :
@@ -80,16 +81,16 @@
         
     </div>
     <div class="cart-summary <?php if($emptycart): print "empty"; endif; ?>" id="cart-summary">
-       <p class="pre-sum text-muted"><small>Summe  <span class="pull-right"><?php print number_format(rm_cart_get_cart_total(), 2, ",", "."); ?>€ </span></small></p>
-       <p class="pre-sum last text-muted"><small>zzgl. MwSt.  <span class="pull-right"><?php print number_format(rm_cart_get_cart_vat(), 2, ",", "."); ?>€ </span></small></p>
-      <p class="sum"><strong>Gesamtbetrag</strong> <span class="pull-right"><strong> <?php print number_format(rm_cart_get_cart_total() + rm_cart_get_cart_vat(), 2, ",", "."); ?>€</strong> </p>
+       <p class="pre-sum text-muted"><small>Summe  <span class="pull-right"><?php print number_format(rm_cart_get_cart_total($seller_profile->uid), 2, ",", "."); ?>€ </span></small></p>
+       <p class="pre-sum last text-muted"><small>zzgl. MwSt.  <span class="pull-right"><?php print number_format(rm_cart_get_cart_vat($seller_profile->uid), 2, ",", "."); ?>€ </span></small></p>
+      <p class="sum"><strong>Gesamtbetrag</strong> <span class="pull-right"><strong> <?php print number_format(rm_cart_get_cart_total($seller_profile->uid) + rm_cart_get_cart_vat($seller_profile->uid), 2, ",", "."); ?>€</strong> </p>
       <div class="minimum-order-values">
         <?php foreach($minimum_order_values as $type => $value): ?>
-          <div class="alert <?php $cart_total = rm_cart_get_cart_total(); print ($cart_total >= $value) ? 'alert-success' : 'alert-danger'; ?>" role="alert"><span class="glyphicon glyphicon glyphicon-<?php $cart_total = rm_cart_get_cart_total(); print ($cart_total >= $value) ? 'ok' : 'remove'; ?>"></span> <?php print node_type_get_name($type); ?> ab <?php print number_format($value, 2, ",", "."); ?> € <strong class="pull-right"> <?php if($value - $cart_total> 0): ?>noch <?php print number_format($value - $cart_total, 2, ",", "."); ?>€<?php endif; ?></strong></div>
+          <div class="alert <?php $cart_total = rm_cart_get_cart_total($seller_profile->uid); print ($cart_total >= $value) ? 'alert-success' : 'alert-danger'; ?>" role="alert"><span class="glyphicon glyphicon glyphicon-<?php $cart_total = rm_cart_get_cart_total($seller_profile->uid); print ($cart_total >= $value) ? 'ok' : 'remove'; ?>"></span> <?php print node_type_get_name($type); ?> ab <?php print number_format($value, 2, ",", "."); ?> € <strong class="pull-right"> <?php if($value - $cart_total> 0): ?>noch <?php print number_format($value - $cart_total, 2, ",", "."); ?>€<?php endif; ?></strong></div>
           <?php endforeach; ?> 
       
         <!--<?php foreach($minimum_order_values as $type => $value): ?>
-           <tr class="<?php $cart_total = rm_cart_get_cart_total(); print ($cart_total >= $value) ? 'alert-success' : 'alert-danger'; ?>">
+           <tr class="<?php $cart_total = rm_cart_get_cart_total($seller_profile->uid); print ($cart_total >= $value) ? 'alert-success' : 'alert-danger'; ?>">
                <td><?php print node_type_get_name($type); ?></td>
                <td><?php print number_format($value, 2, ",", "."); ?>€</td>
            </tr>
