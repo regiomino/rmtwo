@@ -28,12 +28,16 @@
 </div>
 
 <div class="container-fluid">
-    <div class="row">
-        <?php if(user_is_logged_in() && ($tabs['#primary'] || $tabs['#secondary'])): ?>
-            <div class="col-md-12 main">
-                <?php print render($tabs); ?>
-            </div>
-        <?php endif; ?>
+   
+    <?php if(user_is_logged_in() && ($tabs['#primary'] || $tabs['#secondary'])): ?>
+     <div class="row">
+        <div class="col-md-12 main">
+            <?php print render($tabs); ?>
+        </div>
+     </div>
+    <?php endif; ?>
+   
+    <div class="row"> 
         <?php print render($page['content']); ?>
     </div>
 </div>
