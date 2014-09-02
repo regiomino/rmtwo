@@ -20,7 +20,7 @@
         <div class="navbar-form navbar-right" role="form">
             <?php print rm_user_get_navbar(); ?>
             <button class="btn btn-danger" data-toggle="modal" data-target="#suggestModal">
-                <span class="glyphicon glyphicon-plus"></span> <?php print t('Suggest vendor or gastronomy'); ?>
+                <span class="fa fa-plus"></span> <?php print t('Suggest vendor or gastronomy'); ?>
             </button>
         </div>
 
@@ -101,12 +101,12 @@
                                       <img src="<?php echo base_path() . path_to_theme();?>/images/efficient.jpg" alt="Effiziente Beschaffung regionaler Produkte" class="img-circle">  
                                       <h4> Effiziente Beschaffung regionaler Produkte</h4> 
                                         <ul>
-                                           <li><span class="glyphicon glyphicon-ok"></span><strong>Zeit- und Kostenersparnis: </strong> Vereinfachen Sie Ihre Beschaffung: App öffnen, Produkte und
+                                           <li><span class="fa fa-check"></span><strong>Zeit- und Kostenersparnis: </strong> Vereinfachen Sie Ihre Beschaffung: App öffnen, Produkte und
                                                 Mengen auswählen, Bestellung abschicken. </li>
-                                           <li><span class="glyphicon glyphicon-ok"></span><strong> Günstige Preise:</strong> Sparen sie auf Dauer, denn Sie kaufen beim Produzenten direkt ein. </li>
-                                           <li><span class="glyphicon glyphicon-ok"></span><strong> Hohe Produktqualität: </strong> Volle Transparenz über die Herkunft der Produkte.</li>
-                                           <li><span class="glyphicon glyphicon-ok"></span><strong> Besseres Marketing:</strong> Zeigen Sie regional interessierten Kunden, wo Sie einkaufen. </li>
-                                           <li><span class="glyphicon glyphicon-ok"></span><strong> Vorbestellungen:</strong> Lassen Sie Ihre Kunden vorbestellen und verringern Sie so Ihren Bestand</li>
+                                           <li><span class="fa fa-check"></span><strong> Günstige Preise:</strong> Sparen sie auf Dauer, denn Sie kaufen beim Produzenten direkt ein. </li>
+                                           <li><span class="fa fa-check"></span><strong> Hohe Produktqualität: </strong> Volle Transparenz über die Herkunft der Produkte.</li>
+                                           <li><span class="fa fa-check"></span><strong> Besseres Marketing:</strong> Zeigen Sie regional interessierten Kunden, wo Sie einkaufen. </li>
+                                           <li><span class="fa fa-check"></span><strong> Vorbestellungen:</strong> Lassen Sie Ihre Kunden vorbestellen und verringern Sie so Ihren Bestand</li>
                                         </ul>
                                     </div>
                                    
@@ -114,12 +114,12 @@
                                         <img src="<?php echo base_path() . path_to_theme();?>/images/direct.jpg" alt="Effektive Direktvermarktung Ihrer Produkte" class="img-circle"> 
                                         <h4> Effektive Direktvermarktung Ihrer Produkte</h4> 
                                         <ul>
-                                            <li><span class="glyphicon glyphicon-ok"></span><strong>Höhere Erträge:  </strong>  Wir übernehmen Ihre Vermarktung ohne Grundgebühren. Unschlagbar! </li>
-                                            <li><span class="glyphicon glyphicon-ok"></span><strong>Gewinnen Sie neue Kundengruppen:  </strong>  Sichern Sie sich den Zugang zu modernen
+                                            <li><span class="fa fa-check"></span><strong>Höhere Erträge:  </strong>  Wir übernehmen Ihre Vermarktung ohne Grundgebühren. Unschlagbar! </li>
+                                            <li><span class="fa fa-check"></span><strong>Gewinnen Sie neue Kundengruppen:  </strong>  Sichern Sie sich den Zugang zu modernen
                                             Verbrauchern. </li>
-                                            <li><span class="glyphicon glyphicon-ok"></span><strong>Zukunftssicherheit: </strong>   Neue Absatzkanäle - weniger Abhängigkeit von großen
+                                            <li><span class="fa fa-check"></span><strong>Zukunftssicherheit: </strong>   Neue Absatzkanäle - weniger Abhängigkeit von großen
                                             Handelskonzernen. </li>
-                                            <li><span class="glyphicon glyphicon-ok"></span><strong>Zeit- und damit Kostenersparnis: </strong>   Vereinfachen Sie Ihre Direktvermarktung - Bestellung,
+                                            <li><span class="fa fa-check"></span><strong>Zeit- und damit Kostenersparnis: </strong>   Vereinfachen Sie Ihre Direktvermarktung - Bestellung,
                                             Abrechnung, Bezahlung und Buchhaltung. </li>
                                         </ul>
                                     </div>
@@ -128,10 +128,10 @@
                                         <img src="<?php echo base_path() . path_to_theme();?>/images/eco.jpg" alt="Wir stärken unsere Wirtschaftskraft nachhaltig" class="img-circle"> 
                                         <h4> Wir stärken unsere Wirtschaftskraft nachhaltig</h4> 
                                         <ul>
-                                           <li><span class="glyphicon glyphicon-ok"></span><strong>Ökonomisch: </strong> Ihre Produzenten können zu fairen Preisen verkaufen, erzielen höhere Erlöse
+                                           <li><span class="fa fa-check"></span><strong>Ökonomisch: </strong> Ihre Produzenten können zu fairen Preisen verkaufen, erzielen höhere Erlöse
     und werden nicht von den großen Handelskonzernen ausgebeutet. </li>
-                                           <li><span class="glyphicon glyphicon-ok"></span><strong>Nachhaltig: </strong> Ihr Geld bleibt in ihrem regionalen Wirtschaftskreislauf. </li>
-                                           <li><span class="glyphicon glyphicon-ok"></span><strong> Strukturfördernd:</strong> Die Gründung und Führung von Dorfläden/ Stadtteilläden sowie von
+                                           <li><span class="fa fa-check"></span><strong>Nachhaltig: </strong> Ihr Geld bleibt in ihrem regionalen Wirtschaftskreislauf. </li>
+                                           <li><span class="fa fa-check"></span><strong> Strukturfördernd:</strong> Die Gründung und Führung von Dorfläden/ Stadtteilläden sowie von
     Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
                                          
                                         </ul>

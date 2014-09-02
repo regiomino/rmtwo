@@ -87,8 +87,8 @@
                 <div class="row">
                     <div class="col-xs-8">
                         <p class="text-left"> <small> Haben Sie Fragen? Rufen Sie uns an oder schreiben Sie uns!</small> <br>
-                            <a class="pull-left"  href="tel:+49091319291117"> <span class="glyphicon glyphicon-earphone"></span> 09131-9291117</a>
-                            <a class="pull-left" href="mailto:support@regiomino.de"> <span class="glyphicon glyphicon-send"></span> support@regiomino.de</a>
+                            <a class="pull-left"  href="tel:+49091319291117"> <span class="fa fa-phone"></span> 09131-9291117</a>
+                            <a class="pull-left" href="mailto:support@regiomino.de"> <span class="fa fa-paper-plane"></span> support@regiomino.de</a>
                             
                         </p>
                     </div>

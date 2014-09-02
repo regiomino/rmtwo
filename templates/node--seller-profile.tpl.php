@@ -69,7 +69,7 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                 <h1 class="h2"><strong> <?php print $node->title; ?></strong></h1>
                 <ul class="list-inline">
                     <li>
-                        <span class="glyphicon glyphicon-cutlery" ></span>
+                        <span class="fa fa-cutlery" ></span>
                         <?php
                             $all_tids = array();
                             foreach($node->field_sellercategories[LANGUAGE_NONE] as $index => $tid) {
@@ -83,7 +83,7 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                         ?>
                     </li>
                     <li>
-                        <span class="glyphicon glyphicon-road"></span>
+                        <span class="fa fa-map-marker"></span>
                         <?php print $node->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?>, <?php print $node->field_address[LANGUAGE_NONE][0]['postal_code'] ?> <?php print $node->field_address[LANGUAGE_NONE][0]['locality']; ?></li>
                     </li>
                 </ul>
@@ -99,10 +99,10 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                             $body = strip_tags($node->body[LANGUAGE_NONE][0]['value']);
                             if(mb_strlen($body) > $length) {
                                 print '<div class="description" id="long-desc" style="display:none; height:auto"><p>'.$body.'</p>';
-                                    print '<div class="more-toggle"><a href="#" id="read-less"> <span class="glyphicon glyphicon-chevron-up"></span> weniger lesen </a></div></div>';
+                                    print '<div class="more-toggle"><a href="#" id="read-less"> <span class="fa fa-chevron-up"></span> weniger lesen </a></div></div>';
                                 
                                 print '<div class="description" id="short-desc"><p>';
-                                print mb_substr($body, 0, mb_strpos($body, " ", $length)) . '<span class="elipsis"> ...</span></p><div class="more-toggle"><a href="#" id="read-more"> <span class="glyphicon glyphicon-chevron-down"></span> mehr lesen </a></div></div>';
+                                print mb_substr($body, 0, mb_strpos($body, " ", $length)) . '<span class="elipsis"> ...</span></p><div class="more-toggle"><a href="#" id="read-more"> <span class="fa fa-chevron-down"></span> mehr lesen </a></div></div>';
                                 
                             }
                             else {
@@ -170,9 +170,9 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                                                         <span class="unit-amount text-muted"><?php print $variation->trading_units[0]->field_tu_amount[LANGUAGE_NONE][0]['value']; ?>&times;<?php print $variation->field_productunit[LANGUAGE_NONE][0]['first']; ?> <?php print t($variation->field_productunit[LANGUAGE_NONE][0]['second']); ?> </span>
                                                     </div>
                                                     <div class="price-info text-muted">
-                                                        <span class="glyphicon glyphicon-info-sign"></span> zzgl. <?php print $variation->trading_units[0]->field_tu_vat[LANGUAGE_NONE][0]['value']; ?>% MwSt.<br>
+                                                        <span class="fa fa-info-circle"></span> zzgl. <?php print $variation->trading_units[0]->field_tu_vat[LANGUAGE_NONE][0]['value']; ?>% MwSt.<br>
                                                         <?php if(!empty($variation->trading_units[0]->field_tu_deposit[LANGUAGE_NONE][0]['value'])): ?>
-                                                            <span class="glyphicon glyphicon-info-sign"></span> zzgl. <?php print number_format($variation->trading_units[0]->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€ Pfand
+                                                            <span class="fa fa-info-circle"></span> zzgl. <?php print number_format($variation->trading_units[0]->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€ Pfand
                                                         <?php endif; ?>
                                                     </div>
                                                 </div>
@@ -192,9 +192,9 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                                                             <span class="unit-amount text-muted"><?php print $variation->trading_units[0]->field_tu_amount[LANGUAGE_NONE][0]['value']; ?>&times;<?php print $variation->field_productunit[LANGUAGE_NONE][0]['first']; ?> <?php print t($variation->field_productunit[LANGUAGE_NONE][0]['second']); ?> </span>
                                                         </div>
                                                         <div class="price-info text-muted">
-                                                            <span class="glyphicon glyphicon-info-sign"></span> zzgl. <?php print $variation->trading_units[0]->field_tu_vat[LANGUAGE_NONE][0]['value']; ?>% Mwst.   <br>
-                                                            <span class="glyphicon glyphicon-info-sign"></span> zzgl. <?php print number_format($variation->trading_units[0]->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€ Pfand<br>
-                                                            <span class="indicator"><span class="glyphicon glyphicon-chevron-down"></span><strong> weitere Gebinde</strong></span>
+                                                            <span class="fa fa-info-circle"></span> zzgl. <?php print $variation->trading_units[0]->field_tu_vat[LANGUAGE_NONE][0]['value']; ?>% Mwst.   <br>
+                                                            <span class="fa fa-info-circle"></span> zzgl. <?php print number_format($variation->trading_units[0]->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€ Pfand<br>
+                                                            <span class="indicator"><span class="fa fa-chevron-down"></span><strong> weitere Gebinde</strong></span>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -224,9 +224,9 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                                                                 <span class="unit-amount text-muted"><?php print $tradingunit->field_tu_amount[LANGUAGE_NONE][0]['value']; ?>&times;<?php print $variation->field_productunit[LANGUAGE_NONE][0]['first']; ?> <?php print t($variation->field_productunit[LANGUAGE_NONE][0]['second']); ?> </span>
                                                             </div>
                                                             <div class="price-info text-muted">
-                                                                <span class="glyphicon glyphicon-info-sign"></span> zzgl. <?php print $tradingunit->field_tu_vat[LANGUAGE_NONE][0]['value']; ?>% Mwst.   <br>
-                                                                <span class="glyphicon glyphicon-info-sign"></span> zzgl. <?php print number_format($tradingunit->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€ Pfand<br>
-                                                                <span class="indicator"><span class="glyphicon glyphicon-chevron-down"></span><strong> weitere Gebinde</strong></span>
+                                                                <span class="fa fa-info-circle"></span> zzgl. <?php print $tradingunit->field_tu_vat[LANGUAGE_NONE][0]['value']; ?>% Mwst.   <br>
+                                                                <span class="fa fa-info-circle"></span> zzgl. <?php print number_format($tradingunit->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€ Pfand<br>
+                                                                <span class="indicator"><span class="fa fa-chevron-down"></span><strong> weitere Gebinde</strong></span>
                                                             </div>
                                                         </div>
                                                     </a>
@@ -241,7 +241,7 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
                                 </div>
                                    
                                 <div class="add-to-cart-area">
-                                    <button data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>" type="button" class="btn add2Cart btn-default btn-lg"><span class="glyphicon glyphicon-shopping-cart"></span> in den Warenkorb</button>
+                                    <button data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>" type="button" class="btn add2Cart btn-default btn-lg"><span class="fa fa-shopping-cart"></span> in den Warenkorb</button>
                                      
                                 </div>
                             </div>

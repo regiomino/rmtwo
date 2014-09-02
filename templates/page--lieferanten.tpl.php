@@ -19,7 +19,7 @@
             <div class="navbar-form navbar-right" role="form">
                 <?php print rm_user_get_navbar(); ?>
                 <button class="btn btn-danger" data-toggle="modal" data-target="#suggestModal">
-                    <span class="glyphicon glyphicon-plus"></span> <?php print t('Suggest vendor or gastronomy'); ?>
+                    <span class="fa fa-plus"></span> <?php print t('Suggest vendor or gastronomy'); ?>
                 </button>
             </div>
 

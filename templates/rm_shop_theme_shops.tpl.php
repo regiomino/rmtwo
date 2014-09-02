@@ -80,7 +80,7 @@
                 ?>
                 <br /><br />
                 <ul class="list-unstyled">
-                    <li><span class="glyphicon glyphicon-cutlery" ></span>
+                    <li><span class="fa fa-cutlery" ></span>
                         <?php
                         $all_tids = array();
                         foreach($shop->field_sellercategories[LANGUAGE_NONE] as $index => $tid) {
@@ -93,7 +93,7 @@
                         }
                         ?>
                     </li>
-                    <li><span class="glyphicon glyphicon-road"></span> <?php print $shop->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?>, <?php print $shop->field_address[LANGUAGE_NONE][0]['postal_code'] ?> <?php print $shop->field_address[LANGUAGE_NONE][0]['locality']; ?></li>
+                    <li><span class="fa fa-map-marker"></span> <?php print $shop->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?>, <?php print $shop->field_address[LANGUAGE_NONE][0]['postal_code'] ?> <?php print $shop->field_address[LANGUAGE_NONE][0]['locality']; ?></li>
                 </ul>
                 <p>
                     <?php
