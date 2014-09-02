@@ -111,7 +111,7 @@
                 data-indeed-apply-jobCompanyName="Regiomino GmbH"
                 data-indeed-apply-jobTitle="<?php print $node->title; ?>"
                 data-indeed-apply-jobUrl="<?php global $base_url; global $base_path; print $base_url . $base_path; ?>node/<?php print $node->nid; ?>"
-                data-indeed-apply-postUrl="<?php print print $base_url . $base_path; ?>process-applications"
+                data-indeed-apply-postUrl="<?php print $base_url . $base_path; ?>process-applications"
                 data-indeed-apply-jobMeta="right-rail-apply-button"></span>
              
             <script>(function(d, s, id) {
