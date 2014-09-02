@@ -62,9 +62,9 @@ $tupackaging = list_allowed_values(field_info_field('field_tu_packaging'));
 $packaging_field = field_info_field('field_tu_packaging');
 $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading_unit');
 ?>
-<div class="content-wrapper clearfix"> 
-    <div class="wrapper-m">
-        <div class="wrapper-m-inner">
+<div class="flexfix-wrapper clearfix"> 
+    <div class="flexfix-content">
+        <div class="flexfix-content-inner">
             <div class="seller-infos"> 
                 <h1 class="h2"><strong> <?php print $node->title; ?></strong></h1>
                 <ul class="list-inline">
@@ -252,7 +252,7 @@ $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading
         </div>
     </div>
 
-    <div class="grid-l">
+    <div class="flexfix-sidebar">
         <div class="cart-container"> 
             <?php
             $block = module_invoke('rm_cart', 'block_view', 'rm_cart_block');

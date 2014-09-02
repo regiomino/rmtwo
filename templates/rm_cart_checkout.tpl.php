@@ -1,20 +1,24 @@
 <?php
 $form = $variables['form'];
 ?>
-<div class="wrapper-m">
-    <div class="wrapper-m-inner">
-        <?php print render($form['checkout']); ?>
-        
-        
-        <?php print render($form['submit']); ?>
+<div class="flexfix-wrapper clearfix"> 
+    <div class="flexfix-content">
+        <div class="flexfix-content-inner">
+            <?php print render($form['checkout']); ?>
+            
+            
+            <?php print render($form['submit']); ?>
+        </div>
     </div>
-</div>
-
-<div class= "grid-l">
-<?php
-$block = module_invoke('rm_cart', 'block_view', 'rm_checkout_block');
-    print render($block['content']);
-?>
+    
+    <div class="flexfix-sidebar">
+        <div class="cart-container"> 
+            <?php
+            $block = module_invoke('rm_cart', 'block_view', 'rm_checkout_block');
+                print render($block['content']);
+            ?>
+        </div>
+    </div>
 </div>
 
 <?php

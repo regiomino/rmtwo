@@ -10,12 +10,12 @@
     else :
         $emptycart = false;
     endif;
-    $oneclick = $vars['oneclick'];
+    
 ?>
 
 <div id="cart" class="cart-wrapper">
    <div class="cart-header" id="cart-header">
-        <h3><span class="glyphicon glyphicon-shopping-cart"> </span> Warenkorb</h3>
+        <h3><span class="fa fa-shopping-cart"> </span> Warenkorb</h3>
    </div>
     <div class="cart-content" id="cart-content">
 
@@ -40,20 +40,9 @@
         <div class="cart-item" data-offerid="<?php print $offer->nid; ?>" data-variation="<?php print $variation->vid; ?>" data-tradingunit="<?php print $cart_item->field_trading_unit_reference[LANGUAGE_NONE][0]['target_id'];   ?>" >
             <div class="row">
                 <div class="col-xs-5">
-                    <div class="input-group stepper ">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default stepper-control stepper-minus" data-operation = "-1" ><span class="glyphicon glyphicon-minus"></span></button>
-                        </span>
-                        <?php if ($cart_item->field_quantity[LANGUAGE_NONE][0]['value'] ==  $cart_item_max) :
-                            $max_items = true;
-                            endif;
-                        ?>
-                        <input  type="number" value="<?php print $cart_item->field_quantity[LANGUAGE_NONE][0]['value'] ?>" class="form-control stepper-qty" max="<?php print $cart_item_max; ?>">
-                        <span class="input-group-btn">
-                            <button <?php if ($max_items): print 'disabled="true"'; endif; ?> class="btn btn-default stepper-control stepper-plus" data-operation = "1" ><span class="glyphicon glyphicon-plus"></span></button>
-                        </span>
-                    </div>
-                    <a href="<?php print $cart_item->nid ?>" class="delete-item text-muted"><small> <span class="glyphicon glyphicon-trash"></span> Löschen</small> </a>
+                    <div class="final-amount text-center"><?php print $cart_item->field_quantity[LANGUAGE_NONE][0]['value'] ?></div>
+                    <a href="<?php print $cart_item->nid ?>" class="edit-item text-center text-muted"><small> <span class="fa fa-pencil-square-o"></span> Bearbeiten</small> </a>
+               
                 </div>
                 <div class="col-xs-7">
                     <p class="product-title">  <?php print $variation->title; ?><br><span class="tradingunit text-muted"><small><?php print $packaging; ?> (<?php print $unit_description; ?>)</small></span>
@@ -71,7 +60,7 @@
         else: ?>
         
         <div class="empty-cart ">
-            <div class="center-block animation-target empty-cart-icon"> <span class="glyphicon glyphicon-shopping-cart"></span> </div>
+            <div class="center-block animation-target empty-cart-icon"> <span class="fa fa-shopping-cart"></span> </div>
             <p class="text-center">Ihr Warenkorb ist leer. </p>
         </div>
         
