@@ -86,21 +86,11 @@
       <p class="sum"><strong>Gesamtbetrag</strong> <span class="pull-right"><strong> <?php print number_format(rm_cart_get_cart_total($suid) + rm_cart_get_cart_vat($suid) + rm_cart_get_cart_deposit($suid), 2, ",", "."); ?>€</strong> </p>
       <div class="minimum-order-values">
         <?php foreach($minimum_order_values as $type => $value): ?>
-          <div class="alert <?php $cart_total = rm_cart_get_cart_total($suid); print ($cart_total >= $value) ? 'alert-success' : 'alert-danger'; ?>" role="alert"><span class="glyphicon glyphicon glyphicon-<?php $cart_total = rm_cart_get_cart_total($suid); print ($cart_total >= $value) ? 'ok' : 'remove'; ?>"></span> <?php print node_type_get_name($type); ?> ab <?php print number_format($value, 2, ",", "."); ?> € <strong class="pull-right"> <?php if($value - $cart_total> 0): ?>noch <?php print number_format($value - $cart_total, 2, ",", "."); ?>€<?php endif; ?></strong></div>
+          <div class="alert <?php $cart_total = rm_cart_get_cart_total($suid); print ($cart_total >= $value) ? 'alert-success' : 'alert-danger'; ?>" role="alert"><a href="/checkout/<?php print $suid; ?>/<?php print $type; ?>"><span class="glyphicon glyphicon glyphicon-<?php $cart_total = rm_cart_get_cart_total($suid); print ($cart_total >= $value) ? 'ok' : 'remove'; ?>"></span> <?php print node_type_get_name($type); ?> ab <?php print number_format($value, 2, ",", "."); ?> € <strong class="pull-right"> <?php if($value - $cart_total> 0): ?>noch <?php print number_format($value - $cart_total, 2, ",", "."); ?>€<?php endif; ?></strong></div></div>
           <?php endforeach; ?> 
-      
-        <!--<?php foreach($minimum_order_values as $type => $value): ?>
-           <tr class="<?php $cart_total = rm_cart_get_cart_total($suid); print ($cart_total >= $value) ? 'alert-success' : 'alert-danger'; ?>">
-               <td><?php print node_type_get_name($type); ?></td>
-               <td><?php print number_format($value, 2, ",", "."); ?>€</td>
-           </tr>
-        <?php endforeach; ?>-->
-      
-
-
         </div>
       
-       <?php print l(t('Go to checkout'), '/checkout/' . $suid, array('external' => TRUE, 'attributes' => array('class' => array('btn','btn-primary', 'btn-lg', 'center-block', 'disabled' => ($emptycart) ? 'disabled' : 'enabled')))); ?>
+       <?php //print l(t('Go to checkout'), '/checkout/' . $suid, array('external' => TRUE, 'attributes' => array('class' => array('btn','btn-primary', 'btn-lg', 'center-block', 'disabled' => ($emptycart) ? 'disabled' : 'enabled')))); ?>
         
     </div>
    
