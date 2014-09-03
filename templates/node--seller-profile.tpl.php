@@ -61,9 +61,12 @@
 $tupackaging = list_allowed_values(field_info_field('field_tu_packaging'));
 $packaging_field = field_info_field('field_tu_packaging');
 $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading_unit');
-$shops = rm_shop_get_shop_agreements($user->uid, $zipcode, $node->uid);
-$shopkeys = array_keys($shops);
-$shop = $shops[$shopkeys[0]];
+$shop = array();
+if(isset($_SESSION['regionselect']['zip'])) {
+    $shops = rm_shop_get_shop_agreements($user->uid, $_SESSION['regionselect']['zip'], $node->uid);
+    $shopkeys = array_keys($shops);
+    $shop = $shops[$shopkeys[0]];
+}
 ?>
 <div class="flexfix-wrapper clearfix"> 
     <div class="flexfix-content">

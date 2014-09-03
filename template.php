@@ -422,7 +422,7 @@ function rmtwo_preprocess_page(&$variables) {
             }
         }
     }    
-    else if(arg(0) == 'manage') {
+    if(arg(0) == 'manage') {
         $variables['theme_hook_suggestions'][] = 'page__manage';
         drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style-back.min.css');
         drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/martin.css');
