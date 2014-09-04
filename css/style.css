@@ -9331,6 +9331,9 @@ label {
 .front .benefits img {
   margin-bottom: 15px;
 }
+.node-type-seller-profile .nav-tabs {
+  display: none;
+}
 .node-type-seller-profile #feedbackify .fby-tab-r {
   display: none;
 }
@@ -9370,29 +9373,19 @@ label {
   float: left;
   width: 100%;
 }
-@media screen and (min-width: 797px) {
+@media screen and (min-width: 768px) {
   .product-grid li.grid-item {
     width: 50%;
   }
 }
-@media screen and (min-width: 1017px) {
+@media screen and (min-width: 992px) {
   .product-grid li.grid-item {
     width: 33%;
   }
 }
-@media screen and (min-width: 1205px) {
+@media screen and (min-width: 1200px) {
   .product-grid li.grid-item {
     width: 25%;
-  }
-}
-@media screen and (min-width: 1436px) {
-  .product-grid li.grid-item {
-    width: 20%;
-  }
-}
-@media screen and (min-width: 1882px) {
-  .product-grid li.grid-item {
-    width: 16%;
   }
 }
 .product-grid li.grid-item .product-item {
