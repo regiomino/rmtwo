@@ -269,7 +269,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #555555;
-  background-color: #ffffff;
+  background-color: #fafafa;
 }
 input,
 button,
@@ -315,7 +315,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857143;
-  background-color: #ffffff;
+  background-color: #fafafa;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -1463,7 +1463,7 @@ th {
   border-top: 2px solid #dddddd;
 }
 .table .table {
-  background-color: #ffffff;
+  background-color: #fafafa;
 }
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
@@ -3006,7 +3006,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: #555555;
-  background-color: #ffffff;
+  background-color: #fafafa;
   border: 1px solid #dddddd;
   border-bottom-color: transparent;
   cursor: default;
@@ -3052,7 +3052,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs.nav-justified > .active > a,
   .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom-color: #ffffff;
+    border-bottom-color: #fafafa;
   }
 }
 .nav-pills > li {
@@ -3120,7 +3120,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs-justified > .active > a,
   .nav-tabs-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus {
-    border-bottom-color: #ffffff;
+    border-bottom-color: #fafafa;
   }
 }
 .tab-content > .tab-pane {
@@ -3458,8 +3458,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default {
-  background-color: #ffffff;
-  border-color: #eeeeee;
+  background-color: rgba(255, 255, 255, 0.93);
+  border-color: rgba(238, 238, 238, 0.93);
 }
 .navbar-default .navbar-brand {
   color: #777777;
@@ -3484,7 +3484,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   color: #555555;
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.93);
 }
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
@@ -3504,12 +3504,12 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-color: #eeeeee;
+  border-color: rgba(238, 238, 238, 0.93);
 }
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  background-color: #eeeeee;
+  background-color: rgba(238, 238, 238, 0.93);
   color: #555555;
 }
 @media (max-width: 767px) {
@@ -3525,7 +3525,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #555555;
-    background-color: #eeeeee;
+    background-color: rgba(238, 238, 238, 0.93);
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
@@ -3953,7 +3953,7 @@ a.list-group-item.active > .badge,
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.42857143;
-  background-color: #ffffff;
+  background-color: #fafafa;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -7357,6 +7357,9 @@ input[type=number]::-webkit-outer-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
+a:focus,
+a:active,
+a:hover,
 button:focus,
 button:active,
 button:hover {
@@ -7551,12 +7554,10 @@ label {
 .cart-wrapper .cart-header h3 {
   margin-top: 0px;
   margin-bottom: 0px;
+  font-size: 20px;
 }
 .cart-wrapper .cart-content {
   width: 100%;
-}
-.cart-wrapper .cart-summary {
-  background-color: #fff;
 }
 .cart-wrapper .cart-summary.empty {
   opacity: 0.6;
@@ -7597,9 +7598,6 @@ label {
 .cart-wrapper .cart-item p.product-title .tradingunit {
   display: block;
 }
-.cart-wrapper .cart-item p.product-title .tradingunit small {
-  font-size: 82%;
-}
 .cart-wrapper .cart-item p.price {
   padding-top: 1px ;
 }
@@ -7619,7 +7617,7 @@ label {
 .cart-wrapper .empty-cart .empty-cart-icon {
   width: 120px;
   height: 120px;
-  background-color: #f8f8f8;
+  background-color: #f3f3f3;
   border-radius: 50%;
   position: relative;
   margin-bottom: 4px;
@@ -9357,15 +9355,13 @@ label {
 }
 .node-type-seller-profile .affix {
   top: 65px;
-  right: 15px;
-  position: fixed;
   width: 309px;
 }
 .node-type-seller-profile .modal-body .media-object {
   margin-right: 15px;
 }
 .node-type-seller-profile .info-wrapper {
-  padding: 20px 0px 20px 0px;
+  padding: 20px 0px 17px 0px;
   margin-bottom: 20px;
   border-bottom: 1px solid #ddd;
 }
@@ -9374,9 +9370,13 @@ label {
 }
 .node-type-seller-profile .seller-infos h1 {
   margin-top: 0px;
+  margin-bottom: 5px;
 }
-.node-type-seller-profile .seller-infos .seller-description .description {
-  max-width: 770px;
+.node-type-seller-profile .seller-infos .seller-description p {
+  margin-bottom: 5px;
+}
+.node-type-seller-profile .seller-meta {
+  min-height: 211px;
 }
 .node-type-seller-profile .seller-meta h5 {
   color: #95bc0d;
@@ -9384,16 +9384,25 @@ label {
   font-weight: bold;
 }
 .node-type-seller-profile .seller-meta .delivery-meta {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 .node-type-seller-profile .seller-meta .delivery-meta li {
-  position: relative;
-  padding-left: 36px;
   line-height: 14px;
   margin-bottom: 10px;
 }
 .node-type-seller-profile .seller-meta .delivery-meta li:last-child {
   margin-bottom: 0px;
+}
+.node-type-seller-profile .seller-meta .delivery-meta a {
+  position: relative;
+  padding-left: 36px;
+  color: inherit;
+  display: block;
+}
+.node-type-seller-profile .seller-meta .delivery-meta a:hover,
+.node-type-seller-profile .seller-meta .delivery-meta a:focus,
+.node-type-seller-profile .seller-meta .delivery-meta a:active {
+  text-decoration: none;
 }
 .node-type-seller-profile .seller-meta .payment-meta h5 {
   margin-bottom: 6px;

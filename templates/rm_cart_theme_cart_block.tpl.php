@@ -90,7 +90,7 @@
           <?php endforeach; ?> 
         </div>
       
-       <?php //print l(t('Go to checkout'), '/checkout/' . $suid, array('external' => TRUE, 'attributes' => array('class' => array('btn','btn-primary', 'btn-lg', 'center-block', 'disabled' => ($emptycart) ? 'disabled' : 'enabled')))); ?>
+       <?php print l(t('Go to checkout'), '/checkout/' . $suid, array('external' => TRUE, 'attributes' => array('class' => array('btn','btn-primary', 'btn-lg', 'center-block', 'disabled' => ($emptycart) ? 'disabled' : 'enabled')))); ?>
         
     </div>
    
