@@ -7421,6 +7421,21 @@ button:hover {
   width: 54px;
   height: 11px;
 }
+.sprite.sprite-delivery-pickup {
+  background-position: -233px -92px;
+  width: 25px;
+  height: 23px;
+}
+.sprite.sprite-delivery-truck {
+  background-position: -239px -119px;
+  width: 26px;
+  height: 14px;
+}
+.sprite.sprite-delivery-mail {
+  background-position: -264px -91px;
+  width: 24px;
+  height: 23px;
+}
 label {
   cursor: pointer;
 }
@@ -9349,13 +9364,54 @@ label {
 .node-type-seller-profile .modal-body .media-object {
   margin-right: 15px;
 }
-.seller-infos {
+.node-type-seller-profile .info-wrapper {
+  padding: 20px 0px 20px 0px;
   margin-bottom: 20px;
-  padding-bottom: 20px;
   border-bottom: 1px solid #ddd;
 }
-.seller-infos .seller-description .description {
+.node-type-seller-profile .info-wrapper .col-md-3 {
+  border-left: 1px solid #ddd;
+}
+.node-type-seller-profile .seller-infos h1 {
+  margin-top: 0px;
+}
+.node-type-seller-profile .seller-infos .seller-description .description {
   max-width: 770px;
+}
+.node-type-seller-profile .seller-meta h5 {
+  color: #95bc0d;
+  margin-top: 0px;
+  font-weight: bold;
+}
+.node-type-seller-profile .seller-meta .delivery-meta {
+  margin-bottom: 15px;
+}
+.node-type-seller-profile .seller-meta .delivery-meta li {
+  position: relative;
+  padding-left: 36px;
+  line-height: 14px;
+  margin-bottom: 10px;
+}
+.node-type-seller-profile .seller-meta .delivery-meta li:last-child {
+  margin-bottom: 0px;
+}
+.node-type-seller-profile .seller-meta .payment-meta h5 {
+  margin-bottom: 6px;
+}
+.node-type-seller-profile .seller-meta .sprite {
+  position: absolute;
+  left: 0;
+}
+.node-type-seller-profile .seller-meta .sprite-delivery-pickup {
+  top: 5px;
+}
+.node-type-seller-profile .seller-meta .sprite-delivery-truck {
+  top: 4px;
+  left: 2px;
+}
+.node-type-seller-profile .seller-meta .sprite-delivery-mail {
+  top: 3px;
+  left: 2px;
 }
 .product-grid {
   margin: 0;

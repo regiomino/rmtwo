@@ -23,18 +23,77 @@
             margin-right: 15px;
         }
     }
-}
 
-.seller-infos {
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ddd;
-    
-    .seller-description {
+
+    .info-wrapper {
+        padding: 20px 0px 20px 0px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ddd;
         
-        .description {
-            max-width: 770px;
+        .col-md-3 {
+            border-left: 1px solid #ddd;
         }
+    }
+    
+    .seller-infos {
+        
+        h1 {
+            margin-top: 0px;
+        }
+        
+        .seller-description {
+
+            .description {
+                max-width: 770px;
+            }
+        }
+    }
+    
+    .seller-meta {
+        
+        h5 {
+            color: @brand-primary;
+            margin-top: 0px;
+            font-weight: bold;
+        }
+        
+        .delivery-meta {
+            margin-bottom: 15px;
+            li {
+                position: relative;
+                padding-left: 36px;
+                line-height: 14px;
+                margin-bottom: 10px;
+                
+                &:last-child {
+                    margin-bottom: 0px;
+                }
+            }
+        }
+        
+        .payment-meta {
+            h5 {
+                margin-bottom: 6px;
+            }
+        }
+        .sprite {
+            position:  absolute;
+            left: 0;
+        }
+        .sprite-delivery-pickup {
+            top: 5px;
+        }
+        
+         .sprite-delivery-truck {
+            top: 4px;
+            left: 2px;
+        }
+        
+        .sprite-delivery-mail {
+            top: 3px;
+            left: 2px;
+        }
+        
     }
 }
 
