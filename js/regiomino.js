@@ -1638,7 +1638,12 @@ jQuery(document).ready(function ($) {
         $('#short-desc').show();
     });
 
-    
+    $('.delivery-meta a').popover({
+         html : true,
+         placement: 'bottom',
+         trigger : 'hover',
+         container : 'body'
+        });
     
     $('#partner-logos a').tooltip();
     

@@ -1,5 +1,5 @@
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
+    <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<div class="container-fluid">
+<div class="container">
    
     <?php if(user_is_logged_in() && ($tabs['#primary'] || $tabs['#secondary'])): ?>
      <div class="row">

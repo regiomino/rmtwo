@@ -1,62 +1,7 @@
  <?php
 
-/**
- *  Alle spannenden Sachen in $node
- */
  
-    /* //Titel
-    print $node->title;
-     
-    //Kategorien für den Verkäufer (nicht für die Produkte!)
-    foreach($node->field_sellercategories[LANGUAGE_NONE] as $category) {
-        print $category['taxonomy_term']->name;
-    }
-     
-    //URLs für Verkäuferbilder
-    foreach($node->field_image[LANGUAGE_NONE] as $sellerimage) {
-        print image_style_url('image_style', $sellerimage['uri']);
-    }
-
-    //Beschreibung
-    print $node->body[LANGUAGE_NONE][0]['value'];
-
-    //Produkte
-    foreach($node->offers as $offer) {
-        //Übergeordneter Titel
-        print $offer->title;
-        //Produktherkunft Firma
-        print $offer->field_origin[LANGUAGE_NONE][0]['organisation_name'];
-        //Produktherkunft PLZ
-        print $offer->field_origin[LANGUAGE_NONE][0]['postal_code'];
-        //Produktherkunft Ort
-        print $offer->field_origin[LANGUAGE_NONE][0]['locality'];
-        //Produktherkunft Land
-        print $offer->field_origin[LANGUAGE_NONE][0]['country'];
-        
-        foreach($offer->offer_variations as $variation) {
-            //Titel der Produktvariante
-            print $variation->title;
-            //Produkteinheit (Menge)
-            print $variation->field_productunit[LANGUAGE_NONE][0]['first'];
-            //Produkteinheit (Einheit)
-            print $variation->field_productunit[LANGUAGE_NONE][0]['second'];
-            //URLs für Produktbilder
-            foreach($variation->field_image[LANGUAGE_NONE] as $productimage) {
-                print image_style_url('image_style', $productimage['uri']);
-            }
-            //Produktbeschreibung
-            print $variation->body[LANGUAGE_NONE][0]['value'];
-            
-            foreach($variation->trading_units as $tradingunits) {
-                //Gebindemenge
-                print $tradingunits->field_tu_amount[LANGUAGE_NONE][0]['value'];
-                //Gebinde-Nettopreis
-                print number_format($tradingunits->field_tu_price[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €';
-                //Gebinde-Pfand
-                print number_format($tradingunits->field_tu_deposit[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €';
-            }
-        }
-    } */ ?>
+  ?>
 <?php
 $tupackaging = list_allowed_values(field_info_field('field_tu_packaging'));
 $packaging_field = field_info_field('field_tu_packaging');
@@ -71,103 +16,134 @@ if(isset($_SESSION['regionselect']['zip'])) {
 <div class="flexfix-wrapper clearfix"> 
     <div class="flexfix-content">
         <div class="flexfix-content-inner">
-            <div class="seller-infos"> 
-                <h1 class="h2"><strong> <?php print $node->title; ?></strong></h1>
-                
-                <?php if(!empty($shop->agreements)) {
-                    foreach($shop->agreements as $type => $user_reference) {
-                        foreach($user_reference as $target_id => $agreements) {
-                            //if theres two variantes for the same agreement, then choose the one with less minimum order value
-                            if(count($agreements) > 1) {
-                                usort($agreements, "rm_shop_sort_agreements_by_mov");
-                            }
-                            $agreement = $agreements[0];
-                            switch($type) {
-                                case 'shipping_agreement':
-                                    print "<span class='label label-warning label-details' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>" . t('Shipping from @mov', array('@mov' => number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €')) . "</span> ";
-                                    break;
-                                case 'pickup_agreement':
-                                    print "<span class='label label-warning label-details' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>" . t('Pickup from @mov', array('@mov' => number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €')) . "</span> ";
-                                    break;
-                                case 'dispatch_agreement':
-                                    print '<span class="label label-warning label-details" data-toggle="popover" data-content="' . t('Have your order delivered to you by @provider', array('@provider' => $agreement->field_dispatch_provider[LANGUAGE_NONE][0]['value'])) . '">' . t('Dispatch from @mov', array('@mov' => number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €')) . '</span> ';
-                                    break;
-                            }
-                        }
-                    }
-                    foreach($shop->agreements as $type => $user_reference) {
-                        foreach($user_reference as $target_id => $index) {
-                            foreach($index as $indexid => $agreement) {
-                                switch($type) {
-                                    case 'payment_agreement':
-                                        foreach($agreement->field_payment_types[LANGUAGE_NONE] as $payment_type) {
-                                            switch($payment_type['value']) {
-                                                case 'prepaid':
-                                                    print '<span class="label label-success label-details" data-toggle="popover" data-content="' . t('Pay online during checkout via one of our payment providers') . '">Vorkasse</span> ';
-                                                    break;
-                                                case 'cash':
-                                                    print '<span class="label label-success label-details" data-toggle="popover" data-content="' . t('Pay cash when your order is delivered') . '">Barzahlung</span> ';
-                                                    break;
-                                                case 'invoice':
-                                                    print '<span class="label label-success label-details" data-toggle="popover" data-content="' . t('The vendor will send you an invoice after your order is complete') . '">Rechnung</span> ';
+            <div class="row">
+                <div class="info-wrapper clearfix"> 
+                    <div class="col-md-9"> 
+                        <div class="seller-infos"> 
+                            <h1><strong> <?php print $node->title; ?></strong></h1>
+                            <ul class="list-inline">
+                                <li>
+                                    <span class="fa fa-cutlery" ></span>
+                                    <?php
+                                        $all_tids = array();
+                                        foreach($node->field_sellercategories[LANGUAGE_NONE] as $index => $tid) {
+                                            $all_tids[] = (int)$tid['tid'];
+                                        }
+                            
+                                        $allterms = taxonomy_term_load_multiple($all_tids);
+                                        foreach($allterms as $term) {
+                                            print $term->name . ' ';
+                                        }
+                                    ?>
+                                </li>
+                                <li>
+                                    <span class="fa fa-map-marker"></span>
+                                    <?php print $node->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?>, <?php print $node->field_address[LANGUAGE_NONE][0]['postal_code'] ?> <?php print $node->field_address[LANGUAGE_NONE][0]['locality']; ?></li>
+                                </li>
+                            </ul>
+                            <div class="seller-description"> 
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object" src="<?php print image_style_url('thumbnail', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>">
+                                    </a>
+                                    <div class="media-body">
+                                       <?php
+                                        $length = 280;
+                                        $body = strip_tags($node->body[LANGUAGE_NONE][0]['value']);
+                                        if(mb_strlen($body) > $length) {
+                                            print '<div class="description" id="long-desc" style="display:none; height:auto"><p>'.$body.'</p>';
+                                                print '<div class="more-toggle"><a href="#" id="read-less"> <span class="fa fa-chevron-up"></span> weniger lesen </a></div></div>';
+                                            
+                                            print '<div class="description" id="short-desc"><p>';
+                                            print mb_substr($body, 0, mb_strpos($body, " ", $length)) . '<span class="elipsis"> ...</span></p><div class="more-toggle"><a href="#" id="read-more"> <span class="fa fa-chevron-down"></span> mehr lesen </a></div></div>';
+                                            
+                                        }
+                                        else {
+                                            print $body;
+                                        }
+                                    ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 seller-meta">
+                        <div class="delivery-meta">
+                            <?php if(!empty($shop->agreements)) {?>
+                                <h5>Lieferoptionen</h5>
+                                <ul class="list-unstyled">
+                               <?php foreach($shop->agreements as $type => $user_reference) {
+                                    foreach($user_reference as $target_id => $agreements) {
+                                        //if theres two variantes for the same agreement, then choose the one with less minimum order value
+                                        if(count($agreements) > 1) {
+                                            usort($agreements, "rm_shop_sort_agreements_by_mov");
+                                        }
+                                        $agreement = $agreements[0];
+                                        print "<li>";
+                                        switch($type) {
+                                            
+                                            case 'pickup_agreement':
+                                                print  "<a href='#' tabindex='0' data-trigger='focus' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
+                                                    print '<span class="sprite sprite-delivery-pickup"></span>';
+                                                    print '<small class="text-muted">'.t("Selbstabholung").' <span class="fa fa-info-circle"></span><br>ab</small> ';
+                                                    print '<strong>' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.'</strong>';
+                                                print '</a>';
+                                            break;
+                                        
+                                            case 'shipping_agreement':
+                                                print  "<span data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
+                                                    print '<span class="sprite sprite-delivery-truck"></span>';
+                                                    print '<small class="text-muted">'.t("Lieferung").' <span class="fa fa-info-circle"></span><br>ab</small> ';
+                                                    print '<strong>' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.'</strong>';
+                                                print '</span>';
+                                            break;
+                                        
+                                            case 'pickup_agreement':
+                                                print  "<span data-toggle='popover' data-content='" . t('Have your order delivered to you by @provider', array('@provider' => $agreement->field_dispatch_provider[LANGUAGE_NONE][0]['value']))."'>";
+                                                    print '<span class="sprite sprite-delivery-mail"></span>';
+                                                    print '<small class="text-muted">'.t("Postversand").' <span class="fa fa-info-circle"></span><br>ab</small> ';
+                                                    print '<strong>' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.'</strong>';
+                                                print '</span>';
+                                            break;
+                                        }
+                                        print "</li>";
+                                    }
+                                }?>
+                                </ul>
+                                    
+                            <?php } ?>
+                        </div>
+                        
+                        <div class="payment-meta">
+                             <h5>Zahlungsarten</h5>
+                             <?php foreach($shop->agreements as $type => $user_reference) {
+                                    foreach($user_reference as $target_id => $index) {
+                                        foreach($index as $indexid => $agreement) {
+                                            switch($type) {
+                                                case 'payment_agreement':
+                                                    foreach($agreement->field_payment_types[LANGUAGE_NONE] as $payment_type) {
+                                                        switch($payment_type['value']) {
+                                                            case 'prepaid':
+                                                                print '<small class="text-muted" data-toggle="popover" data-content="' . t('Pay online during checkout via one of our payment providers') . '">Online-Zahlung, </small> ';
+                                                                break;
+                                                            case 'cash':
+                                                                print '<small class="text-muted" data-toggle="popover" data-content="' . t('Pay cash when your order is delivered') . '">Barzahlung, </small> ';
+                                                                break;
+                                                            case 'invoice':
+                                                                print '<small class="text-muted" data-toggle="popover" data-content="' . t('The vendor will send you an invoice after your order is complete') . '">Rechnung, </small ';
+                                                                break;
+                                                        }
+                                                    }
                                                     break;
                                             }
                                         }
-                                        break;
+                                    }
                                 }
-                            }
-                        }
-                    }
-                }
-                ?>
-                
-                
-                <ul class="list-inline">
-                    <li>
-                        <span class="fa fa-cutlery" ></span>
-                        <?php
-                            $all_tids = array();
-                            foreach($node->field_sellercategories[LANGUAGE_NONE] as $index => $tid) {
-                                $all_tids[] = (int)$tid['tid'];
-                            }
-                
-                            $allterms = taxonomy_term_load_multiple($all_tids);
-                            foreach($allterms as $term) {
-                                print $term->name . ' ';
-                            }
-                        ?>
-                    </li>
-                    <li>
-                        <span class="fa fa-map-marker"></span>
-                        <?php print $node->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?>, <?php print $node->field_address[LANGUAGE_NONE][0]['postal_code'] ?> <?php print $node->field_address[LANGUAGE_NONE][0]['locality']; ?></li>
-                    </li>
-                </ul>
-                <div class="seller-description"> 
-                    <div class="media">
-                        <a class="pull-left" href="#">
-                            
-                            <img class="media-object" src="<?php print image_style_url('thumbnail', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>">
-                        </a>
-                        <div class="media-body">
-                           <?php
-                            $length = 390;
-                            $body = strip_tags($node->body[LANGUAGE_NONE][0]['value']);
-                            if(mb_strlen($body) > $length) {
-                                print '<div class="description" id="long-desc" style="display:none; height:auto"><p>'.$body.'</p>';
-                                    print '<div class="more-toggle"><a href="#" id="read-less"> <span class="fa fa-chevron-up"></span> weniger lesen </a></div></div>';
-                                
-                                print '<div class="description" id="short-desc"><p>';
-                                print mb_substr($body, 0, mb_strpos($body, " ", $length)) . '<span class="elipsis"> ...</span></p><div class="more-toggle"><a href="#" id="read-more"> <span class="fa fa-chevron-down"></span> mehr lesen </a></div></div>';
-                                
-                            }
-                            else {
-                                print $body;
-                            }
-                        ?>
+                            ?> 
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </div> <!-- end seller-meta -->
+            </div><!-- end seller-meta -->
+    </div>
        
             <ul class="product-grid clearfix"> 
                 <?php foreach($node->offers as $offer): ?>
