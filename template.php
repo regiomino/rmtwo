@@ -774,6 +774,6 @@ function rmtwo_tableselect($variables) {
     }
   }
   $element['#attributes']['class'][] = 'table';
-  $element['#attributes']['class'][] = 'salesDataTable';
+  //$element['#attributes']['class'][] = 'salesDataTable';
   return theme('table', array('header' => $header, 'rows' => $rows, 'empty' => $element['#empty'], 'attributes' => $element['#attributes']));
 }
