@@ -1,6 +1,8 @@
  
 jQuery(document).ready(function ($) {
     
+    var timeout;
+    
     if ( !Modernizr.input.placeholder) {
         $('body').addClass('no-placeholder');
     }
@@ -41,6 +43,20 @@ jQuery(document).ready(function ($) {
         }
     });
   
+    $('.add-to-cart-area').click(function(){
+        clearTimeout(timeout);
+        var $el = $(this);
+        
+        $el.find('.fa-shopping-cart').addClass('hidden');
+        $el.find('.fa-check-circle').removeClass('hidden');
+        
+            timeout = setTimeout(function(){
+                $el.find('.fa-shopping-cart').toggleClass('hidden');
+                $el.find('.fa-check-circle').toggleClass('hidden');
+            },860)
+        
+    
+    });
     
     
 });

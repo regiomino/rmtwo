@@ -71,7 +71,7 @@
         else: ?>
         
         <div class="empty-cart ">
-            <div class="center-block animation-target empty-cart-icon"> <span class="fa fa-shopping-cart"></span> </div>
+            <div class="center-block cart-animation empty-cart-icon"> <span class="fa fa-shopping-cart"></span> </div>
             <p class="text-center">Ihr Warenkorb ist leer. </p>
         </div>
         

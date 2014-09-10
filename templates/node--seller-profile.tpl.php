@@ -144,15 +144,16 @@ if(isset($_SESSION['regionselect']['zip'])) {
             <ul class="product-grid clearfix"> 
                 <?php foreach($node->offers as $offer): ?>
                     <?php foreach($offer->offer_variations as $variation): ?>
+                    <?php $hasImage =  (empty($variation->field_image[LANGUAGE_NONE][0]['uri']))?false:true; ?>
                         <li class="grid-item">
                             <div class="product-item"> 
-                                <div class="product-image">
+                                <div class="product-image <?php if(!$hasImage) { print "no-image";} ?>">
                                     <a href="#" data-toggle="modal" data-target="#variationModal<?php print $variation->nid; ?>">
-                                    <?php if(!empty($variation->field_image[LANGUAGE_NONE][0]['uri'])): ?>
+                                    <?php if($hasImage): ?>
                                        <img src="<?php print image_style_url('product_grid', $variation->field_image[LANGUAGE_NONE][0]['uri']); ?>">
                                      
                                      <?php else: ?>
-                                        <img src="<?php echo base_path() . path_to_theme();?>/images/no-image.gif">
+                                        <img src="<?php echo base_path() . path_to_theme();?>/images/no-image.png">
     
                                     <?php  endif; ?>
                                     </a> 
@@ -263,8 +264,10 @@ if(isset($_SESSION['regionselect']['zip'])) {
                                 </div>
                                    
                                 <div class="add-to-cart-area">
-                                    <button data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>" type="button" class="btn add2Cart btn-default btn-lg"><span class="fa fa-shopping-cart"></span> in den Warenkorb</button>
-                                     
+                                    <button data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>" type="button" class="btn add2Cart  btn-default btn-lg">
+                                        <span class="fa fa-shopping-cart"></span>
+                                        <span class="fa add2cart-animation fa-check-circle hidden"></span> in den Warenkorb
+                                    </button>
                                 </div>
                             </div>
                         </li>
