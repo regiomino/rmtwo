@@ -8513,3 +8513,12 @@ table.dataTable thead .sorting:after {
 .panel-yellow a:hover {
   color: #df8a13;
 }
+.label a {
+  color: #fff;
+}
+.label a:hover,
+.label a:active,
+.label a:focus {
+  text-decoration: none;
+  color: #fff;
+}

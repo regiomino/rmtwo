@@ -1,7 +1,3 @@
- <?php
-
- 
-  ?>
 <?php
 $tupackaging = list_allowed_values(field_info_field('field_tu_packaging'));
 $packaging_field = field_info_field('field_tu_packaging');
@@ -44,7 +40,7 @@ if(isset($_SESSION['regionselect']['zip'])) {
                             <div class="seller-description"> 
                                 <div class="media">
                                     <a class="pull-left" href="#">
-                                        <img class="media-object" src="<?php print image_style_url('thumbnail', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>">
+                                        <img class="media-object img-circle" src="<?php print image_style_url('seller_thumb', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>">
                                     </a>
                                     <div class="media-body">
                                        <?php
@@ -65,7 +61,7 @@ if(isset($_SESSION['regionselect']['zip'])) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div><!-- end seller-infos-->
                     </div>
                     <div class="col-md-3 seller-meta">
                         <div class="delivery-meta">
@@ -83,7 +79,7 @@ if(isset($_SESSION['regionselect']['zip'])) {
                                         switch($type) {
                                             
                                             case 'pickup_agreement':
-                                                print  "<a href='#' tabindex='0' data-trigger='focus' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
+                                                print  "<a href='#' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
                                                     print '<span class="sprite sprite-delivery-pickup"></span>';
                                                     print '<small class="text-muted">'.t("Selbstabholung").' <span class="fa fa-info-circle"></span><br>ab</small> ';
                                                     print '<strong>' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.'</strong>';
@@ -91,19 +87,19 @@ if(isset($_SESSION['regionselect']['zip'])) {
                                             break;
                                         
                                             case 'shipping_agreement':
-                                                print  "<span data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
+                                                print  "<a href='#' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
                                                     print '<span class="sprite sprite-delivery-truck"></span>';
                                                     print '<small class="text-muted">'.t("Lieferung").' <span class="fa fa-info-circle"></span><br>ab</small> ';
                                                     print '<strong>' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.'</strong>';
-                                                print '</span>';
+                                                print '</a>';
                                             break;
                                         
-                                            case 'pickup_agreement':
-                                                print  "<span data-toggle='popover' data-content='" . t('Have your order delivered to you by @provider', array('@provider' => $agreement->field_dispatch_provider[LANGUAGE_NONE][0]['value']))."'>";
+                                            case 'dispatch_agreement':
+                                                print  "<a href='#' data-toggle='popover' data-content='" . t('Have your order delivered to you by @provider', array('@provider' => $agreement->field_dispatch_provider[LANGUAGE_NONE][0]['value']))."'>";
                                                     print '<span class="sprite sprite-delivery-mail"></span>';
                                                     print '<small class="text-muted">'.t("Postversand").' <span class="fa fa-info-circle"></span><br>ab</small> ';
                                                     print '<strong>' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.'</strong>';
-                                                print '</span>';
+                                                print '</a>';
                                             break;
                                         }
                                         print "</li>";
@@ -142,7 +138,7 @@ if(isset($_SESSION['regionselect']['zip'])) {
                             ?> 
                         </div>
                     </div> <!-- end seller-meta -->
-            </div><!-- end seller-meta -->
+            </div>
     </div>
        
             <ul class="product-grid clearfix"> 
@@ -165,10 +161,7 @@ if(isset($_SESSION['regionselect']['zip'])) {
                                 <div class="product-infos">  
                                     <div class="product-title"> 
                                         <a href="#" class="title" data-toggle="modal" data-target="#variationModal<?php print $variation->nid; ?>">
-                                                 <strong><?php print $variation->title; ?></strong>  
-                                           <!-- <span class="details text-muted">
-                                                <span class="glyphicon glyphicon-eye-open"></span> <small> Details</small>
-                                            </span> -->
+                                            <strong><?php print $variation->title; ?></strong>  
                                         </a>
                                     </div>
                                     <div class="product-price">
@@ -189,9 +182,7 @@ if(isset($_SESSION['regionselect']['zip'])) {
                                     ?>
                                      
                                     <?php if($onlyone): ?>
-                                    
-                                    
-                                     
+
                                         <div class="tradingunit-single clearfix">
                                             <div class="label-area">
                                                 <div class="price" data-tradingunit="<?php print $variation->trading_units[0]->nid;?>">
