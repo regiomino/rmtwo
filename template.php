@@ -252,9 +252,13 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             break;
         case 'rm_sales_profilequeue_form':
         case 'rm_sales_profileset_form':
-        case 'rm_sales_profilecare_form':
+        //case 'rm_sales_profilecare_form':
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
+            break;
+        case 'rm_sales_profilecare_filter_form':
+            $form['#prefix'] = '<div class="row">';
+            $form['#suffix'] = '</div>';
             break;
         case 'rm_sales_useraccounts_form':
             $form['useraccounts']['#attributes']['class'][] = 'table';
