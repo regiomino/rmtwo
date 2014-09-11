@@ -62,7 +62,7 @@ if(isset($_SESSION['regionselect']['zip'])) {
                                 </div>
                             </div>
                         </div><!-- end seller-infos-->
-                    </div>
+                    </div><!-- end col-md-9-->
                     <div class="col-md-3 seller-meta">
                         <div class="delivery-meta">
                             <?php if(!empty($shop->agreements)) {?>
@@ -126,7 +126,7 @@ if(isset($_SESSION['regionselect']['zip'])) {
                                                                 print '<small class="text-muted" data-toggle="popover" data-content="' . t('Pay cash when your order is delivered') . '">Barzahlung, </small> ';
                                                                 break;
                                                             case 'invoice':
-                                                                print '<small class="text-muted" data-toggle="popover" data-content="' . t('The vendor will send you an invoice after your order is complete') . '">Rechnung, </small ';
+                                                                print '<small class="text-muted" data-toggle="popover" data-content="' . t('The vendor will send you an invoice after your order is complete') . '">Rechnung, </small> ';
                                                                 break;
                                                         }
                                                     }
@@ -138,21 +138,22 @@ if(isset($_SESSION['regionselect']['zip'])) {
                             ?> 
                         </div>
                     </div> <!-- end seller-meta -->
-            </div>
-    </div>
+                </div><!-- end info-wrapper -->
+            </div> <!-- end row -->
        
             <ul class="product-grid clearfix"> 
                 <?php foreach($node->offers as $offer): ?>
                     <?php foreach($offer->offer_variations as $variation): ?>
+                    <?php $hasImage =  (empty($variation->field_image[LANGUAGE_NONE][0]['uri']))?false:true; ?>
                         <li class="grid-item">
                             <div class="product-item"> 
-                                <div class="product-image">
+                                <div class="product-image <?php if(!$hasImage) { print "no-image";} ?>">
                                     <a href="#" data-toggle="modal" data-target="#variationModal<?php print $variation->nid; ?>">
-                                    <?php if(!empty($variation->field_image[LANGUAGE_NONE][0]['uri'])): ?>
+                                    <?php if($hasImage): ?>
                                        <img src="<?php print image_style_url('product_grid', $variation->field_image[LANGUAGE_NONE][0]['uri']); ?>">
                                      
                                      <?php else: ?>
-                                        <img src="<?php echo base_path() . path_to_theme();?>/images/no-image.gif">
+                                        <img src="<?php echo base_path() . path_to_theme();?>/images/no-image.png">
     
                                     <?php  endif; ?>
                                     </a> 
@@ -263,14 +264,16 @@ if(isset($_SESSION['regionselect']['zip'])) {
                                 </div>
                                    
                                 <div class="add-to-cart-area">
-                                    <button data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>" type="button" class="btn add2Cart btn-default btn-lg"><span class="fa fa-shopping-cart"></span> in den Warenkorb</button>
-                                     
+                                    <button data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>" type="button" class="btn add2Cart  btn-default btn-lg">
+                                        <span class="fa fa-shopping-cart"></span>
+                                        <span class="fa add2cart-animation fa-check-circle hidden"></span> in den Warenkorb
+                                    </button>
                                 </div>
                             </div>
                         </li>
                     <?php endforeach; ?>
                 <?php endforeach; ?>
-            </ul>
+            </ul><!-- end product-grid -->
         </div>
     </div>
 

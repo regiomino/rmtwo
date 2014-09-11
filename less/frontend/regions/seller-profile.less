@@ -111,7 +111,7 @@
 
 .product-grid {
     margin: 0;
-    margin-left: -5px;
+    margin-left: -10px;
     margin-right: -5px;
     padding: 0;
     list-style: none;
@@ -138,26 +138,36 @@
         }
           
         .product-item {
-            border: 1px solid #DDD;
+            border: 1px solid #ddd;
             border-radius: 4px;
             position: relative;
+            transition: all .2s linear;
             
-            &:hover {
+            &:hover,
+            &:focus {
                 box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+                background-color: #fff;
             }
             
             .product-image {
                 overflow: hidden;
+                border-radius: 4px 4px 0 0;
+                
+                a {
+                    display: block;
+                }
+                
                 img {
                     width: 100%;
                     height: auto;
+                    border-radius: 4px 4px 0 0;
+                    display: inline-block;
                 }
             }
             
             .product-infos {
-                
                 height: 129px;
-            
+                
                 .product-title {
                     border-bottom: 1px solid #DDD;
                   
@@ -195,6 +205,10 @@
                         padding: 7px 5px 6px;
                     }
                     
+                    .btn-default {
+                        background-color: transparent;
+                    }
+                        
                     .tradingunit-single {
                         width: 100%;
                         position: relative;
@@ -270,16 +284,27 @@
         }
 
         .add-to-cart-area {
-            
+                border-radius: 0 0 4px 4px;
+                
             button.btn {
-                border: none;
-                border-top: 1px solid #ddd;
+                border-top: 1px solid #DDD;
+                border-bottom: none;
+                border-right: none;
+                border-left: none;
                 width: 100%;
-                border-radius: 0;
+                border-radius: 0 0 4px 4px;
                 padding: 13px 16px;
                 font-size: 14px;
+                background-color: transparent;
+                &:hover,
+                &:focus {
+                     
+                }
+                
+                .fa-check-circle {
+                    color: @brand-primary;
+                }
             }
-
         }
     }
     

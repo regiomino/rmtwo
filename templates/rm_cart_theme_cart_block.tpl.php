@@ -35,7 +35,6 @@
                 $packaging = $tupackaging[$default[0]['value']];
             }
             $max_items = false;
-            
         ?>
         <div class="cart-item" data-offerid="<?php print $offer->nid; ?>" data-variation="<?php print $variation->vid; ?>" data-tradingunit="<?php print $cart_item->field_trading_unit_reference[LANGUAGE_NONE][0]['target_id'];   ?>" >
             <div class="row">
@@ -46,8 +45,8 @@
                         </span>
                         <?php if ($cart_item->field_quantity[LANGUAGE_NONE][0]['value'] ==  $cart_item_max) :
                             $max_items = true;
-                            endif;
-                        ?>
+                            endif;?>
+                            
                         <input  type="number" value="<?php print $cart_item->field_quantity[LANGUAGE_NONE][0]['value'] ?>" class="form-control stepper-qty" max="<?php print $cart_item_max; ?>">
                         <span class="input-group-btn">
                             <button <?php if ($max_items): print 'disabled="true"'; endif; ?> class="btn btn-default stepper-control stepper-plus" data-operation = "1" ><span class="fa fa-plus"></span></button>
@@ -64,30 +63,30 @@
                     </p>
                 </div>
             </div>
-        
         </div>
         <?php endforeach;
         
         else: ?>
         
         <div class="empty-cart ">
-            <div class="center-block animation-target empty-cart-icon"> <span class="fa fa-shopping-cart"></span> </div>
+            <div class="center-block cart-animation empty-cart-icon"> <span class="fa fa-shopping-cart"></span> </div>
             <p class="text-center">Ihr Warenkorb ist leer. </p>
         </div>
         
         <?php endif; ?>
-        
-        
-    </div>
+    </div><!--end cart-content-->
+    
     <div class="cart-summary <?php if($emptycart): print "empty"; endif; ?>" id="cart-summary">
-       <p class="pre-sum text-muted"><small>Summe  <span class="pull-right"><?php print number_format(rm_cart_get_cart_total($suid), 2, ",", "."); ?>€ </span></small></p>
-       <p class="pre-sum text-muted"><small>zzgl. MwSt.  <span class="pull-right"><?php print number_format(rm_cart_get_cart_vat($suid), 2, ",", "."); ?>€ </span></small></p>
-       <p class="pre-sum last text-muted"><small>Pfand  <span class="pull-right"><?php print number_format(rm_cart_get_cart_deposit($suid), 2, ",", "."); ?>€ </span></small></p>
-      <p class="sum"><strong>Gesamtbetrag</strong> <span class="pull-right"><strong> <?php print number_format(rm_cart_get_cart_total($suid) + rm_cart_get_cart_vat($suid) + rm_cart_get_cart_deposit($suid), 2, ",", "."); ?>€</strong> </p>
-      <div class="minimum-order-values">
-        <?php foreach($minimum_order_values as $type => $value): ?>
-          <div class="alert <?php $cart_total = rm_cart_get_cart_total($suid); print ($cart_total >= $value) ? 'alert-success' : 'alert-danger'; ?>" role="alert"><a href="/checkout/<?php print $suid; ?>/<?php print $type; ?>"><span class="glyphicon glyphicon glyphicon-<?php $cart_total = rm_cart_get_cart_total($suid); print ($cart_total >= $value) ? 'ok' : 'remove'; ?>"></span> <?php print node_type_get_name($type); ?> ab <?php print number_format($value, 2, ",", "."); ?> € <strong class="pull-right"> <?php if($value - $cart_total> 0): ?>noch <?php print number_format($value - $cart_total, 2, ",", "."); ?>€<?php endif; ?></strong></div></div>
-          <?php endforeach; ?> 
+        <p class="pre-sum text-muted"><small>Summe  <span class="pull-right"><?php print number_format(rm_cart_get_cart_total($suid), 2, ",", "."); ?>€ </span></small></p>
+        <p class="pre-sum text-muted"><small>zzgl. MwSt.  <span class="pull-right"><?php print number_format(rm_cart_get_cart_vat($suid), 2, ",", "."); ?>€ </span></small></p>
+        <p class="pre-sum last text-muted"><small>Pfand  <span class="pull-right"><?php print number_format(rm_cart_get_cart_deposit($suid), 2, ",", "."); ?>€ </span></small></p>
+        <p class="sum"><strong>Gesamtbetrag</strong> <span class="pull-right"><strong> <?php print number_format(rm_cart_get_cart_total($suid) + rm_cart_get_cart_vat($suid) + rm_cart_get_cart_deposit($suid), 2, ",", "."); ?>€</strong> </p>
+        
+        <div class="minimum-order-values">
+            <?php foreach($minimum_order_values as $type => $value): ?>
+                <div class="alert <?php $cart_total = rm_cart_get_cart_total($suid); print ($cart_total >= $value) ? 'alert-success' : 'alert-danger'; ?>" role="alert"><span class="fa fa fa-<?php $cart_total = rm_cart_get_cart_total($suid); print ($cart_total >= $value) ? 'check' : 'remove'; ?>"></span> <?php print node_type_get_name($type); ?> ab <?php print number_format($value, 2, ",", "."); ?> € <strong class="pull-right"> <?php if($value - $cart_total> 0): ?>noch <?php print number_format($value - $cart_total, 2, ",", "."); ?>€<?php endif; ?></strong>
+        </div>
+            <?php endforeach; ?> 
         </div>
       
        <?php print l(t('Go to checkout'), '/checkout/' . $suid, array('external' => TRUE, 'attributes' => array('class' => array('btn','btn-primary', 'btn-lg', 'center-block', 'disabled' => ($emptycart) ? 'disabled' : 'enabled')))); ?>
