@@ -1665,18 +1665,21 @@ jQuery(document).ready(function ($) {
     });
   
     $('.add-to-cart-area').click(function(){
-        clearTimeout(timeout);
+        
         var $el = $(this);
         
+        if (!$el.hasClass('btn-activated')) {
+           
+        $el.addClass('btn-activated');
         $el.find('.fa-shopping-cart').addClass('hidden');
         $el.find('.fa-check-circle').removeClass('hidden');
         
             timeout = setTimeout(function(){
                 $el.find('.fa-shopping-cart').toggleClass('hidden');
                 $el.find('.fa-check-circle').toggleClass('hidden');
-            },860)
-        
-    
+                $el.removeClass('btn-activated');
+            },860);
+        }
     });
     
     
