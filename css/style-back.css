@@ -7237,6 +7237,36 @@ button.close {
   height: 50px;
   background-image: url(../images/logo.png);
 }
+.navbar .navbar-nav .navi-link {
+  text-align: center;
+  height: 65px;
+  line-height: 65px;
+  padding: 0 15px;
+  display: inline-block;
+  color: #555555;
+  position: relative;
+  transition: background-color 0.2s linear;
+}
+.navbar .navbar-nav .navi-link:hover,
+.navbar .navbar-nav .navi-link:focus {
+  text-decoration: none;
+  background-color: #f8f8f8;
+}
+.navbar .navbar-nav.navbar-right:last-child {
+  margin-right: 0;
+}
+.navbar .navbar-nav .btn {
+  margin-left: 10px;
+}
+.navbar .navbar-nav .dropdown {
+  display: inline-block;
+}
+.navbar .navbar-nav .dropdown .help-link {
+  color: #428bca;
+}
+.navbar .navbar-nav .dropdown .dropdown-menu > li > a {
+  padding: 5px 20px;
+}
 /*
  * metismenu - v1.0.3
  * Easy menu jQuery plugin for Twitter Bootstrap 3

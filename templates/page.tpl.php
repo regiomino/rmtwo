@@ -1,33 +1,45 @@
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container">
+   <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
             <div class="navbar-brand"> 
             <?php if ($logo): ?>
-                            <?php echo l('', '', array('attributes' => array('title' => t('Home'), 'rel' => t('Home'), 'id' => 'logo'))); ?>
+
+                <?php echo l('', '', array('attributes' => array('title' => t('Home'), 'rel' => t('Home'), 'id' => 'logo'))); ?>
             <?php endif; ?>
             </div>
-
         </div>
         <div class="navbar-collapse collapse">
 
-        <div class="navbar-form navbar-right" role="form">
-            <?php print rm_user_get_navbar(); ?>
-            <button class="btn btn-danger" data-toggle="modal" data-target="#suggestModal">
-                <span class="fa fa-plus"></span> <?php print t('Suggest vendor or gastronomy'); ?>
-            </button>
-        </div>
+            <div class="nav navbar-nav navbar-right" >
+                <?php print rm_user_get_navbar(); ?>
+                <div class="dropdown">
+                    <a href="#" class="navi-link dropdown-toggle" id="helpDD" data-toggle="dropdown"> Hilfe <span class="caret"></span> </a>
+                        
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="helpDD">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" class="help-link" href="http://www.regiomino.de/kontakt">Besuchen Sie unseren Hilfebereich &raquo;</a></li>
+                           
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="mailto:support@regiomino.de"><span class="fa fa-paper-plane"></span> Schreiben Sie uns</a></li>
+                            
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="tel:+4909131-9291117"><span class="fa fa-phone"></span> Rufen Sie uns an: 09131-9291117</a></li>
+                        </ul>
+ 
+                </div>
+                
+                <button class="btn btn-danger" data-toggle="modal" data-target="#suggestModal">
+                    <span class="fa fa-plus"></span> <?php print t('Suggest vendor or gastronomy'); ?>
+                </button>
+            </div>
 
         </div><!--/.nav-collapse -->
-      </div>
     </div>
+</div>
 
-	
 
     <div class="container">
         <div class="row">
@@ -37,7 +49,7 @@
                     </div>
                 <?php endif; ?>
                 <div class="col-md-12">
-                    <div class="main-content clearfix"> 
+                   
                         <?php print render($title_prefix); ?>
                         <?php if ($title): ?>
                              <div class="page-header">
@@ -64,14 +76,11 @@
                         <?php endif; ?>
                         
                         <?php print render($page['content']); ?>
-                </div>
+ 
             </div>
         </div>
 
 
-      
-
-       
 
 
     </div> <!-- /container -->
