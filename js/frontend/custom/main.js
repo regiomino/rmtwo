@@ -26,6 +26,13 @@ jQuery(document).ready(function ($) {
          container : 'body'
         });
     
+    $('.media-body span').popover({
+         html : true,
+         placement: 'top',
+         trigger : 'hover',
+         container : 'body'
+        });
+    
     $('#partner-logos a').tooltip();
     
     //messages are placed inside a bootstrap modal #messageModal. this triggers it, when it's there.

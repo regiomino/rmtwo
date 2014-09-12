@@ -9946,16 +9946,117 @@ addcartCart-Icon
 .product-grid li.grid-item .add-to-cart-area button.btn .fa-check-circle {
   color: #95bc0d;
 }
-.page-lieferanten .main {
-  padding-top: 22px;
-  box-shadow: 4px 0px 4px rgba(0, 0, 0, 0.3);
+.page-lieferanten #feedbackify {
+  display: none;
+}
+.page-lieferanten .col-xs-12 {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.page-lieferanten .row {
+  margin-left: -20px;
+  margin-right: -20px;
+}
+.page-lieferanten .map {
+  position: fixed;
+  top: 65px;
+  left: 0;
+  bottom: 0;
+  width: 60%;
   z-index: 1;
+}
+@media screen and (max-width: 1274px) {
+  .page-lieferanten .map {
+    width: 49%;
+  }
+}
+@media screen and (max-width: 996px) {
+  .page-lieferanten .map {
+    width: 37%;
+  }
 }
 .page-lieferanten .sidebar {
   position: fixed;
   top: 65px;
   right: 0;
   padding: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  width: 40%;
+  z-index: 2;
+}
+@media screen and (max-width: 1274px) {
+  .page-lieferanten .sidebar {
+    width: 51%;
+  }
+}
+@media screen and (max-width: 996px) {
+  .page-lieferanten .sidebar {
+    width: 63%;
+  }
+}
+.page-lieferanten .sidebar .filter-area {
+  background: #fff;
+  padding-bottom: 20px;
+}
+.page-lieferanten .sidebar .filter-area h1 {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+.page-lieferanten .sidebar .seller-area {
+  padding-top: 20px;
+}
+.page-lieferanten .sidebar .seller-area .seller-item {
+  position: relative;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 15px;
+  transition: all .2s linear;
+}
+.page-lieferanten .sidebar .seller-area .seller-item:hover,
+.page-lieferanten .sidebar .seller-area .seller-item:focus {
+  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+.page-lieferanten .sidebar .seller-area .seller-item img {
+  width: 80px;
+}
+.page-lieferanten .sidebar .seller-area .seller-item h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+.page-lieferanten .sidebar .seller-area .seller-item h3 a {
+  color: inherit;
+}
+.page-lieferanten .sidebar .seller-area .seller-item .btn {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  margin-top: -11px;
+}
+@media screen and (max-width: 1348px) {
+  .page-lieferanten .sidebar .seller-area .seller-item .btn {
+    top: auto;
+    bottom: 15px;
+  }
+}
+.page-lieferanten .sidebar .seller-area .seller-item .media {
+  width: 74%;
+}
+.page-lieferanten .sidebar .seller-area .seller-item .list-unstyled {
+  margin-bottom: 5px;
+}
+.page-lieferanten .sidebar .seller-area .seller-item .separator {
+  width: 36px;
+  background-color: #ddd;
+  height: 2px;
+  margin-bottom: 3px;
+}
+.page-lieferanten .footer {
+  display: none;
 }
 .page-user-register h3 {
   border-bottom: 1px solid #ddd;
