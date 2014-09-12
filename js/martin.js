@@ -20,4 +20,9 @@ jQuery(document).ready(function ($) {
     if(suggest == 1) {
         $('#suggestModal').modal('show');
     }
+    
+    /*
+     * Tooltip für Darstellung von Empfehlern
+     */
+    $('.suggester-tooltip').tooltip();
 });
