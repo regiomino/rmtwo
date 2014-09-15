@@ -65,9 +65,8 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
             <th>Bestand</th>
             <th>GTIN (ehem. EAN)</th>
             <th>Vorlauf</th>
+            <th>Haltbarkeit</th>
             <th>Bilder</th>
-            <th>Gebinde</th>
-            <th>Aktionen</th>
           </tr>
         </thead>
         <tbody>
@@ -97,15 +96,22 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
                 <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_leadtime-' . $variation->nid]); ?>
             </td>
             <td>
+                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_use_within-' . $variation->nid]); ?>
+                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_expiration_date-' . $variation->nid]); ?>
+            </td>
+            <td>
                 <?php if(!empty($variation->field_image[LANGUAGE_NONE])): foreach($variation->field_image[LANGUAGE_NONE] as $image_delta => $image): $destination = drupal_get_destination(); ?>
                     <p><img src="<?php print image_style_url('icon', $image['uri']); ?>" alt="<?php print $variation->title; ?>"> <a href="/deleteimage/<?php print $variation->nid; ?>/<?php print $image_delta; ?>"><?php print t('delete'); ?></a></p>                    
                 <?php endforeach; endif; ?>
                 <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_image-' . $variation->nid]); ?>
             </td>
-            <td>
+          </tr>
+          <tr>
+            <td colspan="9">
                 <table class="table">
                     <thead>
                         <tr>
+                            <th>Gebinde</th>
                             <th>Anzahl</th>
                             <th>Preis</th>
                             <th>MwSt.</th>
@@ -115,8 +121,11 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($variation->trading_units as $tradingunit): ?>
+                        <?php $tucounter = 0; foreach($variation->trading_units as $tradingunit): $tucounter++;?>
                         <tr>
+                            <td>
+                                <?php print $tucounter; ?>
+                            </td>
                             <td>
                                 <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_amount-' . $tradingunit->nid]); ?>
                             </td>
@@ -146,7 +155,9 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
                     </tbody>
                 </table>
             </td>
-            <td>
+          </tr>
+          <tr>
+            <td colspan="9">
                 <?php if(count($offer->offer_variations) > 1) print l(t('Delete variation'), 'manage/seller/deleteoffer/' . $variation->nid, array('query' => drupal_get_destination())); ?>
             </td>
           </tr>
