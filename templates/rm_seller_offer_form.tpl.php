@@ -65,6 +65,7 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
             <th>Bestand</th>
             <th>GTIN (ehem. EAN)</th>
             <th>Vorlauf</th>
+            <th>Haltbarkeit</th>
             <th>Bilder</th>
             <th>Gebinde</th>
             <th>Aktionen</th>
@@ -95,6 +96,10 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
             </td>
             <td>
                 <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_leadtime-' . $variation->nid]); ?>
+            </td>
+            <td>
+                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_use_within-' . $variation->nid]); ?>
+                <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_expiration_date-' . $variation->nid]); ?>
             </td>
             <td>
                 <?php if(!empty($variation->field_image[LANGUAGE_NONE])): foreach($variation->field_image[LANGUAGE_NONE] as $image_delta => $image): $destination = drupal_get_destination(); ?>
