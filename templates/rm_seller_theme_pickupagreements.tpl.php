@@ -16,6 +16,7 @@
                     <th>Für wen?</th>
                     <th>Mindestbestellwert</th>
                     <th>Aufpreis</th>
+                    <th>Abholadresse</th>
                     <th>Konditionen</th>
                     <th>Datum der Erstellung</th>
                     <th>Letzte Aktualisierung</th>
@@ -35,6 +36,9 @@
                         </td>
                         <td>
                             <?php print number_format($agreement->field_surcharge[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€
+                        </td>
+                        <td>
+                            <?php print addressfield_generate($agreement->field_address[LANGUAGE_NONE][0], array('address' => 'address'), array('mode' => 'render')); ?>
                         </td>
                         <td>
                             <?php echo render(field_view_field('node', $agreement, 'field_regular_times')); ?>
