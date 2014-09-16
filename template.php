@@ -288,7 +288,8 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['submit']['#attributes']['class'][] = 'btn-danger';
             break;
         case 'rm_seller_agreement_edit':
-            $form['#prefix'] = '<h1 class="page-header">' . t('Edit agreement') . '</h1>';
+            $form['#prefix'] = '<div class="row"><h1 class="page-header">' . t('Edit agreement') . '</h1>';
+            $form['#suffix'] = '</div>';
             $form['#attributes']['class'][] = 'form-vertical';
             if(!empty($form['rm_edit_agreement']['field_minimum_order_value'])) $form['rm_edit_agreement']['field_minimum_order_value'][LANGUAGE_NONE][0]['value']['#attributes']['class'][] = 'form-control';
             if(!empty($form['rm_edit_agreement']['field_minimum_order_value'])) unset($form['rm_edit_agreement']['field_minimum_order_value'][LANGUAGE_NONE][0]['value']['#field_suffix']);
@@ -306,6 +307,16 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
                     if(is_numeric($index)) $form['rm_edit_agreement']['field_shipping_zipcodes'][LANGUAGE_NONE][$index]['value']['#attributes']['class'][] = 'form-control';
                 }
             }
+            
+            $form['rm_edit_agreement']['field_address'][LANGUAGE_NONE][0]['street_block']['thoroughfare']['#attributes']['class'][] = 'form-control';
+            $form['rm_edit_agreement']['field_address'][LANGUAGE_NONE][0]['street_block']['premise']['#attributes']['class'][] = 'form-control';
+            $form['rm_edit_agreement']['field_address'][LANGUAGE_NONE][0]['locality_block']['postal_code']['#attributes']['class'][] = 'form-control';
+            $form['rm_edit_agreement']['field_address'][LANGUAGE_NONE][0]['locality_block']['locality']['#attributes']['class'][] = 'form-control';
+            $form['rm_edit_agreement']['field_address'][LANGUAGE_NONE][0]['country']['#attributes']['class'][] = 'form-control';
+            
+            
+            
+            
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
@@ -328,6 +339,11 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
                     if(is_numeric($index)) $form['rm_add_agreement']['field_shipping_zipcodes'][LANGUAGE_NONE][$index]['value']['#attributes']['class'][] = 'form-control';
                 }
             }
+            $form['rm_add_agreement']['field_address'][LANGUAGE_NONE][0]['street_block']['thoroughfare']['#attributes']['class'][] = 'form-control';
+            $form['rm_add_agreement']['field_address'][LANGUAGE_NONE][0]['street_block']['premise']['#attributes']['class'][] = 'form-control';
+            $form['rm_add_agreement']['field_address'][LANGUAGE_NONE][0]['locality_block']['postal_code']['#attributes']['class'][] = 'form-control';
+            $form['rm_add_agreement']['field_address'][LANGUAGE_NONE][0]['locality_block']['locality']['#attributes']['class'][] = 'form-control';
+            $form['rm_add_agreement']['field_address'][LANGUAGE_NONE][0]['country']['#attributes']['class'][] = 'form-control';
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             break;
