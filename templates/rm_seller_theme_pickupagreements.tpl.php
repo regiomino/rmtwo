@@ -38,7 +38,7 @@
                             <?php print number_format($agreement->field_surcharge[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€
                         </td>
                         <td>
-                            <?php print addressfield_generate($agreement->field_address[LANGUAGE_NONE][0], array('address' => 'address'), array('mode' => 'render')); ?>
+                            <?php print render(addressfield_generate($agreement->field_address[LANGUAGE_NONE][0], array('address' => 'address'), array('mode' => 'render'))); ?>
                         </td>
                         <td>
                             <?php echo render(field_view_field('node', $agreement, 'field_regular_times')); ?>
