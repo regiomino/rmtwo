@@ -64,13 +64,16 @@
                                     $agreement = $agreements[0];
                                     switch($type) {
                                         case 'shipping_agreement':
-                                            print "<span data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>" . t('Shipping from @mov', array('@mov' => number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €')) . "</span> ";
+                                            print "<span>" . node_type_get_name('shipping_agreement') . "</span> ";
+                                            //print "<span data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>" . t('Shipping from @mov', array('@mov' => number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €')) . "</span> ";
                                             break;
                                         case 'pickup_agreement':
-                                            print "<span data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>" . t('Pickup from @mov', array('@mov' => number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €')) . "</span> ";
+                                            print "<span>" . node_type_get_name('pickup_agreement') . "</span> ";
+                                            //print "<span data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>" . t('Pickup from @mov', array('@mov' => number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €')) . "</span> ";
                                             break;
                                         case 'dispatch_agreement':
-                                            print '<span data-toggle="popover" data-content="' . t('Have your order delivered to you by @provider', array('@provider' => $agreement->field_dispatch_provider[LANGUAGE_NONE][0]['value'])) . '">' . t('Dispatch from @mov', array('@mov' => number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €')) . '</span> ';
+                                            print '<span>' . node_type_get_name('dispatch_agreement') . '</span> ';
+                                            //print '<span data-toggle="popover" data-content="' . t('Have your order delivered to you by @provider', array('@provider' => $agreement->field_dispatch_provider[LANGUAGE_NONE][0]['value'])) . '">' . t('Dispatch from @mov', array('@mov' => number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".") . ' €')) . '</span> ';
                                             break;
                                     }
                                 }
@@ -86,13 +89,16 @@
                                         foreach($agreement->field_payment_types[LANGUAGE_NONE] as $payment_type) {
                                             switch($payment_type['value']) {
                                                 case 'prepaid':
-                                                    print '<span   data-toggle="popover" data-content="' . t('Pay online during checkout via one of our payment providers') . '">Vorkasse</span> ';
+                                                    print '<span>Vorkasse</span> ';
+                                                    //print '<span   data-toggle="popover" data-content="' . t('Pay online during checkout via one of our payment providers') . '">Vorkasse</span> ';
                                                     break;
                                                 case 'cash':
-                                                    print '<span   data-toggle="popover" data-content="' . t('Pay cash when your order is delivered') . '">Barzahlung</span> ';
+                                                    print '<span>Barzahlung</span> ';
+                                                    //print '<span   data-toggle="popover" data-content="' . t('Pay cash when your order is delivered') . '">Barzahlung</span> ';
                                                     break;
                                                 case 'invoice':
-                                                    print '<span data-toggle="popover" data-content="' . t('The vendor will send you an invoice after your order is complete') . '">Rechnung</span> ';
+                                                    print '<span>Rechnung</span> ';
+                                                    //print '<span data-toggle="popover" data-content="' . t('The vendor will send you an invoice after your order is complete') . '">Rechnung</span> ';
                                                     break;
                                             }
                                         }

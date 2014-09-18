@@ -83,9 +83,11 @@
         <p class="sum"><strong>Gesamtbetrag</strong> <span class="pull-right"><strong> <?php print number_format(rm_cart_get_cart_total($suid) + rm_cart_get_cart_vat($suid) + rm_cart_get_cart_deposit($suid), 2, ",", "."); ?>€</strong> </p>
         
         <div class="minimum-order-values">
-            <?php foreach($minimum_order_values as $type => $value): ?>
-                <div class="alert <?php $cart_total = rm_cart_get_cart_total($suid); print ($cart_total >= $value) ? 'alert-success' : 'alert-danger'; ?>" role="alert"><span class="fa fa fa-<?php $cart_total = rm_cart_get_cart_total($suid); print ($cart_total >= $value) ? 'check' : 'remove'; ?>"></span> <?php print node_type_get_name($type); ?> ab <?php print number_format($value, 2, ",", "."); ?> € <strong class="pull-right"> <?php if($value - $cart_total> 0): ?>noch <?php print number_format($value - $cart_total, 2, ",", "."); ?>€<?php endif; ?></strong>
-        </div>
+            <?php foreach($minimum_order_values as $type => $minimum_order_value): ?>
+                <?php foreach($minimum_order_value as $movid => $value): ?>
+                    <div class="alert <?php $cart_total = rm_cart_get_cart_total($suid); print ($cart_total >= $value) ? 'alert-success' : 'alert-danger'; ?>" role="alert"><span class="fa fa fa-<?php $cart_total = rm_cart_get_cart_total($suid); print ($cart_total >= $value) ? 'check' : 'remove'; ?>"></span> <?php print node_type_get_name($type); ?> <?php if($type == 'pickup_agreement') print node_load($movid)->field_address[LANGUAGE_NONE][0]['locality']; ?> ab <?php print number_format($value, 2, ",", "."); ?> € <strong class="pull-right"> <?php if($value - $cart_total> 0): ?>noch <?php print number_format($value - $cart_total, 2, ",", "."); ?>€<?php endif; ?></strong>
+                    </div>
+                <?php endforeach; ?> 
             <?php endforeach; ?> 
         </div>
       

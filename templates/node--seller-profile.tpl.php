@@ -75,35 +75,37 @@ if(isset($_SESSION['regionselect']['zip'])) {
                                             if(count($agreements) > 1) {
                                                 usort($agreements, "rm_shop_sort_agreements_by_mov");
                                             }
-                                            $agreement = $agreements[0];
-                                            print "<li>";
-                                            switch($type) {
+                                            
+                                            foreach($agreements as $agreement) {
+                                                print "<li>";
+                                                switch($type) {
+                                                    
+                                                    case 'pickup_agreement':
+                                                        print  "<a href='#' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
+                                                            print '<span class="sprite sprite-delivery-pickup"></span>';
+                                                            print '<small class="text-muted">' . t('@pickup in @loc', array('@pickup' => node_type_get_name('pickup_agreement'), '@loc' => $agreement->field_address[LANGUAGE_NONE][0]['locality'] . ' (' . $agreement->field_address[LANGUAGE_NONE][0]['thoroughfare'] . ')')) . ' <span class="fa fa-info-circle"></span><br>ab</small> ';
+                                                            print '<strong>' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.'</strong>';
+                                                        print '</a>';
+                                                    break;
                                                 
-                                                case 'pickup_agreement':
-                                                    print  "<a href='#' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
-                                                        print '<span class="sprite sprite-delivery-pickup"></span>';
-                                                        print '<small class="text-muted">'.t("Selbstabholung").' <span class="fa fa-info-circle"></span><br>ab</small> ';
-                                                        print '<strong>' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.'</strong>';
-                                                    print '</a>';
-                                                break;
-                                            
-                                                case 'shipping_agreement':
-                                                    print  "<a href='#' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
-                                                        print '<span class="sprite sprite-delivery-truck"></span>';
-                                                        print '<small class="text-muted">'.t("Lieferung").' <span class="fa fa-info-circle"></span><br>ab</small> ';
-                                                        print '<strong>' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.'</strong>';
-                                                    print '</a>';
-                                                break;
-                                            
-                                                case 'dispatch_agreement':
-                                                    print  "<a href='#' data-toggle='popover' data-content='" . t('Have your order delivered to you by @provider', array('@provider' => $agreement->field_dispatch_provider[LANGUAGE_NONE][0]['value']))."'>";
-                                                        print '<span class="sprite sprite-delivery-mail"></span>';
-                                                        print '<small class="text-muted">'.t("Postversand").' <span class="fa fa-info-circle"></span><br>ab</small> ';
-                                                        print '<strong>' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.'</strong>';
-                                                    print '</a>';
-                                                break;
+                                                    case 'shipping_agreement':
+                                                        print  "<a href='#' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
+                                                            print '<span class="sprite sprite-delivery-truck"></span>';
+                                                            print '<small class="text-muted">' . node_type_get_name('shipping_agreement') .' <span class="fa fa-info-circle"></span><br>ab</small> ';
+                                                            print '<strong>' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.'</strong>';
+                                                        print '</a>';
+                                                    break;
+                                                
+                                                    case 'dispatch_agreement':
+                                                        print  "<a href='#' data-toggle='popover' data-content='" . t('Have your order delivered to you by @provider', array('@provider' => $agreement->field_dispatch_provider[LANGUAGE_NONE][0]['value']))."'>";
+                                                            print '<span class="sprite sprite-delivery-mail"></span>';
+                                                            print '<small class="text-muted">' . node_type_get_name('dispatch_agreement') . ' <span class="fa fa-info-circle"></span><br>ab</small> ';
+                                                            print '<strong>' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.'</strong>';
+                                                        print '</a>';
+                                                    break;
+                                                }
+                                                print "</li>";
                                             }
-                                            print "</li>";
                                         }
                                     }
                                 ?>
@@ -149,7 +151,7 @@ if(isset($_SESSION['regionselect']['zip'])) {
             <ul class="product-grid clearfix"> 
                 <?php foreach($node->offers as $offer): ?>
                     <?php foreach($offer->offer_variations as $variation): ?>
-                    <?php $hasImage =  (empty($variation->field_image[LANGUAGE_NONE][0]['uri']))?false:true; ?>
+                    <?php $hasImage = (empty($variation->field_image[LANGUAGE_NONE][0]['uri'])) ? false : true; ?>
                         <li class="grid-item">
                             <div class="product-item"> 
                                 <div class="product-image <?php if(!$hasImage) { print "no-image";} ?>">
