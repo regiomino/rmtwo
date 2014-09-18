@@ -176,6 +176,20 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
         </div>   
     </div>
 
+    <div class="modal fade" id="suggestModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title text-center" id="suggestModalLabel"><?php print t('Suggest vendor or gastronomy'); ?></h3>
+                </div>
+                <div class="modal-body">
+                    <?php print $suggestform; ?>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    
     <?php if ($messages): ?>
         <div class="modal fade" id="messageModal">
             <div class="modal-dialog">
@@ -193,17 +207,3 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
     <?php endif; ?>
-
-    <div class="modal fade" id="suggestModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h3 class="modal-title text-center" id="suggestModalLabel"><?php print t('Suggest vendor or gastronomy'); ?></h3>
-                </div>
-                <div class="modal-body">
-                    <?php print $suggestform; ?>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->

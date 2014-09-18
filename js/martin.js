@@ -1,13 +1,15 @@
 jQuery(document).ready(function ($) {
     
     /*
+     * GLOBAL
      * Wenn das Captcha Formular falsch abgeschickt wird, wird der suggestModal direkt wieder geöffnet
      */
-    if($('#suggestModal #edit-mollom-captcha').hasClass('error')) {
+    if($('#suggestModal').find('input').hasClass('error')) {
         $('#suggestModal').modal('show');
     }
     
     /*
+     * FRONTEND
      * Wenn als parameter ?suggest=1 der URL übergeben wird, wir das suggestModal direkt geöffnet
      */
     function getParameterByName(name) {
@@ -22,7 +24,14 @@ jQuery(document).ready(function ($) {
     }
     
     /*
+     * BACKEND
      * Tooltip für Darstellung von Empfehlern
      */
     $('.suggester-tooltip').tooltip();
+    
+    /*
+     * GLOBAL
+     * messages are placed inside a bootstrap modal #messageModal. this triggers it, when it's there.
+     */
+    $('#messageModal').modal('show');
 });
