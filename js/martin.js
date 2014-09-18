@@ -2,7 +2,8 @@ jQuery(document).ready(function ($) {
     
     /*
      * GLOBAL
-     * Wenn das Captcha Formular falsch abgeschickt wird, wird der suggestModal direkt wieder geöffnet
+     * Wenn das Captcha Formular falsch abgeschickt wird oder ein anderes Formularfeld
+     * nicht validiert, wird der suggestModal direkt wieder geöffnet.
      */
     if($('#suggestModal').find('input').hasClass('error')) {
         $('#suggestModal').modal('show');
@@ -11,6 +12,7 @@ jQuery(document).ready(function ($) {
     /*
      * FRONTEND
      * Wenn als parameter ?suggest=1 der URL übergeben wird, wir das suggestModal direkt geöffnet
+     * Ist wichtig für die Seite www.regiomino.de/vorschlagen
      */
     function getParameterByName(name) {
         name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
@@ -25,13 +27,14 @@ jQuery(document).ready(function ($) {
     
     /*
      * BACKEND
-     * Tooltip für Darstellung von Empfehlern
+     * Tooltip für Darstellung von Empfehlern im Salestool
      */
     $('.suggester-tooltip').tooltip();
     
     /*
      * GLOBAL
-     * messages are placed inside a bootstrap modal #messageModal. this triggers it, when it's there.
+     * Fehlermeldungen von Drupal/PHP werden in Form eines Bootstrap Modals
+     * ins Template geschrieben und müssen immer überall automatisch geöffnet werden
      */
     $('#messageModal').modal('show');
 });
