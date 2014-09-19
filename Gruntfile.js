@@ -82,6 +82,8 @@ module.exports = function (grunt) {
                 'js/bootstrap/affix.js',
                 //'js/custom/jquery.jCounter-0.1.2.js',
                
+                'js/global/global.js',
+                           
                 'js/frontend/custom/main.js'
                 
             ],
@@ -127,7 +129,10 @@ module.exports = function (grunt) {
                 'js/backend/plugins/morris/morris.min.js',
                 'js/backend/plugins/morris/morris-data.js', 
                 */
-                //Admin js
+               
+               
+                'js/global/global.js',
+                
                 'js/backend/sb-admin-2.js' 
                 
             ],
@@ -189,7 +194,7 @@ module.exports = function (grunt) {
         },
         
         js: {
-            files: ['js/backend/**/*.js', 'js/bootstrap/*.js','js/frontend/**/*.js'],
+            files: ['js/backend/**/*.js', 'js/bootstrap/*.js','js/frontend/**/*.js','js/global/**/*.js'],
             tasks : ['concat','uglify']
         }
     },

@@ -16264,6 +16264,23 @@ if ($.fn.DataTable.TableTools) {
 })(jQuery);
 
 jQuery(document).ready(function ($) {
+    
+    /*
+     * Wenn das Captcha Formular falsch abgeschickt wird oder ein anderes Formularfeld
+     * nicht validiert, wird der suggestModal direkt wieder ge�ffnet.
+     */
+    if($('#suggestModal').find('input').hasClass('error')) {
+        $('#suggestModal').modal('show');
+    }
+    
+    /*
+     * Fehlermeldungen von Drupal/PHP werden in Form eines Bootstrap Modals
+     * ins Template geschrieben und m�ssen immer �berall automatisch ge�ffnet werden
+     */
+    $('#messageModal').modal('show');
+    
+});
+jQuery(document).ready(function ($) {
 
     $('#side-menu').metisMenu();
     $('.salesDataTable').dataTable();
@@ -16274,10 +16291,16 @@ jQuery(document).ready(function ($) {
         var $el = $(this);
         $elPanel = $el.parents('.panel-heading');
         $('.panel-heading').not($elPanel).removeClass('active');
-         $elPanel.toggleClass('active');
+        $elPanel.toggleClass('active');
       
        
     });
+    
+    /*
+     * Tooltip f�r Darstellung von Empfehlern im Salestool
+     */
+    $('.suggester-tooltip').tooltip();
+    
 
 //Loads the correct sidebar on window load,
 //collapses the sidebar on window resize.

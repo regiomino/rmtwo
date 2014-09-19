@@ -13,6 +13,12 @@ jQuery(document).ready(function ($) {
       
        
     });
+    
+    /*
+     * Tooltip für Darstellung von Empfehlern im Salestool
+     */
+    $('.suggester-tooltip').tooltip();
+    
 
 //Loads the correct sidebar on window load,
 //collapses the sidebar on window resize.
