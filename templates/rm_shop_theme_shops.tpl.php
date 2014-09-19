@@ -22,14 +22,14 @@
             </div>
         </div>
         
-        <div class="col-xs-12 seller-area">
-            <div class="row">
+            <div class="col-xs-12 seller-area">
+            
                 
                 <?php foreach($vars['shops'] as $shop): ?>
-                    <div class="col-xs-12">
-                        <div class="seller-item"> 
+                    
+                        <div class="seller-item" data-title="<?php print $shop->title; ?>"> 
                             <div class="media">
-                                 <h3> <?php print l($shop->title, 'node/' . $shop->nid); ?></h3>
+                                 <h3 class="title"> <?php print l($shop->title, 'node/' . $shop->nid); ?></h3>
                                 <a class="pull-left" href="<?php print url('node/' . $shop->nid); ?>">
                                     <img class="media-object img-circle" src="<?php print image_style_url('seller_thumb', $shop->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print url('node/' . $shop->nid); ?>">
                                 </a>
@@ -115,9 +115,9 @@
                             </div>
                             <?php print l(t('View products '), 'node/' . $shop->nid, array('attributes' => array('class' => array('btn', 'btn-success', 'seller-btn')))); ?>
                         </div>
-                    </div>
+                   
                 <?php endforeach; ?>
-            </div>
+            
         </div><!--end seller-area -->
    
 
