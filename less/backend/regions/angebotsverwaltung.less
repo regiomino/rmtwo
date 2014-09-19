@@ -1,0 +1,277 @@
+@panelHeight : 55px;
+
+.page-manage-seller-offers {
+    .panel {
+        margin-bottom: 10px;
+    }
+    
+    #feedbackify {
+        display: none;
+    }
+    
+    .panel-heading {
+        position: relative;
+        background-color: #fff;
+        height: @panelHeight;
+        padding: 0px 60px 0px 50px;
+        transition: all .2s linear;
+       
+       &:hover,
+       &:active {
+        background-color: #fafafa;
+        box-shadow: 0 2px 5px 1px rgba(0,0,0,.1);
+       }
+       
+        &.active {
+            background-color: #EEEEEE;
+            box-shadow: 0 2px 5px 1px rgba(0,0,0,.1);
+        }
+       
+       .btn {
+            background: none;
+            border: none;
+            border-radius:0px;
+            height: @panelHeight;
+       }
+       
+        .btn-group {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            
+            .success {
+                color: @brand-primary;
+            }
+            
+            .danger {
+                color: @brand-danger;
+            }
+            
+            .dropdown-menu>li>a {
+                padding: 7px 20px;
+            }
+        }
+        .state-toggle {
+            border-right: 1px solid #ddd;
+        }
+        
+        .offer-title {
+            a { 
+                display: block;
+                line-height: 59px;
+                height: @panelHeight;
+                padding-left: 10px;
+                font-size: 18px;
+                color: inherit;
+                position: relative;
+                
+                &.text-muted {
+                    color: #999;
+                }
+                
+                .fa {
+                    transition: all .2s linear;
+                }
+
+                &.collapsed {
+                    .fa {
+                        transform: rotate(180deg);
+                    }
+                }
+                
+                 .fa {
+                    position: absolute;
+                    right: 11px;
+                    top: 17px;
+                    transform: rotate(0deg);
+                }
+                
+                &:hover,
+                &:active,
+                &:focus {
+                    text-decoration: none;
+                }
+            }
+        }
+        
+        .offer-actions {
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            
+            a.btn {
+                padding: 17px 20px;
+                background: inherit;
+                border-left: 1px solid #ddd;
+                
+                &:hover,
+                &:focus,
+                &:active {
+                    background-color: #ddd;
+                }
+            }
+        }
+    }
+    
+    .panel-body {
+        
+        .lbl {
+            display: block;
+            max-width: 100%;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .base-info {
+            
+            .lbl {
+                text-align: right
+            }
+            
+            &>.row {
+                margin-bottom: 10px;
+                
+                &:last-child {
+                    margin-bottom: 0px;
+                }
+            }
+            
+            .form-item {
+                margin-top: 0px;
+            }
+        }
+    
+        .product-variants {
+            
+            h4 {
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 10px;
+                margin-bottom: 15px;
+            }
+            
+            .tabarea {
+                border-bottom: 1px solid #ddd;
+                
+                
+                
+                ul.nav-tabs {
+                    float: left;
+                    border-bottom: none;
+                    
+                    li {
+                        position: relative;
+                    }
+                    
+                    a.tabtitle {
+                        font-weight: 700;
+                        padding: 15px 22px;
+                        color: @brand-primary;
+                    }
+                    
+                    li.active a.tabtitle {
+                        background: #F8F8F8;
+                        color: @brand-primary;
+                    }
+                    
+                    a.delete {
+                       position: absolute;
+                        top: -9px;
+                        right: 0;
+                        border-radius: 50%;
+                        padding: 0px 5px;
+                        border: 1px solid #ddd;
+                        background: #fff;
+                        cursor:pointer!important;
+                        
+                    }
+                }
+                
+                .btn {
+                    top: 10px;
+                    position: relative;
+                    margin-left: 10px;
+                }
+            }
+            
+            .tab-content {
+                padding: 20px;
+                background: #F8F8F8;
+                border-bottom-left-radius: 4px;
+                border-bottom-right-radius: 4px;
+                .row {
+                    margin-bottom: 5px;
+                }
+                .form-item {
+                   margin-top: 0px;
+                }
+                
+                .preview-image {
+                    position: relative;
+                    display: inline-block;
+                    margin-bottom: 11px;
+                    a {
+                        position: absolute;
+                        right: -8px;
+                        top: -5px;
+                    }
+                }
+                
+                .productunit {
+                    .col-md-5 {
+                        padding-right: 3px;
+                    }
+                    .col-md-7 {
+                        padding-left: 3px;
+                    }
+                }
+                
+                .form-type-managed-file {
+                    input {
+                        float: left;
+                    }
+                }
+                
+                .table-responsive {
+                    
+                    .table {
+                        margin-bottom: 2px;
+                    }
+                    
+                    .form-item {
+                        margin-bottom: 0px;
+                    }
+                    
+                    th {
+                        font-weight: 400;
+                    }
+                    
+                    .number {
+                        min-width: 40px;
+                    }
+                    
+                    .binding-type {
+                        min-width: 155px;
+                    }
+                    
+                    .vat {
+                        min-width: 100px;
+                    }
+                    
+                    .actions {
+                        .btn {
+                           
+                        }
+                        
+                        .btn.disabled {
+                            opacity: 0.4;
+                            background: none;
+                            border: none;
+                        }
+                    }
+                }
+                
+            }
+        }
+        
+    }
+}

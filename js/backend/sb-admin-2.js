@@ -3,7 +3,16 @@ jQuery(document).ready(function ($) {
     $('#side-menu').metisMenu();
     $('.salesDataTable').dataTable();
     
- 
+    
+    $('.panel-heading a[data-toggle]').on('click.panelHeading', function(){
+        
+        var $el = $(this);
+        $elPanel = $el.parents('.panel-heading');
+        $('.panel-heading').not($elPanel).removeClass('active');
+        $elPanel.toggleClass('active');
+      
+       
+    });
 
 //Loads the correct sidebar on window load,
 //collapses the sidebar on window resize.
