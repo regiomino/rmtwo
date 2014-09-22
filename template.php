@@ -238,15 +238,15 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
         case 'rm_shop_smartregionselect':
 
             $form['address']['#attributes']['required'] = NULL;
-
-            $form['address']['#attributes']['class'][] = 'form-control';
-            $form['address']['#attributes']['class'][] = 'input-lg';
+            $form['address']['#title_display'] = 'none';
+            $form['address']['#attributes']['class'][] = 'form-control form-inline';
+            $form['address']['#attributes']['class'][] = 'input-sm';
             $form['address']['#prefix'] = '<div class="row"><div class="col-md-12"><div class="form-group">';
             $form['address']['#suffix'] = '</div></div></div>';
 
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
-            $form['submit']['#attributes']['class'][] = 'btn-lg';
+            $form['submit']['#attributes']['class'][] = 'btn-sm';
             $form['submit']['#prefix'] = '<div class="row"><div class="col-md-12">';
             $form['submit']['#suffix'] = '</div></div>';
             break;
