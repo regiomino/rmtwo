@@ -7487,6 +7487,23 @@ label {
   height: 50px;
   background-image: url(../images/logo.png);
 }
+.navbar-brand .form-item {
+  margin: 0;
+}
+.navbar-brand .input-group {
+  width: 396px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+}
+.navbar-brand .input-group .input-group-addon {
+  display: inline-block;
+}
+.navbar-brand .input-group .form-control {
+  width: 60%;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
 .stage-background {
   background: #f5f5f5 url('../images/stage.jpg') center center no-repeat;
   background-size: cover;
