@@ -9733,6 +9733,11 @@ addcartCart-Icon
 .node-type-seller-profile .seller-infos .seller-description p {
   margin-bottom: 5px;
 }
+.node-type-seller-profile .seller-infos .seller-description img {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 4px;
+}
 .node-type-seller-profile .seller-meta {
   min-height: 179px;
 }
@@ -10008,49 +10013,51 @@ addcartCart-Icon
 .page-lieferanten .sidebar .seller-area {
   padding-top: 20px;
 }
-.page-lieferanten .sidebar .seller-area .seller-item {
+.page-lieferanten .sidebar .seller-area a.seller-item {
   position: relative;
+  display: block;
   margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 15px;
   transition: all .2s linear;
+  color: #555555;
 }
-.page-lieferanten .sidebar .seller-area .seller-item:hover,
-.page-lieferanten .sidebar .seller-area .seller-item:focus {
+.page-lieferanten .sidebar .seller-area a.seller-item:hover,
+.page-lieferanten .sidebar .seller-area a.seller-item:focus,
+.page-lieferanten .sidebar .seller-area a.seller-item:active {
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
   background-color: #fff;
+  text-decoration: none;
 }
-.page-lieferanten .sidebar .seller-area .seller-item img {
-  width: 80px;
+.page-lieferanten .sidebar .seller-area a.seller-item img {
+  width: 85px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 4px;
 }
-.page-lieferanten .sidebar .seller-area .seller-item h3 {
+.page-lieferanten .sidebar .seller-area a.seller-item h3 {
   margin-top: 0;
   margin-bottom: 10px;
   font-weight: 700;
-}
-.page-lieferanten .sidebar .seller-area .seller-item h3 a {
   color: inherit;
 }
-.page-lieferanten .sidebar .seller-area .seller-item .btn {
+.page-lieferanten .sidebar .seller-area a.seller-item .btn {
   position: absolute;
   right: 15px;
   top: 50%;
   margin-top: -11px;
 }
 @media screen and (max-width: 1348px) {
-  .page-lieferanten .sidebar .seller-area .seller-item .btn {
+  .page-lieferanten .sidebar .seller-area a.seller-item .btn {
     top: auto;
     bottom: 15px;
   }
 }
-.page-lieferanten .sidebar .seller-area .seller-item .media {
-  width: 74%;
-}
-.page-lieferanten .sidebar .seller-area .seller-item .list-unstyled {
+.page-lieferanten .sidebar .seller-area a.seller-item .list-unstyled {
   margin-bottom: 5px;
 }
-.page-lieferanten .sidebar .seller-area .seller-item .separator {
+.page-lieferanten .sidebar .seller-area a.seller-item .separator {
   width: 36px;
   background-color: #ddd;
   height: 2px;
