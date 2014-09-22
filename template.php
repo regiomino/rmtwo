@@ -428,15 +428,12 @@ function rmtwo_preprocess_page(&$variables) {
         if(array_key_exists('node', $variables)) {
             if($variables['node']->type == 'seller_profile') {
                 $_SESSION['chosen_seller'] = $variables['node']->uid;
-                global $user;
-                $commercial_profiles = array();
-                if($user->uid > 0) {
-                    $commercial_profiles = rm_api_get_nodes_by_properties(array('seller_profile', 'customer_profile'), -1, -1, -1, -1, -1, $user->uid);
-                }
-                if(!rm_user_is_admin() && empty($commercial_profiles)) {
-                    drupal_set_message(t('Currently the vendors on our platform only sell to commercial customers. Please apply if you are a restaurateur or vendor and do not have a profile yet.'), 'warning');
-                    drupal_goto();
-                }
+                
+                // if(!rm_user_may_checkout()) {
+                    // drupal_set_message(t('Currently the vendors on our platform only sell to commercial customers. Please apply if you are a restaurateur or vendor and do not have a profile yet.'), 'warning');
+                    // drupal_goto();
+                // }
+                
                 $variables['node']->offers = rm_shop_get_structured_seller_offers($variables['node']->uid);
                 drupal_add_js(drupal_get_path('module', 'rm_cart') . '/js/rm_cart.js');
             }
