@@ -12,6 +12,12 @@
 
                 <?php echo l('', '', array('attributes' => array('title' => t('Home'), 'rel' => t('Home'), 'id' => 'logo'))); ?>
             <?php endif; ?>
+            
+            <?php
+                $block = module_invoke('rm_shop', 'block_view', 'regiomino_smart_entry_header');
+                print render($block['content']);
+            ?>
+            
             </div>
         </div>
         <div class="navbar-collapse collapse">

@@ -13,7 +13,7 @@ $form = $variables['form'];
     
     <div class="flexfix-sidebar">
         <div class="cart-container"> 
-            <?php
+            <?php 
             $block = module_invoke('rm_cart', 'block_view', 'rm_checkout_block');
                 print render($block['content']);
             ?>
