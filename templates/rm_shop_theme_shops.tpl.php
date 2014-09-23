@@ -9,7 +9,7 @@
         <?php endif;?>
         
         <?php if (!empty($vars['title'])): ?>
-            <h1>
+            <h1 class="h5">
                 <?php print $vars['title']; ?>
             </h1>
         <?php endif; ?>
@@ -23,10 +23,12 @@
     </div><!-- end filter area-->
         
             <div class="col-xs-12 seller-area">
+                <div class="row"> 
                 <?php foreach($vars['shops'] as $shop): ?>
+                <div class="col-xs-12 col-lg-6 col-seller-item"> 
                         <a class="seller-item clearfix" href="<?php print url('node/' . $shop->nid); ?>" data-title="<?php print $shop->title; ?>"> 
                             <div class="media">
-                                <h3 class="title"> <?php print $shop->title; ?></h3>
+                                <h4 class="title"> <?php print $shop->title; ?></h4>
                                 <img class="media-object pull-left img-circle" src="<?php print image_style_url('seller_thumb', $shop->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $shop->                                  title; ?>">
                                 
                                 <div class="media-body">
@@ -112,11 +114,11 @@
                                     </ul>
                                 </div><!-- end media body -->
                             </div><!-- end media -->
-                            <button class="btn btn-success seller-btn">Produkte ansehen</button>
+                            <span class="fa fa-chevron-right text-muted"> </span>
                         </a>  <!-- end seller-item -->
-                   
+                </div> <!--end col-item-wrapper -->
                 <?php endforeach; ?>
-            
+            </div> <!--end row -->
         </div><!--end seller-area -->
    
 

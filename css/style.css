@@ -10014,26 +10014,17 @@ addcartCart-Icon
   padding-left: 20px;
   padding-right: 20px;
 }
-.page-lieferanten .row {
-  margin-left: -20px;
-  margin-right: -20px;
-}
 .page-lieferanten .map {
   position: fixed;
   top: 65px;
   left: 0;
   bottom: 0;
-  width: 60%;
+  width: 43%;
   z-index: 1;
 }
-@media screen and (max-width: 1274px) {
+@media screen and (min-width: 992px) {
   .page-lieferanten .map {
-    width: 49%;
-  }
-}
-@media screen and (max-width: 996px) {
-  .page-lieferanten .map {
-    width: 37%;
+    width: 40%;
   }
 }
 .page-lieferanten .sidebar {
@@ -10044,17 +10035,12 @@ addcartCart-Icon
   bottom: 0;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
-  width: 40%;
   z-index: 2;
+  width: 57%;
 }
-@media screen and (max-width: 1274px) {
+@media screen and (min-width: 992px) {
   .page-lieferanten .sidebar {
-    width: 51%;
-  }
-}
-@media screen and (max-width: 996px) {
-  .page-lieferanten .sidebar {
-    width: 63%;
+    width: 60%;
   }
 }
 .page-lieferanten .sidebar .filter-area {
@@ -10065,18 +10051,46 @@ addcartCart-Icon
   font-weight: 700;
   margin-bottom: 15px;
 }
+.page-lieferanten .sidebar .filter-area .input-group {
+  max-width: 250px;
+}
 .page-lieferanten .sidebar .seller-area {
   padding-top: 20px;
+}
+.page-lieferanten .sidebar .seller-area .row {
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-bottom: 10px;
+}
+.page-lieferanten .sidebar .seller-area .col-seller-item {
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 15px;
+}
+@media screen and (min-width: 1120px) {
+  .page-lieferanten .sidebar .seller-area .col-seller-item {
+    width: 50%;
+    margin-bottom: 20px;
+  }
 }
 .page-lieferanten .sidebar .seller-area a.seller-item {
   position: relative;
   display: block;
-  margin-bottom: 15px;
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 15px;
-  transition: all .2s linear;
+  transition: all 0.12s ease-out;
   color: #555555;
+}
+@media screen and (min-width: 1120px) {
+  .page-lieferanten .sidebar .seller-area a.seller-item {
+    min-height: 174px;
+  }
+}
+@media screen and (min-width: 1500px) {
+  .page-lieferanten .sidebar .seller-area a.seller-item {
+    min-height: 183px;
+  }
 }
 .page-lieferanten .sidebar .seller-area a.seller-item:hover,
 .page-lieferanten .sidebar .seller-area a.seller-item:focus,
@@ -10084,30 +10098,59 @@ addcartCart-Icon
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
   background-color: #fff;
   text-decoration: none;
+  transform: translateY(-2px);
+}
+.page-lieferanten .sidebar .seller-area a.seller-item:active {
+  transform: translateY(0px);
+  box-shadow: none;
 }
 .page-lieferanten .sidebar .seller-area a.seller-item img {
-  width: 85px;
-  background-color: #fff;
+  width: 76px;
+  background-color: #fafafa;
   border: 1px solid #ddd;
   padding: 4px;
 }
-.page-lieferanten .sidebar .seller-area a.seller-item h3 {
+@media screen and (min-width: 1120px) {
+  .page-lieferanten .sidebar .seller-area a.seller-item img {
+    position: absolute;
+    top: -12px;
+    right: -21px;
+    margin-right: 0;
+  }
+}
+.page-lieferanten .sidebar .seller-area a.seller-item h4 {
   margin-top: 0;
   margin-bottom: 10px;
   font-weight: 700;
   color: inherit;
 }
-.page-lieferanten .sidebar .seller-area a.seller-item .btn {
-  position: absolute;
-  right: 15px;
-  top: 50%;
-  margin-top: -11px;
-}
-@media screen and (max-width: 1348px) {
-  .page-lieferanten .sidebar .seller-area a.seller-item .btn {
-    top: auto;
-    bottom: 15px;
+@media screen and (min-width: 1120px) {
+  .page-lieferanten .sidebar .seller-area a.seller-item h4 {
+    width: 85%;
+    height: 37px;
   }
+}
+@media screen and (min-width: 1500px) {
+  .page-lieferanten .sidebar .seller-area a.seller-item h4 {
+    font-size: 21px;
+    height: 46px;
+  }
+}
+.page-lieferanten .sidebar .seller-area a.seller-item .media-body ul li {
+  white-space: nowrap;
+}
+.page-lieferanten .sidebar .seller-area a.seller-item .fa-chevron-right {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  margin-top: -11px;
+  font-size: 21px;
+  transition: all .2s linear;
+}
+.page-lieferanten .sidebar .seller-area a.seller-item:hover .fa-chevron-right,
+.page-lieferanten .sidebar .seller-area a.seller-item:active .fa-chevron-right,
+.page-lieferanten .sidebar .seller-area a.seller-item:focus .fa-chevron-right {
+  color: #95bc0d;
 }
 .page-lieferanten .sidebar .seller-area a.seller-item .list-unstyled {
   margin-bottom: 5px;
