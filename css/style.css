@@ -9875,12 +9875,14 @@ addcartCart-Icon
   border: 1px solid #ddd;
   border-radius: 4px;
   position: relative;
-  transition: all .2s linear;
+  transition: all 0.12s ease-out;
 }
 .product-grid li.grid-item .product-item:hover,
 .product-grid li.grid-item .product-item:focus {
   box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
   background-color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
 }
 .product-grid li.grid-item .product-item .product-image {
   overflow: hidden;
@@ -10046,10 +10048,12 @@ addcartCart-Icon
 .page-lieferanten .sidebar .filter-area {
   background: #fff;
   padding-bottom: 20px;
+  padding-top: 20px;
 }
 .page-lieferanten .sidebar .filter-area h1 {
   font-weight: 700;
   margin-bottom: 15px;
+  margin-top: 0;
 }
 .page-lieferanten .sidebar .filter-area .input-group {
   max-width: 250px;
@@ -10114,7 +10118,7 @@ addcartCart-Icon
   .page-lieferanten .sidebar .seller-area a.seller-item img {
     position: absolute;
     top: -12px;
-    right: -21px;
+    right: -11px;
     margin-right: 0;
   }
 }

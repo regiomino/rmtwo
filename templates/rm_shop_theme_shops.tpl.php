@@ -25,8 +25,8 @@
             <div class="col-xs-12 seller-area">
                 <div class="row"> 
                 <?php foreach($vars['shops'] as $shop): ?>
-                <div class="col-xs-12 col-lg-6 col-seller-item"> 
-                        <a class="seller-item clearfix" href="<?php print url('node/' . $shop->nid); ?>" data-title="<?php print $shop->title; ?>"> 
+                <div class="col-xs-12 col-lg-6 col-seller-item" data-title="<?php print $shop->title; ?>"> 
+                        <a class="seller-item clearfix" href="<?php print url('node/' . $shop->nid); ?>"> 
                             <div class="media">
                                 <h4 class="title"> <?php print $shop->title; ?></h4>
                                 <img class="media-object pull-left img-circle" src="<?php print image_style_url('seller_thumb', $shop->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $shop->                                  title; ?>">
