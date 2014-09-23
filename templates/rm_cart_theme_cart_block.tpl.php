@@ -3,8 +3,10 @@
     $packaging_field = field_info_field('field_tu_packaging');
     $packaging_instance = field_info_instance('node', 'field_tu_packaging', 'trading_unit');
     $suid = $vars['suid'];
+    $zipcode = NULL;
+    if(isset($_SESSION['regionselect']['zip'])) $zipcode = $_SESSION['regionselect']['zip'];
     $minimum_order_values = array();
-    if(isset($_SESSION['regionselect']['zip'])) $minimum_order_values = rm_cart_get_minimum_order_values($suid, $_SESSION['regionselect']['zip']);
+    $minimum_order_values = rm_cart_get_minimum_order_values($suid, $zipcode);
     if(empty($vars['cart'])):
         $emptycart = true;
     else :
