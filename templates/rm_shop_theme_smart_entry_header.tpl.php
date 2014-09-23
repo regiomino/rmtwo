@@ -1,12 +1,14 @@
- 
+<?php
+print render($vars['regionselect']);
 
-<div class="input-group">
-    <?php echo render($vars['regionselect']['address']); ?>
+/* <div class="input-group">
+    <?php print render($form['address']); ?>
     <div class="submit-wrapper"> 
-        <?php echo render($vars['regionselect']['submit']); ?>
+        <?php print render($form['submit']); ?>
     </div>
    
-</div>
+</div> */
+?>
 
 
-<?php echo drupal_render_children($vars['regionselect']); ?>
+
