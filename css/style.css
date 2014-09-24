@@ -269,7 +269,7 @@ body {
   font-size: 14px;
   line-height: 1.42857143;
   color: #555555;
-  background-color: #fafafa;
+  background-color: #f8f8f8;
 }
 input,
 button,
@@ -315,7 +315,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.42857143;
-  background-color: #fafafa;
+  background-color: #f8f8f8;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -1463,7 +1463,7 @@ th {
   border-top: 2px solid #dddddd;
 }
 .table .table {
-  background-color: #fafafa;
+  background-color: #f8f8f8;
 }
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
@@ -3006,7 +3006,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: #555555;
-  background-color: #fafafa;
+  background-color: #f8f8f8;
   border: 1px solid #dddddd;
   border-bottom-color: transparent;
   cursor: default;
@@ -3052,7 +3052,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs.nav-justified > .active > a,
   .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom-color: #fafafa;
+    border-bottom-color: #f8f8f8;
   }
 }
 .nav-pills > li {
@@ -3120,7 +3120,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs-justified > .active > a,
   .nav-tabs-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus {
-    border-bottom-color: #fafafa;
+    border-bottom-color: #f8f8f8;
   }
 }
 .tab-content > .tab-pane {
@@ -3953,7 +3953,7 @@ a.list-group-item.active > .badge,
   padding: 4px;
   margin-bottom: 20px;
   line-height: 1.42857143;
-  background-color: #fafafa;
+  background-color: #f8f8f8;
   border: 1px solid #dddddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -10039,6 +10039,7 @@ addcartCart-Icon
   -webkit-overflow-scrolling: touch;
   z-index: 2;
   width: 57%;
+  box-shadow: rgba(0, 0, 0, 0.1) 1px 0px 18px 7px;
 }
 @media screen and (min-width: 992px) {
   .page-lieferanten .sidebar {
@@ -10071,10 +10072,14 @@ addcartCart-Icon
   padding-right: 10px;
   margin-bottom: 15px;
 }
-@media screen and (min-width: 1120px) {
+@media screen and (min-width: 1200px) {
   .page-lieferanten .sidebar .seller-area .col-seller-item {
-    width: 50%;
     margin-bottom: 20px;
+  }
+}
+@media screen and (min-width: 1640px) {
+  .page-lieferanten .sidebar .seller-area .col-seller-item {
+    width: 33%;
   }
 }
 .page-lieferanten .sidebar .seller-area a.seller-item {
@@ -10085,15 +10090,13 @@ addcartCart-Icon
   padding: 15px;
   transition: all 0.12s ease-out;
   color: #555555;
+  /* @media screen and (min-width: @large-typo-breakpoint){
+                        min-height: 183px;
+                }*/
 }
-@media screen and (min-width: 1120px) {
+@media screen and (min-width: 1200px) {
   .page-lieferanten .sidebar .seller-area a.seller-item {
     min-height: 174px;
-  }
-}
-@media screen and (min-width: 1500px) {
-  .page-lieferanten .sidebar .seller-area a.seller-item {
-    min-height: 183px;
   }
 }
 .page-lieferanten .sidebar .seller-area a.seller-item:hover,
@@ -10110,11 +10113,11 @@ addcartCart-Icon
 }
 .page-lieferanten .sidebar .seller-area a.seller-item img {
   width: 76px;
-  background-color: #fafafa;
+  background-color: #f8f8f8;
   border: 1px solid #ddd;
   padding: 4px;
 }
-@media screen and (min-width: 1120px) {
+@media screen and (min-width: 1200px) {
   .page-lieferanten .sidebar .seller-area a.seller-item img {
     position: absolute;
     top: -12px;
@@ -10128,16 +10131,10 @@ addcartCart-Icon
   font-weight: 700;
   color: inherit;
 }
-@media screen and (min-width: 1120px) {
+@media screen and (min-width: 1200px) {
   .page-lieferanten .sidebar .seller-area a.seller-item h4 {
     width: 85%;
     height: 37px;
-  }
-}
-@media screen and (min-width: 1500px) {
-  .page-lieferanten .sidebar .seller-area a.seller-item h4 {
-    font-size: 21px;
-    height: 46px;
   }
 }
 .page-lieferanten .sidebar .seller-area a.seller-item .media-body ul li {

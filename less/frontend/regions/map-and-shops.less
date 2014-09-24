@@ -1,6 +1,7 @@
 @sidebar-padding: 20px;
-@2-col-breakpoint: 1120px;
-@large-typo-breakpoint: 1500px;
+@2-col-breakpoint: 1200px;
+@3-col-breakpoint: 1640px;
+@large-typo-breakpoint: 1845px;
 
 .page-lieferanten {
     
@@ -35,6 +36,7 @@
         -webkit-overflow-scrolling: touch;
         z-index: 2;
         width: 57%;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 0px 18px 7px;
         
         @media screen and (min-width: 992px){
             width: 60%;
@@ -62,16 +64,19 @@
                 margin-left: -10px;
                 margin-right: -10px;
                 margin-bottom: 10px;
-                
             }
             
             .col-seller-item {
                 padding-left: 10px;
                 padding-right: 10px;
                 margin-bottom: 15px;
+                
                  @media screen and (min-width: @2-col-breakpoint){
-                    width: 50%;
                     margin-bottom: 20px;
+                }
+                
+                 @media screen and (min-width: @3-col-breakpoint){
+                    width: 33%;
                 }
             }
             
@@ -87,9 +92,9 @@
                         min-height: 174px;
                 }
                  
-                @media screen and (min-width: @large-typo-breakpoint){
+               /* @media screen and (min-width: @large-typo-breakpoint){
                         min-height: 183px;
-                }
+                }*/
                 
                 &:hover,
                 &:focus,
@@ -111,7 +116,6 @@
                     border: 1px solid #ddd;
                     padding: 4px;
                     
-                    
                     @media screen and (min-width: @2-col-breakpoint){
                         position: absolute;
                         top: -12px;
@@ -131,10 +135,7 @@
                        height: 37px;
                     }
                     
-                    @media screen and (min-width: @large-typo-breakpoint){
-                       font-size: 21px;
-                       height: 46px;
-                    }
+                   
                 }
                 
                 .media-body {
