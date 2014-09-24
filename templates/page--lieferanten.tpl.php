@@ -26,15 +26,11 @@
                 <?php print rm_user_get_navbar(); ?>
                 <div class="dropdown">
                     <a href="#" class="navi-link dropdown-toggle" id="helpDD" data-toggle="dropdown"> Hilfe <span class="caret"></span> </a>
-                        
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="helpDD">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" class="help-link" href="http://www.regiomino.de/kontakt">Besuchen Sie unseren Hilfebereich &raquo;</a></li>
-                           
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="mailto:support@regiomino.de"><span class="fa fa-paper-plane"></span> Schreiben Sie uns</a></li>
-                            
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="tel:+4909131-9291117"><span class="fa fa-phone"></span> Rufen Sie uns an: 09131-9291117</a></li>
-                        </ul>
- 
+                    <ul class="dropdown-menu" role="menu" aria-labelledby="helpDD">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" class="help-link" href="http://www.regiomino.de/kontakt">Besuchen Sie unseren Hilfebereich &raquo;</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="mailto:support@regiomino.de"><span class="fa fa-paper-plane fa-fw"></span> Schreiben Sie uns</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="tel:+4909131-9291117"><span class="fa fa-phone fa-fw"></span> Rufen Sie uns an: 09131-9291117</a></li>
+                    </ul>
                 </div>
                 
                 <button class="btn btn-danger" data-toggle="modal" data-target="#suggestModal">
