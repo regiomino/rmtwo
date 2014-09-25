@@ -70,15 +70,17 @@ $shop = $shops[$shopkeys[0]];
                                 <h5>Lieferoptionen</h5>
                                 <ul class="list-unstyled">
                                 <?php
+                                 print "<a href='#' id='pickupModalToggle'> pickupSpots </a>";
                                     foreach($shop->agreements as $type => $user_reference) {
                                         foreach($user_reference as $target_id => $agreements) {
                                             //if theres two variantes for the same agreement, then choose the one with less minimum order value
                                             if(count($agreements) > 1) {
                                                 usort($agreements, "rm_shop_sort_agreements_by_mov");
                                             }
-                                            
+                                           
                                             foreach($agreements as $agreement) {
                                                 print "<li>";
+                                                
                                                 switch($type) {
                                                     
                                                     case 'pickup_agreement':
@@ -323,6 +325,135 @@ $shop = $shops[$shopkeys[0]];
             </div><!-- /.modal-dialog -->
         </div><!-- /.modal -->
     <?php endforeach; ?>
+    
+    <div class="modal fade" tabindex="-1" id="pickupModal" role="dialog" aria-labelledby="Selbstabholung" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span></button>
+            <h3 class="modal-title" id="variationModalLabel">Selbstabholung für <strong> Metzgerei Kalb</strong></h3>
+        </div>
+        <div class="modal-body clearfix">
+            <div id="pickupMap" class="pickupMap">
+                
+            </div>
+            
+            <div class="pickupInfo">
+                
+                <div class="pickup-spot striped"> 
+                    <div class="pickup-description"> 
+                        <h4 class="spot-title"> Bamberg, Theuerstadt 3 </h4>
+                        <p class="spot-notes text-muted">
+                           <small>Am Hintereingang, bei Grabowski klingeln. </small> 
+                        </p>
+                    </div>
+                    <table class="table pickup-times  table-condensed">
+                        <thead>
+                          <tr>
+                            <th>Montag</th>
+                            <th>Dienstag</th>
+                            <th>Mittwoch</th>
+                            <th>Donnerstag</th>
+                            <th>Freitag</th>
+                            <th>Samstag</th>
+                            <th>Sonntag</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                                07:30 - 8:30 <br>
+                                13:30 - 18:00
+                            </td>
+                            <td>
+                                geschlossen  
+                               
+                            </td>
+                            <td>
+                                geschlossen
+                            </td>
+                            <td>
+                                07:30 - 8:30 <br>
+                                13:30 - 18:00
+                            </td>
+                            <td>
+                                07:30 - 8:30 <br>
+                                13:30 - 18:00
+                            </td>
+                            <td>
+                                07:30 - 8:30 <br>
+                                13:30 - 18:00
+                            </td>
+                            <td>
+                                07:30 - 8:30 <br>
+                                13:30 - 18:00
+                            </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div> <!-- end spickup-spot-->
+                
+                <div class="pickup-spot"> 
+                    <div class="pickup-description"> 
+                        <h4 class="spot-title"> Bamberg, Theuerstadt 3 </h4>
+                        <p class="spot-notes text-muted">
+                           <small>Am Hintereingang, bei Grabowski klingeln. </small> 
+                        </p>
+                    </div>
+                    <table class="table pickup-times table-condensed">
+                        <thead>
+                          <tr>
+                            <th>Montag</th>
+                            <th>Dienstag</th>
+                            <th>Mittwoch</th>
+                            <th>Donnerstag</th>
+                            <th>Freitag</th>
+                            <th>Samstag</th>
+                            <th>Sonntag</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                               geschlossen
+                            </td>
+                            <td>
+                                geschlossen  
+                               
+                            </td>
+                            <td>
+                                geschlossen
+                            </td>
+                            <td>
+                               geschlossen
+                            </td>
+                            <td>
+                                geschlossen wegen Kater
+                            </td>
+                            <td>
+                                geschlossen
+                            </td>
+                            <td>
+                               geschlossen
+                            </td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div> <!-- end spickup-spot-->
+                
+                
+                
+            </div><!-- end spot-info-->
+            
+        </div><!-- end modal-body-->
+    </div>
+  </div>
+</div>
+    
+    
+    
 <?php endforeach; ?>
 
 
