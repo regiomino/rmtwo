@@ -112,7 +112,6 @@
                 data-indeed-apply-jobTitle="<?php print $node->title; ?>"
                 data-indeed-apply-jobUrl="<?php global $base_url; global $base_path; print $base_url . $base_path; ?>node/<?php print $node->nid; ?>"
                 data-indeed-apply-email="b84a3c8929c4f4120b99eda55a2bda46428c1ec545b7b51f291f3504c54aa655"
-                
                 data-indeed-apply-jobMeta="right-rail-apply-button"></span>
              
             <script>(function(d, s, id) {
@@ -131,6 +130,39 @@
 
             </script>
         <?php endif; ?>
+        
+        <?php
+        
+            /*
+            run this in python to change email encoding
+            
+            install necessary python libs and run script like this:
+            
+            > apt-get install autoconf g++ python-dev python-pip
+            > pip install pycrypto
+            > pip install Padding
+            > perl filename.py
+            
+            
+            # pycrypto library - http://www.pycrypto.org/
+            from Crypto.Cipher import AES
+            # Padding libary - http://pypi.python.org/pypi/Padding
+            import Padding
+            secret = 'kjuCwjdufjjXqJus59GllOSOOfXbqFMKUaG6o1TgFOo33SmrquZygx5stjNsBOpg'.encode('utf-8')
+            key_bytes = secret[0:16] # grab the first 16 bytes
+            # initialize vector with zeros
+            iv = '\0' * 16
+            cipher = AES.new(key_bytes, AES.MODE_CBC, iv)
+            email_encrypted = cipher.encrypt(Padding.appendPadding("bewerbung@regiomino.de".encode('utf-8'), blocksize=Padding.AES_blocksize, mode='CMS'))
+            encoded_email = email_encrypted.encode('hex')
+            dcipher = AES.new(key_bytes, AES.MODE_CBC, iv)
+            email_decrypted = Padding.removePadding(dcipher.decrypt(email_encrypted), blocksize=Padding.AES_blocksize, mode='CMS')
+            print 'Encrypted E-mail Hex', encoded_email
+            print email_decrypted
+            
+            */
+        
+        ?>
         
     </div>
 
