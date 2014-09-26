@@ -254,4 +254,4 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
     </div><!--end col-md-12-->
     <?php print render($form['offers']['submit']); ?>
 </div><!-- end row -->
- 
+<?php print drupal_render_children($form); ?>
