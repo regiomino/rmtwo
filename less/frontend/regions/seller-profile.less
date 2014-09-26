@@ -24,7 +24,7 @@
     }
 
     .info-wrapper {
-        padding: 20px 0px 17px 0px;
+        padding: 20px 0px 0px 0px;
         margin-bottom: 20px;
         border-bottom: 1px solid #ddd;
         
@@ -34,7 +34,8 @@
     }
     
     .seller-infos {
-        
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
         h1 {
             margin-top: 0px;
             margin-bottom: 5px;
@@ -42,7 +43,7 @@
         
         .seller-description {
             p {
-                margin-bottom: 5px;
+                margin-bottom: 1px;
             }
             
             img {
@@ -54,7 +55,8 @@
     }
     
     .seller-meta {
-        min-height: 179px;
+         padding-top: 10px;
+         padding-bottom: 10px;
         
         h5 {
             color: @brand-primary;
@@ -63,32 +65,51 @@
         }
         
         .delivery-meta {
-            margin-bottom: 20px;
             
+            ul {
+                margin-bottom: 0px;
+            }
+                       
             li {
-               
+                padding-left: 10px;
+                padding-right: 10px;
                 line-height: 14px;
-                margin-bottom: 10px;
+                margin-right: 10px;
+                 
                 
                 &:last-child {
                     margin-bottom: 0px;
+                    margin-right: 0px;
                 }
             }
             
+            .indicator {
+                color: @brand-primary;
+            }
+            
             a {
-                     position: relative;
+                position: relative;
                 padding-left: 36px;
                 color: inherit;
                 display: block;
+
                 &:hover,
                 &:focus,
                 &:active {
                     text-decoration: none;
                 }
             }
+            
+            a#pickupModalToggle {
+                padding-left: 30px;
+            }
         }
         
         .payment-meta {
+            min-height: 32px;
+            line-height: 31px;
+            font-weight: 700;
+            border-left: 1px solid #ddd;
             h5 {
                 margin-bottom: 6px;
             }
@@ -111,209 +132,261 @@
             left: 2px;
         }
     }
-}
 
-.product-grid {
-    margin: 0;
-    margin-left: -10px;
-    margin-right: -5px;
-    padding: 0;
-    list-style: none;
-    
-    li.grid-item {
-        position: relative;
-        min-height: 1px;
-        padding-left: 5px;
-        padding-right: 5px;
-        margin-bottom: 10px;
-        float: left;
-        width: 100%;
+
+    .product-grid {
+        margin: 0;
+        margin-left: -10px;
+        margin-right: -5px;
+        padding: 0;
+        list-style: none;
         
-        @media screen and (min-width: 768px){
-            width: 50%;
-        }
-        
-        @media screen and (min-width: 992px){
-            width: 33%;
-        }
-        
-        @media screen and (min-width: 1200px){
-            width: 25%;
-        }
-          
-        .product-item {
-            border: 1px solid #ddd;
-            border-radius: 4px;
+        li.grid-item {
             position: relative;
-            transition: all .12s ease-out;
+            min-height: 1px;
+            padding-left: 5px;
+            padding-right: 5px;
+            margin-bottom: 10px;
+            float: left;
+            width: 100%;
             
-            &:hover,
-            &:focus {
-                 box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
-                    background-color: #fff;
-                    text-decoration: none;
-                    transform: translateY(-2px);
+            @media screen and (min-width: 768px){
+                width: 50%;
             }
             
-            .product-image {
-                overflow: hidden;
-                border-radius: 4px 4px 0 0;
-                
-                a {
-                    display: block;
-                }
-                
-                img {
-                    width: 100%;
-                    height: auto;
-                    border-radius: 4px 4px 0 0;
-                    display: inline-block;
-                    height: 130px;
-                }
+            @media screen and (min-width: 992px){
+                width: 33%;
             }
             
-            .product-infos {
-                height: 129px;
-                
-                .product-title {
-                    border-bottom: 1px solid #DDD;
-                  
-                    a.title {
-                        line-height: 16px;
-                        display: block;
-                        padding: 8px 10px 6px;
-                    }
-                     
-                    .details {
-                        position: absolute;
-                        right: 10px;
-                        bottom: 0px;
-                        font-size: 11px;
-                        display: inline-block;
-                        padding-top: 3px;
-                        
-                        .glyphicon {
-                            top: 2px;
-                        }
-                    }
-                }
-                
-                .product-price {
-                    padding: 10px 10px 10px 10px;
-                    
-                    .btn-input {
-                        display: block;
-                        
-                    }
-                    .btn {
-                        width: 100%;
-                        position: relative;
-                        padding: 7px 5px 6px;
-                    }
-                    
-                    .btn-default {
-                        background-color: transparent;
-                    }
-                        
-                    .tradingunit-single {
-                        width: 100%;
-                        position: relative;
-                        padding: 7px 4px;
-                        border: 1px solid #ccc;
-                        border-radius: 4px;
-                    }
-                    
-                    .price {
-                        color: #333;
-                        text-align: left;
-                    }
-                    .price-unit,
-                    .price-info {
-                        height: 46px;
-                    }
-                    
-                    .price-unit {
-                        font-size: 18px;
-                        float: left;
-                        padding-right: 4px;
-                        line-height: 17px;
-                        border-right: 1px solid #ddd;
-                        
-                        span {
-                            display: block;
-                        }
-                        
-                        .unit-name {
-                            font-size: 12px;
-                        }
-                        .unit-amount {
-                            font-size: 11px;
-                            line-height: 11px;
-                        }
-                    }
-                    
-                    .price-info {
-                         
-                        font-size: 9px;
-                        float: left;
-                        padding-left:4px;
-                        position: relative;
-                        
-                        .indicator {
-                            background-color: @brand-primary;
-                            padding: 2px 4px;
-                            color: #fff;
-                            position: absolute;
-                            bottom: 0;
-                            left: 5px;
-                            border-radius: .25em;
-                        }
-                       
-                    }
-                    
-                    .dropdown-menu {
-                        width: 100%;
-                        padding: 0px;
-                        
-                       li a {
-                            padding: 8px 9px;
-                            border-bottom: 1px solid #DDD;
-                       }
-                       
-                       .indicator {
-                        display: none;
-                       }
-                         
-                    }
-                }
+            @media screen and (min-width: 1200px){
+                width: 25%;
             }
-        }
-
-        .add-to-cart-area {
-                border-radius: 0 0 4px 4px;
+              
+            .product-item {
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                position: relative;
+                transition: all .12s ease-out;
                 
-            button.btn {
-                border-top: 1px solid #DDD;
-                border-bottom: none;
-                border-right: none;
-                border-left: none;
-                width: 100%;
-                border-radius: 0 0 4px 4px;
-                padding: 13px 16px;
-                font-size: 14px;
-                background-color: transparent;
                 &:hover,
                 &:focus {
-                     
+                     box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+                        background-color: #fff;
+                        text-decoration: none;
+                        transform: translateY(-2px);
                 }
                 
-                .fa-check-circle {
-                    color: @brand-primary;
+                .product-image {
+                    overflow: hidden;
+                    border-radius: 4px 4px 0 0;
+                    
+                    a {
+                        display: block;
+                    }
+                    
+                    img {
+                        width: 100%;
+                        height: auto;
+                        border-radius: 4px 4px 0 0;
+                        display: inline-block;
+                        height: 130px;
+                    }
+                }
+                
+                .product-infos {
+                    height: 129px;
+                    
+                    .product-title {
+                        border-bottom: 1px solid #DDD;
+                      
+                        a.title {
+                            line-height: 16px;
+                            display: block;
+                            padding: 8px 10px 6px;
+                        }
+                         
+                        .details {
+                            position: absolute;
+                            right: 10px;
+                            bottom: 0px;
+                            font-size: 11px;
+                            display: inline-block;
+                            padding-top: 3px;
+                            
+                            .glyphicon {
+                                top: 2px;
+                            }
+                        }
+                    }
+                    
+                    .product-price {
+                        padding: 10px 10px 10px 10px;
+                        
+                        .btn-input {
+                            display: block;
+                            
+                        }
+                        .btn {
+                            width: 100%;
+                            position: relative;
+                            padding: 7px 5px 6px;
+                        }
+                        
+                        .btn-default {
+                            background-color: transparent;
+                        }
+                            
+                        .tradingunit-single {
+                            width: 100%;
+                            position: relative;
+                            padding: 7px 4px;
+                            border: 1px solid #ccc;
+                            border-radius: 4px;
+                        }
+                        
+                        .price {
+                            color: #333;
+                            text-align: left;
+                        }
+                        .price-unit,
+                        .price-info {
+                            height: 46px;
+                        }
+                        
+                        .price-unit {
+                            font-size: 18px;
+                            float: left;
+                            padding-right: 4px;
+                            line-height: 17px;
+                            border-right: 1px solid #ddd;
+                            
+                            span {
+                                display: block;
+                            }
+                            
+                            .unit-name {
+                                font-size: 12px;
+                            }
+                            .unit-amount {
+                                font-size: 11px;
+                                line-height: 11px;
+                            }
+                        }
+                        
+                        .price-info {
+                             
+                            font-size: 9px;
+                            float: left;
+                            padding-left:4px;
+                            position: relative;
+                            
+                            .indicator {
+                                background-color: @brand-primary;
+                                padding: 2px 4px;
+                                color: #fff;
+                                position: absolute;
+                                bottom: 0;
+                                left: 5px;
+                                border-radius: .25em;
+                            }
+                           
+                        }
+                        
+                        .dropdown-menu {
+                            width: 100%;
+                            padding: 0px;
+                            
+                           li a {
+                                padding: 8px 9px;
+                                border-bottom: 1px solid #DDD;
+                           }
+                           
+                           .indicator {
+                            display: none;
+                           }
+                             
+                        }
+                    }
+                }
+            }
+    
+            .add-to-cart-area {
+                    border-radius: 0 0 4px 4px;
+                    
+                button.btn {
+                    border-top: 1px solid #DDD;
+                    border-bottom: none;
+                    border-right: none;
+                    border-left: none;
+                    width: 100%;
+                    border-radius: 0 0 4px 4px;
+                    padding: 13px 16px;
+                    font-size: 14px;
+                    background-color: transparent;
+                    
+                    .fa-check-circle {
+                        color: @brand-primary;
+                    }
                 }
             }
         }
     }
-    
-    
-    
+
+
+    #pickupModal {
+        
+        .modal-body {
+            padding: 0;
+            height: 349px;
+        }
+        
+        .pickupMap {
+            width: 35%;
+            float: left;
+            height:349px;
+        }
+        
+        .pickupInfo {
+            height: 100%;
+            position: relative;
+            z-index: 0;
+            border-left: 1px solid #ddd;
+            width: 65%;
+            float: right;
+            overflow: auto;
+          
+            .pickup-spot {
+                padding:5px 15px;
+                border-bottom: 1px solid #ddd;
+                transition: all 0.12s ease-out;
+            
+                &.striped {
+                    background-color: #f8f8f8;
+                }
+                
+                .spot-title {
+                    margin-bottom: 5px;
+                    .fa {
+                        color: @brand-primary
+                    }
+                }
+                
+                .pickup-times {
+                    font-size: 85%;
+                    margin-bottom: 0;
+                    white-space: nowrap;
+                }
+                
+                &:hover,
+                &:active,
+                &:focus {
+                    background-color: darken(#f8f8f8,6%);
+                }
+                
+                &:last-child {
+                    padding-bottom: 10px;
+                }
+            }
+        }
+    }
 }
