@@ -13,18 +13,38 @@ $form = $variables['form'];
             <!--Abholspots-->
             <?php print render($form['checkout']['delivery_fs']['pickup_spots']); ?>
             
-            <!--Abholzeiten-->
-            <?php if(!empty($form['checkout']['delivery_fs']['pickup_times'])): ?>
-                <?php foreach($form['checkout']['delivery_fs']['pickup_times'] as $pickuptimekey => $pickuptimes): ?>
-                    <?php $tmp = explode('pickup_time_', $pickuptimekey); ?>
+            <!--Abholtage-->
+            <?php if(!empty($form['checkout']['delivery_fs']['pickup_days'])): ?>
+                <?php foreach($form['checkout']['delivery_fs']['pickup_days'] as $pickupdaykey => $pickupdays): ?>
+                    <?php $tmp = explode('pickup_day_', $pickupdaykey); ?>
                     <?php if(isset($tmp[1])): ?>
-                        <?php print render($form['checkout']['delivery_fs']['pickup_times'][$pickuptimekey]); ?>
+                        <?php print render($form['checkout']['delivery_fs']['pickup_days'][$pickupdaykey]); ?>
                     <?php endif; ?>
                 <?php endforeach; ?>
             <?php endif; ?>
             
+            <!--Abholzeiten-->
+            <?php if(!empty($form['checkout']['delivery_fs']['pickup_times'])): ?>
+                <?php foreach($form['checkout']['delivery_fs']['pickup_times'] as $pickupdaykey => $pickupdays): ?>
+                    <?php $tmp = explode('pickup_time_', $pickupdaykey); ?>
+                    <?php if(isset($tmp[1])): ?>
+                        <?php print render($form['checkout']['delivery_fs']['pickup_times'][$pickupdaykey]); ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+            
+            <!--Liefertage-->
+            <?php print render($form['checkout']['delivery_fs']['shipping_days']['shipping_day']); ?>
+            
             <!--Lieferzeiten-->
-            <?php print render($form['checkout']['delivery_fs']['shipping_time']); ?>
+            <?php if(!empty($form['checkout']['delivery_fs']['shipping_times'])): ?>
+                <?php foreach($form['checkout']['delivery_fs']['shipping_times'] as $shippingdaykey => $shippingdays): ?>
+                    <?php $tmp = explode('shipping_time_', $shippingdaykey); ?>
+                    <?php if(isset($tmp[1])): ?>
+                        <?php print render($form['checkout']['delivery_fs']['shipping_times'][$shippingdaykey]); ?>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
             
             <!--Lieferadresse: Name-->
             <?php print render($form['checkout']['delivery_fs']['shipping_address_name']); ?>
