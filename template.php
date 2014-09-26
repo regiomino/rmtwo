@@ -452,7 +452,7 @@ function rmtwo_preprocess_page(&$variables) {
         if(array_key_exists('node', $variables)) {
             if($variables['node']->type == 'seller_profile') {
                 $_SESSION['chosen_seller'] = $variables['node']->uid;
-                
+                drupal_add_js(array('suid' => $variables['node']->uid), 'setting');
                 $variables['node']->offers = rm_shop_get_structured_seller_offers($variables['node']->uid);
                 drupal_add_js(drupal_get_path('module', 'rm_cart') . '/js/rm_cart.js');
             }

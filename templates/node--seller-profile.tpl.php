@@ -45,15 +45,14 @@ $shop = $shops[$shopkeys[0]];
                                     </a>
                                     <div class="media-body">
                                        <?php
-                                        $length = 280;
+                                        $length = 400;
                                         $body = strip_tags($node->body[LANGUAGE_NONE][0]['value']);
                                         if(mb_strlen($body) > $length) {
                                             print '<div class="description" id="long-desc" style="display:none; height:auto"><p>'.$body.'</p>';
-                                                print '<div class="more-toggle"><a href="#" id="read-less"> <span class="fa fa-chevron-up"></span> weniger lesen </a></div></div>';
+                                            print '<div class="more-toggle"><a href="#" id="read-less"> <span class="fa fa-chevron-up"></span> weniger Informationen </a></div></div>';
                                             
                                             print '<div class="description" id="short-desc"><p>';
-                                            print mb_substr($body, 0, mb_strpos($body, " ", $length)) . '<span class="elipsis"> ...</span></p><div class="more-toggle"><a href="#" id="read-more"> <span class="fa fa-chevron-down"></span> mehr lesen </a></div></div>';
-                                            
+                                            print mb_substr($body, 0, mb_strpos($body, " ", $length)) . '<span class="elipsis"> ...</span></p><div class="more-toggle"><a href="#" id="read-more"> <span class="fa fa-chevron-down"></span> mehr Informationen </a></div></div>';
                                         }
                                         else {
                                             print $body;
@@ -66,21 +65,74 @@ $shop = $shops[$shopkeys[0]];
                     </div><!-- end col-md-12-->
                      
                     <div class="col-md-12 seller-meta">
-                        <div class="delivery-meta">
-                            <?php if(!empty($shop->agreements)) : ?>
-                                <h5>Lieferoptionen</h5>
-                                <ul class="list-unstyled">
+                        <div class="row">
+                            <div class="delivery-meta col-md-8">
+                                <?php if(!empty($shop->agreements)) : ?>
+                                <!--<h5>Lieferoptionen</h5>-->
+                                <ul class="list-inline">
                                 <?php
                                 
-                                 print "<a href='#' id='pickupModalToggle'> pickupSpots </a>";
-                                    foreach($shop->agreements as $type => $user_reference) {
+                             if(!empty($shop->agreements['pickup_agreement'])) {
+                                                print "<li>";
+                                                    print  '<a href="#" id="pickupModalToggle">';
+                                                    print '<span class="sprite sprite-delivery-pickup"></span>';
+                                                    print '<small class="text-muted"> Selbstabholung <br> ';
+                                                    print '<strong> ab 0€ | <span class="indicator"> Orte anzeigen </span> </strong>';
+                                                    print '</small> ';
+                                                    print '</a>';
+                                                print "</li>";
+                                                }
+                             
+                             foreach($shop->agreements as $type => $user_reference) {
+                                        foreach($user_reference as $target_id => $agreements) {
+                                            //if theres two variantes for the same agreement, then choose the one with less minimum order value
+                                            if(count($agreements) > 1) {
+                                                usort($agreements, "rm_shop_sort_agreements_by_mov");
+                                            }
+                                            
+                                            foreach($agreements as $agreement) {
+                                               
+                                                
+                                                switch($type) {
+                                                    
+                                                    case 'shipping_agreement':
+                                                         print "<li>";
+                                                        print  "<a href='#' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
+                                                            print '<span class="sprite sprite-delivery-truck"></span>';
+                                                            print '<small class="text-muted">' . node_type_get_name('shipping_agreement') . ' <br>';
+                                                            print '<strong> ab ' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.' | <span class="indicator"> Lieferzeiten anzeigen </span></strong>';
+                                                            print '</small>';
+                                                        print '</a>';
+                                                         print "</li>";
+                                                    break;
+                                                
+                                                    case 'dispatch_agreement':
+                                                         print "<li>";
+                                                        print  "<a href='#' data-toggle='popover' data-content='" . t('Have your order delivered to you by @provider', array('@provider' => $agreement->field_dispatch_provider[LANGUAGE_NONE][0]['value']))."'>";
+                                                            print '<span class="sprite sprite-delivery-mail"></span>';
+                                                            print '<small class="text-muted">' . node_type_get_name('dispatch_agreement') . ' <span class="fa fa-info-circle"></span><br>ab</small> ';
+                                                            print '<strong>' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.'</strong>';
+                                                        print '</a>';
+                                                          print "</li>";
+                                                    break;
+                                                }
+                                               
+                                            } 
+                                        }
+                                    }
+                             
+                             
+                             
+                             
+                             
+                                  /*  foreach($shop->agreements as $type => $user_reference) {
                                         foreach($user_reference as $target_id => $agreements) {
                                             //if theres two variantes for the same agreement, then choose the one with less minimum order value
                                             if(count($agreements) > 1) {
                                                 usort($agreements, "rm_shop_sort_agreements_by_mov");
                                             }
                                            
-                                            foreach($agreements as $agreement) {
+                                             foreach($agreements as $agreement) {
                                                 print "<li>";
                                                 
                                                 switch($type) {
@@ -110,47 +162,48 @@ $shop = $shops[$shopkeys[0]];
                                                     break;
                                                 }
                                                 print "</li>";
-                                            }
+                                            } 
                                         }
-                                    }
+                                    }*/
                                 ?>
                                 </ul>
                                     
                             <?php endif; ?>
-                        </div>
-                        
-                        <div class="payment-meta">
-                            <?php if(!empty($shop->agreements)) : ?>
-                            <h5>Zahlungsarten</h5>
-                            <?php
-                                foreach($shop->agreements as $type => $user_reference) {
-                                    foreach($user_reference as $target_id => $index) {
-                                        foreach($index as $indexid => $agreement) {
-                                            switch($type) {
-                                                case 'payment_agreement':
-                                                    foreach($agreement->field_payment_types[LANGUAGE_NONE] as $payment_type) {
-                                                        switch($payment_type['value']) {
-                                                            case 'prepaid':
-                                                                print '<small class="text-muted" data-toggle="popover" data-content="' . t('Pay online during checkout via one of our payment providers') . '">Online-Zahlung, </small> ';
-                                                                break;
-                                                            case 'cash':
-                                                                print '<small class="text-muted" data-toggle="popover" data-content="' . t('Pay cash when your order is delivered') . '">Barzahlung, </small> ';
-                                                                break;
-                                                            case 'invoice':
-                                                                print '<small class="text-muted" data-toggle="popover" data-content="' . t('The vendor will send you an invoice after your order is complete') . '">Rechnung, </small> ';
-                                                                break;
+                            </div><!-- end delivery-meta-->
+                       
+                            <div class="payment-meta col-md-4">
+                                <?php if(!empty($shop->agreements)) : ?>
+                                
+                                <?php
+                                    foreach($shop->agreements as $type => $user_reference) {
+                                        foreach($user_reference as $target_id => $index) {
+                                            foreach($index as $indexid => $agreement) {
+                                                switch($type) {
+                                                    case 'payment_agreement':
+                                                        foreach($agreement->field_payment_types[LANGUAGE_NONE] as $payment_type) {
+                                                            switch($payment_type['value']) {
+                                                                case 'prepaid':
+                                                                    print '<small class="text-muted" data-toggle="popover" data-content="' . t('Pay online during checkout via one of our payment providers') . '">Online-Zahlung, </small> ';
+                                                                    break;
+                                                                case 'cash':
+                                                                    print '<small class="text-muted" data-toggle="popover" data-content="' . t('Pay cash when your order is delivered') . '">Barzahlung, </small> ';
+                                                                    break;
+                                                                case 'invoice':
+                                                                    print '<small class="text-muted" data-toggle="popover" data-content="' . t('The vendor will send you an invoice after your order is complete') . '">Rechnung, </small> ';
+                                                                    break;
+                                                            }
                                                         }
-                                                    }
-                                                    break;
+                                                        break;
+                                                }
                                             }
                                         }
                                     }
-                                }
-                            ?>
-                            <?php endif; ?>
-                        </div>
-                    </div> <!-- end seller-meta -->
-                </div><!-- end info-wrapper -->
+                                ?>
+                                <?php endif; ?>
+                            </div> <!-- end payment-meta-->
+                        </div> <!-- end row-->
+                    </div><!-- end seller-meta -->
+                </div> <!-- end info-wrapper -->
             </div> <!-- end row -->
        
             <ul class="product-grid clearfix"> 
