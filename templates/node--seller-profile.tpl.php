@@ -73,15 +73,24 @@ $shop = $shops[$shopkeys[0]];
                                 <?php
                                 
                              if(!empty($shop->agreements['pickup_agreement'])) {
-                                                print "<li>";
-                                                    print  '<a href="#" id="pickupModalToggle">';
-                                                    print '<span class="sprite sprite-delivery-pickup"></span>';
-                                                    print '<small class="text-muted"> Selbstabholung <br> ';
-                                                    print '<strong> ab 0€ | <span class="indicator"> Orte anzeigen </span> </strong>';
-                                                    print '</small> ';
-                                                    print '</a>';
-                                                print "</li>";
-                                                }
+                             
+                                    $lowestmov = 9999999;
+                                    foreach($shop->agreements['pickup_agreement'] as $target_id => $agreements) {
+                                        foreach($agreements as $agreement) {
+                                            if($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'] < $lowestmov) {
+                                                $lowestmov = $agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'];
+                                            }
+                                        }
+                                    }
+                                    print "<li>";
+                                        print  '<a href="#" id="pickupModalToggle">';
+                                        print '<span class="sprite sprite-delivery-pickup"></span>';
+                                        print '<small class="text-muted"> Selbstabholung <br> ';
+                                        print '<strong> ab ' . number_format($lowestmov, 2, ",", ".") . '€ | <span class="indicator"> Orte anzeigen </span> </strong>';
+                                        print '</small> ';
+                                        print '</a>';
+                                    print "</li>";
+                            }
                              
                              foreach($shop->agreements as $type => $user_reference) {
                                         foreach($user_reference as $target_id => $agreements) {
