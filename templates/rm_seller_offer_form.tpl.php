@@ -168,7 +168,7 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="row">
-                                                            <div class="col-md-6 productunit">
+                                                            <div class="col-md-4 productunit">
                                                                 <span class="lbl">Produkteinheit</span>
                                                                 <div class="row">
                                                                      <div class="col-md-5">
@@ -179,9 +179,16 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
                                                                         </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                  <span class="lbl">Bestand</span>
                                                                   <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_stock-' . $variation->nid]); ?>
+                                                             </div>
+                                                            <div class="col-md-4">
+                                                                 <span class="lbl">Haltbarkeit</span>
+                                                                  <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_use_within-' . $variation->nid]); ?>
+                                                                  <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_expiration_date-' . $variation->nid]); ?>
+                                                                  <span class="lbl">Haltbarkeit</span>
+                                                                  <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_leadtime-' . $variation->nid]); ?>
                                                              </div>
                                                         </div>
                                                     </div>
