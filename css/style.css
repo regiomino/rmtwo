@@ -10022,15 +10022,15 @@ addcartCart-Icon
   height: 100%;
   position: relative;
   z-index: 0;
-  overflow: hidden;
   border-left: 1px solid #ddd;
   width: 65%;
   float: right;
-  overflow-y: scroll;
+  overflow: auto;
 }
 .node-type-seller-profile #pickupModal .pickupInfo .pickup-spot {
   padding: 5px 15px;
   border-bottom: 1px solid #ddd;
+  transition: all 0.12s ease-out;
 }
 .node-type-seller-profile #pickupModal .pickupInfo .pickup-spot.striped {
   background-color: #f8f8f8;
@@ -10038,10 +10038,21 @@ addcartCart-Icon
 .node-type-seller-profile #pickupModal .pickupInfo .pickup-spot .spot-title {
   margin-bottom: 5px;
 }
+.node-type-seller-profile #pickupModal .pickupInfo .pickup-spot .spot-title .fa {
+  color: #95bc0d;
+}
 .node-type-seller-profile #pickupModal .pickupInfo .pickup-spot .pickup-times {
   font-size: 85%;
   margin-bottom: 0;
   white-space: nowrap;
+}
+.node-type-seller-profile #pickupModal .pickupInfo .pickup-spot:hover,
+.node-type-seller-profile #pickupModal .pickupInfo .pickup-spot:active,
+.node-type-seller-profile #pickupModal .pickupInfo .pickup-spot:focus {
+  background-color: #e9e9e9;
+}
+.node-type-seller-profile #pickupModal .pickupInfo .pickup-spot:last-child {
+  padding-bottom: 10px;
 }
 .page-lieferanten #feedbackify {
   display: none;

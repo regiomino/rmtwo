@@ -322,7 +322,6 @@
         .pickupMap {
             width: 35%;
             float: left;
-           
             height:349px;
         }
         
@@ -330,15 +329,15 @@
             height: 100%;
             position: relative;
             z-index: 0;
-            overflow: hidden;
             border-left: 1px solid #ddd;
             width: 65%;
             float: right;
-            overflow-y: scroll;
-            
+            overflow: auto;
+          
             .pickup-spot {
                 padding:5px 15px;
                 border-bottom: 1px solid #ddd;
+                transition: all 0.12s ease-out;
             
                 &.striped {
                     background-color: #f8f8f8;
@@ -346,12 +345,25 @@
                 
                 .spot-title {
                     margin-bottom: 5px;
+                    .fa {
+                        color: @brand-primary
+                    }
                 }
                 
                 .pickup-times {
                     font-size: 85%;
                     margin-bottom: 0;
                     white-space: nowrap;
+                }
+                
+                &:hover,
+                &:active,
+                &:focus {
+                    background-color: darken(#f8f8f8,6%);
+                }
+                
+                &:last-child {
+                    padding-bottom: 10px;
                 }
             }
         }

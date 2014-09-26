@@ -15,7 +15,7 @@ $shop = $shops[$shopkeys[0]];
         <div class="flexfix-content-inner">
             <div class="row">
                 <div class="info-wrapper clearfix"> 
-                    <div class="col-md-9"> 
+                    <div class="col-md-12"> 
                         <div class="seller-infos"> 
                             <h1><strong> <?php print $node->title; ?></strong></h1>
                             <ul class="list-inline">
@@ -63,13 +63,15 @@ $shop = $shops[$shopkeys[0]];
                                 </div>
                             </div>
                         </div><!-- end seller-infos-->
-                    </div><!-- end col-md-9-->
-                    <div class="col-md-3 seller-meta">
+                    </div><!-- end col-md-12-->
+                     
+                    <div class="col-md-12 seller-meta">
                         <div class="delivery-meta">
                             <?php if(!empty($shop->agreements)) : ?>
                                 <h5>Lieferoptionen</h5>
                                 <ul class="list-unstyled">
                                 <?php
+                                
                                  print "<a href='#' id='pickupModalToggle'> pickupSpots </a>";
                                     foreach($shop->agreements as $type => $user_reference) {
                                         foreach($user_reference as $target_id => $agreements) {
@@ -333,7 +335,7 @@ $shop = $shops[$shopkeys[0]];
             <button type="button" class="close" data-dismiss="modal">
             <span aria-hidden="true">&times;</span>
             <span class="sr-only">Close</span></button>
-            <h3 class="modal-title" id="variationModalLabel">Selbstabholung für <strong> Metzgerei Kalb</strong></h3>
+            <h3 class="modal-title" id="variationModalLabel">Selbstabholung bei <strong><?php print $node->title; ?></strong></h3>
         </div>
         <div class="modal-body clearfix">
             <div id="pickupMap" class="pickupMap">
@@ -341,112 +343,83 @@ $shop = $shops[$shopkeys[0]];
             </div>
             
             <div class="pickupInfo">
+                 <?php
+                    if(!empty($shop->agreements)) {
+                        foreach($shop->agreements as $type => $user_reference) {
+                            if($type == 'pickup_agreement') {
+                                $count = 1;
+                                foreach($user_reference as $target_id => $agreements) {
+                                   
+                                    foreach($agreements as $agreement) {
+                                        //funky shit mit pickup_agreements machen
+                                        //$agreement->nid
+                                        //$agreement->type
+                                        //$agreement->field_address[LANGUAGE_NONE][0]['postal_code']
+                                        //usw.
+                                         if($count % 2 == 0) {
+                                            $striped = true;
+                                        } else {
+                                            $striped = false;
+                                        }
+                                    ?>
+                                    
+                                    <div class="pickup-spot <?php if($striped){print 'striped';};?>"> 
+                                        <div class="pickup-description"> 
+                                            <h4 class="spot-title"><span class="fa fa-map-marker fa-fw"></span> <?php print $agreement->field_address[LANGUAGE_NONE][0]['thoroughfare'];?>, <?php print $agreement->field_address[LANGUAGE_NONE][0]['postal_code']?> <?php print $agreement->field_address[LANGUAGE_NONE][0]['locality']?> </h4>
+                                        </div>
+                                       
+                                       <?php
+                                        $weekdays = array(
+                                            1 => t('Monday'),
+                                            2 => t('Tuesday'),
+                                            3 => t('Wednesday'),
+                                            4 => t('Thursday'),
+                                            5 => t('Friday'),
+                                            6 => t('Saturday'),
+                                            7 => t('Sunday'),
+                                        );
+                                        $agreementtimes = array();
+                                        if(!empty($agreement->field_regular_times[LANGUAGE_NONE])) {
+                                            foreach($agreement->field_regular_times[LANGUAGE_NONE] as $key => $values) {
+                                                $agreementtimes[$values['day']] = array(
+                                                    'starthours' => substr($values['starthours'], 0, -2) . ':' . substr($values['starthours'], -2),
+                                                    'endhours' => substr($values['endhours'], 0, -2) . ':' . substr($values['endhours'], -2),
+                                                );
+                                            }
+                                        }
+                                        ?>
+                                        <table class="table pickup-times  table-condensed">
+                                        <thead>
+                                        <?php foreach($weekdays as $weekday): ?>
+                                            <th><?php echo $weekday; ?></th>
+                                        <?php endforeach; ?>
+                                        </thead>
+                                        <tbody>
+                                        <?php foreach($weekdays as $weekiso => $weekday): ?>
+                                            <td>
+                                                <?php if(isset($agreementtimes[$weekiso])): ?>
+                                                    <?php echo $agreementtimes[$weekiso]['starthours']; ?>
+                                                    -
+                                                    <?php echo $agreementtimes[$weekiso]['endhours']; ?>
+                                                <?php else: ?>
+                                                    geschlossen
+                                                <?php endif; ?>
+                                            </td>
+                                        <?php endforeach; ?>
+                                        </tbody>
+                                        </table>
+                                       
+                                    </div> <!-- end spickup-spot-->
+                      
+                                   <?php  $count++;}
+                                }
+                            }
+                        }
+                    }
+                ?>
+                   
                 
-                <div class="pickup-spot striped"> 
-                    <div class="pickup-description"> 
-                        <h4 class="spot-title"> Bamberg, Theuerstadt 3 </h4>
-                        <p class="spot-notes text-muted">
-                           <small>Am Hintereingang, bei Grabowski klingeln. </small> 
-                        </p>
-                    </div>
-                    <table class="table pickup-times  table-condensed">
-                        <thead>
-                          <tr>
-                            <th>Montag</th>
-                            <th>Dienstag</th>
-                            <th>Mittwoch</th>
-                            <th>Donnerstag</th>
-                            <th>Freitag</th>
-                            <th>Samstag</th>
-                            <th>Sonntag</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                                07:30 - 8:30 <br>
-                                13:30 - 18:00
-                            </td>
-                            <td>
-                                geschlossen  
-                               
-                            </td>
-                            <td>
-                                geschlossen
-                            </td>
-                            <td>
-                                07:30 - 8:30 <br>
-                                13:30 - 18:00
-                            </td>
-                            <td>
-                                07:30 - 8:30 <br>
-                                13:30 - 18:00
-                            </td>
-                            <td>
-                                07:30 - 8:30 <br>
-                                13:30 - 18:00
-                            </td>
-                            <td>
-                                07:30 - 8:30 <br>
-                                13:30 - 18:00
-                            </td>
-                          </tr>
-                        </tbody>
-                    </table>
-                </div> <!-- end spickup-spot-->
-                
-                <div class="pickup-spot"> 
-                    <div class="pickup-description"> 
-                        <h4 class="spot-title"> Bamberg, Theuerstadt 3 </h4>
-                        <p class="spot-notes text-muted">
-                           <small>Am Hintereingang, bei Grabowski klingeln. </small> 
-                        </p>
-                    </div>
-                    <table class="table pickup-times table-condensed">
-                        <thead>
-                          <tr>
-                            <th>Montag</th>
-                            <th>Dienstag</th>
-                            <th>Mittwoch</th>
-                            <th>Donnerstag</th>
-                            <th>Freitag</th>
-                            <th>Samstag</th>
-                            <th>Sonntag</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                               geschlossen
-                            </td>
-                            <td>
-                                geschlossen  
-                               
-                            </td>
-                            <td>
-                                geschlossen
-                            </td>
-                            <td>
-                               geschlossen
-                            </td>
-                            <td>
-                                geschlossen wegen Kater
-                            </td>
-                            <td>
-                                geschlossen
-                            </td>
-                            <td>
-                               geschlossen
-                            </td>
-                          </tr>
-                        </tbody>
-                    </table>
-                </div> <!-- end spickup-spot-->
-                
-                
-                
-            </div><!-- end spot-info-->
-            
+            </div><!-- end pickup-info-->
         </div><!-- end modal-body-->
     </div>
   </div>
