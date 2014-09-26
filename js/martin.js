@@ -1,33 +1,50 @@
 jQuery(document).ready(function ($) {
 
-// This example displays an address form, using the autocomplete feature
-    // of the Google Places API to help users fill in the information.
-    var placeSearch, autocomplete;
-    var componentForm = {
-        street_number: 'short_name',
-        route: 'long_name',
-        locality: 'long_name',
-        postal_code: 'short_name'
-    };
+    /*
+     *
+     * GLOBAL - alles notwendig für die Adresseingabe im Header
+     *
+     */
 
-    // Create the autocomplete object, restricting the search
-    // to geographical location types.
-    autocomplete = new google.maps.places.Autocomplete(
-        /** @type {HTMLInputElement} */(document.getElementById('edit-address')),
-        { types: ['address'] });
-    // When the user selects an address from the dropdown,
-    // populate the address fields in the form.
-    google.maps.event.addListener(autocomplete, 'place_changed', function() {
-        fillInAddress();
+    // This example displays an address form, using the autocomplete feature
+    // of the Google Places API to help users fill in the information.
+    
+    if($('#edit-address').length) {
+        var placeSearch, autocomplete;
+        var componentForm = {
+            street_number: 'short_name',
+            route: 'long_name',
+            locality: 'long_name',
+            postal_code: 'short_name'
+        };
+
+        // Create the autocomplete object, restricting the search
+        // to geographical location types.
+        autocomplete = new google.maps.places.Autocomplete(
+            /** @type {HTMLInputElement} */(document.getElementById('edit-address')),
+            { types: ['address'] });
+        // When the user selects an address from the dropdown,
+        // populate the address fields in the form.
+        google.maps.event.addListener(autocomplete, 'place_changed', function() {
+            fillInAddress();
+        });
+    }
+    
+    $('#edit-address').on('input', function() {
+        clearAddress();
     });
     
-    function fillInAddress() {
-        // Get the place details from the autocomplete object.
-        var place = autocomplete.getPlace();
+    function clearAddress() {
         for (var component in componentForm) {
             document.getElementById(component).value = '';
             document.getElementById(component).disabled = false;
         }
+    }
+    
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+        clearAddress();
 
         // Get each component of the address from the place details
         // and fill the corresponding field on the form.
@@ -49,16 +66,4 @@ jQuery(document).ready(function ($) {
         }
     }
 
-    // Bias the autocomplete object to the user's geographical location,
-    // as supplied by the browser's 'navigator.geolocation' object.
-    // function geolocate() {
-      // if (navigator.geolocation) {
-        // navigator.geolocation.getCurrentPosition(function(position) {
-          // var geolocation = new google.maps.LatLng(
-              // position.coords.latitude, position.coords.longitude);
-          // autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,
-              // geolocation));
-        // });
-      // }
-    // }
 });
