@@ -434,7 +434,7 @@ $shop = $shops[$shopkeys[0]];
                                         $agreementtimes = array();
                                         if(!empty($agreement->field_regular_times[LANGUAGE_NONE])) {
                                             foreach($agreement->field_regular_times[LANGUAGE_NONE] as $key => $values) {
-                                                $agreementtimes[$values['day']] = array(
+                                                $agreementtimes[$values['day']][] = array(
                                                     'starthours' => substr($values['starthours'], 0, -2) . ':' . substr($values['starthours'], -2),
                                                     'endhours' => substr($values['endhours'], 0, -2) . ':' . substr($values['endhours'], -2),
                                                 );
@@ -451,9 +451,12 @@ $shop = $shops[$shopkeys[0]];
                                         <?php foreach($weekdays as $weekiso => $weekday): ?>
                                             <td>
                                                 <?php if(isset($agreementtimes[$weekiso])): ?>
-                                                    <?php echo $agreementtimes[$weekiso]['starthours']; ?>
-                                                    -
-                                                    <?php echo $agreementtimes[$weekiso]['endhours']; ?>
+                                                    <?php foreach($agreementtimes[$weekiso] as $agreementtime): ?>
+                                                        <?php echo $agreementtime['starthours']; ?>
+                                                        -
+                                                        <?php echo $agreementtime['endhours']; ?>
+                                                        <br>
+                                                    <?php endforeach; ?>
                                                 <?php else: ?>
                                                     geschlossen
                                                 <?php endif; ?>
