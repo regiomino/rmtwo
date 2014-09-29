@@ -7547,6 +7547,11 @@ label {
   background-size: cover;
   padding: 40px 0px;
 }
+@media screen and (max-width: 991px) {
+  .stage-background {
+    padding: 20px 0px;
+  }
+}
 .stage-background .zipcodeselect,
 .stage-background .directoryselect {
   text-align: center;
@@ -7581,6 +7586,12 @@ label {
 .stage-background .welcome h1 {
   font-size: 55px;
   text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.2);
+}
+@media screen and (max-width: 991px) {
+  .stage-background .welcome h1 {
+    font-size: 36px;
+    margin-top: 0px;
+  }
 }
 .stage-background .welcome a.more-info {
   color: #fff;

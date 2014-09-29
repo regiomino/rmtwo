@@ -1,26 +1,6 @@
 
 <div class="row entry">
-       <div class="col-md-5">
-            <div class="zipcodeselect  ">
-                <h3> Schritt 1:<strong> <?php echo t('Enter your address...'); ?></strong></h3>
-        
-                <?php echo render($vars['regionselect']); ?>
-                
-                <div class="proceed-info"> 
-                    <a class="toggle-link" data-toggle="modal" data-target="#steps-explanation"  href="#collapseOne">
-                       <strong>Wie geht es danach weiter? </strong> 
-                    </a>
-                    
-                    <ul class="payment-icons list-inline">
-                        <li> <span class="sprite sofort"> </span></li>
-                        <li> <span class="sprite paypal"> </span></li>
-                        <li> <span class="sprite lastschrift"> </span></li>
-                        <li> <span class="sprite rechnung"> </span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    <div class="col-md-7  ">
+      <div class="col-md-7 col-md-push-5">
         <div class="welcome"> 
             <h1> <strong> Einfach regionale Produkte einkaufen</strong></h1>
         
@@ -49,6 +29,28 @@
            
         </div>
     </div>
+    
+       <div class="col-md-5 col-md-pull-7">
+            <div class="zipcodeselect">
+                <h3> Schritt 1:<strong> <?php echo t('Enter your address...'); ?></strong></h3>
+        
+                <?php echo render($vars['regionselect']); ?>
+                
+                <div class="proceed-info"> 
+                    <a class="toggle-link" data-toggle="modal" data-target="#steps-explanation"  href="#collapseOne">
+                       <strong>Wie geht es danach weiter? </strong> 
+                    </a>
+                    
+                    <ul class="payment-icons list-inline">
+                        <li> <span class="sprite sofort"> </span></li>
+                        <li> <span class="sprite paypal"> </span></li>
+                        <li> <span class="sprite lastschrift"> </span></li>
+                        <li> <span class="sprite rechnung"> </span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+  
 </div>
 
 
