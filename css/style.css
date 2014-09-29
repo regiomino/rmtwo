@@ -7590,7 +7590,6 @@ label {
 }
 .partner-wrapper {
   background-color: #fff;
-  margin-bottom: 30px;
 }
 .partner-logos {
   text-align: center;
@@ -9733,12 +9732,26 @@ addcartCart-Icon
 .front .page-header {
   margin: 40px 0 33px;
 }
-.front .benefits {
-  text-align: center;
+.front .benefits-wrapper {
+  padding: 50px 0px;
+}
+@media screen and (max-width: 767px) {
+  .front .benefits-wrapper {
+    padding: 20px 0px;
+  }
+}
+.front .benefits-wrapper.white {
+  background-color: #fff;
+}
+.front .benefits h2 {
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 .front .benefits ul {
-  text-align: left;
+  padding-left: 16px;
   list-style: none;
+  margin-bottom: 23px;
 }
 .front .benefits ul li {
   position: relative;
@@ -9751,11 +9764,107 @@ addcartCart-Icon
   top: 3px;
   color: #95bc0d;
 }
+.front .benefits .btn {
+  width: 196px;
+}
+@media screen and (max-width: 991px) {
+  .front .benefits .btn {
+    margin: 0 auto;
+    display: block;
+  }
+}
 .front .benefits h4 {
   margin-bottom: 20px;
 }
-.front .benefits img {
-  margin-bottom: 15px;
+.front .benefits .steps p {
+  font-size: 12px;
+}
+.front .benefits .steps .row {
+  margin-bottom: 25px;
+}
+.front .benefits .steps.steps-rightside .text-rightside img {
+  margin-right: -107px;
+}
+@media screen and (max-width: 1199px) {
+  .front .benefits .steps.steps-rightside .text-rightside img {
+    margin-right: -95px;
+  }
+}
+.front .benefits .steps.steps-rightside .text-leftside img {
+  margin-right: 13px;
+}
+@media screen and (max-width: 1199px) {
+  .front .benefits .steps.steps-rightside .text-leftside img {
+    margin-right: 0px;
+  }
+}
+.front .benefits .steps.steps-rightside img.map {
+  margin-top: -24px;
+}
+.front .benefits .steps.steps-rightside img.payment {
+  margin-top: 12px;
+}
+.front .benefits .steps.steps-rightside img.select {
+  margin-top: 11px;
+}
+.front .benefits .steps.steps-rightside img.delivery {
+  margin-top: 11px;
+}
+.front .benefits .steps.steps-rightside img.suggest {
+  margin-right: -131px;
+  margin-top: -15px;
+}
+@media screen and (max-width: 1199px) {
+  .front .benefits .steps.steps-rightside img.suggest {
+    margin-right: -95px;
+  }
+}
+.front .benefits .steps.steps-rightside img.bubble {
+  margin-top: -9px;
+}
+@media screen and (max-width: 991px) {
+  .front .benefits .steps.steps-rightside img {
+    margin: 0px!important;
+    float: right!important;
+  }
+}
+.front .benefits .steps.steps-leftside .text-rightside img {
+  margin-right: 19px;
+}
+.front .benefits .steps.steps-leftside .text-leftside img {
+  margin-left: 20px;
+}
+@media screen and (max-width: 1199px) {
+  .front .benefits .steps.steps-leftside .text-rightside img {
+    margin-right: 5px;
+  }
+}
+.front .benefits .steps.steps-leftside img.suggest {
+  margin-top: -21px;
+  margin-left: 32px;
+}
+.front .benefits .steps.steps-leftside img.listimage {
+  margin-top: -12px;
+}
+@media screen and (max-width: 991px) {
+  .front .benefits .steps.steps-leftside img {
+    margin: 0px!important;
+    float: right!important;
+  }
+}
+.front .benefits .steps.gastro {
+  padding-top: 34px;
+}
+.front .benefits .steps.seller {
+  padding-top: 60px;
+}
+.front .benefits .steps.regional {
+  padding-top: 42px;
+}
+@media screen and (max-width: 991px) {
+  .front .benefits .steps {
+    padding-top: 15px!important;
+  }
 }
 .node-type-seller-profile .nav-tabs {
   display: none;
