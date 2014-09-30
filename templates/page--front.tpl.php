@@ -228,8 +228,7 @@
                       <p class="text-muted">Für Kommunen</p>
                       <h2>Wir stärken unsere Wirtschaftskraft nachhaltig!</h2> 
                        <ul>
-                           <li><span class="fa fa-check"></span><strong>Ökonomisch<br> </strong> Ihre Produzenten können zu fairen Preisen verkaufen, erzielen höhere Erlöse
-und werden nicht von den großen Handelskonzernen ausgebeutet. </li>
+                           <li><span class="fa fa-check"></span><strong>Ökonomisch<br> </strong> Ihre Produzenten können zu fairen Preisen verkaufen und erzielen höhere Erlöse.</li>
                            <li><span class="fa fa-check"></span><strong>Nachhaltig<br> </strong> Ihr Geld bleibt in ihrem regionalen Wirtschaftskreislauf. </li>
                            <li><span class="fa fa-check"></span><strong> Strukturfördernd<br></strong> Die Gründung und Führung von Dorfläden/ Stadtteilläden sowie von
 Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
