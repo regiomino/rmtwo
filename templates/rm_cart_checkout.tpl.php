@@ -4,10 +4,9 @@ $form = $variables['form'];
 <div class="flexfix-wrapper clearfix"> 
     <div class="flexfix-content">
         <div class="flexfix-content-inner">
-            
             <div class="row address checkout-item">
                 <div class="col-md-12 title">
-                    <h4>Adresse eingeben </h4>
+                    <h4>Rechnungsadresse angeben </h4>
                     <span class="text-muted pull-right"><small> *Pflichtfelder</small></span> 
                 </div>
                 
@@ -232,13 +231,13 @@ $form = $variables['form'];
                         </div>
                         
                         <div id="sofortoptions" class="tab-pane">
-                            <label> vvvIBAN</label>
-                            <input placeholder="IBAN" type="text" class="form-control"> 
+                             <small><strong>  Hinweis:</strong> 
+                          Nach der Bestellung werden Sie weitergeleitet, um mit Sofortüberweisung zu bezahlen</small> 
                         </div>
                         
                          <div id="paypalpoptions" class="tab-pane">
-                            <label> vN</label>
-                            <input placeholder="IBAN" type="text" class="form-control"> 
+                            <small><strong>  Hinweis:</strong> 
+                          Nach der Bestellung werden Sie zu PayPal weitergeleitet, um die Bestellung abzuschließen</small> 
                         </div>
                     </div>
                     
@@ -246,12 +245,8 @@ $form = $variables['form'];
                 </div>
             </div>
             
-             
-             
-             
          <input type="submit" id="edit-submit" name="op" value="Zahlungspflichtig bestellen" class="form-submit btn btn-primary btn-lg">   
-        
-           
+        </div>
     </div> 
     
     <div class="flexfix-sidebar">
