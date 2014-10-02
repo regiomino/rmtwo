@@ -182,7 +182,7 @@ $form = $variables['form'];
                             <div class="row"> 
                            <div class="col-md-12">
                             <h5><strong> Lieferadresse eingeben </strong></h5>
-                            <label class="takeinput"> <input type="checkbox"> aus Rechnungsadresse übernehmen </label>
+                            <!--<label class="takeinput"> <input type="checkbox"> aus Rechnungsadresse übernehmen </label>-->
                                 <div class="row">
                                     <div class="col-md-6 lpr"> 
                                         <label for="surname">Vorname</label>
