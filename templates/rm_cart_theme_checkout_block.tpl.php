@@ -15,7 +15,7 @@
 
 <div id="cart" class="cart-wrapper">
    <div class="cart-header" id="cart-header">
-        <h3><span class="fa fa-shopping-cart"> </span> Produkte</h3>
+        <h3><span class="fa fa-shopping-cart"> </span> Ihre Bestellung</h3>
    </div>
     <div class="cart-content" id="cart-content">
 
@@ -38,12 +38,12 @@
         ?>
         <div class="cart-item" data-offerid="<?php print $offer->nid; ?>" data-variation="<?php print $variation->vid; ?>" data-tradingunit="<?php print $cart_item->field_trading_unit_reference[LANGUAGE_NONE][0]['target_id'];   ?>" >
             <div class="row">
-                <div class="col-xs-5">
+                <div class="col-xs-2">
                     <div class="final-amount text-center"><?php print $cart_item->field_quantity[LANGUAGE_NONE][0]['value'] ?></div>
                     <!--<a href="<?php print $cart_item->nid ?>" class="edit-item text-center text-muted"><small> <span class="fa fa-pencil-square-o"></span> Bearbeiten</small> </a>-->
                
                 </div>
-                <div class="col-xs-7">
+                <div class="col-xs-10">
                     <p class="product-title">  <?php print $variation->title; ?><br><span class="tradingunit text-muted"><small><?php print $packaging; ?> (<?php print $unit_description; ?>)</small></span>
                     
                     </p>

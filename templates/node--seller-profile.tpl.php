@@ -45,7 +45,7 @@ $shop = $shops[$shopkeys[0]];
                                     </a>
                                     <div class="media-body">
                                        <?php
-                                        $length = 400;
+                                        $length = 410;
                                         $body = strip_tags($node->body[LANGUAGE_NONE][0]['value']);
                                         if(mb_strlen($body) > $length) {
                                             print '<div class="description" id="long-desc" style="display:none; height:auto"><p>'.$body.'</p>';

@@ -1,0 +1,234 @@
+.page-checkout {
+    #feedbackify {
+        display: none;
+    }
+    .checkout-item {
+        padding-top: 14px;
+        margin-bottom: 10px;
+        
+        .title {
+            position: relative;
+            
+            h4 {
+                border-bottom: 1px solid #ddd;
+                padding-bottom: 5px;
+                margin-bottom: 15px;
+                font-size: 20px;
+            }
+            
+            span {
+                position: absolute;
+                top: 3px;
+                right: 15px;
+                display: inline-block;
+            }
+        }
+        
+        .form-control {
+            margin-bottom: 0px;
+        }
+        
+        ul.delivery-select,
+        ul.payment-select {
+            margin-left: 0px;
+            
+            li {
+                position: relative;
+                text-align: center;
+                border: 1px solid #ddd;
+                margin-right: 5px;
+                border-radius: 4px;
+                
+                &:hover,
+                &:focus,
+                &:active {
+                    background-color: #F0F0F0;
+                }
+                &.active {
+                  background-color: #fff; 
+               }
+               
+                &.active:after,
+                &.active:before {
+                    content : '';
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    margin-left: -9px;
+                    width: 0;
+                    height: 0;
+                    border-right: 10px solid transparent;
+                    border-left: 10px solid transparent;
+                }
+               
+                &.active:before {
+                    border-top: 10px solid #fff;
+                    margin-top: -1px;
+                    z-index: 1;
+                }
+                
+                &.active:after {
+                    border-top: 10px solid #ddd;
+                    margin-top: 0px;
+                }
+               
+                input {
+                   display: block;
+                   position: absolute;
+                    top: 21px;
+                    left: 50%;
+                    margin-left: -6px;
+                }
+                
+                label {
+                    font-weight: normal;
+                    width: 130px;
+                    height: 107px;
+                    padding-top:43px;
+                    position: relative;
+                    z-index: 10;
+                }
+                
+                .sprite {
+                    position: absolute;
+                    left: 50%;
+                    opacity: 0.58;
+                    z-index: 1;
+                }
+                
+                &.active .sprite {
+                    opacity: 1;
+                }
+                
+                .sprite-delivery-pickup-lg {
+                    margin-left: -11px;
+                    bottom: 17px;
+                }
+                
+                .sprite-delivery-truck-lg {
+                    margin-left: -16px;
+                    bottom: 19px;
+                }
+                .lastschrift-lg  {
+                    margin-left: -38px;
+                    bottom: 15px;
+                }
+                .sofort-lg  {
+                   margin-left: -37px;
+                    bottom: 17px;
+                }
+                .paypal-lg  {
+                   margin-left: -37px;
+                    bottom: 19px;
+                }
+            }
+        }
+    }
+    
+    .address {
+        .row {
+            margin-bottom: 6px;
+            
+            &:last-child {
+                margin-bottom: 0px;
+            }
+        }
+        
+        .title h4 {
+            margin-top: 0px;
+        }
+        
+        label {
+            display: none;
+        
+            .no-placeholder & {
+                display: inline-block;
+            }
+        }
+    }
+    
+    .delivery {
+        
+        .tab-pane {
+            padding: 5px 20px;
+        }
+        
+        ul.pickupspot-select {
+            padding: 0;
+            margin-bottom: 0px;
+            
+            li {
+                list-style: none;
+                border-bottom: 1px solid #ddd;
+                
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+            
+            label {
+                font-weight: 400;
+                cursor: pointer;
+                position: relative;
+                display: block;
+                margin-bottom: 0px;
+                padding: 10px 0px 10px 20px;
+                
+                input[type="radio"] {
+                    position: absolute;
+                    margin-left:-20px;
+                    cursor: pointer;
+                }
+            }
+            
+            .pickup-collapse {
+                padding-left: 20px;
+            }
+            
+            .pickuptime {
+                display: inline-block;
+                margin-right: 10px;
+                padding-bottom: 10px;
+                
+                
+                .fa {
+                    margin-right: 5px;
+                }
+                .form-control {
+                    width: auto;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+    
+    .payment-method {
+        margin-bottom: 22px;
+        .tab-pane {
+            padding: 15px 20px;
+        }
+    }
+    
+    .tab-pane {
+        border-radius: 4px;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        label {
+            display: none;
+    
+            .no-placeholder & {
+                display: inline-block;
+            }
+        }
+    }
+   
+    
+    .lpr {
+        padding-right: 3px;
+    }
+    
+    .lpl {
+        padding-left: 3px;
+    }
+
+}

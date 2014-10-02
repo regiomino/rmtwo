@@ -1,6 +1,6 @@
  
 jQuery(document).ready(function ($) {
-    
+  
     var timeout;
     
     if ( !Modernizr.input.placeholder) {
@@ -84,5 +84,16 @@ jQuery(document).ready(function ($) {
         $('#suggestModal').modal('show');
     }
     
+    $('.delivery-select label').add('.payment-select label').click(function () {
+        $(this).tab('show');
+    });
+    
+       $('#pickupoptions input[type=radio]').on('change', function (e) {
+         
+              if ( !this.checked) return
+               $('.pickup-collapse').not($('div#' + $(this).data('target'))).slideUp(200);
+                 $('#' + $(this).data('target')).slideDown(200);
+              
+        });
     
 });
