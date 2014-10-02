@@ -80,7 +80,7 @@ $form = $variables['form'];
                     </ul>
                     <div class="tab-content clearfix">
                         
-                        <div id="pickupoptions" class="tab-pane active">
+                        <div id="pickupoptions" class="tab-pane pickupoptions active">
                          
                            <ul class="pickupspot-select">
                                 <li class="clearfix"> 
@@ -143,7 +143,7 @@ $form = $variables['form'];
                                     </div>
                                 </li>
                                 
-                                 <li class="clearfix"> 
+                                <li class="clearfix"> 
                                     <label>
                                         <input data-target="option3" type="radio" name="pickupspot-options" value="option3">
                                          Käseallee 5, 56567 Käsestadt  <strong> (+30,50 €) </strong>
@@ -169,7 +169,7 @@ $form = $variables['form'];
                                                 <option>12:30 - 20:00</option>
                                                 <option>12:30 - 15:00 </option>
                                                 <option>12:30 - 15:00</option>
-                                              </select>
+                                            </select>
                                         </div>
                                     </div>
                                 </li>
@@ -178,8 +178,51 @@ $form = $variables['form'];
                              
                         </div>
                        
-                        <div id="shippingoptions" class="tab-pane">
-                            Weekly
+                        <div id="shippingoptions" class="tab-pane shippingoptions clearfix">
+                            <div class="row"> 
+                           <div class="col-md-12">
+                            <h5><strong> Lieferadresse eingeben </strong></h5>
+                            <label class="takeinput"> <input type="checkbox"> aus Rechnungsadresse übernehmen </label>
+                                <div class="row">
+                                    <div class="col-md-6 lpr"> 
+                                        <label for="surname">Vorname</label>
+                                        <input type="text" class="form-control" id="surname" placeholder="Vorname">
+                                    </div>
+                                    <div class="col-md-6 lpl"> 
+                                        <label for="name">Nachname</label>
+                                        <input type="text" class="form-control" id="name" placeholder="Nachname*">
+                                    </div>
+                                </div>
+                    
+                                <div class="row">
+                                    <div class="col-md-6 lpr">
+                                        <div class="row">
+                                            <div class="col-md-9 lpr">
+                                                <label for="street">Straße</label>
+                                                <input type="text" class="form-control" id="street" placeholder="Straße">
+                                            </div>
+                                            <div class="col-md-3 lpl">
+                                               <label for="number">Nr.</label>
+                                               <input type="text" class="form-control" id="number" placeholder="Nr.">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 lpl">
+                                      <div class="row">
+                                            
+                                            <div class="col-md-4 lpr">
+                                               <label for="postal-code">PLZ</label>
+                                               <input type="text" class="form-control" disabled value="56567" id="postal-code" placeholder="PLZ">
+                                            </div>
+                                            <div class="col-md-8 lpl">
+                                                <label for="location">Ort</label>
+                                               <input type="text" class="form-control " disabled id="location" value="Teststadt" placeholder="Ort">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+                            </div>
+                           </div>
                         </div>
                         <div id="mailpoptions" class="tab-pane">
                             Montly

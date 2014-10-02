@@ -10535,6 +10535,24 @@ addcartCart-Icon
 .page-checkout .delivery .tab-pane {
   padding: 5px 20px;
 }
+.page-checkout .delivery .shippingoptions .row {
+  margin-bottom: 6px;
+}
+.page-checkout .delivery .shippingoptions .row:last-child {
+  margin-bottom: 5px;
+}
+.page-checkout .delivery .shippingoptions .takeinput {
+  display: block;
+  font-weight: 400;
+  cursor: pointer;
+  position: relative;
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+.page-checkout .delivery .shippingoptions .takeinput input {
+  position: absolute;
+  left: 0px;
+}
 .page-checkout .delivery ul.pickupspot-select {
   padding: 0;
   margin-bottom: 0px;
