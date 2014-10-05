@@ -7624,6 +7624,18 @@ label {
 #steps-explanation a {
   margin-right: 10px;
 }
+.steps-explanation .row {
+  margin-bottom: 15px;
+}
+.steps-explanation .row:last-child {
+  margin-bottom: 0px;
+}
+@media screen and (max-width: 767px) {
+  .steps-explanation .row .col {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+}
 .partner-wrapper {
   background-color: #fff;
 }
@@ -9789,20 +9801,8 @@ addcartCart-Icon
   margin-top: 0;
   margin-bottom: 20px;
 }
-.front .benefits ul {
-  padding-left: 16px;
-  list-style: none;
-  margin-bottom: 23px;
-}
-.front .benefits ul li {
-  position: relative;
-  padding: 0px 15px;
-  margin-bottom: 10px;
-}
-.front .benefits ul li .fa {
-  position: absolute;
-  left: -15px;
-  top: 3px;
+.front .benefits .anchor {
+  font-weight: 700;
   color: #95bc0d;
 }
 .front .benefits .btn {
@@ -9816,6 +9816,22 @@ addcartCart-Icon
 }
 .front .benefits h4 {
   margin-bottom: 20px;
+}
+.front .benefits ul {
+  padding-left: 0px;
+  list-style: none;
+  margin-bottom: 23px;
+}
+.front .benefits ul li {
+  position: relative;
+  padding: 0 0px 0px 23px;
+  margin-bottom: 10px;
+}
+.front .benefits ul li .fa {
+  position: absolute;
+  left: 0px;
+  top: 3px;
+  color: #95bc0d;
 }
 .front .benefits .steps p {
   font-size: 12px;

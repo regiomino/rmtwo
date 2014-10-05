@@ -54,33 +54,34 @@
 </div>
 
 
-<div class="modal fade" id="steps-explanation" tabindex="-1" role="dialog" aria-labelledby="So funktionoert´s" aria-hidden="true">
+<div class="modal fade steps-explanation" id="steps-explanation" tabindex="-1" role="dialog" aria-labelledby="So funktionoert´s" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
-          <div class="modal-body text-left">
-                <div class="media">
-                    <img class="pull-left" src="<?php global $base_path; print $base_path . drupal_get_path('theme', 'rmtwo'); ?>/images/steps_shop.png" alt="<?php print t('Select your favorite products'); ?>" />
-                      
-                    <div class="media-body">
-                      <h4 class="media-heading">Schritt 2: <strong> Lieblingsprodukte aussuchen</strong></h4>
-                      <p><?php print t('Each vendor offers special regional products that you can now order to create tasteful meals that your customers will love.'); ?></p>
+            <div class="modal-body text-left">
+                <div class="row">
+                    <div class="col-sm-3 col text-right">
+                        <img class="select" src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/select.png" alt="<?php print t('Select your favorite products'); ?>" />
+                    </div>
+                    <div class="col-sm-9">
+                          <h4 class="media-heading">Schritt 2: <strong> Lieblingsprodukte aussuchen</strong></h4>
+                          <p><?php print t('Each vendor offers special regional products that you can now order to create tasteful meals that your customers will love.'); ?></p>
                     </div>
                 </div>
-                
-                <div class="media">
-                    <img class="pull-left" src="<?php global $base_path; print $base_path . drupal_get_path('theme', 'rmtwo'); ?>/images/steps_payment.png" alt="<?php print t('Choose payment method'); ?>" />
-                      
-                    <div class="media-body">
-                      <h4 class="media-heading">Schritt 3: <strong> Zahlungsart auswählen</strong></h4>
-                      <p><?php print t('Instead of having to pay cash or work your way through hundreds of bills each month you can now pay online. Receipts and tax reports are send right to your inbox.'); ?></p>
+                <div class="row">
+                    <div class="col-sm-3 col text-right">
+                        <img class="payment" src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/payment.png" alt="<?php print t('Choose payment method'); ?>" />
+                    </div>
+                    <div class="col-sm-9">
+                        <h4 class="media-heading">Schritt 3: <strong> Zahlungsart auswählen</strong></h4>
+                        <p><?php print t('Instead of having to pay cash or work your way through hundreds of bills each month you can now pay online. Receipts and tax reports are send right to your inbox.'); ?></p>
                     </div>
                 </div>
-                
-                <div class="media">
-                    <img class="pull-left" src="<?php global $base_path; print $base_path . drupal_get_path('theme', 'rmtwo'); ?>/images/steps_delivery.png" alt="<?php print t('Have your order delivered'); ?>" />
-                      
-                    <div class="media-body">
-                      <h4 class="media-heading">Schritt 4: <strong> Abholen oder geliefert bekommen</strong></h4>
+                <div class="row">
+                    <div class="col-sm-3 col text-right">
+                        <img class=" payment" src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/delivery.png" alt="<?php print t('Choose payment method'); ?>" />
+                    </div>
+                    <div class="col-sm-9">
+                        <h4 class="media-heading">Schritt 4: <strong> Abholen oder geliefert bekommen</strong></h4>
                       <p><?php print t('Once your order is complete, at an agreed upon time the vendor will deliver the products right to your door or prepare them for you to pick up.'); ?></p>
                     </div>
                 </div>
@@ -99,8 +100,8 @@
                     </div>
                </div>
             </div>
-        </div>
-    </div>
+        </div><!--end modal contents-->
+    </div><!--end modal dialog -->
 </div>
  
  

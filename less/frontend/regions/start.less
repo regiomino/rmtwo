@@ -20,6 +20,8 @@
         }
     }
     
+  
+    
     .benefits {
         
         h2 {
@@ -28,38 +30,45 @@
             margin-bottom: 20px;
         }
         
-        ul {
-            padding-left: 16px;
-            list-style: none;
-            margin-bottom: 23px;
-            
-            li {
-                position: relative;
-                padding: 0px 15px;
-                margin-bottom: 10px;
-                .fa {
-                    position: absolute;
-                    left: -15px;
-                    top: 3px;
-                    color: @brand-primary;
-                }
-            }
+        .anchor {
+            font-weight: 700;
+            color: @brand-primary;
         }
         
         .btn {
             width: 196px;
         }
         
-          @media screen and (max-width: 991px) {
-                    .btn {
-                        margin: 0 auto;
-                        display: block;
-                    }
-                }
+        @media screen and (max-width: 991px) {
+            .btn {
+                margin: 0 auto;
+                display: block;
+            }
+        }
         
         h4 {
             margin-bottom: 20px;
         }
+        
+        ul {
+            padding-left: 0px;
+            list-style: none;
+            margin-bottom: 23px;
+            
+            li {
+                position: relative;
+                padding: 0 0px 0px 23px;
+                margin-bottom: 10px;
+                
+                .fa {
+                    position: absolute;
+                    left: 0px;
+                    top: 3px;
+                    color: @brand-primary;
+                }
+            }
+        }
+        
         
         .steps {
             
