@@ -10,7 +10,7 @@
             <div class="navbar-brand"> 
             <?php if ($logo): ?>
 
-                <?php echo l('', '', array('attributes' => array('title' => t('Home'), 'rel' => t('Home'), 'id' => 'logo'))); ?>
+                <?php echo l('', '', array('attributes' => array('title' => t('Home'), 'id' => 'logo'))); ?>
             <?php endif; ?>
             
             <?php
