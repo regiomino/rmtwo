@@ -417,6 +417,49 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['offers']['submit']['#attributes']['class'][] = 'btn-success';
             $form['offers']['submit']['#attributes']['class'][] = 'btn-lg';
             break;
+        case 'rm_cart_checkout':
+            //Billing address
+            $form['checkout']['payment_fs']['billing_address_name']['#attributes']['placeholder'] = t('Name');
+            $form['checkout']['payment_fs']['billing_address_name']['#attributes']['class'][] = 'form-control';
+            $form['checkout']['payment_fs']['billing_address_name']['#title_display'] = 'none';
+            $form['checkout']['payment_fs']['billing_address_street']['#attributes']['placeholder'] = t('Street');
+            $form['checkout']['payment_fs']['billing_address_street']['#attributes']['class'][] = 'form-control';
+            $form['checkout']['payment_fs']['billing_address_street']['#title_display'] = 'none';
+            $form['checkout']['payment_fs']['billing_address_zip']['#attributes']['placeholder'] = t('Zip');
+            $form['checkout']['payment_fs']['billing_address_zip']['#attributes']['class'][] = 'form-control';
+            $form['checkout']['payment_fs']['billing_address_zip']['#title_display'] = 'none';
+            $form['checkout']['payment_fs']['billing_address_city']['#attributes']['placeholder'] = t('City');
+            $form['checkout']['payment_fs']['billing_address_city']['#attributes']['class'][] = 'form-control';
+            $form['checkout']['payment_fs']['billing_address_city']['#title_display'] = 'none';
+            
+            //Shipping address
+            $form['checkout']['delivery_fs']['shipping_address_name']['#attributes']['placeholder'] = t('Name');
+            $form['checkout']['delivery_fs']['shipping_address_name']['#attributes']['class'][] = 'form-control';
+            $form['checkout']['delivery_fs']['shipping_address_name']['#title_display'] = 'none';
+            $form['checkout']['delivery_fs']['shipping_address_name']['#field_prefix'] = '<h5><strong>' . t('Enter delivery address') . '</strong></h5>';
+            $form['checkout']['delivery_fs']['shipping_address_street']['#attributes']['placeholder'] = t('Street');
+            $form['checkout']['delivery_fs']['shipping_address_street']['#attributes']['class'][] = 'form-control';
+            $form['checkout']['delivery_fs']['shipping_address_street']['#title_display'] = 'none';
+            $form['checkout']['delivery_fs']['shipping_address_zip']['#attributes']['placeholder'] = t('Zip');
+            $form['checkout']['delivery_fs']['shipping_address_zip']['#attributes']['class'][] = 'form-control';
+            $form['checkout']['delivery_fs']['shipping_address_zip']['#title_display'] = 'none';
+            $form['checkout']['delivery_fs']['shipping_address_city']['#attributes']['placeholder'] = t('City');
+            $form['checkout']['delivery_fs']['shipping_address_city']['#attributes']['class'][] = 'form-control';
+            $form['checkout']['delivery_fs']['shipping_address_city']['#title_display'] = 'none';
+            
+            //IBAN
+            $form['checkout']['payment_fs']['iban']['#attributes']['placeholder'] = t('Enter your IBAN');
+            $form['checkout']['payment_fs']['iban']['#attributes']['class'][] = 'form-control';
+            $form['checkout']['payment_fs']['iban']['#title_display'] = 'none';
+            
+            //PayPal
+            $form['checkout']['payment_fs']['paypal']['#attributes']['class'][] = 'form-control';
+            
+            //IBT
+            $form['checkout']['payment_fs']['ibt']['#attributes']['class'][] = 'form-control';
+            
+            //Delivery
+            break;
     }
 
 }
