@@ -27,11 +27,12 @@ function rmtwo_html_head_alter(&$head_elements) {
     * Force the latest IE rendering engine and Google Chrome Frame.
     */
 
-    $head_elements['chrome_frame'] = array(
-        '#type' => 'html_tag',
-        '#tag' => 'meta',
-        '#attributes' => array('http-equiv' => 'X-UA-Compatible', 'content' => 'IE=edge,chrome=1')
-    );
+    //AUSKOMMENTIERT UND STATTDESSEN ÜBER .HTACCESS GESETZT UM VALIDIERUNGSPROBLEME DES HTML CODES ZU UMGEHEN
+    // $head_elements['chrome_frame'] = array(
+        // '#type' => 'html_tag',
+        // '#tag' => 'meta',
+        // '#attributes' => array('http-equiv' => 'X-UA-Compatible', 'content' => 'IE=edge,chrome=1')
+    // );
     
     /*
     * Viewport Tag
