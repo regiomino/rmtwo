@@ -146,19 +146,26 @@ $form = $variables['form'];
             </div>
         
             
-            <h2>Zahlung</h2>
+            <div class="row payment-method checkout-item">
+                <div class="col-md-12 title">
+                    <h4>Zahlungsart wählen </h4>
+                   
+                </div>
             
-            <!--Zahlarten-->
-            <?php print render($form['checkout']['payment_fs']['paymenttypes']); ?>
-            
-            <!--IBAN-->
-            <?php print render($form['checkout']['payment_fs']['iban']); ?>
-            
-            <!--PayPal-->
-            <?php print render($form['checkout']['payment_fs']['paypal']); ?>
-            
-            <!--IBT-->
-            <?php print render($form['checkout']['payment_fs']['ibt']); ?>
+                <div class="col-lg-10 col-md-12">
+                    <!--Zahlarten-->
+                    <?php print render($form['checkout']['payment_fs']['paymenttypes']); ?>
+                    
+                    <!--IBAN-->
+                    <?php print render($form['checkout']['payment_fs']['iban']); ?>
+                    
+                    <!--PayPal-->
+                    <?php print render($form['checkout']['payment_fs']['paypal']); ?>
+                    
+                    <!--IBT-->
+                    <?php print render($form['checkout']['payment_fs']['ibt']); ?>
+                </div>
+            </div>
             
             
             <?php print render($form['submit']); ?>
