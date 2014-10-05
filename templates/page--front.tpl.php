@@ -98,10 +98,10 @@
                                  <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/map.png" alt="Effiziente Beschaffung regionaler Produkte" class="hidden-xs map pull-right">  
                             </div>
                              <div class="col-sm-9 ">
-                                <p class="text-muted col-md-offset-3"">
+                                <p class="text-muted col-md-offset-3">
                                     <strong> Schritt 1:<br></strong>
                                     Geben Sie Ihre Adresse ein und klicken Sie auf "Lieferant finden".
-                                     Kein Lieferant vor Ort? Schlagen Sie uns einfach Ihre Lieferanten/Produzenten vor! </small></p>
+                                     Kein Lieferant vor Ort? Schlagen Sie uns einfach Ihre Lieferanten/Produzenten vor! </p>
                             </div>
                         </div><!-- end row-->
                         <div class="row text-leftside">
@@ -137,7 +137,7 @@
                             <div class="col-sm-9 col-md-pull-3 ">
                                  <p class="text-muted col-md-offset-3">
                                     <strong> Schritt 4:<br></strong>
-                                    Entscheiden Sie ob Sie selber abholen oder geliefert bekommen. Sobald Ihre Bestellung abgeschlossen ist wird der Lieferant/Produzent Ihnen die Ware zu einem vereinbarten Zeitpunkt liefern oder zur Abholung vorbereiten. </small></p>
+                                    Entscheiden Sie ob Sie selber abholen oder geliefert bekommen. Sobald Ihre Bestellung abgeschlossen ist wird der Lieferant/Produzent Ihnen die Ware zu einem vereinbarten Zeitpunkt liefern oder zur Abholung vorbereiten.</p>
                             </div>
                             
                         </div><!-- end row-->
@@ -243,9 +243,9 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
 
                             </div>
                             <div class="col-sm-9 ">
-                                <p class="text-muted col-md-offset-3"">
+                                <p class="text-muted col-md-offset-3">
                                     <strong> Schritt 1:<br></strong>
-                                    Über den roten Button (oberer rechter Seitenbereich) können Sie uns Ihre Lieferanten/Produzenten mitteilen. </small></p>
+                                    Über den roten Button (oberer rechter Seitenbereich) können Sie uns Ihre Lieferanten/Produzenten mitteilen. </p>
                             </div>
                         </div><!--end row-->
                         <div class="row text-leftside">
@@ -256,7 +256,7 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
                              <div class="col-sm-9 col-md-pull-3 ">
                                  <p class="text-muted col-md-offset-3">
                                     <strong> Schritt 2:<br></strong>
-                                    Regiomino kontaktiert die von Ihnen vorgeschlagenen Lieferanten/Produzenten und übernimmt die Abwicklung. </small></p>
+                                    Regiomino kontaktiert die von Ihnen vorgeschlagenen Lieferanten/Produzenten und übernimmt die Abwicklung. </p>
                             </div>
                         </div><!--end row-->
         
@@ -265,7 +265,7 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
                                  <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/contact.png" alt="Wir stärken unsere Wirtschaftskraft nachhaltig!" class="hidden-xs pull-right">  
                             </div>
                              <div class="col-sm-9 ">
-                                <p class="text-muted col-md-offset-3"">
+                                <p class="text-muted col-md-offset-3">
                                     Gerne können Sie uns auch eine Email schreiben unter <a href="mailto:support@regiomino.de">support@regiomino.de</a>, oder direkt
                                     unter <a href="tel:+4909131-9291117">09131-9291117</a>einen unserer Mitarbeiter kontaktieren. Oder Sie schreiben Ihre Produzenten an und verweisen sie auf uns.
                                 </p>

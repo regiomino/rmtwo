@@ -3,7 +3,7 @@
 <!--[if IE 8 ]><html class="ie ie8 ie9" lang="<?php print $language->language; ?>"> <![endif]-->
 <!--[if (gte IE 10)|!(IE)]><!--><html class="no-js" lang="<?php print $language->language; ?>"> <!--<![endif]-->
 
-<head profile="<?php print $grddl_profile; ?>">
+<head>
     <?php print $head; ?>
     <title><?php print $head_title; ?></title>
     <?php print $styles; ?>

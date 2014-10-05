@@ -1,8 +1,32 @@
 <?php
 
 function rmtwo_html_head_alter(&$head_elements) {
+
+
+    /*
+    * Description Tag
+    */
     
-  // Force the latest IE rendering engine and Google Chrome Frame.
+    $head_elements['description'] = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array('name' => 'description', 'content' => 'Bestellen oder verkaufen Sie online regionale Produkte und Lebensmittel – Obst, Gemüse, Fleisch, Fisch, Wurst, Säfte, Wein, Milch, Käse.')
+    );
+    
+    /*
+    * Keywords Tag
+    */
+    
+    $head_elements['keywords'] = array(
+        '#type' => 'html_tag',
+        '#tag' => 'meta',
+        '#attributes' => array('name' => 'keywords', 'content' => 'Regionale Produkte, Lebensmittel online kaufen, einkaufen, bestellen')
+    );
+    
+    /*
+    * Force the latest IE rendering engine and Google Chrome Frame.
+    */
+
     $head_elements['chrome_frame'] = array(
         '#type' => 'html_tag',
         '#tag' => 'meta',
