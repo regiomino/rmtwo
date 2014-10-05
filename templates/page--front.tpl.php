@@ -72,6 +72,51 @@
         </div>
     </div>
 </div>
+
+<!--<div class="benefits-wrapper">
+    <div class="container">
+        <div class="row entries">
+            <div class="col-md-4">
+                <p><strong>Für Gastronomen und Händler</strong></p>
+                        <h4>Effiziente Beschaffung regionaler Produkte</h4> 
+                        <ul>
+                            <li><span class="fa fa-check"></span><strong>Zeit- und Kostenersparnis:</strong> Vereinfachen Sie Ihre Beschaffung: App öffnen, Produkte und
+                                 Mengen auswählen, Bestellung abschicken. </li>
+                            <li><span class="fa fa-check"></span><strong> Günstige Preise:</strong> Sparen sie auf Dauer, denn Sie kaufen beim Produzenten direkt ein. </li>
+                            <li><span class="fa fa-check"></span><strong> Hohe Produktqualität:</strong> Volle Transparenz über die Herkunft der Produkte.</li>
+                            <li><span class="fa fa-check"></span><strong> Besseres Marketing:</strong> Zeigen Sie regional interessierten Kunden, wo Sie einkaufen. </li>
+                            <li><span class="fa fa-check"></span><strong> Vorbestellungen:</strong> Lassen Sie Ihre Kunden vorbestellen und verringern Sie so Ihren Bestand</li>
+                        </ul>
+                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#suggestModal"><span class="fa fa-rocket"></span> Jetzt loslegen! </button>
+            </div>
+            <div class="col-md-4">
+                 <p> <strong>Für Lieferanten und Produzenten</strong></p>
+                    <h4>Effektive Direktvermarktung Ihrer Produkte</h4> 
+                    <ul>
+                        <li><span class="fa fa-check"></span><strong>Höhere Erträge:</strong>  Wir übernehmen Ihre Vermarktung ohne Grundgebühren. Unschlagbar! </li>
+                        <li><span class="fa fa-check"></span><strong>Gewinnen Sie neue Kundengruppen:</strong> Sichern Sie sich den Zugang zu modernen
+                        Verbrauchern. </li>
+                        <li><span class="fa fa-check"></span><strong>Zukunftssicherheit:</strong> Neue Absatzkanäle - weniger Abhängigkeit von großen
+                        Handelskonzernen. </li>
+                        <li><span class="fa fa-check"></span><strong>Zeit- und damit Kostenersparnis:</strong> Vereinfachen Sie Ihre Direktvermarktung - Bestellung,
+                        Abrechnung, Bezahlung und Buchhaltung. </li>
+                    </ul>
+                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#suggestModal"><span class="fa fa-rocket"></span> Jetzt loslegen! </button>
+            </div>
+            <div class="col-md-4">
+                 <p><strong>Für Kommunen</strong></p>
+                <h4>Wir stärken unsere Wirtschaftskraft nachhaltig!</h4> 
+                <ul>
+                    <li><span class="fa fa-check"></span><strong>Ökonomisch:</strong> Ihre Produzenten können zu fairen Preisen verkaufen und erzielen höhere Erlöse.</li>
+                    <li><span class="fa fa-check"></span><strong>Nachhaltig:</strong> Ihr Geld bleibt in ihrem regionalen Wirtschaftskreislauf. </li>
+                    <li><span class="fa fa-check"></span><strong> Strukturfördernd:</strong> Die Gründung und Führung von Dorfläden/ Stadtteilläden sowie von
+Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
+                 </ul>
+                 <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#suggestModal"><span class="fa fa-rocket"></span> Jetzt loslegen! </button>
+            </div>
+        </div>
+    </div>
+</div>-->
     
 <div class="benefits-wrapper">
     <div class="container">
@@ -79,15 +124,15 @@
             <div class="col-md-12">
                 <div class="benefits"> 
                     <div class="col-md-5">
-                        <p class="text-muted">Für Gastronomen und Händler</p>
+                        <p class="anchor">Für Gastronomen und Händler</p>
                         <h2> Effiziente Beschaffung regionaler Produkte</h2> 
                         <ul>
-                            <li><span class="fa fa-check"></span><strong>Zeit- und Kostenersparnis<br> </strong> Vereinfachen Sie Ihre Beschaffung: App öffnen, Produkte und
+                            <li><span class="fa fa-check"></span><strong>Zeit- und Kostenersparnis<br></strong> Vereinfachen Sie Ihre Beschaffung: App öffnen, Produkte und
                                  Mengen auswählen, Bestellung abschicken. </li>
                             <li><span class="fa fa-check"></span><strong> Günstige Preise<br></strong> Sparen sie auf Dauer, denn Sie kaufen beim Produzenten<br> direkt ein. </li>
-                            <li><span class="fa fa-check"></span><strong> Hohe Produktqualität<br> </strong> Volle Transparenz über die Herkunft der Produkte.</li>
+                            <li><span class="fa fa-check"></span><strong> Hohe Produktqualität<br></strong> Volle Transparenz über die Herkunft der Produkte.</li>
                             <li><span class="fa fa-check"></span><strong> Besseres Marketing<br></strong> Zeigen Sie regional interessierten Kunden, wo Sie einkaufen. </li>
-                            <li><span class="fa fa-check"></span><strong> Vorbestellungen<br></strong> Lassen Sie Ihre Kunden vorbestellen und verringern Sie so Ihren Bestand</li>
+                            <li><span class="fa fa-check"></span><strong> Vorbestellungen<br></strong> Lassen Sie Ihre Kunden vorbestellen und verringern Sie so<br> Ihren Bestand</li>
                         </ul>
                         <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#suggestModal"><span class="fa fa-rocket"></span> Jetzt loslegen! </button>
                     </div><!-- col-md-5-->
@@ -154,7 +199,7 @@
             <div class="col-md-12">
                 <div class="benefits">
                      <div class="col-md-5 col-md-push-7 ">
-                        <p class="text-muted">Für Lieferanten und Produzenten</p>
+                        <p class="anchor">Für Lieferanten und Produzenten</p>
                         <h2> Effektive Direktvermarktung Ihrer Produkte</h2> 
                         <ul>
                             <li><span class="fa fa-check"></span><strong>Höhere Erträge<br>  </strong>  Wir übernehmen Ihre Vermarktung ohne Grundgebühren. Unschlagbar! </li>
@@ -225,7 +270,7 @@
             <div class="col-md-12">
                 <div class="benefits "> 
                     <div class="col-md-5">
-                      <p class="text-muted">Für Kommunen</p>
+                      <p class="anchor">Für Kommunen</p>
                       <h2>Wir stärken unsere Wirtschaftskraft nachhaltig!</h2> 
                        <ul>
                            <li><span class="fa fa-check"></span><strong>Ökonomisch<br> </strong> Ihre Produzenten können zu fairen Preisen verkaufen und erzielen höhere Erlöse.</li>
