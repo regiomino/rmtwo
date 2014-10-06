@@ -80,63 +80,57 @@ $form = $variables['form'];
                                 <?php endforeach; ?>
                             <?php endif; ?>
                         </div>
-                    </div>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                    </div><!-- end pickup collapse
                     
                     <!--Liefertage-->
-                    <?php print render($form['checkout']['delivery_fs']['shipping_days']['shipping_day']); ?>
-                    
-                    <!--Lieferzeiten-->
-                    <?php if(!empty($form['checkout']['delivery_fs']['shipping_times'])): ?>
-                        <?php foreach($form['checkout']['delivery_fs']['shipping_times'] as $shippingdaykey => $shippingdays): ?>
-                            <?php $tmp = explode('shipping_time_', $shippingdaykey); ?>
-                            <?php if(isset($tmp[1])): ?>
-                                <?php print render($form['checkout']['delivery_fs']['shipping_times'][$shippingdaykey]); ?>
-                            <?php endif; ?>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                    
-                    
-                    
+                  
+                        <?php print render($form['checkout']['delivery_fs']['shipping_days']['shipping_day']); ?>
+                   
+                    <div class="shipping-time">
+                        <!--Lieferzeiten-->
+                        <?php if(!empty($form['checkout']['delivery_fs']['shipping_times'])): ?>
+                            <?php foreach($form['checkout']['delivery_fs']['shipping_times'] as $shippingdaykey => $shippingdays): ?>
+                                <?php $tmp = explode('shipping_time_', $shippingdaykey); ?>
+                                <?php if(isset($tmp[1])): ?>
+                                    <?php print render($form['checkout']['delivery_fs']['shipping_times'][$shippingdaykey]); ?>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                     </div>
                     <div class="row">
                         
                         <div class="col-lg-10 col-md-12">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <!--Lieferadresse: Name-->
-                                    <?php print render($form['checkout']['delivery_fs']['shipping_address_name']); ?>
+                            <div class="delivery-address"> 
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <!--Lieferadresse: Name-->
+                                        <?php print render($form['checkout']['delivery_fs']['shipping_address_name']); ?>
+                                    </div>
+                                </div>
+                            
+                                <div class="row">
+                                    <div class="col-md-6 lpr">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <!--Lieferadresse: Straße-->
+                                                <?php print render($form['checkout']['delivery_fs']['shipping_address_street']); ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 lpl">
+                                        <div class="row">
+                                            <div class="col-md-4 lpr">
+                                                <!--Lieferadresse: PLZ-->
+                                                <?php print render($form['checkout']['delivery_fs']['shipping_address_zip']); ?>
+                                            </div>
+                                            <div class="col-md-8 lpl">
+                                                <!--Lieferadresse: Ort-->
+                                                <?php print render($form['checkout']['delivery_fs']['shipping_address_city']); ?>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            
-                            <div class="row">
-                                <div class="col-md-6 lpr">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <!--Lieferadresse: Straße-->
-                                            <?php print render($form['checkout']['delivery_fs']['shipping_address_street']); ?>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6 lpl">
-                                    <div class="row">
-                                        <div class="col-md-4 lpr">
-                                            <!--Lieferadresse: PLZ-->
-                                            <?php print render($form['checkout']['delivery_fs']['shipping_address_zip']); ?>
-                                        </div>
-                                        <div class="col-md-8 lpl">
-                                            <!--Lieferadresse: Ort-->
-                                            <?php print render($form['checkout']['delivery_fs']['shipping_address_city']); ?>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>  
                         </div>
                     </div>
                     

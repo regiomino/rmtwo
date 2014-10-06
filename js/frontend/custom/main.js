@@ -88,12 +88,14 @@ jQuery(document).ready(function ($) {
         $(this).tab('show');
     });
     
-       $('#pickupoptions input[type=radio]').on('change', function (e) {
-         
-              if ( !this.checked) return
-               $('.pickup-collapse').not($('div#' + $(this).data('target'))).slideUp(200);
-                 $('#' + $(this).data('target')).slideDown(200);
-              
-        });
+    //Checkout
+    
+    $('#edit-delivery').find('.form-type-radio').first().addClass('active');
+
+    $('#edit-delivery input[type=radio]').add('#edit-paymenttypes input[type=radio]').on('change', function (e) {
+        if ( !this.checked) return
+         $(this).parents('.form-radios').find('.form-type-radio').removeClass('active');
+         $(this).parent().addClass('active');
+    });
     
 });

@@ -10406,8 +10406,112 @@ addcartCart-Icon
 .page-user-register .form-group {
   margin-bottom: 0px;
 }
-.page-checkout #feedbackify {
+.page-checkout .lpr {
+  padding-right: 3px;
+}
+.page-checkout .lpl {
+  padding-left: 3px;
+}
+.page-checkout .address label,
+.page-checkout .delivery-address label,
+.page-checkout .form-item-iban label {
   display: none;
+}
+.no-placeholder .page-checkout .address label,
+.no-placeholder .page-checkout .delivery-address label,
+.no-placeholder .page-checkout .form-item-iban label {
+  display: inline-block;
+}
+.page-checkout #rm-cart-checkout .form-submit {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #ffffff;
+  background-color: #95bc0d;
+  border-color: #82a40b;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 6px;
+}
+.page-checkout #rm-cart-checkout .form-submit:focus,
+.page-checkout #rm-cart-checkout .form-submit:active:focus,
+.page-checkout #rm-cart-checkout .form-submit.active:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.page-checkout #rm-cart-checkout .form-submit:hover,
+.page-checkout #rm-cart-checkout .form-submit:focus {
+  color: #333333;
+  text-decoration: none;
+}
+.page-checkout #rm-cart-checkout .form-submit:active,
+.page-checkout #rm-cart-checkout .form-submit.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.page-checkout #rm-cart-checkout .form-submit.disabled,
+.page-checkout #rm-cart-checkout .form-submit[disabled],
+fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.page-checkout #rm-cart-checkout .form-submit:hover,
+.page-checkout #rm-cart-checkout .form-submit:focus,
+.page-checkout #rm-cart-checkout .form-submit:active,
+.page-checkout #rm-cart-checkout .form-submit.active,
+.open > .dropdown-toggle.page-checkout #rm-cart-checkout .form-submit {
+  color: #ffffff;
+  background-color: #6f8c0a;
+  border-color: #556b07;
+}
+.page-checkout #rm-cart-checkout .form-submit:active,
+.page-checkout #rm-cart-checkout .form-submit.active,
+.open > .dropdown-toggle.page-checkout #rm-cart-checkout .form-submit {
+  background-image: none;
+}
+.page-checkout #rm-cart-checkout .form-submit.disabled,
+.page-checkout #rm-cart-checkout .form-submit[disabled],
+fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit,
+.page-checkout #rm-cart-checkout .form-submit.disabled:hover,
+.page-checkout #rm-cart-checkout .form-submit[disabled]:hover,
+fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit:hover,
+.page-checkout #rm-cart-checkout .form-submit.disabled:focus,
+.page-checkout #rm-cart-checkout .form-submit[disabled]:focus,
+fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit:focus,
+.page-checkout #rm-cart-checkout .form-submit.disabled:active,
+.page-checkout #rm-cart-checkout .form-submit[disabled]:active,
+fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit:active,
+.page-checkout #rm-cart-checkout .form-submit.disabled.active,
+.page-checkout #rm-cart-checkout .form-submit[disabled].active,
+fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit.active {
+  background-color: #95bc0d;
+  border-color: #82a40b;
+}
+.page-checkout #rm-cart-checkout .form-submit .badge {
+  color: #95bc0d;
+  background-color: #ffffff;
 }
 .page-checkout .checkout-item {
   padding-top: 14px;
@@ -10438,34 +10542,31 @@ addcartCart-Icon
 .page-checkout .checkout-item .form-control {
   margin-bottom: 0px;
 }
-.page-checkout .checkout-item ul.delivery-select,
-.page-checkout .checkout-item ul.payment-select {
-  margin-left: 0px;
-}
-.page-checkout .checkout-item ul.delivery-select li,
-.page-checkout .checkout-item ul.payment-select li {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes {
+  float: left;
   position: relative;
   text-align: center;
   border: 1px solid #ddd;
   margin-right: 5px;
   border-radius: 4px;
 }
-.page-checkout .checkout-item ul.delivery-select li:hover,
-.page-checkout .checkout-item ul.payment-select li:hover,
-.page-checkout .checkout-item ul.delivery-select li:focus,
-.page-checkout .checkout-item ul.payment-select li:focus,
-.page-checkout .checkout-item ul.delivery-select li:active,
-.page-checkout .checkout-item ul.payment-select li:active {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery:hover,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes:hover,
+.page-checkout .checkout-item .form-type-radio.form-item-delivery:focus,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes:focus,
+.page-checkout .checkout-item .form-type-radio.form-item-delivery:active,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes:active {
   background-color: #F0F0F0;
 }
-.page-checkout .checkout-item ul.delivery-select li.active,
-.page-checkout .checkout-item ul.payment-select li.active {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery.active,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes.active {
   background-color: #fff;
 }
-.page-checkout .checkout-item ul.delivery-select li.active:after,
-.page-checkout .checkout-item ul.payment-select li.active:after,
-.page-checkout .checkout-item ul.delivery-select li.active:before,
-.page-checkout .checkout-item ul.payment-select li.active:before {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery.active:after,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes.active:after,
+.page-checkout .checkout-item .form-type-radio.form-item-delivery.active:before,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes.active:before {
   content: '';
   position: absolute;
   top: 100%;
@@ -10476,67 +10577,85 @@ addcartCart-Icon
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
 }
-.page-checkout .checkout-item ul.delivery-select li.active:before,
-.page-checkout .checkout-item ul.payment-select li.active:before {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery.active:before,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes.active:before {
   border-top: 10px solid #fff;
   margin-top: -1px;
   z-index: 1;
 }
-.page-checkout .checkout-item ul.delivery-select li.active:after,
-.page-checkout .checkout-item ul.payment-select li.active:after {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery.active:after,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes.active:after {
   border-top: 10px solid #ddd;
   margin-top: 0px;
 }
-.page-checkout .checkout-item ul.delivery-select li input,
-.page-checkout .checkout-item ul.payment-select li input {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery input,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes input {
   display: block;
   position: absolute;
   top: 21px;
   left: 50%;
   margin-left: -6px;
 }
-.page-checkout .checkout-item ul.delivery-select li label,
-.page-checkout .checkout-item ul.payment-select li label {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery label,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label {
   font-weight: normal;
   width: 130px;
   height: 107px;
-  padding-top: 43px;
+  padding-top: 39px;
   position: relative;
   z-index: 10;
+  display: inline-block;
 }
-.page-checkout .checkout-item ul.delivery-select li .sprite,
-.page-checkout .checkout-item ul.payment-select li .sprite {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery label:before,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label:before {
+  content: '';
   position: absolute;
   left: 50%;
   opacity: 0.58;
   z-index: 1;
+  background: url('../images/sprite.png') no-repeat;
 }
-.page-checkout .checkout-item ul.delivery-select li.active .sprite,
-.page-checkout .checkout-item ul.payment-select li.active .sprite {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery.active label:before,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes.active label:before {
   opacity: 1;
 }
-.page-checkout .checkout-item ul.delivery-select li .sprite-delivery-pickup-lg,
-.page-checkout .checkout-item ul.payment-select li .sprite-delivery-pickup-lg {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery label[for=edit-delivery-pickup-agreement]:before,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label[for=edit-delivery-pickup-agreement]:before {
+  background-position: -266px -111px;
+  width: 24px;
+  height: 23px;
   margin-left: -11px;
   bottom: 17px;
 }
-.page-checkout .checkout-item ul.delivery-select li .sprite-delivery-truck-lg,
-.page-checkout .checkout-item ul.payment-select li .sprite-delivery-truck-lg {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery label[for=edit-delivery-shipping-agreement]:before,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label[for=edit-delivery-shipping-agreement]:before {
+  background-position: -266px -85px;
+  width: 32px;
+  height: 18px;
   margin-left: -16px;
   bottom: 19px;
 }
-.page-checkout .checkout-item ul.delivery-select li .lastschrift-lg,
-.page-checkout .checkout-item ul.payment-select li .lastschrift-lg {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery label[for=edit-paymenttypes-bt]:before,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label[for=edit-paymenttypes-bt]:before {
+  background-position: -309px -81px;
+  width: 79px;
+  height: 25px;
   margin-left: -38px;
   bottom: 15px;
 }
-.page-checkout .checkout-item ul.delivery-select li .sofort-lg,
-.page-checkout .checkout-item ul.payment-select li .sofort-lg {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery label[for=edit-paymenttypes-ibt]:before,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label[for=edit-paymenttypes-ibt]:before {
+  background-position: -308px -110px;
+  width: 74px;
+  height: 24px;
   margin-left: -37px;
   bottom: 17px;
 }
-.page-checkout .checkout-item ul.delivery-select li .paypal-lg,
-.page-checkout .checkout-item ul.payment-select li .paypal-lg {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery label[for=edit-paymenttypes-pp]:before,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label[for=edit-paymenttypes-pp]:before {
+  background-position: -393px -82px;
+  width: 77px;
+  height: 20px;
   margin-left: -37px;
   bottom: 19px;
 }
@@ -10548,12 +10667,6 @@ addcartCart-Icon
 }
 .page-checkout .address .title h4 {
   margin-top: 0px;
-}
-.page-checkout .address label {
-  display: none;
-}
-.no-placeholder .page-checkout .address label {
-  display: inline-block;
 }
 .page-checkout .delivery #edit-delivery {
   margin-bottom: 15px;
@@ -10573,59 +10686,6 @@ addcartCart-Icon
 }
 .page-checkout .delivery #edit-delivery:after {
   clear: both;
-}
-.page-checkout .delivery .form-type-radio.form-item-delivery {
-  float: left;
-  position: relative;
-  text-align: center;
-  border: 1px solid #ddd;
-  margin-right: 5px;
-  border-radius: 4px;
-}
-.page-checkout .delivery .form-type-radio.form-item-delivery:hover,
-.page-checkout .delivery .form-type-radio.form-item-delivery:focus,
-.page-checkout .delivery .form-type-radio.form-item-delivery:active {
-  background-color: #F0F0F0;
-}
-.page-checkout .delivery .form-type-radio.form-item-delivery.active {
-  background-color: #fff;
-}
-.page-checkout .delivery .form-type-radio.form-item-delivery.active:after,
-.page-checkout .delivery .form-type-radio.form-item-delivery.active:before {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  margin-left: -9px;
-  width: 0;
-  height: 0;
-  border-right: 10px solid transparent;
-  border-left: 10px solid transparent;
-}
-.page-checkout .delivery .form-type-radio.form-item-delivery.active:before {
-  border-top: 10px solid #fff;
-  margin-top: -1px;
-  z-index: 1;
-}
-.page-checkout .delivery .form-type-radio.form-item-delivery.active:after {
-  border-top: 10px solid #ddd;
-  margin-top: 0px;
-}
-.page-checkout .delivery .form-type-radio.form-item-delivery input {
-  display: block;
-  position: absolute;
-  top: 21px;
-  left: 50%;
-  margin-left: -6px;
-}
-.page-checkout .delivery .form-type-radio.form-item-delivery label {
-  font-weight: normal;
-  width: 130px;
-  height: 107px;
-  padding-top: 43px;
-  position: relative;
-  z-index: 10;
-  display: inline-block;
 }
 .page-checkout .delivery .form-type-radios.form-item-pickup-spots {
   display: block;
@@ -10695,86 +10755,49 @@ addcartCart-Icon
   padding: 15px;
   background: #fff;
 }
-.page-checkout .delivery .tab-pane {
-  padding: 5px 20px;
-}
-.page-checkout .delivery .shippingoptions .row {
-  margin-bottom: 6px;
-}
-.page-checkout .delivery .shippingoptions .row:last-child {
-  margin-bottom: 5px;
-}
-.page-checkout .delivery .shippingoptions .takeinput {
-  display: block;
-  font-weight: 400;
-  cursor: pointer;
+.page-checkout .delivery .shipping-time .form-type-select,
+.page-checkout .delivery .form-type-select.form-item-shipping-day {
+  padding: 15px;
+  background: #fff;
+  float: left;
   position: relative;
-  margin-bottom: 10px;
-  padding-left: 20px;
 }
-.page-checkout .delivery .shippingoptions .takeinput input {
-  position: absolute;
-  left: 0px;
-}
-.page-checkout .delivery ul.pickupspot-select {
-  padding: 0;
-  margin-bottom: 0px;
-}
-.page-checkout .delivery ul.pickupspot-select li {
-  list-style: none;
+.page-checkout .delivery .shipping-time .form-type-select {
+  border-right: 1px solid #ddd;
+  border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
-.page-checkout .delivery ul.pickupspot-select li:last-child {
-  border-bottom: none;
+.page-checkout .delivery .form-type-select.form-item-shipping-day {
+  border-left: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
 }
-.page-checkout .delivery ul.pickupspot-select label {
-  font-weight: 400;
-  cursor: pointer;
-  position: relative;
-  display: block;
-  margin-bottom: 0px;
-  padding: 10px 0px 10px 20px;
-}
-.page-checkout .delivery ul.pickupspot-select label input[type="radio"] {
-  position: absolute;
-  margin-left: -20px;
-  cursor: pointer;
-}
-.page-checkout .delivery ul.pickupspot-select .pickup-collapse {
-  padding-left: 20px;
-}
-.page-checkout .delivery ul.pickupspot-select .pickuptime {
-  display: inline-block;
-  margin-right: 10px;
-  padding-bottom: 10px;
-}
-.page-checkout .delivery ul.pickupspot-select .pickuptime .fa {
-  margin-right: 5px;
-}
-.page-checkout .delivery ul.pickupspot-select .pickuptime .form-control {
-  width: auto;
-  display: inline-block;
+.page-checkout .delivery .form-item-shipping-address-name {
+  margin-bottom: 6px;
 }
 .page-checkout .payment-method {
   margin-bottom: 22px;
 }
-.page-checkout .payment-method .tab-pane {
-  padding: 15px 20px;
+.page-checkout .payment-method #edit-paymenttypes {
+  margin-bottom: 15px;
 }
-.page-checkout .tab-pane {
-  border-radius: 4px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+.page-checkout .payment-method #edit-paymenttypes:before,
+.page-checkout .payment-method #edit-paymenttypes:after {
+  content: " ";
+  display: table;
 }
-.page-checkout .tab-pane label {
-  display: none;
+.page-checkout .payment-method #edit-paymenttypes:after {
+  clear: both;
 }
-.no-placeholder .page-checkout .tab-pane label {
-  display: inline-block;
+.page-checkout .payment-method #edit-paymenttypes:before,
+.page-checkout .payment-method #edit-paymenttypes:after {
+  content: " ";
+  display: table;
 }
-.page-checkout .lpr {
-  padding-right: 3px;
-}
-.page-checkout .lpl {
-  padding-left: 3px;
+.page-checkout .payment-method #edit-paymenttypes:after {
+  clear: both;
 }
