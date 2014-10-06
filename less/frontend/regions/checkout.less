@@ -24,6 +24,15 @@
             }
         }
         
+        input[type=radio],
+        input[type=checkbox] {
+            margin: 0px;
+        }
+        
+        .form-item {
+            margin-bottom: 0px;
+        }
+        
         .form-control {
             margin-bottom: 0px;
         }
@@ -149,9 +158,140 @@
     
     .delivery {
         
+        #edit-delivery {
+            .clearfix();
+            margin-bottom: 15px;
+        }
+        
+       .form-type-radio.form-item-delivery {
+            float: left;
+            position: relative;
+            text-align: center;
+            border: 1px solid #ddd;
+            margin-right: 5px;
+            border-radius: 4px;
+            
+            &:hover,
+            &:focus,
+            &:active {
+                background-color: #F0F0F0;
+            }
+            &.active {
+              background-color: #fff; 
+           }
+           
+            &.active:after,
+            &.active:before {
+                content : '';
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                margin-left: -9px;
+                width: 0;
+                height: 0;
+                border-right: 10px solid transparent;
+                border-left: 10px solid transparent;
+            }
+           
+            &.active:before {
+                border-top: 10px solid #fff;
+                margin-top: -1px;
+                z-index: 1;
+            }
+            
+            &.active:after {
+                border-top: 10px solid #ddd;
+                margin-top: 0px;
+            }
+           
+            input {
+               display: block;
+               position: absolute;
+                top: 21px;
+                left: 50%;
+                margin-left: -6px;
+            }
+            
+            label {
+                font-weight: normal;
+                width: 130px;
+                height: 107px;
+                padding-top:43px;
+                position: relative;
+                z-index: 10;
+                display: inline-block;
+            }
+        }
+        
+        
+        .form-type-radios.form-item-pickup-spots {
+            display: block;
+            margin-bottom: 15px;
+            background: #fff;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            position:  relative;
+            
+            &:before,
+            &:after {
+                content : '';
+                position: absolute;
+                top: 100%;
+                left:66px;
+                margin-left: -9px;
+                width: 0;
+                height: 0;
+                border-right: 10px solid transparent;
+                border-left: 10px solid transparent;
+            }
+            
+            &:before {
+                border-top: 10px solid #fff;
+                margin-top: -1px;
+                z-index: 1;
+            }
+            
+            &:after {
+                border-top: 10px solid #ddd;
+                margin-top: 0px;
+            }
+        }
+        
+        .pickup-collapse {
+             .clearfix();
+             
+            .day,
+            .time {
+                float: left;     
+            }
+            
+            .day .form-item.form-type-select {
+                border-left: 1px solid #ddd;
+                border-top: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                border-top-left-radius: 4px;
+                 border-bottom-left-radius: 4px;
+            }
+            
+            .time .form-item.form-type-select {
+                border-right: 1px solid #ddd;
+                border-top: 1px solid #ddd;
+                border-bottom: 1px solid #ddd;
+                border-top-right-radius: 4px;
+                 border-bottom-right-radius: 4px;
+            }
+             
+            .form-item.form-type-select {
+                padding: 15px;
+                background: #fff;
+            }
+            
+           
+        }
+        
         .tab-pane {
             padding: 5px 20px;
-            
           
         }
         

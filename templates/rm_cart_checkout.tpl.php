@@ -56,9 +56,7 @@ $form = $variables['form'];
                     <!--Abholspots-->
                     <?php print render($form['checkout']['delivery_fs']['pickup_spots']); ?>
                     
-                    
-                    
-                    <div id="option1" class="pickup-collapse collapse in">
+                    <div id="option1" class="pickup-collapse">
                         <div class="day pickuptime">
                             <!--Abholtage-->
                             <?php if(!empty($form['checkout']['delivery_fs']['pickup_days'])): ?>

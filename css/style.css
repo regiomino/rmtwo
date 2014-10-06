@@ -10428,6 +10428,13 @@ addcartCart-Icon
   right: 15px;
   display: inline-block;
 }
+.page-checkout .checkout-item input[type=radio],
+.page-checkout .checkout-item input[type=checkbox] {
+  margin: 0px;
+}
+.page-checkout .checkout-item .form-item {
+  margin-bottom: 0px;
+}
 .page-checkout .checkout-item .form-control {
   margin-bottom: 0px;
 }
@@ -10547,6 +10554,146 @@ addcartCart-Icon
 }
 .no-placeholder .page-checkout .address label {
   display: inline-block;
+}
+.page-checkout .delivery #edit-delivery {
+  margin-bottom: 15px;
+}
+.page-checkout .delivery #edit-delivery:before,
+.page-checkout .delivery #edit-delivery:after {
+  content: " ";
+  display: table;
+}
+.page-checkout .delivery #edit-delivery:after {
+  clear: both;
+}
+.page-checkout .delivery #edit-delivery:before,
+.page-checkout .delivery #edit-delivery:after {
+  content: " ";
+  display: table;
+}
+.page-checkout .delivery #edit-delivery:after {
+  clear: both;
+}
+.page-checkout .delivery .form-type-radio.form-item-delivery {
+  float: left;
+  position: relative;
+  text-align: center;
+  border: 1px solid #ddd;
+  margin-right: 5px;
+  border-radius: 4px;
+}
+.page-checkout .delivery .form-type-radio.form-item-delivery:hover,
+.page-checkout .delivery .form-type-radio.form-item-delivery:focus,
+.page-checkout .delivery .form-type-radio.form-item-delivery:active {
+  background-color: #F0F0F0;
+}
+.page-checkout .delivery .form-type-radio.form-item-delivery.active {
+  background-color: #fff;
+}
+.page-checkout .delivery .form-type-radio.form-item-delivery.active:after,
+.page-checkout .delivery .form-type-radio.form-item-delivery.active:before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -9px;
+  width: 0;
+  height: 0;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+}
+.page-checkout .delivery .form-type-radio.form-item-delivery.active:before {
+  border-top: 10px solid #fff;
+  margin-top: -1px;
+  z-index: 1;
+}
+.page-checkout .delivery .form-type-radio.form-item-delivery.active:after {
+  border-top: 10px solid #ddd;
+  margin-top: 0px;
+}
+.page-checkout .delivery .form-type-radio.form-item-delivery input {
+  display: block;
+  position: absolute;
+  top: 21px;
+  left: 50%;
+  margin-left: -6px;
+}
+.page-checkout .delivery .form-type-radio.form-item-delivery label {
+  font-weight: normal;
+  width: 130px;
+  height: 107px;
+  padding-top: 43px;
+  position: relative;
+  z-index: 10;
+  display: inline-block;
+}
+.page-checkout .delivery .form-type-radios.form-item-pickup-spots {
+  display: block;
+  margin-bottom: 15px;
+  background: #fff;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  position: relative;
+}
+.page-checkout .delivery .form-type-radios.form-item-pickup-spots:before,
+.page-checkout .delivery .form-type-radios.form-item-pickup-spots:after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 66px;
+  margin-left: -9px;
+  width: 0;
+  height: 0;
+  border-right: 10px solid transparent;
+  border-left: 10px solid transparent;
+}
+.page-checkout .delivery .form-type-radios.form-item-pickup-spots:before {
+  border-top: 10px solid #fff;
+  margin-top: -1px;
+  z-index: 1;
+}
+.page-checkout .delivery .form-type-radios.form-item-pickup-spots:after {
+  border-top: 10px solid #ddd;
+  margin-top: 0px;
+}
+.page-checkout .delivery .pickup-collapse:before,
+.page-checkout .delivery .pickup-collapse:after {
+  content: " ";
+  display: table;
+}
+.page-checkout .delivery .pickup-collapse:after {
+  clear: both;
+}
+.page-checkout .delivery .pickup-collapse:before,
+.page-checkout .delivery .pickup-collapse:after {
+  content: " ";
+  display: table;
+}
+.page-checkout .delivery .pickup-collapse:after {
+  clear: both;
+}
+.page-checkout .delivery .pickup-collapse .day,
+.page-checkout .delivery .pickup-collapse .time {
+  float: left;
+}
+.page-checkout .delivery .pickup-collapse .day .form-item.form-type-select {
+  border-left: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+.page-checkout .delivery .pickup-collapse .time .form-item.form-type-select {
+  border-right: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+.page-checkout .delivery .pickup-collapse .form-item.form-type-select {
+  padding: 15px;
+  background: #fff;
 }
 .page-checkout .delivery .tab-pane {
   padding: 5px 20px;
