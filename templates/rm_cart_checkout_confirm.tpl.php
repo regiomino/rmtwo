@@ -137,7 +137,7 @@ Lieferadresse Ort: $shipping_address_city
         </table>
         
         <div class="delivery-breakdown">  
-            <div class="delivery-option">
+            <!--<div class="delivery-option">
                 <?php if ($delivery_type == 'Selbstabholung'): ?>
                     <div class="row">
                         <div class="col-xs-3">
@@ -171,7 +171,7 @@ Lieferadresse Ort: $shipping_address_city
                         </div>
                     </div>
                 <?php endif;?>
-            </div>
+            </div>-->
             <div class="order-breakdown">
                 <ul class="breakdown-items list-unstyled">
                     <li class="clearfix">
