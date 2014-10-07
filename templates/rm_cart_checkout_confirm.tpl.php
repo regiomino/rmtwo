@@ -75,7 +75,7 @@ Lieferadresse Ort: $shipping_address_city
                             $order_item_title = $order_item->title;
                             $order_item_amount = $order_item->field_order_amount[LANGUAGE_NONE][0]['value'];
                             $order_item_total = $order_item_amount * $order_item->field_tu_price[LANGUAGE_NONE][0]['value'];
-                            $order_item_deposit =
+                           
                             $order_item_vat = $order_item_amount * $order_item->field_tu_price[LANGUAGE_NONE][0]['value'] * $order_item->field_tu_vat[LANGUAGE_NONE][0]['value'] / 100;
                             $order_item_deposit = 0;
                             if(!empty($order_item->field_tu_deposit[LANGUAGE_NONE][0]['value'])) {
