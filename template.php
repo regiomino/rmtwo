@@ -485,6 +485,14 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             
             //Delivery
             break;
+        
+        case 'rm_cart_checkout_confirm':
+            //Submit
+            $form['submit']['#attributes']['class'][] = 'btn';
+            $form['submit']['#attributes']['class'][] = 'btn-lg';
+            $form['submit']['#attributes']['class'][] = 'btn-success';
+             $form['submit']['#attributes']['class'][] = 'pull-right';
+            break;
     }
 
 }

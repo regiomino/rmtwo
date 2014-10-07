@@ -90,7 +90,8 @@ jQuery(document).ready(function ($) {
     
     //Checkout
     
-    $('#edit-delivery').find('.form-type-radio').first().addClass('active');
+   var d =  $('#edit-delivery').add('#edit-paymenttypes').find('input[type=radio]:checked').parent().addClass('active');
+    
 
     $('#edit-delivery input[type=radio]').add('#edit-paymenttypes input[type=radio]').on('change', function (e) {
         if ( !this.checked) return
