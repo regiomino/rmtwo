@@ -64,7 +64,7 @@
                 Wir haben Ihre <?php print $vars['provider']; ?>-Zahlung erhalten!
             </div>
  
-            <?php print ($vars['userobject']->field_gender[LANGUAGE_NONE][0]['value'] == 'f') ? 'Sehr geehrte Frau' : 'Sehr geehrter Herr'; ?> <?php print $userobject->field_last_name[LANGUAGE_NONE][0]['value']; ?><br>
+            <?php print ($vars['userobject']->field_gender[LANGUAGE_NONE][0]['value'] == 'f') ? 'Sehr geehrte Frau' : 'Sehr geehrter Herr'; ?> <?php print $vars['userobject']->field_last_name[LANGUAGE_NONE][0]['value']; ?><br>
             Wir haben Ihre <?php print $vars['provider']; ?>-Zahlung über <?php print number_format($vars['totalamount'], 2, ",", "."); ?>€ für die Bestellung <?php print $vars['order_number']; ?> erhalten.</p>
 
             <br>

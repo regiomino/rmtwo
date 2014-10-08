@@ -76,14 +76,14 @@
                     </td>
                     
                     <td align="right" valign="top" width="180"  style="padding-top:10px; padding-bottom:10px;">
-                        <?php print $vars['order_number']; ?>
+                        Bestellnr.: <?php print $vars['order_number']; ?>
                     </td>
                 </tr>
             </table>
             
             <!-- ### BEGIN CONTENT ### -->
             <?php print ($vars['user_gender'] == 'f') ? 'Sehr geehrte Frau' : 'Sehr geehrter Herr'; ?> <?php print $vars['user_last_name'];?>,<br><br>
-            wir bestätigen Ihnen den Eingang Ihrer Bestellung, die wir an <span style="font-weight: bold"><?php print $vars['seller_title'];?> </span> weitergeleitet haben.
+            wir bestätigen Ihnen den Eingang Ihrer Bestellung, die wir an <span style="font-weight: bold"><?php print $vars['seller_title'];?> </span> weitergeleitet haben. Sie erhalten eine gesonderte Mail vom Anbieter, sobald dieser Ihre Bestellung angenommen hat.
             <br>
             <br>
             <div style="font-weight: bold; border-bottom: 1px solid #000; font-size: 16px; line-height: 24px;">
@@ -211,13 +211,13 @@
             Vielen Dank für Ihre Bestellung!
             <br>
             Mit freundlichen Grüßen,<br>
-            Ihr regiomino.de-Team 
+            Ihr Regiomino-Team 
             <br>
             <br>
                 
             <div style="padding-top: 5px; border-top: 1px solid #ddd"></div>
             <em style="font-style:italic; font-size: 12px;">Haben Sie Fragen?
-            Sie erreichen unser Serviceteam per E-Mail unter support@regiomino.de oder telefonisch unter 09131-9291117 (kostenfrei, rund um die Uhr). <br>
+            Sie erreichen unser Serviceteam per E-Mail unter support@regiomino.de oder telefonisch unter 09131-9291117. <br>
             <a href="http://www.regiomino.de/kontakt" style="color:#95bc0d"> Kontaktformular im Browser öffnen</a>
             
             </em>
