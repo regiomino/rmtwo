@@ -1,3 +1,21 @@
+<?php
+    /*
+    $vars['order_number']; bestellnr
+    $vars['user_gender'];anrede m-> if 
+    $vars['user_first_name'];
+    $vars['user_last_name'];
+    $vars['order_items']; array 
+    $vars['billing_address']; einzel $vars['billing_address']['thoroughfare'] postal_code
+ locality
+ name_line
+    $vars['shipping_address']; leer wenn keine lieferung
+    $vars['delivery_type']; schlüssel oder wert
+    $vars['payment_type']; abkürzung
+    $vars['pickup_agreement'];
+    $vars['delivery_range_from'];  timestamp
+    $vars['delivery_range_to']; timestamp
+    */
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
