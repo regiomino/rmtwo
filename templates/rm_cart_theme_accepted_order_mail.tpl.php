@@ -101,7 +101,7 @@
                             <?php $vataddup += $vat; ?>
                             <tr>
                                 <td align="left" colspan="2" valign="top" style="border-top: 1px solid #ddd;padding-top:5px; padding-bottom:5px;">
-                                    Lieferart: <strong> <?php $deliverytype_allowed_values = list_allowed_values(field_info_field('field_deliverytype')); print $deliverytype_allowed_values[$order_item->field_deliverytype[LANGUAGE_NONE][0]['value']]; ?></strong><br>
+                                    Lieferart: <strong> <?php $deliverytype_allowed_values = list_allowed_values(field_info_field('field_deliverytype')); print $deliverytype_allowed_values[$vars['delivery_type']]; ?></strong><br>
                                     <?php print t(date('l', $vars['delivery_range_from'])); ?>, <?php print date('d.m.Y H:i', $vars['delivery_range_from']); ?> - <?php print date('H:i', $vars['delivery_range_to']); ?>
                                     <?php if($vars['delivery_type'] == 'pickup_agreement'): ?>
                                         <br>
@@ -119,7 +119,7 @@
                     <?php if(!$payablesurcharge): ?>
                         <tr>
                             <td align="left" colspan="2" valign="top" style="border-top: 1px solid #ddd;padding-top:5px; padding-bottom:5px;">
-                                Lieferart: <strong> <?php $deliverytype_allowed_values = list_allowed_values(field_info_field('field_deliverytype')); print $deliverytype_allowed_values[$order_item->field_deliverytype[LANGUAGE_NONE][0]['value']]; ?></strong><br>
+                                Lieferart: <strong> <?php $deliverytype_allowed_values = list_allowed_values(field_info_field('field_deliverytype')); print $deliverytype_allowed_values[$vars['delivery_type']]; ?></strong><br>
                                 <?php print t(date('l', $vars['delivery_range_from'])); ?>, <?php print date('d.m.Y H:i', $vars['delivery_range_from']); ?> - <?php print date('H:i', $vars['delivery_range_to']); ?>
                                 <?php if($vars['delivery_type'] == 'pickup_agreement'): ?>
                                     <br>
