@@ -7270,6 +7270,10 @@ button.close {
 body {
   padding-top: 65px;
 }
+h1,
+h1.page-title {
+  font-weight: 700;
+}
 form .form-item {
   margin-top: 0px;
 }
@@ -10635,8 +10639,8 @@ fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit.active {
   margin-left: -16px;
   bottom: 19px;
 }
-.page-checkout .checkout-item .form-type-radio.form-item-delivery label[for=edit-paymenttypes-bt]:before,
-.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label[for=edit-paymenttypes-bt]:before {
+.page-checkout .checkout-item .form-type-radio.form-item-delivery label[for=edit-paymenttypes-sepa]:before,
+.page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label[for=edit-paymenttypes-sepa]:before {
   background-position: -309px -81px;
   width: 79px;
   height: 25px;
@@ -10800,4 +10804,55 @@ fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit.active {
 }
 .page-checkout .payment-method #edit-paymenttypes:after {
   clear: both;
+}
+.page-order .form-submit.btn {
+  padding: 10px 48px;
+  margin-bottom: 20px;
+}
+.page-order .sidebar .row {
+  margin-bottom: 20px;
+}
+.page-order .sidebar .wrapper {
+  background: #fff;
+  padding: 10px 15px 15px 15px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+.page-order table.products {
+  margin-bottom: 0px;
+}
+.page-order table.products thead th {
+  padding: 8px 15px;
+}
+.page-order table.products tbody td {
+  padding: 10px 15px;
+}
+.page-order .delivery-breakdown {
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top: 2px solid #ddd;
+  background: #fff;
+}
+.page-order .delivery-breakdown .delivery-option {
+  background: #ECECEC;
+  padding: 10px 15px;
+}
+.page-order .delivery-breakdown .order-breakdown ul.breakdown-items {
+  margin-bottom: 0px;
+}
+.page-order .delivery-breakdown .order-breakdown ul.breakdown-items li {
+  padding: 10px 15px;
+  border-bottom: 1px solid #ddd;
+}
+.page-order .delivery-breakdown .order-breakdown ul.breakdown-items .item-name {
+  float: left;
+}
+.page-order .delivery-breakdown .order-breakdown ul.breakdown-items .item-amount {
+  float: right;
+}
+.page-order .delivery-breakdown .order-breakdown ul.breakdown-items .total {
+  font-weight: 700;
+  font-size: 18px;
 }
