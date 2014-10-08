@@ -119,8 +119,10 @@
                         <?php endif; ?>
                     <?php endforeach; ?>
                     
+                    <?php $payablesurcharge = FALSE; ?>
                     <?php foreach($vars['order_items'] as $order_item): ?>
                         <?php if($order_item->field_item_type[LANGUAGE_NONE][0]['value'] == 'surcharge'): ?>
+                            <?php $payablesurcharge = TRUE; ?>
                             <?php $netto = $order_item->field_order_amount[LANGUAGE_NONE][0]['value'] * $order_item->field_tu_price[LANGUAGE_NONE][0]['value']; ?>
                             <?php $nettoaddup += $netto; ?>
                             <?php $vat = $netto / 100 * $order_item->field_tu_vat[LANGUAGE_NONE][0]['value']; ?>
@@ -142,6 +144,23 @@
                             </tr>
                         <?php endif; ?>
                     <?php endforeach; ?>
+                    <?php if(!$payablesurcharge): ?>
+                        <tr>
+                            <td align="left" colspan="2" valign="top" style="border-top: 1px solid #ddd;padding-top:5px; padding-bottom:5px;">
+                                Lieferart: <strong> <?php $deliverytype_allowed_values = list_allowed_values(field_info_field('field_deliverytype')); print $deliverytype_allowed_values[$order_item->field_deliverytype[LANGUAGE_NONE][0]['value']]; ?></strong><br>
+                                <?php print t(date('l', $vars['delivery_range_from'])); ?>, <?php print date('d.m.Y H:i', $vars['delivery_range_from']); ?> - <?php print date('H:i', $vars['delivery_range_to']); ?>
+                                <?php if($vars['delivery_type'] == 'pickup_agreement'): ?>
+                                    <br>
+                                    <?php print $vars['pickup_agreement']->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?><br>
+                                    <?php print $vars['pickup_agreement']->field_address[LANGUAGE_NONE][0]['postal_code']; ?>
+                                    <?php print $vars['pickup_agreement']->field_address[LANGUAGE_NONE][0]['locality']; ?>
+                                <?php endif; ?>
+                            </td>
+                            <td align="right" valign="top" style="padding-top:5px; border-top: 1px solid #ddd; padding-bottom:5px;"  >
+                                <?php print number_format(0, 2, ",", "."); ?>€
+                            </td>
+                        </tr>
+                    <?php endif; ?>
                 <?php endif; ?>
                 
                 
