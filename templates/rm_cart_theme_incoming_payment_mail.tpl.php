@@ -64,17 +64,10 @@
                 Wir haben Ihre <?php print $vars['provider']; ?>-Zahlung erhalten!
             </div>
  
-            Sehr geehrte Frau Test,<br>
+            <?php print ($vars['userobject']->field_gender[LANGUAGE_NONE][0]['value'] == 'f') ? 'Sehr geehrte Frau' : 'Sehr geehrter Herr'; ?> <?php print $userobject->field_last_name[LANGUAGE_NONE][0]['value']; ?><br>
             Wir haben Ihre <?php print $vars['provider']; ?>-Zahlung über <?php print number_format($vars['totalamount'], 2, ",", "."); ?>€ für die Bestellung <?php print $vars['order_number']; ?> erhalten.</p>
 
             <br>
-            <br>
-            
-            
-           
-            
-             
-            Vielen Dank für Ihre Bestellung!
             <br>
             Mit freundlichen Grüßen,<br>
             Ihr regiomino.de-Team 
@@ -83,7 +76,7 @@
                 
             <div style="padding-top: 5px; border-top: 1px solid #ddd"></div>
             <em style="font-style:italic; font-size: 12px;">Haben Sie Fragen?
-            Sie erreichen unser Serviceteam per E-Mail unter support@regiomino.de oder telefonisch unter 09131-9291117 (kostenfrei, rund um die Uhr). <br>
+            Sie erreichen unser Serviceteam per E-Mail unter support@regiomino.de oder telefonisch unter 09131-9291117.<br>
             <a href="http://www.regiomino.de/kontakt" style="color:#95bc0d"> Kontaktformular im Browser öffnen</a>
             
             </em>
