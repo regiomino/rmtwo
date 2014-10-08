@@ -95,12 +95,14 @@
                     <?php $netto = 0; ?>
                     <?php $nettoaddup = 0; ?>
                     <?php $vataddup = 0; ?>
+                    <?php $depositaddup = 0; ?>
                     <?php foreach($vars['order_items'] as $order_item): ?>
                         <?php if($order_item->field_item_type[LANGUAGE_NONE][0]['value'] == 'product'): ?>
                             <?php $netto = $order_item->field_order_amount[LANGUAGE_NONE][0]['value'] * $order_item->field_tu_price[LANGUAGE_NONE][0]['value']; ?>
                             <?php $nettoaddup += $netto; ?>
                             <?php $vat = $netto / 100 * $order_item->field_tu_vat[LANGUAGE_NONE][0]['value']; ?>
                             <?php $vataddup += $vat; ?>
+                            <?php $depositaddup += $order_item->field_tu_deposit[LANGUAGE_NONE][0]['value']; ?>
                             <tr>
                                 <td align="left" border valign="top" style="padding-top:7px; padding-bottom:3px;">
                                     <?php print $order_item->field_order_amount[LANGUAGE_NONE][0]['value']; ?>
@@ -116,27 +118,41 @@
                             </tr>
                         <?php endif; ?>
                     <?php endforeach; ?>
+                    
+                    <?php foreach($vars['order_items'] as $order_item): ?>
+                        <?php if($order_item->field_item_type[LANGUAGE_NONE][0]['value'] == 'surcharge'): ?>
+                            <?php $netto = $order_item->field_order_amount[LANGUAGE_NONE][0]['value'] * $order_item->field_tu_price[LANGUAGE_NONE][0]['value']; ?>
+                            <?php $nettoaddup += $netto; ?>
+                            <?php $vat = $netto / 100 * $order_item->field_tu_vat[LANGUAGE_NONE][0]['value']; ?>
+                            <?php $vataddup += $vat; ?>
+                            <tr>
+                                <td align="left" colspan="2" valign="top" style="border-top: 1px solid #ddd;padding-top:5px; padding-bottom:5px;">
+                                    Lieferart: <strong> <?php $deliverytype_allowed_values = list_allowed_values(field_info_field('field_deliverytype')); print $deliverytype_allowed_values[$order_item->field_deliverytype[LANGUAGE_NONE][0]['value']]; ?></strong><br>
+                                    <?php print t(date('l', $vars['delivery_range_from'])); ?>, <?php print date('d.m.Y H:i', $vars['delivery_range_from']); ?> - <?php print date('H:i', $vars['delivery_range_to']); ?>
+                                    <?php if($vars['delivery_type'] == 'pickup_agreement'): ?>
+                                        <br>
+                                        <?php print $vars['pickup_agreement']->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?><br>
+                                        <?php print $vars['pickup_agreement']->field_address[LANGUAGE_NONE][0]['postal_code']; ?>
+                                        <?php print $vars['pickup_agreement']->field_address[LANGUAGE_NONE][0]['locality']; ?>
+                                    <?php endif; ?>
+                                </td>
+                                <td align="right" valign="top" style="padding-top:5px; border-top: 1px solid #ddd; padding-bottom:5px;"  >
+                                    <?php print number_format($netto, 2, ",", "."); ?>€
+                                </td>
+                            </tr>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
                 <?php endif; ?>
                 
-                <!-- Lieferart -->
-                 <tr>
-                    <td align="left" colspan="2" valign="top" style="border-top: 1px solid #ddd;padding-top:5px; padding-bottom:5px;">
-                        Lieferart: <strong> Selbstabholung</strong><br>
-                        52342 Möhrendorf <br>
-                        Starße 23
-                    </td>
-                    <td align="right" valign="top" style="padding-top:5px; border-top: 1px solid #ddd; padding-bottom:5px;"  >
-                        0 €
-                    </td>
-                </tr>
+                
                  
                  <!--breakdown -->
                 <tr>
                     <td align="right" colspan="2" valign="top" style="border-top: 1px solid #000; background-color: #F3F3F3; padding-top:3px; padding-bottom:3px;">
-                       Summe<br>
+                        Summe<br>
                     </td>
                     <td align="right" width="80" valign="top" style="padding-top:3px; background-color: #F3F3F3; border-top: 1px solid #000; padding-bottom:3px;">
-                        130,78 €
+                        <?php print number_format($nettoaddup, 2, ",", "."); ?>€
                     </td>
                 </tr>
                 <tr>
@@ -144,7 +160,7 @@
                        zzgl. MwSt.<br>
                     </td>
                     <td align="right" width="80" valign="top" style="padding-top:3px; background-color: #F3F3F3;  padding-bottom:3px;">
-                       10 €
+                       <?php print number_format($vataddup, 2, ",", "."); ?>€
                     </td>
                 </tr>
                  <tr>
@@ -152,7 +168,7 @@
                        Pfand<br>
                     </td>
                     <td align="right" width="80" valign="top" style="padding-top:3px; background-color: #F3F3F3; padding-bottom:3px;">
-                       0 €
+                       <?php print number_format($depositaddup, 2, ",", "."); ?>€
                     </td>
                 </tr>
                  <tr>
@@ -160,7 +176,7 @@
                        <strong> Gesamtsumme </strong><br>
                     </td>
                     <td align="right" width="80" valign="top" style="padding-top:3px; border-bottom: 1px solid #000; background-color: #F3F3F3;  padding-bottom:3px;">
-                      <strong>  1000,67 €</strong>
+                      <strong><?php print number_format($nettoaddup + $vataddup + $depositaddup, 2, ",", "."); ?>€</strong>
                     </td>
                 </tr>
             </table>
@@ -169,7 +185,7 @@
 
            <div style="padding-top:15px">  <strong>Gewählte Zahlungsart:</strong></div>
             
-            Paypal
+            <?php $paymenttype_allowed_values = list_allowed_values(field_info_field('field_paymenttype')); print $paymenttype_allowed_values[$vars['payment_type']]; ?>
             
             <br>
             <br>
@@ -182,14 +198,14 @@
             <br>
             <br>
                 
-            <?php if (isset($vars['shipping_address'])): ?>
+            <?php if($vars['delivery_type'] == 'shipping_agreement'): ?>
                 <strong>Ihre Lieferanschrift:</strong> 
-               <br>
+                <br>
                     <?php print $vars['shipping_address']['name_line']; ?> <br>
                     <?php print $vars['shipping_address']['thoroughfare']; ?> <br>
                     <?php print $vars['shipping_address']['postal_code']; ?>  <?php print $vars['shipping_address']['locality']; ?>
-               <br>
-               <br>
+                <br>
+                <br>
             <?php endif;?>
              
             Vielen Dank für Ihre Bestellung!
