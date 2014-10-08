@@ -9,8 +9,8 @@
  locality
  name_line
     $vars['shipping_address']; leer wenn keine lieferung
-    $vars['delivery_type']; schlüssel oder wert
-    $vars['payment_type']; abkürzung
+    $vars['delivery_type']; schlÃ¼ssel oder wert
+    $vars['payment_type']; abkÃ¼rzung
     $vars['pickup_agreement'];
     $vars['delivery_range_from'];  timestamp
     $vars['delivery_range_to']; timestamp
@@ -24,7 +24,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="initial-scale=1.0">    <!-- So that mobile webkit will display zoomed in -->
     <meta name="format-detection" content="telephone=no"> <!-- disable auto telephone linking in iOS -->
-    <title>Bestelleingangsbestätigung</title>
+    <title>BestelleingangsbestÃ¤tigung</title>
     <style type="text/css">
 
         /* Resets: see reset.css for details */
@@ -82,49 +82,51 @@
             </table>
             
             <!-- ### BEGIN CONTENT ### -->
-            <?php if($vars['user_gender'] == 'm') :
-                    $gender = 'Herr';
-                    $gender_prefix ='geehrter';
-                
-                elseif ($vars['user_gender'] == 'f'):
-                    $gender = 'Frau';
-                    $gender_prefix ='geehrte';
-            endif;
-            ?>
-            Sehr <?php print $gender_prefix;?> <?php print $gender;?> <?php print $vars['user_last_name'];?>,<br><br>
-            wir bestätigen Ihnen den Eingang ihrer Bestellung, die wir an <span style="font-weight: bold">[INSERT SELLER NAME] </span> weitergeleitet haben.
+            <?php print ($vars['user_gender'] == 'f') ? 'Sehr geehrte Frau' : 'Sehr geehrter Herr'; ?> <?php print $vars['user_last_name'];?>,<br><br>
+            wir bestÃ¤tigen Ihnen den Eingang Ihrer Bestellung, die wir an <span style="font-weight: bold"><?php print $vars['seller_title'];?> </span> weitergeleitet haben.
             <br>
             <br>
             <div style="font-weight: bold; border-bottom: 1px solid #000; font-size: 16px; line-height: 24px;">
-                Ihre Bestellung im Überblick
+                Ihre Bestellung im Ãœberblick
             </div>
             
             <table border="0" cellpadding="0" cellspacing="0" width="100%">
-              <!-- foreach -->
-               <tr>
-                    <td align="left" border valign="top" style="padding-top:7px; padding-bottom:3px;">
-                        1
-                    </td>
-                    
-                    <td align="left" valign="top"  style="padding-top:7px; padding-bottom:3px;">
-                        Pfefferbeißer <br>
-                         <em style="font-style:italic; font-size: 12px; "> Stück (20 x 1 Stk)</em>
-                    </td>
-                    <td align="right" valign="top" style="padding-top:5px; padding-bottom:5px;">
-                        20,45 €
-                    </td>
-                </tr>
-               <!-- endforeach -->
+                <?php if(!empty($vars['order_items'])): ?>
+                    <?php $netto = 0; ?>
+                    <?php $nettoaddup = 0; ?>
+                    <?php $vataddup = 0; ?>
+                    <?php foreach($vars['order_items'] as $order_item): ?>
+                        <?php if($order_item->field_item_type[LANGUAGE_NONE][0]['value'] == 'product'): ?>
+                            <?php $netto = $order_item->field_order_amount[LANGUAGE_NONE][0]['value'] * $order_item->field_tu_price[LANGUAGE_NONE][0]['value']; ?>
+                            <?php $nettoaddup += $netto; ?>
+                            <?php $vat = $netto / 100 * $order_item->field_tu_vat[LANGUAGE_NONE][0]['value']; ?>
+                            <?php $vataddup += $vat; ?>
+                            <tr>
+                                <td align="left" border valign="top" style="padding-top:7px; padding-bottom:3px;">
+                                    <?php print $order_item->field_order_amount[LANGUAGE_NONE][0]['value']; ?>
+                                </td>
+                                
+                                <td align="left" valign="top"  style="padding-top:7px; padding-bottom:3px;">
+                                    <?php print $order_item->title; ?><br>
+                                    <em style="font-style:italic; font-size: 12px; "> <?php $packaging_allowed_values = list_allowed_values(field_info_field('field_tu_packaging')); print $packaging_allowed_values[$order_item->field_tu_packaging[LANGUAGE_NONE][0]['value']]; ?> (<?php print $order_item->field_tu_amount[LANGUAGE_NONE][0]['value']; ?> x <?php print $order_item->field_productunit[LANGUAGE_NONE][0]['first']; ?> <?php print t($order_item->field_productunit[LANGUAGE_NONE][0]['second']); ?>)</em>
+                                </td>
+                                <td align="right" valign="top" style="padding-top:5px; padding-bottom:5px;">
+                                    <?php print number_format($netto, 2, ",", "."); ?>â‚¬
+                                </td>
+                            </tr>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
                 
                 <!-- Lieferart -->
                  <tr>
                     <td align="left" colspan="2" valign="top" style="border-top: 1px solid #ddd;padding-top:5px; padding-bottom:5px;">
                         Lieferart: <strong> Selbstabholung</strong><br>
-                        52342 Möhrendorf <br>
-                        Starße 23
+                        52342 MÃ¶hrendorf <br>
+                        StarÃŸe 23
                     </td>
                     <td align="right" valign="top" style="padding-top:5px; border-top: 1px solid #ddd; padding-bottom:5px;"  >
-                        0 €
+                        0 â‚¬
                     </td>
                 </tr>
                  
@@ -134,7 +136,7 @@
                        Summe<br>
                     </td>
                     <td align="right" width="80" valign="top" style="padding-top:3px; background-color: #F3F3F3; border-top: 1px solid #000; padding-bottom:3px;">
-                        130,78 €
+                        130,78 â‚¬
                     </td>
                 </tr>
                 <tr>
@@ -142,7 +144,7 @@
                        zzgl. MwSt.<br>
                     </td>
                     <td align="right" width="80" valign="top" style="padding-top:3px; background-color: #F3F3F3;  padding-bottom:3px;">
-                       10 €
+                       10 â‚¬
                     </td>
                 </tr>
                  <tr>
@@ -150,7 +152,7 @@
                        Pfand<br>
                     </td>
                     <td align="right" width="80" valign="top" style="padding-top:3px; background-color: #F3F3F3; padding-bottom:3px;">
-                       0 €
+                       0 â‚¬
                     </td>
                 </tr>
                  <tr>
@@ -158,14 +160,14 @@
                        <strong> Gesamtsumme </strong><br>
                     </td>
                     <td align="right" width="80" valign="top" style="padding-top:3px; border-bottom: 1px solid #000; background-color: #F3F3F3;  padding-bottom:3px;">
-                      <strong>  1000,67 €</strong>
+                      <strong>  1000,67 â‚¬</strong>
                     </td>
                 </tr>
             </table>
            
             
 
-           <div style="padding-top:15px">  <strong>Gewählte Zahlungsart:</strong></div>
+           <div style="padding-top:15px">  <strong>GewÃ¤hlte Zahlungsart:</strong></div>
             
             Paypal
             
@@ -190,9 +192,9 @@
                <br>
             <?php endif;?>
              
-            Vielen Dank für Ihre Bestellung!
+            Vielen Dank fÃ¼r Ihre Bestellung!
             <br>
-            Mit freundlichen Grüßen,<br>
+            Mit freundlichen GrÃ¼ÃŸen,<br>
             Ihr regiomino.de-Team 
             <br>
             <br>
@@ -200,7 +202,7 @@
             <div style="padding-top: 5px; border-top: 1px solid #ddd"></div>
             <em style="font-style:italic; font-size: 12px;">Haben Sie Fragen?
             Sie erreichen unser Serviceteam per E-Mail unter support@regiomino.de oder telefonisch unter 09131-9291117 (kostenfrei, rund um die Uhr). <br>
-            <a href="http://www.regiomino.de/kontakt" style="color:#95bc0d"> Kontaktformular im Browser öffnen</a>
+            <a href="http://www.regiomino.de/kontakt" style="color:#95bc0d"> Kontaktformular im Browser Ã¶ffnen</a>
             
             </em>
             <br><br>
