@@ -241,6 +241,12 @@
             
             </em>
             <br><br>
+            
+            <div style="font-weight: bold; border-bottom: 1px solid #000; font-size: 16px; line-height: 24px;">
+                <?php print $vars['gtc']->title; ?> der Regiomino GmbH
+            </div>
+            
+            <?php print $vars['gtc']->body[LANGUAGE_NONE][0]['value']; ?>
 
             <!-- ### END CONTENT ### -->
 
