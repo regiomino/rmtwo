@@ -1,3 +1,9 @@
+<?php
+/*
+    $vars['sellerobject']
+    $vars['selleruser']
+*/
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -61,11 +67,33 @@
             
             <!-- ### BEGIN CONTENT ### -->
             <div style="font-weight: bold;padding-bottom: 10px; font-size: 16px; line-height: 24px;">
-                Wir haben Ihre <?php print $vars['provider']; ?>-Zahlung erhalten!
+                Vielen Dank für Ihre Registrierung
             </div>
  
-            <?php print ($vars['userobject']->field_gender[LANGUAGE_NONE][0]['value'] == 'f') ? 'Sehr geehrte Frau' : 'Sehr geehrter Herr'; ?> <?php print $vars['userobject']->field_last_name[LANGUAGE_NONE][0]['value']; ?><br>
-            Wir haben Ihre <?php print $vars['provider']; ?>-Zahlung über <?php print number_format($vars['totalamount'], 2, ",", "."); ?>€ für die Bestellung <?php print $vars['order_number']; ?> erhalten.</p>
+            <?php print ($vars['selleruser']->field_gender[LANGUAGE_NONE][0]['value'] == 'f') ? 'Sehr geehrte Frau' : 'Sehr geehrter Herr'; ?> <?php print $vars['selleruser']->field_last_name[LANGUAGE_NONE][0]['value']; ?><br>
+            vielen Dank für Ihre Registrierung und Willkommen bei Regiomino! Sie haben jetzt jederzeit Zugriff auf Ihren persönlichen Verwaltungsbereich. Dort können Sie z.B. Ihre Angebote verwalten aber auch Ihre Profil- und Benutzerdaten ändern.<br><br>
+            Loggen Sie sich dazu einfach unter diesem Link mit den folgenden Benutzerdaten ein:<br><br>
+            <a href="https://www.regiomino.de/user/register?destination=manage/seller">https://www.regiomino.de/user/register</a><br>
+            E-Mail: <?php print $vars['selleruser']->mail; ?><br>
+            Passwort: <?php print $vars['password']; ?>
+            
+            <br>
+            <br>
+            
+            <div style="font-weight: bold; border-bottom: 1px solid #000; font-size: 16px; line-height: 24px;">
+                Ihre Registrierungs-Daten im Überblick
+            </div>
+            
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                    <td align="left" border valign="top" style="padding-top:7px; padding-bottom:3px;">
+                        <!--Feld-->
+                    </td>
+                    <td align="left" valign="top"  style="padding-top:7px; padding-bottom:3px;">
+                        <!--Wert-->
+                    </td>
+                </tr>
+            </table>
 
             <br>
             <br>
