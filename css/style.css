@@ -7574,7 +7574,7 @@ label {
 .stage-background {
   background: #f5f5f5 url('../images/stage.jpg') center center no-repeat;
   background-size: cover;
-  padding: 40px 0px;
+  padding: 60px 0px;
 }
 @media screen and (max-width: 991px) {
   .stage-background {
@@ -7584,13 +7584,14 @@ label {
 .stage-background .zipcodeselect,
 .stage-background .directoryselect {
   text-align: center;
-  padding: 42px 25px 18px;
+  padding: 30px 25px 18px;
   background-color: rgba(250, 250, 250, 0.9);
   border-radius: 5px;
 }
 .stage-background .zipcodeselect h3,
 .stage-background .directoryselect h3 {
   margin-top: 0px;
+  margin-bottom: 20px;
 }
 .stage-background .zipcodeselect .toggle-link,
 .stage-background .directoryselect .toggle-link {
@@ -7604,10 +7605,44 @@ label {
 .stage-background .zipcodeselect #edit-submit,
 .stage-background .directoryselect #edit-submit {
   width: 100%;
+  padding: 15px 16px;
 }
 .stage-background .zipcodeselect label,
 .stage-background .directoryselect label {
   white-space: nowrap;
+}
+.stage-background .zipcodeselect .form-group,
+.stage-background .directoryselect .form-group {
+  margin-bottom: 10px;
+}
+.stage-background .zipcodeselect .form-control,
+.stage-background .directoryselect .form-control,
+.stage-background .zipcodeselect .form-item,
+.stage-background .directoryselect .form-item {
+  margin-bottom: 0px;
+}
+.stage-background .zipcodeselect .form-control.input-lg,
+.stage-background .directoryselect .form-control.input-lg {
+  text-align: center;
+  height: 55px;
+}
+.stage-background .zipcodeselect ::-webkit-input-placeholder,
+.stage-background .directoryselect ::-webkit-input-placeholder {
+  color: #CACACA;
+}
+.stage-background .zipcodeselect :-moz-placeholder,
+.stage-background .directoryselect :-moz-placeholder {
+  /* Firefox 18- */
+  color: #CACACA;
+}
+.stage-background .zipcodeselect ::-moz-placeholder,
+.stage-background .directoryselect ::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #CACACA;
+}
+.stage-background .zipcodeselect :-ms-input-placeholder,
+.stage-background .directoryselect :-ms-input-placeholder {
+  color: #CACACA;
 }
 .stage-background .welcome {
   color: #fff;
@@ -10244,9 +10279,6 @@ addcartCart-Icon
 .node-type-seller-profile #pickupModal .pickupInfo .pickup-spot:last-child {
   padding-bottom: 10px;
 }
-.page-lieferanten #feedbackify {
-  display: none;
-}
 .page-lieferanten .col-xs-12 {
   padding-left: 20px;
   padding-right: 20px;
@@ -10283,8 +10315,8 @@ addcartCart-Icon
 }
 .page-lieferanten .sidebar .filter-area {
   background: #fff;
-  padding-bottom: 20px;
-  padding-top: 20px;
+  padding: 0px 20px;
+  border-bottom: 1px solid #ddd;
 }
 .page-lieferanten .sidebar .filter-area h1 {
   font-weight: 700;
@@ -10293,6 +10325,101 @@ addcartCart-Icon
 }
 .page-lieferanten .sidebar .filter-area .input-group {
   max-width: 250px;
+}
+.page-lieferanten .sidebar .filter-area .row {
+  padding: 20px 0px;
+  position: relative;
+}
+.page-lieferanten .sidebar .filter-area .row.distance:before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  height: 1px;
+  left: 15px;
+  right: 15px;
+  border-top: 1px solid #dce0e0;
+  display: block;
+}
+.page-lieferanten .sidebar .filter-area .filter-wrapper .filter {
+  margin-bottom: 13px;
+  margin-right: 10px;
+  position: relative;
+  display: inline-block;
+  vertical-align: text-top;
+  width: 170px;
+}
+.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-name {
+  font-size: 14px;
+  line-height: 34px;
+  height: 34px;
+  width: 100%;
+  padding: 0 0 0 12px;
+  background-color: #fff;
+  color: #555;
+  display: inline-block;
+  margin-right: 0;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+  opacity: 1;
+}
+.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-name .reset {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  padding: 7px;
+  display: none;
+}
+.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-name .show-more {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  padding: 7px;
+}
+.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-content {
+  position: absolute;
+  top: 39px;
+  left: -100px;
+  background-color: #fff;
+  padding: 17px 20px 20px;
+  z-index: 140;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  width: 358px;
+  display: none;
+}
+.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-content ul.filter-terms {
+  column-count: 3;
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+  margin: 0px;
+  padding: 0px;
+}
+.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-content .term-wrapper {
+  display: inline-block;
+  width: 100%;
+  margin: 2px;
+  cursor: pointer;
+}
+.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-content .term-wrapper li {
+  margin: 2px;
+  color: #000;
+  padding: 2px 0 6px;
+}
+.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-content .term-wrapper .filter-checkbox {
+  width: 18px;
+  height: 18px;
+  background-color: white;
+  float: left;
+  margin-right: 10px;
+  border: 1px solid #b3b3b3;
+}
+.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-content .term-wrapper .checkbox-label {
+  font-size: 14px;
+  padding-top: 2px;
+  display: inline-block;
+  width: calc(100% - 28px);
 }
 .page-lieferanten .sidebar .seller-area {
   padding-top: 20px;

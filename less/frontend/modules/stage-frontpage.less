@@ -1,7 +1,7 @@
 .stage-background {
     background: #F5F5F5 url('../images/stage.jpg') center center no-repeat;
     background-size: cover;
-    padding: 40px 0px;
+    padding: 60px 0px;
     
      @media screen and (max-width: 991px) {
                    padding: 20px 0px;
@@ -11,12 +11,13 @@
     .zipcodeselect,
     .directoryselect {
         text-align: center;
-        padding: 42px 25px 18px;
+        padding: 30px 25px 18px;
         background-color: rgba(250,250,250,0.9);
         border-radius: 5px;
         
         h3 {
              margin-top: 0px;
+             margin-bottom: 20px;
         }
         
         .toggle-link {
@@ -30,11 +31,41 @@
         
         #edit-submit {
             width: 100%;
+            padding: 15px 16px;
         }
         
         label {
             white-space: nowrap;
         }
+        
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .form-control,.form-item {
+            margin-bottom: 0px;
+        }
+        
+        .form-control.input-lg {
+            text-align: center;
+            height: 55px;
+        }
+        
+        ::-webkit-input-placeholder {
+            color: #CACACA;
+        }
+
+        :-moz-placeholder { /* Firefox 18- */
+           color: #CACACA;  
+        }
+
+        ::-moz-placeholder {  /* Firefox 19+ */
+           color: #CACACA;  
+        }
+
+        :-ms-input-placeholder {  
+           color: #CACACA;  
+        }
+        
     }
     
     .welcome {

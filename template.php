@@ -214,26 +214,31 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
         
         case 'rm_shop_regionselect':
 
-//            $form['street']['#attributes']['placeholder'] = 'Habichtweg 6';
+/*           $form['street']['#attributes']['placeholder'] = 'Habichtweg 6';
             $form['street']['#attributes']['required'] = NULL;
 
 //            $form['zipcode']['#attributes']['placeholder'] = '91096';
             $form['zipcode']['#attributes']['required'] = NULL;
 
 //            $form['city']['#attributes']['placeholder'] = 'Möhrendorf';
-            $form['city']['#attributes']['required'] = NULL;
+            $form['city']['#attributes']['required'] = NULL;*/
 
 
             $form['zipcode']['#attributes']['class'][] = 'form-control';
+           
             $form['zipcode']['#attributes']['class'][] = 'input-lg';
             $form['zipcode']['#prefix'] = '<div class="row"><div class="col-md-12"><div class="form-group">';
             $form['zipcode']['#suffix'] = '</div></div></div>';
+            $form['zipcode']['#title_display'] = 'none';
+            $form['zipcode']['#attributes']['placeholder'] = t('Postleitzahl');
 
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
             $form['submit']['#attributes']['class'][] = 'btn-lg';
+            
             $form['submit']['#prefix'] = '<div class="row"><div class="col-md-12">';
             $form['submit']['#suffix'] = '</div></div>';
+            
 
             if(drupal_is_front_page()) {
                 //check if user is logged in and has a filled out address field
