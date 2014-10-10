@@ -3,23 +3,385 @@
 </div>
 
 <div class="sidebar">
-    <div class="col-xs-12 filter-area">
+    <div class="filter-area">
         <?php global $user; if($user->uid <= 0): ?>
-            <div class="alert alert-info" role="alert">Bitte <?php print l('loggen Sie sich ein', 'user/register', array('query' => drupal_get_destination())); ?>, um die mit Ihnen vereinbarten Liefer- und Zahlungsbedingungen nutzen zu können</div>
+            <div class="alert alert-info" role="alert">Bitte <?php print l('loggen Sie sich ein', 'user/register', array('query' =>             drupal_get_destination())); ?>, um die mit Ihnen vereinbarten Liefer- und Zahlungsbedingungen nutzen zu können</div>
         <?php endif;?>
         
-        <?php if (!empty($vars['title'])): ?>
+       <!-- <?php if (!empty($vars['title'])): ?>
             <h1 class="h5">
                 <?php print $vars['title']; ?>
             </h1>
-        <?php endif; ?>
+        <?php endif; ?>-->
         
-        <div class="input-group">
+       <!-- <div class="input-group">
+            <input placeholder="<?php print t('Schnellsuche'); ?> " id="filterShops" type="text" class="form-control">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
+            </span>
+        </div>-->
+        
+        <div class="row distance">
+            <div class="col-md-3">
+               Schnellsuche
+            </div>
+            <div class="col-md-8">
+                   <div class="input-group" style="width: 100%;">
             <input placeholder="<?php print t('Schnellsuche'); ?> " id="filterShops" type="text" class="form-control">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
             </span>
         </div>
+            </div>
+            <div class="col-md-1"></div>
+            
+        </div>
+        
+        <div class="row distance">
+            <div class="col-md-3">
+                Entfernung
+            </div>
+            <div class="col-md-8">
+                    <div style="width:200px; background-color:#f8f8f8; height: 15px;"> </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        
+         <div class="row filter">
+            <div class="col-md-3" style="margin-bottom :  10px;">
+                 Filter
+            </div>
+            <div class="col-md-8">
+                <div class="filter-wrapper">
+                    
+                     <div class="filter mobile-modal" data-filtertype="producttype">
+                        <div class="filter-name">
+                            <div class="filter-name-text" data-defaulttext="Producttype" data-filtertype="producttype">Produktart                   </div>
+                            <span class="show-more fa fa-caret-down"></span>
+                            <span class="reset fa fa-times" data-filtertype="producttype"></span>
+                        </div> <!-- end filter-name -->
+                
+                        <div class="filter-content">
+                            <ul class="filter-terms filter-terms-producttype" data-filtertype="producttype">
+                                
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                
+                                 <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div><!-- end filter-content -->
+                    </div><!--end filter-->
+                    
+                    <div class="filter mobile-modal" data-filtertype="producttype">
+                        <div class="filter-name">
+                            <div class="filter-name-text" data-defaulttext="Producttype" data-filtertype="producttype">Betriebstyp                   </div>
+                            <span class="show-more fa fa-caret-down"></span>
+                            <span class="reset fa fa-times" data-filtertype="producttype"></span>
+                        </div> <!-- end filter-name -->
+                
+                        <div class="filter-content">
+                            <ul class="filter-terms filter-terms-producttype" data-filtertype="producttype">
+                                
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                
+                                 <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div><!-- end filter-content -->
+                    </div><!--end filter-->
+                    
+                    <div class="filter mobile-modal" data-filtertype="producttype">
+                        <div class="filter-name">
+                            <div class="filter-name-text" data-defaulttext="Producttype" data-filtertype="producttype">Lieferoptionen                   </div>
+                            <span class="show-more fa fa-caret-down"></span>
+                            <span class="reset fa fa-times" data-filtertype="producttype"></span>
+                        </div> <!-- end filter-name -->
+                
+                        <div class="filter-content">
+                            <ul class="filter-terms filter-terms-producttype" data-filtertype="producttype">
+                                
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                
+                                 <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div><!-- end filter-content -->
+                    </div><!--end filter-->
+                    
+                    <div class="filter mobile-modal" data-filtertype="producttype">
+                        <div class="filter-name">
+                            <div class="filter-name-text" data-defaulttext="Producttype" data-filtertype="producttype">Zahlungsart                   </div>
+                            <span class="show-more fa fa-caret-down"></span>
+                            <span class="reset fa fa-times" data-filtertype="producttype"></span>
+                        </div> <!-- end filter-name -->
+                
+                        <div class="filter-content">
+                            <ul class="filter-terms filter-terms-producttype" data-filtertype="producttype">
+                                
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                
+                                 <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div><!-- end filter-content -->
+                    </div><!--end filter-->
+                    
+                    
+                      <div class="filter mobile-modal" data-filtertype="producttype">
+                        <div class="filter-name">
+                            <div class="filter-name-text" data-defaulttext="Producttype" data-filtertype="producttype">Gütesiegel                   </div>
+                            <span class="show-more fa fa-caret-down"></span>
+                            <span class="reset fa fa-times" data-filtertype="producttype"></span>
+                        </div> <!-- end filter-name -->
+                
+                        <div class="filter-content">
+                            <ul class="filter-terms filter-terms-producttype" data-filtertype="producttype">
+                                
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                
+                                 <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                                <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"></div>
+                                        <span class="checkbox-label">Fleisch</span>
+                                    </li>
+                                </div>
+                            </ul>
+                        </div><!-- end filter-content -->
+                    </div><!--end filter-->
+                    
+                    
+                    
+                </div><!--end filte-wrapper-->
+            </div><!--end col -md-9-->
+             <div class="col-md-1"></div>
+        </div>
+        
+        
+       
+
+      
+        
     </div><!-- end filter area-->
         
             <div class="col-xs-12 seller-area">
