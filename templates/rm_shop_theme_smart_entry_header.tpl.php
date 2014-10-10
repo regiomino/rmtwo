@@ -1,5 +1,5 @@
 <?php
-print render($vars['regionselect']);
+//print render($vars['regionselect']);
 
 /* <div class="input-group">
     <?php print render($form['address']); ?>
