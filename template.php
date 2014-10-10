@@ -223,20 +223,11 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
 //            $form['city']['#attributes']['placeholder'] = 'Möhrendorf';
             $form['city']['#attributes']['required'] = NULL;
 
-            $form['street']['#attributes']['class'][] = 'form-control';
-            $form['street']['#attributes']['class'][] = 'input-lg';
-            $form['street']['#prefix'] = '<div class="row"><div class="col-md-12"><div class="form-group">';
-            $form['street']['#suffix'] = '</div></div></div>';
 
             $form['zipcode']['#attributes']['class'][] = 'form-control';
             $form['zipcode']['#attributes']['class'][] = 'input-lg';
-            $form['zipcode']['#prefix'] = '<div class="row"><div class="col-md-4"><div class="form-group">';
-            $form['zipcode']['#suffix'] = '</div></div>';
-
-            $form['city']['#attributes']['class'][] = 'form-control';
-            $form['city']['#attributes']['class'][] = 'input-lg';
-            $form['city']['#prefix'] = '<div class="col-md-8"><div class="form-group">';
-            $form['city']['#suffix'] = '</div></div></div>';
+            $form['zipcode']['#prefix'] = '<div class="row"><div class="col-md-12"><div class="form-group">';
+            $form['zipcode']['#suffix'] = '</div></div></div>';
 
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
