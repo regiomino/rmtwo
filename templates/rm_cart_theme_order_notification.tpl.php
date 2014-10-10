@@ -210,7 +210,7 @@
             
             <div style="padding-top:15px">  <strong>Regiomino-Provision:</strong></div>
             
-            Wir vereinbart erheben wir für diese Bestellung eine Netto-Provision i.H.v. <?php print number_format(floatval($vars['commission']), 2, ",", "."); ?>%. Das entspricht einem Betrag von <?php print number_format($nettoaddup * floatval($vars['commission']) / 100); ?>€.
+            Wir vereinbart erheben wir für diese Bestellung eine Netto-Provision i.H.v. <?php print number_format(floatval($vars['commission']), 2, ",", "."); ?>%. Das entspricht einem Betrag von <?php print number_format(floatval($vars['commission']) * $nettoaddup / 100, 2, ",", "."); ?>€.
 
             <!-- ### END CONTENT ### -->
 
