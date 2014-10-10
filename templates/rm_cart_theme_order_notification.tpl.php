@@ -181,10 +181,8 @@
                     </td>
                 </tr>
             </table>
-           
-            
 
-           <div style="padding-top:15px">  <strong>Gewählte Zahlungsart:</strong></div>
+            <div style="padding-top:15px">  <strong>Gewählte Zahlungsart:</strong></div>
             
             <?php $paymenttype_allowed_values = list_allowed_values(field_info_field('field_paymenttype')); print $paymenttype_allowed_values[$vars['payment_type']]; ?>
             
@@ -208,6 +206,11 @@
                 <br>
                 <br>
             <?php endif;?>
+            
+            
+            <div style="padding-top:15px">  <strong>Regiomino-Provision:</strong></div>
+            
+            Wir vereinbart erheben wir für diese Bestellung eine Netto-Provision i.H.v. <?php print number_format(floatval($vars['commission']), 2, ",", "."); ?>%. Das entspricht einem Betrag von <?php number_format($nettoaddup * floatval($vars['commission']) / 100); ?>€.
 
             <!-- ### END CONTENT ### -->
 
