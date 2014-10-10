@@ -42,7 +42,7 @@
                 Entfernung
             </div>
             <div class="col-md-8">
-                    <div style="width:200px; background-color:#f8f8f8; height: 15px;"> </div>
+                    <div class="distance-slider"></div> 
             </div>
             <div class="col-md-1"></div>
         </div>
@@ -306,70 +306,7 @@
                         </div><!-- end filter-content -->
                     </div><!--end filter-->
                     
-                    
-                      <div class="filter mobile-modal" data-filtertype="producttype">
-                        <div class="filter-name">
-                            <div class="filter-name-text" data-defaulttext="Producttype" data-filtertype="producttype">Gütesiegel                   </div>
-                            <span class="show-more fa fa-caret-down"></span>
-                            <span class="reset fa fa-times" data-filtertype="producttype"></span>
-                        </div> <!-- end filter-name -->
-                
-                        <div class="filter-content">
-                            <ul class="filter-terms filter-terms-producttype" data-filtertype="producttype">
-                                
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                
-                                 <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                            </ul>
-                        </div><!-- end filter-content -->
-                    </div><!--end filter-->
-                    
+                     
                     
                     
                 </div><!--end filte-wrapper-->

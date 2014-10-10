@@ -8,5 +8,6 @@ regions[highlighted] = Highlighted
 regions[content] = Content
 
 scripts[] = js/utilities/modernizr.custom.js
+scripts[] = js/utilities/jquery.nouislider.all.min.js
 scripts[] = js/martin.js
 

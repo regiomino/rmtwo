@@ -99,4 +99,30 @@ jQuery(document).ready(function ($) {
          $(this).parent().addClass('active');
     });
     
+    
+    /*
+     *shops_nd_maps */
+    
+
+				$('.distance-slider').noUiSlider({
+					start: [ 0 ],
+                    connect : 'lower',
+					range: {
+						'min': 0,
+						'max':  100
+					}
+				});
+                
+                    
+$(".distance-slider").noUiSlider_pips({
+	mode: 'positions',
+	values: [0,25,50,75,100],
+	density: 1
+});
+
+		 
+
+
+    
+    
 });

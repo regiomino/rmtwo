@@ -91,6 +91,14 @@ function rmtwo_html_head_alter(&$head_elements) {
     );
 }
 
+
+function rmtwo_preprocess_regiomino_featureslider_theme_highlightslider(&$variables) {
+  drupal_add_js(drupal_get_path('theme', 'rmshoploop') . '/js/jquery.royalslider.custom.min.js');
+  drupal_add_js(drupal_get_path('theme', 'rmshoploop') . '/js/highlight.js');
+  
+}
+
+
 function rmtwo_theme() {
     $items = array();
     $items['user_register_form'] = array(
@@ -527,6 +535,7 @@ function rmtwo_preprocess_page(&$variables) {
                 drupal_add_js(array('suid' => $variables['node']->uid), 'setting');
                 $variables['node']->offers = rm_shop_get_structured_seller_offers($variables['node']->uid);
                 drupal_add_js(drupal_get_path('module', 'rm_cart') . '/js/rm_cart.js');
+                
             }
         }
     }    
