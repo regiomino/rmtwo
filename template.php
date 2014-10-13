@@ -230,7 +230,7 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['zipcode']['#prefix'] = '<div class="row"><div class="col-md-12"><div class="form-group">';
             $form['zipcode']['#suffix'] = '</div></div></div>';
             $form['zipcode']['#title_display'] = 'none';
-            $form['zipcode']['#attributes']['placeholder'] = t('Postleitzahl');
+            $form['zipcode']['#attributes']['placeholder'] = t('Postal code');
 
             $form['submit']['#attributes']['class'][] = 'btn';
             $form['submit']['#attributes']['class'][] = 'btn-success';
