@@ -1,3 +1,9 @@
+<?php
+/*
+    $vars['profileobject']
+    $vars['profileuser']
+*/
+?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
@@ -6,7 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="initial-scale=1.0">    <!-- So that mobile webkit will display zoomed in -->
     <meta name="format-detection" content="telephone=no"> <!-- disable auto telephone linking in iOS -->
-    <title>Zahlungseingang</title>
+    <title>Vielen Dank für Ihr Interesse an Regiomino</title>
     <style type="text/css">
 
         /* Resets: see reset.css for details */
@@ -61,11 +67,19 @@
             
             <!-- ### BEGIN CONTENT ### -->
             <div style="font-weight: bold;padding-bottom: 10px; font-size: 16px; line-height: 24px;">
-                Wir haben Ihre <?php print $vars['provider']; ?>-Zahlung erhalten!
+                Vielen Dank für Ihr Interesse an Regiomino
             </div>
  
-            <?php print ($vars['userobject']->field_gender[LANGUAGE_NONE][0]['value'] == 'f') ? 'Sehr geehrte Frau' : 'Sehr geehrter Herr'; ?> <?php print $vars['userobject']->field_last_name[LANGUAGE_NONE][0]['value']; ?><br>
-            Wir haben Ihre <?php print $vars['provider']; ?>-Zahlung über <?php print number_format($vars['totalamount'], 2, ",", "."); ?>€ für die Bestellung <?php print $vars['order_number']; ?> erhalten.</p>
+            <?php if(!empty($vars['profileuser']->field_gender[LANGUAGE_NONE][0]['value']) && !empty($vars['profileuser']->field_last_name[LANGUAGE_NONE][0]['value'])): ?>
+                <?php print ($vars['profileuser']->field_gender[LANGUAGE_NONE][0]['value'] == 'f') ? 'Sehr geehrte Frau' : 'Sehr geehrter Herr'; ?> <?php print $vars['profileuser']->field_last_name[LANGUAGE_NONE][0]['value']; ?>, <br><br>vielen Dank für Ihr Interessen an Regiomino.
+            <?php endif; ?>
+            Bitte nutzen Sie den folgenden Link um direkt zu Ihrem Registrierungsformular zu gelangen:<br><br>
+            
+            <a href="https://www.regiomino.de/registration/<?php print $vars['profileobject']->nid; ?>/<?php print $vars['profileobject']->field_register_hash[LANGUAGE_NONE][0]['value']; ?>">Registrierung bei Regiomino</a>
+            
+            <br>
+            <br>
+            
 
             <br>
             <br>

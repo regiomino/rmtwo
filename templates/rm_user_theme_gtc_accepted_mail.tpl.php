@@ -13,7 +13,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="initial-scale=1.0">    <!-- So that mobile webkit will display zoomed in -->
     <meta name="format-detection" content="telephone=no"> <!-- disable auto telephone linking in iOS -->
-    <title>Bestelleingangsbestätigung</title>
+    <title>Vielen Dank für Ihre Registrierung</title>
     <style type="text/css">
 
         /* Resets: see reset.css for details */
@@ -215,7 +215,6 @@
                     </td>
                 </tr>
                 <!--AGB-->
-                <?php if(!empty($vars['profileobject']->field_kleinunternehmer[LANGUAGE_NONE][0]['value'])): ?>
                 <tr>
                     <td align="left" border valign="top" style="padding-top:7px; padding-bottom:3px;">
                         <?php print t('GTC accepted'); ?>
@@ -224,7 +223,6 @@
                         <?php print t('Yes'); ?>
                     </td>
                 </tr>
-                <?php endif; ?>
             </table>
             
             <div style="font-weight: bold; border-bottom: 1px solid #000; font-size: 16px; line-height: 24px;">
