@@ -7600,12 +7600,13 @@ label {
 }
 .stage-background .zipcodeselect .proceed-info,
 .stage-background .directoryselect .proceed-info {
-  margin: 24px 0px 0px 10px;
+  margin: 20px 0px 0px 10px;
 }
 .stage-background .zipcodeselect #edit-submit,
 .stage-background .directoryselect #edit-submit {
   width: 100%;
-  padding: 15px 16px;
+  padding: 20px 16px;
+  font-weight: 700;
 }
 .stage-background .zipcodeselect label,
 .stage-background .directoryselect label {
@@ -7624,7 +7625,8 @@ label {
 .stage-background .zipcodeselect .form-control.input-lg,
 .stage-background .directoryselect .form-control.input-lg {
   text-align: center;
-  height: 55px;
+  height: 65px;
+  font-size: 22px;
 }
 .stage-background .zipcodeselect ::-webkit-input-placeholder,
 .stage-background .directoryselect ::-webkit-input-placeholder {
@@ -10315,7 +10317,7 @@ addcartCart-Icon
 }
 .page-lieferanten .sidebar .filter-area {
   background: #fff;
-  padding: 0px 20px;
+  padding: 20px 20px;
   border-bottom: 1px solid #ddd;
 }
 .page-lieferanten .sidebar .filter-area h1 {

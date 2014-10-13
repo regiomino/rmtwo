@@ -32,7 +32,7 @@
     
        <div class="col-md-5 col-md-pull-7">
             <div class="zipcodeselect">
-                <h3> Schritt 1:<strong> <?php echo t('Enter your address...'); ?></strong></h3>
+                <h3> Schritt 1: <strong>Postleitzahl eingeben</strong></h3>
         
                 <?php echo render($vars['regionselect']); ?>
                 

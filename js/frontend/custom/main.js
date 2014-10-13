@@ -33,6 +33,16 @@ jQuery(document).ready(function ($) {
          container : 'body'
         });
     
+    
+    function isTouch() {
+        var regex = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i;
+            return regex.test(navigator.userAgent);
+        }
+        
+        if (!isTouch()) {
+             $('#edit-zipcode').focus();
+        }
+
     $('#partner-logos a').tooltip();
     
     //messages are placed inside a bootstrap modal #messageModal. this triggers it, when it's there.
