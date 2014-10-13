@@ -10587,7 +10587,7 @@ addcartCart-Icon
   border-top: 1px solid #dce0e0;
   display: block;
 }
-.page-lieferanten .sidebar .filter-area .filter-wrapper .filter {
+.page-lieferanten .sidebar .filter-wrapper .filter {
   margin-bottom: 0px;
   margin-right: 5px;
   position: relative;
@@ -10595,7 +10595,27 @@ addcartCart-Icon
   vertical-align: text-top;
   width: 170px;
 }
-.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-name {
+.page-lieferanten .sidebar .filter-wrapper .filter.open .filter-name {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.page-lieferanten .sidebar .filter-wrapper .filter.open .filter-content {
+  display: block;
+}
+.page-lieferanten .sidebar .filter-wrapper .filter.selected-category .filter-name {
+  color: #fff;
+  background-color: #95bc0d;
+}
+.page-lieferanten .sidebar .filter-wrapper .filter.selected-category .filter-name .show-more {
+  display: none;
+}
+.page-lieferanten .sidebar .filter-wrapper .filter.selected-category .filter-name .reset {
+  display: block;
+}
+.page-lieferanten .sidebar .filter-wrapper .filter-name {
   font-size: 14px;
   line-height: 34px;
   height: 34px;
@@ -10610,20 +10630,21 @@ addcartCart-Icon
   cursor: pointer;
   opacity: 1;
 }
-.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-name .reset {
+.page-lieferanten .sidebar .filter-wrapper .filter-name .reset {
   position: absolute;
   top: 4px;
   right: 4px;
   padding: 7px;
   display: none;
 }
-.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-name .show-more {
+.page-lieferanten .sidebar .filter-wrapper .filter-name .show-more {
   position: absolute;
   top: 4px;
   right: 4px;
   padding: 7px;
 }
-.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-content {
+.page-lieferanten .sidebar .filter-wrapper .filter-content {
+  display: none;
   position: absolute;
   top: 39px;
   left: -100px;
@@ -10633,40 +10654,67 @@ addcartCart-Icon
   border: 1px solid #ddd;
   border-radius: 4px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  width: 358px;
-  display: none;
+  width: 650px;
 }
-.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-content ul.filter-terms {
-  column-count: 3;
-  -moz-column-count: 3;
-  -webkit-column-count: 3;
+.page-lieferanten .sidebar .filter-wrapper .filter-content ul.filter-terms {
+  column-count: 4;
+  -moz-column-count: 4;
+  -webkit-column-count: 4;
   margin: 0px;
   padding: 0px;
+  list-style: none;
+  column-gap: 0;
+  -moz-column-gap: 0;
+  -webkit-column-gap: 0;
 }
-.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-content .term-wrapper {
+.page-lieferanten .sidebar .filter-wrapper .filter-content .term-wrapper {
   display: inline-block;
   width: 100%;
-  margin: 2px;
   cursor: pointer;
 }
-.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-content .term-wrapper li {
-  margin: 2px;
+.page-lieferanten .sidebar .filter-wrapper .filter-content .term-wrapper li {
   color: #000;
-  padding: 2px 0 6px;
+  margin: 2px;
 }
-.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-content .term-wrapper .filter-checkbox {
+.page-lieferanten .sidebar .filter-wrapper .filter-content .term-wrapper li:hover {
+  color: #95bc0d;
+}
+.page-lieferanten .sidebar .filter-wrapper .filter-content .term-wrapper li:hover .filter-checkbox {
+  border: 1px solid #95bc0d;
+}
+.page-lieferanten .sidebar .filter-wrapper .filter-content .term-wrapper li:hover .checkbox-label {
+  color: #95bc0d;
+}
+.page-lieferanten .sidebar .filter-wrapper .filter-content .term-wrapper li.active {
+  font-weight: 700;
+}
+.page-lieferanten .sidebar .filter-wrapper .filter-content .term-wrapper li.active .fa {
+  display: block!important;
+}
+.page-lieferanten .sidebar .filter-wrapper .filter-content .term-wrapper .filter-checkbox {
   width: 18px;
   height: 18px;
   background-color: white;
   float: left;
   margin-right: 10px;
   border: 1px solid #b3b3b3;
+  position: relative;
 }
-.page-lieferanten .sidebar .filter-area .filter-wrapper .filter-content .term-wrapper .checkbox-label {
+.page-lieferanten .sidebar .filter-wrapper .filter-content .term-wrapper .filter-checkbox .fa {
+  display: none;
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  color: #555!important;
+}
+.page-lieferanten .sidebar .filter-wrapper .filter-content .term-wrapper .checkbox-label {
   font-size: 14px;
+  line-height: 1em;
+  text-transform: capitalize;
   padding-top: 2px;
   display: inline-block;
   width: calc(100% - 28px);
+  vertical-align: top;
 }
 .page-lieferanten .sidebar .seller-area {
   padding-top: 20px;

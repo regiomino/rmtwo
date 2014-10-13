@@ -545,6 +545,12 @@ function rmtwo_preprocess_page(&$variables) {
         drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/martin.css');
         drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/regiomino-back.min.js');
     }
+    
+    else if (arg(0) == 'lieferanten') {
+        drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/frontend/module_only/mapsndshops/jquery.nouislider.all.min.js');
+        drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/frontend/module_only/mapsndshops/ms.js');
+    }
+    
     else {
         if(drupal_is_front_page()) {
             drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style.min.css');

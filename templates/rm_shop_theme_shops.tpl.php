@@ -42,21 +42,21 @@
                 Entfernung
             </div>
             <div class="col-md-8">
-                    <div class="distance-slider"></div> 
+                    <div id="distance-slider"></div> 
             </div>
             <div class="col-md-1"></div>
         </div>
         
-         <div class="row filter">
+         <div class="row category-filter">
             <div class="col-md-3" style="margin-bottom :  10px;">
                  Filter
             </div>
             <div class="col-md-8">
                 <div class="filter-wrapper">
                     
-                     <div class="filter mobile-modal" data-filtertype="producttype">
+                     <div class="filter" data-filtertype="producttype">
                         <div class="filter-name">
-                            <div class="filter-name-text" data-defaulttext="Producttype" data-filtertype="producttype">Produktart                   </div>
+                            <div class="filter-name-text" data-defaulttext="Producttype" data-filtertype="producttype">     Produktart                   </div>
                             <span class="show-more fa fa-caret-down"></span>
                             <span class="reset fa fa-times" data-filtertype="producttype"></span>
                         </div> <!-- end filter-name -->
@@ -66,60 +66,113 @@
                                 
                                 <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Bäckerei</span>
                                     </li>
                                 </div>
                                 
-                                 <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
                                 <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brauerei</span>
                                     </li>
                                 </div>
-                                <div class="term-wrapper"> 
+                                
+                                  <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Konditorei</span>
                                     </li>
                                 </div>
-                                <div class="term-wrapper"> 
+                                  
+                                    <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Metzgerei</span>
                                     </li>
                                 </div>
+                                    
+                                    
+                                      <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Gemüsebau</span>
+                                    </li>
+                                </div>
+                                      
+                                      
+                                        <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brennerei</span>
+                                    </li>
+                                </div>
+                                         <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Konditorei</span>
+                                    </li>
+                                </div>
+                                  
+                                    <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Metzgerei</span>
+                                    </li>
+                                </div>
+                                    
+                                    
+                                      <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Gemüsebau</span>
+                                    </li>
+                                </div>
+                                      
+                                      
+                                        <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brennerei</span>
+                                    </li>
+                                </div>
+                                         <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Konditorei</span>
+                                    </li>
+                                </div>
+                                  
+                                    <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Metzgerei</span>
+                                    </li>
+                                </div>
+                                    
+                                    
+                                      <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Gemüsebau</span>
+                                    </li>
+                                </div>
+                                      
+                                      
+                                        <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brennerei</span>
+                                    </li>
+                                </div>
+                                
                             </ul>
                         </div><!-- end filter-content -->
                     </div><!--end filter-->
                     
-                    <div class="filter mobile-modal" data-filtertype="producttype">
+                      <div class="filter " data-filtertype="producttype">
                         <div class="filter-name">
-                            <div class="filter-name-text" data-defaulttext="Producttype" data-filtertype="producttype">Betriebstyp                   </div>
+                            <div class="filter-name-text" data-defaulttext="Producttype" data-filtertype="producttype">     Lieferoptionen                  </div>
                             <span class="show-more fa fa-caret-down"></span>
                             <span class="reset fa fa-times" data-filtertype="producttype"></span>
                         </div> <!-- end filter-name -->
@@ -129,60 +182,113 @@
                                 
                                 <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Bäckerei</span>
                                     </li>
                                 </div>
                                 
-                                 <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
                                 <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brauerei</span>
                                     </li>
                                 </div>
-                                <div class="term-wrapper"> 
+                                
+                                  <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Konditorei</span>
                                     </li>
                                 </div>
-                                <div class="term-wrapper"> 
+                                  
+                                    <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Metzgerei</span>
                                     </li>
                                 </div>
+                                    
+                                    
+                                      <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Gemüsebau</span>
+                                    </li>
+                                </div>
+                                      
+                                      
+                                        <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brennerei</span>
+                                    </li>
+                                </div>
+                                         <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Konditorei</span>
+                                    </li>
+                                </div>
+                                  
+                                    <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Metzgerei</span>
+                                    </li>
+                                </div>
+                                    
+                                    
+                                      <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Gemüsebau</span>
+                                    </li>
+                                </div>
+                                      
+                                      
+                                        <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brennerei</span>
+                                    </li>
+                                </div>
+                                         <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Konditorei</span>
+                                    </li>
+                                </div>
+                                  
+                                    <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Metzgerei</span>
+                                    </li>
+                                </div>
+                                    
+                                    
+                                      <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Gemüsebau</span>
+                                    </li>
+                                </div>
+                                      
+                                      
+                                        <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brennerei</span>
+                                    </li>
+                                </div>
+                                
                             </ul>
                         </div><!-- end filter-content -->
                     </div><!--end filter-->
                     
-                    <div class="filter mobile-modal" data-filtertype="producttype">
+                      <div class="filter" data-filtertype="producttype">
                         <div class="filter-name">
-                            <div class="filter-name-text" data-defaulttext="Producttype" data-filtertype="producttype">Lieferoptionen                   </div>
+                            <div class="filter-name-text" data-defaulttext="Producttype" data-filtertype="producttype">     Zahlungsart                   </div>
                             <span class="show-more fa fa-caret-down"></span>
                             <span class="reset fa fa-times" data-filtertype="producttype"></span>
                         </div> <!-- end filter-name -->
@@ -192,60 +298,113 @@
                                 
                                 <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Bäckerei</span>
                                     </li>
                                 </div>
                                 
-                                 <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
                                 <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brauerei</span>
                                     </li>
                                 </div>
-                                <div class="term-wrapper"> 
+                                
+                                  <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Konditorei</span>
                                     </li>
                                 </div>
-                                <div class="term-wrapper"> 
+                                  
+                                    <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Metzgerei</span>
                                     </li>
                                 </div>
+                                    
+                                    
+                                      <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Gemüsebau</span>
+                                    </li>
+                                </div>
+                                      
+                                      
+                                        <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brennerei</span>
+                                    </li>
+                                </div>
+                                         <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Konditorei</span>
+                                    </li>
+                                </div>
+                                  
+                                    <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Metzgerei</span>
+                                    </li>
+                                </div>
+                                    
+                                    
+                                      <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Gemüsebau</span>
+                                    </li>
+                                </div>
+                                      
+                                      
+                                        <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brennerei</span>
+                                    </li>
+                                </div>
+                                         <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Konditorei</span>
+                                    </li>
+                                </div>
+                                  
+                                    <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Metzgerei</span>
+                                    </li>
+                                </div>
+                                    
+                                    
+                                      <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Gemüsebau</span>
+                                    </li>
+                                </div>
+                                      
+                                      
+                                        <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brennerei</span>
+                                    </li>
+                                </div>
+                                
                             </ul>
                         </div><!-- end filter-content -->
                     </div><!--end filter-->
                     
-                    <div class="filter mobile-modal" data-filtertype="producttype">
+                    <div class="filter" data-filtertype="producttype">
                         <div class="filter-name">
-                            <div class="filter-name-text" data-defaulttext="Producttype" data-filtertype="producttype">Zahlungsart                   </div>
+                            <div class="filter-name-text" data-defaulttext="Producttype" data-filtertype="producttype">     Gütesiegel                   </div>
                             <span class="show-more fa fa-caret-down"></span>
                             <span class="reset fa fa-times" data-filtertype="producttype"></span>
                         </div> <!-- end filter-name -->
@@ -255,70 +414,114 @@
                                 
                                 <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
-                                <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Bäckerei</span>
                                     </li>
                                 </div>
                                 
-                                 <div class="term-wrapper"> 
-                                    <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
-                                    </li>
-                                </div>
                                 <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brauerei</span>
                                     </li>
                                 </div>
-                                <div class="term-wrapper"> 
+                                
+                                  <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Konditorei</span>
                                     </li>
                                 </div>
-                                <div class="term-wrapper"> 
+                                  
+                                    <div class="term-wrapper"> 
                                     <li>
-                                        <div class="filter-checkbox"></div>
-                                        <span class="checkbox-label">Fleisch</span>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Metzgerei</span>
                                     </li>
                                 </div>
+                                    
+                                    
+                                      <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Gemüsebau</span>
+                                    </li>
+                                </div>
+                                      
+                                      
+                                        <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brennerei</span>
+                                    </li>
+                                </div>
+                                         <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Konditorei</span>
+                                    </li>
+                                </div>
+                                  
+                                    <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Metzgerei</span>
+                                    </li>
+                                </div>
+                                    
+                                    
+                                      <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Gemüsebau</span>
+                                    </li>
+                                </div>
+                                      
+                                      
+                                        <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brennerei</span>
+                                    </li>
+                                </div>
+                                         <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Konditorei</span>
+                                    </li>
+                                </div>
+                                  
+                                    <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Metzgerei</span>
+                                    </li>
+                                </div>
+                                    
+                                    
+                                      <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Gemüsebau</span>
+                                    </li>
+                                </div>
+                                      
+                                      
+                                        <div class="term-wrapper"> 
+                                    <li>
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brennerei</span>
+                                    </li>
+                                </div>
+                                
                             </ul>
                         </div><!-- end filter-content -->
                     </div><!--end filter-->
-                    
-                     
-                    
                     
                 </div><!--end filte-wrapper-->
             </div><!--end col -md-9-->
              <div class="col-md-1"></div>
         </div>
-        
-        
-       
-
-      
-        
     </div><!-- end filter area-->
         
             <div class="col-xs-12 seller-area">
