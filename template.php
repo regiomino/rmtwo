@@ -438,6 +438,67 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['offers']['submit']['#attributes']['class'][] = 'btn-success';
             $form['offers']['submit']['#attributes']['class'][] = 'btn-lg';
             break;
+        case 'rm_user_profile_registration':
+            $form['profileregistration']['gender']['#attributes']['class'][] = 'form-control';
+            
+            $form['profileregistration']['first_name']['#attributes']['class'][] = 'form-control';
+            $form['profileregistration']['first_name']['#attributes']['placeholder'] = $form['profileregistration']['first_name']['#title'];
+            $form['profileregistration']['first_name']['#attributes']['required'] = NULL;
+            
+            $form['profileregistration']['last_name']['#attributes']['class'][] = 'form-control';
+            $form['profileregistration']['last_name']['#attributes']['placeholder'] = $form['profileregistration']['last_name']['#title'];
+            $form['profileregistration']['last_name']['#attributes']['required'] = NULL;
+            
+            $form['profileregistration']['profile_title']['#attributes']['class'][] = 'form-control';
+            $form['profileregistration']['profile_title']['#attributes']['placeholder'] = $form['profileregistration']['profile_title']['#title'];
+            $form['profileregistration']['profile_title']['#attributes']['required'] = NULL;
+            
+            $form['profileregistration']['company_name']['#attributes']['class'][] = 'form-control';
+            $form['profileregistration']['company_name']['#attributes']['placeholder'] = $form['profileregistration']['company_name']['#title'];
+            $form['profileregistration']['company_name']['#attributes']['required'] = NULL;
+            
+            $form['profileregistration']['phone']['#attributes']['class'][] = 'form-control';
+            $form['profileregistration']['phone']['#attributes']['placeholder'] = $form['profileregistration']['phone']['#title'];
+            $form['profileregistration']['phone']['#attributes']['required'] = NULL;
+            
+            $form['profileregistration']['fax']['#attributes']['class'][] = 'form-control';
+            $form['profileregistration']['fax']['#attributes']['placeholder'] = $form['profileregistration']['fax']['#title'];
+            
+            $form['profileregistration']['email']['#attributes']['class'][] = 'form-control';
+            $form['profileregistration']['email']['#attributes']['placeholder'] = $form['profileregistration']['email']['#title'];
+            $form['profileregistration']['email']['#attributes']['required'] = NULL;
+            
+            $form['profileregistration']['iban']['#attributes']['class'][] = 'form-control';
+            $form['profileregistration']['iban']['#attributes']['placeholder'] = $form['profileregistration']['iban']['#title'];
+            $form['profileregistration']['iban']['#attributes']['required'] = NULL;
+            
+            $form['profileregistration']['bic']['#attributes']['class'][] = 'form-control';
+            $form['profileregistration']['bic']['#attributes']['placeholder'] = $form['profileregistration']['bic']['#title'];
+            $form['profileregistration']['bic']['#attributes']['required'] = NULL;
+            
+            $form['profileregistration']['accountholder']['#attributes']['class'][] = 'form-control';
+            $form['profileregistration']['accountholder']['#attributes']['placeholder'] = $form['profileregistration']['accountholder']['#title'];
+            $form['profileregistration']['accountholder']['#attributes']['required'] = NULL;
+            
+            $form['profileregistration']['taxnumber']['#attributes']['class'][] = 'form-control';
+            $form['profileregistration']['taxnumber']['#attributes']['placeholder'] = $form['profileregistration']['taxnumber']['#title'];
+            $form['profileregistration']['taxnumber']['#attributes']['required'] = NULL;
+            
+            $form['profileregistration']['street']['#attributes']['class'][] = 'form-control';
+            $form['profileregistration']['street']['#attributes']['placeholder'] = $form['profileregistration']['street']['#title'];
+            $form['profileregistration']['street']['#attributes']['required'] = NULL;
+            
+            $form['profileregistration']['zipcode']['#attributes']['class'][] = 'form-control';
+            $form['profileregistration']['zipcode']['#attributes']['placeholder'] = $form['profileregistration']['zipcode']['#title'];
+            $form['profileregistration']['zipcode']['#attributes']['required'] = NULL;
+            
+            $form['profileregistration']['locality']['#attributes']['class'][] = 'form-control';
+            $form['profileregistration']['locality']['#attributes']['placeholder'] = $form['profileregistration']['locality']['#title'];
+            $form['profileregistration']['locality']['#attributes']['required'] = NULL;
+        
+            $form['profileregistration']['submit']['#attributes']['class'][] = 'btn';
+            $form['profileregistration']['submit']['#attributes']['class'][] = 'btn-success';
+            break;
         case 'rm_cart_checkout':
             //Billing address
             $form['checkout']['payment_fs']['billing_address_name']['#attributes']['placeholder'] = t('Name');
