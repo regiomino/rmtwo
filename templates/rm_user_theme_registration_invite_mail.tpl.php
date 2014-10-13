@@ -77,9 +77,6 @@
             
             <a href="https://www.regiomino.de/registration/<?php print $vars['profileobject']->nid; ?>/<?php print $vars['profileobject']->field_register_hash[LANGUAGE_NONE][0]['value']; ?>">Registrierung bei Regiomino</a>
             
-            <br>
-            <br>
-            
 
             <br>
             <br>
