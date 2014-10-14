@@ -38,7 +38,7 @@
             <div class="panel-footer">
                 <div class="row"><div class="col-sm-12 col-md-12">
                 <?php print l(t('View the complete order table'),
-                                'manage/seller/' . $user->uid . '/orders',
+                                'manage/customer/' . $user->uid . '/orders',
                                 array(
                                     'attributes' => array(
                                         'class' => array('btn', 'btn-sm', 'btn-success', 'pull-left'),
