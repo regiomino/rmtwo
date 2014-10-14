@@ -164,7 +164,30 @@ RMS.map = {};
 //////////////////////////////////
 // RM Ajax
 //////////////////////////////////
+
+// Filterauswahl schicken
+// return: neue Marker + Ergebnisse
 RMS.ajax = {};
+RMS.ajax.$sellerArea = $('#sellers');
+RMS.ajax.LOADER_CLASSNAME = 'loading';
+RMS.ajax.selectedFilter = {};
+RMS.ajax.CALLBACK_URL = // Drupal.settings.basePath + 'addtocart/' + item_data.offerid + '/' + item_data.variation + '/' + item_data.tradingunit + '/' + item_data.amount + '/' + item_data.add;
+ 
+RMS.ajax.addLoader = function(){
+    RMS.ajax.$sellerArea.addClass(RMS.ajax.LOADER_CLASSNAME);
+}
+
+RMS.ajax.removeLoader = function(){
+    RMS.ajax.$sellerArea.removeClass(RMS.ajax.LOADER_CLASSNAME);
+}
+
+RMS.ajax.buildQuery = function(){
+    
+};
+
+RMS.ajax.refreshSeller = function(){
+    
+};
 
 
 
@@ -175,13 +198,41 @@ RMS.ajax = {};
 ////////////////////////////////////////////////////////////////////
 
 RMS.filter = {};
+RMS.filter.filterAreaID = '#filter';
+RMS.filter.filterArea = $(RMS.filter.filterAreaID);
+
 RMS.filter.init = function() {
     RMS.filter.category.init();
     RMS.filter.distance.init();
+    RMS.filter.addListeners();
 };
 
+RMS.filter.addListeners = function (){
+    var _self = this;
+   
+    RMS.filter.filterArea.on('filterchange', $.proxy(_self.handleFilterChange,this));
+};
+
+RMS.filter.handleFilterChange = function(e,key,value) {
+    var_self = this;
+    e.stopPropagation();
+    console.info(key+' => '+ value);
+    RMS.ajax.addLoader();
+         setTimeout(RMS.ajax.removeLoader ,1000);
+    if (value === -1) {
+        //delete Key
+        if ( RMS.ajax.selectedFilter.hasOwnProperty(key)) {
+            delete RMS.ajax.selectedFilter[key];
+        }
+    } else {
+        RMS.ajax.selectedFilter[key] = value;
+    }
+   
+    console.info(RMS.ajax.selectedFilter);
+    
+};
 /////////////////////////////////////
-//No UI Slider + Pips Addon
+//Distance / No UI Slider + Pips Addon
 /////////////////////////////////////
 
 RMS.filter.distance = {};
@@ -208,15 +259,14 @@ RMS.filter.distance.pipsOptions = {
     mode: 'values',
 	values: [25, 50, 75, 100, 150],
 	density: 4,
-	stepped: true,
-    format: wNumb(RMS.filter.distance.pipsFormat)
+	stepped: true//,
+    //format: wNumb(RMS.filter.distance.pipsFormat)
 }
 
 RMS.filter.distance.init = function() {
     RMS.filter.distance.$elem.noUiSlider(RMS.filter.distance.sliderOptions);
     RMS.filter.distance.$elem.noUiSlider_pips(RMS.filter.distance.pipsOptions );
     RMS.filter.distance.setCacheVal(RMS.filter.distance.getValue());
-    console.info( RMS.filter.distance.value_temp );
     RMS.filter.distance.addListeners();
     RMS.filter.distance.addSuffix();
     
@@ -225,9 +275,8 @@ RMS.filter.distance.addListeners = function(){
     RMS.filter.distance.$elem.on('change', function(){
         var sliderVal = RMS.filter.distance.getValue();
         if (sliderVal !==  RMS.filter.distance.getCacheVal()  ) {
-        RMS.filter.distance.setCacheVal(sliderVal);
-           
-           //trigger AJAX-Update
+            RMS.filter.distance.setCacheVal(sliderVal);
+            RMS.filter.filterArea.trigger('filterchange',['distance',sliderVal]);                          
         }
     });
 };
@@ -253,10 +302,12 @@ RMS.filter.distance.addSuffix = function(){
 /////////////////////////////////////     
 //Kategorien Filter
 /////////////////////////////////////
-//@TODO: Backdrop f Touch, Text austauschen im Head bei active, 
+//@TODO: Backdrop f Touch 
 
 RMS.filter.category = {};
 RMS.filter.category.$items = $('.category-filter').find('.filter');
+RMS.filter.category.SELECTED_CLASSNAME = 'selected-category';
+RMS.filter.category.SELECTED_CLASS = '.selected-category';
 
 RMS.filter.category.init = function() {
     
@@ -282,9 +333,14 @@ RMS.filter.category.clearDropdowns = function(){
 RMS.filter.category.CatFilter = function(elem){
     this.$el = $(elem);
     this.$filterHead = $('.filter-name',this.$el);
+    this.$filterHeadText = $('.filter-name-text',this.$filterHead);
+    this.filterDefaultText = this.$filterHeadText.data('defaulttext');
     this.$reset = $('.reset', this.$filterHead);
     this.$filterContent = $('.filter-content',this.$el);
     this.$termListItems = $('.term-wrapper li',this.$filterContent);
+    this.selectedCats = [];
+    this.selectedCatNames = [];
+    this.filterKey = this.$el.data('filtertype');
 };
 
 RMS.filter.category.CatFilter.prototype = {
@@ -306,41 +362,80 @@ RMS.filter.category.CatFilter.prototype = {
     addListeners : function(){
         var _self = this;
         _self.$filterHead.on('click.filterHead',$.proxy(_self.toggle, _self));
-        _self.$termListItems.on('click.term', _self.termClick);
+        _self.$termListItems.on('click.term', {obj: _self}, _self.termClick);
         _self.$el.on('changedSelection',$.proxy(_self.handleSelectionChange,_self));
         _self.$reset.on('click.reset',$.proxy(_self.resetItems,_self));
     },
     
-    termClick : function() {
-        var $el = $(this);
+    termClick : function(e) {
+        var $el = $(this);//li
+        var _self = e.data.obj;
         $el.toggleClass('active');
-        $el.parents('.filter').trigger('changedSelection');
+        var labelText= $el.find('.checkbox-label').text();
+        $el.parents('.filter').trigger('changedSelection',[labelText]);
     },
     
     countActive : function (){
-         var _self = this;
+        var _self = this;
         return _self.$filterContent.find('li.active').length;
     },
     
-    handleSelectionChange : function(){
+    handleSelectionChange : function(e,labeltext){
        var _self = this;
+        
        var activeItems = _self.countActive();
        
        if (activeItems >= 1) {
-        _self.highlightFilterName();
+            if (!_self.$el.hasClass(RMS.filter.category.SELECTED_CLASS)) {
+                _self.highlightFilterName();
+            }
+        _self.toggleHeadText(labeltext);
+        
+         RMS.filter.filterArea.trigger('filterchange',[_self.filterKey,_self.getActiveNames()]);
+        
        } else {
-        _self.resetFilterName();
+            _self.resetFilterName();
+            _self.selectedCats.length = 0;
+            RMS.filter.filterArea.trigger('filterchange',[_self.filterKey,-1]);
        }
+       
+    },
+    
+    getActiveNames: function(){
+        var _self = this;
+        var $active = _self.$filterContent.find('li.active');
+        _self.selectedCatNames.length = 0;
+        $active.each(function(){
+            var name = $(this).data('term');
+           _self.selectedCatNames.push(name);
+        });
+        
+        return _self.selectedCatNames;
+    },
+    
+    toggleHeadText : function(string){
+        var _self = this;
+        var inIt = $.inArray(string, _self.selectedCats);
+        var headText;
+        if (inIt > -1) {
+             _self.selectedCats.splice(inIt,1);
+            
+        } else {
+            _self.selectedCats.push(string);
+        }
+        headText = _self.selectedCats.join(', ');
+        _self.$filterHeadText.text(headText);
     },
     
     highlightFilterName : function(){
        var _self = this;
-       _self.$el.addClass('selected-category');
+       _self.$el.addClass(RMS.filter.category.SELECTED_CLASSNAME);
     },
     
     resetFilterName: function(){
         var _self = this;
-       _self.$el.removeClass('selected-category');
+       _self.$el.removeClass(RMS.filter.category.SELECTED_CLASSNAME);
+       _self.$filterHeadText.text(_self.filterDefaultText);
     },
     
     resetItems : function (e){
@@ -366,8 +461,6 @@ RMS.filter.category.CatFilter.prototype = {
 (function(){
     RMS.init();
 })();
-
-
 
 });
 

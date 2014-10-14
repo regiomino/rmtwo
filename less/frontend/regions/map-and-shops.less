@@ -110,7 +110,15 @@
                     .filter-name {
                         color: #fff;
                         background-color: @brand-primary;
+                        font-weight: bold;
                         
+                        .filter-name-text {
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            -webkit-box-orient: vertical;
+                            display: -webkit-box;
+                            -webkit-line-clamp: 1;
+                        }
                         .show-more {
                             display: none;
                         }
@@ -136,6 +144,10 @@
                 border: 1px solid #ddd;
                 cursor: pointer;
                 opacity: 1;
+                
+                .filter-name-text {
+                    padding-right: 17px;
+                }
                 
                 .reset {
                     position: absolute;
@@ -244,6 +256,35 @@
          
         .seller-area {
             padding-top: 20px;
+            position: relative;
+            
+            &.loading {
+                &:before {
+                    display: block;
+                    top: 63%;
+                    left: 71%;
+                    z-index: 10;
+                    content: " ";
+                    .loader();
+                     position: fixed;
+                    margin-top: -15px;
+                    margin-left: -15px;
+                }
+                
+                &:after {
+                    position: absolute;
+                    display: block;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    background-color: #fff;
+                    opacity: 0.9;
+                    filter: alpha(opacity=90);
+                    content: " ";
+                }
+            }
+            
            
             .row {
                 margin-left: -10px;
