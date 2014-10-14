@@ -117,6 +117,10 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
         </div>
     </div>
 </div>-->
+
+<div class="map">
+    <div id="frontpageGoogleMap" style="width: 100%; height: 500px"></div>
+</div>
     
 <div class="benefits-wrapper">
     <div class="container">
@@ -262,7 +266,6 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
         </div><!-- end row-->
     </div><!-- end container-->
 </div> <!--end benefits-wrapper-->
-
 
 <div class="benefits-wrapper">
     <div class="container">
