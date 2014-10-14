@@ -163,7 +163,7 @@
                                                 </tr>
                                             </table>
 
-                                            <div style="padding-top:15px">  <strong>Gewählte Zahlungsart:</strong></div>
+                                            <strong>Gewählte Zahlungsart:</strong>
                                             
                                             <?php $paymenttype_allowed_values = list_allowed_values(field_info_field('field_paymenttype')); print $paymenttype_allowed_values[$vars['payment_type']]; ?>
                                             
@@ -187,28 +187,6 @@
                                                 <br>
                                                 <br>
                                             <?php endif;?>
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
-                                            
                                             
                                         </div>
                                     </div><!-- /.modal-content -->
