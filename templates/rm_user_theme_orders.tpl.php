@@ -74,7 +74,7 @@
                                                                     <em style="font-style:italic; font-size: 12px; "> <?php $packaging_allowed_values = list_allowed_values(field_info_field('field_tu_packaging')); print $packaging_allowed_values[$order_item->field_tu_packaging[LANGUAGE_NONE][0]['value']]; ?> (<?php print $order_item->field_tu_amount[LANGUAGE_NONE][0]['value']; ?> x <?php print $order_item->field_productunit[LANGUAGE_NONE][0]['first']; ?> <?php print t($order_item->field_productunit[LANGUAGE_NONE][0]['second']); ?>)</em>
                                                                 </td>
                                                                 <td align="right" valign="top" style="padding-top:5px; padding-bottom:5px;">
-                                                                    <?php print number_format($netto, 2, ",", "."); ?>Ä
+                                                                    <?php print number_format($netto, 2, ",", "."); ?>‚Ç¨
                                                                 </td>
                                                             </tr>
                                                         <?php endif; ?>
@@ -100,7 +100,7 @@
                                                                     <?php endif; ?>
                                                                 </td>
                                                                 <td align="right" valign="top" style="padding-top:5px; border-top: 1px solid #ddd; padding-bottom:5px;"  >
-                                                                    <?php print number_format($netto, 2, ",", "."); ?>Ä
+                                                                    <?php print number_format($netto, 2, ",", "."); ?>‚Ç¨
                                                                 </td>
                                                             </tr>
                                                         <?php endif; ?>
@@ -118,7 +118,7 @@
                                                                 <?php endif; ?>
                                                             </td>
                                                             <td align="right" valign="top" style="padding-top:5px; border-top: 1px solid #ddd; padding-bottom:5px;"  >
-                                                                <?php print number_format(0, 2, ",", "."); ?>Ä
+                                                                <?php print number_format(0, 2, ",", "."); ?>‚Ç¨
                                                             </td>
                                                         </tr>
                                                     <?php endif; ?>
@@ -132,7 +132,7 @@
                                                         Summe<br>
                                                     </td>
                                                     <td align="right" width="80" valign="top" style="padding-top:3px; background-color: #F3F3F3; border-top: 1px solid #000; padding-bottom:3px;">
-                                                        <?php print number_format($nettoaddup, 2, ",", "."); ?>Ä
+                                                        <?php print number_format($nettoaddup, 2, ",", "."); ?>‚Ç¨
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -140,7 +140,7 @@
                                                        zzgl. MwSt.<br>
                                                     </td>
                                                     <td align="right" width="80" valign="top" style="padding-top:3px; background-color: #F3F3F3;  padding-bottom:3px;">
-                                                       <?php print number_format($vataddup, 2, ",", "."); ?>Ä
+                                                       <?php print number_format($vataddup, 2, ",", "."); ?>‚Ç¨
                                                     </td>
                                                 </tr>
                                                  <tr>
@@ -148,7 +148,7 @@
                                                        Pfand<br>
                                                     </td>
                                                     <td align="right" width="80" valign="top" style="padding-top:3px; background-color: #F3F3F3; padding-bottom:3px;">
-                                                       <?php print number_format($depositaddup, 2, ",", "."); ?>Ä
+                                                       <?php print number_format($depositaddup, 2, ",", "."); ?>‚Ç¨
                                                     </td>
                                                 </tr>
                                                  <tr>
@@ -156,12 +156,12 @@
                                                        <strong> Gesamtsumme </strong><br>
                                                     </td>
                                                     <td align="right" width="80" valign="top" style="padding-top:3px; border-bottom: 1px solid #000; background-color: #F3F3F3;  padding-bottom:3px;">
-                                                      <strong><?php print number_format($nettoaddup + $vataddup + $depositaddup, 2, ",", "."); ?>Ä</strong>
+                                                      <strong><?php print number_format($nettoaddup + $vataddup + $depositaddup, 2, ",", "."); ?>‚Ç¨</strong>
                                                     </td>
                                                 </tr>
                                             </table>
 
-                                            <strong>Gew‰hlte Zahlungsart:</strong>
+                                            <strong>Gew√§hlte Zahlungsart:</strong>
                                             
                                             <?php $paymenttype_allowed_values = list_allowed_values(field_info_field('field_paymenttype')); print $paymenttype_allowed_values[$vars['payment_type']]; ?>
                                             
