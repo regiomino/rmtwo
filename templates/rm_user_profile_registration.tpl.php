@@ -10,6 +10,7 @@
     </div>
     <div class="col-sm-4 lpl"> 
 <?php print render($form['profileregistration']['last_name']); ?>
+<<<<<<< HEAD
     </div>
 </div>
 <div class="row">
@@ -67,6 +68,23 @@
 </div>
 <div class="row">
      <div class="col-sm-12"> 
+=======
+<?php print render($form['profileregistration']['profile_title']); ?>
+<?php print render($form['profileregistration']['company_name']); ?>
+<?php print render($form['profileregistration']['smallbusiness']); ?>
+<?php print render($form['profileregistration']['phone']); ?>
+<?php print render($form['profileregistration']['fax']); ?>
+<?php print render($form['profileregistration']['email']); ?>
+<?php print render($form['profileregistration']['iban']); ?>
+<?php print render($form['profileregistration']['bic']); ?>
+<?php print render($form['profileregistration']['accountholder']); ?>
+<?php print render($form['profileregistration']['taxnumber']); ?>
+<?php print render($form['profileregistration']['street']); ?>
+<?php print render($form['profileregistration']['zipcode']); ?>
+<?php print render($form['profileregistration']['locality']); ?>
+<?php print render($form['profileregistration']['newsletter']); ?>
+
+>>>>>>> 09f2aec672416bda534dca7b6546057980cadd4d
 <?php
     print drupal_render_children($form);
 ?>
