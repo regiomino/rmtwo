@@ -192,7 +192,7 @@ $shop = $shops[$shopkeys[0]];
                                                         foreach($agreement->field_payment_types[LANGUAGE_NONE] as $payment_type) {
                                                             switch($payment_type['value']) {
                                                                 case 'prepaid':
-                                                                    print '<small class="text-muted" data-toggle="popover" data-content="' . t('Pay online during checkout via one of our payment providers') . '">Online-Zahlung, </small> ';
+                                                                    print '<small class="text-muted" data-toggle="popover" data-content="' . t('Pay online during checkout via one of our payment providers') . '">Sofortüberweisung, PayPal, </small> ';
                                                                     break;
                                                                 case 'cash':
                                                                     print '<small class="text-muted" data-toggle="popover" data-content="' . t('Pay cash when your order is delivered') . '">Barzahlung, </small> ';
