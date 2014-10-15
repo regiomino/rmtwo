@@ -51,11 +51,12 @@ jQuery(document).ready(function ($) {
     //makes sure external links are opened in new window
     $('a').each(function() {
         var a = new RegExp('/' + window.location.host + '/');
-        var b = new RegExp('javascript:gaOutput()');
+        var b = new RegExp('javascript:gaOptout');
         
         if(!a.test(this.href) && !b.test(this.href)) {
             
             $(this).click(function(event) {
+                console.info(this.href);
                 event.preventDefault();
                 event.stopPropagation();
                 window.open(this.href, '_blank');
