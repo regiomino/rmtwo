@@ -54,6 +54,7 @@ jQuery(document).ready(function ($) {
         var b = new RegExp('javascript:gaOutput()');
         
         if(!a.test(this.href) && !b.test(this.href)) {
+            
             $(this).click(function(event) {
                 event.preventDefault();
                 event.stopPropagation();
