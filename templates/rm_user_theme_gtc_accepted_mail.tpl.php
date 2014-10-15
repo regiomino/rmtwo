@@ -73,10 +73,8 @@
  
             <?php print ($vars['profileuser']->field_gender[LANGUAGE_NONE][0]['value'] == 'f') ? 'Sehr geehrte Frau' : 'Sehr geehrter Herr'; ?> <?php print $vars['profileuser']->field_last_name[LANGUAGE_NONE][0]['value']; ?>,<br><br>
             vielen Dank für Ihre Registrierung und Willkommen bei Regiomino! Sie haben jetzt jederzeit Zugriff auf Ihren persönlichen Verwaltungsbereich. Dort können Sie z.B. Ihre Angebote verwalten aber auch Ihre Profil- und Benutzerdaten ändern.<br><br>
-            Loggen Sie sich dazu einfach unter diesem Link mit den folgenden Benutzerdaten ein:<br><br>
-            <a href="https://www.regiomino.de/user/register?destination=manage/seller">https://www.regiomino.de/user/register</a><br>
-            E-Mail: <?php print $vars['profileuser']->mail; ?><br>
-            Passwort: <?php print $vars['password']; ?>
+            
+            Ihr Passwort: <?php print $vars['password']; ?>
             
             <br>
             <br>
