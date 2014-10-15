@@ -1,6 +1,6 @@
 jQuery(document).ready(function ($) {
 
- var debounce = function(func, wait, immediate) {
+ /*var debounce = function(func, wait, immediate) {
      
         var timeout;
         return function() {
@@ -78,11 +78,7 @@ jQuery(document).ready(function ($) {
         },
     };
 
-    var map = new google.maps.Map(document.getElementById("directoryGoogleMap"), {
-        center: new google.maps.LatLng(49.800855, 11.017640),
-        zoom: 9,
-        mapTypeId: 'roadmap'
-    });
+    
 
     var latlng = [];
 
@@ -144,15 +140,29 @@ jQuery(document).ready(function ($) {
     
     function doNothing(){
         
-    }
+    }*/
 
 
 
 var RMS = RMS || {};
-
 window.RMS = RMS;
+RMS.startValues = { // aka Drupal.settings
+    map : { // immer da
+        lat : 49.45203,
+        lng : 11.07675
+    },
+    distance : 50, //immer da
+    
+    //nicht immer da
+    seller_type : ['baker', 'wine'],
+    payment_method : ['sofort', 'bill']
+     
+};
+RMS.pathToTheme = Drupal.settings.basePath + "sites/all/themes/" + Drupal.settings.ajaxPageState.theme;
+
 RMS.init = function(){
     RMS.filter.init();
+    RMS.map.init();
 };
 
 
@@ -160,6 +170,41 @@ RMS.init = function(){
 // RM Map
 //////////////////////////////////
 RMS.map = {};
+RMS.mapContainer = "map";
+RMS.mapOptions = {
+    center: new google.maps.LatLng(RMS.startValues.map.lat, RMS.startValues.map.lng), // eingegebene PLZ
+    zoom: 9,
+    mapTypeId: 'roadmap'
+};
+
+
+RMS.map.markerIcons = {
+    inactive_profile: {
+        icon: RMS.pathToTheme  + '/images/markers/inactive_profile.png',
+        zindex: 1
+    },
+    prospect_profile: {
+        icon: RMS.pathToTheme  + '/images/markers/inactive_profile.png',
+        zindex: 2
+    },
+    customer_profile: {
+        icon: RMS.pathToTheme  + '/images/markers/customer_profile.png',
+        zindex: 3
+    },
+    seller_profile: {
+        icon: RMS.pathToTheme + '/images/markers/seller_profile.png',
+        zindex: 4
+    }
+};
+
+RMS.map.init = function(){
+    RMS.map.buildMap();
+};
+
+RMS.map.buildMap = function(){
+    var map = new google.maps.Map(document.getElementById(RMS.mapContainer), RMS.mapOptions);
+};
+
 
 //////////////////////////////////
 // RM Ajax
@@ -202,14 +247,14 @@ RMS.filter.filterAreaID = '#filter';
 RMS.filter.filterArea = $(RMS.filter.filterAreaID);
 
 RMS.filter.init = function() {
-    RMS.filter.category.init();
-    RMS.filter.distance.init();
-    RMS.filter.addListeners();
+    var _self = this;
+    _self.category.init();
+    _self.distance.init();
+    _self.addListeners();
 };
 
 RMS.filter.addListeners = function (){
     var _self = this;
-   
     RMS.filter.filterArea.on('filterchange', $.proxy(_self.handleFilterChange,this));
 };
 
