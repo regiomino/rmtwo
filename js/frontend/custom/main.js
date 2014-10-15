@@ -51,7 +51,9 @@ jQuery(document).ready(function ($) {
     //makes sure external links are opened in new window
     $('a').each(function() {
         var a = new RegExp('/' + window.location.host + '/');
-        if(!a.test(this.href)) {
+        var b = new RegExp('javascript:gaOutput()');
+        
+        if(!a.test(this.href) && !b.test(this.href)) {
             $(this).click(function(event) {
                 event.preventDefault();
                 event.stopPropagation();
