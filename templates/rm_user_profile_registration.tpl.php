@@ -68,7 +68,7 @@
 <div class="row">
      <div class="col-sm-12"> 
 
-    print drupal_render_children($form);
-?>
+   <?php print drupal_render_children($form);?>
+
      </div>
 </div>
