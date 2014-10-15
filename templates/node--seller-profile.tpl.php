@@ -35,7 +35,7 @@ $shop = $shops[$shopkeys[0]];
                                 </li>
                                 <li>
                                     <span class="fa fa-map-marker"></span>
-                                    <?php print $node->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?>, <?php print $node->field_address[LANGUAGE_NONE][0]['postal_code'] ?> <?php print $node->field_address[LANGUAGE_NONE][0]['locality']; ?></li>
+                                    <?php print $node->field_company_name[LANGUAGE_NONE][0]['value']; ?>, <?php print $node->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?>, <?php print $node->field_address[LANGUAGE_NONE][0]['postal_code'] ?> <?php print $node->field_address[LANGUAGE_NONE][0]['locality']; ?>, Tel.: <?php print rm_api_format_phone($node->field_publicphone[LANGUAGE_NONE][0]['number']); ?></li>
                                 </li>
                             </ul>
                             <div class="seller-description"> 

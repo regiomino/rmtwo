@@ -117,7 +117,7 @@
                         <?php print t('Phone'); ?>
                     </td>
                     <td align="left" valign="top"  style="padding-top:7px; padding-bottom:3px;">
-                        <?php print $vars['profileobject']->field_publicphone[LANGUAGE_NONE][0]['number']; ?>
+                        <?php print rm_api_format_phone($vars['profileobject']->field_publicphone[LANGUAGE_NONE][0]['number']); ?>
                     </td>
                 </tr>
                 <!--Fax-->
