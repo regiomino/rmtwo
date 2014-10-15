@@ -7322,10 +7322,6 @@ form .form-item {
   border-bottom: 1px solid #eee;
 }
 /*
- * Top navigation
- * Hide default border to remove 1px line.
- */
-/*
  * Sidebar
  */
 /* Sidebar navigation */
@@ -7345,6 +7341,22 @@ form .form-item {
 .nav-sidebar > .active > a:focus {
   color: #fff;
   background-color: #5cb85c;
+}
+.lpr {
+  padding-right: 3px;
+}
+@media screen and (max-width: 768px) {
+  .lpr {
+    padding-right: 15px;
+  }
+}
+.lpl {
+  padding-left: 3px;
+}
+@media screen and (max-width: 768px) {
+  .lpl {
+    padding-left: 15px;
+  }
 }
 .main .page-header {
   margin-top: 0;
@@ -10539,12 +10551,6 @@ addcartCart-Icon
 .page-user-register .form-group {
   margin-bottom: 0px;
 }
-.page-checkout .lpr {
-  padding-right: 3px;
-}
-.page-checkout .lpl {
-  padding-left: 3px;
-}
 .page-checkout .address label,
 .page-checkout .delivery-address label,
 .page-checkout .form-item-iban label {
@@ -10984,4 +10990,13 @@ fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit.active {
 .page-order .delivery-breakdown .order-breakdown ul.breakdown-items .total {
   font-weight: 700;
   font-size: 18px;
+}
+.page-registration .btn-lg {
+  margin-bottom: 15px;
+  display: block;
+}
+@media screen and (max-width: 768px) {
+  .page-registration .btn-lg {
+    width: 100%;
+  }
 }

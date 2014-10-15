@@ -497,6 +497,7 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['profileregistration']['locality']['#attributes']['required'] = NULL;
         
             $form['profileregistration']['submit']['#attributes']['class'][] = 'btn';
+             $form['profileregistration']['submit']['#attributes']['class'][] = 'btn-lg';
             $form['profileregistration']['submit']['#attributes']['class'][] = 'btn-success';
             break;
         case 'rm_cart_checkout':
