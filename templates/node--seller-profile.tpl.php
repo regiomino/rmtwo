@@ -105,8 +105,12 @@ $shop = $shops[$shopkeys[0]];
                                                 switch($type) {
                                                     
                                                     case 'shipping_agreement':
+                                                        $zipcodes = '';
+                                                        foreach($agreement->field_shipping_zipcodes[LANGUAGE_NONE] as $zipcode) {
+                                                            $zipcodes .= $zipcode['value'] . ' ';
+                                                        }
                                                          print "<li>";
-                                                        print  "<a href='#' data-toggle='popover' data-content='" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
+                                                        print  "<a href='#' data-toggle='popover' data-content='<strong>Lieferung in die PLZ-Gebiete:</strong><br>" . $zipcodes . " " . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
                                                             print '<span class="sprite sprite-delivery-truck"></span>';
                                                             print '<small class="text-muted">' . node_type_get_name('shipping_agreement') . ' <br>';
                                                             print '<strong> ab ' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.' | <span class="indicator"> Lieferzeiten anzeigen </span></strong>';
