@@ -110,7 +110,7 @@ $shop = $shops[$shopkeys[0]];
                                                             $zipcodes .= $zipcode['value'] . ' ';
                                                         }
                                                          print "<li>";
-                                                        print  "<a href='#' data-toggle='popover' data-content='<strong>Lieferung in die PLZ-Gebiete:</strong><br>" . $zipcodes . " " . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
+                                                        print  "<a href='#' data-toggle='popover' data-content='<small><em>Lieferung möglich in die folgenden deutschen PLZ-Gebiete an den bezeichneten Wochentagen und Uhrzeiten unter Berücksichtigung der produktspezifischen Bestellfristen. Die Fristen entnehmen Sie bitte den jeweiligen Produktbeschreibungen durch Klick auf Produktbild oder -namen.</em></small><br><br><strong>PLZ-Gebiete:</strong><br>" . $zipcodes . "<br><br>" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
                                                             print '<span class="sprite sprite-delivery-truck"></span>';
                                                             print '<small class="text-muted">' . node_type_get_name('shipping_agreement') . ' <br>';
                                                             print '<strong> ab ' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.' | <span class="indicator"> Lieferzeiten anzeigen </span></strong>';
@@ -381,6 +381,46 @@ $shop = $shops[$shopkeys[0]];
                             <?php endif; ?>
                                 <div class="media-body">
                                 <?php print $variation->body[LANGUAGE_NONE][0]['value']; ?>
+                                <br>
+                                <br>
+                                <small>
+                                <strong>Bestellfrist:</strong> Bitte bestellen Sie bis
+                                <?php
+                                    $next_possible_delivery_dates = rm_shop_get_next_possible_deliverydate($variation->nid, $zipcode, $node->uid, $user->uid);
+                                    $npddkeys = array_keys($next_possible_delivery_dates);
+                                    $deliverytomorrow = FALSE;
+                                ?>
+                                <?php if(date('Ymd') == date('Ymd', $next_possible_delivery_dates[$npddkeys[0]]['deadline'])): ?>
+                                    <strong>heute
+                                <?php elseif(date('Ymd', $next_possible_delivery_dates[$npddkeys[0]]['deadline']) - date('Ymd') == 1): ?>
+                                    </strong>morgen
+                                <?php else: ?>
+                                    <strong>zum <?php print t(date('l', $next_possible_delivery_dates[$npddkeys[0]]['deadline'])); ?>, <?php print date('d.m.Y', $next_possible_delivery_dates[$npddkeys[0]]['deadline']); ?>
+                                <?php endif; ?>
+                                <?php print date('H:i', $next_possible_delivery_dates[$npddkeys[0]]['deadline']); ?></strong>
+                                <?php $npddcount = count($next_possible_delivery_dates); ?>
+                                <?php $counter = 1; ?>
+                                <?php if($npddcount > 1): ?>
+                                    <?php foreach($next_possible_delivery_dates as $npddtype => $next_possible_delivery_date): ?>
+                                        für eine <?php print node_type_get_name($npddtype); ?> am
+                                        
+                                        <?php print t(date('l', $next_possible_delivery_date['begin_time'])); ?> den <?php print date('d.m.Y', $next_possible_delivery_date['begin_time']); ?> zwischen <?php print date('H:i', $next_possible_delivery_date['begin_time']); ?> und <?php print date('H:i', $next_possible_delivery_date['end_time']); ?> Uhr
+                                        
+                                        <?php if($counter < $npddcount): ?> oder <?php endif; ?>
+                                        <?php $counter++; ?>
+                                    <?php endforeach; ?>.
+                                    
+                                <?php else: ?>
+                                    <?php $next_possible_delivery_date = $next_possible_delivery_dates[$npddkeys[0]]; ?>
+                                    für eine <?php print node_type_get_name($npddkeys[0]); ?> am
+                                    
+                                    <?php print t(date('l', $next_possible_delivery_date['begin_time'])); ?> den <?php print date('d.m.Y', $next_possible_delivery_date['begin_time']); ?> zwischen <?php print date('H:i', $next_possible_delivery_date['begin_time']); ?> und <?php print date('H:i', $next_possible_delivery_date['end_time']); ?> Uhr.
+                                    
+                                <?php endif; ?>
+                                <br>                                
+                                <br>
+                                Bitte entnehmen Sie weitere Informationen zu den genauen Zeiten und Gebieten der Informationsleiste direkt unterhalb der Anbieterbeschreibung.
+                                </small>                     
                                 </div>
                             </div>
                         </div>
@@ -394,7 +434,7 @@ $shop = $shops[$shopkeys[0]];
         </div><!-- /.modal -->
     <?php endforeach; ?>
     
-    <div class="modal fade" tabindex="-1" id="pickupModal" role="dialog" aria-labelledby="Selbstabholung" aria-hidden="true">
+<div class="modal fade" tabindex="-1" id="pickupModal" role="dialog" aria-labelledby="Selbstabholung" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
         <div class="modal-header">
@@ -493,7 +533,6 @@ $shop = $shops[$shopkeys[0]];
     </div>
   </div>
 </div>
-    
     
     
 <?php endforeach; ?>
