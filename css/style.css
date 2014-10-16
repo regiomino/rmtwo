@@ -10744,6 +10744,7 @@ fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit.active {
   position: relative;
   z-index: 10;
   display: inline-block;
+  line-height: 15px;
 }
 .page-checkout .checkout-item .form-type-radio.form-item-delivery label:before,
 .page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label:before {
@@ -10764,7 +10765,7 @@ fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit.active {
   width: 24px;
   height: 23px;
   margin-left: -11px;
-  bottom: 17px;
+  bottom: 13px;
 }
 .page-checkout .checkout-item .form-type-radio.form-item-delivery label[for=edit-delivery-shipping-agreement]:before,
 .page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label[for=edit-delivery-shipping-agreement]:before {
@@ -10772,7 +10773,7 @@ fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit.active {
   width: 32px;
   height: 18px;
   margin-left: -16px;
-  bottom: 19px;
+  bottom: 14px;
 }
 .page-checkout .checkout-item .form-type-radio.form-item-delivery label[for=edit-paymenttypes-sepa]:before,
 .page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label[for=edit-paymenttypes-sepa]:before {
