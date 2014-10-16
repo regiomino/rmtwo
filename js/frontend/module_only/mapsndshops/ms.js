@@ -203,6 +203,10 @@ RMS.map.init = function(){
 
 RMS.map.buildMap = function(){
     var map = new google.maps.Map(document.getElementById(RMS.mapContainer), RMS.mapOptions);
+    var marker = new google.maps.Marker({
+                map: map,
+                position: RMS.mapOptions.center,
+            });
 };
 
 
