@@ -169,45 +169,41 @@ RMS.init = function(){
 //////////////////////////////////
 // RM Map
 //////////////////////////////////
+
+//Map init -> tiles loaded -> Load locations/Marker, getJson
+
 RMS.map = {};
-RMS.mapContainer = "map";
-RMS.mapOptions = {
-    center: new google.maps.LatLng(RMS.startValues.map.lat, RMS.startValues.map.lng), // eingegebene PLZ
-    zoom: 9,
+RMS.map.mapContainer = "map";
+RMS.map.startLatLng = new google.maps.LatLng(49.45203,11.07675);
+ 
+RMS.map.mapOptions = {
+    center: RMS.map.startLatLng, // eingegebene PLZ
+    zoom: 11,
     mapTypeId: 'roadmap'
 };
 
+RMS.map.gm = new google.maps.Map(document.getElementById(RMS.map.mapContainer),RMS.map.mapOptions);
+RMS.map.centerMarker = new google.maps.Marker({
+    map: RMS.map.gm,
+    position: RMS.map.mapOptions.center,
+});
 
-RMS.map.markerIcons = {
-    inactive_profile: {
-        icon: RMS.pathToTheme  + '/images/markers/inactive_profile.png',
-        zindex: 1
-    },
-    prospect_profile: {
-        icon: RMS.pathToTheme  + '/images/markers/inactive_profile.png',
-        zindex: 2
-    },
-    customer_profile: {
-        icon: RMS.pathToTheme  + '/images/markers/customer_profile.png',
-        zindex: 3
-    },
-    seller_profile: {
-        icon: RMS.pathToTheme + '/images/markers/seller_profile.png',
-        zindex: 4
-    }
-};
 
 RMS.map.init = function(){
-    RMS.map.buildMap();
+    var _self = this;
+    
+   google.maps.event.addListenerOnce(_self.gm, 'tilesloaded', function() {
+        _self.getSeller(_self.startLatLng);
+		//get_locations(startLatLng);
+		//google.maps.event.addListener(map, 'idle', center_changed);
+	});
 };
 
-RMS.map.buildMap = function(){
-    var map = new google.maps.Map(document.getElementById(RMS.mapContainer), RMS.mapOptions);
-    var marker = new google.maps.Marker({
-                map: map,
-                position: RMS.mapOptions.center,
-            });
-};
+RMS.map.getSeller = function(latlng){
+    var _self = this;
+}
+
+ 
 
 
 //////////////////////////////////
