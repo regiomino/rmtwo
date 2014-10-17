@@ -242,8 +242,12 @@
             <br>
             Mit freundlichen Grüßen,<br>
             Ihr Regiomino-Team 
-            <br>
-            <br>
+            <br><br>
+            Geschäftsführer:<br>
+            Volker Heise
+            <br><br>
+            Handelsregister: Amtsgericht Fürth, HRB 14081
+            <br><br>
                 
             <div style="padding-top: 5px; border-top: 1px solid #ddd"></div>
             <em style="font-style:italic; font-size: 12px;">Haben Sie Fragen?
