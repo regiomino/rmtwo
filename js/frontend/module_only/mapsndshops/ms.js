@@ -146,64 +146,14 @@ jQuery(document).ready(function ($) {
 
 var RMS = RMS || {};
 window.RMS = RMS;
-RMS.startValues = { // aka Drupal.settings
-    map : { // immer da
-        lat : 49.45203,
-        lng : 11.07675
-    },
-    distance : 50, //immer da
-    
-    //nicht immer da
-    seller_type : ['baker', 'wine'],
-    payment_method : ['sofort', 'bill']
-     
-};
-RMS.pathToTheme = Drupal.settings.basePath + "sites/all/themes/" + Drupal.settings.ajaxPageState.theme;
+RMS.PATH_TO_THEME = Drupal.settings.basePath + "sites/all/themes/" + Drupal.settings.ajaxPageState.theme;
 
 RMS.init = function(){
-    RMS.filter.init();
+  
     RMS.map.init();
+    RMS.filter.init();
+     
 };
-
-
-//////////////////////////////////
-// RM Map
-//////////////////////////////////
-
-//Map init -> tiles loaded -> Load locations/Marker, getJson
-
-RMS.map = {};
-RMS.map.mapContainer = "map";
-RMS.map.startLatLng = new google.maps.LatLng(49.45203,11.07675);
- 
-RMS.map.mapOptions = {
-    center: RMS.map.startLatLng, // eingegebene PLZ
-    zoom: 11,
-    mapTypeId: 'roadmap'
-};
-
-RMS.map.gm = new google.maps.Map(document.getElementById(RMS.map.mapContainer),RMS.map.mapOptions);
-RMS.map.centerMarker = new google.maps.Marker({
-    map: RMS.map.gm,
-    position: RMS.map.mapOptions.center,
-});
-
-
-RMS.map.init = function(){
-    var _self = this;
-    
-   google.maps.event.addListenerOnce(_self.gm, 'tilesloaded', function() {
-        _self.getSeller(_self.startLatLng);
-		//get_locations(startLatLng);
-		//google.maps.event.addListener(map, 'idle', center_changed);
-	});
-};
-
-RMS.map.getSeller = function(latlng){
-    var _self = this;
-}
-
- 
 
 
 //////////////////////////////////
@@ -215,8 +165,51 @@ RMS.map.getSeller = function(latlng){
 RMS.ajax = {};
 RMS.ajax.$sellerArea = $('#sellers');
 RMS.ajax.LOADER_CLASSNAME = 'loading';
-RMS.ajax.selectedFilter = {};
-RMS.ajax.CALLBACK_URL = // Drupal.settings.basePath + 'addtocart/' + item_data.offerid + '/' + item_data.variation + '/' + item_data.tradingunit + '/' + item_data.amount + '/' + item_data.add;
+RMS.ajax.PATH_GET_LOCATIONS = '/rm-shop-filter';
+
+RMS.ajax.Query = function() {
+    
+    var c = Drupal.settings.rm_shop.map_center.split(',');
+    
+    this.map_bounds_sw = Drupal.settings.rm_shop.map_bounds_sw;  // (lat,lng)
+    this.map_bounds_ne = Drupal.settings.rm_shop.map_bounds_ne;  // (lat,lng)
+    this.map_center = {
+        lat : parseFloat(c[0]),
+        lng : parseFloat(c[1])
+    };
+    this.seller_name = Drupal.settings.rm_shop.seller_name;
+    this.seller_type = Drupal.settings.rm_shop.seller_name;
+    this.delivery_options = Drupal.settings.rm_shop.delivery_options;
+    this.payment_type = Drupal.settings.rm_shop.payment_type;
+};
+ 
+RMS.ajax.Query.prototype = {
+    update : function(key,value){
+        var _self = this;
+        self.key = value;
+    },
+    
+    getValue : function (key) {
+        var _self = this;
+        return _self.key;
+    },
+    
+    getQuery : function() {
+        var _self = this;
+        return {
+            map_bounds_sw : _self.map_bounds_sw,
+            map_bounds_ne : _self.map_bounds_ne,
+            map_center : _self.map_center,
+            seller_name : _self.seller_name,
+            seller_type : _self.seller_type,
+            delivery_options : _self.delivery_options,
+            payment_type: _self.payment_type
+        }
+    }
+};
+
+RMS.ajax.sq = new RMS.ajax.Query();
+
  
 RMS.ajax.addLoader = function(){
     RMS.ajax.$sellerArea.addClass(RMS.ajax.LOADER_CLASSNAME);
@@ -226,14 +219,148 @@ RMS.ajax.removeLoader = function(){
     RMS.ajax.$sellerArea.removeClass(RMS.ajax.LOADER_CLASSNAME);
 }
 
-RMS.ajax.buildQuery = function(){
-    
+RMS.ajax.getSellers = function(){
+   /* var _self = this;
+    $.getJSON(_self.PATH_GET_LOCATIONS), {
+        _self.
+    }*/
+}
+
+ 
+
+
+//////////////////////////////////
+// RM Map
+//////////////////////////////////
+
+RMS.map = {};
+RMS.map.mapContainer = "map";
+RMS.map.mapOptions = {
+    center: RMS.ajax.sq.map_center,  
+    zoom: 11,
+    mapTypeId: 'roadmap'
+};
+RMS.map.popUpWindow = new google.maps.InfoWindow();
+RMS.map.gm = new google.maps.Map(document.getElementById(RMS.map.mapContainer),RMS.map.mapOptions);
+RMS.map.centerMarker = new google.maps.Marker({
+    map: RMS.map.gm,
+    position: RMS.map.mapOptions.center,
+    //icon : 
+});
+
+RMS.map.customIcons = {
+    inactive_profile: {
+        icon: RMS.PATH_TO_THEME + '/images/markers/inactive_profile.png',
+        zindex: 1
+    },
+    prospect_profile: {
+        icon: RMS.PATH_TO_THEME + '/images/markers/inactive_profile.png',
+        zindex: 2
+    },
+    customer_profile: {
+        icon: RMS.PATH_TO_THEME + '/images/markers/customer_profile.png',
+        zindex: 3
+    },
+    seller_profile: {
+        icon: RMS.PATH_TO_THEME + '/images/markers/seller_profile.png',
+        zindex: 4
+    },
 };
 
-RMS.ajax.refreshSeller = function(){
+RMS.map.sellerLocations = {};
+
+RMS.map.init = function(){
+    var _self = this;
     
+    google.maps.event.addListenerOnce(_self.gm, 'tilesloaded', function() {
+        var marker = Drupal.settings.rm_shop.map_marker;
+        var latlng = [];
+       
+        for (var j=0, length=marker.length; j<length; j++) {
+            
+            /*
+            'name' => $shop->title,
+                'url' => url('node/' . $shop->nid),
+                'address' => $address,
+                'lat' => $shop->field_location[LANGUAGE_NONE][0]['lat'],
+                'lon' => $shop->field_location[LANGUAGE_NONE][0]['lon'],
+                'type' => $shop->type,
+                'marker_id' => $shop->nid,
+            */
+            
+             _self.sellerLocations['sellerLocation_'+marker[j].marker_id] = {
+                
+                gmMarker : new google.maps.Marker({
+                    position : new google.maps.LatLng(
+                        parseFloat(marker[j].lat),
+                        parseFloat(marker[j].lon)
+                    ),
+                    map : _self.gm,
+                    title : marker[j].name,
+                    icon : _self.customIcons[marker[j].type].icon,
+                    zIndex: _self.customIcons[marker[j].type].zindex,
+                    id : marker[j].marker_id
+                }),
+                title :  marker[j].name,
+                address : marker[j].address,
+                url : marker[j].url
+            }
+            google.maps.event.addListener(_self.sellerLocations['sellerLocation_'+marker[j].marker_id].gmMarker, 'click', function(e) {
+              _self.openPopUp('sellerLocation_'+ this.id);
+            });
+            
+            var point = new google.maps.LatLng(
+                parseFloat(marker[j].lat),
+                parseFloat(marker[j].lon));
+            latlng.push(point);
+            
+        }
+        // google.maps.event.trigger(map, "resize");
+        var latlngbounds = new google.maps.LatLngBounds();
+        for (var i = 0; i < latlng.length; i++) {
+            latlngbounds.extend(latlng[i]);
+        }
+        _self.gm.setCenter(latlngbounds.getCenter());
+        _self.gm.fitBounds(latlngbounds);
+ 
+       // $.getJSON(RMS.ajax.PATH_GET_LOCATIONS, function(data){
+      //  console.info(data);
+        
+       // });
+       // _self.getSellers(_self.startLatLng);
+		//get_locations(startLatLng);
+		//google.maps.event.addListener(map, 'idle', center_changed);
+	});
 };
 
+RMS.map.getSellers = function(latlng){
+    var _self = this;
+}
+
+RMS.map.openPopUp = function(seller_id) {
+    var _self = this;
+    //console.info(_self.sellerLocations[seller_id].url);
+    _self.popUpWindow.setContent(
+        '<a class="marker-popup" href="'+ _self.sellerLocations[seller_id].url +'">'+ _self.getPopUpMarkup(_self.sellerLocations[seller_id]) +'</a>'
+    ); 
+    _self.popUpWindow.open(_self.gm, _self.sellerLocations[seller_id].gmMarker);
+};
+
+RMS.map.getPopUpMarkup = function(id){
+    var c = '';
+    
+    c += '<h4 itemprop="name">'+id.title+'</h4>';
+    c += '<ul><li>'
+    c += '<span class="fa fa-marker fa-fw"></span> ';
+    c += id.address;
+    c += '</li></ul>';
+
+	return c;
+};
+
+
+
+ 
 
 
 ////////////////////////////////////////////////////////////////////
@@ -249,7 +376,7 @@ RMS.filter.filterArea = $(RMS.filter.filterAreaID);
 RMS.filter.init = function() {
     var _self = this;
     _self.category.init();
-    _self.distance.init();
+   // _self.distance.init();
     _self.addListeners();
 };
 
@@ -261,7 +388,6 @@ RMS.filter.addListeners = function (){
 RMS.filter.handleFilterChange = function(e,key,value) {
     var_self = this;
     e.stopPropagation();
-    console.info(key+' => '+ value);
     RMS.ajax.addLoader();
          setTimeout(RMS.ajax.removeLoader ,1000);
     if (value === -1) {

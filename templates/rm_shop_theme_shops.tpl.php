@@ -37,7 +37,7 @@
             
         </div>
         
-        <div class="row distance">
+       <!-- <div class="row distance">
             <div class="col-md-3">
                 Entfernung (km)
             </div>
@@ -46,7 +46,7 @@
             </div>
             <div class="col-md-1"></div>
         </div>
-        
+        -->
          <div class="row category-filter">
             <div class="col-md-3" style="margin-bottom :  10px;">
                  Filter
