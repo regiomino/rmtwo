@@ -110,12 +110,43 @@ $shop = $shops[$shopkeys[0]];
                                                             $zipcodes .= $zipcode['value'] . ' ';
                                                         }
                                                          print "<li>";
-                                                        print  "<a href='#' data-toggle='popover' data-content='<small><em>Lieferung möglich in die folgenden deutschen PLZ-Gebiete an den bezeichneten Wochentagen und Uhrzeiten unter Berücksichtigung der produktspezifischen Bestellfristen. Die Fristen entnehmen Sie bitte den jeweiligen Produktbeschreibungen durch Klick auf Produktbild oder -namen.</em></small><br><br><strong>PLZ-Gebiete:</strong><br>" . $zipcodes . "<br><br>" . render(field_view_field('node', $agreement, 'field_regular_times')) . "'>";
+                                                         
+                                                        print  "<a href='#' data-toggle='modal' data-target='#shippingModal'>";
                                                             print '<span class="sprite sprite-delivery-truck"></span>';
                                                             print '<small class="text-muted">' . node_type_get_name('shipping_agreement') . ' <br>';
                                                             print '<strong> ab ' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.' | <span class="indicator"> Lieferzeiten anzeigen </span></strong>';
                                                             print '</small>';
                                                         print '</a>';
+                                                        
+                                                        print '
+                                                        <div class="modal fade" id="shippingModal">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                                            <h3 class="modal-title" id="variationModalLabel">Lieferung von <strong>' . $node->title . '</strong></h3>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="row">
+                                                                            <div class="col-md-12"> 
+                                                                                <p>Lieferung möglich in die folgenden deutschen PLZ-Gebiete an den bezeichneten Wochentagen und Uhrzeiten unter Berücksichtigung der produktspezifischen Bestellfristen. Die Fristen entnehmen Sie bitte den jeweiligen Produktbeschreibungen durch Klick auf Produktbild oder -namen.</p><br>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-6"> 
+                                                                                ' . render(field_view_field('node', $agreement, 'field_regular_times')) . '
+                                                                            </div>
+                                                                            <div class="col-md-6"> 
+                                                                                <p><strong>PLZ-Gebiete:</strong><br>' . $zipcodes . '</p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div><!-- /.modal-content -->
+                                                            </div><!-- /.modal-dialog -->
+                                                        </div><!-- /.modal -->
+                                                        ';
+                                                        
+                                                        
                                                          print "</li>";
                                                     break;
                                                 
