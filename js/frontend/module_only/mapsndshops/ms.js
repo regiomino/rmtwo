@@ -221,6 +221,7 @@ RMS.ajax.updateResults = function(){
     
     $.ajax({
         url: _self.PATH_GET_LOCATIONS,
+        type: "GET",
         data :  _self.sq.getQuery(),
   
     }).done(function( data ) {
