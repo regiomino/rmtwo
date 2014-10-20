@@ -1,5 +1,29 @@
 jQuery(document).ready(function ($) {
-
+function difference(o1, o2) {
+    var k, kDiff,
+        diff = {};
+    for (k in o1) {
+        if (!o1.hasOwnProperty(k)) {
+        } else if (typeof o1[k] != 'object' || typeof o2[k] != 'object') {
+            if (!(k in o2) || o1[k] !== o2[k]) {
+                diff[k] = o2[k];
+            }
+        } else if (kDiff = difference(o1[k], o2[k])) {
+            diff[k] = kDiff;
+        }
+    }
+    for (k in o2) {
+        if (o2.hasOwnProperty(k) && !(k in o1)) {
+            diff[k] = o2[k];
+        }
+    }
+    for (k in diff) {
+        if (diff.hasOwnProperty(k)) {
+            return diff;
+        }
+    }
+    return false;
+}
  /*var debounce = function(func, wait, immediate) {
      
         var timeout;
@@ -214,7 +238,7 @@ RMS.ajax.removeLoader = function(){
 RMS.ajax.updateResults = function(){
     var _self = this;
     _self.addLoader();
-    console.info(_self.sq.getQuery());
+    
     
     $.ajax({
         url: _self.PATH_GET_LOCATIONS,
@@ -224,6 +248,7 @@ RMS.ajax.updateResults = function(){
   
     }).success(function(data) {
         RMS.$sellerItemsArea.html(data.html);
+        RMS.map.updateMarker(data.marker);
         _self.removeLoader();
     });
     
@@ -247,7 +272,7 @@ RMS.map.mapOptions = {
     mapTypeId: 'roadmap'
 };
 RMS.map.popUpWindow = new google.maps.InfoWindow();
-
+RMS.map.latlng = [];
 
 RMS.map.customIcons = {
     inactive_profile: {
@@ -276,74 +301,33 @@ RMS.map.init = function(){
     var latlng = [];
     _self.gm = new google.maps.Map(document.getElementById(_self.mapContainer),_self.mapOptions);
     _self.centerMarker = new google.maps.Marker({
-        map: RMS.map.gm,
-        position: RMS.map.mapOptions.center,
+        map:  _self.gm,
+        position: _self.mapOptions.center,
         //icon : 
     });
-        for (var j=0, length=marker.length; j<length; j++) {
-            
-            /*
-            'name' => $shop->title,
-                'url' => url('node/' . $shop->nid),
-                'address' => $address,
-                'lat' => $shop->field_location[LANGUAGE_NONE][0]['lat'],
-                'lon' => $shop->field_location[LANGUAGE_NONE][0]['lon'],
-                'type' => $shop->type,
-                'marker_id' => $shop->nid,
-            */
-            
-             _self.sellerLocations['sellerLocation_'+marker[j].marker_id] = {
-                
-                gmMarker : new google.maps.Marker({
-                    position : new google.maps.LatLng(
-                        parseFloat(marker[j].lat),
-                        parseFloat(marker[j].lon)
-                    ),
-                    map : _self.gm,
-                    title : marker[j].name,
-                    icon : _self.customIcons[marker[j].type].icon,
-                    zIndex: _self.customIcons[marker[j].type].zindex,
-                    id : marker[j].marker_id
-                }),
-                title :  marker[j].name,
-                address : marker[j].address,
-                url : marker[j].url
-            }
-            google.maps.event.addListener(_self.sellerLocations['sellerLocation_'+marker[j].marker_id].gmMarker, 'click', function(e) {
-              _self.openPopUp('sellerLocation_'+ this.id);
-            });
-            
-            var point = new google.maps.LatLng(
-                parseFloat(marker[j].lat),
-                parseFloat(marker[j].lon));
-            latlng.push(point);
-        }
-          
-         var latlngbounds = new google.maps.LatLngBounds();
-        for (var i = 0; i < latlng.length; i++) {
-            latlngbounds.extend(latlng[i]);
-        }
-        _self.gm.fitBounds(latlngbounds);
-        google.maps.event.addListener(_self.gm, 'idle', $.proxy(_self.centerChange,_self));
+
+    _self.updateMarker(marker,true);
+    google.maps.event.addListener(_self.gm, 'idle', $.proxy(_self.centerChange,_self));
 };
+
 RMS.map.centerChange = function(){
     var _self = this;
    
    if (!_self.firstLoad) {
-      //  RMS.ajax.addLoader();
-          var newBounds = {
-             map_bounds_ne_lat : _self.gm.getBounds().getNorthEast().lat(),
-             map_bounds_ne_lng : _self.gm.getBounds().getNorthEast().lng(),
-             map_bounds_sw_lat : _self.gm.getBounds().getSouthWest().lat(),
-             map_bounds_sw_lng : _self.gm.getBounds().getSouthWest().lng()
-          };
+      
+        var newBounds = {
+            map_bounds_ne_lat : _self.gm.getBounds().getNorthEast().lat(),
+            map_bounds_ne_lng : _self.gm.getBounds().getNorthEast().lng(),
+            map_bounds_sw_lat : _self.gm.getBounds().getSouthWest().lat(),
+            map_bounds_sw_lng : _self.gm.getBounds().getSouthWest().lng()
+        };
           
         RMS.ajax.sq.update(newBounds); 
         RMS.ajax.updateResults();
-        
     }
     _self.firstLoad = false;
 };
+
 RMS.map.getSellers = function(latlng){
     var _self = this;
 }
@@ -369,6 +353,81 @@ RMS.map.getPopUpMarkup = function(id){
 	return c;
 };
 
+RMS.map.updateMarker = function(marker,collectBounds) {
+    var _self = this;
+    
+    //das geht besser!
+    //alle Marker unsichtbar schalten
+    
+        for (j in _self.sellerLocations) {
+            _self.sellerLocations[j].gmMarker.setMap(null);
+            
+        }
+    
+    
+    
+    $.each(marker,function(i,item) {
+      //  console.info("index: "+ i + " item_id: "+ item.marker_id);
+        if(_self.sellerLocations['sellerLocation_'+item.marker_id]) {
+            // schon vorhanden
+            // wenn noch nicht visible -> visible schalten
+            if (_self.sellerLocations['sellerLocation_'+item.marker_id].gmMarker.getMap() != _self.gm ) {
+               _self.sellerLocations['sellerLocation_'+item.marker_id].gmMarker.setMap(_self.gm);
+            }
+            return;
+        }
+        
+        // noch nicht vorhanden
+        
+        _self.sellerLocations['sellerLocation_'+item.marker_id] = {
+                
+            gmMarker : new google.maps.Marker({
+                position : new google.maps.LatLng(
+                    parseFloat(item.lat),
+                    parseFloat(item.lon)
+                ),
+                map : _self.gm,
+                title : item.name,
+                icon : _self.customIcons[item.type].icon,
+                zIndex: _self.customIcons[item.type].zindex,
+                id : item.marker_id
+            }),
+            title :  item.name,
+            address : item.address,
+            url : item.url
+        }
+        google.maps.event.addListener(_self.sellerLocations['sellerLocation_'+item.marker_id].gmMarker, 'click', function(e) {
+            _self.openPopUp('sellerLocation_'+ this.id);
+        });
+        
+        if (collectBounds) {
+            var point = new google.maps.LatLng(
+            parseFloat(item.lat),
+            parseFloat(item.lon));
+            _self.latlng.push(point);
+            
+            var latlngbounds = new google.maps.LatLngBounds();
+            for (var k = 0; k < _self.latlng.length; k++) {
+                latlngbounds.extend(_self.latlng[k]);
+            }
+            _self.gm.fitBounds(latlngbounds);
+        }
+    });
+    
+   // _self.displayMarker();
+};
+
+RMS.map.displayMarker = function(){
+    var _self = this;
+     
+    var alreadyThere;
+    
+    for (h in _self.sellerLocations ) {
+        alreadyThere = _self.gm.getBounds();
+        
+    }
+};
+ 
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
 // RM Filter
