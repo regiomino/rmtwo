@@ -223,9 +223,11 @@ RMS.ajax.updateResults = function(){
         url: _self.PATH_GET_LOCATIONS,
         type: "GET",
         data :  _self.sq.getQuery(),
+        dataType : 'json'
   
-    }).done(function( data ) {
-        console.info(data);
+    }).success(function(data) {
+        console.info(data.html);
+        _self.removeLoader();
     });
     
   /* $.getJSON(_self.PATH_GET_LOCATIONS, _self.sq.getQuery(), function(data) {
