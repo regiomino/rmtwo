@@ -124,7 +124,7 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
                                             <?php $first = false; ?>
                                         <?php endforeach; ?>
                                     </ul>
-                                    <?php print l('<span class="fa fa-plus"></span> ' . t('Add offer variation'), 'addoffervariation/' . $offer->nid, array('html' => TRUE, 'query' => drupal_get_destination(), 'attributes' => array('class' => array('btn', 'btn-success')))); ?>
+                                    <?php print render($form['offers']['offer_' . $offer->nid]['these_fields']['add_variation_button-' . $offer->nid]); ?>
                                 </div>
                    
                                 <div id="tabContent" class="tab-content">
@@ -176,7 +176,7 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="row">
-                                                            <div class="col-md-6 productunit">
+                                                            <div class="col-md-5 productunit">
                                                                 <span class="lbl">Produkteinheit</span>
                                                                 <div class="row">
                                                                      <div class="col-md-5">
@@ -187,12 +187,12 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
                                                                         </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                  <span class="lbl">Bestand</span>
                                                                   <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_stock-' . $variation->nid]); ?>
                                                              </div>
-                                                            <div class="col-md-12">
-                                                                 <span class="lbl">Vorlaufzeit</span>
+                                                            <div class="col-md-4">
+                                                                 <span class="lbl">Vorlaufzeit (in Std.)</span>
                                                                       <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_leadtime-' . $variation->nid]); ?>
                                                             </div>
                                                         </div>
@@ -202,7 +202,7 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
                                                             <div class="col-md-12">
                                                                 <div class="row">
                                                                     <div class="col-md-6">
-                                                                     <span class="lbl">Haltbarkeit</span>
+                                                                     <span class="lbl">Haltbarkeit (in Tagen)</span>
                                                                       <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['field_use_within-' . $variation->nid]); ?>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -227,9 +227,9 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
                                                                         <th class="number">#</th>
                                                                         <th>Anzahl</th>
                                                                         <th class="binding-type">Gebindeart</th>
-                                                                        <th>Preis</th>
+                                                                        <th>Preis (in €)</th>
                                                                         <th class="vat">MwSt.</th>
-                                                                        <th>Pfand</th>
+                                                                        <th>Pfand (in €)</th>
                                                                         <th >Aktionen</th>
                                                                     </tr>
                                                                 </thead>
@@ -257,7 +257,7 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
                                                                    <?php endforeach; ?>
                                                                 </tbody>
                                                             </table>
-                                                           <?php print l('<span class="fa fa-plus"></span> ' . t('Add trading unit'), 'addtradingunit/' . $variation->nid, array('html' => TRUE, 'query' => drupal_get_destination(), 'attributes' => array('class' => array('btn', 'btn-primary')))); ?>
+                                                           <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['these_fields']['add_tu_button-' . $variation->nid]); //l('<span class="fa fa-plus"></span> ' . t('Add trading unit'), 'addtradingunit/' . $variation->nid, array('html' => TRUE, 'query' => drupal_get_destination(), 'attributes' => array('class' => array('btn', 'btn-primary')))); ?>
 
                                                         </div><!--end table-responsive-->
                                                     </div>
