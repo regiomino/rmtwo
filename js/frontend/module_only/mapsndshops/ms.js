@@ -217,10 +217,11 @@ RMS.ajax.removeLoader = function(){
 RMS.ajax.updateResults = function(){
     var _self = this;
     _self.addLoader();
-    $.getJSON(_self.PATH_GET_LOCATIONS, _self.sq.getQuery(), function(data) {
+    console.info(_self.sq.getQuery());
+   $.getJSON(_self.PATH_GET_LOCATIONS, _self.sq.getQuery(), function(data) {
               console.info(data);
               _self.removeLoader();
-    });
+   }); 
 }
  
 
