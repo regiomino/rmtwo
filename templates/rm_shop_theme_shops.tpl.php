@@ -62,14 +62,18 @@
                         </div> <!-- end filter-name -->
                         <div class="filter-content">
                             <ul class="filter-terms filter-terms-seller_type" data-filtertype="seller_type">
-                                <?php foreach($vars['categories'] as $term): ?>
                                 <div class="term-wrapper"> 
-                                    <li data-term="<?php print $term->tid; ?>">
+                                    <li data-term="backer">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
-                                        <span class="checkbox-label"><?php print $term->name; ?></span>
+                                        <span class="checkbox-label">Bäckerei</span>
                                     </li>
                                 </div>
-                                <?php endforeach; ?>
+                                <div class="term-wrapper"> 
+                                    <li data-term="brewery">
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Brauerei</span>
+                                    </li>
+                                </div>
                             </ul>
                         </div><!-- end filter-content -->
                     </div><!--end filter-->
@@ -83,23 +87,23 @@
                         <div class="filter-content">
                             <ul class="filter-terms filter-terms-delivery_type" data-filtertype="delivery_type">
                                 <div class="term-wrapper"> 
-                                    <li data-term="pickup_agreement">
+                                    <li data-term="selbstabholung">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Selbstabholung</span>
                                     </li>
                                 </div>
                                 <div class="term-wrapper"> 
-                                    <li data-term="shipping_agreement">
+                                    <li data-term="lieferung">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Lieferung</span>
                                     </li>
                                 </div>
-                                 <!--<div class="term-wrapper"> 
-                                    <li data-term="dispatch_agreement">
+                                 <div class="term-wrapper"> 
+                                    <li data-term="postversand">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
-                                        <span class="checkbox-label">Versand</span>
+                                        <span class="checkbox-label">Postversand</span>
                                     </li>
-                                </div>-->
+                                </div>
                             </ul>
                         </div><!-- end filter-content -->
                     </div><!--end filter-->
@@ -116,7 +120,7 @@
                                  <div class="term-wrapper"> 
                                     <li>
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
-                                        <span class="checkbox-label">PayPal, Sofortüberweisung</span>
+                                        <span class="checkbox-label">Online-Zahlung</span>
                                     </li>
                                 </div>
                                 <div class="term-wrapper"> 
@@ -128,7 +132,7 @@
                                  <div class="term-wrapper"> 
                                     <li>
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
-                                        <span class="checkbox-label">Barzahlung</span>
+                                        <span class="checkbox-label">Bar</span>
                                     </li>
                                 </div>
                                 
