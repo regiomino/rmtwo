@@ -83,13 +83,13 @@
                         <div class="filter-content">
                             <ul class="filter-terms filter-terms-delivery_type" data-filtertype="delivery_option">
                                 <div class="term-wrapper"> 
-                                    <li data-term="pickup">
+                                    <li data-term="pickup_agreement">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Selbstabholung</span>
                                     </li>
                                 </div>
                                 <div class="term-wrapper"> 
-                                    <li data-term="delivery">
+                                    <li data-term="shipping_agreement">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Lieferung</span>
                                     </li>
