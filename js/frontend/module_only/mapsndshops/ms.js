@@ -204,7 +204,7 @@ RMS.ajax.Query.prototype = {
 };
 
 RMS.ajax.sq = new RMS.ajax.Query();
-
+ 
  
 RMS.ajax.addLoader = function(){
     RMS.ajax.$sellerArea.addClass(RMS.ajax.LOADER_CLASSNAME);
@@ -213,14 +213,15 @@ RMS.ajax.addLoader = function(){
 RMS.ajax.removeLoader = function(){
     RMS.ajax.$sellerArea.removeClass(RMS.ajax.LOADER_CLASSNAME);
 }
-
-RMS.ajax.getSellers = function(){
-   /* var _self = this;
-    $.getJSON(_self.PATH_GET_LOCATIONS), {
-        _self.
-    }*/
+ 
+RMS.ajax.updateResults = function(){
+    var _self = this;
+    _self.addLoader();
+    $.getJSON(_self.PATH_GET_LOCATIONS, _self.sq.getQuery(), function(data) {
+              console.info(data);
+              _self.removeLoader();
+    });
 }
-
  
 
 
@@ -306,7 +307,6 @@ RMS.map.init = function(){
                 parseFloat(marker[j].lat),
                 parseFloat(marker[j].lon));
             latlng.push(point);
-            
         }
           
          var latlngbounds = new google.maps.LatLngBounds();
@@ -320,7 +320,7 @@ RMS.map.centerChange = function(){
     var _self = this;
    
    if (!_self.firstLoad) {
-        RMS.ajax.addLoader();
+      //  RMS.ajax.addLoader();
           var newBounds = {
              map_bounds_ne_lat : _self.gm.getBounds().getNorthEast().lat(),
              map_bounds_ne_lng : _self.gm.getBounds().getNorthEast().lng(),
@@ -328,15 +328,10 @@ RMS.map.centerChange = function(){
              map_bounds_sw_lng : _self.gm.getBounds().getSouthWest().lng()
           };
           
-          RMS.ajax.sq.update(newBounds);
-          console.info(RMS.ajax.sq);
-         
-          $.getJSON(RMS.ajax.PATH_GET_LOCATIONS, RMS.ajax.sq, function(data) {
-              console.info(data);
-              RMS.ajax.removeLoader();
-          });
-    
-     }
+        RMS.ajax.sq.update(newBounds); 
+        RMS.ajax.updateResults();
+        
+    }
     _self.firstLoad = false;
 };
 RMS.map.getSellers = function(latlng){
@@ -363,11 +358,6 @@ RMS.map.getPopUpMarkup = function(id){
 
 	return c;
 };
-
-
-
- 
-
 
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -403,6 +393,8 @@ RMS.filter.handleFilterChange = function(e,key,value) {
         updateVals[key]='';
         RMS.ajax.sq.update(updateVals);
     }
+    
+    RMS.ajax.updateResults();
    
    /* RMS.ajax.addLoader();
          setTimeout(RMS.ajax.removeLoader ,1000); 
@@ -415,10 +407,6 @@ RMS.filter.handleFilterChange = function(e,key,value) {
         RMS.ajax.selectedFilter[key] = value;
     }*/
    
-  
-    var q =  RMS.ajax.sq.getQuery();
-    console.info( q);
-    
 };
 /////////////////////////////////////
 //Distance / No UI Slider + Pips Addon

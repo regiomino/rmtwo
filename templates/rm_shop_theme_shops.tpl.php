@@ -128,7 +128,7 @@
                         </div><!-- end filter-content -->
                     </div><!--end filter-->
                     
-                      <div class="filter" data-filtertype="payment_option">
+                      <div class="filter" data-filtertype="payment_type">
                         <div class="filter-name">
                             <div class="filter-name-text" data-defaulttext="Zahlungsarten" data-filtertype="payment_option">Zahlungsarten</div>
                             <span class="show-more fa fa-caret-down"></span>
