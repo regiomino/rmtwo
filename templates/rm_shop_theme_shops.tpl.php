@@ -53,6 +53,7 @@
             </div>
             <div class="col-md-8">
                 <div class="filter-wrapper">
+                    
                      <div class="filter" data-filtertype="seller_type">
                         <div class="filter-name">
                             <div class="filter-name-text" data-defaulttext="Betrieb" data-filtertype="seller_type">Betrieb</div>
@@ -61,39 +62,14 @@
                         </div> <!-- end filter-name -->
                         <div class="filter-content">
                             <ul class="filter-terms filter-terms-seller_type" data-filtertype="seller_type">
+                                <?php foreach($vars['categories'] as $term): ?>
                                 <div class="term-wrapper"> 
-                                    <li data-term="backery">
+                                    <li data-term="<?php print $term->tid; ?>">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
-                                        <span class="checkbox-label">Bäckerei</span>
+                                        <span class="checkbox-label"><?php print $term->name; ?></span>
                                     </li>
                                 </div>
-                                <div class="term-wrapper"> 
-                                    <li data-term="brewery">
-                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
-                                        <span class="checkbox-label">Brauerei</span>
-                                    </li>
-                                </div>
-                                
-                                <div class="term-wrapper"> 
-                                    <li data-term="butcher">
-                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
-                                        <span class="checkbox-label">Metzgerei</span>
-                                    </li>
-                                </div>
-                                
-                                 <div class="term-wrapper"> 
-                                    <li data-term="winery">
-                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
-                                        <span class="checkbox-label">Weinbau</span>
-                                    </li>
-                                </div>
-                                 
-                                <div class="term-wrapper"> 
-                                    <li data-term="liquor">
-                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
-                                        <span class="checkbox-label">Spirituosen </span>
-                                    </li>
-                                </div>
+                                <?php endforeach; ?>
                             </ul>
                         </div><!-- end filter-content -->
                     </div><!--end filter-->
@@ -107,50 +83,54 @@
                         <div class="filter-content">
                             <ul class="filter-terms filter-terms-delivery_type" data-filtertype="delivery_type">
                                 <div class="term-wrapper"> 
-                                    <li data-term="selbstabholung">
+                                    <li data-term="pickup_agreement">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Selbstabholung</span>
                                     </li>
                                 </div>
                                 <div class="term-wrapper"> 
-                                    <li data-term="lieferung">
+                                    <li data-term="shipping_agreement">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Lieferung</span>
                                     </li>
                                 </div>
-                                 <div class="term-wrapper"> 
+                                 <!--<div class="term-wrapper"> 
                                     <li data-term="postversand">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Postversand</span>
                                     </li>
-                                </div>
+                                </div>-->
                             </ul>
                         </div><!-- end filter-content -->
                     </div><!--end filter-->
                     
+ 
                       <div class="filter" data-filtertype="payment_type">
+ 
+                      <div class="filter" data-filtertype="producttype">
+ 
                         <div class="filter-name">
-                            <div class="filter-name-text" data-defaulttext="Zahlungsarten" data-filtertype="payment_option">Zahlungsarten</div>
+                            <div class="filter-name-text" data-defaulttext="Zahlungsarten" data-filtertype="delivery_type">Zahlungsarten</div>
                             <span class="show-more fa fa-caret-down"></span>
-                            <span class="reset fa fa-times" data-filtertype="payment_option"></span>
+                            <span class="reset fa fa-times" data-filtertype="delivery_type"></span>
                         </div> <!-- end filter-name -->
                 
                         <div class="filter-content">
-                            <ul class="filter-terms filter-terms-producttype" data-filtertype="payment_option">
+                            <ul class="filter-terms filter-terms-producttype" data-filtertype="delivery_type">
                                  <div class="term-wrapper"> 
-                                    <li data-term="electronic">
+                                    <li>
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
-                                        <span class="checkbox-label">Online-Zahlung</span>
+                                        <span class="checkbox-label">PayPal, Sofortüberweisung</span>
                                     </li>
                                 </div>
                                 <div class="term-wrapper"> 
-                                    <li data-term="bill">
+                                    <li>
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Rechnung</span>
                                     </li>
                                 </div>
                                  <div class="term-wrapper"> 
-                                    <li data-term="cash"> 
+                                    <li>
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Bar</span>
                                     </li>
