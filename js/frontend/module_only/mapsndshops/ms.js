@@ -147,14 +147,11 @@ jQuery(document).ready(function ($) {
 var RMS = RMS || {};
 window.RMS = RMS;
 RMS.PATH_TO_THEME = Drupal.settings.basePath + "sites/all/themes/" + Drupal.settings.ajaxPageState.theme;
-
+RMS.$sellerItemsArea = $('#sellers > .row');
 RMS.init = function(){
-  
     RMS.map.init();
     RMS.filter.init();
-     
 };
-
 
 //////////////////////////////////
 // RM Ajax
@@ -226,7 +223,7 @@ RMS.ajax.updateResults = function(){
         dataType : 'json'
   
     }).success(function(data) {
-        console.info(data.html);
+        RMS.$sellerItemsArea.html(data.html);
         _self.removeLoader();
     });
     
