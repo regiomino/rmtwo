@@ -171,40 +171,35 @@ RMS.ajax.Query = function() {
     
     var c = Drupal.settings.rm_shop.map_center.split(',');
     
-    this.map_bounds_sw = Drupal.settings.rm_shop.map_bounds_sw;  // (lat,lng)
-    this.map_bounds_ne = Drupal.settings.rm_shop.map_bounds_ne;  // (lat,lng)
-    this.map_center = {
-        lat : parseFloat(c[0]),
-        lng : parseFloat(c[1])
-    };
-    this.seller_name = Drupal.settings.rm_shop.seller_name;
-    this.seller_type = Drupal.settings.rm_shop.seller_name;
-    this.delivery_options = Drupal.settings.rm_shop.delivery_options;
-    this.payment_type = Drupal.settings.rm_shop.payment_type;
+    this.qvalues = {
+        map_bounds_ne_lat : Drupal.settings.rm_shop.map_bounds_ne_lat,
+        map_bounds_ne_lng : Drupal.settings.rm_shop.map_bounds_ne_lng,
+        map_bounds_sw_lat : Drupal.settings.rm_shop.map_bounds_sw_lat,  
+        map_bounds_sw_lng : Drupal.settings.rm_shop.map_bounds_sw_lng,
+        map_center : {
+            lat : parseFloat(c[0]),
+            lng : parseFloat(c[1])
+        },
+        seller_name : Drupal.settings.rm_shop.seller_name,
+        delivery_option : Drupal.settings.rm_shop.delivery_options,
+        payment_type : Drupal.settings.rm_shop.payment_type
+    }
 };
  
 RMS.ajax.Query.prototype = {
-    update : function(key,value){
+    update : function(newVals){
         var _self = this;
-        self.key = value;
+        $.extend(true, _self.qvalues, newVals);
     },
     
     getValue : function (key) {
         var _self = this;
-        return _self.key;
+        return _self.qvalues.key;
     },
     
     getQuery : function() {
         var _self = this;
-        return {
-            map_bounds_sw : _self.map_bounds_sw,
-            map_bounds_ne : _self.map_bounds_ne,
-            map_center : _self.map_center,
-            seller_name : _self.seller_name,
-            seller_type : _self.seller_type,
-            delivery_options : _self.delivery_options,
-            payment_type: _self.payment_type
-        }
+        return  _self.qvalues;
     }
 };
 
@@ -241,12 +236,7 @@ RMS.map.mapOptions = {
     mapTypeId: 'roadmap'
 };
 RMS.map.popUpWindow = new google.maps.InfoWindow();
-RMS.map.gm = new google.maps.Map(document.getElementById(RMS.map.mapContainer),RMS.map.mapOptions);
-RMS.map.centerMarker = new google.maps.Marker({
-    map: RMS.map.gm,
-    position: RMS.map.mapOptions.center,
-    //icon : 
-});
+
 
 RMS.map.customIcons = {
     inactive_profile: {
@@ -262,20 +252,23 @@ RMS.map.customIcons = {
         zindex: 3
     },
     seller_profile: {
-        icon: RMS.PATH_TO_THEME + '/images/markers/seller_profile.png',
+        icon: RMS.PATH_TO_THEME + '/images/markers/pickup_icon.png',
         zindex: 4
     },
 };
 
 RMS.map.sellerLocations = {};
-
+RMS.map.firstLoad = true;
 RMS.map.init = function(){
     var _self = this;
-    
-    google.maps.event.addListenerOnce(_self.gm, 'tilesloaded', function() {
-        var marker = Drupal.settings.rm_shop.map_marker;
-        var latlng = [];
-       
+    var marker = Drupal.settings.rm_shop.map_marker;
+    var latlng = [];
+    _self.gm = new google.maps.Map(document.getElementById(_self.mapContainer),_self.mapOptions);
+    _self.centerMarker = new google.maps.Marker({
+        map: RMS.map.gm,
+        position: RMS.map.mapOptions.center,
+        //icon : 
+    });
         for (var j=0, length=marker.length; j<length; j++) {
             
             /*
@@ -315,24 +308,37 @@ RMS.map.init = function(){
             latlng.push(point);
             
         }
-        // google.maps.event.trigger(map, "resize");
-        var latlngbounds = new google.maps.LatLngBounds();
+          
+         var latlngbounds = new google.maps.LatLngBounds();
         for (var i = 0; i < latlng.length; i++) {
             latlngbounds.extend(latlng[i]);
         }
-        _self.gm.setCenter(latlngbounds.getCenter());
         _self.gm.fitBounds(latlngbounds);
- 
-       // $.getJSON(RMS.ajax.PATH_GET_LOCATIONS, function(data){
-      //  console.info(data);
-        
-       // });
-       // _self.getSellers(_self.startLatLng);
-		//get_locations(startLatLng);
-		//google.maps.event.addListener(map, 'idle', center_changed);
-	});
+        google.maps.event.addListener(_self.gm, 'idle', $.proxy(_self.centerChange,_self));
 };
-
+RMS.map.centerChange = function(){
+    var _self = this;
+   
+   if (!_self.firstLoad) {
+        RMS.ajax.addLoader();
+          var newBounds = {
+             map_bounds_ne_lat : _self.gm.getBounds().getNorthEast().lat(),
+             map_bounds_ne_lng : _self.gm.getBounds().getNorthEast().lng(),
+             map_bounds_sw_lat : _self.gm.getBounds().getSouthWest().lat(),
+             map_bounds_sw_lng : _self.gm.getBounds().getSouthWest().lng()
+          };
+          
+          RMS.ajax.sq.update(newBounds);
+          console.info(RMS.ajax.sq);
+         
+          $.getJSON(RMS.ajax.PATH_GET_LOCATIONS, RMS.ajax.sq, function(data) {
+              console.info(data);
+              RMS.ajax.removeLoader();
+          });
+    
+     }
+    _self.firstLoad = false;
+};
 RMS.map.getSellers = function(latlng){
     var _self = this;
 }
@@ -388,18 +394,30 @@ RMS.filter.addListeners = function (){
 RMS.filter.handleFilterChange = function(e,key,value) {
     var_self = this;
     e.stopPropagation();
-    RMS.ajax.addLoader();
-         setTimeout(RMS.ajax.removeLoader ,1000);
+    var updateVals = {};
+    if (value.length > 0) {
+        updateVals[key]= value.join(',');
+        RMS.ajax.sq.update(updateVals);
+        
+    } else {
+        updateVals[key]='';
+        RMS.ajax.sq.update(updateVals);
+    }
+   
+   /* RMS.ajax.addLoader();
+         setTimeout(RMS.ajax.removeLoader ,1000); 
     if (value === -1) {
         //delete Key
-        if ( RMS.ajax.selectedFilter.hasOwnProperty(key)) {
+      /*  if ( RMS.ajax.selectedFilter.hasOwnProperty(key)) {
             delete RMS.ajax.selectedFilter[key];
         }
     } else {
         RMS.ajax.selectedFilter[key] = value;
-    }
+    }*/
    
-    console.info(RMS.ajax.selectedFilter);
+  
+    var q =  RMS.ajax.sq.getQuery();
+    console.info( q);
     
 };
 /////////////////////////////////////
@@ -567,7 +585,7 @@ RMS.filter.category.CatFilter.prototype = {
        } else {
             _self.resetFilterName();
             _self.selectedCats.length = 0;
-            RMS.filter.filterArea.trigger('filterchange',[_self.filterKey,-1]);
+            RMS.filter.filterArea.trigger('filterchange',[_self.filterKey,""]);
        }
        
     },

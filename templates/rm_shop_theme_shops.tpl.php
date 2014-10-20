@@ -53,7 +53,6 @@
             </div>
             <div class="col-md-8">
                 <div class="filter-wrapper">
-                    
                      <div class="filter" data-filtertype="seller_type">
                         <div class="filter-name">
                             <div class="filter-name-text" data-defaulttext="Betrieb" data-filtertype="seller_type">Betrieb</div>
@@ -63,7 +62,7 @@
                         <div class="filter-content">
                             <ul class="filter-terms filter-terms-seller_type" data-filtertype="seller_type">
                                 <div class="term-wrapper"> 
-                                    <li data-term="backer">
+                                    <li data-term="backery">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Bäckerei</span>
                                     </li>
@@ -72,6 +71,27 @@
                                     <li data-term="brewery">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Brauerei</span>
+                                    </li>
+                                </div>
+                                
+                                <div class="term-wrapper"> 
+                                    <li data-term="butcher">
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Metzgerei</span>
+                                    </li>
+                                </div>
+                                
+                                 <div class="term-wrapper"> 
+                                    <li data-term="winery">
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Weinbau</span>
+                                    </li>
+                                </div>
+                                 
+                                <div class="term-wrapper"> 
+                                    <li data-term="liquor">
+                                        <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                                        <span class="checkbox-label">Spirituosen </span>
                                     </li>
                                 </div>
                             </ul>
@@ -108,29 +128,29 @@
                         </div><!-- end filter-content -->
                     </div><!--end filter-->
                     
-                      <div class="filter" data-filtertype="producttype">
+                      <div class="filter" data-filtertype="payment_option">
                         <div class="filter-name">
-                            <div class="filter-name-text" data-defaulttext="Zahlungsarten" data-filtertype="delivery_type">Zahlungsarten</div>
+                            <div class="filter-name-text" data-defaulttext="Zahlungsarten" data-filtertype="payment_option">Zahlungsarten</div>
                             <span class="show-more fa fa-caret-down"></span>
-                            <span class="reset fa fa-times" data-filtertype="delivery_type"></span>
+                            <span class="reset fa fa-times" data-filtertype="payment_option"></span>
                         </div> <!-- end filter-name -->
                 
                         <div class="filter-content">
-                            <ul class="filter-terms filter-terms-producttype" data-filtertype="delivery_type">
+                            <ul class="filter-terms filter-terms-producttype" data-filtertype="payment_option">
                                  <div class="term-wrapper"> 
-                                    <li>
+                                    <li data-term="electronic">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Online-Zahlung</span>
                                     </li>
                                 </div>
                                 <div class="term-wrapper"> 
-                                    <li>
+                                    <li data-term="bill">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Rechnung</span>
                                     </li>
                                 </div>
                                  <div class="term-wrapper"> 
-                                    <li>
+                                    <li data-term="cash"> 
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Bar</span>
                                     </li>
