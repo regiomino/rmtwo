@@ -530,6 +530,7 @@ RMS.filter.distance.addSuffix = function(){
 /////////////////////////////////////
 RMS.filter.search = {};
 RMS.filter.search.$input = $('#filterShops');
+RMS.filter.search.$clear = $('#clearQuery');
 RMS.filter.search.init = function(){
     var _self = this;
     _self.addListeners();
@@ -539,6 +540,7 @@ RMS.filter.search.timeout;
 RMS.filter.search.addListeners = function() {
     var _self = this;
     _self.$input.on('keyup',{obj: _self},_self.keyUp);
+    _self.$clear.on('click',$.proxy(_self.clearInput,_self));
 }
 
 RMS.filter.search.keyUp = function(e){
@@ -547,11 +549,20 @@ RMS.filter.search.keyUp = function(e){
     var $el = $(this);
     clearTimeout(_self.timeout);
     var string = $el.val().trim();
+    if (string.length > 0) {
+        _self.$clear.show();
+    } else {_self.$clear.hide();}
     _self.timeout = setTimeout(function(){
          
         RMS.filter.filterArea.trigger('filterchange',['seller_name',string]); 
         
-    },500);
+    },400);
+}
+
+RMS.filter.search.clearInput = function(){
+    var _self = this;
+    _self.$input.val('');
+    _self.$input.trigger('keyup');
 }
 
 /////////////////////////////////////     

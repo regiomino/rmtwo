@@ -49,20 +49,17 @@
                 margin-top: 0;
             }
             
-            .input-group {
-                max-width: 250px;
-            }
             
             .row {
                 padding: 20px 0px;
                 position: relative;
             }
             
-            .row.distance {
+            .row.search {
                 height: 84px;
             }
             
-            .row.distance:before {
+            .row.search:before {
                 content: "";
                 position: absolute;
                 bottom: -1px;
@@ -74,19 +71,46 @@
             }
         }
         
-        .distance {
+        .search {
             
+           .form-control {
+                border: 1px solid #ddd;
+           }
+           
+            #clearQuery {
+                position: absolute;
+                right: 58px;
+                top: 10px;
+                z-index: 2;
+                cursor: pointer;
+                display: none;
+                
+                .fa-circle {
+                    color: #ddd;
+                }
+                
+                &:hover,
+                &:focus {
+                    .fa-circle {
+                        color: #d7d7d7;
+                    }
+                }
+            }
         }
+        
             
         .filter-wrapper {
-            
+            margin-right: -5px;
+            margin-left: -5px;
             .filter {
                 margin-bottom: 0px;
-                margin-right: 5px;
+                
                 position: relative;
                 display: inline-block;
                 vertical-align: text-top;
-                width: 170px;
+                width: 32%;
+                padding-left: 5px;
+                padding-right: 5px;
                 
                 
                 &.open {
@@ -152,7 +176,7 @@
                 .reset {
                     position: absolute;
                     top: 4px;
-                    right: 4px;
+                    right: 6px;
                     padding: 7px;
                     display: none;
                 }
@@ -160,7 +184,7 @@
                 .show-more {
                     position: absolute;
                     top: 4px;
-                    right: 4px;
+                    right: 6px;
                     padding: 7px;
                 }
             }
@@ -176,12 +200,9 @@
                 border: 1px solid #ddd;
                 border-radius: 4px;
                 box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-                width: 650px;
                 
-                ul.filter-terms {
-                    column-count: 4;
-                    -moz-column-count: 4;
-                    -webkit-column-count: 4;
+                 ul.filter-terms {
+                    
                     margin: 0px;
                     padding: 0px;
                     list-style: none;
@@ -189,6 +210,9 @@
                     -moz-column-gap: 0;
                     -webkit-column-gap: 0;
                 }
+                
+               
+               
                 
                 .term-wrapper {
                     display: inline-block;
@@ -251,8 +275,49 @@
                     }
                 }
             }
-        }
             
+            .seller-type .filter-content {
+                width: 650px;
+                
+                ul.filter-terms {
+                    column-count: 4;
+                    -moz-column-count: 4;
+                    -webkit-column-count: 4;
+                }
+                
+                @media screen and (max-width: 1150px){
+                    width:  550px;
+                    
+                    ul.filter-terms {
+                        column-count: 3;
+                        -moz-column-count: 3;
+                        -webkit-column-count: 3;
+                        
+                    }
+                }
+            }
+            
+            .delivery-option .filter-content {
+                width: 390px;
+                
+                 ul.filter-terms {
+                    column-count: 2;
+                    -moz-column-count: 2;
+                    -webkit-column-count: 2;
+                }
+            }
+            
+            .payment-type .filter-content {
+                width: 514px;
+                left: -210px;
+                
+                 ul.filter-terms {
+                    column-count: 3;
+                    -moz-column-count: 3;
+                    -webkit-column-count: 3;
+                }
+            }
+        }
          
         .seller-area {
             padding-top: 20px;
@@ -318,9 +383,7 @@
                         min-height: 174px;
                 }
                  
-               /* @media screen and (min-width: @large-typo-breakpoint){
-                        min-height: 183px;
-                }*/
+               
                 
                 &:hover,
                 &:focus,

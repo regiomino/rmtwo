@@ -14,27 +14,27 @@
             </h1>
         <?php endif; ?> -->
         
-      <!--  <div class="input-group">
-            <input placeholder="<?php print t('Schnellsuche'); ?> " id="filterShops" type="text" class="form-control">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
-            </span>
-        </div> -->
+     
         
-        <div class="row distance">
+        <div class="row search">
             <div class="col-md-3">
                Schnellsuche
             </div>
             <div class="col-md-8">
-                   <div class="input-group" style="width: 100%;">
-            <input placeholder="<?php print t('Schnellsuche'); ?> " id="filterShops" type="text" class="form-control">
-            <span class="input-group-btn">
-                <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
-            </span>
-        </div>
+                <div class="input-group input-group-lg" style="width: 100%;">
+                    
+                    <input placeholder="<?php print t('Name'); ?> " id="filterShops" type="text" class="form-control">
+                    <span class="fa-stack" id="clearQuery">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-times fa-stack-1x fa-inverse"></i>
+                      </span>
+                   
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
+                    </span>
+                </div>
             </div>
             <div class="col-md-1"></div>
-            
         </div>
         
        <!-- <div class="row distance">
@@ -54,7 +54,7 @@
             <div class="col-md-8">
                 <div class="filter-wrapper">
                     
-                     <div class="filter" data-filtertype="seller_type">
+                     <div class="filter seller-type" data-filtertype="seller_type">
                         <div class="filter-name">
                             <div class="filter-name-text" data-defaulttext="Betrieb" data-filtertype="seller_type">Betrieb</div>
                             <span class="show-more fa fa-caret-down"></span>
@@ -74,7 +74,7 @@
                         </div><!-- end filter-content -->
                     </div><!--end filter-->
                     
-                     <div class="filter" data-filtertype="delivery_option">
+                     <div class="filter delivery-option" data-filtertype="delivery_option">
                         <div class="filter-name">
                             <div class="filter-name-text" data-defaulttext="Lieferoptionen" data-filtertype="delivery_option">Lieferoptionen</div>
                             <span class="show-more fa fa-caret-down"></span>
@@ -105,7 +105,7 @@
                     </div><!--end filter-->
                     
  
-                    <div class="filter" data-filtertype="payment_type">
+                    <div class="filter payment-type" data-filtertype="payment_type">
  
                         <div class="filter-name">
                             <div class="filter-name-text" data-defaulttext="Zahlungsarten" data-filtertype="payment_type">Zahlungsarten</div>
