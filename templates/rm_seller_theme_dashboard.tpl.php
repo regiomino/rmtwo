@@ -1,12 +1,78 @@
 <div class="row">
     <h1 class="page-header">Willkommen in Ihrem Dashboard</h1>
 
+    <!-- Order overview -->
+    <?php
+        $orders = $vars['orders'];
+    ?>
+    
+    <?php if($vars['ordercount'] > 0): ?>
+    <div class="col-sm-12">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title"><strong><?php print format_plural($vars['ordercount'], 'You have 1 undelivered order', 'You have @count undelivered orders'); ?></strong></h3>
+            </div>
+            <div class="panel-body">
+                <table class="table">
+                    <tr>
+                        <th><?php print t('Date'); ?></th>
+                        <th><?php print t('Order number'); ?></th>
+                        <th><?php print t('Customer'); ?></th>
+                        <th><?php print t('Products'); ?></th>
+                        <th><?php print t('Delivery type'); ?></th>
+                        <th><?php print t('Payment type'); ?></th>
+                        <th><?php print t('Status'); ?></th>
+                        <th><?php print t('Actions'); ?></th>
+                    </tr>
+                    <?php $order_number = NULL; ?>
+                    <?php foreach($orders as $order_number => $order): ?>
+                        <tr>
+                            <td><?php print $order['date']; ?></td>
+                            <td><?php print $order_number; ?></td>
+                            <td><?php print (!empty($order['customerprofile'])) ? $order['customerprofile']->title : $order['userobject']->field_first_name[LANGUAGE_NONE][0]['value'] . ' ' . $order['userobject']->field_last_name[LANGUAGE_NONE][0]['value']; ?></td>
+                            <td><?php foreach($order['products'] as $product): ?><?php print $product['title']; ?>, <?php endforeach; ?></td>
+                            <td><?php print $order['deliverytype']; ?><br><?php print $order['deliveryrange']; ?></td>
+                            <td><?php print $order['paymenttype']; ?></td>
+                            <td><?php print $order['status']; ?></td>
+                            <td>
+                                <?php print l(t('Set to delivered'),
+                                                'changeorderstatus/' . $order_number . '/delivered',
+                                                array(
+                                                    'attributes' => array(
+                                                        'class' => array('btn', 'btn-sm', 'btn-success'),
+                                                    ),
+                                                )); ?>
+                                <?php print l(t('Set to billed'),
+                                                'changeorderstatus/' . $order_number . '/billed',
+                                                array(
+                                                    'attributes' => array(
+                                                        'class' => array('btn', 'btn-sm', 'btn-success'),
+                                                    ),
+                                                )); ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+            </div>
+            <div class="panel-footer">
+                <div class="row"><div class="col-sm-12 col-md-12">
+                <?php print l(t('View the complete order table'),
+                                'manage/seller/' . $user->uid . '/orders',
+                                array(
+                                    'attributes' => array(
+                                        'class' => array('btn', 'btn-sm', 'btn-success', 'pull-left'),
+                                    ),
+                                )); ?>
+                </div></div>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
 
     <!-- Offer management -->
     <?php
-        $offers = rm_shop_get_structured_seller_offers($user->uid, array(0,1));
-        
-        $offercount = count($offers);
+        $offers = $vars['offers'];
+        $offercount = $vars['offercount'];
         $inactive = 0;
     ?>
     <div class="col-sm-4">
@@ -49,10 +115,8 @@
     
     <!-- Profile management -->
     <?php
-        $profile = rm_api_get_nodes_by_properties(array('seller_profile'), 1, -1, -1, -1, -1, $user->uid);
-        $profilekeys = array_keys($profile);
-        $profile = $profile[$profilekeys[0]];
-        $profilecompleteness = rm_user_get_profile_completeness($profile->nid, 'seller_profile');
+        $profile = $vars['profile'];
+        $profilecompleteness = $vars['profilecompleteness'];
     ?>
 
     <div class="col-sm-4">
@@ -88,7 +152,7 @@
     
     <!-- Account management -->
     <?php
-        $accountcompleteness = rm_user_get_account_completeness($user->uid);
+        $accountcompleteness = $vars['accountcompleteness'];
     ?>
 
     <div class="col-sm-4">
@@ -130,7 +194,7 @@
 
     <!-- Payment agreements -->
     <?php
-        $agreements = rm_api_get_nodes_by_properties(array('payment_agreement'), 1, -1, -1, -1, -1, $user->uid);
+        $agreements = $vars['paymentagreements'];
     ?>
     <div class="col-sm-4">
         <div class="panel panel-success">
@@ -161,7 +225,7 @@
     
     <!-- Shipping agreements -->
     <?php
-        $agreements = rm_api_get_nodes_by_properties(array('shipping_agreement'), 1, -1, -1, -1, -1, $user->uid);
+        $agreements = $vars['shippingagreements'];
     ?>
     <div class="col-sm-4">
         <div class="panel panel-success">
@@ -192,7 +256,7 @@
     
     <!-- Pickup agreements -->
     <?php
-        $agreements = rm_api_get_nodes_by_properties(array('pickup_agreement'), 1, -1, -1, -1, -1, $user->uid);
+        $agreements = $vars['pickupagreements'];
     ?>
     <div class="col-sm-4">
         <div class="panel panel-success">

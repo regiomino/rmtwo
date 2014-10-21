@@ -78,13 +78,6 @@ form .form-item {
 }
 
 /*
- * Top navigation
- * Hide default border to remove 1px line.
- */
- 
-
-
-/*
  * Sidebar
  */
  
@@ -107,7 +100,21 @@ form .form-item {
     background-color: #5cb85c;
 }
 
-
+.lpr {
+    padding-right: 3px;
+    
+    @media screen and (max-width: 768px) {
+        padding-right: 15px;
+    }
+}
+    
+.lpl {
+    padding-left: 3px;
+    
+    @media screen and (max-width: 768px) {
+        padding-left: 15px;
+    }
+}
 
  
 .main .page-header {

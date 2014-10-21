@@ -64,6 +64,9 @@ Lieferadresse Ort: $shipping_address_city
 
  
 <div class="row">
+    <div class="col-md-12">
+        <p>Bitte überprüfen Sie Ihre Eingaben. Sie können diese durch Klicken des "Zurück"-Buttons Ihres Browsers korrigieren.</p>
+    </div>
     <div class="col-md-3 sidebar">
         <div class="row ">
             <div class="col-md-12">
@@ -193,12 +196,14 @@ Lieferadresse Ort: $shipping_address_city
                 </ul>
             </div><!--end order breakdown-->
         </div><!--end delivery breakdown-->
-                    
-          
+
+        <p class="text-right"><?php print t('By clicking @register I accept the <a href="@url" target="_blank">General Terms and Conditions</a>', array('@register' => t('Purchase now'), '@url' => url('node/4'))); ?></p>  
     </div><!-- end col-md-12 -->
+    
 </div> <!-- end row -->
-          
+       
 <?php
+
 print drupal_render_children($form);
 ?>
 

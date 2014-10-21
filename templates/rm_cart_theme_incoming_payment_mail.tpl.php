@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="initial-scale=1.0">    <!-- So that mobile webkit will display zoomed in -->
     <meta name="format-detection" content="telephone=no"> <!-- disable auto telephone linking in iOS -->
-    <title>Bestelleingangsbestätigung</title>
+    <title>Zahlungseingang</title>
     <style type="text/css">
 
         /* Resets: see reset.css for details */

@@ -7322,10 +7322,6 @@ form .form-item {
   border-bottom: 1px solid #eee;
 }
 /*
- * Top navigation
- * Hide default border to remove 1px line.
- */
-/*
  * Sidebar
  */
 /* Sidebar navigation */
@@ -7345,6 +7341,22 @@ form .form-item {
 .nav-sidebar > .active > a:focus {
   color: #fff;
   background-color: #5cb85c;
+}
+.lpr {
+  padding-right: 3px;
+}
+@media screen and (max-width: 768px) {
+  .lpr {
+    padding-right: 15px;
+  }
+}
+.lpl {
+  padding-left: 3px;
+}
+@media screen and (max-width: 768px) {
+  .lpl {
+    padding-left: 15px;
+  }
 }
 .main .page-header {
   margin-top: 0;
@@ -7593,12 +7605,13 @@ label {
 }
 .stage-background .zipcodeselect .proceed-info,
 .stage-background .directoryselect .proceed-info {
-  margin: 24px 0px 0px 10px;
+  margin: 20px 0px 0px 10px;
 }
 .stage-background .zipcodeselect #edit-submit,
 .stage-background .directoryselect #edit-submit {
   width: 100%;
-  padding: 15px 16px;
+  padding: 20px 16px;
+  font-weight: 700;
 }
 .stage-background .zipcodeselect label,
 .stage-background .directoryselect label {
@@ -7617,7 +7630,8 @@ label {
 .stage-background .zipcodeselect .form-control.input-lg,
 .stage-background .directoryselect .form-control.input-lg {
   text-align: center;
-  height: 55px;
+  height: 65px;
+  font-size: 22px;
 }
 .stage-background .zipcodeselect ::-webkit-input-placeholder,
 .stage-background .directoryselect ::-webkit-input-placeholder {
@@ -10919,12 +10933,6 @@ addcartCart-Icon
 .page-user-register .form-group {
   margin-bottom: 0px;
 }
-.page-checkout .lpr {
-  padding-right: 3px;
-}
-.page-checkout .lpl {
-  padding-left: 3px;
-}
 .page-checkout .address label,
 .page-checkout .delivery-address label,
 .page-checkout .form-item-iban label {
@@ -11118,6 +11126,7 @@ fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit.active {
   position: relative;
   z-index: 10;
   display: inline-block;
+  line-height: 15px;
 }
 .page-checkout .checkout-item .form-type-radio.form-item-delivery label:before,
 .page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label:before {
@@ -11138,7 +11147,7 @@ fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit.active {
   width: 24px;
   height: 23px;
   margin-left: -11px;
-  bottom: 17px;
+  bottom: 13px;
 }
 .page-checkout .checkout-item .form-type-radio.form-item-delivery label[for=edit-delivery-shipping-agreement]:before,
 .page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label[for=edit-delivery-shipping-agreement]:before {
@@ -11146,7 +11155,7 @@ fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit.active {
   width: 32px;
   height: 18px;
   margin-left: -16px;
-  bottom: 19px;
+  bottom: 14px;
 }
 .page-checkout .checkout-item .form-type-radio.form-item-delivery label[for=edit-paymenttypes-sepa]:before,
 .page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label[for=edit-paymenttypes-sepa]:before {
@@ -11364,4 +11373,13 @@ fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit.active {
 .page-order .delivery-breakdown .order-breakdown ul.breakdown-items .total {
   font-weight: 700;
   font-size: 18px;
+}
+.page-registration .btn-lg {
+  margin-bottom: 15px;
+  display: block;
+}
+@media screen and (max-width: 768px) {
+  .page-registration .btn-lg {
+    width: 100%;
+  }
 }

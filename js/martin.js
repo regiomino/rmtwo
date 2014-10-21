@@ -2,68 +2,97 @@ jQuery(document).ready(function ($) {
 
     /*
      *
-     * GLOBAL - alles notwendig für die Adresseingabe im Header
+     * STARTSEITE - Methoden für die Map auf der Startseite
      *
      */
 
-    // This example displays an address form, using the autocomplete feature
-    // of the Google Places API to help users fill in the information.
+    var pathToTheme = Drupal.settings.basePath + "sites/all/themes/" + Drupal.settings.ajaxPageState.theme;
+
+    var customIcons = {
+        inactive_profile: {
+            icon: pathToTheme + '/images/markers/inactive_profile.png',
+            zindex: 1
+        },
+        prospect_profile: {
+            icon: pathToTheme + '/images/markers/inactive_profile.png',
+            zindex: 2
+        },
+        customer_profile: {
+            icon: pathToTheme + '/images/markers/customer_profile.png',
+            zindex: 3
+        },
+        seller_profile: {
+            icon: pathToTheme + '/images/markers/seller_profile.png',
+            zindex: 4
+        },
+    };
+
+    var frontpagemap = new google.maps.Map(document.getElementById("frontpageGoogleMap"), {
+        center: new google.maps.LatLng(49.800855, 11.017640),
+        zoom: 9,
+        mapTypeId: 'roadmap'
+    });
     
-    if($('#edit-address').length) {
-        var placeSearch, autocomplete;
-        var componentForm = {
-            street_number: 'short_name',
-            route: 'long_name',
-            locality: 'long_name',
-            postal_code: 'short_name'
+    var latlng = [];
+
+    var infoWindow = new google.maps.InfoWindow;
+
+    downloadUrl(Drupal.settings.basePath + 'rm-shop-participantxml', function(data) {
+        var xml = data.responseXML;
+        var markers = xml.documentElement.getElementsByTagName("marker");
+        for (var i = 0; i < markers.length; i++) {
+            var name = markers[i].getAttribute("name");
+            var address = markers[i].getAttribute("address");
+            var type = markers[i].getAttribute("type");
+            
+            var point = new google.maps.LatLng(
+                parseFloat(markers[i].getAttribute("lat")),
+                parseFloat(markers[i].getAttribute("lng")));
+            if(type != 'inactive_profile') latlng.push(point);
+            var html = "<b>" + name + "</b> <br/>" + address;
+            var icon = customIcons[type] || {};
+            var marker = new google.maps.Marker({
+                map: frontpagemap,
+                position: point,
+                icon: icon.icon,
+                zIndex: icon.zindex
+            });
+            bindInfoWindow(marker, frontpagemap, infoWindow, html);
+        }
+        google.maps.event.trigger(frontpagemap, "resize");
+        var latlngbounds = new google.maps.LatLngBounds();
+        for (var i = 0; i < latlng.length; i++) {
+            latlngbounds.extend(latlng[i]);
+        }
+        frontpagemap.setCenter(latlngbounds.getCenter());
+        frontpagemap.fitBounds(latlngbounds);
+    });
+
+    function downloadUrl(url,callback) {
+        var request = window.ActiveXObject ?
+            new ActiveXObject('Microsoft.XMLHTTP') :
+            new XMLHttpRequest;
+
+        request.onreadystatechange = function() {
+            if (request.readyState == 4) {
+                request.onreadystatechange = doNothing;
+                callback(request, request.status);
+            }
         };
 
-        // Create the autocomplete object, restricting the search
-        // to geographical location types.
-        autocomplete = new google.maps.places.Autocomplete(
-            /** @type {HTMLInputElement} */(document.getElementById('edit-address')),
-            { types: ['address'] });
-        // When the user selects an address from the dropdown,
-        // populate the address fields in the form.
-        google.maps.event.addListener(autocomplete, 'place_changed', function() {
-            fillInAddress();
+        request.open('GET', url, true);
+        request.send(null);
+    }
+
+    function bindInfoWindow(marker, map, infoWindow, html) {
+        google.maps.event.addListener(marker, 'click', function() {
+            infoWindow.setContent(html);
+            infoWindow.open(map, marker);
         });
     }
     
-    $('#edit-address').on('input', function() {
-        clearAddress();
-    });
-    
-    function clearAddress() {
-        for (var component in componentForm) {
-            document.getElementById(component).value = '';
-            document.getElementById(component).disabled = false;
-        }
-    }
-    
-    function fillInAddress() {
-        // Get the place details from the autocomplete object.
-        var place = autocomplete.getPlace();
-        clearAddress();
-
-        // Get each component of the address from the place details
-        // and fill the corresponding field on the form.
-        for (var i = 0; i < place.address_components.length; i++) {
-            var addressType = place.address_components[i].types[0];
-            if (componentForm[addressType]) {
-                var val = place.address_components[i][componentForm[addressType]];
-                document.getElementById(addressType).value = val;
-            }
-        }
+    function doNothing(){
         
-        //merge route and street_number to thoroughfare
-        var streetNumber = document.getElementById('street_number').value;
-        if(streetNumber.length) {
-            document.getElementById('thoroughfare').value = document.getElementById('route').value + ' ' + streetNumber;
-        }
-        else {
-            document.getElementById('thoroughfare').value = document.getElementById('route').value + ' 1';
-        }
     }
 
 });

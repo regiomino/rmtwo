@@ -1671,6 +1671,16 @@ jQuery(document).ready(function ($) {
          container : 'body'
         });
     
+    
+    function isTouch() {
+        var regex = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i;
+            return regex.test(navigator.userAgent);
+        }
+        
+        if (!isTouch()) {
+             $('#edit-zipcode').focus();
+        }
+
     $('#partner-logos a').tooltip();
     
     //messages are placed inside a bootstrap modal #messageModal. this triggers it, when it's there.
@@ -1679,8 +1689,12 @@ jQuery(document).ready(function ($) {
     //makes sure external links are opened in new window
     $('a').each(function() {
         var a = new RegExp('/' + window.location.host + '/');
-        if(!a.test(this.href)) {
+        var b = new RegExp('javascript:gaOptout');
+        
+        if(!a.test(this.href) && !b.test(this.href)) {
+            
             $(this).click(function(event) {
+                console.info(this.href);
                 event.preventDefault();
                 event.stopPropagation();
                 window.open(this.href, '_blank');

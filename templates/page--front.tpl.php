@@ -117,6 +117,10 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
         </div>
     </div>
 </div>-->
+
+<div class="map">
+    <div id="frontpageGoogleMap" style="width: 100%; height: 500px"></div>
+</div>
     
 <div class="benefits-wrapper">
     <div class="container">
@@ -263,7 +267,6 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
     </div><!-- end container-->
 </div> <!--end benefits-wrapper-->
 
-
 <div class="benefits-wrapper">
     <div class="container">
         <div class="row ">
@@ -335,6 +338,9 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
                 </ul>
             </div>
         </div>
+        <div class="row">
+                <div class="col-md-12"><p class="text-center small">Die auf www.regiomino.de gezeigten Angebote richten sich ausschließlich an Unternehmen und Gewerbetreibende. Alle Preise sind Netto-Preise zzgl. der beim Angebot genannten MwSt.</p></div>
+            </div>
         <div class="row">
             <div class="col-md-12"><p class="text-center">&copy; Regiomino 2014</p></div>
         </div>

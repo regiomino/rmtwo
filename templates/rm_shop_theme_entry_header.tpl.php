@@ -32,7 +32,7 @@
     
        <div class="col-md-5 col-md-pull-7">
             <div class="zipcodeselect">
-                <h3> Schritt 1:<strong> <?php echo t('Enter your address...'); ?></strong></h3>
+                <h3> Schritt 1: <strong>Postleitzahl eingeben</strong></h3>
         
                 <?php echo render($vars['regionselect']); ?>
                 
@@ -41,12 +41,12 @@
                        <strong>Wie geht es danach weiter? </strong> 
                     </a>
                     
-                    <ul class="payment-icons list-inline">
+                    <!--<ul class="payment-icons list-inline">
                         <li> <span class="sprite sofort"> </span></li>
                         <li> <span class="sprite paypal"> </span></li>
                         <li> <span class="sprite lastschrift"> </span></li>
                         <li> <span class="sprite rechnung"> </span></li>
-                    </ul>
+                    </ul>-->
                 </div>
             </div>
         </div>

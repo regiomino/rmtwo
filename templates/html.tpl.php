@@ -31,7 +31,7 @@
 			function gaOptout() {
 				document.cookie = disableStr + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
 				window[disableStr] = true;
-				alert('In Ihrem Browser wurde ein Cookie für die aktuelle Domain gesetzt, der in Zukunft das Tracking via Google Analytics verhindert. Bitte beachten Sie, dass dieser Cookie nur für die aktuelle Domain gesetzt wurde und nicht für etwaige andere Subdomains von Regiomino. Wenn Sie sicherstellen wollen, dass Ihr Webseitenbesuch ohne weitere Maßnahmen auf keiner Internetpräsenz von Regiomino analysiert wird, installieren Sie bitte den Google Browser Plugin unter http://tools.google.com/dlpage/gaoptout?hl=de');
+				alert('In Ihrem Browser wurde ein Cookie für die aktuelle Domain gesetzt, der in Zukunft das Tracking via Google Analytics verhindert. Bitte beachten Sie, dass dieser Cookie beim manuellen Löschen Ihres Browsercaches entfernt wird. Wenn Sie sicherstellen wollen, dass Ihr Webseitenbesuch dauerhaft nicht analysiert wird, installieren Sie bitte den Google Browser Plugin unter http://tools.google.com/dlpage/gaoptout?hl=de');
 			}
 
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

@@ -1,7 +1,7 @@
 <?php
 /*
-    $vars['sellerobject']
-    $vars['selleruser']
+    $vars['profileobject']
+    $vars['profileuser']
 */
 ?>
 
@@ -12,7 +12,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="initial-scale=1.0">    <!-- So that mobile webkit will display zoomed in -->
     <meta name="format-detection" content="telephone=no"> <!-- disable auto telephone linking in iOS -->
-    <title>Bestelleingangsbestätigung</title>
+    <title>Vielen Dank für Ihr Interesse an Regiomino</title>
     <style type="text/css">
 
         /* Resets: see reset.css for details */
@@ -67,33 +67,16 @@
             
             <!-- ### BEGIN CONTENT ### -->
             <div style="font-weight: bold;padding-bottom: 10px; font-size: 16px; line-height: 24px;">
-                Vielen Dank für Ihre Registrierung
+                Vielen Dank für Ihr Interesse an Regiomino
             </div>
  
-            <?php print ($vars['selleruser']->field_gender[LANGUAGE_NONE][0]['value'] == 'f') ? 'Sehr geehrte Frau' : 'Sehr geehrter Herr'; ?> <?php print $vars['selleruser']->field_last_name[LANGUAGE_NONE][0]['value']; ?><br>
-            vielen Dank für Ihre Registrierung und Willkommen bei Regiomino! Sie haben jetzt jederzeit Zugriff auf Ihren persönlichen Verwaltungsbereich. Dort können Sie z.B. Ihre Angebote verwalten aber auch Ihre Profil- und Benutzerdaten ändern.<br><br>
-            Loggen Sie sich dazu einfach unter diesem Link mit den folgenden Benutzerdaten ein:<br><br>
-            <a href="https://www.regiomino.de/user/register?destination=manage/seller">https://www.regiomino.de/user/register</a><br>
-            E-Mail: <?php print $vars['selleruser']->mail; ?><br>
-            Passwort: <?php print $vars['password']; ?>
+            <?php if(!empty($vars['profileuser']->field_gender[LANGUAGE_NONE][0]['value']) && !empty($vars['profileuser']->field_last_name[LANGUAGE_NONE][0]['value'])): ?>
+                <?php print ($vars['profileuser']->field_gender[LANGUAGE_NONE][0]['value'] == 'f') ? 'Sehr geehrte Frau' : 'Sehr geehrter Herr'; ?> <?php print $vars['profileuser']->field_last_name[LANGUAGE_NONE][0]['value']; ?>, <br><br>vielen Dank für Ihr Interessen an Regiomino.
+            <?php endif; ?>
+            Bitte nutzen Sie den folgenden Link um direkt zu Ihrem Registrierungsformular zu gelangen:<br><br>
             
-            <br>
-            <br>
+            <a href="https://www.regiomino.de/registration/<?php print $vars['profileobject']->nid; ?>/<?php print $vars['profileobject']->field_register_hash[LANGUAGE_NONE][0]['value']; ?>">Registrierung bei Regiomino</a>
             
-            <div style="font-weight: bold; border-bottom: 1px solid #000; font-size: 16px; line-height: 24px;">
-                Ihre Registrierungs-Daten im Überblick
-            </div>
-            
-            <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                <tr>
-                    <td align="left" border valign="top" style="padding-top:7px; padding-bottom:3px;">
-                        <!--Feld-->
-                    </td>
-                    <td align="left" valign="top"  style="padding-top:7px; padding-bottom:3px;">
-                        <!--Wert-->
-                    </td>
-                </tr>
-            </table>
 
             <br>
             <br>

@@ -218,12 +218,15 @@
             <?php endif;?>
              
             <br>
-            Mit freundlichen Grüßen,<br>
+            Mit freundlichen Grüßen,<br><br>
             <?php if(!empty($vars['seller_user']->field_first_name[LANGUAGE_NONE][0]['value']) && !empty($vars['seller_user']->field_last_name[LANGUAGE_NONE][0]['value'])): ?>
                 <?php print $vars['seller_user']->field_first_name[LANGUAGE_NONE][0]['value']; ?>
-                <?php print $vars['seller_user']->field_last_name[LANGUAGE_NONE][0]['value']; ?>
+                <?php print $vars['seller_user']->field_last_name[LANGUAGE_NONE][0]['value']; ?><br><br>
             <?php endif; ?>
-            <?php print $vars['shop']->field_company_name[LANGUAGE_NONE][0]['value']; ?>
+            <?php print $vars['shop']->field_company_name[LANGUAGE_NONE][0]['value']; ?>,<br>
+            <?php print $vars['shop']->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?>,<br>
+            <?php print $vars['shop']->field_address[LANGUAGE_NONE][0]['postal_code'] ?> <?php print $vars['shop']->field_address[LANGUAGE_NONE][0]['locality']; ?>,<br>
+            Tel.: <?php print rm_api_format_phone($vars['shop']->field_publicphone[LANGUAGE_NONE][0]['number']); ?>
             <br>
             <br>
             
