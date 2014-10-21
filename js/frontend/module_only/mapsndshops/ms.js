@@ -1,29 +1,5 @@
 jQuery(document).ready(function ($) {
-function difference(o1, o2) {
-    var k, kDiff,
-        diff = {};
-    for (k in o1) {
-        if (!o1.hasOwnProperty(k)) {
-        } else if (typeof o1[k] != 'object' || typeof o2[k] != 'object') {
-            if (!(k in o2) || o1[k] !== o2[k]) {
-                diff[k] = o2[k];
-            }
-        } else if (kDiff = difference(o1[k], o2[k])) {
-            diff[k] = kDiff;
-        }
-    }
-    for (k in o2) {
-        if (o2.hasOwnProperty(k) && !(k in o1)) {
-            diff[k] = o2[k];
-        }
-    }
-    for (k in diff) {
-        if (diff.hasOwnProperty(k)) {
-            return diff;
-        }
-    }
-    return false;
-}
+
  /*var debounce = function(func, wait, immediate) {
      
         var timeout;
@@ -203,7 +179,8 @@ RMS.ajax.Query = function() {
         },
         seller_name : Drupal.settings.rm_shop.seller_name,
         delivery_option : Drupal.settings.rm_shop.delivery_options,
-        payment_type : Drupal.settings.rm_shop.payment_type
+        payment_type : Drupal.settings.rm_shop.payment_type,
+        seller_type : Drupal.settings.rm_shop.seller_type
     }
 };
  
@@ -241,25 +218,25 @@ RMS.ajax.updateResults = function(){
     
     
     $.ajax({
-        url: _self.PATH_GET_LOCATIONS,
+        url: _self.PATH_GET_LOCATIONS+/'tEst'/,
         type: "GET",
         data :  _self.sq.getQuery(),
         dataType : 'json'
   
     }).success(function(data) {
-        RMS.$sellerItemsArea.html(data.html);
-        RMS.map.updateMarker(data.marker);
-        _self.removeLoader();
+       if (data.html != undefined) {
+            RMS.$sellerItemsArea.html(data.html);
+           
+            RMS.map.updateMarker(data.marker);
+             _self.removeLoader();
+       
+       } else {
+         RMS.$sellerItemsArea.html('<h1> Nix da! </h1>');
+         _self.removeLoader();
+       }
     });
-    
-  /* $.getJSON(_self.PATH_GET_LOCATIONS, _self.sq.getQuery(), function(data) {
-              console.info(data);
-              _self.removeLoader();
-   }); */
 }
  
-
-
 //////////////////////////////////
 // RM Map
 //////////////////////////////////
@@ -267,10 +244,11 @@ RMS.ajax.updateResults = function(){
 RMS.map = {};
 RMS.map.mapContainer = "map";
 RMS.map.mapOptions = {
-    center: RMS.ajax.sq.map_center,  
+    center: RMS.ajax.sq.qvalues.map_center,  
     zoom: 11,
     mapTypeId: 'roadmap'
 };
+ 
 RMS.map.popUpWindow = new google.maps.InfoWindow();
 RMS.map.latlng = [];
 
@@ -334,7 +312,7 @@ RMS.map.getSellers = function(latlng){
 
 RMS.map.openPopUp = function(seller_id) {
     var _self = this;
-    //console.info(_self.sellerLocations[seller_id].url);
+    
     _self.popUpWindow.setContent(
         '<a class="marker-popup" href="'+ _self.sellerLocations[seller_id].url +'">'+ _self.getPopUpMarkup(_self.sellerLocations[seller_id]) +'</a>'
     ); 
@@ -354,31 +332,28 @@ RMS.map.getPopUpMarkup = function(id){
 };
 
 RMS.map.updateMarker = function(marker,collectBounds) {
-    var _self = this;
-    
-    //das geht besser!
-    //alle Marker unsichtbar schalten
-    
-        for (j in _self.sellerLocations) {
-            _self.sellerLocations[j].gmMarker.setMap(null);
-            
+    var _self = this,
+        visibleIds = [];
+        
+    if (marker == undefined) {
+        for (c in _self.sellerLocations) {
+             _self.sellerLocations[c].gmMarker.setMap(null);
         }
-    
-    
-    
+    }
     $.each(marker,function(i,item) {
-      //  console.info("index: "+ i + " item_id: "+ item.marker_id);
+        
         if(_self.sellerLocations['sellerLocation_'+item.marker_id]) {
             // schon vorhanden
             // wenn noch nicht visible -> visible schalten
             if (_self.sellerLocations['sellerLocation_'+item.marker_id].gmMarker.getMap() != _self.gm ) {
                _self.sellerLocations['sellerLocation_'+item.marker_id].gmMarker.setMap(_self.gm);
+              
             }
+            visibleIds.push(item.marker_id);
             return;
-        }
-        
+        }  
         // noch nicht vorhanden
-        
+       
         _self.sellerLocations['sellerLocation_'+item.marker_id] = {
                 
             gmMarker : new google.maps.Marker({
@@ -396,6 +371,7 @@ RMS.map.updateMarker = function(marker,collectBounds) {
             address : item.address,
             url : item.url
         }
+            
         google.maps.event.addListener(_self.sellerLocations['sellerLocation_'+item.marker_id].gmMarker, 'click', function(e) {
             _self.openPopUp('sellerLocation_'+ this.id);
         });
@@ -412,21 +388,19 @@ RMS.map.updateMarker = function(marker,collectBounds) {
             }
             _self.gm.fitBounds(latlngbounds);
         }
-    });
-    
-   // _self.displayMarker();
-};
-
-RMS.map.displayMarker = function(){
-    var _self = this;
-     
-    var alreadyThere;
-    
-    for (h in _self.sellerLocations ) {
-        alreadyThere = _self.gm.getBounds();
         
+       visibleIds.push(item.marker_id);
+       
+    });
+     
+    for (y in _self.sellerLocations) {
+      
+        if ($.inArray(_self.sellerLocations[y].gmMarker.id, visibleIds) == -1) {
+           _self.sellerLocations[y].gmMarker.setMap(null);
+        }
     }
 };
+
  
 ////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////
@@ -440,6 +414,8 @@ RMS.filter.filterArea = $(RMS.filter.filterAreaID);
 
 RMS.filter.init = function() {
     var _self = this;
+    
+    _self.search.init();
     _self.category.init();
    // _self.distance.init();
     _self.addListeners();
@@ -447,7 +423,7 @@ RMS.filter.init = function() {
 
 RMS.filter.addListeners = function (){
     var _self = this;
-    RMS.filter.filterArea.on('filterchange', $.proxy(_self.handleFilterChange,this));
+    _self.filterArea.on('filterchange', $.proxy(_self.handleFilterChange,this));
 };
 
 RMS.filter.handleFilterChange = function(e,key,value) {
@@ -455,16 +431,18 @@ RMS.filter.handleFilterChange = function(e,key,value) {
     e.stopPropagation();
     var updateVals = {};
     if (value.length > 0) {
-        updateVals[key]= value.join(',');
-        RMS.ajax.sq.update(updateVals);
+        if ($.isArray(value)) {
+            value = value.join(',');
+        }
+        updateVals[key]= value;
         
     } else {
         updateVals[key]='';
-        RMS.ajax.sq.update(updateVals);
     }
     
+    RMS.ajax.sq.update(updateVals);
     RMS.ajax.updateResults();
-   
+  
    /* RMS.ajax.addLoader();
          setTimeout(RMS.ajax.removeLoader ,1000); 
     if (value === -1) {
@@ -494,6 +472,7 @@ RMS.filter.distance.sliderOptions = {
 		'60%': 100,
 		'max': 150
 	},
+    //oh
     snap: true
 }
 
@@ -544,6 +523,36 @@ RMS.filter.distance.addSuffix = function(){
     $('.noUi-pips-horizontal').find('.noUi-value').first().prepend('<');
     $('.noUi-pips-horizontal').find('.noUi-value').last().prepend('>');
 };
+
+
+/////////////////////////////////////     
+//Search Filter
+/////////////////////////////////////
+RMS.filter.search = {};
+RMS.filter.search.$input = $('#filterShops');
+RMS.filter.search.init = function(){
+    var _self = this;
+    _self.addListeners();
+};
+RMS.filter.search.timeout;
+
+RMS.filter.search.addListeners = function() {
+    var _self = this;
+    _self.$input.on('keyup',{obj: _self},_self.keyUp);
+}
+
+RMS.filter.search.keyUp = function(e){
+    var _self = e.data.obj;
+    
+    var $el = $(this);
+    clearTimeout(_self.timeout);
+    var string = $el.val().trim();
+    _self.timeout = setTimeout(function(){
+         
+        RMS.filter.filterArea.trigger('filterchange',['seller_name',string]); 
+        
+    },500);
+}
 
 /////////////////////////////////////     
 //Kategorien Filter
@@ -644,7 +653,6 @@ RMS.filter.category.CatFilter.prototype = {
             _self.selectedCats.length = 0;
             RMS.filter.filterArea.trigger('filterchange',[_self.filterKey,""]);
        }
-       
     },
     
     getActiveNames: function(){
