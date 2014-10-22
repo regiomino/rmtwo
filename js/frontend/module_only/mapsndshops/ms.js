@@ -253,21 +253,19 @@ RMS.map.popUpWindow = new google.maps.InfoWindow();
 RMS.map.latlng = [];
 
 RMS.map.customIcons = {
-    inactive_profile: {
-        icon: RMS.PATH_TO_THEME + '/images/markers/inactive_profile.png',
-        zindex: 1
-    },
-    prospect_profile: {
-        icon: RMS.PATH_TO_THEME + '/images/markers/inactive_profile.png',
+    user_home: {
+        icon : new google.maps.MarkerImage(RMS.PATH_TO_THEME+ '/images/markers/marker-sprite.png', new google.maps.Size(27, 36), new google.maps.Point(64, 0)),
         zindex: 2
     },
-    customer_profile: {
-        icon: RMS.PATH_TO_THEME + '/images/markers/customer_profile.png',
-        zindex: 3
-    },
+    
     seller_profile: {
-        icon: RMS.PATH_TO_THEME + '/images/markers/pickup_icon.png',
-        zindex: 4
+        icon: new google.maps.MarkerImage(RMS.PATH_TO_THEME+ '/images/markers/marker-sprite.png', new google.maps.Size(27, 36), new google.maps.Point(0, 0)),
+        zindex: 1
+    },
+    
+    seller_profile_hover: {
+        icon: new google.maps.MarkerImage(RMS.PATH_TO_THEME+ '/images/markers/marker-sprite.png', new google.maps.Size(27, 36), new google.maps.Point(32, 0)),
+        zindex: 3
     },
 };
 
@@ -281,7 +279,8 @@ RMS.map.init = function(){
     _self.centerMarker = new google.maps.Marker({
         map:  _self.gm,
         position: _self.mapOptions.center,
-        //icon : 
+        icon : _self.customIcons.user_home.icon,
+        zIndex: _self.customIcons.user_home.zindex
     });
 
     _self.updateMarker(marker,true);
@@ -412,6 +411,7 @@ RMS.filter = {};
 RMS.filter.filterAreaID = '#filter';
 RMS.filter.filterArea = $(RMS.filter.filterAreaID);
 
+
 RMS.filter.init = function() {
     var _self = this;
     
@@ -424,6 +424,31 @@ RMS.filter.init = function() {
 RMS.filter.addListeners = function (){
     var _self = this;
     _self.filterArea.on('filterchange', $.proxy(_self.handleFilterChange,this));
+     RMS.ajax.$sellerArea.on(
+    {
+    "mouseenter.sellerItem": _self.itemHoverIn,
+
+    "mouseleave.sellerItem": _self.itemHoverOut
+    },
+    '.seller-item',{obj: _self});
+    
+   // RMS.ajax.$sellerArea.on('mouseenter.sellerItem','.seller-item',{obj: _self}, _self.hoverItem);
+};
+
+RMS.filter.itemHoverIn = function(e){
+    var _self = e.data.obj;
+    var itemId = $(this).data('id');
+    var marker = RMS.map.sellerLocations['sellerLocation_'+itemId].gmMarker;
+    marker.setIcon(RMS.map.customIcons.seller_profile_hover.icon);
+    marker.setZIndex(RMS.map.customIcons.seller_profile_hover.zindex);
+};
+
+RMS.filter.itemHoverOut = function(e){
+    var _self = e.data.obj;
+    var itemId = $(this).data('id');
+    var marker = RMS.map.sellerLocations['sellerLocation_'+itemId].gmMarker;
+    marker.setIcon(RMS.map.customIcons.seller_profile.icon);
+    marker.setZIndex(RMS.map.customIcons.seller_profile.zindex);
 };
 
 RMS.filter.handleFilterChange = function(e,key,value) {
@@ -458,7 +483,7 @@ RMS.filter.handleFilterChange = function(e,key,value) {
 /////////////////////////////////////
 //Distance / No UI Slider + Pips Addon
 /////////////////////////////////////
-
+/*
 RMS.filter.distance = {};
 RMS.filter.distance.$elem = $('#distance-slider');
 RMS.filter.distance.value_temp = null;
@@ -524,7 +549,7 @@ RMS.filter.distance.addSuffix = function(){
     $('.noUi-pips-horizontal').find('.noUi-value').last().prepend('>');
 };
 
-
+*/
 /////////////////////////////////////     
 //Search Filter
 /////////////////////////////////////
