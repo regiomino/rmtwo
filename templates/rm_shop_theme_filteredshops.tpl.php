@@ -1,3 +1,4 @@
+<?php if(!empty($vars['shops'])): ?>
 <?php foreach($vars['shops'] as $shop): ?>
 <div class="col-xs-12 col-lg-6 col-seller-item" data-title="<?php print $shop->title; ?>"> 
         <a class="seller-item clearfix" data-id="<?php print $shop->nid; ?>" href="<?php print url('node/' . $shop->nid); ?>"> 
@@ -92,3 +93,4 @@
         </a>  <!-- end seller-item -->
 </div> <!--end col-item-wrapper -->
 <?php endforeach; ?>
+<?php endif; ?>
