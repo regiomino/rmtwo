@@ -1,5 +1,5 @@
 <?php
-$form = $vars['regionselect'];
+$form = $variables['form'];
 ?>
 <div class="input-group">
     <?php print render($form['address']); ?>
@@ -8,8 +8,7 @@ $form = $vars['regionselect'];
     </div>
    
 </div>
-<?php print drupal_render_children($form); ?>
 
-
-
-
+<?php
+print drupal_render_children($form);
+?>
