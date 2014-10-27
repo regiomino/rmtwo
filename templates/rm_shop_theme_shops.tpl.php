@@ -64,7 +64,7 @@
                             <ul class="filter-terms filter-terms-seller_type" data-filtertype="seller_type">
                                 <?php foreach($vars['categories'] as $term): ?>
                                 <div class="term-wrapper"> 
-                                    <li data-term="<?php print $term->tid; ?>">
+                                    <li data-text="<?php print $term->name; ?>" data-term="<?php print $term->tid; ?>">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label"><?php print $term->name; ?></span>
                                     </li>
@@ -74,22 +74,22 @@
                         </div><!-- end filter-content -->
                     </div><!--end filter-->
                     
-                     <div class="filter delivery-option" data-filtertype="delivery_option">
+                     <div class="filter delivery-option" data-filtertype="delivery_options">
                         <div class="filter-name">
-                            <div class="filter-name-text" data-defaulttext="Lieferoptionen" data-filtertype="delivery_option">Lieferoptionen</div>
+                            <div class="filter-name-text" data-defaulttext="Lieferoptionen" data-filtertype="delivery_options">Lieferoptionen</div>
                             <span class="show-more fa fa-caret-down"></span>
-                            <span class="reset fa fa-times" data-filtertype="delivery_option"></span>
+                            <span class="reset fa fa-times" data-filtertype="delivery_options"></span>
                         </div> <!-- end filter-name -->
                         <div class="filter-content">
-                            <ul class="filter-terms filter-terms-delivery_type" data-filtertype="delivery_option">
+                            <ul class="filter-terms filter-terms-delivery_type" data-filtertype="delivery_options">
                                 <div class="term-wrapper"> 
-                                    <li data-term="pickup_agreement">
+                                    <li data-text="Selbstabholung" data-term="pickup_agreement">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Selbstabholung</span>
                                     </li>
                                 </div>
                                 <div class="term-wrapper"> 
-                                    <li data-term="shipping_agreement">
+                                    <li data-text="Lieferung" data-term="shipping_agreement">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Lieferung</span>
                                     </li>
@@ -105,30 +105,30 @@
                     </div><!--end filter-->
                     
  
-                    <div class="filter payment-type" data-filtertype="payment_type">
+                    <div class="filter payment-type" data-filtertype="payment_types">
  
                         <div class="filter-name">
-                            <div class="filter-name-text" data-defaulttext="Zahlungsarten" data-filtertype="payment_type">Zahlungsarten</div>
+                            <div class="filter-name-text" data-defaulttext="Zahlungsarten" data-filtertype="payment_types">Zahlungsarten</div>
                             <span class="show-more fa fa-caret-down"></span>
-                            <span class="reset fa fa-times" data-filtertype="payment_type"></span>
+                            <span class="reset fa fa-times" data-filtertype="payment_types"></span>
                         </div> <!-- end filter-name -->
                  
                         <div class="filter-content">
-                            <ul class="filter-terms filter-terms-paymenttype" data-filtertype="payment_type">
+                            <ul class="filter-terms filter-terms-paymenttype" data-filtertype="payment_types">
                                  <div class="term-wrapper"> 
-                                    <li data-term="prepaid">
+                                    <li data-text="PayPal, Sofortüberweisung" data-term="prepaid">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">PayPal, Sofortüberweisung</span>
                                     </li>
                                 </div>
                                 <div class="term-wrapper"> 
-                                    <li  data-term="invoice">
+                                    <li data-text="Rechnung" data-term="invoice">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Rechnung</span>
                                     </li>
                                 </div>
                                  <div class="term-wrapper"> 
-                                    <li data-term="cash">
+                                    <li data-text="Bar" data-term="cash">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label">Bar</span>
                                     </li>

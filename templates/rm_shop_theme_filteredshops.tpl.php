@@ -93,4 +93,8 @@
         </a>  <!-- end seller-item -->
 </div> <!--end col-item-wrapper -->
 <?php endforeach; ?>
+
+
+<?php else: ?>
+<h1> Leider keine Ergebnisse</h1>
 <?php endif; ?>

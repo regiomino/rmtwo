@@ -2,10 +2,10 @@ jQuery(document).ready(function ($) {
 
  $.ajaxSetup({
              'beforeSend':function () {
-                          console.log(this.url);}
+                          console.log("ajax request: "+this.url);}
            });
 
- 
+
 
 var RMS = RMS || {};
 window.RMS = RMS;
@@ -16,7 +16,7 @@ RMS.init = function(){
     RMS.filter.init();
 };
 
- 
+// console.info( Drupal.settings.rm_shop);
 
 //////////////////////////////////
 // RM Ajax
@@ -31,29 +31,24 @@ RMS.ajax.PATH_GET_LOCATIONS = '/rm-shop-filter';
 
 RMS.ajax.Query = function() {
     
-   // var c = Drupal.settings.rm_shop.map_center.split(',');
-    
     this.qvalues = {
         map_bounds_ne_lat : Drupal.settings.rm_shop.map_bounds_ne_lat,
         map_bounds_ne_lng : Drupal.settings.rm_shop.map_bounds_ne_lng,
         map_bounds_sw_lat : Drupal.settings.rm_shop.map_bounds_sw_lat,  
         map_bounds_sw_lng : Drupal.settings.rm_shop.map_bounds_sw_lng,
-        /*map_center : {
-            lat : parseFloat(c[0]),
-            lng : parseFloat(c[1])
-        },*/
         map_center : Drupal.settings.rm_shop.map_center,
         seller_name : Drupal.settings.rm_shop.seller_name,
-        delivery_option : Drupal.settings.rm_shop.delivery_options,
-        payment_type : Drupal.settings.rm_shop.payment_type,
+        delivery_options : Drupal.settings.rm_shop.delivery_options,
+        payment_types : Drupal.settings.rm_shop.payment_types,
         seller_type : Drupal.settings.rm_shop.seller_type
     }
 };
- 
+
 RMS.ajax.Query.prototype = {
     update : function(newVals){
         var _self = this;
         $.extend(true, _self.qvalues, newVals);
+        
     },
     
     getValue : function (key) {
@@ -68,7 +63,7 @@ RMS.ajax.Query.prototype = {
 };
 
 RMS.ajax.sq = new RMS.ajax.Query();
- 
+  
  
 RMS.ajax.addLoader = function(){
     RMS.ajax.$sellerArea.addClass(RMS.ajax.LOADER_CLASSNAME);
@@ -88,6 +83,7 @@ RMS.ajax.updateResults = function(){
     prefix = (url.indexOf(_self.PATH_GET_LOCATIONS) != -1) ? url.substring(0,url.indexOf(_self.PATH_GET_LOCATIONS)) : prefix = url;
     
     newUrl = prefix + _self.PATH_GET_LOCATIONS + '?' + $.param(_self.sq.getQuery());
+    
     history.pushState({}, '',newUrl);
     
     $.ajax({
@@ -97,15 +93,12 @@ RMS.ajax.updateResults = function(){
         dataType : 'json',
   
     }).success(function(data) {
-       if (data.html != undefined) {
+        
+       
             RMS.$sellerItemsArea.html(data.html);
             RMS.map.updateMarker(data.marker);
              _self.removeLoader();
-       
-       } else {
-         RMS.$sellerItemsArea.html('<h1> Nix da! </h1>');
-         _self.removeLoader();
-       }
+        
     });
 }
  
@@ -115,7 +108,7 @@ RMS.ajax.updateResults = function(){
 
 RMS.map = {};
 RMS.map.mapContainer = "map";
-Drupal.settings.rm_shop.map_center
+ 
 RMS.map.getCenter = function(){
     var _self = this;
     var c = Drupal.settings.rm_shop.map_center.split(',');
@@ -346,8 +339,10 @@ RMS.filter.handleFilterChange = function(e,key,value) {
     } else {
         updateVals[key]='';
     }
-    
+     
     RMS.ajax.sq.update(updateVals);
+    console.info("sq vals: ");
+    console.info(RMS.ajax.sq.qvalues);
     RMS.ajax.updateResults();
   
    /* RMS.ajax.addLoader();
@@ -520,6 +515,7 @@ RMS.filter.category.CatFilter.prototype = {
     
     init : function () {
         var _self = this;
+        _self.setStartValues();
         _self.addListeners();
     },
     
@@ -530,6 +526,25 @@ RMS.filter.category.CatFilter.prototype = {
             RMS.filter.category.clearDropdowns();
         }   
         _self.$el.toggleClass('open');
+    },
+    
+    setStartValues : function(){
+      //  console.info(RMS.ajax.sq.qvalues);
+       
+        var _self = this;
+        var values = RMS.ajax.sq.qvalues[_self.filterKey];
+        var textVals = [];
+        if(values != '') {
+            _self.highlightFilterName();
+            var arr = values.split(',');
+            for (var i = 0, length = arr.length; i< length; i++) {
+               
+              var text =  $('li[data-term="' + arr[i] + '"]', _self.$filterContent).addClass('active').data('text');
+               _self.toggleHeadText(text);
+            }
+            
+        }
+       
     },
     
     addListeners : function(){
