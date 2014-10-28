@@ -10554,6 +10554,22 @@ addcartCart-Icon
     width: 40%;
   }
 }
+.page-lieferanten .marker-content {
+  line-height: 1.35;
+  overflow: hidden;
+  white-space: nowrap;
+  color: #555555;
+  display: block;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-decoration: none;
+  font-size: 14px;
+}
+.page-lieferanten .marker-content h4 {
+  margin-bottom: 3px;
+}
+.page-lieferanten .marker-content ul {
+  margin-bottom: 10px;
+}
 .page-lieferanten .sidebar {
   position: fixed;
   top: 65px;

@@ -610,6 +610,7 @@ function rmtwo_preprocess_page(&$variables) {
     
     else if (arg(0) == 'lieferanten') {
         //drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/frontend/module_only/mapsndshops/jquery.nouislider.all.min.js');
+        //drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/frontend/module_only/mapsndshops/infobox_packed.js');
         drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/frontend/module_only/mapsndshops/ms.js');
     }
     
