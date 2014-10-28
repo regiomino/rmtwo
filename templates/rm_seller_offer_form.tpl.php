@@ -230,7 +230,8 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
                                                                         <th>Preis (in €)</th>
                                                                         <th class="vat">MwSt.</th>
                                                                         <th>Pfand (in €)</th>
-                                                                        <th >Aktionen</th>
+                                                                        <th>UVP (in €)</th>
+                                                                        <th>Aktionen</th>
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -242,6 +243,7 @@ $vars['offers'] = rm_shop_get_structured_seller_offers($uid, array(0,1));
                                                                         <td><?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_price-' . $tradingunit->nid]); ?></td>
                                                                         <td><?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_vat-' . $tradingunit->nid]); ?></td>
                                                                         <td> <?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_deposit-' . $tradingunit->nid]); ?></td>
+                                                                        <td><?php print render($form['offers']['offer_' . $offer->nid]['variation_' . $variation->nid]['tradingunit_' . $tradingunit->nid]['these_fields']['field_tu_rrp-' . $tradingunit->nid]); ?></td>
                                                                         <td class="actions">
                                                                             <?php if(count($variation->trading_units) < 2):
                                                                                 print l('<span class="fa-stack"><i class="fa fa-trash fa-stack-1x"></i><i class="fa fa-ban fa-4x fa-stack-2x"></i> </span>', 'manage/seller/deleteoffer/' . $tradingunit->nid, array( 'html' => TRUE, 'attributes' => array('class' => array('btn', 'btn-default', 'disabled')), 'query' => drupal_get_destination()));
