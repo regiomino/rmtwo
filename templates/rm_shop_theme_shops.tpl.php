@@ -17,10 +17,10 @@
      
         
         <div class="row search">
-            <div class="col-md-3">
+            <div class="col col-3 label-col">
                Schnellsuche
             </div>
-            <div class="col-md-8">
+            <div class="col col-8">
                 <div class="input-group input-group-lg" style="width: 100%;">
                     
                     <input placeholder="<?php print t('Name'); ?> " id="filterShops" type="text" class="form-control">
@@ -34,7 +34,7 @@
                     </span>
                 </div>
             </div>
-            <div class="col-md-1"></div>
+            
         </div>
         
        <!-- <div class="row distance">
@@ -48,10 +48,10 @@
         </div>
         -->
          <div class="row category-filter">
-            <div class="col-md-3" style="margin-bottom :  10px;">
+            <div class="col col-3 label-col" >
                  Filter
             </div>
-            <div class="col-md-8">
+            <div class="col col-8">
                 <div class="filter-wrapper">
                     
                      <div class="filter seller-type" data-filtertype="seller_type">

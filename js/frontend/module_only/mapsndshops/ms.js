@@ -228,6 +228,7 @@ RMS.map.openPopUp = function(seller_id) {
         '<a class="marker-content" href="'+ _self.sellerLocations[seller_id].url +'">'+ _self.getPopUpMarkup(_self.sellerLocations[seller_id]) +' </a>'
     ); 
     _self.popUpWindow.open(_self.gm, _self.sellerLocations[seller_id].gmMarker);
+    _self.sellerLocations[seller_id].gmMarker.setZIndex(4);
   //  _self.setIcon(_self.sellerLocations[seller_id].gmMarker,_self.customIcons.seller_profile_hover.icon);
 };
 

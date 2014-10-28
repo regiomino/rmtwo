@@ -5,9 +5,45 @@
 
 .page-lieferanten {
     
+    
+    .col {
+        position: relative;
+        min-height: 1px;
+        padding-left: 15px;
+        padding-right: 15px;
+        float: left;
+    }
+    
+    .col-3 {
+        width: 25%;
+    }
+    
+    .col-8 {
+        width: 66.66666667%;
+        
+        @media screen and (max-width: 1350px) {
+            width: 75%;
+        }
+        @media screen and (max-width: 1250px) {
+            width: 100%;
+        }
+    }
+    
+    .label-col {
+        margin-bottom: 5px;
+    }
+    
+    
     .col-xs-12 {
         padding-left: @sidebar-padding;
         padding-right: @sidebar-padding;
+    }
+    
+    .container {
+        @media screen and (max-width: 850px) {
+            width: 100%;
+            margin: 0px;
+        }
     }
     
     .map {
@@ -20,12 +56,20 @@
             width: 40%;
         }
         z-index: 1;
+        
+        @media screen and (max-width: 850px) {
+            width: 100%;
+            height: 370px;
+            position: relative;
+            top: 0px;
+            bottom: inherit;
+        }
     }
         
     .marker-content {
         line-height:1.35;
-overflow:hidden;
-white-space:nowrap;
+        overflow:hidden;
+        white-space:nowrap;
         h4 {
             margin-bottom: 3px;
         }
@@ -55,6 +99,17 @@ white-space:nowrap;
         @media screen and (min-width: 992px) {
             width: 60%;
         }
+        
+        @media screen and (max-width: 850px) {
+            width: 100%;
+            position: relative;
+            top: 0px;
+            left: 0px;
+            right: inherit;
+            bottom: inherit;
+            overflow-y: auto;
+        }
+        
         
         .filter-area {
             background: #fff;
@@ -120,6 +175,7 @@ white-space:nowrap;
         .filter-wrapper {
             margin-right: -5px;
             margin-left: -5px;
+            
             .filter {
                 margin-bottom: 0px;
                 
@@ -211,7 +267,7 @@ white-space:nowrap;
                 display: none;
                 position: absolute;
                 top: 39px;
-                left: -100px;
+                 
                 background-color: #fff;
                 padding: 17px 20px 20px;
                 z-index: 140;
@@ -228,9 +284,6 @@ white-space:nowrap;
                     -moz-column-gap: 0;
                     -webkit-column-gap: 0;
                 }
-                
-               
-               
                 
                 .term-wrapper {
                     display: inline-block;
@@ -296,15 +349,16 @@ white-space:nowrap;
             
             .seller-type .filter-content {
                 width: 650px;
-                
+                left: -167px;
                 ul.filter-terms {
                     column-count: 4;
                     -moz-column-count: 4;
                     -webkit-column-count: 4;
                 }
                 
-                @media screen and (max-width: 1150px){
-                    width:  550px;
+                @media screen and (max-width: 1250px){
+                    width: 453px;
+                    left: 3px;
                     
                     ul.filter-terms {
                         column-count: 3;
@@ -316,8 +370,8 @@ white-space:nowrap;
             }
             
             .delivery-option .filter-content {
-                width: 390px;
-                
+                width: 360px;
+                left: -89px;
                  ul.filter-terms {
                     column-count: 2;
                     -moz-column-count: 2;
@@ -326,13 +380,13 @@ white-space:nowrap;
             }
             
             .payment-type .filter-content {
-                width: 514px;
-                left: -210px;
+                width: 384px;
+                right: 0px;
                 
                  ul.filter-terms {
-                    column-count: 3;
-                    -moz-column-count: 3;
-                    -webkit-column-count: 3;
+                    column-count:2;
+                    -moz-column-count: 2;
+                    -webkit-column-count: 2;
                 }
             }
         }
