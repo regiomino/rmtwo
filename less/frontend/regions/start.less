@@ -8,8 +8,8 @@
         margin: 40px 0 33px;
     }
     
-    .benefits-wrapper {
-        padding: 50px 0px;
+    .content-wrapper {
+        padding: 75px 0 95px 0;
         
         @media screen and (max-width: 767px) {
                    padding: 20px 0px;
@@ -19,34 +19,123 @@
             background-color: #fff;
         }
     }
+    .internal {
+           color: @brand-primary;;
+        font-weight: 700;
+        cursor: pointer;
+        .fa {
+            color: @brand-primary;
+        }
+    }
     
-    .benefits {
-        
-        h2 {
+    .anchor {
+        font-weight: 700;
+        color: @brand-primary;
+    }
+    
+    h2 {
             font-weight: 700;
             margin-top: 0;
             margin-bottom: 20px;
         }
-        
-        .anchor {
-            font-weight: 700;
-            color: @brand-primary;
-        }
-        
-        .btn {
-            width: 196px;
-        }
-        
-        @media screen and (max-width: 991px) {
-            .btn {
-                margin: 0 auto;
-                display: block;
-            }
-        }
-        
-        h4 {
+    
+   /* .benefits {
+        img {
+            padding: 5px;
+            background: #fff;
+            border: 1px solid #ddd;
             margin-bottom: 20px;
         }
+        
+         h4 {
+            margin-bottom: 20px;
+            text-align: center;
+            
+        }
+        
+        
+        .anchor {
+             text-align: center;
+        }
+        ul {
+            padding-left: 0px;
+            list-style: none;
+            margin-bottom: 23px;
+            
+            li {
+                position: relative;
+                padding: 0 0px 0px 23px;
+                margin-bottom: 10px;
+                
+                .fa {
+                    position: absolute;
+                    left: 0px;
+                    top: 3px;
+                    color: @brand-primary;
+                }
+            }
+        }
+    }*/
+    #frontpageGoogleMap {
+      box-shadow: -1px 4px 14px 0 rgba(0,0,0,.35);
+      //transition: box-shadow .12s ease-out;
+      
+    }
+    
+    .map {
+        text-align: center;
+        
+        #map-control {
+            margin-bottom: 7px;
+        }
+        
+        .control { 
+             margin: 0 40px;
+            display: inline-block;
+            text-align: center;
+            cursor: pointer;
+            
+            .filter-checkbox {
+                margin-top: 6px;
+                width: 18px;
+                height: 18px;
+                background-color: #fff;
+                display: inline-block;
+                margin-right: 10px;
+                border: 1px solid #b3b3b3;
+                float: left;
+                position: relative;
+                
+                &:hover,
+                &:focus {
+                    border: 1px solid #95bc0d;
+                }
+                
+                .fa {
+                    position: absolute;
+                    left: 1px;
+                    top: 1px;
+                    color: #555!important;
+                    display: none;
+                }
+                
+               
+            }
+            
+            img {
+                height: 24px;
+                height: 33px;
+            }
+            
+            &.active {
+                .fa {
+                    display: block;
+                }
+            }
+        }
+    }
+    
+    .howTo {
         
         ul {
             padding-left: 0px;
@@ -66,6 +155,19 @@
                 }
             }
         }
+        
+        .btn {
+            width: 196px;
+        }
+        
+        @media screen and (max-width: 991px) {
+            .btn {
+                margin: 0 auto;
+                display: block;
+            }
+        }
+        
+       
         
         .steps {
             

@@ -128,7 +128,14 @@ RMS.map.getBounds = function() {
 RMS.map.mapOptions = {
     center: RMS.map.getCenter(),  
     zoom: 10,
-    mapTypeId: 'roadmap'
+    mapTypeId: 'roadmap',
+    mapTypeControl : false,
+    panControl : false,
+    streetViewControl : false,
+    zoomControl: true,
+    zoomControlOptions: {
+        style: google.maps.ZoomControlStyle.SMALL
+    }
 };
 RMS.map.maxZoom = 10;// zoom = 20 rein, zoom = 1 raus
 /*RMS.map.popUpOptions = {
@@ -245,7 +252,7 @@ RMS.map.resetIcon = function(seller_id) {
 
 RMS.map.getPopUpMarkup = function(id){
     var c = '';
-    c += '<img src="'+id.image_path +'"</img>';
+   // c += '<img src="'+id.image_path +'"</img>';
     c += '<h4><strong>'+id.title+'</strong></h4>';
     c += '<ul class="list-unstyled">';
     c += '<li><span class="fa fa-map-marker"></span> ' + id.address + '</li>';

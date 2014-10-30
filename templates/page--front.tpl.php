@@ -73,24 +73,28 @@
     </div>
 </div>
 
-<!--<div class="benefits-wrapper">
+ <!--<div class="content-wrapper">
     <div class="container">
-        <div class="row entries">
+        <div class="row benefits">
             <div class="col-md-4">
-                <p><strong>Für Gastronomen und Händler</strong></p>
-                        <h4>Effiziente Beschaffung regionaler Produkte</h4> 
-                        <ul>
-                            <li><span class="fa fa-check"></span><strong>Zeit- und Kostenersparnis:</strong> Vereinfachen Sie Ihre Beschaffung: App öffnen, Produkte und
-                                 Mengen auswählen, Bestellung abschicken. </li>
-                            <li><span class="fa fa-check"></span><strong> Günstige Preise:</strong> Sparen sie auf Dauer, denn Sie kaufen beim Produzenten direkt ein. </li>
-                            <li><span class="fa fa-check"></span><strong> Hohe Produktqualität:</strong> Volle Transparenz über die Herkunft der Produkte.</li>
-                            <li><span class="fa fa-check"></span><strong> Besseres Marketing:</strong> Zeigen Sie regional interessierten Kunden, wo Sie einkaufen. </li>
-                            <li><span class="fa fa-check"></span><strong> Vorbestellungen:</strong> Lassen Sie Ihre Kunden vorbestellen und verringern Sie so Ihren Bestand</li>
-                        </ul>
-                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#suggestModal"><span class="fa fa-rocket"></span> Jetzt loslegen! </button>
+                <img src="<?php echo base_path() . path_to_theme();?>/images/efficient.jpg" alt="Effiziente Beschaffung regionaler Produkte" class="center-block img-circle">  
+
+                <p class="anchor">Für Gastronomen und Händler</p>
+                <h4>Effiziente Beschaffung regionaler Produkte</h4> 
+                <ul>
+                    <li><span class="fa fa-check"></span><strong>Zeit- und Kostenersparnis:</strong> Vereinfachen Sie Ihre Beschaffung: App öffnen, Produkte und
+                         Mengen auswählen, Bestellung abschicken. </li>
+                    <li><span class="fa fa-check"></span><strong> Günstige Preise:</strong> Sparen sie auf Dauer, denn Sie kaufen beim Produzenten direkt ein. </li>
+                    <li><span class="fa fa-check"></span><strong> Hohe Produktqualität:</strong> Volle Transparenz über die Herkunft der Produkte.</li>
+                    <li><span class="fa fa-check"></span><strong> Besseres Marketing:</strong> Zeigen Sie regional interessierten Kunden, wo Sie einkaufen. </li>
+                    <li><span class="fa fa-check"></span><strong> Vorbestellungen:</strong> Lassen Sie Ihre Kunden vorbestellen und verringern Sie so Ihren Bestand</li>
+                </ul>
+                <a class="internal"> mehr erfahren <span class="fa fa-chevron-right"></span></a>
             </div>
             <div class="col-md-4">
-                 <p> <strong>Für Lieferanten und Produzenten</strong></p>
+                 <img src="<?php echo base_path() . path_to_theme();?>/images/direct.jpg" alt="Effektive Direktvermarktung Ihrer Produkte" class="center-block img-circle">  
+
+                 <p class="anchor">Für Lieferanten und Produzenten</p>
                     <h4>Effektive Direktvermarktung Ihrer Produkte</h4> 
                     <ul>
                         <li><span class="fa fa-check"></span><strong>Höhere Erträge:</strong>  Wir übernehmen Ihre Vermarktung ohne Grundgebühren. Unschlagbar! </li>
@@ -101,10 +105,12 @@
                         <li><span class="fa fa-check"></span><strong>Zeit- und damit Kostenersparnis:</strong> Vereinfachen Sie Ihre Direktvermarktung - Bestellung,
                         Abrechnung, Bezahlung und Buchhaltung. </li>
                     </ul>
-                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#suggestModal"><span class="fa fa-rocket"></span> Jetzt loslegen! </button>
+                  <a class="internal"> mehr erfahren <span class="fa fa-chevron-right"></span></a>
             </div>
             <div class="col-md-4">
-                 <p><strong>Für Kommunen</strong></p>
+                <img src="<?php echo base_path() . path_to_theme();?>/images/eco.jpg" alt="Wir stärken unsere Wirtschaftskraft nachhaltig" class="center-block img-circle">  
+
+                 <p class="anchor">Für Kommunen</p>
                 <h4>Wir stärken unsere Wirtschaftskraft nachhaltig!</h4> 
                 <ul>
                     <li><span class="fa fa-check"></span><strong>Ökonomisch:</strong> Ihre Produzenten können zu fairen Preisen verkaufen und erzielen höhere Erlöse.</li>
@@ -112,21 +118,49 @@
                     <li><span class="fa fa-check"></span><strong> Strukturfördernd:</strong> Die Gründung und Führung von Dorfläden/ Stadtteilläden sowie von
 Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
                  </ul>
-                 <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#suggestModal"><span class="fa fa-rocket"></span> Jetzt loslegen! </button>
+                <a class="internal"> mehr erfahren <span class="fa fa-chevron-right"></span></a>
             </div>
         </div>
     </div>
-</div>-->
+</div> -->
+ 
 
-<div class="map">
-    <div id="frontpageGoogleMap" style="width: 100%; height: 500px"></div>
-</div>
-    
-<div class="benefits-wrapper">
+
+<div class="content-wrapper white">
     <div class="container">
         <div class="row ">
             <div class="col-md-12">
-                <div class="benefits"> 
+                <div class="map">
+                    <h2 class="text-center">Regionales neu entdecken </h2> 
+                   <p class="text-center lead">
+                    Unsere Teilnehmer verbindet die Leidenschaft für hochwertige regionale Produkte und die Liebe zum Detail. Ehrliche und nachhaltige Produktion
+                    als Zutaten für eine regionale Küche, die begeistert!
+                   </p>
+                   <div class="text-center" id="map-control">
+                        <div class="control active" data-type="customer"> 
+                            <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                            <img src="<?php echo base_path() . path_to_theme();?>/images/markers/customer_profile.png" alt="teilnehmende Gastronomen">  
+                            <span class="checkbox-label">teilnehmende Gastronomie</span>
+                        </div>
+                        <div class="control active" data-type="seller"> 
+                            <div class="filter-checkbox"><i class="fa fa-check"></i></div>
+                            <img src="<?php echo base_path() . path_to_theme();?>/images/markers/seller_profile.png" alt="teilnehmende Produzenten/Lieferanten">  
+                            <span class="checkbox-label">teilnehmende Lieferanten/Produzenten</span>
+                        </div>
+                   </div>
+                   
+                <div id="frontpageGoogleMap" style="width: 100%; height: 500px"></div>
+                </div><!--howTo-->
+            </div><!--end col-md-12-->
+        </div><!-- end row-->
+    </div><!-- end container-->
+</div> <!--end content-wrapper -->   
+    
+<div class="content-wrapper">
+    <div class="container">
+        <div class="row ">
+            <div class="col-md-12">
+                <div class="howTo"> 
                     <div class="col-md-5">
                         <p class="anchor">Für Gastronomen und Händler</p>
                         <h2> Effiziente Beschaffung regionaler Produkte</h2> 
@@ -191,17 +225,17 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
                             
                         </div><!-- end row-->
                     </div><!-- end col-md-7-->
-                </div><!--benefits-->
+                </div><!--howTo-->
             </div><!--end col-md-12-->
         </div><!-- end row-->
     </div><!-- end container-->
-</div> <!--end benefits-wrapper -->    
+</div> <!--end content-wrapper -->    
 
-<div class="benefits-wrapper white">
+<div class="content-wrapper white ">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="benefits">
+                <div class="howTo">
                      <div class="col-md-5 col-md-push-7 ">
                         <p class="anchor">Für Lieferanten und Produzenten</p>
                         <h2> Effektive Direktvermarktung Ihrer Produkte</h2> 
@@ -261,17 +295,17 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
                         </div><!-- end row-->
                     </div><!--end col-md-7-->
                    
-                </div><!--benefits-->
+                </div><!--howTo-->
             </div><!--end col-md-12-->
         </div><!-- end row-->
     </div><!-- end container-->
-</div> <!--end benefits-wrapper-->
+</div> <!--end content-wrapper-->
 
-<div class="benefits-wrapper">
+<div class="content-wrapper">
     <div class="container">
         <div class="row ">
             <div class="col-md-12">
-                <div class="benefits "> 
+                <div class="howTo "> 
                     <div class="col-md-5">
                       <p class="anchor">Für Kommunen</p>
                       <h2>Wir stärken unsere Wirtschaftskraft nachhaltig!</h2> 
@@ -320,11 +354,11 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
                             </div>
                         </div><!--end row-->
                     </div><!--end col-md-7-->
-                </div><!--benefits-->
+                </div><!--howTo-->
             </div><!--end col-md-12-->
         </div><!-- end row-->
     </div><!-- end container-->
-</div> <!--end benefits-wrapper --> 
+</div> <!--end content-wrapper --> 
 
 <div class="container-fluid">
     <div class="footer"> 

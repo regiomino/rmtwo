@@ -9831,147 +9831,235 @@ addcartCart-Icon
 .footer {
   padding: 20px 0;
 }
+.front {
+  /* .benefits {
+        img {
+            padding: 5px;
+            background: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
+        
+         h4 {
+            margin-bottom: 20px;
+            text-align: center;
+            
+        }
+        
+        
+        .anchor {
+             text-align: center;
+        }
+        ul {
+            padding-left: 0px;
+            list-style: none;
+            margin-bottom: 23px;
+            
+            li {
+                position: relative;
+                padding: 0 0px 0px 23px;
+                margin-bottom: 10px;
+                
+                .fa {
+                    position: absolute;
+                    left: 0px;
+                    top: 3px;
+                    color: @brand-primary;
+                }
+            }
+        }
+    }*/
+}
 .front .page-title {
   text-align: center;
 }
 .front .page-header {
   margin: 40px 0 33px;
 }
-.front .benefits-wrapper {
-  padding: 50px 0px;
+.front .content-wrapper {
+  padding: 75px 0 95px 0;
 }
 @media screen and (max-width: 767px) {
-  .front .benefits-wrapper {
+  .front .content-wrapper {
     padding: 20px 0px;
   }
 }
-.front .benefits-wrapper.white {
+.front .content-wrapper.white {
   background-color: #fff;
 }
-.front .benefits h2 {
+.front .internal {
+  color: #95bc0d;
+  font-weight: 700;
+  cursor: pointer;
+}
+.front .internal .fa {
+  color: #95bc0d;
+}
+.front .anchor {
+  font-weight: 700;
+  color: #95bc0d;
+}
+.front h2 {
   font-weight: 700;
   margin-top: 0;
   margin-bottom: 20px;
 }
-.front .benefits .anchor {
-  font-weight: 700;
-  color: #95bc0d;
+.front #frontpageGoogleMap {
+  box-shadow: -1px 4px 14px 0 rgba(0, 0, 0, 0.35);
 }
-.front .benefits .btn {
-  width: 196px;
+.front .map {
+  text-align: center;
 }
-@media screen and (max-width: 991px) {
-  .front .benefits .btn {
-    margin: 0 auto;
-    display: block;
-  }
+.front .map #map-control {
+  margin-bottom: 7px;
 }
-.front .benefits h4 {
-  margin-bottom: 20px;
+.front .map .control {
+  margin: 0 40px;
+  display: inline-block;
+  text-align: center;
+  cursor: pointer;
 }
-.front .benefits ul {
+.front .map .control .filter-checkbox {
+  margin-top: 6px;
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  display: inline-block;
+  margin-right: 10px;
+  border: 1px solid #b3b3b3;
+  float: left;
+  position: relative;
+}
+.front .map .control .filter-checkbox:hover,
+.front .map .control .filter-checkbox:focus {
+  border: 1px solid #95bc0d;
+}
+.front .map .control .filter-checkbox .fa {
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  color: #555!important;
+  display: none;
+}
+.front .map .control img {
+  height: 24px;
+  height: 33px;
+}
+.front .map .control.active .fa {
+  display: block;
+}
+.front .howTo ul {
   padding-left: 0px;
   list-style: none;
   margin-bottom: 23px;
 }
-.front .benefits ul li {
+.front .howTo ul li {
   position: relative;
   padding: 0 0px 0px 23px;
   margin-bottom: 10px;
 }
-.front .benefits ul li .fa {
+.front .howTo ul li .fa {
   position: absolute;
   left: 0px;
   top: 3px;
   color: #95bc0d;
 }
-.front .benefits .steps p {
+.front .howTo .btn {
+  width: 196px;
+}
+@media screen and (max-width: 991px) {
+  .front .howTo .btn {
+    margin: 0 auto;
+    display: block;
+  }
+}
+.front .howTo .steps p {
   font-size: 12px;
 }
-.front .benefits .steps .row {
+.front .howTo .steps .row {
   margin-bottom: 25px;
 }
-.front .benefits .steps.steps-rightside .text-rightside img {
+.front .howTo .steps.steps-rightside .text-rightside img {
   margin-right: -107px;
 }
 @media screen and (max-width: 1199px) {
-  .front .benefits .steps.steps-rightside .text-rightside img {
+  .front .howTo .steps.steps-rightside .text-rightside img {
     margin-right: -95px;
   }
 }
-.front .benefits .steps.steps-rightside .text-leftside img {
+.front .howTo .steps.steps-rightside .text-leftside img {
   margin-right: 13px;
 }
 @media screen and (max-width: 1199px) {
-  .front .benefits .steps.steps-rightside .text-leftside img {
+  .front .howTo .steps.steps-rightside .text-leftside img {
     margin-right: 0px;
   }
 }
-.front .benefits .steps.steps-rightside img.map {
+.front .howTo .steps.steps-rightside img.map {
   margin-top: -24px;
 }
-.front .benefits .steps.steps-rightside img.payment {
+.front .howTo .steps.steps-rightside img.payment {
   margin-top: 12px;
 }
-.front .benefits .steps.steps-rightside img.select {
+.front .howTo .steps.steps-rightside img.select {
   margin-top: 11px;
 }
-.front .benefits .steps.steps-rightside img.delivery {
+.front .howTo .steps.steps-rightside img.delivery {
   margin-top: 11px;
 }
-.front .benefits .steps.steps-rightside img.suggest {
+.front .howTo .steps.steps-rightside img.suggest {
   margin-right: -131px;
   margin-top: -15px;
 }
 @media screen and (max-width: 1199px) {
-  .front .benefits .steps.steps-rightside img.suggest {
+  .front .howTo .steps.steps-rightside img.suggest {
     margin-right: -95px;
   }
 }
-.front .benefits .steps.steps-rightside img.bubble {
+.front .howTo .steps.steps-rightside img.bubble {
   margin-top: -9px;
 }
 @media screen and (max-width: 991px) {
-  .front .benefits .steps.steps-rightside img {
+  .front .howTo .steps.steps-rightside img {
     margin: 0px!important;
     float: right!important;
   }
 }
-.front .benefits .steps.steps-leftside .text-rightside img {
+.front .howTo .steps.steps-leftside .text-rightside img {
   margin-right: 19px;
 }
-.front .benefits .steps.steps-leftside .text-leftside img {
+.front .howTo .steps.steps-leftside .text-leftside img {
   margin-left: 20px;
 }
 @media screen and (max-width: 1199px) {
-  .front .benefits .steps.steps-leftside .text-rightside img {
+  .front .howTo .steps.steps-leftside .text-rightside img {
     margin-right: 5px;
   }
 }
-.front .benefits .steps.steps-leftside img.suggest {
+.front .howTo .steps.steps-leftside img.suggest {
   margin-top: -21px;
   margin-left: 32px;
 }
-.front .benefits .steps.steps-leftside img.listimage {
+.front .howTo .steps.steps-leftside img.listimage {
   margin-top: -12px;
 }
 @media screen and (max-width: 991px) {
-  .front .benefits .steps.steps-leftside img {
+  .front .howTo .steps.steps-leftside img {
     margin: 0px!important;
     float: right!important;
   }
 }
-.front .benefits .steps.gastro {
+.front .howTo .steps.gastro {
   padding-top: 34px;
 }
-.front .benefits .steps.seller {
+.front .howTo .steps.seller {
   padding-top: 60px;
 }
-.front .benefits .steps.regional {
+.front .howTo .steps.regional {
   padding-top: 42px;
 }
 @media screen and (max-width: 991px) {
-  .front .benefits .steps {
+  .front .howTo .steps {
     padding-top: 15px!important;
   }
 }
