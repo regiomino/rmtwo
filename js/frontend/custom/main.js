@@ -103,9 +103,10 @@ jQuery(document).ready(function ($) {
         $(this).tab('show');
     });
     
-    $phone_postal = $('#edit-phone').add('#edit-postal-code');
-    $submit = $('#edit-submit--2');
     $form = $('#rm-sales-suggest-form');
+    $phone_postal = $('#edit-phone').add('#edit-postal-code');
+    $submit = $form.find('input[type="submit"]');
+   
     
     $submit.on('click', function(e){
         e.preventDefault();
