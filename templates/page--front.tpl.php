@@ -73,7 +73,7 @@
     </div>
 </div>
 
- <div class="content-wrapper">
+ <!--<div class="content-wrapper">
     <div class="container">
         <div class="row benefits">
             
@@ -128,7 +128,7 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
             </div>
         </div>
     </div>
-</div>  
+</div>  -->
  
 
 
