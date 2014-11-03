@@ -1721,6 +1721,7 @@ jQuery(document).ready(function ($) {
     });
     
      /*
+      *Suggest
      * Wenn als parameter ?suggest=1 der URL �bergeben wird, wir das suggestModal direkt ge�ffnet
      * Ist wichtig f�r die Seite www.regiomino.de/vorschlagen
      */
@@ -1739,6 +1740,21 @@ jQuery(document).ready(function ($) {
     $('.delivery-select label').add('.payment-select label').click(function () {
         $(this).tab('show');
     });
+    
+    $phone_postal = $('#edit-phone').add('#edit-postal-code');
+    $submit = $('#edit-submit--2');
+    $form = $('#rm-sales-suggest-form');
+    
+    $submit.on('click', function(e){
+        e.preventDefault();
+        $phone_postal.val(function(index,val){
+            var newVal = $.trim(val.replace(/\D/g,''));
+            return newVal;
+        });
+        
+        $form.submit();
+    });
+    
     
     //Checkout
     

@@ -174,7 +174,7 @@ FPM.openPopUp = function(marker,html){
 
 
 (function() {
-    FPM.init();
+   FPM.init();
 })();
  
 });
