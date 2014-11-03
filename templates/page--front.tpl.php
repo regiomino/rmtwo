@@ -73,9 +73,15 @@
     </div>
 </div>
 
- <!--<div class="content-wrapper">
+ <div class="content-wrapper">
     <div class="container">
         <div class="row benefits">
+            
+             <p class="text-center lead">
+                   Regiomino ist ein kostenloser Online-Marktplatz für regional erzeugte Produkte. Sie kaufen und verkaufen komfortabel online, wir erledigen
+                   Vermittlung und Abwicklung.
+                   <span class="text-muted"> Ihre Vorteile...</span>
+                   </p>
             <div class="col-md-4">
                 <img src="<?php echo base_path() . path_to_theme();?>/images/efficient.jpg" alt="Effiziente Beschaffung regionaler Produkte" class="center-block img-circle">  
 
@@ -122,7 +128,7 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
             </div>
         </div>
     </div>
-</div> -->
+</div>  
  
 
 

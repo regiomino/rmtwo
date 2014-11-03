@@ -9831,45 +9831,6 @@ addcartCart-Icon
 .footer {
   padding: 20px 0;
 }
-.front {
-  /* .benefits {
-        img {
-            padding: 5px;
-            background: #fff;
-            border: 1px solid #ddd;
-            margin-bottom: 20px;
-        }
-        
-         h4 {
-            margin-bottom: 20px;
-            text-align: center;
-            
-        }
-        
-        
-        .anchor {
-             text-align: center;
-        }
-        ul {
-            padding-left: 0px;
-            list-style: none;
-            margin-bottom: 23px;
-            
-            li {
-                position: relative;
-                padding: 0 0px 0px 23px;
-                margin-bottom: 10px;
-                
-                .fa {
-                    position: absolute;
-                    left: 0px;
-                    top: 3px;
-                    color: @brand-primary;
-                }
-            }
-        }
-    }*/
-}
 .front .page-title {
   text-align: center;
 }
@@ -9877,7 +9838,7 @@ addcartCart-Icon
   margin: 40px 0 33px;
 }
 .front .content-wrapper {
-  padding: 75px 0 95px 0;
+  padding: 53px 0 95px 0;
 }
 @media screen and (max-width: 767px) {
   .front .content-wrapper {
@@ -9903,6 +9864,31 @@ addcartCart-Icon
   font-weight: 700;
   margin-top: 0;
   margin-bottom: 20px;
+}
+.front .benefits .lead {
+  margin-bottom: 53px;
+}
+.front .benefits img {
+  margin-bottom: 20px;
+}
+.front .benefits h4 {
+  margin-bottom: 20px;
+}
+.front .benefits ul {
+  padding-left: 0px;
+  list-style: none;
+  margin-bottom: 23px;
+}
+.front .benefits ul li {
+  position: relative;
+  padding: 0 0px 0px 23px;
+  margin-bottom: 10px;
+}
+.front .benefits ul li .fa {
+  position: absolute;
+  left: 0px;
+  top: 3px;
+  color: #95bc0d;
 }
 .front #frontpageGoogleMap {
   box-shadow: -1px 4px 14px 0 rgba(0, 0, 0, 0.35);
