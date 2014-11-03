@@ -132,9 +132,7 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
 
 </div>-->
 
-=======
-</div>  -->
->>>>>>> d3b9294e67c7144a7fab319856422d8eeca06e68
+ 
  
 
 
