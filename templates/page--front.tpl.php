@@ -72,8 +72,8 @@
         </div>
     </div>
 </div>
-<!--
- <div class="content-wrapper">
+ 
+<!-- <div class="content-wrapper">
     <div class="container">
         <div class="row benefits">
             
@@ -128,16 +128,15 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-
-</div>-->
-
+ 
+</div> 
+-->
  
  
 
 
-<div class="content-wrapper white">
-    <div class="container">
+<div class="content-wrapper white image-wall">
+    <div class="container ">
         <div class="row ">
             <div class="col-md-12">
                 <div class="map">
@@ -158,11 +157,16 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
                             <span class="checkbox-label">teilnehmende Lieferanten/Produzenten</span>
                         </div>
                    </div>
-                   
-                <div id="frontpageGoogleMap" style="width: 100%; height: 500px"></div>
+                <div class="map-wrapper"> 
+                    <div id="frontpageGoogleMap" style="width: 100%; height: 500px"></div>
+                </div>
+               <div class="left wall"></div>
+                <div class="right wall"></div> 
                 </div><!--howTo-->
             </div><!--end col-md-12-->
         </div><!-- end row-->
+        
+        
     </div><!-- end container-->
 </div> <!--end content-wrapper -->   
     
