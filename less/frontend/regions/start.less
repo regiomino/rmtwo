@@ -72,7 +72,14 @@
             }
         }
     }
-    
+    #frontpageGoogleMap {
+        height: 500px;
+        width: 100%;
+        
+        @media screen and (max-width:768px) {
+                height: 250px;
+            }
+    }
     
     .map-wrapper {
         position: relative;
@@ -80,6 +87,8 @@
         -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
         z-index: 30;
+        
+        
         
         &:before { 
             top: 10px;
@@ -113,7 +122,7 @@
                 left: -362px;
                 width: 437px;
                 height: 365px;
-                bottom: 0px;
+                bottom: 9px;
                 z-index: 0;
             }
             

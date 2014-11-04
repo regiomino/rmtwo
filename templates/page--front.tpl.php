@@ -139,12 +139,15 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
     <div class="container ">
         <div class="row ">
             <div class="col-md-12">
-                <div class="map">
-                    <h2 class="text-center">Regionales neu entdecken </h2> 
+                <h2 class="text-center">Regionales neu entdecken </h2> 
                    <p class="text-center lead">
                     Unsere Teilnehmer verbindet die Leidenschaft für hochwertige regionale Produkte und die Liebe zum Detail. Ehrliche und nachhaltige Produktion
                     als Zutaten für eine regionale Küche, die begeistert!
                    </p>
+            </div>
+            <div class="col-md-10 col-md-offset-1">
+                <div class="map">
+                    
                    <div class="text-center" id="map-control">
                         <div class="control active" data-type="customer"> 
                             <div class="filter-checkbox"><i class="fa fa-check"></i></div>
@@ -158,7 +161,7 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
                         </div>
                    </div>
                 <div class="map-wrapper"> 
-                    <div id="frontpageGoogleMap" style="width: 100%; height: 500px"></div>
+                    <div id="frontpageGoogleMap"></div>
                 </div>
                <div class="left wall"></div>
                 <div class="right wall"></div> 
