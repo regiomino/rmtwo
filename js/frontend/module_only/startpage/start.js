@@ -193,14 +193,14 @@ FPM.openPopUp = function(marker,html){
      $('a[href*=#]:not([href=#])').click(function() {
         
             var target = $(this.hash),
-                hash = this.hash;
+               // hash = this.hash;
             
             target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
                 if (target.length) {
                     $('html,body').animate({
                       scrollTop: target.offset().top - 65
                     }, 800, function(){
-                        location.hash = hash;
+                       // location.hash = hash;
                         });
                     return false;
                 }
