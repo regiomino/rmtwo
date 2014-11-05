@@ -73,7 +73,7 @@
     </div>
 </div>
  
-<!-- <div class="content-wrapper">
+  <div class="content-wrapper">
     <div class="container">
         <div class="row benefits">
             
@@ -95,7 +95,7 @@
                     <li><span class="fa fa-check"></span><strong> Besseres Marketing:</strong> Zeigen Sie regional interessierten Kunden, wo Sie einkaufen. </li>
                     <li><span class="fa fa-check"></span><strong> Vorbestellungen:</strong> Lassen Sie Ihre Kunden vorbestellen und verringern Sie so Ihren Bestand</li>
                 </ul>
-                <a class="internal"> mehr erfahren <span class="fa fa-chevron-right"></span></a>
+                <a class="internal" href="#gastronomie"> mehr erfahren <span class="fa fa-chevron-right"></span></a>
             </div>
             <div class="col-md-4">
                  <img src="<?php echo base_path() . path_to_theme();?>/images/direct.jpg" alt="Effektive Direktvermarktung Ihrer Produkte" class="center-block img-circle">  
@@ -111,7 +111,7 @@
                         <li><span class="fa fa-check"></span><strong>Zeit- und damit Kostenersparnis:</strong> Vereinfachen Sie Ihre Direktvermarktung - Bestellung,
                         Abrechnung, Bezahlung und Buchhaltung. </li>
                     </ul>
-                  <a class="internal"> mehr erfahren <span class="fa fa-chevron-right"></span></a>
+                  <a class="internal" href="#produzenten"> mehr erfahren <span class="fa fa-chevron-right"></span></a>
             </div>
             <div class="col-md-4">
                 <img src="<?php echo base_path() . path_to_theme();?>/images/eco.jpg" alt="Wir stärken unsere Wirtschaftskraft nachhaltig" class="center-block img-circle">  
@@ -124,13 +124,11 @@
                     <li><span class="fa fa-check"></span><strong> Strukturfördernd:</strong> Die Gründung und Führung von Dorfläden/ Stadtteilläden sowie von
 Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
                  </ul>
-                <a class="internal"> mehr erfahren <span class="fa fa-chevron-right"></span></a>
+                <a class="internal" href="#kommunen"> mehr erfahren <span class="fa fa-chevron-right"></span></a>
             </div>
         </div>
     </div>
- 
 </div> 
--->
  
  
 
@@ -173,204 +171,213 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
     </div><!-- end container-->
 </div> <!--end content-wrapper -->   
     
-<div class="content-wrapper">
+<div class="content-wrapper" id="gastronomie">
     <div class="container">
-        <div class="row ">
+        <div class="row">
             <div class="col-md-12">
-                <div class="howTo"> 
-                    <div class="col-md-5">
-                        <p class="anchor">Für Gastronomen und Händler</p>
-                        <h2> Effiziente Beschaffung regionaler Produkte</h2> 
-                        <ul>
-                            <li><span class="fa fa-check"></span><strong>Zeit- und Kostenersparnis<br></strong> Vereinfachen Sie Ihre Beschaffung: App öffnen, Produkte und
-                                 Mengen auswählen, Bestellung abschicken. </li>
-                            <li><span class="fa fa-check"></span><strong> Günstige Preise<br></strong> Sparen sie auf Dauer, denn Sie kaufen beim Produzenten<br> direkt ein. </li>
-                            <li><span class="fa fa-check"></span><strong> Hohe Produktqualität<br></strong> Volle Transparenz über die Herkunft der Produkte.</li>
-                            <li><span class="fa fa-check"></span><strong> Besseres Marketing<br></strong> Zeigen Sie regional interessierten Kunden, wo Sie einkaufen. </li>
-                            <li><span class="fa fa-check"></span><strong> Vorbestellungen<br></strong> Lassen Sie Ihre Kunden vorbestellen und verringern Sie so<br> Ihren Bestand</li>
-                        </ul>
-                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#suggestModal"><span class="fa fa-rocket"></span> Jetzt loslegen! </button>
-                    </div><!-- col-md-5-->
-                    <div class="col-md-7 steps steps-rightside gastro">
-                        <p class="hidden-md hidden-lg"><strong>So funktioniert´s: </strong></p>
-                        <div class="row text-rightside">
-                            <div class="col-sm-3">
-                                 <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/map.png" alt="Effiziente Beschaffung regionaler Produkte" class="hidden-xs map pull-right">  
+                <div class="howTo">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p class="anchor">Für Gastronomen und Händler</p>
+                            <h2>Clever regional einkaufen, ohne Telefon und Fax</h2> 
+                             <p class="lead">
+Sparen Sie Zeit und Kosten bei ihrem wöchentlichen Einkauf, indem Sie komfortabel online bestellen. Vergleichen Sie aktuelle Preise und Angebote
+ihrer Stammlieferanten und erhalten Sie Empfehlungen zu neuen Anbietern und deren Spezialitäten. Verwalten Sie Ihre Bestellungen in Rekordzeit und behalten 
+Sie den vollen Überblick zu Rechnungen und Kosten.<br> Worauf warten Sie noch? 
+                             </p>
+                            <button class="btn btn-success btn-lg" id="gastro"><span class="fa fa-rocket"></span> Jetzt loslegen! </button>
+                        </div><!-- col-md-6-->
+                        <div class="col-md-6 steps steps-rightside gastro">
+                           <div class="row">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <p><strong>So funktioniert´s: </strong>  </p>
+                                </div>
                             </div>
-                             <div class="col-sm-9 ">
-                                <p class="text-muted col-md-offset-3">
-                                    <strong> Schritt 1:<br></strong>
-                                    Geben Sie Ihre Adresse ein und klicken Sie auf "Lieferant finden".
-                                     Kein Lieferant vor Ort? Schlagen Sie uns einfach Ihre Lieferanten/Produzenten vor! </p>
-                            </div>
-                        </div><!-- end row-->
-                        <div class="row text-leftside">
-                             <div class="col-sm-3 col-md-push-9">
-                                <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/select.png" alt="Effiziente Beschaffung regionaler Produkte" class="hidden-xs select pull-right">  
-                            </div>
-                            
-                            <div class="col-sm-9 col-md-pull-3 ">
-                                 <p class="text-muted col-md-offset-3">
-                                    <strong> Schritt 2:<br></strong>
-                                    Suchen Sie sich Ihre Produkte aus und geben Sie die Menge ein. Geben Sie an, wann Sie beliefert werden möchten. Bei jedem Lieferanten/Produzenten
-                                    können Sie spezielle regionale Produkte bestellen, mit denen Sie Ihre Kunden begeistern werden.
-                                 </p>
-                            </div>
-                           
-                        </div><!-- end row-->
-                        <div class="row text-rightside">
-                            <div class="col-sm-3">
-                                 <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/payment.png" alt="Effiziente Beschaffung regionaler Produkte" class="hidden-xs payment pull-right">  
-                            </div>
-                            <div class="col-sm-9 ">
-                                <p class="text-muted col-md-offset-3">
-                                    <strong> Schritt 3:<br></strong>
-                                     Wählen Sie die Zahlungsart aus. Anstatt jeden Monat unzählige Überweisungen tätigen zu müssen, können Sie auch direkt online Ihre Zahlung abwickeln. Rechnungen und steuerrelevante Dokumente werden Ihnen per Mail zugeschickt.
-                                </p>
-                            </div>
-                        </div><!-- end row-->
-                        <div class="row text-leftside">
-                             <div class="col-sm-3 col-md-push-9">
-                                <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/delivery.png" alt="Effiziente Beschaffung regionaler Produkte" class="hidden-xs delivery pull-right">  
-                            </div>
-                            
-                            <div class="col-sm-9 col-md-pull-3 ">
-                                 <p class="text-muted col-md-offset-3">
-                                    <strong> Schritt 4:<br></strong>
-                                    Entscheiden Sie ob Sie selber abholen oder geliefert bekommen. Sobald Ihre Bestellung abgeschlossen ist wird der Lieferant/Produzent Ihnen die Ware zu einem vereinbarten Zeitpunkt liefern oder zur Abholung vorbereiten.</p>
-                            </div>
-                            
-                        </div><!-- end row-->
-                    </div><!-- end col-md-7-->
+                            <div class="row text-rightside">
+                                <div class="col-sm-3">
+                                     <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/map.png" alt="Effiziente Beschaffung regionaler Produkte" class="hidden-xs map pull-right">  
+                                </div>
+                                 <div class="col-sm-9 ">
+                                    <p class="text-muted col-md-offset-3">
+                                        <strong> Schritt 1:<br></strong>
+                                        Geben Sie Ihre Adresse ein und klicken Sie auf "Lieferant finden".
+                                         Kein Lieferant vor Ort? Schlagen Sie uns einfach Ihre Lieferanten/Produzenten vor! </p>
+                                </div>
+                            </div><!-- end row-->
+                            <div class="row text-leftside">
+                                 <div class="col-sm-3 col-md-push-9">
+                                    <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/select.png" alt="Effiziente Beschaffung regionaler Produkte" class="hidden-xs select pull-right">  
+                                </div>
+                                
+                                <div class="col-sm-9 col-md-pull-3 ">
+                                     <p class="text-muted col-md-offset-3">
+                                        <strong> Schritt 2:<br></strong>
+                                        Suchen Sie sich Ihre Produkte aus und geben Sie die Menge ein. Geben Sie an, wann Sie beliefert werden möchten. Bei jedem Lieferanten/Produzenten
+                                        können Sie spezielle regionale Produkte bestellen, mit denen Sie Ihre Kunden begeistern werden.
+                                     </p>
+                                </div>
+                               
+                            </div><!-- end row-->
+                            <div class="row text-rightside">
+                                <div class="col-sm-3">
+                                     <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/payment.png" alt="Effiziente Beschaffung regionaler Produkte" class="hidden-xs payment pull-right">  
+                                </div>
+                                <div class="col-sm-9 ">
+                                    <p class="text-muted col-md-offset-3">
+                                        <strong> Schritt 3:<br></strong>
+                                         Wählen Sie die Zahlungsart aus. Anstatt jeden Monat unzählige Überweisungen tätigen zu müssen, können Sie auch direkt online Ihre Zahlung abwickeln. Rechnungen und steuerrelevante Dokumente werden Ihnen per Mail zugeschickt.
+                                    </p>
+                                </div>
+                            </div><!-- end row-->
+                            <div class="row text-leftside">
+                                 <div class="col-sm-3 col-md-push-9">
+                                    <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/delivery.png" alt="Effiziente Beschaffung regionaler Produkte" class="hidden-xs delivery pull-right">  
+                                </div>
+                                
+                                <div class="col-sm-9 col-md-pull-3 ">
+                                     <p class="text-muted col-md-offset-3">
+                                        <strong> Schritt 4:<br></strong>
+                                        Entscheiden Sie ob Sie selber abholen oder geliefert bekommen. Sobald Ihre Bestellung abgeschlossen ist wird der Lieferant/Produzent Ihnen die Ware zu einem vereinbarten Zeitpunkt liefern oder zur Abholung vorbereiten.</p>
+                                </div>
+                                
+                            </div><!-- end row-->
+                        </div><!-- end col-md-7-->
+                    </div>
                 </div><!--howTo-->
             </div><!--end col-md-12-->
         </div><!-- end row-->
     </div><!-- end container-->
 </div> <!--end content-wrapper -->    
 
-<div class="content-wrapper white ">
+<div class="content-wrapper white" id="produzenten">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="howTo">
-                     <div class="col-md-5 col-md-push-7 ">
-                        <p class="anchor">Für Lieferanten und Produzenten</p>
-                        <h2> Effektive Direktvermarktung Ihrer Produkte</h2> 
-                        <ul>
-                            <li><span class="fa fa-check"></span><strong>Höhere Erträge<br>  </strong>  Wir übernehmen Ihre Vermarktung ohne Grundgebühren. Unschlagbar! </li>
-                            <li><span class="fa fa-check"></span><strong>Gewinnen Sie neue Kundengruppen<br>  </strong>  Sichern Sie sich den Zugang zu modernen
-                            Verbrauchern. </li>
-                            <li><span class="fa fa-check"></span><strong>Zukunftssicherheit<br> </strong>   Neue Absatzkanäle - weniger Abhängigkeit von großen
-                            Handelskonzernen. </li>
-                            <li><span class="fa fa-check"></span><strong>Zeit- und damit Kostenersparnis<br> </strong>   Vereinfachen Sie Ihre Direktvermarktung - Bestellung,
-                            Abrechnung, Bezahlung und Buchhaltung. </li>
-                        </ul>
-                         <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#suggestModal"><span class="fa fa-rocket"></span> Jetzt loslegen! </button>
-                    </div><!--end col-md-5-->
+                    <div class="row">
+                        <div class="col-md-6 col-md-push-6 ">
+                           <p class="anchor">Für Lieferanten und Produzenten</p>
+                           <h2>Hallo Internet!</h2> 
+                            <p class="lead">
+   Präsentieren Sie Ihren Betrieb und Ihre Produkte professionell mit Regiomino und bieten Sie Ihren Kunden einen einfachen Weg bei Ihnen zu kaufen.
+   Unser Vertriebsnetzwerk stärkt Ihre Online-Präsenz und erhöht Ihre Sichtbarkeit im Internet.
+   Kinderleichte Angebots- und Preisverwaltung, Bestelleingänge auf einen Blick und Buchhaltung ohne Kopfschmerzen. Wir sind gespannt auf ihre ersten Produkte! 
+                            </p>
+                            <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#suggestModal"><span class="fa fa-rocket"></span> Jetzt loslegen! </button>
+                       </div><!--end col-md-5-->
+                       
                     
-                    
-                    <div class="col-md-7 col-md-pull-5 steps steps-leftside seller">
-                        <p class="hidden-md hidden-lg"><strong>So funktioniert´s: </strong></p>
-                        <div class="row text-leftside">
-                            
-                            <div class="col-md-5 col-sm-3 col-md-push-7">
-                                <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/suggest.png" alt="Effektive Direktvermarktung Ihrer Produkte" class="hidden-xs suggest pull-left">  
-                            </div><!--end col-md-5-->
-                            
-                            <div class="col-md-7 col-sm-9 col-md-pull-5">
-                                <p class="text-muted">
-                                   <strong> Schritt 1:<br></strong>
-                                   Über den roten Button (oberer rechter Seitenbereich) können Sie sich als Lieferant/Produzent für Regiomino vorschlagen.
-                                   Wir werden Sie dann umgehend kontaktieren.
-                                </p>
-                            </div><!--end col-md-7-->
-                        </div><!-- end row-->
-                        <div class="row text-rightside">
-                            <div class="col-sm-3">
-                                <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/list.png" alt="Effektive Direktvermarktung Ihrer Produkte" class="hidden-xs listimage pull-right">  
-                            </div><!--end col-md-3-->
-                            <div class="col-md-7 col-sm-9 ">
-                                <p class="text-muted ">
-                                    <strong> Schritt 2:<br></strong>
-                                    Schicken Sie uns Ihre Preisliste und teilen Sie uns Ihre Lieferbedingungen mit.
-                                </p>
-                            </div><!--end col-md-7-->
-                        </div><!-- end row-->
-                        <div class="row text-leftside">
-                            
-                            <div class="col-md-5 col-sm-3 col-md-push-7">
-                                <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/shop.png" alt="Effektive Direktvermarktung Ihrer Produkte" class="hidden-xs shop pull-left">  
+                        <div class="col-md-6 col-md-pull-6 steps steps-leftside seller">
+                             <div class="row">
+                                <div class="col-md-10">
+                                    <p><strong>So funktioniert´s: </strong>  </p>
+                                </div>
                             </div>
-                            
-                            <div class="col-md-7 col-sm-9 col-md-pull-5">
-                                <p class="text-muted">
-                                    <strong> Schritt 3:<br></strong>
-                                    Schon am nächsten Tag ist Ihr Angebot online und Kunden können ganz einfach bei Ihnen einkaufen.
-                                    Als Kondition erhält Regiomino von Ihnen bis zu 10% auf die Bestellung.
-                                </p>
-                            </div>
-                        </div><!-- end row-->
-                    </div><!--end col-md-7-->
-                   
+                            <div class="row text-leftside">
+                                
+                                <div class="col-md-5 col-sm-3 col-md-push-7">
+                                    <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/suggest.png" alt="Effektive Direktvermarktung Ihrer Produkte" class="hidden-xs suggest pull-left">  
+                                </div><!--end col-md-5-->
+                                
+                                <div class="col-md-7 col-sm-9 col-md-pull-5">
+                                    <p class="text-muted">
+                                       <strong> Schritt 1:<br></strong>
+                                       Über den roten Button (oberer rechter Seitenbereich) können Sie sich als Lieferant/Produzent für Regiomino vorschlagen.
+                                       Wir werden Sie dann umgehend kontaktieren.
+                                    </p>
+                                </div><!--end col-md-7-->
+                            </div><!-- end row-->
+                            <div class="row text-rightside">
+                                <div class="col-sm-3">
+                                    <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/list.png" alt="Effektive Direktvermarktung Ihrer Produkte" class="hidden-xs listimage pull-right">  
+                                </div><!--end col-md-3-->
+                                <div class="col-md-7 col-sm-9 ">
+                                    <p class="text-muted ">
+                                        <strong> Schritt 2:<br></strong>
+                                        Schicken Sie uns Ihre Preisliste und teilen Sie uns Ihre Lieferbedingungen mit.
+                                    </p>
+                                </div><!--end col-md-7-->
+                            </div><!-- end row-->
+                            <div class="row text-leftside">
+                                
+                                <div class="col-md-5 col-sm-3 col-md-push-7">
+                                    <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/shop.png" alt="Effektive Direktvermarktung Ihrer Produkte" class="hidden-xs shop pull-left">  
+                                </div>
+                                
+                                <div class="col-md-7 col-sm-9 col-md-pull-5">
+                                    <p class="text-muted">
+                                        <strong> Schritt 3:<br></strong>
+                                        Schon am nächsten Tag ist Ihr Angebot online und Kunden können ganz einfach bei Ihnen einkaufen.
+                                        Als Kondition erhält Regiomino von Ihnen bis zu 10% auf die Bestellung.
+                                    </p>
+                                </div>
+                            </div><!-- end row-->
+                        </div><!--end col-md-7-->
+                    </div>
                 </div><!--howTo-->
             </div><!--end col-md-12-->
         </div><!-- end row-->
     </div><!-- end container-->
 </div> <!--end content-wrapper-->
 
-<div class="content-wrapper">
+<div class="content-wrapper" id="kommunen">
     <div class="container">
         <div class="row ">
             <div class="col-md-12">
-                <div class="howTo "> 
-                    <div class="col-md-5">
-                      <p class="anchor">Für Kommunen</p>
-                      <h2>Wir stärken unsere Wirtschaftskraft nachhaltig!</h2> 
-                       <ul>
-                           <li><span class="fa fa-check"></span><strong>Ökonomisch<br> </strong> Ihre Produzenten können zu fairen Preisen verkaufen und erzielen höhere Erlöse.</li>
-                           <li><span class="fa fa-check"></span><strong>Nachhaltig<br> </strong> Ihr Geld bleibt in ihrem regionalen Wirtschaftskreislauf. </li>
-                           <li><span class="fa fa-check"></span><strong> Strukturfördernd<br></strong> Die Gründung und Führung von Dorfläden/ Stadtteilläden sowie von
-Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
-                        </ul>
-                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#suggestModal"><span class="fa fa-rocket"></span> Jetzt loslegen! </button>
-                    </div><!--end col-md-5-->
-                    <div class="col-md-7 steps steps-rightside regional">
-                        <p class="hidden-md hidden-lg"><strong>So funktioniert´s: </strong></p>
-                        <div class="row text-rightside">
-                            <div class="col-sm-3">
-                               <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/suggest.png" alt="Wir stärken unsere Wirtschaftskraft nachhaltig!" class="hidden-xs suggest pull-right">  
-
+                <div class="howTo ">
+                    <div class="row">
+                        <div class="col-md-6">
+                          <p class="anchor">Für Kommunen</p>
+                          <h2>Strukturförderung durch regionale Vielfalt und Einzigartigkeit </h2> 
+                           <p class="lead">
+Regiomino unterstützt regionale Produzenten bei ihrer Geschäftsentwicklung und Vermarktung im Internet. Gastronomie und Handel werden besser
+mit Anbietern von regionalen Erzeugnissen vernetzt und Regionen dadurch nachhaltig gestärkt. Lassen Sie uns diesen Prozess gemeinsam vorantreiben! 
+                           </p>
+                            <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#suggestModal"><span class="fa fa-rocket"></span> Jetzt loslegen! </button>
+                        </div><!--end col-md-5-->
+                        <div class="col-md-6 steps steps-rightside regional">
+                            <div class="row">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <p><strong>So funktioniert´s: </strong>  </p>
+                                </div>
                             </div>
-                            <div class="col-sm-9 ">
-                                <p class="text-muted col-md-offset-3">
-                                    <strong> Schritt 1:<br></strong>
-                                    Über den roten Button (oberer rechter Seitenbereich) können Sie uns Ihre Lieferanten/Produzenten mitteilen. </p>
-                            </div>
-                        </div><!--end row-->
-                        <div class="row text-leftside">
-                             <div class="col-sm-3 col-md-push-9">
-                               <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/fly.png" alt="Wir stärken unsere Wirtschaftskraft nachhaltig!" class="hidden-xs bubble pull-left ">  
-                            </div>
-                             
-                             <div class="col-sm-9 col-md-pull-3 ">
-                                 <p class="text-muted col-md-offset-3">
-                                    <strong> Schritt 2:<br></strong>
-                                    Regiomino kontaktiert die von Ihnen vorgeschlagenen Lieferanten/Produzenten und übernimmt die Abwicklung. </p>
-                            </div>
-                        </div><!--end row-->
-        
-                        <div class="row text-rightside">
-                            <div class="col-sm-3">
-                                 <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/contact.png" alt="Wir stärken unsere Wirtschaftskraft nachhaltig!" class="hidden-xs pull-right">  
-                            </div>
-                             <div class="col-sm-9 ">
-                                <p class="text-muted col-md-offset-3">
-                                    Gerne können Sie uns auch eine Email schreiben unter <a href="mailto:support@regiomino.de">support@regiomino.de</a>, oder direkt
-                                    unter <a href="tel:+4909131-9291117">09131-9291117</a>einen unserer Mitarbeiter kontaktieren. Oder Sie schreiben Ihre Produzenten an und verweisen sie auf uns.
-                                </p>
-                            </div>
-                        </div><!--end row-->
-                    </div><!--end col-md-7-->
+                            <div class="row text-rightside">
+                                <div class="col-sm-3">
+                                   <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/suggest.png" alt="Wir stärken unsere Wirtschaftskraft nachhaltig!" class="hidden-xs suggest pull-right">  
+    
+                                </div>
+                                <div class="col-sm-9 ">
+                                   
+                                    <p class="text-muted col-md-offset-3">
+                                        <strong> Schritt 1:<br></strong>
+                                        Über den roten Button (oberer rechter Seitenbereich) können Sie uns Ihre Lieferanten/Produzenten mitteilen. </p>
+                                </div>
+                            </div><!--end row-->
+                            <div class="row text-leftside">
+                                 <div class="col-sm-3 col-md-push-9">
+                                   <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/fly.png" alt="Wir stärken unsere Wirtschaftskraft nachhaltig!" class="hidden-xs bubble pull-left ">  
+                                </div>
+                                 
+                                 <div class="col-sm-9 col-md-pull-3 ">
+                                     <p class="text-muted col-md-offset-3">
+                                        <strong> Schritt 2:<br></strong>
+                                        Regiomino kontaktiert die von Ihnen vorgeschlagenen Lieferanten/Produzenten und übernimmt die Abwicklung. </p>
+                                </div>
+                            </div><!--end row-->
+            
+                            <div class="row text-rightside">
+                                <div class="col-sm-3">
+                                     <img src="<?php echo base_path() . path_to_theme();?>/images/frontpage_illus/contact.png" alt="Wir stärken unsere Wirtschaftskraft nachhaltig!" class="hidden-xs pull-right">  
+                                </div>
+                                 <div class="col-sm-9 ">
+                                    <p class="text-muted col-md-offset-3">
+                                        Gerne können Sie uns auch eine Email schreiben unter <a href="mailto:support@regiomino.de">support@regiomino.de</a>, oder direkt
+                                        unter <a href="tel:+4909131-9291117">09131-9291117</a>einen unserer Mitarbeiter kontaktieren. Oder Sie schreiben Ihre Produzenten an und verweisen auf uns.
+                                    </p>
+                                </div>
+                            </div><!--end row-->
+                        </div><!--end col-md-7-->
+                    </div>
                 </div><!--howTo-->
             </div><!--end col-md-12-->
         </div><!-- end row-->

@@ -7267,6 +7267,9 @@ button.close {
 .navbar .navbar-nav .dropdown .dropdown-menu > li > a {
   padding: 5px 20px;
 }
+html {
+  overflow-x: hidden;
+}
 body {
   padding-top: 65px;
 }
@@ -9862,6 +9865,7 @@ addcartCart-Icon
 .front .anchor {
   font-weight: 700;
   color: #95bc0d;
+  margin-bottom: 20px;
 }
 .front h2 {
   font-weight: 700;
@@ -9989,6 +9993,9 @@ addcartCart-Icon
 }
 .front .map .control.active .fa {
   display: block;
+}
+.front .howTo .lead {
+  margin-bottom: 30px;
 }
 .front .howTo ul {
   padding-left: 0px;

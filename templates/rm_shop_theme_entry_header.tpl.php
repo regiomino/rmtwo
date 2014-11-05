@@ -4,9 +4,9 @@
         <div class="welcome"> 
             <h1> <strong> Einfach regionale Produkte einkaufen</strong></h1>
         
-            <p class="lead">Der günstigste Weg regionale Produkte zu
+           <!-- <p class="lead">Der günstigste Weg regionale Produkte zu
             verkaufen oder zu beschaffen!
-            </p>
+            </p>-->
             <!--<ul class="countdown list-inline">
                   <li>
                      <p class="h2"><strong> <span class="days">00</span></strong></p>
