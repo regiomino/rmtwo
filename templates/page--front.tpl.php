@@ -257,9 +257,9 @@ Sie den vollen Überblick zu Rechnungen und Kosten.<br> Worauf warten Sie noch?
                     <div class="row">
                         <div class="col-md-6 col-md-push-6 ">
                            <p class="anchor">Für Lieferanten und Produzenten</p>
-                           <h2>Hallo Internet!</h2> 
+                           <h2>Erfolgreich im Internet verkaufen</h2> 
                             <p class="lead">
-   Präsentieren Sie Ihren Betrieb und Ihre Produkte professionell mit Regiomino und bieten Sie Ihren Kunden einen einfachen Weg bei Ihnen zu kaufen.
+   Präsentieren Sie Ihren Betrieb und Ihre Produkte mit Regiomino online und bieten Sie Ihren Kunden einen einfachen Weg bei Ihnen zu kaufen.
    Unser Vertriebsnetzwerk stärkt Ihre Online-Präsenz und erhöht Ihre Sichtbarkeit im Internet.
    Kinderleichte Angebots- und Preisverwaltung, Bestelleingänge auf einen Blick und Buchhaltung ohne Kopfschmerzen. Wir sind gespannt auf ihre ersten Produkte! 
                             </p>
