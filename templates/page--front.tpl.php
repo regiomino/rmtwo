@@ -397,7 +397,7 @@ mit Anbietern von regionalen Erzeugnissen vernetzt und Regionen dadurch nachhalt
             </div>
         </div>
         <div class="row">
-                <div class="col-md-12"><p class="text-center small">Die auf www.regiomino.de gezeigten Angebote richten sich ausschließlich an Unternehmen und Gewerbetreibende. Alle Preise sind Netto-Preise zzgl. der beim Angebot genannten MwSt.</p></div>
+                <div class="col-md-12"><p class="text-center text-muted small">Die auf www.regiomino.de gezeigten Angebote richten sich ausschließlich an Unternehmen und Gewerbetreibende. Alle Preise sind Netto-Preise zzgl. der beim Angebot genannten MwSt.</p></div>
             </div>
         <div class="row">
             <div class="col-md-12"><p class="text-center">&copy; Regiomino 2014</p></div>

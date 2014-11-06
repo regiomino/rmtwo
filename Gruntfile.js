@@ -194,7 +194,7 @@ module.exports = function (grunt) {
         },
         
         js: {
-            files: ['js/backend/**/*.js', 'js/bootstrap/*.js','js/frontend/**/*.js','js/global/**/*.js'],
+            files: ['js/backend/**/*.js', 'js/bootstrap/*.js','js/frontend/custom/*.js','js/global/**/*.js'],
             tasks : ['concat','uglify']
         }
     },

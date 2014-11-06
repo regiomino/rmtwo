@@ -141,7 +141,7 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
         case 'user_pass':
             //General declaration
             $form['#attributes']['class'][] = 'form-vertical';
-            $form['#attributes']['class'][] = 'col-md-12';
+            $form['#attributes']['class'][] = 'col-md-6';
             $form['name']['#attributes']['placeholder'] = t('Your E-Mail');
             $form['name']['#attributes']['class'][] = 'form-control';
             $form['name']['#attributes']['required'] = NULL;
@@ -157,7 +157,7 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
             $form['pass']['#attributes']['required'] = NULL;
             $form['actions']['submit']['#attributes']['class'][] = 'btn';
             $form['actions']['submit']['#attributes']['class'][] = 'btn-success';
-            $form['links']['#markup'] = '<div class="item-list"><ul><li class="first"><a href="/user/password" title="' . t('Request new password via e-mail.') . '">' . t('Request new password') . '</a></li></ul></div>';
+            $form['links']['#markup'] = '<a href="/user/password" class="password-reset" title="' . t('Request new password via e-mail.') . '">' . t('Request new password') . '</a>';
             break;
         case 'rm_sales_suggest_form':
             //General declaration
@@ -174,14 +174,14 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
            // $form['suggest']['necessary']['title']['#title_display'] = 'none';
             $form['suggest']['necessary']['title']['#attributes']['class'][] = 'form-control';
             $form['suggest']['necessary']['title']['#attributes']['required'] = NULL;
-            $form['suggest']['necessary']['title']['#prefix'] = '<div class="row"> <div class="col-sm-7"> <div class="form-group">';
+            $form['suggest']['necessary']['title']['#prefix'] = '<div class="row"> <div class="col-sm-6"> <div class="form-group">';
             $form['suggest']['necessary']['title']['#suffix'] = '</div> </div>';
             //Locality
             $form['suggest']['necessary']['locality']['#attributes']['placeholder'] = t('City');
            // $form['suggest']['necessary']['locality']['#title_display'] = 'none';
             $form['suggest']['necessary']['locality']['#attributes']['class'][] = 'form-control';
             $form['suggest']['necessary']['locality']['#attributes']['required'] = NULL;
-            $form['suggest']['necessary']['locality']['#prefix'] = '<div class="col-sm-5"> <div class="form-group">';
+            $form['suggest']['necessary']['locality']['#prefix'] = '<div class="col-sm-6"> <div class="form-group">';
             $form['suggest']['necessary']['locality']['#suffix'] = '</div></div></div>';
             
             //Thoroughfare

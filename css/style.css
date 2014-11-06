@@ -9833,6 +9833,10 @@ addcartCart-Icon
 }
 .footer {
   padding: 20px 0;
+  margin-top: 30px;
+}
+.footer a {
+  color: #555;
 }
 .front {
   overflow-x: hidden;
@@ -10886,7 +10890,6 @@ addcartCart-Icon
   display: none;
 }
 .page-user-register h3 {
-  border-bottom: 1px solid #ddd;
   padding-bottom: 10px;
 }
 .page-user-register legend {

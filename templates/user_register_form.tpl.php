@@ -10,3 +10,4 @@
     <h3><?php print t('... or apply for a new account'); ?></h3>
     <?php print drupal_render_children(drupal_get_form('rm_sales_suggest_form')); ?>
 </div>
+ </div><!--end row -->

@@ -8,6 +8,7 @@
 ?>
 <!-- Example row of columns -->
     <?php if('user/register' == current_path()): ?>
+    <div class="row"> 
         <div class="col-md-4">
             <h3><?php print t('Please sign in...'); ?></h3>
             <?php
@@ -16,5 +17,6 @@
             print $variables['elements']['regiominouserlogin'];
             ?>
         </div>
+   
     <?php endif; ?>
     <?php print $content; ?>
