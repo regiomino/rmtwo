@@ -155,7 +155,7 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
                         <div class="control active" data-type="seller"> 
                             <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                             <img src="<?php echo base_path() . path_to_theme();?>/images/markers/seller_profile.png" alt="teilnehmende Produzenten/Lieferanten">  
-                            <span class="checkbox-label">teilnehmende Lieferanten/Produzenten</span>
+                            <span class="checkbox-label">teilnehmende Produzenten</span>
                         </div>
                    </div>
                 <div class="map-wrapper"> 
@@ -200,8 +200,8 @@ Sie den vollen Überblick zu Rechnungen und Kosten.<br> Worauf warten Sie noch?
                                  <div class="col-sm-9 ">
                                     <p class="text-muted col-md-offset-3">
                                         <strong> Schritt 1:<br></strong>
-                                        Geben Sie Ihre Adresse ein und klicken Sie auf "Lieferant finden".
-                                         Kein Lieferant vor Ort? Schlagen Sie uns einfach Ihre Lieferanten/Produzenten vor! </p>
+                                        Geben Sie Ihre Postleitzahl ein und klicken Sie auf "Produzent finden".
+                                         Kein Produzent vor Ort? Schlagen Sie uns einfach Ihre Produzenten vor! </p>
                                 </div>
                             </div><!-- end row-->
                             <div class="row text-leftside">
@@ -212,7 +212,7 @@ Sie den vollen Überblick zu Rechnungen und Kosten.<br> Worauf warten Sie noch?
                                 <div class="col-sm-9 col-md-pull-3 ">
                                      <p class="text-muted col-md-offset-3">
                                         <strong> Schritt 2:<br></strong>
-                                        Suchen Sie sich Ihre Produkte aus und geben Sie die Menge ein. Geben Sie an, wann Sie beliefert werden möchten. Bei jedem Lieferanten/Produzenten
+                                        Suchen Sie sich Ihre Produkte aus und geben Sie die Menge ein. Geben Sie an, wann Sie beliefert werden möchten. Bei jedem Produzenten
                                         können Sie spezielle regionale Produkte bestellen, mit denen Sie Ihre Kunden begeistern werden.
                                      </p>
                                 </div>
@@ -237,7 +237,7 @@ Sie den vollen Überblick zu Rechnungen und Kosten.<br> Worauf warten Sie noch?
                                 <div class="col-sm-9 col-md-pull-3 ">
                                      <p class="text-muted col-md-offset-3">
                                         <strong> Schritt 4:<br></strong>
-                                        Entscheiden Sie ob Sie selber abholen oder geliefert bekommen. Sobald Ihre Bestellung abgeschlossen ist wird der Lieferant/Produzent Ihnen die Ware zu einem vereinbarten Zeitpunkt liefern oder zur Abholung vorbereiten.</p>
+                                        Entscheiden Sie ob Sie selber abholen oder geliefert bekommen. Sobald Ihre Bestellung abgeschlossen ist wird der Produzent Ihnen die Ware zu einem vereinbarten Zeitpunkt liefern oder zur Abholung vorbereiten.</p>
                                 </div>
                                 
                             </div><!-- end row-->
@@ -256,7 +256,7 @@ Sie den vollen Überblick zu Rechnungen und Kosten.<br> Worauf warten Sie noch?
                 <div class="howTo">
                     <div class="row">
                         <div class="col-md-6 col-md-push-6 ">
-                           <p class="anchor">Für Lieferanten und Produzenten</p>
+                           <p class="anchor">Für Produzenten</p>
                            <h2>Erfolgreich im Internet verkaufen</h2> 
                             <p class="lead">
    Präsentieren Sie Ihren Betrieb und Ihre Produkte mit Regiomino online und bieten Sie Ihren Kunden einen einfachen Weg bei Ihnen zu kaufen.
@@ -282,7 +282,7 @@ Sie den vollen Überblick zu Rechnungen und Kosten.<br> Worauf warten Sie noch?
                                 <div class="col-md-7 col-sm-9 col-md-pull-5">
                                     <p class="text-muted">
                                        <strong> Schritt 1:<br></strong>
-                                       Über den roten Button (oberer rechter Seitenbereich) können Sie sich als Lieferant/Produzent für Regiomino vorschlagen.
+                                       Über "Produzent oder Gastronom vorschlagen" (oberer rechter Seitenbereich) können Sie sich als Lieferant/Produzent für Regiomino vorschlagen.
                                        Wir werden Sie dann umgehend kontaktieren.
                                     </p>
                                 </div><!--end col-md-7-->
@@ -350,7 +350,7 @@ mit Anbietern von regionalen Erzeugnissen vernetzt und Regionen dadurch nachhalt
                                    
                                     <p class="text-muted col-md-offset-3">
                                         <strong> Schritt 1:<br></strong>
-                                        Über den roten Button (oberer rechter Seitenbereich) können Sie uns Ihre Lieferanten/Produzenten mitteilen. </p>
+                                       Über "Produzent oder Gastronom vorschlagen" (oberer rechter Seitenbereich) können Sie uns Ihre Produzenten mitteilen. </p>
                                 </div>
                             </div><!--end row-->
                             <div class="row text-leftside">
@@ -361,7 +361,7 @@ mit Anbietern von regionalen Erzeugnissen vernetzt und Regionen dadurch nachhalt
                                  <div class="col-sm-9 col-md-pull-3 ">
                                      <p class="text-muted col-md-offset-3">
                                         <strong> Schritt 2:<br></strong>
-                                        Regiomino kontaktiert die von Ihnen vorgeschlagenen Lieferanten/Produzenten und übernimmt die Abwicklung. </p>
+                                        Regiomino kontaktiert die von Ihnen vorgeschlagenen Produzenten und übernimmt die Abwicklung. </p>
                                 </div>
                             </div><!--end row-->
             
