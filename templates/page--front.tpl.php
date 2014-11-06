@@ -100,7 +100,7 @@
             <div class="col-md-4">
                  <img src="<?php echo base_path() . path_to_theme();?>/images/direct.jpg" alt="Effektive Direktvermarktung Ihrer Produkte" class="center-block img-circle">  
 
-                 <p class="anchor">Für Lieferanten und Produzenten</p>
+                 <p class="anchor">Für Produzenten</p>
                     <h4>Effektive Direktvermarktung Ihrer Produkte</h4> 
                     <ul>
                         <li><span class="fa fa-check"></span><strong>Höhere Erträge:</strong>  Wir übernehmen Ihre Vermarktung ohne Grundgebühren. Unschlagbar! </li>
