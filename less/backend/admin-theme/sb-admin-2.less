@@ -1,4 +1,45 @@
-
+.navbar {
+    
+    .navbar-nav {
+        
+        .navi-link {
+            text-align: center;
+            height: 65px;
+            line-height: 65px;
+            padding: 0 15px;
+            display: inline-block;
+            color: @gray;
+            position: relative;
+            transition: background-color .2s linear;
+            
+            &:hover,
+            &:focus {
+                text-decoration: none;
+                background-color: #f8f8f8;
+            }
+        }
+        
+        &.navbar-right:last-child {
+            margin-right: 0;
+        }
+        
+        .btn {
+            margin-left: 10px
+        }
+        
+        .dropdown {
+            display: inline-block;
+            
+            .help-link {
+                color: @brand-primary;
+            }
+            
+            .dropdown-menu>li>a {
+               padding: 5px 20px;
+            }
+        }
+    }
+}
 // Global Styles
 
  

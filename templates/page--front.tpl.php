@@ -19,7 +19,7 @@
             <div class="nav navbar-nav navbar-right">
                 <?php print rm_user_get_navbar(); ?>
                 <div class="dropdown">
-                    <a href="#" class="navi-link dropdown-toggle" id="helpDD" data-toggle="dropdown"> Hilfe <span class="caret"></span> </a>
+                    <a href="#" class="navi-link dropdown-toggle" id="helpDD" data-toggle="dropdown"> Hilfe <span class="caret"></span> <span class="fa fa-chevron-down"></span> </a>
                     <ul class="dropdown-menu" role="menu" aria-labelledby="helpDD">
                         <li role="presentation"><a role="menuitem" tabindex="-1" class="help-link" href="http://www.regiomino.de/kontakt">Besuchen Sie unseren Hilfebereich &raquo;</a></li>
                        
@@ -77,12 +77,13 @@
   <div class="content-wrapper">
     <div class="container">
         <div class="row benefits">
-            
-             <p class="text-center lead">
+            <div class="col-md-12">
+                <p class="text-center lead">
                    Regiomino ist ein kostenloser Online-Marktplatz für regional erzeugte Produkte. Sie kaufen und verkaufen komfortabel online, wir erledigen
                    Vermittlung und Abwicklung.
                    <span class="text-muted"> Ihre Vorteile...</span>
-                   </p>
+                </p>
+            </div>
             <div class="col-md-4">
                 <img src="<?php echo base_path() . path_to_theme();?>/images/efficient.jpg" alt="Effiziente Beschaffung regionaler Produkte" class="center-block img-circle">  
 
@@ -96,7 +97,7 @@
                     <li><span class="fa fa-check"></span><strong> Besseres Marketing:</strong> Zeigen Sie regional interessierten Kunden, wo Sie einkaufen. </li>
                     <li><span class="fa fa-check"></span><strong> Vorbestellungen:</strong> Lassen Sie Ihre Kunden vorbestellen und verringern Sie so Ihren Bestand</li>
                 </ul>
-                <a class="internal" href="#gastronomie"> mehr erfahren <span class="fa fa-chevron-right"></span></a>
+                <a class="internal btn btn-default" href="#gastronomie"> mehr erfahren <span class="fa fa-chevron-right"></span></a>
             </div>
             <div class="col-md-4">
                  <img src="<?php echo base_path() . path_to_theme();?>/images/direct.jpg" alt="Effektive Direktvermarktung Ihrer Produkte" class="center-block img-circle">  
@@ -112,7 +113,7 @@
                         <li><span class="fa fa-check"></span><strong>Zeit- und damit Kostenersparnis:</strong> Vereinfachen Sie Ihre Direktvermarktung - Bestellung,
                         Abrechnung, Bezahlung und Buchhaltung. </li>
                     </ul>
-                  <a class="internal" href="#produzenten"> mehr erfahren <span class="fa fa-chevron-right"></span></a>
+                  <a class="internal btn btn-default" href="#produzenten"> mehr erfahren <span class="fa fa-chevron-right"></span></a>
             </div>
             <div class="col-md-4">
                 <img src="<?php echo base_path() . path_to_theme();?>/images/eco.jpg" alt="Wir stärken unsere Wirtschaftskraft nachhaltig" class="center-block img-circle">  
@@ -125,7 +126,7 @@
                     <li><span class="fa fa-check"></span><strong> Strukturfördernd:</strong> Die Gründung und Führung von Dorfläden/ Stadtteilläden sowie von
 Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
                  </ul>
-                <a class="internal" href="#kommunen"> mehr erfahren <span class="fa fa-chevron-right"></span></a>
+                <a class="internal btn btn-default" href="#kommunen"> mehr erfahren <span class="fa fa-chevron-right"></span></a>
             </div>
         </div>
     </div>
