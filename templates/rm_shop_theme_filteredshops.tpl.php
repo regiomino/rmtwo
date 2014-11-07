@@ -97,12 +97,12 @@
 
 <?php else: ?>
 <div class="col-xs-12"> 
-<h4 > Leider konnten wir keine passenden Lieferanten für Ihre Suchanfrage finden. Es könnte helfen, wenn Sie Ihre Suchkriterien ändern. Dazu einige Tipps: </h4>
+<h4 > Leider konnten wir keine passenden Produzenten für Ihre Suchanfrage finden. Es könnte helfen, wenn Sie Ihre Suchkriterien ändern. Dazu einige Tipps: </h4>
 <ul>
     <li>entfernen Sie Filter.</li>
     <li>erweitern Sie das Suchgebiet der Karte, zoomen Sie aus der Karte heraus. </li>
     <li>ändern Sie die Postleitzahl Ihrer Anfrage.</li>
-    <li>es ist möglich, dass es in Ihrer Region noch keine oder nur wenige registrierte Lieferanten gibt. In diesem Fall <a href="#" data-toggle="modal" data-target="#suggestModal">schlagen Sie uns Ihre gewünschten Lieferanten doch einfach vor!</a>. </li>
+    <li>es ist möglich, dass es in Ihrer Region noch keine oder nur wenige registrierte Produzenten gibt. In diesem Fall <a href="#" data-toggle="modal" data-target="#suggestModal">schlagen Sie uns Ihre gewünschten Produzenten doch einfach vor!</a>. </li>
 </ul>
 </div>
  

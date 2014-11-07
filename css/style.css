@@ -7516,7 +7516,7 @@ label {
   width: 139px;
   height: 53px;
   margin-top: -15px;
-  margin-left: 15px;
+  margin-left: 0px;
   display: inline-block;
   background: url(../images/logo.svg) no-repeat top left;
   background-size: contain;
@@ -7527,16 +7527,27 @@ label {
   height: 50px;
   background-image: url(../images/logo.png);
 }
-.navbar-brand .form-item {
+.navbar-header .navbar-toggle {
+  padding: 9px 10px 4px;
+  margin-top: 9px;
+  margin-bottom: 0px;
+}
+.navbar-header .navbar-toggle .icon-bar {
+  width: 31px;
+}
+.navbar-header .navbar-toggle .menudesc {
+  font-size: 11px;
+}
+.navbar-header .navbar-brand .form-item {
   margin: 0;
 }
-.navbar-brand .input-group {
+.navbar-header .navbar-brand .input-group {
   width: 123px;
   display: inline-block;
   vertical-align: top;
   position: relative;
 }
-.navbar-brand .input-group .form-control {
+.navbar-header .navbar-brand .input-group .form-control {
   width: 68px;
   border-bottom-left-radius: 4px;
   border-top-left-radius: 4px;
@@ -7544,14 +7555,14 @@ label {
   position: absolute;
   border-right: none;
 }
-.navbar-brand .input-group .submit-wrapper {
+.navbar-header .navbar-brand .input-group .submit-wrapper {
   position: absolute;
   right: 0;
   top: 0;
   width: 30px;
   height: 30px;
 }
-.navbar-brand .input-group .submit-wrapper:before {
+.navbar-header .navbar-brand .input-group .submit-wrapper:before {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
   font-size: inherit;
@@ -7567,7 +7578,7 @@ label {
   pointer-events: none;
   cursor: pointer;
 }
-.navbar-brand .input-group .submit-wrapper .search-submit {
+.navbar-header .navbar-brand .input-group .submit-wrapper .search-submit {
   font-size: 0;
   color: #fff;
   position: absolute;
@@ -9837,6 +9848,9 @@ addcartCart-Icon
 }
 .footer a {
   color: #555;
+}
+.footer a.active {
+  font-weight: 700;
 }
 .front {
   overflow-x: hidden;

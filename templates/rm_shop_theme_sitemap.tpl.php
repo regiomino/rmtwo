@@ -6,6 +6,7 @@
  * Time: 16:16
  */
 ?>
+<div class="row">
 <div class="col-md-12">
     <?php if(!empty($vars['sitemap'])): ?>
         <?php foreach($vars['sitemap'] as $type => $nodeobjects): ?>
@@ -18,3 +19,4 @@
         <?php endforeach; ?>
     <?php endif; ?>
 </div>
+ </div>
