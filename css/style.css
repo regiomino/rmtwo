@@ -11406,6 +11406,20 @@ fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit.active {
   font-weight: 700;
   font-size: 18px;
 }
+.page-ueberuns .entry {
+  margin-bottom: 40px;
+}
+.page-ueberuns .row.items {
+  margin-bottom: 20px;
+}
+@media screen and (max-width: 1000px) {
+  .page-ueberuns .item {
+    margin-bottom: 30px;
+  }
+  .page-ueberuns .row.items {
+    margin-bottom: 0px;
+  }
+}
 .page-registration .btn-lg {
   margin-bottom: 15px;
   display: block;
