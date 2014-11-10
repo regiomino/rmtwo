@@ -1,8 +1,8 @@
 <div class="row">
     <div class="col-md-12">
-       <p class="lead entry">Wir sind ein bunt gemischtes Team bestehend aus Business-Strategen, Entwicklern und Vertriebsexperten. Unser Ziel ist es, die regionale Lebensmittelwirtschaft
+       <p class="lead entry">Wir sind ein bunt gemischtes Team bestehend aus Business-Strategen, Entwicklern, regionalen Lebensmittelproduzenten und Vertriebsexperten. Unser Ziel ist es, die regionale Lebensmittelwirtschaft
 zu stärken und Kunden den Zugang zu regionalen Produkten zu erleichtern. Wir wollen die Region, in der wir leben und die Menschen, die wir kennen unterstützen. Faire Preise für Produzenten, Transparenz und
-Nachhaltigkeit in der Produktion. Dafür arbeiten wir mit Leidenschaft. </p> 
+Nachhaltigkeit in der Produktion.<br> Dafür arbeiten wir mit Leidenschaft. </p> 
     </div>
 </div>
 
