@@ -1,1 +1,1 @@
-<?php var_dump($vars['createdProfiles']); ?>
+<?php var_dump($vars['createdProfiles'], $vars['createdCustomerProfiles'], $vars['createdSellerProfiles'], $vars['createdTraderProfiles']); ?>
