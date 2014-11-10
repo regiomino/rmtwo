@@ -1,1 +1,1 @@
-<?php var_dump($vars['profilecount'], $vars['invited'], $vars['registered'], $vars['purchasecount']); ?>
+<?php var_dump($vars['createdProfiles'], $vars['createdCustomerProfiles'], $vars['createdSellerProfiles'], $vars['createdTraderProfiles']); ?>
