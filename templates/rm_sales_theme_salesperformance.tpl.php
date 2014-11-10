@@ -1,0 +1,1 @@
+<?php var_dump($vars['profilecount'], $vars['invited'], $vars['registered'], $vars['purchasecount']); ?>
