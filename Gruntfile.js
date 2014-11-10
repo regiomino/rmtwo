@@ -117,9 +117,10 @@ module.exports = function (grunt) {
                 'js/backend/plugins/dataTables/dataTables.bootstrap.js',
              
                /* //Flot
-                'js/backend/plugins/flot/excanvas.min.js',
+                'js/backend/plugins/flot/excanvas.min.js', */
                 'js/backend/plugins/flot/jquery.flot.js',
-                'js/backend/plugins/flot/jquery.flot.pie.js',
+                'js/backend/plugins/flot/jquery.flot.time.js',
+              /*  'js/backend/plugins/flot/jquery.flot.pie.js',
                 'js/backend/plugins/flot/jquery.flot.resize.js',
                 'js/backend/plugins/flot/jquery.flot.tooltip.min.js',
                 'js/backend/plugins/flot/flot-data.js',

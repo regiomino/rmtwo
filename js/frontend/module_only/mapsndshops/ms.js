@@ -280,7 +280,7 @@ RMS.map.updateMarker = function(marker,collectBounds) {
         }
     }
     $.each(marker,function(i,item) {
-        console.info(item);
+     
         if(_self.sellerLocations['sellerLocation_'+item.marker_id]) {
             // schon vorhanden
             // wenn noch nicht visible -> visible schalten
