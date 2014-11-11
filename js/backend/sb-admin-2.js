@@ -38,7 +38,6 @@ jQuery(document).ready(function ($) {
         }
     });
     
- 
 var flotOptions = {
     xaxis: {
         mode: "time",
@@ -55,12 +54,12 @@ function initFlot() {
        dataType : 'json',
  
    }).success(function(data) {
-            console.info(data);
+           
         $.each(data,function(i,item) {
            
             var $container = $(item.container);
    
-            $.plot($container, [item.flotStuff],flotOptions);
+           $.plot($container, [item.flotStuff],flotOptions);
    
         }); 
     });
