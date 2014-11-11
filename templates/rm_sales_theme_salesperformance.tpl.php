@@ -1,27 +1,66 @@
 <?php //var_dump($vars['createdProfiles'], $vars['createdCustomerProfiles'], $vars['createdSellerProfiles'], $vars['createdTraderProfiles']); ?>
-<?php// var_dump ($vars['createdCustomerProfiles']); ?>
-
-<div class="row graph graph-createdProfiles"> 
-    <div class="col-md-6">
-        <div id="graph-display" style="width:100%; height:300px"></div>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Sales Performance</h1>
     </div>
-</div>
-<!--
-<div class="row graph graph-createdCustomerProfiles"> 
-    <div class="col-md-6">
-        <div id="createdCustomerProfiles" style="width:100%;height:300px"></div>
-    </div>
+                <!-- /.col-lg-12 -->
 </div>
 
-<div class="row graph graph-createdSellerProfiles"> 
-    <div class="col-md-6">
-        <div id="createdSellerProfiles" style="width:100%;height:300px"></div>
+<div class="row"> 
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                  <?php print t('Profiles'); ?>          
+            </div>
+            <div class="panel-body">
+                <div id="profiles" style="width:100%; height:300px"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                  <?php print t('Ordered Items'); ?>          
+            </div>
+            <div class="panel-body">
+                <div id="orderitems" style="width:100%; height:300px"></div>
+            </div>
+        </div>
     </div>
 </div>
-
-<div class="row graph graph-createdTraderProfiles"> 
-    <div class="col-md-6">
-        <div id="createdTraderProfiles" style="width:100%;height:300px"></div>
+<div class="row"> 
+    <div class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                  <?php print t('Orders ales'); ?>          
+            </div>
+            <div class="panel-body">
+                <div id="ordersales" style="width:100%; height:300px"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                  <?php print t('Registrations'); ?>          
+            </div>
+            <div class="panel-body">
+                <h3 class="text-center"> <?php  print $vars['registrations']; ?></h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                  <?php print t('Invites'); ?>          
+            </div>
+            <div class="panel-body">
+                   <h3 class="text-center"> <?php   print $vars['invites'];; ?></h3>
+                 
+            </div>
+        </div>
     </div>
 </div>
- -->
+ 
+ 
+ 
