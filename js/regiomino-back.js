@@ -19908,7 +19908,7 @@ jQuery(document).ready(function ($) {
  
 var flotOptions = {
     xaxis: {
-        mode: "time"
+        mode: "time",
     }
 };
  
