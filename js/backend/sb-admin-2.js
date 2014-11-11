@@ -54,14 +54,9 @@ function initFlot() {
        dataType : 'json',
  
    }).success(function(data) {
-           
-        $.each(data,function(i,item) {
-           
-            var $container = $(item.container);
-   
-           $.plot($container, [item.flotStuff],flotOptions);
-   
-        }); 
+           console.info(data);
+             
+           $.plot($('#graph-display'), data,flotOptions);
     });
 }
 
