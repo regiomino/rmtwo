@@ -19908,6 +19908,7 @@ jQuery(document).ready(function ($) {
 var flotOptions = {
     xaxis: {
         mode: "time",
+        timeformat: "%d/%b"
     }
 };
  
@@ -19921,9 +19922,7 @@ function initFlot() {
        dataType : 'json',
  
    }).success(function(data) {
-           console.info(data);
-             
-           $.plot($('#graph-display'), data,flotOptions);
+           $.plot($('#graph-display'),data,flotOptions);
     });
 }
 
