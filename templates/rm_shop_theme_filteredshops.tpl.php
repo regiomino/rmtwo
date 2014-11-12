@@ -24,7 +24,6 @@
                 <img class="media-object pull-left img-circle" src="<?php print image_style_url('seller_thumb', $shop->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $shop->title; ?>">
                 
                 <div class="media-body">
-                    <?php print l('Favorit', 'togglefavorite/' . $shop->nid, array('query' => drupal_get_destination())); ?>
                     <ul class="list-unstyled">
                         <li><span class="fa fa-cutlery" ></span>
                             <?php
