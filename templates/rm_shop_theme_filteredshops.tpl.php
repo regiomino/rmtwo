@@ -1,12 +1,30 @@
+<?php 
+    /*
+        LINK ZUM FAVORIT-TOGGLE
+        <?php print l('Favorit', 'togglefavorite/' . $shop->nid, array('query' => drupal_get_destination())); ?>
+        
+        FESTSTELLEN OB EIN PROFIL EIN FAVORIT IST
+        <?php
+            if(rm_user_profile_is_favorite($shop->nid)) {
+                //FAVORIT
+            }
+            else {
+                //KEIN FAVORIT
+            }
+        ?>
+    */
+?>
+
 <?php if(!empty($vars['shops'])): ?>
 <?php foreach($vars['shops'] as $shop): ?>
 <div class="col-xs-12 col-lg-6 col-seller-item" data-title="<?php print $shop->title; ?>"> 
         <a class="seller-item clearfix" data-id="<?php print $shop->nid; ?>" href="<?php print url('node/' . $shop->nid); ?>"> 
             <div class="media">
                 <h4 class="title"> <?php print $shop->title; ?></h4>
-                <img class="media-object pull-left img-circle" src="<?php print image_style_url('seller_thumb', $shop->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $shop->                                  title; ?>">
+                <img class="media-object pull-left img-circle" src="<?php print image_style_url('seller_thumb', $shop->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $shop->title; ?>">
                 
                 <div class="media-body">
+                    <?php print l('Favorit', 'togglefavorite/' . $shop->nid, array('query' => drupal_get_destination())); ?>
                     <ul class="list-unstyled">
                         <li><span class="fa fa-cutlery" ></span>
                             <?php
