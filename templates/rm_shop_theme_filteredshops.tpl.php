@@ -11,6 +11,8 @@
             else {
                 //KEIN FAVORIT
             }
+            
+            /togglefavorite/profilid
         ?>
     */
 ?>
