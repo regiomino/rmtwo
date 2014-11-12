@@ -32,7 +32,7 @@
     <div class="col-lg-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                  <?php print t('Orders ales'); ?>          
+                  <?php print t('Order sales'); ?>          
             </div>
             <div class="panel-body">
                 <div id="ordersales" style="width:100%; height:300px"></div>
