@@ -1,19 +1,21 @@
 jQuery(document).ready(function ($) {
-
-/* $.ajaxSetup({
+/*
+  $.ajaxSetup({
              'beforeSend':function () {
                           console.log("ajax request: "+this.url);}
            });
+ 
 */
-
 
 var RMS = RMS || {};
 window.RMS = RMS;
 RMS.PATH_TO_THEME = Drupal.settings.basePath + "sites/all/themes/" + Drupal.settings.ajaxPageState.theme;
+RMS.$sellerArea = $('#sellers');
 RMS.$sellerItemsArea = $('#sellers > .row');
 RMS.init = function(){
     RMS.map.init();
     RMS.filter.init();
+    RMS.fav.init();
 };
 
 // console.info( Drupal.settings.rm_shop);
@@ -25,7 +27,6 @@ RMS.init = function(){
 // Filterauswahl schicken
 // return: neue Marker + Ergebnisse
 RMS.ajax = {};
-RMS.ajax.$sellerArea = $('#sellers');
 RMS.ajax.LOADER_CLASSNAME = 'loading';
 RMS.ajax.PATH_GET_LOCATIONS = '/rm-shop-filter';
 
@@ -66,14 +67,14 @@ RMS.ajax.sq = new RMS.ajax.Query();
   
  
 RMS.ajax.addLoader = function(){
-    RMS.ajax.$sellerArea.addClass(RMS.ajax.LOADER_CLASSNAME);
+    RMS.$sellerArea.addClass(RMS.ajax.LOADER_CLASSNAME);
 }
 
 RMS.ajax.removeLoader = function(){
-    RMS.ajax.$sellerArea.removeClass(RMS.ajax.LOADER_CLASSNAME);
+    RMS.$sellerArea.removeClass(RMS.ajax.LOADER_CLASSNAME);
 }
   
-RMS.ajax.updateResults = function(){
+RMS.ajax.updateSearchResults = function(){
     var _self = this;
     _self.addLoader();
     var url = window.location.href;
@@ -96,7 +97,83 @@ RMS.ajax.updateResults = function(){
             _self.removeLoader();
     });
 }
- 
+
+RMS.ajax.toggleFavs = function(path) {
+    var _self = this;
+     $.ajax({
+        url: path,
+        type: "POST"
+  
+    }).success(function() {
+            
+    });
+};
+
+
+/////////////////////////////////////     
+//Favorite-Selection
+/////////////////////////////////////
+RMS.fav = {};
+RMS.fav.$favToggle = RMS.$sellerArea.find('.seller-item .fav-toggle');
+RMS.fav.init = function(){
+    var _self = this;
+    _self.addListeners();
+};
+RMS.fav.activeText = "Als Favorit entfernen";
+RMS.fav.inactiveText = "Als Favorit speichern";
+
+RMS.fav.addListeners = function() {
+    var _self = this;
+    
+    RMS.$sellerArea.on(
+    {
+        "mouseenter.favToggle": _self.toggleHoverIn,
+
+        "mouseleave.favToggle": _self.toggleHoverOut
+        
+    }, '.seller-item .fav-toggle');
+    
+    RMS.$sellerArea.on('click.favToggle', '.seller-item .fav-toggle',{obj: _self}, _self.clickToggle);
+};
+
+RMS.fav.toggleHoverIn = function() {
+    var $el = $(this);
+    
+    $el.tooltip('show');
+};
+
+RMS.fav.toggleHoverOut = function(){
+    var $el = $(this);
+    $el.tooltip('hide');
+};
+
+RMS.fav.clickToggle = function(e) {
+    e.preventDefault();
+    var _self = e.data.obj;
+    var $el = $(this);
+    var path = $el.data('link');
+    RMS.ajax.toggleFavs(path);
+    $el.toggleClass('active');
+    
+    if ($el.hasClass('active')) {
+        
+        _self.togglePopUpText($el,true);
+    } else {
+         
+        _self.togglePopUpText($el,false);
+    }
+}
+
+RMS.fav.togglePopUpText = function($el,active) {
+    var _self = this;
+    if (active) {
+       $el.attr('title',_self.activeText).tooltip('fixTitle').tooltip('show');
+    }
+    else {
+         $el.attr('title',_self.inactiveText).tooltip('fixTitle').tooltip('show');
+    }
+}
+
 //////////////////////////////////
 // RM Map
 //////////////////////////////////
@@ -222,7 +299,7 @@ RMS.map.centerChange = function(){
    }
    else {
         RMS.ajax.sq.update(_self.getBounds()); 
-        RMS.ajax.updateResults();
+        RMS.ajax.updateSearchResults();
     }
     _self.firstLoad = false;
 };
@@ -357,7 +434,7 @@ RMS.filter.init = function() {
 RMS.filter.addListeners = function (){
     var _self = this;
     _self.filterArea.on('filterchange', $.proxy(_self.handleFilterChange,this));
-     RMS.ajax.$sellerArea.on(
+     RMS.$sellerArea.on(
     {
     "mouseenter.sellerItem": _self.itemHoverIn,
 
@@ -365,7 +442,7 @@ RMS.filter.addListeners = function (){
     },
     '.seller-item',{obj: _self});
     
-   // RMS.ajax.$sellerArea.on('mouseenter.sellerItem','.seller-item',{obj: _self}, _self.hoverItem);
+   // RMS.$sellerArea.on('mouseenter.sellerItem','.seller-item',{obj: _self}, _self.hoverItem);
 };
 
 RMS.filter.itemHoverIn = function(e){
@@ -401,7 +478,7 @@ RMS.filter.handleFilterChange = function(e,key,value) {
    // RMS.map.popUpWindow.close();
     RMS.ajax.sq.update(updateVals);
     RMS.ajax.sq.update(RMS.map.getBounds());
-    RMS.ajax.updateResults();
+    RMS.ajax.updateSearchResults();
   
    /* RMS.ajax.addLoader();
          setTimeout(RMS.ajax.removeLoader ,1000); 
@@ -766,6 +843,6 @@ RMS.filter.category.CatFilter.prototype = {
     RMS.init();
 })();
 
-
+ 
 });
 

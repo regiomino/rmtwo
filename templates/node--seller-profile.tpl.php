@@ -16,7 +16,19 @@ $shop = $shops[$shopkeys[0]];
             <div class="row">
                 <div class="info-wrapper clearfix"> 
                     <div class="col-md-12"> 
-                        <div class="seller-infos"> 
+                        <div class="seller-infos">
+                            
+                            <!--Breadcrumbs
+                            <?php print l('Home', ''); ?>
+                            -> 
+                            <?php if(!empty($_SESSION['regionselect']['zip'])): ?>
+                              <?php print l($_SESSION['regionselect']['zip'], 'lieferanten/' . $_SESSION['regionselect']['zip']); ?>
+                            <?php else: ?>
+                              <?php print render(drupal_get_form('rm_shop_smartregionselect')); ?>
+                            <?php endif; ?>
+                          
+                            <?php print $node->title; ?> -->
+                            
                             <h1><strong> <?php print $node->title; ?></strong></h1>
                             <ul class="list-inline">
                                 <li>
