@@ -10629,8 +10629,30 @@ addcartCart-Icon
   border-top: 1px solid #dce0e0;
   display: block;
 }
+.page-lieferanten .sidebar .search .input-group {
+  width: 100%;
+}
 .page-lieferanten .sidebar .search .form-control {
   border: 1px solid #ddd;
+}
+.page-lieferanten .sidebar .search .twitter-typeahead {
+  width: 100%;
+}
+.page-lieferanten .sidebar .search .twitter-typeahead .input-lg {
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+}
+.page-lieferanten .sidebar .search .twitter-typeahead .tt-dropdown-menu {
+  width: 100%;
+  background-color: #fff;
+  padding: 10px 16px;
+  border-radius: 0 0 5px 5px;
+  border-left: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+.page-lieferanten .sidebar .search .twitter-typeahead .tt-dropdown-menu h5 {
+  background: #ddd;
 }
 .page-lieferanten .sidebar .search #clearQuery {
   position: absolute;

@@ -25,9 +25,9 @@
                Schnellsuche
             </div>
             <div class="col col-8">
-                <div class="input-group input-group-lg" style="width: 100%;">
+                <div class="input-group input-group-lg">
                     
-                    <input placeholder="<?php print t('Name'); ?> " id="filterShops" type="text" class="form-control">
+                    <input placeholder="<?php print t('Name'); ?> " id="filterShops" type="text" class="form-control input-lg">
                     <span class="fa-stack" id="clearQuery">
                         <i class="fa fa-circle fa-stack-2x"></i>
                         <i class="fa fa-times fa-stack-1x fa-inverse"></i>

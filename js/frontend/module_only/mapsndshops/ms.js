@@ -119,8 +119,8 @@ RMS.fav.init = function(){
     var _self = this;
     _self.addListeners();
 };
-RMS.fav.activeText = "Als Favorit entfernen";
-RMS.fav.inactiveText = "Als Favorit speichern";
+RMS.fav.activeText = "Als Favoriten entfernen";
+RMS.fav.inactiveText = "Als Favoriten speichern";
 
 RMS.fav.addListeners = function() {
     var _self = this;
@@ -607,63 +607,61 @@ RMS.filter.search.clearInput = function(){
 /////////////////////////////////////
 
 RMS.filter.ta = {};
-RMS.filter.ta.substringMatcher = function(strs) {
-  return function findMatches(q, cb) {
-    var matches, substrRegex;
  
-    // an array that will be populated with substring matches
-    matches = [];
- 
-    // regex used to determine if a string contains the substring `q`
-    substrRegex = new RegExp(q, 'i');
- 
-    // iterate through the pool of strings and for any string that
-    // contains the substring `q`, add it to the `matches` array
-    $.each(strs, function(i, str) {
-      if (substrRegex.test(str)) {
-        // the typeahead jQuery plugin expects suggestions to a
-        // JavaScript object, refer to typeahead docs for more info
-        matches.push({ value: str });
-      }
-    });
- 
-    cb(matches);
-  };
-};
-RMS.filter.ta.data2 = ['Apple', 'Oranges', 'Bananas', 'Cranberry', 'Sugar', 'Onion'];
-
-RMS.filter.ta.data1 = ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California',
-  'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia', 'Hawaii',
-  'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana',
-  'Maine', 'Maryland', 'Massachusetts', 'Michigan', 'Minnesota',
-  'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire',
-  'New Jersey', 'New Mexico', 'New York', 'North Carolina', 'North Dakota',
-  'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island',
-  'South Carolina', 'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont',
-  'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+RMS.filter.ta.products = ['Kartoffeln Sorte Agria', 'Pfefferbeisser', 'Polnische', 'Fränkische Bratwürste(klein)', 'Hausmacher Stadtwurst, Stange',
+                          '1L Milch', '1L Schokomilch','250ml Joghurt natur',
+                          '10 frische Hühnereier','Bioland Kürbiskernöl 100ml','Bioland-Kürbiskerne gebrannt mit Ingwer',
+                          'Weissweinessig mit Thymian 0.5L','RIESLING Trocken 0.75L','SPÄTBURGUNDER Trocken0.75L','Cabernet Dorsa','Domina SONNENBERG trocken 0.75L',
+                          'Cabernet Dorsa SCHLOSSSTÜCK trocken – im Barrique gereift'
 ];
+
+RMS.filter.ta.seller = ['Der Dorfmetzger', 'Biolandhof Mohl', 'Martin´s Gaststube', 'Bäckerei Seel', 'Metzgerei Kalb', 'Mühlichs Eier'
+];
+
 RMS.filter.ta.init = function(){
     var _self = this;
-    $('#filterShops').typeahead({
-            highlight: true
-        },
-        {
-            name: 'nba-teams',
-            displayKey: 'team',
-            source: _self.substringMatcher(_self.data2),
-            templates: {
-                header: '<h4 class="league-name">NBA Teams</h4>'
-            }
-        },
-        {
-            name: 'nhl-teams',
-            displayKey: 'team',
-            source: _self.substringMatcher(_self.data1),
-            templates: {
-                header: '<h3 class="league-name">NHL Teams</h3>'
-        }
+    
+    var products = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        // `states` is an array of state names defined in "The Basics"
+        local: $.map(_self.products, function(state) { return { value: state }; }),
+        limit  : 10
     });
-}
+    
+    var seller = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        // `states` is an array of state names defined in "The Basics"
+        local: $.map(_self.seller, function(state) { return { value: state }; }),
+        limit  : 10
+    });
+    products.initialize();
+    seller.initialize();
+    
+    $('#filterShops').typeahead({
+            hint: false,
+            highlight: true,
+            minLength: 1
+        },
+        {
+            name: 'products',
+            displayKey: 'value',
+            source: products.ttAdapter(),
+            templates: {
+                 header: '<h5 class="products"><strong>Produkte</strong></h5>'
+                }
+        },
+         {
+            name: 'seller',
+            displayKey: 'value',
+            source: seller.ttAdapter(),
+            templates: {
+                 header: '<h5 class="seller"><strong>Verkäufer</strong></h5>'
+                }
+        }
+    );
+};
 
 /////////////////////////////////////     
 //Kategorien Filter

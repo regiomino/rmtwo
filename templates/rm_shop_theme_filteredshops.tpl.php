@@ -23,11 +23,11 @@
   
     if(rm_user_profile_is_favorite($shop->nid)) {
         $toggleClass = "active";
-        $toggleText = "Als Favorit entfernen";
+        $toggleText = "Als Favoriten entfernen";
     }
     else {
         $toggleClass = "";
-        $toggleText = "Als Favorit speichern";
+        $toggleText = "Als Favoriten speichern";
     }
 ?>
 <div class="col-xs-12 col-lg-6 col-seller-item" data-title="<?php print $shop->title; ?>"> 
