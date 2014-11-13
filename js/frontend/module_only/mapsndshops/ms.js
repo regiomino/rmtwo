@@ -1,11 +1,11 @@
 jQuery(document).ready(function ($) {
-
+/*
   $.ajaxSetup({
              'beforeSend':function () {
                           console.log("ajax request: "+this.url);}
            });
  
-
+*/
 
 var RMS = RMS || {};
 window.RMS = RMS;
@@ -105,7 +105,7 @@ RMS.ajax.toggleFavs = function(path) {
         type: "POST"
   
     }).success(function() {
-            console.info('Toggles Bitches!');
+            
     });
 };
 
@@ -156,10 +156,10 @@ RMS.fav.clickToggle = function(e) {
     $el.toggleClass('active');
     
     if ($el.hasClass('active')) {
-        console.info('active');
+        
         _self.togglePopUpText($el,true);
     } else {
-         console.info('inactive');
+         
         _self.togglePopUpText($el,false);
     }
 }
