@@ -16,15 +16,26 @@
         ?>
     */
 ?>
-
+  
 <?php if(!empty($vars['shops'])): ?>
 <?php foreach($vars['shops'] as $shop): ?>
+<?php
+  
+    if(rm_user_profile_is_favorite($shop->nid)) {
+        $toggleClass = "active";
+        $toggleText = "als Favorit entfernen";
+    }
+    else {
+        $toggleClass = "";
+        $toggleText = "als Favorit speichern";
+    }
+?>
 <div class="col-xs-12 col-lg-6 col-seller-item" data-title="<?php print $shop->title; ?>"> 
         <a class="seller-item clearfix" data-id="<?php print $shop->nid; ?>" href="<?php print url('node/' . $shop->nid); ?>"> 
             <div class="media">
                 <h4 class="title"> <?php print $shop->title; ?></h4>
                 <img class="media-object pull-left img-circle" src="<?php print image_style_url('seller_thumb', $shop->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $shop->title; ?>">
-                
+                <span class="fav-toggle <?php print $toggleClass; ?>" data-toggle="tooltip" data-placement="left" title="<?php print $toggleText; ?>" data-link="togglefavorite/<?php print $shop->nid; ?>"> <span class="fa fa-star"></span> </span>
                 <div class="media-body">
                     <ul class="list-unstyled">
                         <li><span class="fa fa-cutlery" ></span>
