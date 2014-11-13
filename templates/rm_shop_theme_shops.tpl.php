@@ -19,7 +19,7 @@
         <div class="row search">
             
             <!--Breadcrumbs-->
-            <?php print l('Home', ''); ?> -> <?php print render(drupal_get_form('rm_shop_smartregionselect')); ?>
+            <!--<?php print l('Home', ''); ?> -> <?php print render(drupal_get_form('rm_shop_smartregionselect')); ?>-->
             
             <div class="col col-3 label-col">
                Schnellsuche
