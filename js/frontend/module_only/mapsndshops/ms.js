@@ -167,10 +167,10 @@ RMS.fav.clickToggle = function(e) {
 RMS.fav.togglePopUpText = function($el,active) {
     var _self = this;
     if (active) {
-       $el.attr('title',_self.activeText);
+       $el.attr('title',_self.activeText).tooltip('fixTitle').tooltip('show');
     }
     else {
-         $el.attr('title',_self.inactiveText);
+         $el.attr('title',_self.inactiveText).tooltip('fixTitle').tooltip('show');
     }
 }
 
