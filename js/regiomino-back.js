@@ -19912,6 +19912,22 @@ jQuery(document).ready(function ($) {
      */
     $('#messageModal').modal('show');
     
+    
+    $form = $('#rm-sales-suggest-form');
+    $phone_postal = $('#edit-phone').add('#edit-postal-code');
+    $submit = $form.find('input[type="submit"]');
+   
+    
+    $submit.on('click', function(e){
+        e.preventDefault();
+        $phone_postal.val(function(index,val){
+            var newVal = $.trim(val.replace(/\D/g,''));
+            return newVal;
+        });
+        
+        $form.submit();
+    });
+    
 });
 jQuery(document).ready(function ($) {
 
