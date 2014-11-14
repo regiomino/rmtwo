@@ -565,6 +565,7 @@ RMS.filter.distance.addSuffix = function(){
 /////////////////////////////////////     
 //Search Filter
 /////////////////////////////////////
+/*
 RMS.filter.search = {};
 RMS.filter.search.$input = $('#filterShops');
 RMS.filter.search.$clear = $('#clearQuery');
@@ -601,6 +602,7 @@ RMS.filter.search.clearInput = function(){
     _self.$input.val('');
     _self.$input.trigger('keyup');
 }
+*/
 
 /////////////////////////////////////     
 //Typeahead Filter
@@ -652,7 +654,7 @@ RMS.filter.ta.init = function(){
     badges.initialize();
     seller.initialize();
     
-    $('#filterShops').typeahead({
+    var ta = $('#filterShops').typeahead({
             hint: true,
             highlight: true,
             minLength: 1
@@ -682,6 +684,11 @@ RMS.filter.ta.init = function(){
                 }
         }
     );
+    
+    ta.on('typeahead:selected',function(evt,data){
+         RMS.filter.filterArea.trigger('filterchange',['seller_name',data.value]); 
+       // console.log(data.value);  
+    });
 };
 
 /////////////////////////////////////     
