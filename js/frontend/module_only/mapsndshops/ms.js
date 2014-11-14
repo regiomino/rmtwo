@@ -618,6 +618,10 @@ RMS.filter.ta.products = ['Kartoffeln Sorte Agria', 'Pfefferbeisser', 'Polnische
 RMS.filter.ta.seller = ['Der Dorfmetzger', 'Biolandhof Mohl', 'Martin´s Gaststube', 'Bäckerei Seel', 'Metzgerei Kalb', 'Mühlichs Eier'
 ];
 
+
+RMS.filter.ta.badges = ['Bioland', 'Demeter', 'Allnatura', 'EU-Bio Siegel'
+];
+
 RMS.filter.ta.init = function(){
     var _self = this;
     
@@ -629,6 +633,14 @@ RMS.filter.ta.init = function(){
         limit  : 10
     });
     
+    var badges = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        // `states` is an array of state names defined in "The Basics"
+        local: $.map(_self.badges, function(state) { return { value: state }; }),
+        limit  : 5
+    });
+    
     var seller = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -637,10 +649,11 @@ RMS.filter.ta.init = function(){
         limit  : 10
     });
     products.initialize();
+    badges.initialize();
     seller.initialize();
     
     $('#filterShops').typeahead({
-            hint: false,
+            hint: true,
             highlight: true,
             minLength: 1
         },
@@ -649,7 +662,15 @@ RMS.filter.ta.init = function(){
             displayKey: 'value',
             source: products.ttAdapter(),
             templates: {
-                 header: '<h5 class="products"><strong>Produkte</strong></h5>'
+                 header: '<h5 class="products text-muted"><strong>Produkte</strong></h5>'
+                }
+        },
+        {
+            name: 'badges',
+            displayKey: 'value',
+            source: badges.ttAdapter(),
+            templates: {
+                 header: '<h5 class="badges text-muted"><strong>Gütesiegel</strong></h5>'
                 }
         },
          {
@@ -657,7 +678,7 @@ RMS.filter.ta.init = function(){
             displayKey: 'value',
             source: seller.ttAdapter(),
             templates: {
-                 header: '<h5 class="seller"><strong>Verkäufer</strong></h5>'
+                 header: '<h5 class="seller text-muted"><strong>Verkäufer</strong></h5>'
                 }
         }
     );
