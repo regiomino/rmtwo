@@ -28,10 +28,7 @@
                 <div class="input-group input-group-lg">
                     
                     <input placeholder="<?php print t('Name'); ?> " id="filterShops" type="text" class="form-control input-lg">
-                    <span class="fa-stack" id="clearQuery">
-                        <i class="fa fa-circle fa-stack-2x"></i>
-                        <i class="fa fa-times fa-stack-1x fa-inverse"></i>
-                      </span>
+                    <span class="fa fa-times" id="clearQuery"> </span>
                    
                     <span class="input-group-btn">
                         <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button>

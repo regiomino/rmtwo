@@ -4,6 +4,9 @@ jQuery(document).ready(function ($) {
              'beforeSend':function () {
                           console.log("ajax request: "+this.url);}
            });
+           
+    
+    console.info(Drupal.settings.rm_shop);
  
 */
 
@@ -18,7 +21,6 @@ RMS.init = function(){
     RMS.fav.init();
 };
 
-// console.info( Drupal.settings.rm_shop);
 
 //////////////////////////////////
 // RM Ajax
@@ -94,6 +96,8 @@ RMS.ajax.updateSearchResults = function(){
     }).success(function(data) {
             RMS.$sellerItemsArea.html(data.html);
             RMS.map.updateMarker(data.marker);
+            RMS.filter.ta.updateBloodhound('products', data.products);
+            RMS.filter.ta.updateBloodhound('seller', data.marker);
             _self.removeLoader();
     });
 }
@@ -113,6 +117,8 @@ RMS.ajax.toggleFavs = function(path) {
 /////////////////////////////////////     
 //Favorite-Selection
 /////////////////////////////////////
+
+
 RMS.fav = {};
 RMS.fav.$favToggle = RMS.$sellerArea.find('.seller-item .fav-toggle');
 RMS.fav.init = function(){
@@ -609,52 +615,99 @@ RMS.filter.search.clearInput = function(){
 /////////////////////////////////////
 
 RMS.filter.ta = {};
- 
-RMS.filter.ta.products = ['Kartoffeln Sorte Agria', 'Pfefferbeisser', 'Polnische', 'Fränkische Bratwürste(klein)', 'Hausmacher Stadtwurst, Stange',
-                          '1L Milch', '1L Schokomilch','250ml Joghurt natur',
-                          '10 frische Hühnereier','Bioland Kürbiskernöl 100ml','Bioland-Kürbiskerne gebrannt mit Ingwer',
-                          'Weissweinessig mit Thymian 0.5L','RIESLING Trocken 0.75L','SPÄTBURGUNDER Trocken0.75L','Cabernet Dorsa','Domina SONNENBERG trocken 0.75L',
-                          'Cabernet Dorsa SCHLOSSSTÜCK trocken – im Barrique gereift'
-];
-
-RMS.filter.ta.seller = ['Der Dorfmetzger', 'Biolandhof Mohl', 'Martin´s Gaststube', 'Bäckerei Seel', 'Metzgerei Kalb', 'Mühlichs Eier'
-];
-
-
-RMS.filter.ta.badges = ['Bioland', 'Demeter', 'Allnatura', 'EU-Bio Siegel'
-];
+RMS.filter.ta.bloodhounds = {};
+RMS.filter.ta.$clear = $('#clearQuery');
+RMS.filter.ta.$ta_input;
+RMS.filter.ta.timeout;
 
 RMS.filter.ta.init = function(){
     var _self = this;
     
-    var products = new Bloodhound({
+    _self.initBloodhounds();
+    _self.initTypeahead();
+    _self.addListeners();
+};
+
+RMS.filter.ta.addListeners = function(){
+    var _self = this;
+    
+    // click on suggestion triggers ajax-update of results
+    _self.$ta_input.on('typeahead:selected',function(evt,data){
+         RMS.filter.filterArea.trigger('filterchange',['seller_name',data.value]); 
+    });
+    // check if supplied string is empty, show clearicon, trigger ajax
+    _self.$ta_input.on('keyup.typeah',{obj: _self},_self.keyUp);
+    _self.$clear.on('click.clear',$.proxy(_self.clearInput,_self));
+    
+};
+RMS.filter.ta.keyUp = function(e){
+    var _self = e.data.obj;
+    var $el = $(this);
+    clearTimeout(_self.timeout);
+    var string = $el.val().trim();
+    
+    if (string.length > 0) {
+        _self.$clear.show();
+    } else {
+        _self.$clear.hide();
+        _self.timeout = setTimeout(function(){
+         
+            RMS.filter.filterArea.trigger('filterchange',['seller_name','']); 
+        
+        },500);
+    }
+};
+
+RMS.filter.ta.clearInput = function(){
+    var _self = this;
+    _self.$ta_input.val('');
+    RMS.filter.filterArea.trigger('filterchange',['seller_name','']); 
+};
+
+RMS.filter.ta.initBloodhounds = function(){
+    var _self = this;
+    
+    _self.bloodhounds.products = new Bloodhound({
+        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        local: $.map(Drupal.settings.rm_shop.products, function(v) { return { value: v }; }),
+        limit  : 7
+    });
+    
+    _self.bloodhounds.seller = new Bloodhound({
         datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
         queryTokenizer: Bloodhound.tokenizers.whitespace,
         // `states` is an array of state names defined in "The Basics"
-        local: $.map(_self.products, function(state) { return { value: state }; }),
+        local: $.map(Drupal.settings.rm_shop.map_marker, function(v) { return { value: v.name }; }),
         limit  : 10
     });
+ 
+    _self.bloodhounds.products.initialize();
+    _self.bloodhounds.seller.initialize();
+};
+
+RMS.filter.ta.updateBloodhound = function(bh_name, newData) {
+     var _self = this;
+     var bh = _self.bloodhounds[''+bh_name+''];
+     bh.clear();
+     
+    switch (bh_name) {
+        case "products" :
+            bh.add($.map(newData, function(v) { return { value: v }; }));
+            break;
+        
+        case "seller" :
+            bh.add($.map(newData, function(v) { return { value: v.name }; }));
+            break;
+        
+        default: throw new Error('wrong bloodhound index?');
+    }
+};
+
+RMS.filter.ta.initTypeahead = function(){
+    var _self = this;
     
-    var badges = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        // `states` is an array of state names defined in "The Basics"
-        local: $.map(_self.badges, function(state) { return { value: state }; }),
-        limit  : 5
-    });
-    
-    var seller = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        // `states` is an array of state names defined in "The Basics"
-        local: $.map(_self.seller, function(state) { return { value: state }; }),
-        limit  : 10
-    });
-    products.initialize();
-    badges.initialize();
-    seller.initialize();
-    
-    var ta = $('#filterShops').typeahead({
+    _self.$ta_input = $('#filterShops').typeahead({
             hint: true,
             highlight: true,
             minLength: 1
@@ -662,34 +715,24 @@ RMS.filter.ta.init = function(){
         {
             name: 'products',
             displayKey: 'value',
-            source: products.ttAdapter(),
+            source: _self.bloodhounds.products.ttAdapter(),
             templates: {
-                 header: '<h5 class="products text-muted"><strong>Produkte</strong></h5>'
-                }
+                header: '<h5 class="products text-muted"><strong>Produkte</strong></h5>',
+            }
         },
-        {
-            name: 'badges',
-            displayKey: 'value',
-            source: badges.ttAdapter(),
-            templates: {
-                 header: '<h5 class="badges text-muted"><strong>Gütesiegel</strong></h5>'
-                }
-        },
+        
          {
             name: 'seller',
             displayKey: 'value',
-            source: seller.ttAdapter(),
+            source: _self.bloodhounds.seller.ttAdapter(),
             templates: {
-                 header: '<h5 class="seller text-muted"><strong>Verkäufer</strong></h5>'
-                }
+                header: '<h5 class="seller text-muted"><strong>Verkäufer</strong></h5>'
+            }
         }
     );
-    
-    ta.on('typeahead:selected',function(evt,data){
-         RMS.filter.filterArea.trigger('filterchange',['seller_name',data.value]); 
-       // console.log(data.value);  
-    });
 };
+
+
 
 /////////////////////////////////////     
 //Kategorien Filter
