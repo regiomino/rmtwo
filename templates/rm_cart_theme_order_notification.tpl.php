@@ -57,6 +57,10 @@
                     </td>
                     
                     <td align="right" valign="top" width="180"  style="padding-top:10px; padding-bottom:10px;">
+                        <?php print $vars['shop']->field_company_name[LANGUAGE_NONE][0]['value']; ?><br>
+                        <?php print $vars['shop']->field_billingaddress[LANGUAGE_NONE][0]['thoroughfare']; ?><br>
+                        <?php print $vars['shop']->field_billingaddress[LANGUAGE_NONE][0]['postal_code']; ?> <?php print $vars['shop']->field_billingaddress[LANGUAGE_NONE][0]['locality']; ?>
+                        <br><br>
                         <?php print $vars['order_number']; ?>
                     </td>
                 </tr>
