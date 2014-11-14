@@ -5,10 +5,12 @@ jQuery(document).ready(function ($) {
                           console.log("ajax request: "+this.url);}
            });
            
-    
-    console.info(Drupal.settings.rm_shop);
+      console.info(Drupal.settings.rm_shop);
+  
  
 */
+
+
 
 var RMS = RMS || {};
 window.RMS = RMS;
@@ -617,15 +619,24 @@ RMS.filter.search.clearInput = function(){
 RMS.filter.ta = {};
 RMS.filter.ta.bloodhounds = {};
 RMS.filter.ta.$clear = $('#clearQuery');
+RMS.filter.ta.$searchSubmit = $('#searchSubmit');
 RMS.filter.ta.$ta_input;
 RMS.filter.ta.timeout;
 
 RMS.filter.ta.init = function(){
     var _self = this;
-    
     _self.initBloodhounds();
     _self.initTypeahead();
+    _self.prefillInput();
     _self.addListeners();
+};
+
+RMS.filter.ta.prefillInput = function(){
+    var _self = this;
+    if (Drupal.settings.rm_shop.seller_name !== "") {
+       _self.$ta_input.val(Drupal.settings.rm_shop.seller_name);
+       _self.$clear.show();
+    }
 };
 
 RMS.filter.ta.addListeners = function(){
@@ -638,8 +649,19 @@ RMS.filter.ta.addListeners = function(){
     // check if supplied string is empty, show clearicon, trigger ajax
     _self.$ta_input.on('keyup.typeah',{obj: _self},_self.keyUp);
     _self.$clear.on('click.clear',$.proxy(_self.clearInput,_self));
+    _self.$searchSubmit.on('click.submit',$.proxy(_self.submit,_self));
     
 };
+RMS.filter.ta.submit = function(){
+    var _self = this;
+    var string = _self.$ta_input.val().trim();
+    
+    if (string.length > 0) {
+        RMS.filter.filterArea.trigger('filterchange',['seller_name',string]); 
+    }
+    else {return;}
+};
+
 RMS.filter.ta.keyUp = function(e){
     var _self = e.data.obj;
     var $el = $(this);
@@ -648,6 +670,9 @@ RMS.filter.ta.keyUp = function(e){
     
     if (string.length > 0) {
         _self.$clear.show();
+            if(e.which == 13) {
+               RMS.filter.filterArea.trigger('filterchange',['seller_name',string]); 
+            }
     } else {
         _self.$clear.hide();
         _self.timeout = setTimeout(function(){
@@ -661,7 +686,8 @@ RMS.filter.ta.keyUp = function(e){
 RMS.filter.ta.clearInput = function(){
     var _self = this;
     _self.$ta_input.val('');
-    RMS.filter.filterArea.trigger('filterchange',['seller_name','']); 
+    RMS.filter.filterArea.trigger('filterchange',['seller_name','']);
+    _self.$clear.hide();
 };
 
 RMS.filter.ta.initBloodhounds = function(){

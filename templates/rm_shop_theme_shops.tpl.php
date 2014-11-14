@@ -31,7 +31,7 @@
                     <span class="fa fa-times" id="clearQuery"> </span>
                    
                     <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
+                        <button id="searchSubmit" class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
                     </span>
                 </div>
             </div>

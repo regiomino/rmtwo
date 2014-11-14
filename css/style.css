@@ -10646,6 +10646,16 @@ addcartCart-Icon
 .page-lieferanten .sidebar .search .twitter-typeahead {
   width: 100%;
 }
+.page-lieferanten .sidebar .search .twitter-typeahead .tt-suggestion.tt-cursor {
+  color: red;
+  background-color: #f8f8f8!important;
+}
+.page-lieferanten .sidebar .search .twitter-typeahead .tt-suggestion:focus {
+  background-color: #f8f8f8!important;
+}
+.page-lieferanten .sidebar .search .twitter-typeahead .tt-suggestion > p:focus {
+  background-color: #f8f8f8!important;
+}
 .page-lieferanten .sidebar .search .twitter-typeahead .tt-hint {
   color: #eeeeee;
 }
@@ -10668,7 +10678,6 @@ addcartCart-Icon
 .page-lieferanten .sidebar .search .twitter-typeahead .tt-dropdown-menu h5 {
   font-size: 12px;
   line-height: 12px;
-  background-color: #f8f8f8;
   padding: 5px 10px;
   border-bottom: 1px solid #ddd;
   margin: 0px;
@@ -10684,15 +10693,17 @@ addcartCart-Icon
 }
 .page-lieferanten .sidebar .search .twitter-typeahead .tt-dropdown-menu p:hover,
 .page-lieferanten .sidebar .search .twitter-typeahead .tt-dropdown-menu p:active,
-.page-lieferanten .sidebar .search .twitter-typeahead .tt-dropdown-menu p:focus {
+.page-lieferanten .sidebar .search .twitter-typeahead .tt-dropdown-menu p:focus,
+.page-lieferanten .sidebar .search .twitter-typeahead .tt-dropdown-menu p.tt-cursor {
   background-color: #f8f8f8;
 }
 .page-lieferanten .sidebar .search #clearQuery {
   position: absolute;
-  right: 58px;
-  top: 10px;
+  right: 63px;
+  top: 13px;
   z-index: 2;
   cursor: pointer;
+  font-size: 20px;
   display: none;
 }
 .page-lieferanten .sidebar .search #clearQuery .fa-circle {
