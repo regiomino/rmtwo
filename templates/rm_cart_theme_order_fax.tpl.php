@@ -2,7 +2,7 @@
 
 <p style="font-size: x-large;"><?php print ($vars['delivery_type'] == 'pickup_agreement') ? 'Abholung' : 'Lieferung'; ?>: <?php print t(date('l', $vars['delivery_range_from'])) ; ?>, <?php print date('d.m.Y', $vars['delivery_range_from']) ; ?>, <?php print date('H:i', $vars['delivery_range_from']) ; ?> - <?php print date('H:i', $vars['delivery_range_to']) ; ?></p>
 
-<p style="font-size: large;">Kunde: <?php print ($vars['user_gender'] == 'f') ? 'Frau' : 'Herr'; ?> <?php print $vars['user_first_name']; ?> <?php print $vars['user_last_name']; ?> (Kundennr.: <?php print $vars['user_number']; ?>)</p>
+<p style="font-size: large;">Kunde: <?php print ($vars['user_gender'] == 'f') ? 'Frau' : 'Herr'; ?> <?php print $vars['user_first_name']; ?> <?php print $vars['user_last_name']; ?> (<?php if(!empty($vars['customer_profile'])): ?><?php print $vars['customer_profile']->field_company_name[LANGUAGE_NONE][0]['value']; ?>, <?php endif; ?>Kundennr.: <?php print $vars['user_number']; ?>)</p>
 
 <?php if($vars['delivery_type'] == 'shipping_agreement'): ?><p style="font-size: large;">Lieferadresse: <br>
 <?php print $vars['shipping_address']['name_line']; ?><br>
