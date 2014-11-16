@@ -69,6 +69,8 @@ $shop = $shops[$shopkeys[0]];
                                         else {
                                             print $body;
                                         }
+                                        print $node->field_location[LANGUAGE_NONE][0]['lat'];
+                                        print $node->field_location[LANGUAGE_NONE][0]['lon'];
                                     ?>
                                     </div>
                                 </div>
