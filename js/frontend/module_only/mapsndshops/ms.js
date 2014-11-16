@@ -78,7 +78,7 @@ RMS.ajax.removeLoader = function(){
     RMS.$sellerArea.removeClass(RMS.ajax.LOADER_CLASSNAME);
 }
   
-RMS.ajax.updateSearchResults = function(){
+RMS.ajax.updateSearchResults = function(trigger){
     var _self = this;
     _self.addLoader();
     var url = window.location.href;
@@ -98,8 +98,10 @@ RMS.ajax.updateSearchResults = function(){
     }).success(function(data) {
             RMS.$sellerItemsArea.html(data.html);
             RMS.map.updateMarker(data.marker);
-            RMS.filter.ta.updateBloodhound('products', data.products);
-            RMS.filter.ta.updateBloodhound('seller', data.marker);
+            if(trigger === "map") {
+                RMS.filter.ta.updateBloodhound('products', data.products);
+                RMS.filter.ta.updateBloodhound('seller', data.marker);
+            }
             _self.removeLoader();
     });
 }
@@ -307,7 +309,7 @@ RMS.map.centerChange = function(){
    }
    else {
         RMS.ajax.sq.update(_self.getBounds()); 
-        RMS.ajax.updateSearchResults();
+        RMS.ajax.updateSearchResults("map");
     }
     _self.firstLoad = false;
 };
@@ -486,7 +488,7 @@ RMS.filter.handleFilterChange = function(e,key,value) {
    // RMS.map.popUpWindow.close();
     RMS.ajax.sq.update(updateVals);
     RMS.ajax.sq.update(RMS.map.getBounds());
-    RMS.ajax.updateSearchResults();
+    RMS.ajax.updateSearchResults("filter");
   
    /* RMS.ajax.addLoader();
          setTimeout(RMS.ajax.removeLoader ,1000); 
