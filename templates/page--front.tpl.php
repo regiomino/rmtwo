@@ -148,15 +148,15 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
             <div class="col-md-10 col-md-offset-1">
                 <div class="map">
                     
-                   <div class="text-center" id="map-control">
+                   <div class="text-center clearfix" id="map-control">
                         <div class="control active" data-type="customer"> 
                             <div class="filter-checkbox"><i class="fa fa-check"></i></div>
-                            <img src="<?php echo base_path() . path_to_theme();?>/images/markers/customer_profile.png" alt="teilnehmende Gastronomen">  
+                            <span class="marker-icon marker-sprite gastro"></span> 
                             <span class="checkbox-label">teilnehmende Gastronomie</span>
                         </div>
                         <div class="control active" data-type="seller"> 
                             <div class="filter-checkbox"><i class="fa fa-check"></i></div>
-                            <img src="<?php echo base_path() . path_to_theme();?>/images/markers/seller_profile.png" alt="teilnehmende Produzenten/Lieferanten">  
+                            <span class="marker-icon marker-sprite seller"></span>
                             <span class="checkbox-label">teilnehmende Produzenten</span>
                         </div>
                    </div>

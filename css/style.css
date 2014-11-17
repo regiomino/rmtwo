@@ -7384,6 +7384,7 @@ input[type="submit"]:hover {
 .sprite {
   background: url('../images/sprite.png') no-repeat;
 }
+/*Partnerlogos*/
 .sprite.ideen {
   background-position: -5px -5px;
   width: 89px;
@@ -7478,6 +7479,19 @@ input[type="submit"]:hover {
   background-position: -268px -95px;
   width: 15px;
   height: 14px;
+}
+.marker-sprite {
+  background: url('../images/markers/marker-sprite.png') no-repeat;
+}
+.marker-sprite.gastro {
+  background-position: -32px 0;
+  width: 27px;
+  height: 36px;
+}
+.marker-sprite.seller {
+  background-position: 0 0;
+  width: 27px;
+  height: 36px;
 }
 label {
   cursor: pointer;
@@ -10058,9 +10072,9 @@ addcartCart-Icon
   color: #555!important;
   display: none;
 }
-.front .map .control img {
-  height: 24px;
-  height: 33px;
+.front .map .control span.marker-icon {
+  display: inline-block;
+  margin-top: -13px;
 }
 .front .map .control.active .fa {
   display: block;

@@ -1,5 +1,4 @@
 jQuery(document).ready(function ($) {
-
 //FPM, Front Page Map
 var FPM = FPM || {};
 window.FPM = FPM;
@@ -22,15 +21,67 @@ FPM.sellerMarker = [];
 FPM.$mapControl = $('#map-control');
 
 FPM.customIcons = {
-    
+
     seller_profile: {
-        icon: FPM.pathToTheme + '/images/markers/seller_profile.png'
+        icon: new google.maps.MarkerImage(FPM.pathToTheme + '/images/markers/marker-sprite.png', new google.maps.Size(27, 36), new google.maps.Point(0, 0)),
     },
     
     customer_profile: {
-        icon: FPM.pathToTheme + '/images/markers/customer_profile.png'
+        icon: new google.maps.MarkerImage(FPM.pathToTheme + '/images/markers/marker-sprite.png', new google.maps.Size(27, 36), new google.maps.Point(32, 0)),
     } 
 };
+
+FPM.clusterSellerStyle = [
+    {   
+        url: FPM.pathToTheme + '/images/markers/seller_cluster_small.png',
+        height: 60,
+        width: 60,
+        textColor: '#fff',
+        textSize: 20,
+            
+    }, 
+    {
+       url: FPM.pathToTheme + '/images/markers/seller_cluster_medium.png',
+        height: 80,
+        width: 80,
+        textColor: '#fff',
+        textSize: 20,
+        
+    }, 
+    {
+        url: FPM.pathToTheme + '/images/markers/seller_cluster_large.png',
+        width: 100,
+        height: 100,
+        textSize: 20,
+        textColor: '#fff',
+    }
+];
+
+FPM.clusterCustomerStyle = [
+    {   
+        url: FPM.pathToTheme + '/images/markers/cutomer_cluster_small.png',
+        height: 60,
+        width: 60,
+        textColor: '#fff',
+        textSize: 20,
+            
+    }, 
+    {
+       url: FPM.pathToTheme + '/images/markers/cutomer_cluster_medium.png',
+        height: 80,
+        width: 80,
+        textColor: '#fff',
+        textSize: 20,
+        
+    }, 
+    {
+        url: FPM.pathToTheme + '/images/markers/cutomer_cluster_large.png',
+        width: 100,
+        height: 100,
+        textSize: 20,
+        textColor: '#fff',
+    }
+];
 
 FPM.init = function(){
     var _self = this;
@@ -52,18 +103,22 @@ FPM.handleControlClick = function(e){
    
   if ( $el.hasClass('active')) {
         if (type === 'customer') {
-            _self.showCustomerMarker();
+            // _self.showCustomerMarker();
+            _self.clusterCustomer.addMarkers( _self.customerMarker);
         }
         else if (type === 'seller') {
-            _self.showSellerMarker();
+            // _self.showSellerMarker();
+            _self.clusterSeller.addMarkers( _self.sellerMarker);
         }
     }
     else {
          if (type === 'customer') {
-            _self.hideCustomerMarker();
+            // _self.hideCustomerMarker();
+            _self.clusterCustomer.removeMarkers( _self.customerMarker);
         }
         else if (type === 'seller') {
-            _self.hideSellerMarker();
+            // _self.hideSellerMarker();
+            _self.clusterSeller.removeMarkers( _self.sellerMarker);
         }
     }
 }
@@ -82,21 +137,6 @@ FPM.hideCustomerMarker = function(){
     }
 };
 
-FPM.showSellerMarker = function(){
-    var _self = this;
-    for (var i = 0, length = _self.sellerMarker.length; i<length;i++) {
-        _self.sellerMarker[i].setMap(_self.map);
-    }
-};
-
-FPM.hideSellerMarker = function(){
-    var _self = this;
-     
-    for (var i = 0, length = _self.sellerMarker.length; i<length;i++) {
-        _self.sellerMarker[i].setMap(null);
-    }
-};
-
 FPM.buildMap = function(){
     var _self = this;
     _self.map = new google.maps.Map(document.getElementById(_self.mapContainer),_self.mapOptions);
@@ -111,8 +151,9 @@ FPM.displayMarker = function(){
         dataType : 'xml',
   
     }).success(function(data) {
-           var markers = $(data).find('marker');
-           FPM.injectMarker(markers);
+       
+       var markers = $(data).find('marker');
+       FPM.injectMarker(markers);
     });
 };
 
@@ -121,6 +162,7 @@ FPM.injectMarker = function(marker) {
     
    $.each(marker,function(i,item) {
         var type = item.getAttribute('type');
+        
         if (type === 'inactive_profile' || type === 'prospect_profile') {
             return;
         }
@@ -138,23 +180,38 @@ FPM.injectMarker = function(marker) {
             position : point,
             map : _self.map,
             title : name,
-             icon : _self.customIcons[type].icon,
+            icon : _self.customIcons[type].icon,
            // zIndex: _self.customIcons[type].zindex,
         });
         
         if (type === 'seller_profile') {
             _self.sellerMarker.push(gmMarker);
-        }
+        } 
+
         else if (type === 'customer_profile') {
             _self.customerMarker.push(gmMarker);
         }
-        
-        _self.fitMarker();
+      /* _self.fitMarker();*/
         
         google.maps.event.addListener(gmMarker, 'click', function(e) {
             _self.openPopUp(gmMarker,popUpHtml);
         });
     });
+
+    _self.clusterCustomer =  new MarkerClusterer(_self.map, _self.customerMarker, {
+        gridSize :100,
+        styles :  _self.clusterCustomerStyle,
+        minimumClusterSize : 2,
+        maxZoom : 14
+    });
+
+    _self.clusterSeller =  new MarkerClusterer(_self.map, _self.sellerMarker, {
+        gridSize : 80,
+        styles :  _self.clusterSellerStyle,
+        minimumClusterSize : 3,
+        maxZoom : 14
+    });
+    _self.clusterSeller.fitMapToMarkers();
 };
 
 FPM.fitMarker = function(){
@@ -164,14 +221,13 @@ FPM.fitMarker = function(){
         latlngbounds.extend(_self.latlng[k]);
     }
     _self.map.fitBounds(latlngbounds);
-}
+};
 
 FPM.openPopUp = function(marker,html){
     var _self = this;
     _self.popUpWindow.setContent(html);
     _self.popUpWindow.open(_self.map, marker);
 };
-
 
 (function() {
    FPM.init();

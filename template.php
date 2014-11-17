@@ -619,6 +619,7 @@ function rmtwo_preprocess_page(&$variables) {
             drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style.min.css');
             //drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/utilities/jquery.jCounter-0.1.2.js');
             drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/regiomino.min.js');
+             drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/frontend/module_only/startpage/markerclusterer_packed.js');
             drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/frontend/module_only/startpage/start.js');
         }
         else {
