@@ -762,7 +762,7 @@ RMS.filter.ta.initTypeahead = function(){
             displayKey: 'value',
             source: _self.bloodhounds.seller.ttAdapter(),
             templates: {
-                header: '<h5 class="seller text-muted"><strong>Verkäufer</strong></h5>'
+                header: '<h5 class="seller text-muted"><strong>Produzenten</strong></h5>'
             }
         }
     );
