@@ -27,7 +27,7 @@
             <div class="col col-8">
                 <div class="input-group input-group-lg">
                     
-                    <input placeholder="<?php print t('Name'); ?> " id="filterShops" type="text" class="form-control input-lg">
+                    <input placeholder="<?php print t('Products, Seller Name'); ?> " id="filterShops" type="text" class="form-control input-lg">
                     <span class="fa fa-times" id="clearQuery"> </span>
                    
                     <span class="input-group-btn">
