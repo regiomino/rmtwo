@@ -1,0 +1,122 @@
+/*
+<div class="breadcrumbs">
+
+<ul class="bc">
+    <li>
+        <a href="/" class="home"><span class="fa fa-home fa-lg" "=""></span></a>
+    </li>
+ 
+    <li>
+        <form action="/lieferanten/52066/rm-shop-filter?map_bounds_ne_lat=51.39305379571272&amp;map_bounds_ne_lng=16.996907070312545&amp;map_bounds_sw_lat=46.256625728490256&amp;map_bounds_sw_lng=8.658284023437545&amp;map_center=50.7667%2C6.1&amp;seller_name=&amp;delivery_options=&amp;payment_types=&amp;seller_type=" method="post" id="rm-shop-smartregionselect" accept-charset="UTF-8"><div>
+            <div class="region-select form-inline"> 
+            <span class="label"> PLZ: </span>
+            <div class="form-item form-type-textfield form-item-address">
+                <input required="" class="form-control input-sm form-text required" type="text" id="edit-address" name="address" value="52066" size="60" maxlength="128">
+            </div>
+            <input class="btn-default btn-sm btn form-submit" type="submit" id="edit-submit" name="op" value="Suchen">   
+</div>
+
+
+</div></form></li>  
+
+
+</ul>       
+
+</div>*/
+
+.breadcrumbs {
+    background: #EFEFEF;
+    height:     45px;
+
+    ul.bc {
+        list-style: none; 
+        overflow: hidden; 
+        margin:    0px;
+        padding:    0px;
+
+        li {
+            float: left; 
+        }
+
+        li a {
+            color:  lighten(#555,20%);
+            text-decoration: none; 
+            padding: 13px 0 12px 49px;
+            position: relative; 
+            display: block;
+            float: left;
+
+            &:after {
+                content: " "; 
+                display: block; 
+                width: 0; 
+                height: 0;
+                border-top: 50px solid transparent;           /* Go big on the size, and let overflow hide */
+                border-bottom: 50px solid transparent;
+                border-left: 30px solid #EFEFEF;
+                position: absolute;
+                top: 50%;
+                margin-top: -50px; 
+                left: 100%;
+                z-index: 2; 
+            }
+
+            &:before { 
+                content: " "; 
+                display: block; 
+                width: 0; 
+                height: 0;
+                border-top: 50px solid transparent;       
+                border-bottom: 50px solid transparent;
+                border-left: 30px solid #c0c0c0;
+                position: absolute;
+                top: 50%;
+                margin-top: -50px; 
+                margin-left: 1px;
+                left: 100%;
+                z-index: 1; 
+            }
+        }
+
+        li:first-child a {
+            padding-left: 20px;
+        }
+
+        li:last-child a {
+            padding-right:  20px; 
+            &:before,
+            &:after {
+                display: none;
+            }
+        }
+
+        li a:hover { background: darken(#ECECEC,7%); }
+        li a:hover:after { border-left-color: darken(#ECECEC,7%) !important; }
+    }
+
+    .region-select {
+
+        .form-item {
+            display:    inline-block;
+            margin:     0px;
+        }
+        padding: 9px 0 0px 38px;
+
+        .label {
+             color:  lighten(#555,20%);
+        }
+
+        .form-control {
+            margin-bottom:  0px;
+        }
+        .input-sm {
+            width: 100px; 
+            &:focus {
+                border-color: #adadad;
+                outline: 0;
+                box-shadow: none;
+             }
+
+        }
+    }
+}

@@ -3,6 +3,29 @@
 </div>
 
 <div class="sidebar">
+    <div class="breadcrumbs">
+        <ul class="bc">
+            <li>
+
+            <?php 
+               print l(
+                  '<span class="fa fa-home fa-lg""></span>',
+                  '',
+                  array(
+                    'html' => true,
+                    'attributes' => array(
+                      'class' => 'home',
+                    )
+                  )
+                );
+            ?>
+
+            </li>
+           
+             <li><?php print render(drupal_get_form('rm_shop_smartregionselect')); ?></li>  
+        </ul>       
+    </div>
+
     <div class="filter-area" id="filter">
         <?php global $user; if($user->uid <= 0): ?>
             <div class="alert alert-info" role="alert">Bitte <?php print l('loggen Sie sich ein', 'user/register', array('query' =>             drupal_get_destination())); ?>, um die mit Ihnen vereinbarten Liefer- und Zahlungsbedingungen nutzen zu können</div>

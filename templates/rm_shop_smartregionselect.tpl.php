@@ -1,12 +1,13 @@
+
+<div class="region-select form-inline"> 
 <?php
 $form = $variables['form'];
 ?>
 
-<div class="input-group">
+   <span class="label"> PLZ: </span>
     <?php print render($form['address']); ?>
-    <div class="submit-wrapper"> 
-        <?php print render($form['submit']); ?>
-    </div>
+    <?php print render($form['submit']); ?>
+   
    
 </div>
 

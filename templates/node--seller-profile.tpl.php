@@ -13,10 +13,45 @@ $shop = $shops[$shopkeys[0]];
 <div class="flexfix-wrapper clearfix"> 
     <div class="flexfix-content">
         <div class="flexfix-content-inner">
+                <div class="breadcrumbs">
+                    <ul class="bc">
+                        <li>
+
+                        <?php 
+                           print l(
+                              '<span class="fa fa-home fa-lg""></span>',
+                              '',
+                              array(
+                                'html' => true,
+                                'attributes' => array(
+                                  'class' => 'home',
+                                )
+                              )
+                            );
+                        ?>
+                        </li>
+                        <li>
+                        <?php if(!empty($_SESSION['regionselect']['zip'])): ?>
+                          <?php print l($_SESSION['regionselect']['zip'], 'lieferanten/' . $_SESSION['regionselect']['zip']); ?>
+                        <?php else: ?>
+                         <?php print render(drupal_get_form('rm_shop_smartregionselect')); ?> 
+                          <?php print $node->title; ?> 
+                        <?php endif; ?>
+
+                        </li>
+                        <li>
+                        <a href="#"> <?php print $node->title; ?></a>
+                        </li>
+                    </ul>       
+                </div>
+
             <div class="row">
                 <div class="info-wrapper clearfix"> 
                     <div class="col-md-12"> 
+
+
                         <div class="seller-infos">
+
                             
                             <!--Breadcrumbs
                             <?php print l('Home', ''); ?>

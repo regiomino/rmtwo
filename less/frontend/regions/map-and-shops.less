@@ -118,6 +118,7 @@
             background: #fff;
             padding: 0px 20px;
             border-bottom: 1px solid #ddd;
+            border-top: 1px solid #ddd;
             
             h1 {
                 font-weight: 700;
@@ -586,6 +587,7 @@
                  &.active {
                     background-color:   #fff;
 
+
                     .fav-toggle {
                         .fa {color: @brand-primary;}
                     }
@@ -594,9 +596,8 @@
                         background:     #fff;
                     }
                 }
-                 
-                &:hover
-                 {
+    
+                &:hover {
                     text-decoration: none;
                     .hoverShadow();
                     background-color: #fff;
@@ -609,6 +610,10 @@
                     .mask {
                         background:     #fff;
                     }
+                }
+
+                &:active {
+                    box-shadow: none;
                 }
          
                 img {
@@ -683,7 +688,7 @@
         }
         
     }
-    
+
     .footer {
         display: none;
     }

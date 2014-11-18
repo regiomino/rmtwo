@@ -266,8 +266,8 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
 
         case 'rm_shop_smartregionselect':
         
-            $form['#prefix'] = '<div class="input-group">';
-            $form['#suffix'] = '</div>';
+            // $form['#prefix'] = '<div class="input-group">';
+            // $form['#suffix'] = '</div>';
 
             $form['address']['#attributes']['required'] = NULL;
             $form['address']['#title_display'] = 'none';
@@ -276,13 +276,13 @@ function rmtwo_form_alter(&$form, &$form_state, $form_id) {
           //  $form['address']['#prefix'] = '<div class="form-group">';
            // $form['address']['#suffix'] = '</div>';
 
-            $form['submit']['#attributes']['class'][] = 'search-submit';
+            // $form['submit']['#attributes']['class'][] = 'search-submit';
             $form['submit']['#value'] = 'Suchen';
             $form['submit']['#attributes']['class'][] = 'btn-default';
             $form['submit']['#attributes']['class'][] = 'btn-sm';
             $form['submit']['#attributes']['class'][] = 'btn';
-            $form['submit']['#prefix'] = '<div class="submit-wrapper">';
-            $form['submit']['#suffix'] = '</div>';
+            // $form['submit']['#prefix'] = '<div class="submit-wrapper">';
+            // $form['submit']['#suffix'] = '</div>';
           //  $form['submit']['#prefix'] = '<div class="row"><div class="col-md-12">';
           //  $form['submit']['#suffix'] = '</div></div>';
             break;
