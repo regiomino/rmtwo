@@ -190,7 +190,24 @@ RMS.fav.togglePopUpText = function($el,active) {
 
 RMS.map = {};
 RMS.map.mapContainer = "map";
- 
+RMS.map.maxZoom = 10;// zoom = 20 rein, zoom = 1 raus
+/*RMS.map.popUpOptions = {
+    alignBottom : true,
+    pixelOffset: new google.maps.Size(-135, -40),
+    boxStyle: { 
+        width: "270px",
+        "z-index" : 30,
+	},
+    closeBoxURL: "",
+    closeBoxMargin : ""
+};
+RMS.map.popUpWindow = new InfoBox(RMS.map.popUpOptions);*/
+
+RMS.map.latlng = [];
+RMS.map.focusedMarkerID;
+RMS.map.sellerLocations = {};
+RMS.map.firstLoad = true;
+
 RMS.map.getCenter = function(){
     var _self = this;
     var c = Drupal.settings.rm_shop.map_center.split(',');
@@ -212,55 +229,46 @@ RMS.map.getBounds = function() {
     return newBounds;
 };
 
-RMS.map.mapOptions = {
-    center: RMS.map.getCenter(),  
-    zoom: 10,
-    mapTypeId: 'roadmap',
-    mapTypeControl : false,
-    panControl : false,
-    streetViewControl : false,
-    zoomControl: true,
-    zoomControlOptions: {
-        style: google.maps.ZoomControlStyle.SMALL
-    }
-};
-RMS.map.maxZoom = 10;// zoom = 20 rein, zoom = 1 raus
-/*RMS.map.popUpOptions = {
-    alignBottom : true,
-    pixelOffset: new google.maps.Size(-135, -40),
-    boxStyle: { 
-        width: "270px",
-        "z-index" : 30,
-	},
-    closeBoxURL: "",
-    closeBoxMargin : ""
-};
-RMS.map.popUpWindow = new InfoBox(RMS.map.popUpOptions);*/
-RMS.map.popUpWindow = new google.maps.InfoWindow();
-RMS.map.latlng = [];
+RMS.map.setMapOptions = function(){
+    var _self = this;
 
-RMS.map.customIcons = {
-    user_home: {
-        icon : new google.maps.MarkerImage(RMS.PATH_TO_THEME+ '/images/markers/marker-sprite.png', new google.maps.Size(27, 36), new google.maps.Point(64, 0)),
-        zindex: 2
-    },
-    
-    seller_profile: {
-        icon: new google.maps.MarkerImage(RMS.PATH_TO_THEME+ '/images/markers/marker-sprite.png', new google.maps.Size(27, 36), new google.maps.Point(0, 0)),
-        zindex: 1
-    },
-    
-    seller_profile_hover: {
-        icon: new google.maps.MarkerImage(RMS.PATH_TO_THEME+ '/images/markers/marker-sprite.png', new google.maps.Size(27, 36), new google.maps.Point(32, 0)),
-        zindex: 3
-    },
+    _self.mapOptions = {
+        center: RMS.map.getCenter(),  
+        zoom: 10,
+        mapTypeId: 'roadmap',
+        mapTypeControl : false,
+        panControl : false,
+        streetViewControl : false,
+        zoomControl: true,
+        zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL
+        }
+    };
+
+    _self.popUpWindow = new google.maps.InfoWindow();
+    _self.customIcons = {
+        user_home: {
+            icon : new google.maps.MarkerImage(RMS.PATH_TO_THEME+ '/images/markers/marker-sprite.png', new google.maps.Size(27, 36), new google.maps.Point(64, 0)),
+            zindex: 2
+        },
+        
+        seller_profile: {
+            icon: new google.maps.MarkerImage(RMS.PATH_TO_THEME+ '/images/markers/marker-sprite.png', new google.maps.Size(27, 36), new google.maps.Point(0, 0)),
+            zindex: 1
+        },
+        
+        seller_profile_hover: {
+            icon: new google.maps.MarkerImage(RMS.PATH_TO_THEME+ '/images/markers/marker-sprite.png', new google.maps.Size(27, 36), new google.maps.Point(32, 0)),
+            zindex: 3
+        },
+    };
+
 };
-RMS.map.focusedMarkerID;
-RMS.map.sellerLocations = {};
-RMS.map.firstLoad = true;
+
 RMS.map.init = function(){
     var _self = this;
     var marker = Drupal.settings.rm_shop.map_marker;
+    _self.setMapOptions();
     _self.gm = new google.maps.Map(document.getElementById(_self.mapContainer),_self.mapOptions);
     _self.centerMarker = new google.maps.Marker({
         map:  _self.gm,
@@ -936,10 +944,15 @@ RMS.filter.category.CatFilter.prototype = {
     }
 };
 
-(function(){
-    RMS.init();
-})();
 
+function injectGMaps(){
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +'callback=RMS.init';
+    document.body.appendChild(script);
+};
+ 
+window.onload = injectGMaps;  
  
 });
 
