@@ -6,30 +6,11 @@ FPM.pathToTheme = Drupal.settings.basePath + "sites/all/themes/" + Drupal.settin
 FPM.downloadUrl = Drupal.settings.basePath + 'rm-shop-participantxml';
 FPM.mapContainer = "frontpageGoogleMap";
 FPM.latlng  = [];
-FPM.popUpWindow = new google.maps.InfoWindow();
-FPM.mapOptions = {
-    center: new google.maps.LatLng(49.800855, 11.017640),  
-    zoom: 10,
-    mapTypeId: 'roadmap',
-    mapTypeControl : false,
-    streetViewControl : false,
-    zoomControl: true,
-    scrollwheel: false   
-};
 FPM.customerMarker = [];
 FPM.sellerMarker = [];
 FPM.$mapControl = $('#map-control');
 
-FPM.customIcons = {
 
-    seller_profile: {
-        icon: new google.maps.MarkerImage(FPM.pathToTheme + '/images/markers/marker-sprite.png', new google.maps.Size(27, 36), new google.maps.Point(0, 0)),
-    },
-    
-    customer_profile: {
-        icon: new google.maps.MarkerImage(FPM.pathToTheme + '/images/markers/marker-sprite.png', new google.maps.Size(27, 36), new google.maps.Point(32, 0)),
-    } 
-};
 
 FPM.clusterSellerStyle = [
     {   
@@ -139,6 +120,29 @@ FPM.hideCustomerMarker = function(){
 
 FPM.buildMap = function(){
     var _self = this;
+
+    _self.customIcons = {
+
+        seller_profile: {
+            icon: new google.maps.MarkerImage(FPM.pathToTheme + '/images/markers/marker-sprite.png', new google.maps.Size(27, 36), new google.maps.Point(0, 0)),
+        },
+        
+        customer_profile: {
+            icon: new google.maps.MarkerImage(FPM.pathToTheme + '/images/markers/marker-sprite.png', new google.maps.Size(27, 36), new google.maps.Point(32, 0)),
+        } 
+    };
+
+    _self.popUpWindow = new google.maps.InfoWindow();
+    _self.mapOptions = {
+        center: new google.maps.LatLng(49.800855, 11.017640),  
+        zoom: 10,
+        mapTy_selfd: 'roadmap',
+        mapTypeControl : false,
+        streetViewControl : false,
+        zoomControl: true,
+        scrollwheel: false   
+    };
+
     _self.map = new google.maps.Map(document.getElementById(_self.mapContainer),_self.mapOptions);
 };
 
@@ -181,7 +185,7 @@ FPM.injectMarker = function(marker) {
             map : _self.map,
             title : name,
             icon : _self.customIcons[type].icon,
-           // zIndex: _self.customIcons[type].zindex,
+           
         });
         
         if (type === 'seller_profile') {
@@ -191,7 +195,7 @@ FPM.injectMarker = function(marker) {
         else if (type === 'customer_profile') {
             _self.customerMarker.push(gmMarker);
         }
-      /* _self.fitMarker();*/
+       
         
         google.maps.event.addListener(gmMarker, 'click', function(e) {
             _self.openPopUp(gmMarker,popUpHtml);
@@ -199,10 +203,10 @@ FPM.injectMarker = function(marker) {
     });
 
     _self.clusterCustomer =  new MarkerClusterer(_self.map, _self.customerMarker, {
-        gridSize :100,
+        gridSize :80,
         styles :  _self.clusterCustomerStyle,
         minimumClusterSize : 2,
-        maxZoom : 14
+        maxZoom : 12
     });
 
     _self.clusterSeller =  new MarkerClusterer(_self.map, _self.sellerMarker, {
@@ -229,10 +233,6 @@ FPM.openPopUp = function(marker,html){
     _self.popUpWindow.open(_self.map, marker);
 };
 
-(function() {
-   FPM.init();
-})();
-
 
 $('#gastro').click(function(){
     $('html,body').animate({
@@ -254,6 +254,15 @@ $('a[href*=#]:not([href=#])').click(function() {
         return false;
     }
 });
-    
+
+function injectGMaps(){
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = 'https://maps.googleapis.com/maps/api/js?v=3.exp&' +'callback=FPM.init';
+    document.body.appendChild(script);
+};
+ 
+window.onload = injectGMaps;  
+ 
  
 });
