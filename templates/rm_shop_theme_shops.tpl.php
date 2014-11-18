@@ -50,7 +50,7 @@
         -->
          <div class="row category-filter">
             <div class="col col-3 label-col" >
-                 Filter
+                 weitere Filter
             </div>
             <div class="col col-8">
                 <div class="filter-wrapper">
@@ -64,12 +64,10 @@
                         <div class="filter-content">
                             <ul class="filter-terms filter-terms-seller_type" data-filtertype="seller_type">
                                 <?php foreach($vars['categories'] as $term): ?>
-                                <div class="term-wrapper"> 
                                     <li data-text="<?php print $term->name; ?>" data-term="<?php print $term->tid; ?>">
                                         <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                                         <span class="checkbox-label"><?php print $term->name; ?></span>
                                     </li>
-                                </div>
                                 <?php endforeach; ?>
                             </ul>
                         </div><!-- end filter-content -->

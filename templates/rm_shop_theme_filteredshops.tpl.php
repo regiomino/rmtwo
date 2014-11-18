@@ -31,11 +31,11 @@
     }
 ?>
 <div class="col-xs-12 col-lg-6 col-seller-item" data-title="<?php print $shop->title; ?>"> 
-        <a class="seller-item clearfix" data-id="<?php print $shop->nid; ?>" href="<?php print url('node/' . $shop->nid); ?>"> 
+        <a class="seller-item clearfix <?php print $toggleClass; ?>" data-id="<?php print $shop->nid; ?>" href="<?php print url('node/' . $shop->nid); ?>"> 
             <div class="media">
                 <h4 class="title"> <?php print $shop->title; ?></h4>
                 <img class="media-object pull-left img-circle" src="<?php print image_style_url('seller_thumb', $shop->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $shop->title; ?>">
-                <span class="fav-toggle <?php print $toggleClass; ?>" data-toggle="tooltip" data-placement="left" title="<?php print $toggleText; ?>" data-link="/togglefavorite/<?php print $shop->nid; ?>"> <span class="fa fa-star"></span> </span>
+               
                 <div class="media-body">
                     <ul class="list-unstyled">
                         <li><span class="fa fa-cutlery" ></span>
@@ -52,7 +52,7 @@
                             ?>
                         </li>
                         <li>
-                            <span class="fa fa-map-marker"></span> <?php print $shop->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?>, <?php print $shop->                                              field_address[LANGUAGE_NONE][0]['postal_code'] ?> <?php print $shop->field_address[LANGUAGE_NONE][0]['locality']; ?>
+                            <span class="fa fa-map-marker"></span> <?php print $shop->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?>,<span class="postal"> <?php print $shop->field_address[LANGUAGE_NONE][0]['postal_code'] ?> <?php print $shop->field_address[LANGUAGE_NONE][0]['locality']; ?></span>
                         </li>
                     </ul>
                     
@@ -119,7 +119,9 @@
                     </ul>
                 </div><!-- end media body -->
             </div><!-- end media -->
+             <span class="fav-toggle" data-toggle="tooltip" data-placement="left" title="<?php print $toggleText; ?>" data-link="/togglefavorite/<?php print $shop->nid; ?>"> <span class="fa fa-star"></span> </span>
             <span class="fa fa-chevron-right text-muted"> </span>
+            <span class="mask"> </span>
         </a>  <!-- end seller-item -->
 </div> <!--end col-item-wrapper -->
 <?php endforeach; ?>

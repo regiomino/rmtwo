@@ -5,7 +5,10 @@
 
 .page-lieferanten {
     
-    
+    .navbar-default {
+        background-color:   #fff;
+    }
+
     .col {
         position: relative;
         min-height: 1px;
@@ -124,12 +127,19 @@
             
             
             .row {
-                padding: 20px 0px;
                 position: relative;
             }
             
             .row.search {
-                height: 84px;
+                padding-top: 21px ;
+                padding-bottom: 15px;
+
+                .label-col {
+                    padding-top:    14px;
+                    @media screen and (max-width: 1250px) {
+                        padding-top:   0px;
+                    }
+                }
             }
             
             .row.search:before {
@@ -142,6 +152,18 @@
                 border-top: 1px solid #dce0e0;
                 display: block;
             }
+
+            .row.category-filter {
+                padding-top:    19px;
+                padding-bottom: 19px;
+
+                .label-col {
+                    padding-top:    9px;
+                    @media screen and (max-width: 1250px) {
+                        padding-top:   0px;
+                    }
+                }
+            }
         }
         
         .search {
@@ -150,7 +172,7 @@
             }
             
            .form-control {
-                border: 1px solid #ddd;
+                border: 1px solid #ccc;
                 
                 &:focus {
                     border-color: #adadad;
@@ -258,7 +280,7 @@
                 width: 32%;
                 padding-left: 5px;
                 padding-right: 5px;
-                
+                line-height:    1px;
                 
                 &.open {
                     
@@ -304,6 +326,7 @@
             .filter-name {
                 font-size: 14px;
                 line-height: 34px;
+                overflow: hidden;
                 height: 34px;
                 width: 100%;
                 padding: 0 0 0 12px;
@@ -312,7 +335,7 @@
                 display: inline-block;
                 margin-right: 0;
                 border-radius: 4px;
-                border: 1px solid #ddd;
+                border: 1px solid #ccc;
                 cursor: pointer;
                 opacity: 1;
                 
@@ -322,9 +345,9 @@
                 
                 .reset {
                     position: absolute;
-                    top: 4px;
-                    right: 6px;
-                    padding: 7px;
+                    top: 5px;
+                    right: 7px;
+                    padding: 5px;
                     display: none;
                 }
                 
@@ -339,6 +362,7 @@
             .filter-content {
                 display: none;
                 position: absolute;
+
                 top: 39px;
                 background-color: #fff;
                 padding: 17px 20px 20px;
@@ -348,7 +372,6 @@
                 box-shadow: 0 5px 20px rgba(0,0,0,0.1);
                 
                  ul.filter-terms {
-                    
                     margin: 0px;
                     padding: 0px;
                     list-style: none;
@@ -357,66 +380,66 @@
                     -webkit-column-gap: 0;
                 }
                 
-                .term-wrapper {
-                    display: inline-block;
-                    width: 100%;
+                li {
+                    color: #000;
+                    margin: 10px;
                     cursor: pointer;
+                    display:    inline-block;
+                    width:  100%;
+                    line-height:    1px;
+
                     
-                    li {
-                        color: #000;
-                        margin: 2px;
+                    &:hover {
+                        color: @brand-primary;
                         
-                        &:hover {
+                         .filter-checkbox {
+                            border: 1px solid @brand-primary;
+                         }
+                         
+                         .checkbox-label {
                             color: @brand-primary;
-                            
-                             .filter-checkbox {
-                                border: 1px solid @brand-primary;
-                             }
-                             
-                             .checkbox-label {
-                                color: @brand-primary;
-                             }
-                        }
-                        
-                        &.active {
-                            font-weight: 700;
-                            
-                            .fa {
-                                display: block!important;
-                            }
-                        }
-                        
+                         }
                     }
                     
-                    .filter-checkbox {
-                        width: 18px;
-                        height: 18px;
-                        background-color: white;
-                        float: left;
-                        margin-right: 10px;
-                        border: 1px solid #b3b3b3;
-                        position: relative;
+                    &.active {
+                        font-weight: 700;
                         
                         .fa {
-                            display: none;
-                            position: absolute;
-                            left: 1px;
-                            top: 1px;
-                            color: #555!important;
+                            display: block!important;
                         }
                     }
                     
-                    .checkbox-label {
-                       font-size: 14px;
-                        line-height: 1em;
-                        text-transform: capitalize;
-                        padding-top: 2px;
-                        display: inline-block;
-                        width: calc(100% - 28px);
-                        vertical-align: top;
-                        vertical-align: top;
+                }
+                
+                .filter-checkbox {
+                    width: 18px;
+                    height: 18px;
+                    background-color: white;
+                    float: left;
+                    margin-right: 10px;
+                    border: 1px solid #b3b3b3;
+                    position: relative;
+                    
+                    .fa {
+                        display: none;
+                        position: absolute;
+                        left: 1px;
+                        top: 1px;
+                        color: #555!important;
                     }
                 }
+                
+                .checkbox-label {
+                   font-size: 14px;
+                    line-height: 1em;
+                    text-transform: capitalize;
+                    padding-top: 2px;
+                    display: inline-block;
+                    width: calc(100% - 28px);
+                    vertical-align: top;
+                    vertical-align: top;
+                }
+                 
             }
             
             .seller-type .filter-content {
@@ -466,21 +489,25 @@
         .seller-area {
             padding-top: 20px;
             position: relative;
-            
+            transition: all .2s ease-out;
+            opacity:    1;
+
             &.loading {
+                opacity:    0.29;
+                
                 &:before {
                     display: block;
                     top: 63%;
                     left: 71%;
-                    z-index: 10;
                     content: " ";
                     .loader();
-                     position: fixed;
+                    position: fixed;
                     margin-top: -15px;
                     margin-left: -15px;
+                    z-index: 50;
                 }
                 
-                &:after {
+               /* &:after {
                     position: absolute;
                     display: block;
                     top: 0;
@@ -491,7 +518,7 @@
                     opacity: 0.9;
                     filter: alpha(opacity=90);
                     content: " ";
-                }
+                }*/
             }
             
            
@@ -518,26 +545,22 @@
              a.seller-item {
                 position: relative;
                 display: block;
-                border: 1px solid #ddd;
+                .box-border();
+                text-decoration: none;
                 border-radius: 4px;
                 padding: 15px;
-                transition: all .12s ease-out;
+                transition: all .2s ease-out;
                 color: @gray;
+
+
                 @media screen and (min-width: @2-col-breakpoint){
                         min-height: 174px;
                 }
-                 
-                &:hover,
-                &:focus,
-                &:active {
-                    box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
-                    background-color: #fff;
-                    text-decoration: none;
-                    transform: translateY(-2px);
-                }
+
+
+               
                 
                 &:active {
-                    transform: translateY(0px);
                     box-shadow: none;
                 }
                 
@@ -546,6 +569,7 @@
                     right: 17px;
                     top: 85px;
                     display: block;
+                    z-index:    21;
                     
                     .fa {
                         color: #ddd;
@@ -557,13 +581,36 @@
                             color:darken(#ddd, 10%);
                          }
                     }
-                    
-                    &.active {
+                }
+
+                 &.active {
+                    background-color:   #fff;
+
+                    .fav-toggle {
                         .fa {color: @brand-primary;}
                     }
-                   
+
+                    .mask {
+                        background:     #fff;
+                    }
                 }
-                
+                 
+                &:hover
+                 {
+                    text-decoration: none;
+                    .hoverShadow();
+                    background-color: #fff;
+                    
+
+                    .fa-chevron-right {
+                        color: @brand-primary;
+                    }
+
+                    .mask {
+                        background:     #fff;
+                    }
+                }
+         
                 img {
                     width: 76px;
                     background-color: @body-bg;
@@ -575,6 +622,7 @@
                         top: -12px;
                         right: -11px;
                         margin-right: 0;
+                        z-index:    21;
                     }
                 }
                 
@@ -604,16 +652,22 @@
                     font-size: 21px;
                     transition: all .2s linear;
                     color: #ddd;
+                    z-index:    21;
                 }
-                
-                &:hover,
-                &:active,
-                &:focus {
-                    .fa-chevron-right {
-                        color: @brand-primary;
-                    }
-                }
-                
+
+                .mask {
+                    position: absolute;
+                    width:  54px;
+                    top:    0px;
+                    right:  0px;
+                    background:     @body-bg;
+                    bottom:     0px;
+                    display: block;
+                    opacity:    0.8;
+                    z-index:    20;
+                    transition: all .2s ease-out;
+               }
+
                 .list-unstyled {
                     margin-bottom: 5px;
                 }

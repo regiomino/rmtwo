@@ -161,13 +161,15 @@ RMS.fav.clickToggle = function(e) {
     e.preventDefault();
     var _self = e.data.obj;
     var $el = $(this);
+    var $parent = $el.parents('.seller-item');
     var path = $el.data('link');
     RMS.ajax.toggleFavs(path);
-    $el.toggleClass('active');
+    $parent.toggleClass('active');
     
-    if ($el.hasClass('active')) {
+    if ($parent.hasClass('active')) {
         
         _self.togglePopUpText($el,true);
+
     } else {
          
         _self.togglePopUpText($el,false);
@@ -241,7 +243,8 @@ RMS.map.setMapOptions = function(){
         streetViewControl : false,
         zoomControl: true,
         zoomControlOptions: {
-            style: google.maps.ZoomControlStyle.SMALL
+            style: google.maps.ZoomControlStyle.LARGE,
+            position : google.maps.ControlPosition.LEFT_CENTER 
         }
     };
 
@@ -808,7 +811,7 @@ RMS.filter.category.CatFilter = function(elem){
     this.filterDefaultText = this.$filterHeadText.data('defaulttext');
     this.$reset = $('.reset', this.$filterHead);
     this.$filterContent = $('.filter-content',this.$el);
-    this.$termListItems = $('.term-wrapper li',this.$filterContent);
+    this.$termListItems = $('li',this.$filterContent);
     this.selectedCats = [];
     this.selectedCatNames = [];
     this.filterKey = this.$el.data('filtertype');
