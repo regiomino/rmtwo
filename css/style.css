@@ -11254,6 +11254,10 @@ addcartCart-Icon
   height: 2px;
   margin-bottom: 3px;
 }
+.page-lieferanten .alert {
+  margin-bottom: 0px;
+  margin-top: 20px;
+}
 .page-lieferanten .footer {
   display: none;
 }
