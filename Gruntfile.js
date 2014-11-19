@@ -56,7 +56,7 @@ module.exports = function (grunt) {
         core: {
             files: {
               'css/style.min.css': 'css/style.css',
-              'css/style-back.min.css': 'css/style-back.css' 
+              'css/style-back.min.css': 'css/style-back.css'
             }
         }
     },
@@ -71,7 +71,7 @@ module.exports = function (grunt) {
                 'js/bootstrap/transition.js',
                 'js/bootstrap/alert.js',
                 'js/bootstrap/button.js',
-              //  'js/bootstrap/carousel.js',
+                'js/bootstrap/carousel.js',
                 'js/bootstrap/collapse.js',
                 'js/bootstrap/dropdown.js',
                 'js/bootstrap/modal.js',

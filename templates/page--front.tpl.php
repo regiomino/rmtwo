@@ -135,9 +135,9 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
  
 
 
-<div class="content-wrapper white image-wall">
+<div class="content-wrapper white">
     <div class="container ">
-        <div class="row ">
+        <div class="row participants">
             <div class="col-md-12">
                 <h2 class="text-center">Regionales neu entdecken </h2> 
                    <p class="text-center lead">
@@ -148,7 +148,7 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
             <div class="col-md-10 col-md-offset-1">
                 <div class="map">
                     
-                   <div class="text-center clearfix" id="map-control">
+                    <div class="text-center clearfix" id="map-control">
                         <div class="control active" data-type="customer"> 
                             <div class="filter-checkbox"><i class="fa fa-check"></i></div>
                             <span class="marker-icon marker-sprite gastro"></span> 
@@ -160,16 +160,106 @@ Kooperativen wird vereinfacht, weil die Beschaffungskosten geringer werden.</li>
                             <span class="checkbox-label">teilnehmende Produzenten</span>
                         </div>
                    </div>
-                <div class="map-wrapper"> 
-                    <div id="frontpageGoogleMap"></div>
-                </div>
-               <div class="left wall"></div>
-                <div class="right wall"></div> 
-                </div><!--howTo-->
-            </div><!--end col-md-12-->
+                    <div class="map-wrapper"> 
+                        <div id="frontpageGoogleMap"></div>
+                    </div>
+                    <div class="left wall"></div>
+                    <div class="right wall"></div> 
+                </div><!--map-->
+            </div><!--end col-md-10-->
         </div><!-- end row-->
-        
-        
+        <div class="row testimonials">
+            <div class="col-md-12">
+            <h2 class="text-center ">
+             Unsere Idee überzeugt 
+
+            </h2>
+            <p class="text-center quote-s"> <span class="fa fa-quote-left fa-2x"> </span> </p>
+                      
+                <div id="testimonials" class="carousel slide col-md-12 " data-interval="8000">
+                  <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        <li data-target="#testimonials" data-slide-to="0" class="active"></li>
+                        <li data-target="#testimonials" data-slide-to="1"></li>
+                        <li data-target="#testimonials" data-slide-to="2"></li>
+                        <li data-target="#testimonials" data-slide-to="3"></li>
+                    </ol>
+
+                      <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active ">
+                   
+                            <div class="media">
+                                <img src="<?php echo base_path() . path_to_theme();?>/images/testimonials/zwingel.jpg" alt="Matthias Zwingel" class="pull-right hidden-xs">
+                            
+                                <div class="media-body">
+                                    <blockquote class="blockquote-reverse"> 
+                                        <p class="lead">
+                                        <em> "Regiomino kann unseren Beschaffungsaufwand von einer halben Stunde (!) pro Woche und pro Lieferant auf eine halbe Stunde FÜR ALLE Regionallieferanten reduzieren."</em>
+                                        </p>
+                                        <footer><strong>Matthias Zwingel, Zwingel Handels GmbH, <a href="http://www.bvlh.net/praesidium.html"> Informationen <i class="fa fa-external-link"></i></a> </strong></footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                    <!-- <i class="fa  fa-quote-left fa-lg fa-2x"></i> -->
+                            <div class="media">
+                                <img src="<?php echo base_path() . path_to_theme();?>/images/testimonials/land.jpg" alt="Markus Herold" class="pull-left  hidden-xs">
+                            
+                                <div class="media-body">
+                                    <blockquote class="blockquote"> 
+                                        <p class="lead">
+                                        <em> "Regiomino ist ein hervorragendes Beispiel dafür, was Innovationen im ländlichen Raum so erfolgreich macht: die einzigartige Verbindung von kreativen Ideen, zupackendem persönlichen Engagement und gesellschaftlicher Verantwortung. Sie sind ein Vorbild für das Innovationslabor Land." </em>
+                                        </p>
+                                        <footer><strong> Markus Herold, Filialdirektor Deutsche Bank Bamberg im Rahmen der Preisverleihung "Deutschland – Land der Ideen".</strong></footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                    <!-- <i class="fa  fa-quote-left fa-lg fa-2x"></i> -->
+                            <div class="media">
+                                <img src="<?php echo base_path() . path_to_theme();?>/images/testimonials/mueller.jpg" alt="Birgit Müller" class="pull-right  hidden-xs">
+                            
+                                <div class="media-body">
+                                    <blockquote class="blockquote-reverse"> 
+                                        <p class="lead">
+                                        <em> "Das freut mich – dass Sie eine Auszeichnung für ihre wirklich bodenständige Idee erhalten und die wunderbar in die Region von uns passt. Schließlich sind genau wir in der Wirtschaftsregion Bamberg-Forchheim von Stadt u Land geprägt und Sie verbinden das wunderbar mit Ihrem Projekt." </em>
+                                        </p>
+                                        <footer><strong> Birgit Müller, Wirtschaftsförderin der Stadt Forchheim.</strong></footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                    <!-- <i class="fa  fa-quote-left fa-lg fa-2x"></i> -->
+                            <div class="media">
+                                 
+                            
+                                <div class="media-body">
+                                    <blockquote class="blockquote"> 
+                                        <p class="lead">
+                                        <em> "Mit Regiomino kann ich alle regionalen Lieferanten und ihre Angebote auf einer Plattform sehen und einkaufen. Das aufwändige Einholen von Angeboten gehört damit der Vergangenheit an: Und weil es viel einfacher ist Regionales einzukaufen, können wir auch mehr davon beziehen. Auch für unsere Produzenten und die Region ein klarer Vorteil!" </em>
+                                        </p>
+                                        <footer><strong> Wolfgang Heinzel, <a href="http://www.gasthof-linden.de/" title="Gasthof Linden & Wildkräuterhotel"> Gasthof Linden & Wildkräuterhotel <i class="fa fa-external-link"></i> </a>, sowie 1. Vorsitzender der der Interessengemeinschaft <a href="http://www.regionalbuffet.de/impressum" title="Interessengemeinschaft Regionalbuffet " > Regionalbuffet <i class="fa fa-external-link"></i>
+                                        </a> </strong></footer>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
     </div><!-- end container-->
 </div> <!--end content-wrapper -->   
     

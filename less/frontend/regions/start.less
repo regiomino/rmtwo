@@ -37,8 +37,12 @@
             margin-top: 0;
             margin-bottom: 20px;
         }
+
+/*content areas*/
+
+    /*benefits*/
     
-     .benefits {
+    .row.benefits {
         
         .lead {
             margin-bottom: 53px;
@@ -71,6 +75,13 @@
             }
         }
     }
+
+   /* participants*/
+
+   .row.participants {
+    margin-bottom:  70px;
+   }
+
     #frontpageGoogleMap {
         height: 500px;
         width: 100%;
@@ -179,6 +190,58 @@
                     display: block;
                 }
             }
+        }
+    }
+
+/* testimonials*/
+    .testimonials {
+        .fa-quote-left {
+           /* position: absolute;;
+            left: 0px;
+            top: 0px;*/
+            color: @brand-primary;
+        }
+        .carousel {
+            min-height:     200px;
+        }
+
+        p.quote-symbol {
+            margin-bottom:  20px;
+        }
+        
+        .item { 
+            
+
+            img.pull-right {
+                margin-left: 20px;
+            }
+
+            blockquote {
+                border-left:    0px;
+                padding: 0px 20px 10px 20px;
+            }
+
+            blockquote.blockquote-reverse {
+                border-right:   none;
+            }
+
+            blockquote footer:before,
+            blockquote footer:after {
+                font-weight:    bold;
+            }
+        }
+
+        .carousel-indicators {
+                bottom: -30px;
+
+                .active {
+                    background-color:   @brand-primary;
+                }
+        }
+
+        .carousel-indicators li {
+                border: none;
+                background-color: lighten(#555,30%);
         }
     }
     

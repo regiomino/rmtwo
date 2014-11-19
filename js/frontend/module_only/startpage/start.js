@@ -264,5 +264,7 @@ function injectGMaps(){
  
 window.onload = injectGMaps;  
  
+
+ $('#testimonials').carousel();
  
 });
