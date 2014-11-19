@@ -167,7 +167,7 @@ FPM.injectMarker = function(marker) {
    $.each(marker,function(i,item) {
         var type = item.getAttribute('type');
         
-        if (type === 'inactive_profile' || type === 'prospect_profile') {
+        if (type === 'inactive_profile' || type === 'prospect_profile' || type === 'trader_profile') {
             return;
         }
         
