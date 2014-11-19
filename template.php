@@ -596,6 +596,7 @@ function rmtwo_preprocess_page(&$variables) {
                 $_SESSION['chosen_seller'] = $variables['node']->uid;
                 drupal_add_js(array('suid' => $variables['node']->uid), 'setting');
                 $variables['node']->offers = rm_shop_get_structured_seller_offers($variables['node']->uid);
+                drupal_add_js('https://maps.googleapis.com/maps/api/js?v=3.exp');
                 drupal_add_js(drupal_get_path('module', 'rm_cart') . '/js/rm_cart.js');
                 
             }
