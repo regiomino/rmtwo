@@ -10038,6 +10038,10 @@ addcartCart-Icon
 }
 .front {
   overflow-x: hidden;
+  /*content areas*/
+  /*benefits*/
+  /* participants*/
+  /* testimonials*/
 }
 .front .page-title {
   text-align: center;
@@ -10072,30 +10076,33 @@ addcartCart-Icon
   margin-top: 0;
   margin-bottom: 20px;
 }
-.front .benefits .lead {
+.front .row.benefits .lead {
   margin-bottom: 53px;
 }
-.front .benefits img {
+.front .row.benefits img {
   margin-bottom: 20px;
 }
-.front .benefits h4 {
+.front .row.benefits h4 {
   margin-bottom: 20px;
 }
-.front .benefits ul {
+.front .row.benefits ul {
   padding-left: 0px;
   list-style: none;
   margin-bottom: 23px;
 }
-.front .benefits ul li {
+.front .row.benefits ul li {
   position: relative;
   padding: 0 0px 0px 23px;
   margin-bottom: 10px;
 }
-.front .benefits ul li .fa {
+.front .row.benefits ul li .fa {
   position: absolute;
   left: 0px;
   top: 3px;
   color: #95bc0d;
+}
+.front .row.participants {
+  margin-bottom: 70px;
 }
 .front #frontpageGoogleMap {
   height: 500px;
@@ -10193,6 +10200,42 @@ addcartCart-Icon
 }
 .front .map .control.active .fa {
   display: block;
+}
+.front .testimonials .fa-quote-left {
+  /* position: absolute;;
+            left: 0px;
+            top: 0px;*/
+  color: #95bc0d;
+}
+.front .testimonials .carousel {
+  min-height: 200px;
+}
+.front .testimonials p.quote-symbol {
+  margin-bottom: 20px;
+}
+.front .testimonials .item img.pull-right {
+  margin-left: 20px;
+}
+.front .testimonials .item blockquote {
+  border-left: 0px;
+  padding: 0px 20px 10px 20px;
+}
+.front .testimonials .item blockquote.blockquote-reverse {
+  border-right: none;
+}
+.front .testimonials .item blockquote footer:before,
+.front .testimonials .item blockquote footer:after {
+  font-weight: bold;
+}
+.front .testimonials .carousel-indicators {
+  bottom: -30px;
+}
+.front .testimonials .carousel-indicators .active {
+  background-color: #95bc0d;
+}
+.front .testimonials .carousel-indicators li {
+  border: none;
+  background-color: #a2a2a2;
 }
 .front .howTo .lead {
   margin-bottom: 30px;
