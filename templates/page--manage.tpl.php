@@ -20,7 +20,7 @@
             <div class="nav navbar-nav navbar-right">
                 <?php print rm_user_get_navbar(); ?>
                 <button class="btn btn-danger" data-toggle="modal" data-target="#suggestModal">
-                    <span class="glyphicon glyphicon-plus"></span> <?php print t('Suggest vendor or gastronomy'); ?>
+                    <span class="glyphicon glyphicon-plus"></span> <?php print t('Suggest vendor, gastronomy or trader'); ?>
                 </button>
                 <!-- /.dropdown -->
             </div>
@@ -48,7 +48,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h3 class="modal-title text-center" id="suggestModalLabel"><?php print t('Suggest vendor or gastronomy'); ?></h3>
+                        <h3 class="modal-title text-center" id="suggestModalLabel"><?php print t('Suggest vendor, gastronomy or trader'); ?></h3>
                 </div>
                 <div class="modal-body">
                     <?php print $suggestform; ?>

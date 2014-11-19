@@ -29,7 +29,7 @@
                     </ul>
                 </div>
                 <button class="btn btn-danger" data-toggle="modal" data-target="#suggestModal">
-                    <span class="fa fa-plus"></span> <?php print t('Suggest vendor or gastronomy'); ?>
+                    <span class="fa fa-plus"></span> <?php print t('Suggest vendor, gastronomy or trader'); ?>
                 </button>
             </div>
         </div><!--/.nav-collapse -->
@@ -284,7 +284,7 @@ Sie den vollen Überblick zu Rechnungen und Kosten.<br> Worauf warten Sie noch?
                                 <div class="col-md-7 col-sm-9 col-md-pull-5">
                                     <p class="text-muted">
                                        <strong> Schritt 1:<br></strong>
-                                       Über "Produzent oder Gastronom vorschlagen" können Sie sich als Produzent für Regiomino vorschlagen.
+                                       Über "Produzent, Gastronom oder Händler vorschlagen" können Sie sich als Teilnehmer für Regiomino vorschlagen.
                                        Wir werden Sie dann umgehend kontaktieren.
                                     </p>
                                 </div><!--end col-md-7-->
@@ -352,7 +352,7 @@ mit Anbietern von regionalen Erzeugnissen vernetzt und Regionen dadurch nachhalt
                                    
                                     <p class="text-muted col-md-offset-3">
                                         <strong> Schritt 1:<br></strong>
-                                       Über "Produzent oder Gastronom vorschlagen" können Sie uns Ihre Produzenten mitteilen. </p>
+                                       Über "Produzent, Gastronom oder Händler vorschlagen" können Sie uns Ihre Produzenten mitteilen. </p>
                                 </div>
                             </div><!--end row-->
                             <div class="row text-leftside">
@@ -412,7 +412,7 @@ mit Anbietern von regionalen Erzeugnissen vernetzt und Regionen dadurch nachhalt
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h3 class="modal-title text-center" id="suggestModalLabel"><?php print t('Suggest vendor or gastronomy'); ?></h3>
+                    <h3 class="modal-title text-center" id="suggestModalLabel"><?php print t('Suggest vendor, gastronomy or trader'); ?></h3>
             </div>
             <div class="modal-body">
                 <?php print $suggestform; ?>

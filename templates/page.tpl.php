@@ -29,7 +29,7 @@
                     </ul>
                 </div>
                 <button class="btn btn-danger" data-toggle="modal" data-target="#suggestModal">
-                    <span class="fa fa-plus"></span> <?php print t('Suggest vendor or gastronomy'); ?>
+                    <span class="fa fa-plus"></span> <?php print t('Suggest vendor, gastronomy or trader'); ?>
                 </button>
             </div>
         </div><!--/.nav-collapse -->
@@ -110,7 +110,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <h4 class="modal-title" id="suggestModalLabel"><?php print t('Suggest vendor or gastronomy'); ?></h4>
+                        <h4 class="modal-title" id="suggestModalLabel"><?php print t('Suggest vendor, gastronomy or trader'); ?></h4>
                 </div>
                 <div class="modal-body">
                     <?php print $suggestform; ?>
