@@ -8755,3 +8755,25 @@ table.dataTable thead .sorting:after {
   background: none;
   border: none;
 }
+@media (min-width: 768px) {
+  .page-manage-sales #page-wrapper {
+    position: inherit;
+    margin: 0 0 0 180px;
+    padding: 0 30px;
+    border-left: 1px solid #e7e7e7;
+  }
+}
+@media (min-width: 768px) {
+  .page-manage-sales .sidebar {
+    z-index: 1;
+    position: absolute;
+    width: 180px;
+    margin-top: 65px;
+  }
+}
+.page-manage-sales .comments {
+  max-width: 100px;
+}
+.page-manage-sales .nextactions {
+  max-width: 162px;
+}
