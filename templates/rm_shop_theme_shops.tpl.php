@@ -3,8 +3,8 @@
 </div>
 
 <div class="sidebar">
-    <div class="breadcrumbs">
-        <ul class="bc">
+    <div class="breadcrumbs-container">
+        <ul class="breadcrumbs">
             <li>
 
             <?php 

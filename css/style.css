@@ -7685,20 +7685,26 @@ label {
 </ul>       
 
 </div>*/
-.breadcrumbs {
+.breadcrumbs-container {
   background: #EFEFEF;
   height: 45px;
 }
-.breadcrumbs ul.bc {
+.breadcrumbs-container.large {
+  position: absolute;
+  width: 100%;
+  top: 65px;
+  left: 0px;
+}
+ul.breadcrumbs {
   list-style: none;
   overflow: hidden;
   margin: 0px;
   padding: 0px;
 }
-.breadcrumbs ul.bc li {
+ul.breadcrumbs li {
   float: left;
 }
-.breadcrumbs ul.bc li a {
+ul.breadcrumbs li a {
   color: #888888;
   text-decoration: none;
   padding: 13px 0 12px 49px;
@@ -7706,13 +7712,12 @@ label {
   display: block;
   float: left;
 }
-.breadcrumbs ul.bc li a:after {
+ul.breadcrumbs li a:after {
   content: " ";
   display: block;
   width: 0;
   height: 0;
   border-top: 50px solid transparent;
-  /* Go big on the size, and let overflow hide */
   border-bottom: 50px solid transparent;
   border-left: 30px solid #EFEFEF;
   position: absolute;
@@ -7721,7 +7726,7 @@ label {
   left: 100%;
   z-index: 2;
 }
-.breadcrumbs ul.bc li a:before {
+ul.breadcrumbs li a:before {
   content: " ";
   display: block;
   width: 0;
@@ -7736,39 +7741,39 @@ label {
   left: 100%;
   z-index: 1;
 }
-.breadcrumbs ul.bc li:first-child a {
+ul.breadcrumbs li:first-child a {
   padding-left: 20px;
 }
-.breadcrumbs ul.bc li:last-child a {
+ul.breadcrumbs li:last-child a {
   padding-right: 20px;
 }
-.breadcrumbs ul.bc li:last-child a:before,
-.breadcrumbs ul.bc li:last-child a:after {
+ul.breadcrumbs li:last-child a:before,
+ul.breadcrumbs li:last-child a:after {
   display: none;
 }
-.breadcrumbs ul.bc li a:hover {
+ul.breadcrumbs li a:hover {
   background: #dadada;
 }
-.breadcrumbs ul.bc li a:hover:after {
+ul.breadcrumbs li a:hover:after {
   border-left-color: #dadada !important;
 }
-.breadcrumbs .region-select {
+.region-select {
   padding: 9px 0 0px 38px;
 }
-.breadcrumbs .region-select .form-item {
+.region-select .form-item {
   display: inline-block;
   margin: 0px;
 }
-.breadcrumbs .region-select .label {
+.region-select .label {
   color: #888888;
 }
-.breadcrumbs .region-select .form-control {
+.region-select .form-control {
   margin-bottom: 0px;
 }
-.breadcrumbs .region-select .input-sm {
+.region-select .input-sm {
   width: 100px;
 }
-.breadcrumbs .region-select .input-sm:focus {
+.region-select .input-sm:focus {
   border-color: #adadad;
   outline: 0;
   box-shadow: none;
@@ -9993,32 +9998,6 @@ addcartCart-Icon
     transform: matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
   }
 }
-.flexfix-wrapper {
-  position: relative;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  padding-bottom: 45px;
-}
-.flexfix-wrapper .flexfix-sidebar {
-  width: 340px;
-  min-height: 1px;
-  position: relative;
-  padding: 0 15px;
-  box-shadow: -6px 0 8px -6px rgba(0, 0, 0, 0.25);
-}
-.flexfix-wrapper .flexfix-content {
-  float: left;
-  width: 100%;
-  margin-right: -340px;
-  position: relative;
-}
-.flexfix-wrapper .flexfix-content-inner {
-  margin-right: 340px;
-  padding: 0 15px;
-}
 .loader {
   position: absolute;
   width: 19px;
@@ -10358,15 +10337,15 @@ addcartCart-Icon
 .node-type-seller-profile .nav-tabs {
   display: none;
 }
-.node-type-seller-profile #feedbackify .fby-tab-r {
-  display: none;
+.node-type-seller-profile .content-wrapper {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
 }
-.node-type-seller-profile #feedbackify #fbya #fbyb .fby-tab-r {
-  right: 103px!important;
-}
-.node-type-seller-profile .affix {
-  top: 65px;
-  width: 309px;
+.node-type-seller-profile .content {
+  float: left;
 }
 .node-type-seller-profile .modal-body .media-object {
   margin-right: 15px;
@@ -10671,6 +10650,9 @@ addcartCart-Icon
 }
 .node-type-seller-profile #pickupModal .pickupInfo .pickup-spot:last-child {
   padding-bottom: 10px;
+}
+.page-lieferanten .breadcrumbs-container.large {
+  display: none;
 }
 .page-lieferanten .navbar-default {
   background-color: #fff;

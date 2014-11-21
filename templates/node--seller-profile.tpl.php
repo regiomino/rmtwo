@@ -10,61 +10,44 @@ $shopkeys = array_keys($shops);
 $shop = $shops[$shopkeys[0]];
 
 ?>
-<div class="flexfix-wrapper clearfix"> 
-    <div class="flexfix-content">
-        <div class="flexfix-content-inner">
-                <div class="breadcrumbs">
-                    <ul class="bc">
-                        <li>
+ 
+<ul class="breadcrumbs">
+    <li>
+    <?php 
+       print l(
+          '<span class="fa fa-home fa-lg""></span>',
+          '',
+          array(
+            'html' => true,
+            'attributes' => array(
+              'class' => 'home',
+            )
+          )
+        );
+    ?>
+    </li>
+    <li>
+    <?php if(!empty($_SESSION['regionselect']['zip'])): ?>
+            <?php print l($_SESSION['regionselect']['zip'], 'lieferanten/' . $_SESSION['regionselect']['zip']); ?>
+    <?php else: ?>
+     <?php print render(drupal_get_form('rm_shop_smartregionselect')); ?> 
+      <?php print $node->title; ?> 
+    <?php endif; ?>
 
-                        <?php 
-                           print l(
-                              '<span class="fa fa-home fa-lg""></span>',
-                              '',
-                              array(
-                                'html' => true,
-                                'attributes' => array(
-                                  'class' => 'home',
-                                )
-                              )
-                            );
-                        ?>
-                        </li>
-                        <li>
-                        <?php if(!empty($_SESSION['regionselect']['zip'])): ?>
-                          <?php print l($_SESSION['regionselect']['zip'], 'lieferanten/' . $_SESSION['regionselect']['zip']); ?>
-                        <?php else: ?>
-                         <?php print render(drupal_get_form('rm_shop_smartregionselect')); ?> 
-                          <?php print $node->title; ?> 
-                        <?php endif; ?>
+    </li>
+    <li>
+    <a href="#"> <?php print $node->title; ?></a>
+    </li>
+</ul>       
 
-                        </li>
-                        <li>
-                        <a href="#"> <?php print $node->title; ?></a>
-                        </li>
-                    </ul>       
-                </div>
-
-            <div class="row">
-                <div class="info-wrapper clearfix"> 
-                    <div class="col-md-12"> 
-
-
+<div class="content-wrapper clearfix"> 
+    <div class="content">
+        <div class="row seller-info">
+            <div class="col-md-12"> 
+                <h1 class="h2"><strong> <?php print $node->title; ?></strong></h1>   
                         <div class="seller-infos">
-
                             
-                            <!--Breadcrumbs
-                            <?php print l('Home', ''); ?>
-                            -> 
-                            <?php if(!empty($_SESSION['regionselect']['zip'])): ?>
-                              <?php print l($_SESSION['regionselect']['zip'], 'lieferanten/' . $_SESSION['regionselect']['zip']); ?>
-                            <?php else: ?>
-                              <?php print render(drupal_get_form('rm_shop_smartregionselect')); ?>
-                            <?php endif; ?>
-                          
-                            <?php print $node->title; ?> -->
                             
-                            <h1><strong> <?php print $node->title; ?></strong></h1>
                             <ul class="list-inline">
                                 <li>
                                     <span class="fa fa-cutlery" ></span>

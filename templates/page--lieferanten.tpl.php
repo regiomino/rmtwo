@@ -35,7 +35,7 @@
         </div><!--/.nav-collapse -->
     </div>
 </div><!-- end navbar -->
-
+<div class="breadcrumbs-container large"></div>
 <div class="container">
    
     <?php if(user_is_logged_in() && ($tabs['#primary'] || $tabs['#secondary'])): ?>
