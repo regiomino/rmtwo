@@ -45,6 +45,40 @@ $shop = $shops[$shopkeys[0]];
         <div class="row seller-info">
             <div class="col-md-12"> 
                 <h1 class="h2"><strong> <?php print $node->title; ?></strong></h1>   
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="img-responsive seller-image" src="<?php print image_style_url('seller_large', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>">
+                    </a>
+                  <div class="media-body seller-meta">
+                        <ul class="list-unstyled">
+                            <li>
+                                <span class="fa fa-cutlery fa-fw" ></span>
+                                <?php
+                                    $all_tids = array();
+                                    foreach($node->field_sellercategories[LANGUAGE_NONE] as $index => $tid) {
+                                        $all_tids[] = (int)$tid['tid'];
+                                    }
+                        
+                                    $allterms = taxonomy_term_load_multiple($all_tids);
+                                    foreach($allterms as $term) {
+                                        print $term->name . ' ';
+                                    }
+                                ?>
+                            </li>
+                            <li>
+                                <span class="fa fa-map-marker fa-fw"></span>
+                                <?php print $node->field_company_name[LANGUAGE_NONE][0]['value']; ?>, <?php print $node->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?>, <?php print $node->field_address[LANGUAGE_NONE][0]['postal_code'] ?> <?php print $node->field_address[LANGUAGE_NONE][0]['locality']; ?>, </li>
+                            </li>
+                            <li> 
+                            <span class="fa fa-phone fa-fw"></span>
+                             <?php print rm_api_format_phone($node->field_publicphone[LANGUAGE_NONE][0]['number']); ?>
+                            </li>
+                        </ul>
+                        <button class="btn btn-sm btn-default"> Mehr Informationen</button>
+                  </div>
+                </div>
+
+
                         <div class="seller-infos">
                             
                             
