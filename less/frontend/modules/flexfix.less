@@ -37,8 +37,33 @@
     @media screen and (max-width:@screen-sm-max) {
         .flexfix-sidebar {
             width: 100%;
-            position: absolute;
-            right:  100%;
+            bottom: 0px;
+            z-index: 2;
+            position: fixed;
+            top: 100%;
+            left: 0px;
+            float: none;
+            overflow-y: scroll;
+            -moz-transition: all .3s linear;
+            -webkit-transition: all .3s linear;
+            -o-transition: all .3s linear;
+            transition: all .3s linear;
+            padding: 0px 0px 20px 0px;
+            
+            &.active {
+                top: 66px;
+                background: #fff;
+                -moz-transition: all .7s cubic-bezier(0,1,.22,1);
+                -webkit-transition: all .7s cubic-bezier(0,1,.22,1);
+                -o-transition: all .7s cubic-bezier(0,1,.22,1);
+                transition: all .7s cubic-bezier(0,1,.22,1);
+            }
+
+            .cart-wrapper {
+                width: 600px;
+                margin: 0 auto;
+                padding: 0 15px;
+            }  
         }
 
         .flexfix-content {
@@ -50,4 +75,14 @@
             margin-right: 0px;
         }
     }
+
+     @media screen and (max-width:@screen-xs-max) {
+        .flexfix-sidebar {
+                .cart-wrapper {
+                    width: 100%;
+                    margin: 0;
+                } 
+        }
+
+     }
 }

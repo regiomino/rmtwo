@@ -10,9 +10,9 @@
                 <span class="menudesc text-uppercase">Menü</span>
             </button>
 
-            <div class="cart-toggle"> 
+            <div class="cart-toggle" id="cart-toggle"> 
                 <span class="fa fa fa-shopping-cart"></span>
-                <span id="item-amount"> </span>
+                <span id="item-amount" class="item-amount">24 </span>
             </div>
             
             <div class="navbar-brand"> 
@@ -44,13 +44,13 @@
 <div class="breadcrumbs-container large"></div>
 <div class="container">
    
-    <?php if(user_is_logged_in() && ($tabs['#primary'] || $tabs['#secondary'])): ?>
+    <!--<?php if(user_is_logged_in() && ($tabs['#primary'] || $tabs['#secondary'])): ?>
      <div class="row">
         <div class="col-md-12 main">
             <?php print render($tabs); ?>
         </div>
      </div>
-    <?php endif; ?>
+    <?php endif; ?>-->
    
     <div class="row"> 
         <?php print render($page['content']); ?>

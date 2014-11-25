@@ -16,11 +16,12 @@
 ?>
 
 <div id="cart" class="cart-wrapper">
+
    <!-- <div class="cart-header" id="cart-header">
         <h3><span class="fa fa-shopping-cart"> </span> Warenkorb</h3>
    </div> -->
     <div class="cart-content" id="cart-content">
-
+ <h3 class="hidden-md hidden-lg"> Ihr Warenkorb </h3>
         <?php if(!empty($vars['cart'])): foreach($vars['cart'] as $cart_item): ?>
         <?php
             $offer = node_load($cart_item->field_offer_desc_reference[LANGUAGE_NONE][0]['target_id']);
@@ -40,8 +41,8 @@
         ?>
         <div class="cart-item" data-offerid="<?php print $offer->nid; ?>" data-variation="<?php print $variation->vid; ?>" data-tradingunit="<?php print $cart_item->field_trading_unit_reference[LANGUAGE_NONE][0]['target_id'];   ?>" >
             <div class="row">
-                <div class="col-xs-5">
-                    <div class="input-group stepper ">
+                <div class="col-md-5 col-sm-3 col-xs-5">
+                    <div class="input-group stepper">
                         <span class="input-group-btn">
                             <button class="btn btn-default stepper-control stepper-minus" data-operation = "-1" ><span class="fa fa-minus"></span></button>
                         </span>
@@ -56,7 +57,7 @@
                     </div>
                     <a href="<?php print $cart_item->nid ?>" class="delete-item text-muted"><small> <span class="fa fa-trash"></span> Löschen</small> </a>
                 </div>
-                <div class="col-xs-7">
+                <div class="col-md-7 col-sm-9 col-xs-7">
                     <p class="product-title">  <?php print $variation->title; ?><br><span class="tradingunit text-muted"><small><?php print $packaging; ?> (<?php print $unit_description; ?>)</small></span>
                     
                     </p>

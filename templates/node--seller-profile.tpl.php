@@ -30,18 +30,17 @@ $shop = $shops[$shopkeys[0]];
         <?php if(!empty($_SESSION['regionselect']['zip'])): ?>
             <?php print l($_SESSION['regionselect']['zip'], 'lieferanten/' . $_SESSION['regionselect']['zip']); ?>
         <?php else: ?>
-            <?php print render(drupal_get_form('rm_shop_smartregionselect')); ?> 
-            <?php print $node->title; ?> 
+           <!--  <?php print render(drupal_get_form('rm_shop_smartregionselect')); ?> --> 
+            <a href="#"> <?php print $node->title; ?> </a>
         <?php endif; ?>
     </li>
-    <li>
+    <!-- <li>
         <a href="#"> <?php print $node->title; ?></a>
-    </li>
+    </li> -->
 </ul>
 
 <div class="tabarea hidden-sm hidden-xs">
         <a href="#" class="tab-item"><span class="fa fa-shopping-cart"> </span> Warenkorb </a>
-
 </div>  
 
 </div>     
@@ -55,10 +54,10 @@ $shop = $shops[$shopkeys[0]];
                 </div>
             </div>
             <div class="row seller-info">
-                <div class="col-xs-8  lpr"> 
+                <div class="col-sm-7 hidden-xs lpr"> 
                     <img class="img-responsive img-rounded seller-image" src="<?php print image_style_url('seller_large', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>">
                 </div> 
-                <div class="col-xs-4 lpl">       
+                <div class="col-sm-5  lpl">       
                     <ul class="list-unstyled seller-meta">
                         <li>
                             <span class="fa fa-cutlery fa-fw" ></span>
@@ -82,26 +81,72 @@ $shop = $shops[$shopkeys[0]];
                             <span class="fa fa-phone fa-fw"></span>
                             <?php print rm_api_format_phone($node->field_publicphone[LANGUAGE_NONE][0]['number']); ?>
                         </li>
+                        <li>
+                            <?php if(!empty($shop->agreements)) : ?>
+                            <span class="fa fa-money fa-fw"></span>
+                            <?php
+                                foreach($shop->agreements as $type => $user_reference) {
+                                    foreach($user_reference as $target_id => $index) {
+                                        foreach($index as $indexid => $agreement) {
+                                            switch($type) {
+                                                case 'payment_agreement':
+                                                    foreach($agreement->field_payment_types[LANGUAGE_NONE] as $payment_type) {
+                                                        switch($payment_type['value']) {
+                                                            case 'prepaid':
+                                                                print '<span data-toggle="popover" data-content="' . t('Pay online during checkout via one of our payment providers') . '">Sofortüberweisung, PayPal, </span>';
+                                                                break;
+                                                            case 'cash':
+                                                                print '<span  data-toggle="popover" data-content="' . t('Pay cash when your order is delivered') . '">Barzahlung, </span> ';
+                                                                break;
+                                                            case 'invoice':
+                                                                print '<span  data-toggle="popover" data-content="' . t('The vendor will send you an invoice after your order is complete') . '">Rechnung,</span> ';
+                                                                break;
+                                                        }
+                                                    }
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                        ?>
+                        <?php endif; ?>
+                        </li>
                     </ul>
-                    <button class="btn btn-sm btn-default"> Mehr Informationen</button>
-                   
+                    <button class="btn hidden-md btn-default" data-toggle='modal' data-target='#detailModal'> Details zum Betrieb <span class="fa fa-chevron-right"></span></button>
+                   <div class="modal fade" id="detailModal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                  <img class="img-responsive img-rounded seller-image" src="<?php print image_style_url('seller_large', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>">
+
+                                    <h3 class="modal-title" id="variationModalLabel">Lieferung von <strong>' . $node->title . '</strong></h3>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-md-12"> 
+                                        <p>Lieferung möglich in die folgenden deutschen PLZ-Gebiete an den bezeichneten Wochentagen und Uhrzeiten unter Berücksichtigung der produktspezifischen Bestellfristen. Die Fristen entnehmen Sie bitte den jeweiligen Produktbeschreibungen durch Klick auf Produktbild oder -namen.</p><br>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6"> 
+                                        ' . render(field_view_field('node', $agreement, 'field_regular_times')) . '
+                                    </div>
+                                    <div class="col-md-6"> 
+                                        <p><strong>PLZ-Gebiete:</strong><br>' . $zipcodes . '</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal-dialog -->
+                   </div><!-- /.modal -->
                    
                 </div>
             </div>
-            <div class="row delivery-payment">
-                    <div class="delivery-payment-container clearfix">
-                <div class="col-lg-8 col-md-9 lpr"> 
+            <div class="row delivery-options">
+                <div class="col-sm-12"> 
                     <div class="delivery-options-container">
 
-                   <!--  <div class="delivery-option">
-                      <a href="#" id="pickupModalToggle">
-                   <span class="sprite sprite-delivery-pickup"></span>
-                   <small class="text-muted"> Selbstabholung <br> 
-                    <strong> ab  30€ | <span class="indicator"> Orte anzeigen </span> </strong>
-                   </small> 
-                   </a>
-                    </div> -->
-                                    
                     <?php if(!empty($shop->agreements['pickup_agreement'])) : ?>
                         <?php
                         $lowestmov = 9999999;
@@ -180,7 +225,14 @@ $shop = $shops[$shopkeys[0]];
                         }
                         ?>
                     <?php else: ?>
-                        <?php print "ausgegraut"; ?>
+                        <?php  
+                            print '<div class="delivery-option inactive">';
+                            print '<span class="sprite sprite-delivery-truck"></span>';
+                            print '<small class="text-muted"> Lieferung <br>';
+                            print '<strong> derzeit nicht möglich </strong>';
+                            print '</small> ';
+                            print "</div>";
+                         ?>
                     <?php endif; ?>
                     
                     
@@ -203,50 +255,21 @@ $shop = $shops[$shopkeys[0]];
                         }
                         ?>
                     <?php else: ?>
-                        <?php print "ausgegraut"; ?>
+                        <?php  
+                            print '<div class="delivery-option inactive">';
+                            print '<span class="sprite sprite-delivery-mail"></span>';
+                            print '<small class="text-muted"> Postversand <br>';
+                            print '<strong> derzeit nicht möglich</strong>';
+                            print '</small> ';
+                            print "</div>";
+                         ?>
                     <?php endif; ?>
 
                         
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-3 lpl">
-               <!--  <h5> <strong>Zahlungsarten: </strong> </h5> -->
-               <div class="payment-options-container"> 
-                    <p>
-                    <small> 
-                    <?php if(!empty($shop->agreements)) : ?>
                 
-                    <?php
-                        foreach($shop->agreements as $type => $user_reference) {
-                            foreach($user_reference as $target_id => $index) {
-                                foreach($index as $indexid => $agreement) {
-                                    switch($type) {
-                                        case 'payment_agreement':
-                                            foreach($agreement->field_payment_types[LANGUAGE_NONE] as $payment_type) {
-                                                switch($payment_type['value']) {
-                                                    case 'prepaid':
-                                                        print '<span data-toggle="popover" data-content="' . t('Pay online during checkout via one of our payment providers') . '">Sofortüberweisung, PayPal, </span>';
-                                                        break;
-                                                    case 'cash':
-                                                        print '<span  data-toggle="popover" data-content="' . t('Pay cash when your order is delivered') . '">Barzahlung, </span> ';
-                                                        break;
-                                                    case 'invoice':
-                                                        print '<span  data-toggle="popover" data-content="' . t('The vendor will send you an invoice after your order is complete') . '">Rechnung,</span> ';
-                                                        break;
-                                                }
-                                            }
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                ?>
-                <?php endif; ?>
-                    </small>
-                </p>
-                </div>
-                </div>
-                </div>
+                
 
 
             </div>
@@ -391,8 +414,9 @@ $shop = $shops[$shopkeys[0]];
         </div>
     </div>  
 
-    <div class="flexfix-sidebar">
+    <div id="flexfix-sidebar" class="flexfix-sidebar">
         <div class="cart-container"> 
+       
             <?php
             $block = module_invoke('rm_cart', 'block_view', 'rm_cart_block');
                 print render($block['content']);
