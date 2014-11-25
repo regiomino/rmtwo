@@ -55,7 +55,18 @@ $shop = $shops[$shopkeys[0]];
             </div>
             <div class="row seller-info">
                 <div class="col-sm-7 hidden-xs lpr"> 
-                    <img class="img-responsive img-rounded seller-image" src="<?php print image_style_url('seller_large', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>">
+                    <a href="#" data-toggle='modal' data-target='#detailModal'>
+                    <?php $hasImage = (empty($node->field_image[LANGUAGE_NONE][0]['uri'])) ? false : true; ?>
+
+                    <?php if($hasImage): ?>
+                      <img class="img-responsive img-rounded seller-image" src="<?php print image_style_url('seller_large', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>">
+                     
+                     <?php else: ?>
+                        <img src="<?php echo base_path() . path_to_theme();?>/images/no-image.png">
+                    
+                    <?php  endif; ?>
+
+                    </a>
                 </div> 
                 <div class="col-sm-5  lpl">       
                     <ul class="list-unstyled seller-meta">
@@ -117,24 +128,17 @@ $shop = $shops[$shopkeys[0]];
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                  <img class="img-responsive img-rounded seller-image" src="<?php print image_style_url('seller_large', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>">
+                                <button type="button" class="close" data-dismiss="modal" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span> </button>
+                                 <!--  <img class="img-responsive" src="<?php print image_style_url('seller_large', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>"> -->
 
-                                    <h3 class="modal-title" id="variationModalLabel">Lieferung von <strong>' . $node->title . '</strong></h3>
+                                    <h3 class="modal-title" id="variationModalLabel"><?php print $node->title; ?></strong></h3>
                             </div>
                             <div class="modal-body">
                                 <div class="row">
                                     <div class="col-md-12"> 
-                                        <p>Lieferung möglich in die folgenden deutschen PLZ-Gebiete an den bezeichneten Wochentagen und Uhrzeiten unter Berücksichtigung der produktspezifischen Bestellfristen. Die Fristen entnehmen Sie bitte den jeweiligen Produktbeschreibungen durch Klick auf Produktbild oder -namen.</p><br>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6"> 
-                                        ' . render(field_view_field('node', $agreement, 'field_regular_times')) . '
-                                    </div>
-                                    <div class="col-md-6"> 
-                                        <p><strong>PLZ-Gebiete:</strong><br>' . $zipcodes . '</p>
-                                    </div>
+                                        <?php $body = strip_tags($node->body[LANGUAGE_NONE][0]['value']); ?>
+                                        <p><em><?php print $body;  ?> </em></p>
+                                     </div>
                                 </div>
                             </div>
                         </div><!-- /.modal-content -->
@@ -168,8 +172,115 @@ $shop = $shops[$shopkeys[0]];
                         print "</div>";
                         ?>
                     <?php else: ?>
-                        <?php print "ausgegraut"; ?>
+                        <?php  
+                            print '<div class="delivery-option inactive">';
+                            print '<span class="sprite sprite-delivery-pickup"></span>';
+                            print '<small class="text-muted"> Lieferung <br>';
+                            print '<strong> derzeit nicht möglich </strong>';
+                            print '</small> ';
+                            print "</div>";
+                         ?>
                     <?php endif; ?>
+
+                    <div class="modal fade" tabindex="-1" id="pickupModal" role="dialog" aria-labelledby="Selbstabholung" aria-hidden="true">
+                      <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">&times;</span>
+                                <span class="sr-only">Close</span></button>
+                                <h3 class="modal-title" id="variationModalLabel">Selbstabholung bei <strong><?php print $node->title; ?></strong></h3>
+                            </div>
+                            <div class="modal-body clearfix">
+                                <div id="pickupMap" class="pickupMap">
+                                    
+                                </div>
+                                
+                                <div class="pickupInfo">
+                                     <?php
+                                        if(!empty($shop->agreements)) {
+                                            foreach($shop->agreements as $type => $user_reference) {
+                                                if($type == 'pickup_agreement') {
+                                                    $count = 1;
+                                                    foreach($user_reference as $target_id => $agreements) {
+                                                       
+                                                        foreach($agreements as $agreement) {
+                                                            //funky shit mit pickup_agreements machen
+                                                            //$agreement->nid
+                                                            //$agreement->type
+                                                            //$agreement->field_address[LANGUAGE_NONE][0]['postal_code']
+                                                            //usw.
+                                                             if($count % 2 == 0) {
+                                                                $striped = true;
+                                                            } else {
+                                                                $striped = false;
+                                                            }
+                                                        ?>
+                                                        
+                                                        <div class="pickup-spot <?php if($striped){print 'striped';};?>"> 
+                                                            <div class="pickup-description"> 
+                                                                <h4 class="spot-title"><span class="fa fa-map-marker fa-fw"></span> <?php print $agreement->field_address[LANGUAGE_NONE][0]['thoroughfare'];?>, <?php print $agreement->field_address[LANGUAGE_NONE][0]['postal_code']?> <?php print $agreement->field_address[LANGUAGE_NONE][0]['locality']?> </h4>
+                                                            </div>
+                                                           
+                                                           <?php
+                                                            $weekdays = array(
+                                                                1 => t('Monday'),
+                                                                2 => t('Tuesday'),
+                                                                3 => t('Wednesday'),
+                                                                4 => t('Thursday'),
+                                                                5 => t('Friday'),
+                                                                6 => t('Saturday'),
+                                                                7 => t('Sunday'),
+                                                            );
+                                                            $agreementtimes = array();
+                                                            if(!empty($agreement->field_regular_times[LANGUAGE_NONE])) {
+                                                                foreach($agreement->field_regular_times[LANGUAGE_NONE] as $key => $values) {
+                                                                    $agreementtimes[$values['day']][] = array(
+                                                                        'starthours' => substr($values['starthours'], 0, -2) . ':' . substr($values['starthours'], -2),
+                                                                        'endhours' => substr($values['endhours'], 0, -2) . ':' . substr($values['endhours'], -2),
+                                                                    );
+                                                                }
+                                                            }
+                                                            ?>
+                                                            <table class="table pickup-times  table-condensed">
+                                                            <thead>
+                                                            <?php foreach($weekdays as $weekday): ?>
+                                                                <th><?php echo $weekday; ?></th>
+                                                            <?php endforeach; ?>
+                                                            </thead>
+                                                            <tbody>
+                                                            <?php foreach($weekdays as $weekiso => $weekday): ?>
+                                                                <td>
+                                                                    <?php if(isset($agreementtimes[$weekiso])): ?>
+                                                                        <?php foreach($agreementtimes[$weekiso] as $agreementtime): ?>
+                                                                            <?php echo $agreementtime['starthours']; ?>
+                                                                            -
+                                                                            <?php echo $agreementtime['endhours']; ?>
+                                                                            <br>
+                                                                        <?php endforeach; ?>
+                                                                    <?php else: ?>
+                                                                        geschlossen
+                                                                    <?php endif; ?>
+                                                                </td>
+                                                            <?php endforeach; ?>
+                                                            </tbody>
+                                                            </table>
+                                                           
+                                                        </div> <!-- end spickup-spot-->
+                                          
+                                                       <?php  $count++;}
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    ?>
+                                       
+                                    
+                                </div><!-- end pickup-info-->
+                            </div><!-- end modal-body-->
+                        </div>
+                      </div>
+                    </div>
                     
                     <?php if(!empty($shop->agreements['shipping_agreement'])) : ?>
                         <?php
@@ -407,6 +518,8 @@ $shop = $shops[$shopkeys[0]];
                                 </div>
                             </li>
                         <?php endforeach; ?>
+
+
                     <?php endforeach; ?>
                 </ul><!-- end product-grid -->
                     </div> 
@@ -426,7 +539,80 @@ $shop = $shops[$shopkeys[0]];
     </div>
 </div>
 
-
+<?php foreach($node->offers as $offer): ?>
+    <?php foreach($offer->offer_variations as $variation): ?>
+        <div class="modal fade" id="variationModal<?php print $variation->nid;?>">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                            <h4 class="modal-title" id="variationModalLabel"><?php print $variation->title; ?></h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12"> 
+                            <?php if(!empty($variation->field_image[LANGUAGE_NONE][0]['uri'])): ?>
+                                <img class="media-object pull-left" src="<?php print image_style_url('product_grid', $variation->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $variation->title; ?>" class="img-thumbnail pull-left">
+                            <?php endif; ?>
+                                <div class="media-body">
+                                <?php print $variation->body[LANGUAGE_NONE][0]['value']; ?>
+                                <br>
+                                <br>
+                                <small>
+                                <strong>Bestellfrist:</strong> Bitte bestellen Sie bis
+                                <?php
+                                    $next_possible_delivery_dates = rm_shop_get_next_possible_deliverydate($variation->nid, $zipcode, $node->uid, $user->uid);
+                                    $npddkeys = array_keys($next_possible_delivery_dates);
+                                    $deliverytomorrow = FALSE;
+                                ?>
+                                <?php if(date('Ymd') == date('Ymd', $next_possible_delivery_dates[$npddkeys[0]]['deadline'])): ?>
+                                    <strong>heute
+                                <?php elseif(date('Ymd', $next_possible_delivery_dates[$npddkeys[0]]['deadline']) - date('Ymd') == 1): ?>
+                                    </strong>morgen
+                                <?php else: ?>
+                                    <strong>zum <?php print t(date('l', $next_possible_delivery_dates[$npddkeys[0]]['deadline'])); ?>, <?php print date('d.m.Y', $next_possible_delivery_dates[$npddkeys[0]]['deadline']); ?>
+                                <?php endif; ?>
+                                <?php print date('H:i', $next_possible_delivery_dates[$npddkeys[0]]['deadline']); ?></strong>
+                                <?php $npddcount = count($next_possible_delivery_dates); ?>
+                                <?php $counter = 1; ?>
+                                <?php if($npddcount > 1): ?>
+                                    <?php foreach($next_possible_delivery_dates as $npddtype => $next_possible_delivery_date): ?>
+                                        für eine <?php print node_type_get_name($npddtype); ?> am
+                                        
+                                        <?php print t(date('l', $next_possible_delivery_date['begin_time'])); ?> den <?php print date('d.m.Y', $next_possible_delivery_date['begin_time']); ?> zwischen <?php print date('H:i', $next_possible_delivery_date['begin_time']); ?> und <?php print date('H:i', $next_possible_delivery_date['end_time']); ?> Uhr
+                                        
+                                        <?php if($counter < $npddcount): ?> oder <?php endif; ?>
+                                        <?php $counter++; ?>
+                                    <?php endforeach; ?>.
+                                    
+                                <?php else: ?>
+                                    <?php $next_possible_delivery_date = $next_possible_delivery_dates[$npddkeys[0]]; ?>
+                                    für eine <?php print node_type_get_name($npddkeys[0]); ?> am
+                                    
+                                    <?php print t(date('l', $next_possible_delivery_date['begin_time'])); ?> den <?php print date('d.m.Y', $next_possible_delivery_date['begin_time']); ?> zwischen <?php print date('H:i', $next_possible_delivery_date['begin_time']); ?> und <?php print date('H:i', $next_possible_delivery_date['end_time']); ?> Uhr.
+                                    
+                                <?php endif; ?>
+                                <br>                                
+                                <br>
+                                Bitte entnehmen Sie weitere Informationen zu den genauen Zeiten und Gebieten der Informationsleiste direkt unterhalb der Anbieterbeschreibung.
+                                </small>                     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
+                       <!-- <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> in den Warenkorb</button>-->
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    <?php endforeach; ?>
+    
+ 
+    
+    
+<?php endforeach; ?>
                       
     
     

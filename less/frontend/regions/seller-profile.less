@@ -4,7 +4,11 @@
     }  
 
     .breadcrumbs {
-        padding-left:   15px;
+        padding-left:   30px;
+
+        li a {
+           padding: 15px 0 12px 49px;
+        }
     }
 
     .lpr {
@@ -70,7 +74,6 @@
     padding:    0 15px;
     width:  @flexfix-sidebar-width;
     height:     47px;
-    border-bottom: 1px solid #ddd;
     box-shadow: -6px 0 8px -6px rgba(0,0,0,.25);
 
    &:before {
@@ -144,6 +147,10 @@
 
         .btn-default {
             width: 100%;
+
+            @media screen and (min-width: @screen-lg-min){
+                width: 70%;
+            }
         }
     }   
 
@@ -166,6 +173,7 @@
 
             .delivery-option {
                 width: 200px;
+                text-align:     left;   
                 display: inline-block;
                 position:   relative;
                 padding:    5px 10px 5px 38px;
@@ -182,7 +190,7 @@
                 
                 a {
                     color: inherit;
-                    display: inline-block;
+                    display: block;
 
                     &:hover,
                     &:active,
@@ -491,6 +499,15 @@
         }
     }
 
+    #detailModal {
+        .modal-header {
+            
+        }
+
+        h3 {
+            
+        }
+    }
 
     #pickupModal {
         
