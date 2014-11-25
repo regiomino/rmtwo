@@ -1,14 +1,20 @@
 <div class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
+           
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Menü ein-/ausblenden</span>
-                
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="menudesc text-uppercase">Menü</span>
             </button>
+
+            <div class="cart-toggle"> 
+                <span class="fa fa fa-shopping-cart"></span>
+                <span id="item-amount"> </span>
+            </div>
+            
             <div class="navbar-brand"> 
             <?php if ($logo): ?>
                 <?php echo l('', '', array('attributes' => array('title' => t('Home'), 'id' => 'logo'))); ?>

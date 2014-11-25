@@ -7252,6 +7252,9 @@ h1.page-title {
 form .form-item {
   margin-top: 0px;
 }
+.cart-toggle {
+  display: none;
+}
 #rm-shop-regionselect {
   text-align: left;
 }
@@ -10380,6 +10383,15 @@ addcartCart-Icon
 }
 .node-type-seller-profile .breadcrumbs {
   padding-left: 15px;
+}
+.node-type-seller-profile .cart-toggle {
+  font-size: 30px;
+  float: right;
+}
+@media screen and (max-width: 991px) {
+  .node-type-seller-profile .cart-toggle {
+    display: inline-block;
+  }
 }
 .node-type-seller-profile .tabarea {
   position: absolute;
