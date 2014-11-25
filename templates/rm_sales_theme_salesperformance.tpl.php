@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-2">
         <div class="panel panel-default">
             <div class="panel-heading">
                   <?php print t('Registrations'); ?>          
@@ -49,13 +49,24 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-2">
         <div class="panel panel-default">
             <div class="panel-heading">
                   <?php print t('Invites'); ?>          
             </div>
             <div class="panel-body">
-                   <h3 class="text-center"> <?php   print $vars['invites'];; ?></h3>
+                   <h3 class="text-center"> <?php   print $vars['invites']; ?></h3>
+                 
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                  <?php print t('Offers'); ?>          
+            </div>
+            <div class="panel-body">
+                   <h3 class="text-center"> <?php   print $vars['offers']; ?></h3>
                  
             </div>
         </div>
