@@ -1,6 +1,7 @@
 // flexibler Inhaltsbereich mit fixer Sidebar
 //used: Veräuferansicht; Checkoutpage
 
+
 .flexfix-wrapper {
     position: relative;
     display: -webkit-box;
@@ -14,8 +15,9 @@
         width: @flexfix-sidebar-width;
         min-height: 1px;
         position: relative;
-        padding: 0 15px;
+        padding: 12px 15px;
         box-shadow: -6px 0 8px -6px rgba(0,0,0,.25);
+
     }
     
     .flexfix-content {
@@ -29,5 +31,23 @@
     .flexfix-content-inner {
         margin-right: @flexfix-sidebar-width;
         padding: 0 15px;
+    }
+
+
+    @media screen and (max-width:@screen-sm-max) {
+        .flexfix-sidebar {
+            width: 100%;
+            position: absolute;
+            right:  100%;
+        }
+
+        .flexfix-content {
+            float: none;
+            margin-right: 0px;
+        }
+
+        .flexfix-content-inner {
+            margin-right: 0px;
+        }
     }
 }

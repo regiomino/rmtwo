@@ -16,9 +16,9 @@
 ?>
 
 <div id="cart" class="cart-wrapper">
-   <div class="cart-header" id="cart-header">
+   <!-- <div class="cart-header" id="cart-header">
         <h3><span class="fa fa-shopping-cart"> </span> Warenkorb</h3>
-   </div>
+   </div> -->
     <div class="cart-content" id="cart-content">
 
         <?php if(!empty($vars['cart'])): foreach($vars['cart'] as $cart_item): ?>

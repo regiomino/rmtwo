@@ -1,22 +1,216 @@
 .node-type-seller-profile {
-    
+  .toparea {
+    position:   relative;
+  }  
+
+  .breadcrumbs {
+    padding-left:   15px;
+  }
+
+.tabarea {
+    position:   absolute;
+    top:    0px;
+    right:  16px;
+    padding:    0 15px;
+    width:  @flexfix-sidebar-width;
+    height:     46px;
+    border-bottom: 1px solid #ddd;
+    box-shadow: -6px 0 8px -6px rgba(0,0,0,.25);
+
+   &:before {
+       content: "";
+       display: block;
+       width: 20px;
+       height: 20px;
+       position: absolute;
+       top: -8px;
+       left: 0;
+       box-shadow: -6px 0 8px -6px rgba(0,0,0,.25);
+       }
+        
+        &:after {
+            content: "";
+            display: block;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            top: 36px;
+            left: 0;
+            box-shadow: -6px 0 8px -6px rgba(0,0,0,.25);
+            
+        }
+
+
+    .tab-item {
+        display: inline-block;
+        /* line-height: 46px; */
+        position: absolute;
+        bottom: -1px;
+        border-left: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        border-right: 1px solid #ddd;
+        text-decoration: none;
+        color: #555;
+        left: 6px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        padding: 10px 13px;
+        background: #f8f8f8;
+    }
+}
+
     .nav-tabs {
         display: none;
     }
     
-    .content-wrapper {
-          display: -webkit-box;      
-          display: -moz-box;         
-          display: -ms-flexbox;     
-          display: -webkit-flex;     
-          display: flex; 
+    .lpr {
+        padding-right:  5px;
     }
 
-    .content {
-        float: left;
+    .lpl {
+        padding-left:   5px;
     }
+    
+
+    .seller-info {
+
+        margin-bottom:  10px;
+
+        .seller-image {
+            background:     #fff;
+            padding:    5px;
+            border:     1px solid #ddd;
+        }
+
+        ul.seller-meta {
+            li {
+                position: relative;
+                padding-left:   22px;
+                margin-bottom:  5px;
+            }
+
+            .fa {
+                position:   absolute;
+                left:   0px;
+                top:    3px;
+            }
+        }
+
+        .sep {
+            width: 41px;
+            height: 4px;
+            background: #ddd;
+            margin: 20px 0px;
+        }
+    }   
+
    
     
+
+    .row.delivery-payment {
+        position: relative; 
+        padding:  10px 0px;
+        &:before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            display:    block;
+            height: 1px;
+            left: 15px;
+            right: 15px;
+            border-top: 1px solid #ddd;
+            border-color: #ddd;
+       }
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            display:    block;
+            height: 1px;
+            left: 15px;
+            right: 15px;
+            border-top: 1px solid #ddd;
+            border-color: #ddd;
+       }
+
+       .payment-options-container {
+        position:   relative;
+
+            &:before {
+                position: absolute;
+                top: 0px;
+                left: -1px;
+                height: 44px;
+                content: '';
+                border-left: 1px solid #ddd;
+                bottom: 0px;
+            }
+                padding-left:   10px;
+        padding-top:    5px;
+            p {
+                line-height:    17px;
+                margin:     0px;
+                font-weight:    bold;
+            }
+       }
+
+        .delivery-options-container { 
+
+            .delivery-option {
+                width: 233px;
+                display: inline-block;
+                position:   relative;
+
+                .indicator {
+                    color: @brand-primary;
+                }
+                
+                a {
+                    position: relative;
+                    padding:    5px 10px 5px 38px;
+                    color: inherit;
+                    display: inline-block;
+                    line-height: 16px;
+                    border-radius: 4px;
+
+                    &:focus {
+                        text-decoration: none;
+
+                    }
+                    &:hover,
+                    &:active {
+                        text-decoration: none;
+                        background:     #e8e8e8;
+                    }
+                }
+               
+                .sprite {
+                    position:  absolute;
+                    
+                }
+                .sprite-delivery-pickup {
+                    left: 10px;
+                    top: 10px;
+                }
+                
+                 .sprite-delivery-truck {
+                    top: 10px;
+                    left: 6px;
+                }
+            }
+        }
+
+    }
+
+
+
+
+
+
+
+
+
     .modal-body {
         .media-object {
             margin-right: 15px;
@@ -54,89 +248,12 @@
         }
     }
     
-    .seller-meta {
-         padding-top: 10px;
-         padding-bottom: 10px;
-        
-        h5 {
-            color: @brand-primary;
-            margin-top: 0px;
-            font-weight: bold;
-        }
-        
-        .delivery-meta {
-            
-            ul {
-                margin-bottom: 0px;
-            }
-                       
-            li {
-                padding-left: 10px;
-                padding-right: 10px;
-                line-height: 14px;
-                margin-right: 10px;
-                 
-                
-                &:last-child {
-                    margin-bottom: 0px;
-                    margin-right: 0px;
-                }
-            }
-            
-            .indicator {
-                color: @brand-primary;
-            }
-            
-            a {
-                position: relative;
-                padding-left: 36px;
-                color: inherit;
-                display: block;
-
-                &:hover,
-                &:focus,
-                &:active {
-                    text-decoration: none;
-                }
-            }
-            
-            a#pickupModalToggle {
-                padding-left: 30px;
-            }
-        }
-        
-        .payment-meta {
-            min-height: 32px;
-            line-height: 15px;
-            font-weight: 700;
-            border-left: 1px solid #ddd;
-            h5 {
-                margin-bottom: 6px;
-            }
-        }
-        .sprite {
-            position:  absolute;
-            left: 0;
-        }
-        .sprite-delivery-pickup {
-            top: 5px;
-        }
-        
-         .sprite-delivery-truck {
-            top: 4px;
-            left: 2px;
-        }
-        
-        .sprite-delivery-mail {
-            top: 3px;
-            left: 2px;
-        }
-    }
-
-
+.product-grid-container {
+    padding: 0px 15px 0px 15px;
+}
     .product-grid {
         margin: 0;
-        margin-left: -10px;
+        margin-left: -5px;
         margin-right: -5px;
         padding: 0;
         list-style: none;
@@ -165,15 +282,14 @@
             .product-item {
                 border: 1px solid #ddd;
                 border-radius: 4px;
+                background-color: #fff;
                 position: relative;
                 transition: all .12s ease-out;
                 
                 &:hover,
                 &:focus {
                      box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
-                        background-color: #fff;
                         text-decoration: none;
-                        transform: translateY(-2px);
                 }
                 
                 .product-image {
@@ -194,7 +310,7 @@
                 }
                 
                 .product-infos {
-                    height: 129px;
+                    height: 145px;
                     
                     .product-title {
                         border-bottom: 1px solid #DDD;
@@ -224,23 +340,26 @@
                         
                         .btn-input {
                             display: block;
+
                             
                         }
                         .btn {
                             width: 100%;
                             position: relative;
                             padding: 7px 5px 6px;
+
                         }
                         
                         .btn-default {
                             background-color: transparent;
+                             
                         }
                             
                         .tradingunit-single {
                             width: 100%;
                             position: relative;
-                            padding: 7px 4px;
-                            border: 1px solid #ccc;
+                            padding: 7px 0px;
+                             
                             border-radius: 4px;
                         }
                         
@@ -254,7 +373,7 @@
                         }
                         
                         .price-unit {
-                            font-size: 18px;
+                            font-size: 16px;
                             float: left;
                             padding-right: 4px;
                             line-height: 17px;
@@ -297,7 +416,7 @@
                             padding: 0px;
                             
                            li a {
-                                padding: 8px 9px;
+                                padding: 8px 5px;
                                 border-bottom: 1px solid #DDD;
                            }
                            
@@ -326,6 +445,11 @@
                     
                     .fa-check-circle {
                         color: @brand-primary;
+                    }
+
+                    &:hover,
+                    &:active {
+                        background: #f5f5f5;
                     }
                 }
             }
