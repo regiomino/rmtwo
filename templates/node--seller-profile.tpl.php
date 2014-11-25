@@ -102,101 +102,111 @@ $shop = $shops[$shopkeys[0]];
                    </a>
                     </div> -->
                                     
-                    <?php if(!empty($shop->agreements)) : ?>
-
-                        <?php if(!empty($shop->agreements['pickup_agreement'])) {
-                          
-                            $lowestmov = 9999999;
-                            foreach($shop->agreements['pickup_agreement'] as $target_id => $agreements) {
-                                foreach($agreements as $agreement) {
-                                    if($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'] < $lowestmov) {
-                                        $lowestmov = $agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'];
-                                    }
+                    <?php if(!empty($shop->agreements['pickup_agreement'])) : ?>
+                        <?php
+                        $lowestmov = 9999999;
+                        foreach($shop->agreements['pickup_agreement'] as $target_id => $agreements) {
+                            foreach($agreements as $agreement) {
+                                if($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'] < $lowestmov) {
+                                    $lowestmov = $agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'];
                                 }
                             }
+                        }
+                        print '<div class="delivery-option">';
+                        print  '<a href="#" id="pickupModalToggle">';
+                        print '<span class="sprite sprite-delivery-pickup"></span>';
+                        print '<small class="text-muted"> Selbstabholung ';
+                        print '<strong> ab ' . number_format($lowestmov, 2, ",", ".") . '€ <br>  </strong>';
+                        print '<span class="indicator"> <strong>  Orte anzeigen <span class="fa fa-chevron-right"></span> </strong></span>';
+                        print '</small> ';
+                        print '</a>';
+                        print "</div>";
+                        ?>
+                    <?php else: ?>
+                        <?php print "ausgegraut"; ?>
+                    <?php endif; ?>
+                    
+                    <?php if(!empty($shop->agreements['shipping_agreement'])) : ?>
+                        <?php
+                        $zipcodes = '';
+                        foreach($shop->agreements['shipping_agreement'] as $target_id => $agreements) {
+                            if(count($agreements) > 1) {
+                                usort($agreements, "rm_shop_sort_agreements_by_mov");
+                            }   
+                            foreach($agreements as $agreement) {
+                                foreach($agreement->field_shipping_zipcodes[LANGUAGE_NONE] as $zipcode) {
+                                    $zipcodes .= $zipcode['value'] . ' ';
+                                }
+                                print '<div class="delivery-option">';
+
+                                print  "<a href='#' data-toggle='modal' data-target='#shippingModal'>";
+                                print '<span class="sprite sprite-delivery-truck"></span>';
+                                print '<small class="text-muted">' . node_type_get_name('shipping_agreement') . '<strong> ab ' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.' <br>';
+                                print '<span class="indicator"> Lieferzeiten anzeigen <span class="fa fa-chevron-right"></span> </span> </strong>';
+                                print '</small>';
+                                print '</a>';
+
+                                print '
+                                <div class="modal fade" id="shippingModal">
+                                 <div class="modal-dialog">
+                                     <div class="modal-content">
+                                         <div class="modal-header">
+                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                 <h3 class="modal-title" id="variationModalLabel">Lieferung von <strong>' . $node->title . '</strong></h3>
+                                         </div>
+                                         <div class="modal-body">
+                                             <div class="row">
+                                                 <div class="col-md-12"> 
+                                                     <p>Lieferung möglich in die folgenden deutschen PLZ-Gebiete an den bezeichneten Wochentagen und Uhrzeiten unter Berücksichtigung der produktspezifischen Bestellfristen. Die Fristen entnehmen Sie bitte den jeweiligen Produktbeschreibungen durch Klick auf Produktbild oder -namen.</p><br>
+                                                 </div>
+                                             </div>
+                                             <div class="row">
+                                                 <div class="col-md-6"> 
+                                                     ' . render(field_view_field('node', $agreement, 'field_regular_times')) . '
+                                                 </div>
+                                                 <div class="col-md-6"> 
+                                                     <p><strong>PLZ-Gebiete:</strong><br>' . $zipcodes . '</p>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div><!-- /.modal-content -->
+                                 </div><!-- /.modal-dialog -->
+                                </div><!-- /.modal -->
+                                ';
+
+
+                                print "</div> ";
+                            }
+                        }
+                        ?>
+                    <?php else: ?>
+                        <?php print "ausgegraut"; ?>
+                    <?php endif; ?>
+                    
+                    
+                    <?php if(!empty($shop->agreements['dispatch_agreement'])) : ?>
+                        <?php
+                        $zipcodes = '';
+                        foreach($shop->agreements['dispatch_agreement'] as $target_id => $agreements) {
+                            if(count($agreements) > 1) {
+                                usort($agreements, "rm_shop_sort_agreements_by_mov");
+                            }   
+                            foreach($agreements as $agreement) {
                             print '<div class="delivery-option">';
-                            print  '<a href="#" id="pickupModalToggle">';
-                            print '<span class="sprite sprite-delivery-pickup"></span>';
-                            print '<small class="text-muted"> Selbstabholung ';
-                            print '<strong> ab ' . number_format($lowestmov, 2, ",", ".") . '€ <br>  </strong>';
-                            print '<span class="indicator"> <strong>  Orte anzeigen <span class="fa fa-chevron-right"></span> </strong></span>';
-                            print '</small> ';
+                            print  "<a href='#' data-toggle='popover' data-content='" . t('Have your order delivered to you by @provider', array('@provider' => $agreement->field_dispatch_provider[LANGUAGE_NONE][0]['value']))."'>";
+                            print '<span class="sprite sprite-delivery-mail"></span>';
+                            print '<small class="text-muted">' . node_type_get_name('dispatch_agreement') . ' <span class="fa fa-info-circle"></span><br>ab</small> ';
+                            print '<strong>' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.'</strong>';
                             print '</a>';
                             print "</div>";
-                        }
-
-                       foreach($shop->agreements as $type => $user_reference) {
-                            foreach($user_reference as $target_id => $agreements) {
-                                     //if theres two variantes for the same agreement, then choose the one with less minimum order value
-                                if(count($agreements) > 1) {
-                                    usort($agreements, "rm_shop_sort_agreements_by_mov");
-                                }
-                                     
-                                foreach($agreements as $agreement) {
-                                        
-                                    switch($type) {
-                                     
-                                        case 'shipping_agreement':
-                                             $zipcodes = '';
-                                             foreach($agreement->field_shipping_zipcodes[LANGUAGE_NONE] as $zipcode) {
-                                                 $zipcodes .= $zipcode['value'] . ' ';
-                                             }
-                                             print '<div class="delivery-option">';
-                                              
-                                             print  "<a href='#' data-toggle='modal' data-target='#shippingModal'>";
-                                                 print '<span class="sprite sprite-delivery-truck"></span>';
-                                                 print '<small class="text-muted">' . node_type_get_name('shipping_agreement') . '<strong> ab ' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.' <br>';
-                                                 print '<span class="indicator"> Lieferzeiten anzeigen <span class="fa fa-chevron-right"></span> </span> </strong>';
-                                                 print '</small>';
-                                             print '</a>';
-                                             
-                                             print '
-                                             <div class="modal fade" id="shippingModal">
-                                                 <div class="modal-dialog">
-                                                     <div class="modal-content">
-                                                         <div class="modal-header">
-                                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                                 <h3 class="modal-title" id="variationModalLabel">Lieferung von <strong>' . $node->title . '</strong></h3>
-                                                         </div>
-                                                         <div class="modal-body">
-                                                             <div class="row">
-                                                                 <div class="col-md-12"> 
-                                                                     <p>Lieferung möglich in die folgenden deutschen PLZ-Gebiete an den bezeichneten Wochentagen und Uhrzeiten unter Berücksichtigung der produktspezifischen Bestellfristen. Die Fristen entnehmen Sie bitte den jeweiligen Produktbeschreibungen durch Klick auf Produktbild oder -namen.</p><br>
-                                                                 </div>
-                                                             </div>
-                                                             <div class="row">
-                                                                 <div class="col-md-6"> 
-                                                                     ' . render(field_view_field('node', $agreement, 'field_regular_times')) . '
-                                                                 </div>
-                                                                 <div class="col-md-6"> 
-                                                                     <p><strong>PLZ-Gebiete:</strong><br>' . $zipcodes . '</p>
-                                                                 </div>
-                                                             </div>
-                                                         </div>
-                                                     </div><!-- /.modal-content -->
-                                                 </div><!-- /.modal-dialog -->
-                                             </div><!-- /.modal -->
-                                             ';
-                                             
-                                             
-                                              print "</div> ";
-                                        break;
-                                 
-                                        case 'dispatch_agreement':
-                                               print '<div class="delivery-option">';
-                                             print  "<a href='#' data-toggle='popover' data-content='" . t('Have your order delivered to you by @provider', array('@provider' => $agreement->field_dispatch_provider[LANGUAGE_NONE][0]['value']))."'>";
-                                                 print '<span class="sprite sprite-delivery-mail"></span>';
-                                                 print '<small class="text-muted">' . node_type_get_name('dispatch_agreement') . ' <span class="fa fa-info-circle"></span><br>ab</small> ';
-                                                 print '<strong>' . number_format($agreement->field_minimum_order_value[LANGUAGE_NONE][0]['value'], 2, ",", ".").'€'.'</strong>';
-                                             print '</a>';
-                                               print "</div>";
-                                        break;
-                                    }
-                                } 
                             }
-                        }   
+                        }
                         ?>
-                    <?php endif; ?>   
+                    <?php else: ?>
+                        <?php print "ausgegraut"; ?>
+                    <?php endif; ?>
+
+                        
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-3 lpl">
