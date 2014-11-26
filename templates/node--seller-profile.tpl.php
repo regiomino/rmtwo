@@ -387,6 +387,7 @@ $shop = $shops[$shopkeys[0]];
             <div class="row product-grid-row">
             <div class="product-grid-container">
             <h3>Produkte </h3>
+                <div class="input-group"> <span class="input-group-addon">Filter</span><input id="filterProducttitles" type="text" class="form-control" placeholder="Angezeigte Produkte filtern"></div><br>
                 <ul class="product-grid clearfix"> 
                     <?php foreach($node->offers as $offer): ?>
                         <?php foreach($offer->offer_variations as $variation): ?>
