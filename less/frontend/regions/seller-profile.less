@@ -1,4 +1,5 @@
 .node-type-seller-profile {
+
     .toparea {
         position:   relative;
     }  
@@ -67,55 +68,55 @@
         }
     }
 
-.tabarea {
-    position:   absolute;
-    top:    0px;
-    right:  16px;
-    padding:    0 15px;
-    width:  @flexfix-sidebar-width;
-    height:     47px;
-    box-shadow: -6px 0 8px -6px rgba(0,0,0,.25);
+    .tabarea {
+        position:   absolute;
+        top:    0px;
+        right:  16px;
+        padding:    0 15px;
+        width:  @flexfix-sidebar-width;
+        height:     47px;
+        box-shadow: -6px 0 8px -6px rgba(0,0,0,.25);
 
-   &:before {
-       content: "";
-       display: block;
-       width: 20px;
-       height: 20px;
-       position: absolute;
-       top: -8px;
-       left: 0;
-       box-shadow: -6px 0 8px -6px rgba(0,0,0,.25);
-       }
-        
-        &:after {
-            content: "";
-            display: block;
-            width: 20px;
-            height: 20px;
+       &:before {
+           content: "";
+           display: block;
+           width: 20px;
+           height: 20px;
+           position: absolute;
+           top: -8px;
+           left: 0;
+           box-shadow: -6px 0 8px -6px rgba(0,0,0,.25);
+           }
+            
+            &:after {
+                content: "";
+                display: block;
+                width: 20px;
+                height: 20px;
+                position: absolute;
+                top: 36px;
+                left: 0;
+                box-shadow: -6px 0 8px -6px rgba(0,0,0,.25);
+            }
+
+
+        .tab-item {
+            display: inline-block;
+            /* line-height: 46px; */
             position: absolute;
-            top: 36px;
-            left: 0;
-            box-shadow: -6px 0 8px -6px rgba(0,0,0,.25);
+            bottom: -1px;
+            border-left: 1px solid #ddd;
+            border-top: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+            text-decoration: none;
+            color: #555;
+            left: 6px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            padding: 10px 13px;
+            background: #f8f8f8;
         }
-
-
-    .tab-item {
-        display: inline-block;
-        /* line-height: 46px; */
-        position: absolute;
-        bottom: -1px;
-        border-left: 1px solid #ddd;
-        border-top: 1px solid #ddd;
-        border-right: 1px solid #ddd;
-        text-decoration: none;
-        color: #555;
-        left: 6px;
-        border-top-left-radius: 4px;
-        border-top-right-radius: 4px;
-        padding: 10px 13px;
-        background: #f8f8f8;
     }
-}
 
     .nav-tabs {
         display: none;
@@ -291,9 +292,15 @@
         }
     }
     
-.product-grid-container {
-    padding: 0px 15px 0px 15px;
-}
+/*
+
+Product Grid
+
+*/
+    .product-grid-container {
+        padding: 0px 15px 0px 15px;
+    }
+
     .product-grid {
         margin: 0;
         margin-left: -5px;
@@ -321,183 +328,201 @@
             @media screen and (min-width: @screen-lg-min){
                 width: 25%;
             }
+        }
                
-            .product-item {
-                border: 1px solid #ddd;
-                border-radius: 4px;
-                background-color: #fff;
-                position: relative;
-                transition: all .12s ease-out;
+        .product-item {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+            position: relative;
+            transition: all .12s ease-out;
+            
+            &:hover,
+            &:focus {
+                 box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
+                    text-decoration: none;
+            }
+            
+            .product-image {
+                overflow: hidden;
+                border-radius: 4px 4px 0 0;
                 
-                &:hover,
-                &:focus {
-                     box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
-                        text-decoration: none;
+                a {
+                    display: block;
                 }
                 
-                .product-image {
-                    overflow: hidden;
+                img {
+                    width: 100%;
+                    height: auto;
                     border-radius: 4px 4px 0 0;
-                    
-                    a {
-                        display: block;
-                    }
-                    
-                    img {
-                        width: 100%;
-                        height: auto;
-                        border-radius: 4px 4px 0 0;
-                        display: inline-block;
-                        height: 130px;
-                    }
-                }
-                
-                .product-infos {
-                    height: 145px;
-                    
-                    .product-title {
-                        border-bottom: 1px solid #DDD;
-                      
-                        a.title {
-                            line-height: 16px;
-                            display: block;
-                            padding: 8px 10px 6px;
-                        }
-                         
-                        .details {
-                            position: absolute;
-                            right: 10px;
-                            bottom: 0px;
-                            font-size: 11px;
-                            display: inline-block;
-                            padding-top: 3px;
-                            
-                            .glyphicon {
-                                top: 2px;
-                            }
-                        }
-                    }
-                    
-                    .product-price {
-                        padding: 10px 10px 10px 10px;
-                        
-                        .btn-input {
-                            display: block;
-
-                            
-                        }
-                        .btn {
-                            width: 100%;
-                            position: relative;
-                            padding: 7px 5px 6px;
-
-                        }
-                        
-                        .btn-default {
-                            background-color: transparent;
-                             
-                        }
-                            
-                        .tradingunit-single {
-                            width: 100%;
-                            position: relative;
-                            padding: 7px 0px;
-                             
-                            border-radius: 4px;
-                        }
-                        
-                        .price {
-                            color: #333;
-                            text-align: left;
-                        }
-                        .price-unit,
-                        .price-info {
-                            height: 46px;
-                        }
-                        
-                        .price-unit {
-                            font-size: 16px;
-                            float: left;
-                            padding-right: 4px;
-                            line-height: 17px;
-                            border-right: 1px solid #ddd;
-                            
-                            span {
-                                display: block;
-                            }
-                            
-                            .unit-name {
-                                font-size: 12px;
-                            }
-                            .unit-amount {
-                                font-size: 11px;
-                                line-height: 11px;
-                            }
-                        }
-                        
-                        .price-info {
-                             
-                            font-size: 9px;
-                            float: left;
-                            padding-left:4px;
-                            position: relative;
-                            
-                            .indicator {
-                                background-color: @brand-primary;
-                                padding: 2px 4px;
-                                color: #fff;
-                                position: absolute;
-                                bottom: 0;
-                                left: 5px;
-                                border-radius: .25em;
-                            }
-                           
-                        }
-                        
-                        .dropdown-menu {
-                            width: 100%;
-                            padding: 0px;
-                            
-                           li a {
-                                padding: 8px 5px;
-                                border-bottom: 1px solid #DDD;
-                           }
-                           
-                           .indicator {
-                            display: none;
-                           }
-                             
-                        }
-                    }
+                    display: inline-block;
+                    height: 130px;
                 }
             }
-    
-            .add-to-cart-area {
-                    border-radius: 0 0 4px 4px;
-                    
-                button.btn {
-                    border-top: 1px solid #DDD;
-                    border-bottom: none;
-                    border-right: none;
-                    border-left: none;
-                    width: 100%;
-                    border-radius: 0 0 4px 4px;
-                    padding: 13px 16px;
-                    font-size: 14px;
-                    background-color: transparent;
-                    
-                    .fa-check-circle {
-                        color: @brand-primary;
+            
+            .product-infos {
+                height: 145px;
+                
+                .product-title {
+                    border-bottom: 1px solid #DDD;
+                  
+                    a.title {
+                        line-height: 16px;
+                        display: block;
+                        padding: 8px 10px 6px;
                     }
+                     
+                    .details {
+                        position: absolute;
+                        right: 10px;
+                        bottom: 0px;
+                        font-size: 11px;
+                        display: inline-block;
+                        padding-top: 3px;
+                        
+                        .glyphicon {
+                            top: 2px;
+                        }
+                    }
+                }
+                
+                .product-price {
+                    padding: 10px 10px 10px 10px;
+                    
+                    .btn-input {
+                        display: block;
 
-                    &:hover,
-                    &:active {
-                        background: #f5f5f5;
+                        
+                    }
+                    .btn {
+                        width: 100%;
+                        position: relative;
+                        padding: 7px 5px 6px;
+
+                    }
+                    
+                    .btn-default {
+                        background-color: transparent;
+                    }
+                        
+                    .tradingunit-single {
+                        width: 100%;
+                        position: relative;
+                        padding: 7px 0px;
+                         
+                        border-radius: 4px;
+                    }
+                    
+                    .price {
+                        color: #333;
+                        text-align: left;
+                    }
+                    .price-unit,
+                    .price-info {
+                        height: 46px;
+                    }
+                    
+                    .price-unit {
+                        font-size: 16px;
+                        float: left;
+                        padding-right: 4px;
+                        line-height: 17px;
+                        border-right: 1px solid #ddd;
+                        
+                        span {
+                            display: block;
+                        }
+                        
+                        .unit-name {
+                            font-size: 12px;
+                        }
+                        .unit-amount {
+                            font-size: 11px;
+                            line-height: 11px;
+                        }
+                    }
+                    
+                    .price-info {
+                         
+                        font-size: 9px;
+                        float: left;
+                        padding-left:4px;
+                        position: relative;
+                        
+                        .indicator {
+                            background-color: @brand-primary;
+                            padding: 2px 4px;
+                            color: #fff;
+                            position: absolute;
+                            bottom: 0;
+                            left: 5px;
+                            border-radius: .25em;
+                        }
+                    }
+                    
+                    .dropdown-menu {
+                        width: 100%;
+                        padding: 0px;
+                        
+                       li a {
+                            padding: 8px 5px;
+                            border-bottom: 1px solid #DDD;
+                       }
+                       
+                       .indicator {
+                        display: none;
+                       }        
                     }
                 }
             }
         }
+
+        .add-to-cart-area {
+                border-radius: 0 0 4px 4px;
+                position: relative;
+                display: inline-block;
+                vertical-align: middle;
+                width: 100%;
+                
+            button.add2Cart {
+                border-top: 1px solid #DDD;
+                border-bottom: none;
+                border-right: none;
+                border-left: none;
+                width: 100%;
+                border-radius: 0 0 4px 4px;
+                /*padding: 13px 16px;*/
+                font-size: 14px;
+                background-color: transparent;
+                
+                .fa-check-circle {
+                    color: @brand-primary;
+                }
+
+                &:hover,
+                &:active {
+                    background: #f5f5f5;
+                }
+            }
+
+            &.filled {
+                
+                background: @brand-primary;
+                
+                button.add2Cart {
+                    color: #fff;
+                    pointer-events: none;
+                    cursor: default;
+                    font-weight: bold;
+                }
+            }
+
+        }
     }
+
+
+
+// Modals
 
     #detailModal {
         .modal-header {

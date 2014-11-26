@@ -11,7 +11,7 @@ $shop = $shops[$shopkeys[0]];
 
 ?>
  <div class="row toparea"> 
-<ul class="breadcrumbs">
+<ul class="breadcrumbs">            
     <li>
         <?php 
            print l(
@@ -115,7 +115,7 @@ $shop = $shops[$shopkeys[0]];
                                                         }
                                                     }
                                                 break;
-                                            }
+                                            } 
                                         }
                                     }
                                 }
