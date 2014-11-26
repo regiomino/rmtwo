@@ -90,7 +90,7 @@
     <div class="col-lg-2">
         <div class="panel panel-default">
             <div class="panel-heading">
-                  <?php print t('Imported profiles'); ?>          <br>
+                  <?php print t('Profiles'); ?>          <br>
                   <?php print t('(Sellers, Customers, Traders)'); ?>
             </div>
             <div class="panel-body">
