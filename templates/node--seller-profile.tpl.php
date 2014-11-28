@@ -100,6 +100,7 @@ $shop = $shops[$shopkeys[0]];
                                     foreach($user_reference as $target_id => $index) {
                                         foreach($index as $indexid => $agreement) {
                                             switch($type) {
+
                                                 case 'payment_agreement':
                                                     foreach($agreement->field_payment_types[LANGUAGE_NONE] as $payment_type) {
                                                         switch($payment_type['value']) {
@@ -385,15 +386,17 @@ $shop = $shops[$shopkeys[0]];
 
             </div>
             <div class="row product-grid-row">
-            <div class="product-grid-container">
+            <div class="product-grid-container" id="product-grid-container">
             <h3>Produkte </h3>
-                <div class="input-group"> <span class="input-group-addon">Filter</span><input id="filterProducttitles" type="text" class="form-control" placeholder="Angezeigte Produkte filtern"></div><br>
+                <!-- <div class="input-group"> <span class="input-group-addon">Filter</span><input id="filterProducttitles" type="text" class="form-control" placeholder="Angezeigte Produkte filtern"></div><br> -->
                 <ul class="product-grid clearfix"> 
                     <?php foreach($node->offers as $offer): ?>
                         <?php foreach($offer->offer_variations as $variation): ?>
-                        <?php $hasImage = (empty($variation->field_image[LANGUAGE_NONE][0]['uri'])) ? false : true; ?>
+                        <?php $hasImage = (empty($variation->field_image[LANGUAGE_NONE][0]['uri'])) ? false : true; 
+                        $amount = rm_cart_contains_trading_unit($node->uid, $tradingunit->nid);
+                         ?>
                             <li class="grid-item">
-                                <div class="product-item"> 
+                                <div class="product-item" data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>" data-visibletradingunit="<?php print $variation->trading_units[0]->nid;?>" data-currentamount =" <?php print $amount;  ?> "> 
                                     <!-- <div class="product-image <?php if(!$hasImage) { print "no-image";} ?>">
                                         <a href="#" data-toggle="modal" data-target="#variationModal<?php print $variation->nid; ?>">
                                         <?php if($hasImage): ?>
@@ -511,10 +514,12 @@ $shop = $shops[$shopkeys[0]];
                                     </div>
                                        
                                     <div class="add-to-cart-area">
-                                        <button data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>" type="button" class="btn add2Cart  btn-default btn-lg">
+                                        <button class="btn btn-default removeItem"> <span class="fa fa-minus"> </span> </button>
+                                        <button  type="button" class="btn add2Cart  btn-default">
                                             <span class="fa fa-shopping-cart"></span>
                                             <span class="fa add2cart-animation fa-check-circle hidden"></span> in den Warenkorb
                                         </button>
+                                        <button class="btn btn-default addItem"> <span class="fa fa-plus"> </span> </button>
                                     </div>
                                 </div>
                             </li>

@@ -414,7 +414,7 @@ Product Grid
                     }
                     
                     .price {
-                        color: #333;
+                        
                         text-align: left;
                     }
                     .price-unit,
@@ -478,23 +478,28 @@ Product Grid
         }
 
         .add-to-cart-area {
-                border-radius: 0 0 4px 4px;
-                position: relative;
-                display: inline-block;
-                vertical-align: middle;
-                width: 100%;
+            border-top: 1px solid #DDD;
+            border-radius: 0 0 4px 4px;
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            width: 100%;
+            line-height: 37px;
+            height: 42px;
+
+            .btn {
+                line-height: inherit;
+                padding: 0px;
+                border:none;
+                background-color: transparent;
+                height: 100%;
+            }
                 
             button.add2Cart {
-                border-top: 1px solid #DDD;
-                border-bottom: none;
-                border-right: none;
-                border-left: none;
                 width: 100%;
                 border-radius: 0 0 4px 4px;
-                /*padding: 13px 16px;*/
                 font-size: 14px;
-                background-color: transparent;
-                
+               
                 .fa-check-circle {
                     color: @brand-primary;
                 }
@@ -505,12 +510,51 @@ Product Grid
                 }
             }
 
+            button.removeItem,
+            button.addItem {
+                position: absolute;
+                display: none;
+                width: 42px;
+
+                &:hover {
+                    background: darken(@brand-primary, 2%);
+                }
+
+                &:active {
+                    background: darken(@brand-primary, 2.75%);
+                }
+            }
+
+            button.removeItem {
+                left: 0px;
+                top: 0px;
+                border-top-right-radius: 0px;
+                border-top-left-radius: 0px;
+                border-bottom-right-radius: 0px;
+            }
+
+            button.addItem {
+                right :  0px;
+                top: 0px;
+                border-top-left-radius: 0px;
+                border-top-right-radius: 0px;
+                border-bottom-left-radius: 0px;
+            }
+
             &.filled {
                 
                 background: @brand-primary;
                 
-                button.add2Cart {
+                button {
                     color: #fff;
+                }
+
+                button.removeItem,
+                button.addItem {
+                    display: block;
+                }
+
+                button.add2Cart {
                     pointer-events: none;
                     cursor: default;
                     font-weight: bold;
