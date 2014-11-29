@@ -12,7 +12,7 @@
 
             <div class="cart-toggle" id="cart-toggle"> 
                 <span class="fa fa fa-shopping-cart"></span>
-               <!--  <span id="item-amount" class="item-amount">24 </span> -->
+                <span id="item-amount" class="item-amount"> </span>
             </div>
             
             <div class="navbar-brand"> 

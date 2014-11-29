@@ -388,26 +388,16 @@ $shop = $shops[$shopkeys[0]];
             <div class="row product-grid-row">
             <div class="product-grid-container" id="product-grid-container">
             <h3>Produkte </h3>
-                <!-- <div class="input-group"> <span class="input-group-addon">Filter</span><input id="filterProducttitles" type="text" class="form-control" placeholder="Angezeigte Produkte filtern"></div><br> -->
+                <div class="input-group"> <span class="input-group-addon">Filter</span><input id="filterProducttitles" type="text" class="form-control" placeholder="Angezeigte Produkte filtern"></div><br>
                 <ul class="product-grid clearfix"> 
                     <?php foreach($node->offers as $offer): ?>
                         <?php foreach($offer->offer_variations as $variation): ?>
                         <?php $hasImage = (empty($variation->field_image[LANGUAGE_NONE][0]['uri'])) ? false : true; 
-                        $amount = rm_cart_contains_trading_unit($node->uid, $tradingunit->nid);
+                       // $amount = rm_cart_contains_trading_unit($node->uid, $variation->trading_units[0]->nid;);
+                        $amount = 0;
                          ?>
                             <li class="grid-item">
-                                <div class="product-item" data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>" data-visibletradingunit="<?php print $variation->trading_units[0]->nid;?>" data-currentamount =" <?php print $amount;  ?> "> 
-                                    <!-- <div class="product-image <?php if(!$hasImage) { print "no-image";} ?>">
-                                        <a href="#" data-toggle="modal" data-target="#variationModal<?php print $variation->nid; ?>">
-                                        <?php if($hasImage): ?>
-                                           <img src="<?php print image_style_url('product_grid', $variation->field_image[LANGUAGE_NONE][0]['uri']); ?>">
-                                         
-                                         <?php else: ?>
-                                            <img src="<?php echo base_path() . path_to_theme();?>/images/no-image.png">
-                
-                                        <?php  endif; ?>
-                                        </a> 
-                                    </div> -->
+                                <div class="product-item" id="<?php print $offer->nid;  ?>" data-bind-<?php print $variation->nid;  ?> = "<?php print $variation->nid;  ?>" data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>" data-currentamount ="<?php print $amount;  ?>"> 
                                      
                                     <div class="product-infos">  
                                         <div class="product-title"> 
@@ -453,7 +443,10 @@ $shop = $shops[$shopkeys[0]];
                                             </div>
                                             
                                          
-                                        <?php else: ?>
+                                        <?php else:
+
+
+                                         ?>
                                         
                                             <div class="btn-group btn-input clearfix">
                                                 <button type="button" class="btn btn-default dropdown-toggle multiple" data-toggle="dropdown">
@@ -476,15 +469,20 @@ $shop = $shops[$shopkeys[0]];
                                         
                                             <?php $first = TRUE;?>
                                             <?php foreach($variation->trading_units as $delta => $tradingunit): ?>
-                                            
+                                             
                                                 <?php
+                                                
                                                     if(isset($tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']) && !empty($tupackaging[$tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']])) {
+                                                         
                                                             $packaging = $tupackaging[$tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']];
                                                     }
                                                     else {
                                                             $default = field_get_default_value('node', $tradingunit, $packaging_field, $packaging_instance, $tradingunit->language);
+
                                                             $packaging = $tupackaging[$default[0]['value']];
                                                     }
+
+
                                                 ?>
                                                 
                                                 
