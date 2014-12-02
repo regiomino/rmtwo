@@ -390,14 +390,17 @@ $shop = $shops[$shopkeys[0]];
             <h3>Produkte </h3>
                 <div class="input-group"> <span class="input-group-addon">Filter</span><input id="filterProducttitles" type="text" class="form-control" placeholder="Angezeigte Produkte filtern"></div><br>
                 <ul class="product-grid clearfix"> 
+                <?php $rand = 0; ?>
                     <?php foreach($node->offers as $offer): ?>
                         <?php foreach($offer->offer_variations as $variation): ?>
                         <?php $hasImage = (empty($variation->field_image[LANGUAGE_NONE][0]['uri'])) ? false : true; 
                        // $amount = rm_cart_contains_trading_unit($node->uid, $variation->trading_units[0]->nid;);
                         $amount = 0;
+                        $rand++;
+                         
                          ?>
                             <li class="grid-item">
-                                <div class="product-item" id="<?php print $offer->nid;  ?>" data-bind-<?php print $variation->nid;  ?> = "<?php print $variation->nid;  ?>" data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>" data-currentamount ="<?php print $amount;  ?>"> 
+                                <div class="product-item" data-id="<?php print $rand;  ?>" data-bind-<?php print $variation->nid;  ?> = "<?php print $variation->nid;  ?>" data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>" data-currentamount ="<?php print $amount;  ?>"> 
                                      
                                     <div class="product-infos">  
                                         <div class="product-title"> 

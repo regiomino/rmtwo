@@ -10414,6 +10414,15 @@ Product Grid
 
 */
 }
+.node-type-seller-profile .affix {
+  width: 290px;
+  top: 73px;
+}
+.node-type-seller-profile .affix-bottom {
+  position: absolute;
+  bottom: 0px;
+  width: 290px;
+}
 .node-type-seller-profile .toparea {
   position: relative;
 }
@@ -10860,7 +10869,7 @@ Product Grid
   border-bottom-left-radius: 0px;
 }
 .node-type-seller-profile .product-grid .add-to-cart-area.filled {
-  background: #95bc0d !important;
+  background: #95bc0d;
 }
 .node-type-seller-profile .product-grid .add-to-cart-area.filled button {
   color: #fff;
