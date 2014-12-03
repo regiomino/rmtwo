@@ -1,5 +1,14 @@
 .node-type-seller-profile {
 
+    .breadcrumbs-container {
+        height:     47px;
+    }  
+
+    //trusted shops badge
+    #tsbadge_db8d3657bdbe440c985ae127463eaad4.standard {
+        display: none!important;
+    }
+
     .affix {
         width: 290px;
         top: 73px;
@@ -24,6 +33,12 @@
 
         li a {
            padding: 15px 0 12px 49px;
+
+           &.empty {
+            cursor-events: none;
+            padding: 0px;
+            display: none;
+           }
         }
     }
 

@@ -34,9 +34,9 @@ $shop = $shops[$shopkeys[0]];
             <a href="#"> <?php print $node->title; ?> </a>
         <?php endif; ?>
     </li>
-    <!-- <li>
-        <a href="#"> <?php print $node->title; ?></a>
-    </li> -->
+      <li>
+        <a class="empty" href="#"><!-- <?php print $node->title; ?>--> </a>
+    </li>  
 </ul>
 
 <div class="tabarea hidden-sm hidden-xs">
@@ -390,17 +390,17 @@ $shop = $shops[$shopkeys[0]];
             <h3>Produkte </h3>
                 <div class="input-group"> <span class="input-group-addon">Filter</span><input id="filterProducttitles" type="text" class="form-control" placeholder="Angezeigte Produkte filtern"></div><br>
                 <ul class="product-grid clearfix"> 
-                <?php $rand = 0; ?>
+                 
                     <?php foreach($node->offers as $offer): ?>
                         <?php foreach($offer->offer_variations as $variation): ?>
                         <?php $hasImage = (empty($variation->field_image[LANGUAGE_NONE][0]['uri'])) ? false : true; 
                        // $amount = rm_cart_contains_trading_unit($node->uid, $variation->trading_units[0]->nid;);
-                        $amount = 0;
-                        $rand++;
+                        
+                        $id = $offer->nid + $variation->nid;
                          
                          ?>
                             <li class="grid-item">
-                                <div class="product-item" data-id="<?php print $rand;  ?>" data-bind-<?php print $variation->nid;  ?> = "<?php print $variation->nid;  ?>" data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>" data-currentamount ="<?php print $amount;  ?>"> 
+                                <div class="product-item" data-id= "<?php print $id; ?>" data-initialtu = "<?php print $variation->trading_units[0]->nid;?>" data-bind-<?php print $id;?> = "<?php print $id; ?>" data-offerid ="<?php print $offer->nid;  ?>" data-variation ="<?php print $variation->nid;  ?>"> 
                                      
                                     <div class="product-infos">  
                                         <div class="product-title"> 
@@ -424,12 +424,15 @@ $shop = $shops[$shopkeys[0]];
                                                     $packaging = $tupackaging[$default[0]['value']];
                                             }
                                         ?>
-                                         
-                                        <?php if($onlyone): ?>
 
+                                      
+<?php $amount = rm_cart_contains_trading_unit($node->uid, $variation->trading_units[0]->nid); ?>
+                                        <?php if($onlyone): ?>
+                                        
+                                            
                                             <div class="tradingunit-single clearfix">
                                                 <div class="label-area">
-                                                    <div class="price" data-tradingunit="<?php print $variation->trading_units[0]->nid;?>">
+                                                    <div class="price" data-tradingunit="<?php print $variation->trading_units[0]->nid;?>" data-currentamount = "<?php print $amount;?>">
                                                         <div class="price-unit"> 
                                                             <strong><?php print number_format($variation->trading_units[0]->field_tu_price[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€</strong><br>
                                                             <span class="unit-name"><strong><?php print $packaging; ?></strong> </span>
@@ -446,15 +449,13 @@ $shop = $shops[$shopkeys[0]];
                                             </div>
                                             
                                          
-                                        <?php else:
+                                            <?php else:?>
+                                            
 
-
-                                         ?>
-                                        
                                             <div class="btn-group btn-input clearfix">
                                                 <button type="button" class="btn btn-default dropdown-toggle multiple" data-toggle="dropdown">
                                                     <div class="label-area" data-bind="label"> 
-                                                        <div class="price" data-tradingunit="<?php print $variation->trading_units[0]->nid;?>">
+                                                        <div class="price" data-tradingunit="<?php print $variation->trading_units[0]->nid;?>" data-currentamount = "<?php print $amount;?>">
                                                             <div class="price-unit"> 
                                                                 <strong> <?php print number_format($variation->trading_units[0]->field_tu_price[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€</strong><br>
                                                                 <span class="unit-name"><strong><?php print $packaging; ?></strong> </span>
@@ -472,7 +473,7 @@ $shop = $shops[$shopkeys[0]];
                                         
                                             <?php $first = TRUE;?>
                                             <?php foreach($variation->trading_units as $delta => $tradingunit): ?>
-                                             
+                                            <?php $amount = rm_cart_contains_trading_unit($node->uid, $tradingunit->nid); ?>
                                                 <?php
                                                 
                                                     if(isset($tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']) && !empty($tupackaging[$tradingunit->field_tu_packaging[LANGUAGE_NONE][0]['value']])) {
@@ -491,7 +492,7 @@ $shop = $shops[$shopkeys[0]];
                                                 
                                                     <li<?php print ($first == TRUE) ? ' class="hidden"' : ''; ?>>
                                                         <a href="#" class="clearfix"> 
-                                                            <div class="price" data-tradingunit="<?php print $tradingunit->nid; ?>">
+                                                            <div class="price" data-tradingunit="<?php print $tradingunit->nid; ?>" data-currentamount = "<?php print $amount;?>">
                                                                 <div class="price-unit"> 
                                                                     <strong> <?php print number_format($tradingunit->field_tu_price[LANGUAGE_NONE][0]['value'], 2, ",", "."); ?>€</strong><br>
                                                                     <span class="unit-name"><strong><?php print $packaging; ?></strong> </span>

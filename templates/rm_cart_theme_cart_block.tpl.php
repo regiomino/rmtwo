@@ -38,8 +38,10 @@
                 $packaging = $tupackaging[$default[0]['value']];
             }
             $max_items = false;
+
+            $id = $offer->nid + $variation->vid  ;
         ?>
-        <div class="cart-item" data-offerid="<?php print $offer->nid; ?>" data-variation="<?php print $variation->vid; ?>" data-tradingunit="<?php print $cart_item->field_trading_unit_reference[LANGUAGE_NONE][0]['target_id'];   ?>" >
+        <div class="cart-item" data-id= <? print $id;?> data-offerid="<?php print $offer->nid; ?>" data-variation="<?php print $variation->vid; ?>" data-tradingunit="<?php print $cart_item->field_trading_unit_reference[LANGUAGE_NONE][0]['target_id'];   ?>" >
             <div class="row">
                 <div class="col-md-5 col-sm-3 col-xs-5">
                     <div class="input-group stepper">

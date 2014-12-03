@@ -7696,7 +7696,7 @@ label {
 .breadcrumbs-container.large {
   position: absolute;
   width: 100%;
-  top: 67px;
+  top: 66px;
   left: 0px;
 }
 ul.breadcrumbs {
@@ -10414,6 +10414,12 @@ Product Grid
 
 */
 }
+.node-type-seller-profile .breadcrumbs-container {
+  height: 47px;
+}
+.node-type-seller-profile #tsbadge_db8d3657bdbe440c985ae127463eaad4.standard {
+  display: none!important;
+}
 .node-type-seller-profile .affix {
   width: 290px;
   top: 73px;
@@ -10431,6 +10437,11 @@ Product Grid
 }
 .node-type-seller-profile .breadcrumbs li a {
   padding: 15px 0 12px 49px;
+}
+.node-type-seller-profile .breadcrumbs li a.empty {
+  cursor-events: none;
+  padding: 0px;
+  display: none;
 }
 .node-type-seller-profile .lpr {
   padding-right: 5px;
