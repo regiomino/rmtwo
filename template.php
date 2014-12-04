@@ -605,6 +605,7 @@ function rmtwo_preprocess_page(&$variables) {
                 drupal_add_js(array('rm_shop' => array('products' => $producttitlearray)), 'setting');
                 //drupal_add_js(array('producttitles' => $variables['node']->uid), 'setting');
                 drupal_add_js('https://maps.googleapis.com/maps/api/js?v=3.exp');
+                drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/frontend/module_only/mapsndshops/typeahead.bundle.min.js');
                 drupal_add_js(drupal_get_path('module', 'rm_cart') . '/js/rm_cart.js');
                 
             }

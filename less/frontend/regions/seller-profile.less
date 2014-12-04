@@ -294,13 +294,111 @@ Product Grid
         padding: 0px 15px 0px 15px;
     }
 
+
+    .grid-header {
+         .input-group {
+            width: 100%;
+            margin-top: 14px;
+
+            @media screen and (max-width:@screen-sm-max) {
+                margin-bottom: 14px;
+            }
+         }
+         
+        .form-control {
+             border: 1px solid #ccc;
+             
+             &:focus {
+                 border-color: #adadad;
+                 outline: 0;
+                 box-shadow: none;
+              }
+        }
+        
+        .input-group-btn {
+             vertical-align: top;
+         }
+         
+        .twitter-typeahead {
+             width: 100%;
+             
+             .tt-suggestion {
+                 
+             }
+             
+             .tt-suggestion.tt-cursor {
+                 background: #f8f8f8;
+             }
+             
+             .tt-hint {
+                 color: lighten(#555,60%);
+             }
+             
+             .input-sm {
+                 border-top-left-radius: 4px;
+                 border-bottom-left-radius: 4px;
+             }
+             
+             .tt-dropdown-menu {
+                     width: 100%;
+                     background-color:#fff;
+                     border-left: 1px solid #ddd;
+                     border-bottom: 1px solid #ddd;
+                     border-right: 1px solid #ddd;
+                     box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+                     border-bottom-right-radius: 4px;
+                     border-bottom-left-radius: 4px;
+                     max-height: 445px;
+                     overflow: auto;
+                     
+                     p {
+                         padding: 12px 15px;
+                         cursor: pointer;
+                         overflow: hidden;
+                         border-bottom: 1px solid #ddd;
+                         font-size: 14px;
+                         margin: 0px;
+                         
+                         &:hover,
+                         &:active,
+                         &:focus,
+                         &.tt-cursor {
+                             background-color: #f8f8f8;
+                         }
+                         
+                     }       
+             }
+         }
+        
+         #clearQuery {
+             position: absolute;
+             right: 41px;
+             top: 8px;
+             z-index: 2;
+             cursor: pointer;
+             font-size: 16px;
+             display: none;
+             
+             .fa-circle {
+                 color: #ddd;
+             }
+             
+             &:hover,
+             &:focus {
+                 .fa-circle {
+                     color: #d7d7d7;
+                 }
+             }
+         }
+    }
+
     .product-grid {
         margin: 0;
         margin-left: -5px;
         margin-right: -5px;
         padding: 0;
         list-style: none;
-        
+
         li.grid-item {
             position: relative;
             min-height: 1px;

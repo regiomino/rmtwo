@@ -387,8 +387,27 @@ $shop = $shops[$shopkeys[0]];
             </div>
             <div class="row product-grid-row">
             <div class="product-grid-container" id="product-grid-container">
-            <h3>Produkte </h3>
-                <div class="input-group"> <span class="input-group-addon">Filter</span><input id="filterProducttitles" type="text" class="form-control" placeholder="Angezeigte Produkte filtern"></div><br>
+
+            <div clas="col-md-12"> 
+                <div class="row grid-header">
+                    
+                    <div class="col-sm-3">
+                       <h3 >Produkte </h3>
+                    </div>
+                    <div class="col-lg-4 col-lg-offset-5 col-md-6 col-md-offset-3 col-sm-5 col-sm-offset-4">
+                        <div class="input-group input-group-sm">
+                            
+                            <input placeholder="Schnellsuche " id="filterProducts" type="text" class="form-control input-sm">
+                            <span class="fa fa-times" id="clearQuery"> </span>
+                            <span class="input-group-btn">
+                                <button id="searchSubmit" class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
                 <ul class="product-grid clearfix"> 
                  
                     <?php foreach($node->offers as $offer): ?>
