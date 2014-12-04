@@ -32,7 +32,18 @@ CO.updateItemAmount = function(){
 }
 
 CO.init();
+ 
+if($('label[for="edit-delivery-pickup-agreement"]').siblings('input[type="radio"]').is(':checked')) {
+   
+    $('div.delivery-address').hide();
+};
 
+$('label[for="edit-delivery-pickup-agreement"]').click(function(){
+    $('div.delivery-address').hide();
+});
 
+$('label[for="edit-delivery-shipping-agreement"]').click(function(){
+    $('div.delivery-address').show();
+});
 
 });

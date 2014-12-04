@@ -29,11 +29,11 @@ $form = $variables['form'];
                         </div>
                         <div class="col-md-6 lpl">
                             <div class="row">
-                                <div class="col-md-4 lpr">
+                                <div class="col-xs-4 lpr">
                                     <!--Rechnungsadresse: PLZ-->
                                     <?php print render($form['checkout']['payment_fs']['billing_address_zip']); ?>
                                 </div>
-                                <div class="col-md-8 lpl">
+                                <div class="col-xs-8 lpl">
                                     <!--Rechnungsadresse: Ort-->
                                     <?php print render($form['checkout']['payment_fs']['billing_address_city']); ?>
                                 </div>
@@ -86,7 +86,7 @@ $form = $variables['form'];
                   
                         <?php print render($form['checkout']['delivery_fs']['shipping_days']['shipping_day']); ?>
                    
-                    <div class="shipping-time">
+                    <div class="shipping-time clearfix">
                         <!--Lieferzeiten-->
                         <?php if(!empty($form['checkout']['delivery_fs']['shipping_times'])): ?>
                             <?php foreach($form['checkout']['delivery_fs']['shipping_times'] as $shippingdaykey => $shippingdays): ?>
@@ -119,11 +119,11 @@ $form = $variables['form'];
                                     </div>
                                     <div class="col-md-6 lpl">
                                         <div class="row">
-                                            <div class="col-md-4 lpr">
+                                            <div class="col-xs-4 lpr">
                                                 <!--Lieferadresse: PLZ-->
                                                 <?php print render($form['checkout']['delivery_fs']['shipping_address_zip']); ?>
                                             </div>
-                                            <div class="col-md-8 lpl">
+                                            <div class="col-xs-8 lpl">
                                                 <!--Lieferadresse: Ort-->
                                                 <?php print render($form['checkout']['delivery_fs']['shipping_address_city']); ?>
                                             </div>

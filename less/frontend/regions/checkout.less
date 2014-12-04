@@ -8,6 +8,46 @@
     display: none;
  }
 
+  @media screen and (max-width:@screen-sm-max) {
+
+.lpl {
+    padding-left: 15px;
+  }
+
+  .lpr {
+    padding-right: 15px;
+  }
+
+  .col-xs-4.lpr {
+    padding-right: 5px;
+  }
+
+  .col-xs-8.lpl {
+    padding-left: 5px;
+  }
+
+  .form-item-billing-address-street,
+  .form-item-shipping-address-street  {
+    margin-bottom: 6px!important;
+  }
+}
+.delivery-address { 
+     margin-bottom: 15px;
+    background: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    position: relative;
+
+    h5 {
+        margin-top: 0px;
+    }
+}
+
+ .cart-wrapper .cart-header {
+    padding-top: 22px;
+}
+
 .flexfix-wrapper .flexfix-sidebar {
     padding: 0px 15px;
 }
@@ -283,6 +323,35 @@
             background: #fff;
             float: left;
             position: relative;
+            margin-bottom: 15px;
+
+
+        }
+
+        .form-type-select.form-item-shipping-day {
+           :after,
+           :before {
+               content : '';
+               position: absolute;
+               top: 100%;
+               left: 35%;
+               margin-left: -9px;
+               width: 0;
+               height: 0;
+               border-right: 10px solid transparent;
+               border-left: 10px solid transparent;
+           }
+           
+           :before {
+               border-top: 10px solid #fff;
+               margin-top: -1px;
+               z-index: 1;
+           }
+           
+           :after {
+               border-top: 10px solid #ddd;
+               margin-top: 0px;
+           }
         }
         
         .shipping-time .form-type-select {
