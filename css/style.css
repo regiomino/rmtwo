@@ -10713,6 +10713,9 @@ Product Grid
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
 }
+.node-type-seller-profile .grid-header .twitter-typeahead .input-sm::-ms-clear {
+  display: none;
+}
 .node-type-seller-profile .grid-header .twitter-typeahead .tt-dropdown-menu {
   width: 100%;
   background-color: #fff;
@@ -10813,7 +10816,12 @@ Product Grid
   height: 130px;
 }
 .node-type-seller-profile .product-grid .product-item .product-infos {
-  height: 145px;
+  height: auto;
+}
+@media screen and (min-width: 450px) {
+  .node-type-seller-profile .product-grid .product-item .product-infos {
+    height: 145px;
+  }
 }
 .node-type-seller-profile .product-grid .product-item .product-infos .product-title {
   border-bottom: 1px solid #DDD;
@@ -10976,23 +10984,53 @@ Product Grid
   font-weight: bold;
   background: #95bc0d;
 }
+.node-type-seller-profile .modal.fade .media-object {
+  display: none;
+}
+@media screen and (min-width: 950px) {
+  .node-type-seller-profile .modal.fade .media-object {
+    display: block;
+  }
+}
+.node-type-seller-profile #detailModal {
+  /*.media-object {
+            display: none;
+        }
+
+        @media screen and (min-width: 950px) {
+            display: block;
+        }*/
+}
+.node-type-seller-profile #pickupModal .modal-dialog {
+  max-width: 1000px;
+  width: 98%;
+  overflow-x: auto;
+}
 .node-type-seller-profile #pickupModal .modal-body {
   padding: 0;
   height: 349px;
 }
 .node-type-seller-profile #pickupModal .pickupMap {
-  width: 35%;
-  float: left;
-  height: 349px;
+  width: 100%;
+  height: 200px;
 }
-.node-type-seller-profile #pickupModal .pickupInfo {
-  height: 100%;
-  position: relative;
-  z-index: 0;
-  border-left: 1px solid #ddd;
-  width: 65%;
-  float: right;
-  overflow: auto;
+@media screen and (min-width: 950px) {
+  .node-type-seller-profile #pickupModal .pickupMap {
+    width: 35%;
+    float: left;
+    height: 349px;
+  }
+}
+@media screen and (min-width: 950px) {
+  .node-type-seller-profile #pickupModal .pickupInfo {
+    height: 100%;
+    position: relative;
+    z-index: 0;
+    border-left: 1px solid #ddd;
+    width: 65%;
+    float: right;
+    overflow: auto;
+  }
 }
 .node-type-seller-profile #pickupModal .pickupInfo .pickup-spot {
   padding: 5px 15px;
@@ -11216,6 +11254,9 @@ Product Grid
 .page-lieferanten .sidebar .search .twitter-typeahead .input-lg {
   border-top-left-radius: 6px;
   border-bottom-left-radius: 6px;
+}
+.page-lieferanten .sidebar .search .twitter-typeahead .input-lg::-ms-clear {
+  display: none;
 }
 .page-lieferanten .sidebar .search .twitter-typeahead .tt-dropdown-menu {
   width: 100%;
