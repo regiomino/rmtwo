@@ -394,9 +394,8 @@ $shop = $shops[$shopkeys[0]];
                     <?php foreach($node->offers as $offer): ?>
                         <?php foreach($offer->offer_variations as $variation): ?>
                         <?php $hasImage = (empty($variation->field_image[LANGUAGE_NONE][0]['uri'])) ? false : true; 
-                       // $amount = rm_cart_contains_trading_unit($node->uid, $variation->trading_units[0]->nid;);
                         
-                        $id = $offer->nid + $variation->nid;
+                        $id = $offer->nid.$variation->nid;
                          
                          ?>
                             <li class="grid-item">

@@ -609,7 +609,13 @@ function rmtwo_preprocess_page(&$variables) {
                 
             }
         }
-    }    
+    }   
+
+    if(arg(0) == 'checkout') {
+        drupal_add_js(drupal_get_path('theme', 'rmtwo') . '/js/frontend/module_only/checkout/checkout.js');
+    }
+
+
     if(arg(0) == 'manage') {
         $variables['theme_hook_suggestions'][] = 'page__manage';
         drupal_add_css(drupal_get_path('theme', 'rmtwo') . '/css/style-back.min.css');

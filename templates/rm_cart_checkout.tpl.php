@@ -7,7 +7,7 @@ $form = $variables['form'];
         
             <div class="row address checkout-item">
                 <div class="col-md-12 title">
-                    <h4>Rechnungsadresse angeben </h4>
+                    <h2><strong> Rechnungsadresse angeben </strong> </h2>
                 </div>
                 
                 <div class="col-lg-10 col-md-12">
@@ -45,7 +45,7 @@ $form = $variables['form'];
             
             <div class="row delivery checkout-item">
                 <div class="col-md-12 title">
-                    <h4>Lieferart wählen  </h4>
+                    <h2> <strong> Lieferart wählen</strong>  </h2>
                 </div>
                 
                 <div class="col-lg-10 col-md-12">
@@ -140,7 +140,7 @@ $form = $variables['form'];
             
             <div class="row payment-method checkout-item">
                 <div class="col-md-12 title">
-                    <h4>Zahlungsart wählen </h4>
+                <h2><strong> Zahlungsart wählen </strong> </h2>
                    
                 </div>
             
