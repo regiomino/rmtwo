@@ -10,6 +10,11 @@
                 <span class="menudesc text-uppercase">Menü</span>
             </button>
 
+            <div class="btn-group btn-group-lg view-toggle" id ='viewToggle'>
+              <button type="button" data-action="mapView" class="btn btn-default"><i class="fa fa-fw fa-map-marker"></i></button>
+              <button type="button" data-action="listView" id="showList" class="btn btn-default active"><i class="fa fa-fw fa-list"></i></button>
+            </div>
+
             <div class="cart-toggle" id="cart-toggle"> 
                 <span class="fa fa fa-shopping-cart"></span>
                 <span id="item-amount" class="item-amount"> </span>

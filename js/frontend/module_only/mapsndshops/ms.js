@@ -17,11 +17,109 @@ window.RMS = RMS;
 RMS.PATH_TO_THEME = Drupal.settings.basePath + "sites/all/themes/" + Drupal.settings.ajaxPageState.theme;
 RMS.$sellerArea = $('#sellers');
 RMS.$sellerItemsArea = $('#sellers > .row');
-RMS.init = function(){
-    RMS.map.init();
-    RMS.filter.init();
-    RMS.fav.init();
+RMS.$viewToggle = $('#viewToggle');
+RMS.mapInitialized = false;
+
+RMS.debounce = function(func, wait, immediate) {
+    var timeout;
+    return function() {
+            var context = this, args = arguments;
+            clearTimeout(timeout);
+            timeout = setTimeout(function() {
+                    timeout = null;
+                    if (!immediate) func.apply(context, args);
+            }, wait);
+            if (immediate && !timeout) func.apply(context, args);
+    };
 };
+
+RMS.getViewport  = function () {
+    var e = window, a = 'inner';
+    if (!('innerWidth' in window )) {
+        a = 'client';
+        e = document.documentElement || document.body;
+    }
+    return { width : e[ a+'Width' ] , height : e[ a+'Height' ] };
+};
+
+RMS.getViewportName = function () {
+    
+    var vp = RMS.getViewport();
+    
+    if( vp.width <=850) {
+        return "col-1";
+    }
+    
+    else if( vp.width > 850 ) {
+        
+        return "col-2";
+    }
+}
+
+RMS.init = function(){
+    var _self = this;
+    _self.ajax.init();
+    _self.setState();
+    _self.filter.init();
+    _self.fav.init();
+    _self.addListeners();
+};
+
+RMS.setState = function(){
+    var _self = this;
+    var size = _self.getViewportName();
+    if(size === "col-1") {
+        $('body').addClass(size).removeClass('col-2');
+        RMS.filter.category.removeAffix();
+    } 
+    else if (size === "col-2") {
+
+        if (!RMS.mapInitialized) {
+            _self.map.init();
+        }
+       
+        $('body').addClass(size).removeClass('col-1');
+        RMS.filter.category.addAffix();
+    }
+}
+
+RMS.addListeners = function(){
+    var _self = this;
+
+    $(window).on('resize', RMS.debounce(function(){
+        var size = RMS.getViewportName();
+        if(size === "col-1") {
+            
+            $('body').addClass(size).removeClass('col-2');
+        } 
+        else if (size === "col-2") {
+            _self.map.init();
+            $('body').addClass(size).removeClass('col-1');
+        }
+
+    },500));
+
+    _self.$viewToggle.on('click.viewToggle', 'button', function(e) {
+        e.preventDefault();
+        var $el = $(this);
+        RMS.$viewToggle.find('.btn').removeClass('active');
+        $el.addClass('active');
+        var action = $el.data('action');
+
+        if (action  === 'mapView') {
+            
+            if(!RMS.mapInitialized) {
+                _self.map.init();
+            }
+            
+            $('body').addClass('mapView').removeClass('listView'); 
+
+        } else if (action === 'listView') {
+            
+            $('body').addClass('listView').removeClass('mapView');
+        }
+    });
+}
 
 
 //////////////////////////////////
@@ -33,27 +131,16 @@ RMS.init = function(){
 RMS.ajax = {};
 RMS.ajax.LOADER_CLASSNAME = 'loading';
 RMS.ajax.PATH_GET_LOCATIONS = '/rm-shop-filter';
-
-RMS.ajax.Query = function() {
+ 
+RMS.ajax.Query = function(vals) {
     
-    this.qvalues = {
-        map_bounds_ne_lat : Drupal.settings.rm_shop.map_bounds_ne_lat,
-        map_bounds_ne_lng : Drupal.settings.rm_shop.map_bounds_ne_lng,
-        map_bounds_sw_lat : Drupal.settings.rm_shop.map_bounds_sw_lat,  
-        map_bounds_sw_lng : Drupal.settings.rm_shop.map_bounds_sw_lng,
-        map_center : Drupal.settings.rm_shop.map_center,
-        seller_name : Drupal.settings.rm_shop.seller_name,
-        delivery_options : Drupal.settings.rm_shop.delivery_options,
-        payment_types : Drupal.settings.rm_shop.payment_types,
-        seller_type : Drupal.settings.rm_shop.seller_type
-    }
+    this.qvalues = vals
 };
 
 RMS.ajax.Query.prototype = {
     update : function(newVals){
         var _self = this;
         $.extend(true, _self.qvalues, newVals);
-        
     },
     
     getValue : function (key) {
@@ -64,15 +151,33 @@ RMS.ajax.Query.prototype = {
     getQuery : function() {
         var _self = this;
         return  _self.qvalues;
-    }
+    } 
 };
 
-RMS.ajax.sq = new RMS.ajax.Query();
+RMS.ajax.init = function(){
+    var _self = this;
+
+   var vals = {
+        map_bounds_ne_lat : Drupal.settings.rm_shop.map_bounds_ne_lat ,
+        map_bounds_ne_lng : Drupal.settings.rm_shop.map_bounds_ne_lng,
+        map_bounds_sw_lat : Drupal.settings.rm_shop.map_bounds_sw_lat,  
+        map_bounds_sw_lng : Drupal.settings.rm_shop.map_bounds_sw_lng,
+        map_center : Drupal.settings.rm_shop.map_center,
+        seller_name : Drupal.settings.rm_shop.seller_name,
+        delivery_options : Drupal.settings.rm_shop.delivery_options,
+        payment_types : Drupal.settings.rm_shop.payment_types,
+        seller_type : Drupal.settings.rm_shop.seller_type
+    };
+
+    _self.initialValues = vals;
+    
+    _self.sq = new _self.Query(vals);
+};
   
  
 RMS.ajax.addLoader = function(){
     RMS.$sellerArea.addClass(RMS.ajax.LOADER_CLASSNAME);
-}
+};
 
 RMS.ajax.removeLoader = function(){
     RMS.$sellerArea.removeClass(RMS.ajax.LOADER_CLASSNAME);
@@ -96,15 +201,20 @@ RMS.ajax.updateSearchResults = function(trigger){
         dataType : 'json',
   
     }).success(function(data) {
+
+            if (RMS.mapInitialized) { 
+                RMS.map.updateMarker(data.marker);
+            }
             RMS.$sellerItemsArea.html(data.html);
-            RMS.map.updateMarker(data.marker);
+           
             if(trigger === "map") {
                 RMS.filter.ta.updateBloodhound('products', data.products);
                 RMS.filter.ta.updateBloodhound('seller', data.marker);
             }
+        
             _self.removeLoader();
     });
-}
+};
 
 RMS.ajax.toggleFavs = function(path) {
     var _self = this;
@@ -285,6 +395,7 @@ RMS.map.init = function(){
         _self.updateMarker(marker,true);
     }
     _self.addListener();
+    RMS.mapInitialized = true;
 };
 
 RMS.map.addListener = function(){
@@ -313,12 +424,17 @@ RMS.map.trackMarker = function(lat,lng) {
 RMS.map.centerChange = function(){
     var _self = this;
    
-   if (_self.firstLoad) {
+    if (_self.firstLoad ) {
+
+        /* RMS.ajax.sq.update(_self.getBounds()); 
+         RMS.ajax.updateSearchResults("map");*/
+
         if (_self.gm.getZoom() > 10) {
            _self.gm.setZoom(10);
         }  
    }
    else {
+
         RMS.ajax.sq.update(_self.getBounds()); 
         RMS.ajax.updateSearchResults("map");
     }
@@ -455,15 +571,16 @@ RMS.filter.init = function() {
 RMS.filter.addListeners = function (){
     var _self = this;
     _self.filterArea.on('filterchange', $.proxy(_self.handleFilterChange,this));
-     RMS.$sellerArea.on(
-    {
-    "mouseenter.sellerItem": _self.itemHoverIn,
+    if (RMS.mapInitialized) {
 
-    "mouseleave.sellerItem": _self.itemHoverOut
-    },
-    '.seller-item',{obj: _self});
-    
-   // RMS.$sellerArea.on('mouseenter.sellerItem','.seller-item',{obj: _self}, _self.hoverItem);
+         RMS.$sellerArea.on(
+        {
+        "mouseenter.sellerItem": _self.itemHoverIn,
+
+        "mouseleave.sellerItem": _self.itemHoverOut
+        },
+        '.seller-item',{obj: _self});
+    }
 };
 
 RMS.filter.itemHoverIn = function(e){
@@ -498,8 +615,12 @@ RMS.filter.handleFilterChange = function(e,key,value) {
     
    // RMS.map.popUpWindow.close();
     RMS.ajax.sq.update(updateVals);
-    RMS.ajax.sq.update(RMS.map.getBounds());
+        if (RMS.mapInitialized) { 
+            RMS.ajax.sq.update(RMS.map.getBounds());
+        }
     RMS.ajax.updateSearchResults("filter");
+   /*  console.info(RMS.ajax.initialValues);
+     console.info( RMS.ajax.sq.qvalues);*/
   
    /* RMS.ajax.addLoader();
          setTimeout(RMS.ajax.removeLoader ,1000); 
@@ -779,20 +900,42 @@ RMS.filter.ta.initTypeahead = function(){
 //@TODO: Backdrop f Touch 
 
 RMS.filter.category = {};
-RMS.filter.category.$items = $('.category-filter').find('.filter');
+RMS.filter.category.$categoryBar = $('.category-filter');
+RMS.filter.category.$items = RMS.filter.category.$categoryBar.find('.filter');
 RMS.filter.category.SELECTED_CLASSNAME = 'selected-category';
 RMS.filter.category.SELECTED_CLASS = '.selected-category';
 
 RMS.filter.category.init = function() {
-    
-    RMS.filter.category.$items.each(function(){
+    var _self = this;
+
+    _self.$items.each(function(){
          new RMS.filter.category.CatFilter(this).init();
     });
     
     $(document)
         .on('click.filterHandle', RMS.filter.category.clearDropdowns)
         .on('click.filterHandle','.filter-content', function (e) { e.stopPropagation() })
-        .on('click.filterHandle','.filter-name', function(e){e.stopPropagation();})
+        .on('click.filterHandle','.filter-name', function(e){e.stopPropagation();});
+};
+
+RMS.filter.category.addAffix = function(){
+    var _self = this;
+ 
+    _self.$categoryBar.affix({
+        offset: {
+            top: 140
+        },
+        target : '.page-lieferanten .sidebar'
+    });
+};
+
+RMS.filter.category.removeAffix = function(){
+    var _self = this;
+
+    $(window).off('.affix');
+    _self.$categoryBar
+    .removeClass("affix affix-top affix-bottom")
+    .removeData("bs.affix");
 };
 
 RMS.filter.category.clearDropdowns = function(){

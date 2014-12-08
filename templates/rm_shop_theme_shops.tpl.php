@@ -162,7 +162,7 @@
                     
                 </div><!--end filte-wrapper-->
             </div><!--end col -md-9-->
-             <div class="col-md-1"></div>
+            
         </div>
     </div><!-- end filter area-->
         
