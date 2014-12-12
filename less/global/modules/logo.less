@@ -7,11 +7,21 @@
     background:url(../images/logo.svg) no-repeat top left;
     background-size:contain;
     
+    @media screen and (max-width: 378px) {
+        width: 89px;
+        margin-top: -6px;
+    }
     
     .no-svg &,
     .no-js & {
         width:139px;
         height:50px;
         background-image: url(../images/logo.png);
+    }
+}
+.navbar-brand {
+
+    @media screen and (max-width: 378px) {
+        padding: 22.5px 5px 22.5px 15px;
     }
 }
