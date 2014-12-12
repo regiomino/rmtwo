@@ -159,26 +159,25 @@ module.exports = function (grunt) {
       }
     },
 
-
     autoprefixer: {
         options: {
             browsers: [
                 'Android 2.3',
                 'Android >= 4',
                 'Chrome >= 20',
-                'Firefox >= 24', // Firefox 24 is the latest ESR
+                'Firefox >= 10', // Firefox 24 is the latest ESR
                 'Explorer >= 8',
                 'iOS >= 6',
                 'Opera >= 12',
                 'Safari >= 6'
             ]
         },
-        
-        core: {
-            options: {
-                map: true
-            },
-            src: 'css/style.css'
+       
+        dist: { // Target
+          files: {
+            'css/style.css': 'css/style.css',
+            'css/style-back.css': 'css/style-back.css',
+          }
         }
     },
 
@@ -193,7 +192,7 @@ module.exports = function (grunt) {
     watch: {
         less: {
             files: 'less/**/*.less',
-            tasks: ['less', 'cssmin']
+            tasks: ['less','autoprefixer', 'cssmin']
         },
         
         js: {

@@ -12,24 +12,9 @@
         display: none!important;
     }
 
-    ::-webkit-input-placeholder {
+    ::placeholder {
         color: #CACACA;
-
     }
-
-    :-moz-placeholder { /* Firefox 18- */
-       color: #CACACA;  
-    }
-
-    ::-moz-placeholder {  /* Firefox 19+ */
-       color: #CACACA;  
-    }
-
-    :-ms-input-placeholder {  
-       color: #CACACA;  
-
-    }
-    
     
     .breadcrumbs-container.large {display:    none;}
 
@@ -94,13 +79,13 @@
         @media screen and (min-width: 992px){
             width: 40%;
         }
-        
     }
         
     .marker-content {
         line-height:1.35;
         overflow:hidden;
         white-space:nowrap;
+
         h4 {
             margin-bottom: 3px;
         }
@@ -108,6 +93,7 @@
         ul {
             margin-bottom: 10px;
         }
+
          color: @gray;
         display: block;
         font-family:  @font-family-sans-serif;
@@ -122,7 +108,6 @@
         padding: 0;
         bottom: 0;
         overflow-y: scroll;
-        -webkit-overflow-scrolling: touch;
         z-index: 2;
         width: 57%;
         box-shadow: rgba(0, 0, 0, 0.1) 1px 0px 18px 7px;
@@ -141,20 +126,17 @@
             overflow-y: auto;
         }
         
-        
         .filter-area {
             background: #fff;
             padding: 0px 20px;
             border-bottom: 1px solid #ddd;
             min-height: 160px;
 
-            
             h1 {
                 font-weight: 700;
                 margin-bottom: 15px;
                 margin-top: 0;
             }
-            
             
             .row {
                 position: relative;
@@ -369,7 +351,6 @@
                         color: #333;
                         background-color: #e6e6e6;
                         border-color: #adadad;
-                        -webkit-box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
                         box-shadow: inset 0 3px 5px rgba(0,0,0,.125);
                     }
                     
@@ -784,12 +765,12 @@
 
         .map {
             width: 100%;
+            height: 100%;
             position: fixed;
             top: 0px;
             bottom: 100%;
-            z-index: 100;
+            z-index: 0;
             opacity: 0;
-            pointer-events: none;
         }
 
         &.mapView {
@@ -816,9 +797,9 @@
             }
             
             .map {
-                transition: opacity 7s cubic-bezier(0,1,.22,1);
                 bottom: 0px;
                 opacity: 1;
+                z-index: 100;
                 pointer-events: all;
             }
                 
