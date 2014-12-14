@@ -89,6 +89,10 @@ RMS.addListeners = function(){
     $(window).on('resize', RMS.debounce(function(){
         var size = RMS.getViewportName();
         if(size === "col-1") {
+
+            if(RMS.mapInitialized) {
+                _self.map.removeListener();
+            }  
             
             $('body').addClass(size).removeClass('col-2');
         } 
@@ -110,12 +114,14 @@ RMS.addListeners = function(){
             
             if(!RMS.mapInitialized) {
                 _self.map.init();
+            } else {
+                _self.map.addListener();
             }
             
             $('body').addClass('mapView').removeClass('listView'); 
 
         } else if (action === 'listView') {
-            
+            _self.map.removeListener();
             $('body').addClass('listView').removeClass('mapView');
         }
     });
@@ -400,9 +406,16 @@ RMS.map.init = function(){
 
 RMS.map.addListener = function(){
     var _self = this;
-    google.maps.event.addListener(_self.gm, 'idle', $.proxy(_self.centerChange,_self));
-    google.maps.event.addListener(_self.gm,'click', $.proxy(_self.mapClick,_self));
+    _self.idleListener =  google.maps.event.addListener(_self.gm, 'idle', $.proxy(_self.centerChange,_self));
+    _self.clickListener =  google.maps.event.addListener(_self.gm,'click', $.proxy(_self.mapClick,_self));
 };
+
+RMS.map.removeListener = function(){
+    var _self = this;
+    google.maps.event.removeListener(_self.idleListener);
+    google.maps.event.removeListener(_self.clickListener);
+};
+
 
 RMS.map.popUpContentChange = function(){
     var _self = this;

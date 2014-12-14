@@ -727,7 +727,6 @@
                     background-color: #ddd;
                     height: 2px;
                     margin-bottom: 3px;
-                    
                 }
             }
         }
@@ -736,7 +735,7 @@
 
     .alert {
         margin-bottom: 0px;
-        margin-top: 20px;
+        margin-top: 0px;
     }
 
     .footer {
@@ -765,16 +764,24 @@
 
         .map {
             width: 100%;
-            height: 100%;
             position: fixed;
-            top: 0px;
+            top: -2000px;
+            height: 100%;
             bottom: 100%;
-            z-index: 0;
+            z-index: -3;
             opacity: 0;
+            visibility: hidden;
+        }
+
+        .sidebar {
+            box-shadow: none;
         }
 
         &.mapView {
 
+            .navbar-fixed-top {
+                background-color: rgba(255,255,255,.79);
+            }
             padding-top: 0px;
 
             .filter-wrapper {
@@ -785,22 +792,23 @@
                 padding: 10px 0px;
                 width: 100%;
                 margin: 0px;
-                background-color: rgba(255,255,255,.89);
-                 
+                background-color: rgba(255,255,255,.79);
 
                 .filter-content {
                     bottom: 100%;
                     margin-bottom: 19px;
                     top: inherit;
-                    background-color: rgba(255,255,255,.89);
+                    background-color: rgba(255,255,255,.79);
                 }
             }
             
             .map {
                 bottom: 0px;
                 opacity: 1;
+                top: 0px;
+                position: fixed;
+                visibility: visible;
                 z-index: 100;
-                pointer-events: all;
             }
                 
             .sidebar  {

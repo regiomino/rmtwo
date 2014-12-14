@@ -7372,6 +7372,9 @@ form .form-item {
 .main-content {
   background-color: #fff;
 }
+.navbar-fixed-top {
+  margin-bottom: 0px;
+}
 #block-rm-shop-regiomino-entry-header .directoryselect button {
   margin-top: 0.2em;
   width: auto;
@@ -7806,6 +7809,7 @@ label {
   background: #EFEFEF;
   height: 46px;
   border-bottom: 1px solid #ddd;
+  overflow: hidden;
 }
 .breadcrumbs-container.large {
   position: absolute;
@@ -14725,7 +14729,7 @@ Product Grid
 }
 .page-lieferanten .alert {
   margin-bottom: 0px;
-  margin-top: 20px;
+  margin-top: 0px;
 }
 .page-lieferanten .footer {
   display: none;
@@ -14746,15 +14750,23 @@ Product Grid
 }
 .page-lieferanten.col-1 .map {
   width: 100%;
-  height: 100%;
   position: fixed;
-  top: 0px;
+  top: -2000px;
+  height: 100%;
   bottom: 100%;
-  z-index: 0;
+  z-index: -3;
   opacity: 0;
+  visibility: hidden;
+}
+.page-lieferanten.col-1 .sidebar {
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 .page-lieferanten.col-1.mapView {
   padding-top: 0px;
+}
+.page-lieferanten.col-1.mapView .navbar-fixed-top {
+  background-color: rgba(255, 255, 255, 0.79);
 }
 .page-lieferanten.col-1.mapView .filter-wrapper {
   position: fixed;
@@ -14764,19 +14776,21 @@ Product Grid
   padding: 10px 0px;
   width: 100%;
   margin: 0px;
-  background-color: rgba(255, 255, 255, 0.89);
+  background-color: rgba(255, 255, 255, 0.79);
 }
 .page-lieferanten.col-1.mapView .filter-wrapper .filter-content {
   bottom: 100%;
   margin-bottom: 19px;
   top: inherit;
-  background-color: rgba(255, 255, 255, 0.89);
+  background-color: rgba(255, 255, 255, 0.79);
 }
 .page-lieferanten.col-1.mapView .map {
   bottom: 0px;
   opacity: 1;
+  top: 0px;
+  position: fixed;
+  visibility: visible;
   z-index: 100;
-  pointer-events: all;
 }
 .page-lieferanten.col-1.mapView .sidebar {
   overflow-y: hidden;
