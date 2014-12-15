@@ -196,9 +196,11 @@ RMS.ajax.updateSearchResults = function(trigger){
     var prefix;
     var newUrl;
      
-    prefix = (url.indexOf(_self.PATH_GET_LOCATIONS) != -1) ? url.substring(0,url.indexOf(_self.PATH_GET_LOCATIONS)) : prefix = url;
-    newUrl = prefix + _self.PATH_GET_LOCATIONS + '?' + $.param(_self.sq.getQuery());
-    history.pushState({}, '',newUrl);
+    if (history.pushState) {
+        prefix = (url.indexOf(_self.PATH_GET_LOCATIONS) != -1) ? url.substring(0,url.indexOf(_self.PATH_GET_LOCATIONS)) : prefix = url;
+        newUrl = prefix + _self.PATH_GET_LOCATIONS + '?' + $.param(_self.sq.getQuery());
+        history.pushState({}, '',newUrl);
+    }
     
     $.ajax({
         url: _self.PATH_GET_LOCATIONS,

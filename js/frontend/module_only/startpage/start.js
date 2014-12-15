@@ -157,6 +157,7 @@ FPM.displayMarker = function(){
     }).success(function(data) {
        
        var markers = $(data).find('marker');
+
        FPM.injectMarker(markers);
     });
 };
@@ -165,6 +166,10 @@ FPM.injectMarker = function(marker) {
     var _self = this;
     
    $.each(marker,function(i,item) {
+
+    if (i % 15 !== 0) {
+        return;
+    }
         var type = item.getAttribute('type');
         
         if (type === 'inactive_profile' || type === 'prospect_profile' || type === 'trader_profile') {

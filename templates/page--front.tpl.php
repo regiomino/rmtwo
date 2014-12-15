@@ -399,8 +399,7 @@ Sie den vollen Überblick zu Rechnungen und Kosten.<br> Worauf warten Sie noch?
                                 <div class="col-md-7 col-sm-9 col-md-pull-5">
                                     <p class="text-muted">
                                         <strong> Schritt 3:<br></strong>
-                                        Schon am nächsten Tag ist Ihr Angebot online und Kunden können ganz einfach bei Ihnen einkaufen.
-                                        Als Kondition erhält Regiomino von Ihnen bis zu 10% auf die Bestellung.
+                                        Schon am nächsten Tag ist Ihr Angebot online und Kunden können ganz einfach bei Ihnen einkaufen. <a href="#" data-toggle="modal" data-target="#infoModal">Als Kondition geben Sie Regiomino dafür ab 0% auf den Bestellumsatz.</a>
                                     </p>
                                 </div>
                             </div><!-- end row-->
@@ -506,6 +505,30 @@ mit Anbietern von regionalen Erzeugnissen vernetzt und Regionen dadurch nachhalt
             </div>
             <div class="modal-body">
                 <?php print $suggestform; ?>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="infoModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h3 class="modal-title text-center" id="suggestModalLabel">Informationen für Produzenten</h3>
+            </div>
+            <div class="modal-body">
+                <p>Regiomino stellt Ihnen eine Provisionsrechnung auf eingegangene Bestellungen: (dies zu Beginn des Folgemonats)</p>
+                <ul>
+                    <li>0% für Ihre Bestandskunden (bitte vorher angeben), die bei Ihnen auf Rechnung bezahlen oder bei Barzahlung bei der Lieferung in 2015; 5% für Ihre Bestandskunden, die bei uns über Online-Bezahlsysteme im Voraus bezahlen in 2015. </li>
+                    <li>10% bei Neukunden.</li>
+                </ul>
+                <p>
+                Ab 1.000€ Bestellumsatz pro Monat verhandeln wir die Konditionen mit Ihnen individuell.</p>
+                <p>
+
+                Und das Einstellen Ihres Angebots ist natürlich kostenlos! Fragen Sie hier einfach bei uns nach, sodass wir Ihnen Unterstützung bieten können.
+                </p>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
