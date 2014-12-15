@@ -7,6 +7,7 @@
     display: flex;
     padding-bottom: 45px;
 
+
     .flexfix-sidebar {
         width: @flexfix-sidebar-width;
         min-height: 1px;
@@ -115,4 +116,23 @@
         }
 
      }
+}
+
+.ie8 {
+    .flexfix-wrapper { 
+
+         .flexfix-content {
+            width: 60%;
+            margin-right: 0px;
+
+            .flexfix-content-inner {
+                margin-right: 0px;
+            }
+        }
+
+        .flexfix-sidebar {
+            float: right;
+        }
+
+    }
 }

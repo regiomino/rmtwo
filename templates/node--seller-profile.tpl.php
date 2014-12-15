@@ -554,7 +554,7 @@ $shop = $shops[$shopkeys[0]];
     </div>  
 
     <div id="flexfix-sidebar" class="flexfix-sidebar">
-        <div class="cart-container"> 
+        <div class="cart-container" id="cart-container"> 
        
             <?php
             $block = module_invoke('rm_cart', 'block_view', 'rm_cart_block');
