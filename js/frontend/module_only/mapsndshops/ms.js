@@ -440,10 +440,11 @@ RMS.map.centerChange = function(){
     var _self = this;
    
     if (_self.firstLoad ) {
-
-        /* RMS.ajax.sq.update(_self.getBounds()); 
-         RMS.ajax.updateSearchResults("map");*/
-
+        var size = RMS.getViewportName();
+        if(size === "col-1") {
+            RMS.ajax.sq.update(_self.getBounds()); 
+            RMS.ajax.updateSearchResults("map");
+        }
         if (_self.gm.getZoom() > 10) {
            _self.gm.setZoom(10);
         }  
