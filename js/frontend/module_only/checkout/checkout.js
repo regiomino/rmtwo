@@ -17,7 +17,9 @@ CO.addListeners = function(){
     var _self = this;
     _self.$cartToggle.on('click.cartToggle', function() {
         $(this).toggleClass('active');
+        $('body').toggleClass('modal-open');
         _self.$sidebar.toggleClass('active');
+       
     });
 };
 

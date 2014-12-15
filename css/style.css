@@ -7353,6 +7353,11 @@ html {
 body {
   padding-top: 65px;
 }
+body.modal-open {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
 h1,
 h1.page-title {
   font-weight: 700;
@@ -13254,7 +13259,7 @@ addcartCart-Icon
   z-index: 0;
 }
 .front .map #map-control {
-  margin-bottom: 7px;
+  margin-bottom: 20px;
 }
 .front .map .control {
   margin: 0 40px;
@@ -13290,6 +13295,9 @@ addcartCart-Icon
 }
 .front .map .control.active .fa {
   display: block;
+}
+.front .testimonials .quote-s {
+  margin: 30px 0px;
 }
 .front .testimonials .fa-quote-left {
   /* position: absolute;;
