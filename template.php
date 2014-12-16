@@ -92,11 +92,11 @@ function rmtwo_html_head_alter(&$head_elements) {
 }
 
 
-function rmtwo_preprocess_regiomino_featureslider_theme_highlightslider(&$variables) {
+/*function rmtwo_preprocess_regiomino_featureslider_theme_highlightslider(&$variables) {
   drupal_add_js(drupal_get_path('theme', 'rmshoploop') . '/js/jquery.royalslider.custom.min.js');
   drupal_add_js(drupal_get_path('theme', 'rmshoploop') . '/js/highlight.js');
   
-}
+}*/
 
 
 function rmtwo_theme() {

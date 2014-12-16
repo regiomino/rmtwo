@@ -28,6 +28,10 @@
         
         &.empty {
             opacity: 0.6;
+
+            .btn {
+                pointer-events: none;
+            }
         }
     }
     
@@ -36,11 +40,6 @@
         border-bottom: 1px solid #ddd;
         position: relative;
 
-        .input-group:hover,
-        .input-group:focus {
-            box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
-        }
-        
         .loader {
             right: 0px;
             top: 15px;

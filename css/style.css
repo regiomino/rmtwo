@@ -7348,15 +7348,11 @@ button.close {
 /*Hover Shadow*/
 /*Standard Border */
 html {
-  overflow-x: hidden;
+  height: 100%;
 }
 body {
   padding-top: 65px;
-}
-body.modal-open {
-  position: fixed;
   height: 100%;
-  width: 100%;
 }
 .navbar-default {
   background: #fff;
@@ -8096,15 +8092,13 @@ ul.breadcrumbs li a:hover:after {
 .cart-wrapper .cart-summary.empty {
   opacity: 0.6;
 }
+.cart-wrapper .cart-summary.empty .btn {
+  pointer-events: none;
+}
 .cart-wrapper .cart-item {
   padding: 8px 0 1px;
   border-bottom: 1px solid #ddd;
   position: relative;
-}
-.cart-wrapper .cart-item .input-group:hover,
-.cart-wrapper .cart-item .input-group:focus {
-  -webkit-box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 2px 5px 1px rgba(0, 0, 0, 0.1);
 }
 .cart-wrapper .cart-item .loader {
   right: 0px;
@@ -13132,6 +13126,12 @@ addcartCart-Icon
 .ie8 .flexfix-wrapper .flexfix-sidebar {
   float: right;
 }
+.ie9 .flexfix-wrapper {
+  display: block;
+}
+.ie9 .flexfix-sidebar {
+  float: right;
+}
 .loader {
   position: absolute;
   width: 19px;
@@ -13155,6 +13155,9 @@ addcartCart-Icon
   /*benefits*/
   /* participants*/
   /* testimonials*/
+}
+html .front {
+  overflow-x: hidden;
 }
 .front .page-title {
   text-align: center;
@@ -14839,24 +14842,6 @@ Product Grid
 .ie8 .page-lieferanten .sidebar {
   width: 60%;
 }
-.ie8 .page-lieferanten .sidebar .filter-wrapper .filter-content {
-  width: 450px;
-}
-.ie8 .page-lieferanten .sidebar .filter-wrapper .filter-content li {
-  width: 30%;
-}
-.ie8 .page-lieferanten .sidebar .filter-area .row.category-filter.affix {
-  padding-top: 10px;
-  padding-bottom: 10px;
-  position: relative;
-  top: auto;
-  left: auto;
-  width: auto;
-  margin-left: 0;
-  margin-right: 0;
-  padding-right: 0;
-  padding-left: 0;
-}
 .page-user-register h3 {
   padding-bottom: 10px;
 }
@@ -15321,6 +15306,38 @@ fieldset[disabled] .page-checkout #rm-cart-checkout .form-submit.active {
 }
 .page-checkout .payment-method #edit-paymenttypes:after {
   clear: both;
+}
+.ie8 .page-checkout .checkout-item .form-type-radio.form-item-delivery,
+.ie8 .page-checkout .checkout-item .form-type-radio.form-item-paymenttypes {
+  text-align: left;
+}
+.ie8 .page-checkout .checkout-item .form-type-radio.form-item-delivery:after,
+.ie8 .page-checkout .checkout-item .form-type-radio.form-item-paymenttypes:after {
+  display: none;
+}
+.ie8 .page-checkout .checkout-item .form-type-radio.form-item-delivery input,
+.ie8 .page-checkout .checkout-item .form-type-radio.form-item-paymenttypes input {
+  display: inline;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  margin-left: 0px;
+}
+.ie8 .page-checkout .checkout-item .form-type-radio.form-item-delivery label,
+.ie8 .page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label {
+  font-weight: 400;
+  width: auto;
+  height: auto;
+  padding-top: 0px;
+  position: relative;
+  z-index: 10;
+  display: inline;
+  float: none;
+  line-height: px;
+}
+.ie8 .page-checkout .checkout-item .form-type-radio.form-item-delivery label:before,
+.ie8 .page-checkout .checkout-item .form-type-radio.form-item-paymenttypes label:before {
+  display: none;
 }
 .page-order #tsbadge_db8d3657bdbe440c985ae127463eaad4.standard {
   display: none!important;

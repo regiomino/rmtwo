@@ -1902,7 +1902,11 @@ jQuery(document).ready(function ($) {
          container : 'body'
         });
     
-    
+    /*$('a[data-toggle="modal"]').click(function(e) {
+        e.preventDefault();
+        console.info("Click Link");
+    });*/
+
     function isTouch() {
         var regex = /Android|webOS|iPhone|iPad|iPod|BlackBerry/i;
             return regex.test(navigator.userAgent);

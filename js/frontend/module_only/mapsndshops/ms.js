@@ -19,6 +19,21 @@ RMS.$sellerArea = $('#sellers');
 RMS.$sellerItemsArea = $('#sellers > .row');
 RMS.$viewToggle = $('#viewToggle');
 RMS.mapInitialized = false;
+ 
+
+RMS.msieversion = function() {
+    var _self = this;
+    var ua = window.navigator.userAgent;
+    var msie = ua.indexOf("MSIE ");
+
+    if (msie > 0 )  {    
+        var ver = parseInt(ua.substring(msie + 5, ua.indexOf(".", msie)));
+        return ver; 
+    } 
+    else {
+        return 11;
+    }             
+};
 
 RMS.debounce = function(func, wait, immediate) {
     var timeout;
@@ -68,9 +83,10 @@ RMS.init = function(){
 RMS.setState = function(){
     var _self = this;
     var size = _self.getViewportName();
-    if(size === "col-1") {
+    var ieVersion = _self.msieversion();
+    
+    if(size === "col-1" ) {
         $('body').addClass(size).removeClass('col-2');
-        RMS.filter.category.removeAffix();
     } 
     else if (size === "col-2") {
 
@@ -79,7 +95,9 @@ RMS.setState = function(){
         }
        
         $('body').addClass(size).removeClass('col-1');
-        RMS.filter.category.addAffix();
+        if (ieVersion >= 10 ) { 
+            RMS.filter.category.addAffix();
+        }
     }
 }
 
@@ -417,7 +435,6 @@ RMS.map.removeListener = function(){
     google.maps.event.removeListener(_self.idleListener);
     google.maps.event.removeListener(_self.clickListener);
 };
-
 
 RMS.map.popUpContentChange = function(){
     var _self = this;

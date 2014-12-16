@@ -1,7 +1,7 @@
 <!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" lang="<?php print $language->language; ?>"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="<?php print $language->language; ?>"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8 ie9" lang="<?php print $language->language; ?>"> <![endif]-->
-<!--[if (gte IE 10)|!(IE)]><!--><html class="no-js" lang="<?php print $language->language; ?>"> <!--<![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="<?php print $language->language; ?>"> <!--<![endif]-->
 
 <head>
     <?php print $head; ?>

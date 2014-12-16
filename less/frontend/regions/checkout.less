@@ -386,3 +386,44 @@
             }
     }    
 }
+
+.ie8 .page-checkout {
+
+    .checkout-item {
+
+        .form-type-radio.form-item-delivery,
+        .form-type-radio.form-item-paymenttypes { 
+
+            text-align: left;
+
+            &:after {
+                display: none;
+            }
+
+            input {
+                display: inline;  
+                position: relative; 
+                top: 0px; 
+                left: 0px; 
+                margin-left: 0px;  
+            }
+
+            label {
+                font-weight: 400;
+                width: auto;
+                height: auto;
+                padding-top: 0px;
+                position: relative;
+                z-index: 10;
+                display: inline;
+                float: none;
+                line-height: px;
+
+                &:before {
+                    display: none;
+                }
+            }
+        }
+    }
+      
+}
