@@ -125,21 +125,48 @@ $shop = $shops[$shopkeys[0]];
                         </li>
                     </ul>
                     <button class="btn hidden-md btn-default" data-toggle='modal' data-target='#detailModal'> Details zum Betrieb <span class="fa fa-chevron-right"></span></button>
+
                    <div class="modal fade" id="detailModal">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span> </button>
-                                 <!--  <img class="img-responsive" src="<?php print image_style_url('seller_large', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>"> -->
+                                <!-- <button type="button" class="close" data-dismiss="modal" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span> </button> -->
+                                <img class="img-responsive" src="<?php print image_style_url('seller_large', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>">  
 
-                                    <h3 class="modal-title" id="variationModalLabel"><?php print $node->title; ?></strong></h3>
                             </div>
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-md-12"> 
+                                    <div class="col-md-8"> 
+                                        <h2 class="modal-title" id="variationModalLabel"><?php print $node->title; ?></strong></h2>
                                         <?php $body = strip_tags($node->body[LANGUAGE_NONE][0]['value']); ?>
                                         <p><em><?php print $body;  ?> </em></p>
                                      </div>
+                                     <div class="col-md-4"> 
+                                        <ul class="list-unstyled seller-meta">
+                                            <li>
+                                                <span class="fa fa-cutlery fa-fw" ></span>
+                                                <?php
+                                                    $all_tids = array();
+                                                    foreach($node->field_sellercategories[LANGUAGE_NONE] as $index => $tid) {
+                                                        $all_tids[] = (int)$tid['tid'];
+                                                    }
+                                        
+                                                    $allterms = taxonomy_term_load_multiple($all_tids);
+                                                    foreach($allterms as $term) {
+                                                        print $term->name . ' ';
+                                                    }
+                                                ?>
+                                            </li>
+                                            <li>
+                                                <span class="fa fa-map-marker fa-fw"></span>
+                                                <?php print $node->field_company_name[LANGUAGE_NONE][0]['value']; ?><br> <?php print $node->field_address[LANGUAGE_NONE][0]['thoroughfare']; ?><br> <?php print $node->field_address[LANGUAGE_NONE][0]['postal_code'] ?> <?php print $node->field_address[LANGUAGE_NONE][0]['locality']; ?> </li>
+                                            </li>
+                                            <li> 
+                                                <span class="fa fa-phone fa-fw"></span>
+                                                <?php print rm_api_format_phone($node->field_publicphone[LANGUAGE_NONE][0]['number']); ?>
+                                            </li>
+                                            </ul>
+                                      </div>
                                 </div>
                             </div>
                         </div><!-- /.modal-content -->

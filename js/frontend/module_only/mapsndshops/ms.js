@@ -61,11 +61,11 @@ RMS.getViewportName = function () {
     
     var vp = RMS.getViewport();
     
-    if( vp.width <=850) {
+    if( vp.width <=991) {
         return "col-1";
     }
     
-    else if( vp.width > 850 ) {
+    else if( vp.width > 991 ) {
         
         return "col-2";
     }

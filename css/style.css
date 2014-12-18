@@ -13149,6 +13149,28 @@ addcartCart-Icon
 .footer a.active {
   font-weight: 700;
 }
+#detailModal .modal-dialog {
+  width: auto;
+  margin: 10px;
+}
+@media screen and (min-width: 992px) {
+  #detailModal .modal-dialog {
+    width: 992px;
+    margin: 30px auto;
+  }
+}
+#detailModal .modal-title {
+  margin-bottom: 10px;
+}
+#detailModal p {
+  margin-bottom: 19px;
+}
+#detailModal .modal-header {
+  padding: 0px;
+  overflow: hidden;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
 .front {
   overflow-x: hidden;
   /*content areas*/
@@ -14170,7 +14192,7 @@ Product Grid
   padding-left: 20px;
   padding-right: 20px;
 }
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 992px) {
   .page-lieferanten .container {
     width: 100%;
     margin: 0px;
@@ -14184,7 +14206,7 @@ Product Grid
   width: 100%;
   z-index: 1;
 }
-@media screen and (min-width: 850px) {
+@media screen and (min-width: 991px) {
   .page-lieferanten .map {
     width: 43%;
   }
@@ -14227,7 +14249,7 @@ Product Grid
     width: 60%;
   }
 }
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 991px) {
   .page-lieferanten .sidebar {
     width: 100%;
     position: relative;
