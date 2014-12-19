@@ -136,11 +136,17 @@ $shop = $shops[$shopkeys[0]];
                             </div>
                             <div class="modal-body">
                                 <div class="row">
-                                    <div class="col-md-8"> 
-                                        <h2 class="modal-title" id="variationModalLabel"><?php print $node->title; ?></strong></h2>
-                                        <?php $body = strip_tags($node->body[LANGUAGE_NONE][0]['value']); ?>
-                                        <p><em><?php print $body;  ?> </em></p>
+                                    <div class="col-md-12"> 
+                                        <h2 class="modal-title text-center"><?php print $node->title; ?></strong></h2>
+                                       
                                      </div>
+                                 </div>
+                                 <div class="row">
+                                     <div class="col-md-8">
+                                         <?php $body = strip_tags($node->body[LANGUAGE_NONE][0]['value']); ?>
+                                         <p><em><?php print $body;  ?> </em></p>
+                                    
+                                    </div>
                                      <div class="col-md-4"> 
                                         <ul class="list-unstyled seller-meta">
                                             <li>
