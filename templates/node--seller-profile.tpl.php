@@ -124,14 +124,49 @@ $shop = $shops[$shopkeys[0]];
                         <?php endif; ?>
                         </li>
                     </ul>
-                    <button class="btn hidden-md btn-default" data-toggle='modal' data-target='#detailModal'> Details zum Betrieb <span class="fa fa-chevron-right"></span></button>
+                   <!--  <button class="btn hidden-md btn-default" data-toggle='modal' data-target='#detailModal'> Details zum Betrieb <span class="fa fa-chevron-right"></span></button> -->
 
                    <div class="modal fade" id="detailModal">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
+                            <?php $image_count = count($node->field_image[LANGUAGE_NONE]);
+                            $first_image = TRUE; ?>
+                            <?php if ($image_count > 1) { ?>
+                                <div id="seller-image-carousel" class="carousel slide">
+                                      <!-- Indicators -->
+                                    <ol class="carousel-indicators">
+                                        <?php for($i = 0; $i < $image_count; $i++) { ?>
+                                            <li data-target="#seller-image-carousel" data-slide-to="<?php print $i ?>" class="<?php print ($first_image == TRUE) ? ' active' : ''; ?>"></li>
+                                        <?php } ?>
+                                    </ol>
+
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner" role="listbox">
+                                       <?php foreach($node->field_image[LANGUAGE_NONE] as $image) { ?>
+                                           <div class="item <?php print ($first_image == TRUE) ? ' active' : ''; ?>">
+                                               <img class="img-responsive" src="<?php print image_style_url('seller_large', $image['uri']); ?>" alt="<?php print $node->title; ?>">  
+                                           </div>
+                                           <?php $first_image = FALSE; ?>
+                                       <?php } ?>
+                                    </div>
+
+                                      <!-- Controls -->
+                                      <a class="left carousel-control" href="#seller-image-carousel" role="button" data-slide="prev">
+                                        <span class="fa   fa-chevron-circle-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                      </a>
+                                      <a class="right carousel-control" href="#seller-image-carousel" role="button" data-slide="next">
+                                        <span class="fa   fa-chevron-circle-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                      </a>
+                                </div>
+                                <?php } else {  ?>
+
+                                    <img class="img-responsive" src="<?php print image_style_url('seller_large', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>">  
+
+                                    <?php } ?>
                                 <!-- <button type="button" class="close" data-dismiss="modal" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span> </button> -->
-                                <img class="img-responsive" src="<?php print image_style_url('seller_large', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>">  
 
                             </div>
                             <div class="modal-body">
