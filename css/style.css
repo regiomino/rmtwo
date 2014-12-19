@@ -13190,6 +13190,17 @@ addcartCart-Icon
   margin-left: -15px;
   left: 50%;
 }
+#detailModal .modal-footer {
+  padding: 0px;
+}
+#detailModal .modal-footer .btn-default {
+  width: 100%;
+  border: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
 .front {
   overflow-x: hidden;
   /*content areas*/

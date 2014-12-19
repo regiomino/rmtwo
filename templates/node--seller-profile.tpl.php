@@ -67,6 +67,7 @@ $shop = $shops[$shopkeys[0]];
                     <?php  endif; ?>
 
                     </a>
+
                 </div> 
                 <div class="col-sm-5  lpl">       
                     <ul class="list-unstyled seller-meta">
@@ -124,8 +125,7 @@ $shop = $shops[$shopkeys[0]];
                         <?php endif; ?>
                         </li>
                     </ul>
-                   <!--  <button class="btn hidden-md btn-default" data-toggle='modal' data-target='#detailModal'> Details zum Betrieb <span class="fa fa-chevron-right"></span></button> -->
-
+                    <button class="btn hidden-md hidden-lg hidden-sm btn-default" data-toggle='modal' data-target='#detailModal'> Details zum Betrieb <span class="fa fa-chevron-right"></span></button>
                    <div class="modal fade" id="detailModal">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -166,7 +166,7 @@ $shop = $shops[$shopkeys[0]];
                                     <img class="img-responsive" src="<?php print image_style_url('seller_large', $node->field_image[LANGUAGE_NONE][0]['uri']); ?>" alt="<?php print $node->title; ?>">  
 
                                     <?php } ?>
-                                <!-- <button type="button" class="close" data-dismiss="modal" ><span aria-hidden="true">&times;</span><span class="sr-only">Close</span> </button> -->
+                              
 
                             </div>
                             <div class="modal-body">
@@ -209,6 +209,10 @@ $shop = $shops[$shopkeys[0]];
                                             </ul>
                                       </div>
                                 </div>
+                            </div>
+                            <div class="modal-footer">
+                            
+                                <button type="button" class="btn btn-lg  btn-default" data-dismiss="modal" > <i class="fa fa-times"></i> Schließen </button>
                             </div>
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal-dialog -->
