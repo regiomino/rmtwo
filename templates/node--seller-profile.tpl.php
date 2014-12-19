@@ -137,7 +137,7 @@ $shop = $shops[$shopkeys[0]];
                                       <!-- Indicators -->
                                     <ol class="carousel-indicators">
                                         <?php for($i = 0; $i < $image_count; $i++) { ?>
-                                            <li data-target="#seller-image-carousel" data-slide-to="<?php print $i ?>" class="<?php print ($first_image == TRUE) ? ' active' : ''; ?>"></li>
+                                            <li data-target="#seller-image-carousel" data-slide-to="<?php print $i ?>" class="<?php print ($i == 0) ? ' active' : ''; ?>"></li>
                                         <?php } ?>
                                     </ol>
 
