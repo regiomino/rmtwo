@@ -19,7 +19,7 @@
 		<script>
 
 			// Set to the same value as the web property used on the site
-			var gaProperty = 'UA-40144139-1';
+			var gaProperty = 'UA-40144139-3';
 
 			// Disable tracking if the opt-out cookie exists.
 			var disableStr = 'ga-disable-' + gaProperty;
@@ -33,13 +33,13 @@
 				window[disableStr] = true;
 				alert('In Ihrem Browser wurde ein Cookie für die aktuelle Domain gesetzt, der in Zukunft das Tracking via Google Analytics verhindert. Bitte beachten Sie, dass dieser Cookie beim manuellen Löschen Ihres Browsercaches entfernt wird. Wenn Sie sicherstellen wollen, dass Ihr Webseitenbesuch dauerhaft nicht analysiert wird, installieren Sie bitte den Google Browser Plugin unter http://tools.google.com/dlpage/gaoptout?hl=de');
 			}
+            
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-			ga('create', 'UA-40144139-1', 'auto');
+			ga('create', gaProperty, 'auto');
 			ga('send', 'pageview');
 
 		</script>
