@@ -7345,6 +7345,17 @@ button.close {
     padding: 22.5px 5px 22.5px 15px;
   }
 }
+.full-width-close .modal-footer {
+  padding: 0px;
+}
+.full-width-close .modal-footer .btn-default {
+  width: 100%!important;
+  border: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
 /*Hover Shadow*/
 /*Standard Border */
 html {
@@ -13189,17 +13200,6 @@ addcartCart-Icon
 #detailModal .carousel-control .fa-chevron-circle-left {
   margin-left: -15px;
   left: 50%;
-}
-#detailModal .modal-footer {
-  padding: 0px;
-}
-#detailModal .modal-footer .btn-default {
-  width: 100%;
-  border: none;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  border-top-right-radius: 0px;
-  border-top-left-radius: 0px;
 }
 .front {
   overflow-x: hidden;

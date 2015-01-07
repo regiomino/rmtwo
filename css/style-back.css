@@ -7345,6 +7345,17 @@ button.close {
     padding: 22.5px 5px 22.5px 15px;
   }
 }
+.full-width-close .modal-footer {
+  padding: 0px;
+}
+.full-width-close .modal-footer .btn-default {
+  width: 100%!important;
+  border: none;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}
 /*
  * metismenu - v1.0.3
  * Easy menu jQuery plugin for Twitter Bootstrap 3

@@ -57,18 +57,21 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     
-    <?php if ($messages): ?>
-        <div class="modal fade" id="messageModal">
+    <?php if ($messages):
+    ?>
+        <div class="modal fade full-width-close" id="messageModal">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                        <br />
+                    <div class="modal-body">
                         <div id="messages">
                             <div class="section clearfix">
                                 <?php print $messages; ?>
                             </div>
                         </div> <!-- /.section, /#messages -->
+                    </div>
+                
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-lg  btn-default" data-dismiss="modal" > <i class="fa fa-times"></i> Schließen </button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->

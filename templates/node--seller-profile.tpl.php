@@ -126,7 +126,7 @@ $shop = $shops[$shopkeys[0]];
                         </li>
                     </ul>
                     <button class="btn hidden-md hidden-lg hidden-sm btn-default" data-toggle='modal' data-target='#detailModal'> Details zum Betrieb <span class="fa fa-chevron-right"></span></button>
-                   <div class="modal fade" id="detailModal">
+                   <div class="modal fade full-width-close" id="detailModal">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -173,9 +173,8 @@ $shop = $shops[$shopkeys[0]];
                                 <div class="row">
                                     <div class="col-md-12"> 
                                         <h2 class="modal-title text-center"><?php print $node->title; ?></strong></h2>
-                                       
-                                     </div>
-                                 </div>
+                                    </div>
+                                 </div>                     
                                  <div class="row">
                                      <div class="col-md-8">
                                          <?php $body = strip_tags($node->body[LANGUAGE_NONE][0]['value']); ?>
@@ -211,7 +210,6 @@ $shop = $shops[$shopkeys[0]];
                                 </div>
                             </div>
                             <div class="modal-footer">
-                            
                                 <button type="button" class="btn btn-lg  btn-default" data-dismiss="modal" > <i class="fa fa-times"></i> Schließen </button>
                             </div>
                         </div><!-- /.modal-content -->
@@ -255,13 +253,10 @@ $shop = $shops[$shopkeys[0]];
                          ?>
                     <?php endif; ?>
 
-                    <div class="modal fade" tabindex="-1" id="pickupModal" role="dialog" aria-labelledby="Selbstabholung" aria-hidden="true">
+                    <div class="modal full-width-close fade" tabindex="-1" id="pickupModal" role="dialog" aria-labelledby="Selbstabholung" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal">
-                                <span aria-hidden="true">&times;</span>
-                                <span class="sr-only">Close</span></button>
                                 <h3 class="modal-title" id="variationModalLabel">Selbstabholung bei <strong><?php print $node->title; ?></strong></h3>
                             </div>
                             <div class="modal-body clearfix">
@@ -351,6 +346,9 @@ $shop = $shops[$shopkeys[0]];
                                     
                                 </div><!-- end pickup-info-->
                             </div><!-- end modal-body-->
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-lg  btn-default" data-dismiss="modal" > <i class="fa fa-times"></i> Schließen </button>
+                            </div>
                         </div>
                       </div>
                     </div>
@@ -376,11 +374,10 @@ $shop = $shops[$shopkeys[0]];
                                 print '</a>';
 
                                 print '
-                                <div class="modal fade" id="shippingModal">
+                                <div class="modal fade full-width-close" id="shippingModal">
                                  <div class="modal-dialog">
                                      <div class="modal-content">
                                          <div class="modal-header">
-                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
                                                  <h3 class="modal-title" id="variationModalLabel">Lieferung von <strong>' . $node->title . '</strong></h3>
                                          </div>
                                          <div class="modal-body">
@@ -398,6 +395,9 @@ $shop = $shops[$shopkeys[0]];
                                                  </div>
                                              </div>
                                          </div>
+                                          <div class="modal-footer">
+                        <button type="button" class="btn btn-lg  btn-default" data-dismiss="modal" > <i class="fa fa-times"></i> Schließen </button>
+                    </div>
                                      </div><!-- /.modal-content -->
                                  </div><!-- /.modal-dialog -->
                                 </div><!-- /.modal -->
@@ -639,7 +639,7 @@ $shop = $shops[$shopkeys[0]];
 
 <?php foreach($node->offers as $offer): ?>
     <?php foreach($offer->offer_variations as $variation): ?>
-        <div class="modal fade" id="variationModal<?php print $variation->nid;?>">
+        <div class="modal full-width-close fade" id="variationModal<?php print $variation->nid;?>">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -698,9 +698,8 @@ $shop = $shops[$shopkeys[0]];
                             </div>
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Schließen</button>
-                       <!-- <button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> in den Warenkorb</button>-->
+                   <div class="modal-footer">
+                        <button type="button" class="btn btn-lg  btn-default" data-dismiss="modal" > <i class="fa fa-times"></i> Schließen </button>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
