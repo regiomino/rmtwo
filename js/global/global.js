@@ -33,11 +33,11 @@ jQuery(document).ready(function ($) {
 
     $f = $('#user-register-form');
     $p_p = $('#edit-phone--2').add('#edit-postal-code--2');
-    $s = $form.find('#edit-submit--4');
+    $s = $f.find('#edit-submit--4');
    
     
     $s.on('click', function(e){
-       
+      
         e.preventDefault();
         $p_p.val(function(index,val){
             var newVal = $.trim(val.replace(/\D/g,''));
