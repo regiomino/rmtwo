@@ -31,20 +31,20 @@ jQuery(document).ready(function ($) {
     });
 
 
-    $form = $('#user-register-form');
+    $f = $('#user-register-form');
     $p_p = $('#edit-phone--2').add('#edit-postal-code--2');
-    $submit = $form.find('#edit-submit--4');
+    $s = $form.find('#edit-submit--4');
    
     
-    $submit.on('click', function(e){
-        console.info("dad");
+    $s.on('click', function(e){
+       
         e.preventDefault();
         $p_p.val(function(index,val){
             var newVal = $.trim(val.replace(/\D/g,''));
             return newVal;
         });
         
-        $form.submit();
+        $f.submit();
     });
     
 });
