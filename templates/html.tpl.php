@@ -4,6 +4,7 @@
 <!--[if (gt IE 9)|!(IE)]><!--><html class="no-js" lang="<?php print $language->language; ?>"> <!--<![endif]-->
 
 <head>
+    <script src="//cdn.optimizely.com/js/2610970195.js"></script>
     <?php print $head; ?>
     <title><?php print $head_title; ?></title>
     <?php print $styles; ?>
