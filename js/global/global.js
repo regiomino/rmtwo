@@ -15,7 +15,7 @@ jQuery(document).ready(function ($) {
     $('#messageModal').modal('show');
     
     
-    $form = $('#rm-sales-suggest-form');
+    $form = $('#rm-sales-suggest-form').add('#rm-sales-suggest-form--2');
     $phone_postal = $('#edit-phone').add('#edit-postal-code');
     $submit = $form.find('input[type="submit"]');
    
